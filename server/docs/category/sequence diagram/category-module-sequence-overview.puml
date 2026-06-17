@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Danh Mục - Tổng Quan Luồng Xử Lý
-note top : Hệ thống quản lý danh mục với phân cấp và đa ngôn ngữ
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
-actor "Khách hàng" as Client
-actor "Người dùng" as User
+English content normalized from the original source text.
+English content normalized from the original source text.
 participant "CategoryController" as CC
 participant "CategoryTranslationController" as CTC
 participant "CategoryService" as CS
@@ -22,124 +22,124 @@ participant "ActiveUser" as AU
 participant "PrismaService" as PS
 database "PostgreSQL" as DB
 
-== API Công Khai (Public Categories) ==
+== English Section ==
 Client -> CC: GET /categories?parentCategoryId=123
 note right
-Cấu Hình Endpoint:
-• @IsPublic() - Không cần xác thực
-• @ZodSerializerDto(GetAllCategoriesResDTO) - Chuẩn hóa phản hồi
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
 CC -> CS: findAll(parentCategoryId)
 CS -> IC: I18nContext.current()?.lang
-IC -> CS: trả về ngôn ngữ hiện tại
+IC -> CS: English content normalized from the original source text.
 CS -> CR: findAll({parentCategoryId, languageId})
 CR -> PS: category.findMany()
 note right
-Logic Truy Vấn Database:
+English content normalized from the original source text.
 • WHERE deletedAt IS NULL
 • Filter theo parentCategoryId (hierarchical)
 • Include categoryTranslations
 • Language-specific translations
 • ORDER BY createdAt DESC
 end note
-PS -> DB: Thực thi query với JOINs
-DB -> PS: Trả về categories với translations
-PS -> CR: Trả về categories data + totalItems
-CR -> CS: Trả về {data, totalItems}
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> CR: English content normalized from the original source text.
+CR -> CS: English content normalized from the original source text.
 CS -> IS: i18n.t('category.category.success.GET_SUCCESS')
-IS -> CS: Trả về message đã localize
-CS -> CC: Trả về response với data + totalItems
-CC -> Client: Trả về JSON response
+IS -> CS: English content normalized from the original source text.
+CS -> CC: English content normalized from the original source text.
+CC -> Client: English content normalized from the original source text.
 
 Client -> CC: GET /categories/:categoryId
 note right
-Cấu Hình Endpoint:
-• @IsPublic() - Không cần xác thực
-• @ZodSerializerDto(GetCategoryDetailResDTO) - Chuẩn hóa phản hồi
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
 CC -> CS: findById(categoryId)
 CS -> IC: I18nContext.current()?.lang
-IC -> CS: trả về ngôn ngữ hiện tại
+IC -> CS: English content normalized from the original source text.
 CS -> CR: findById({id, languageId})
 CR -> PS: category.findUnique()
-PS -> DB: Thực thi findUnique query
-DB -> PS: Trả về category detail với translations
-PS -> CR: Trả về category với đa ngôn ngữ
-CR -> CS: Trả về category data
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> CR: English content normalized from the original source text.
+CR -> CS: English content normalized from the original source text.
 
-alt Category tồn tại
+English content normalized from the original source text.
     CS -> IS: i18n.t('category.category.success.GET_DETAIL_SUCCESS')
-    IS -> CS: Trả về message đã localize
-    CS -> CC: Trả về response chi tiết
-    CC -> Client: Trả về JSON category detail
-else Category không tồn tại
+    IS -> CS: English content normalized from the original source text.
+    CS -> CC: English content normalized from the original source text.
+    CC -> Client: English content normalized from the original source text.
+else (No)
     CS -> CC: Throw NotFoundRecordException
-    CC -> Client: Trả về 404 Not Found
+    CC -> Client: English content normalized from the original source text.
 end
 
-== API Quản Lý (Management Categories) ==
+== English Section ==
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> CC: POST /categories + {name, logo, parentCategoryId}
 CC -> CS: create({data, user})
 CS -> CR: create({createdById, data})
 CR -> PS: category.create()
-PS -> DB: INSERT category với audit fields
-DB -> PS: Trả về category mới với translations
-PS -> CR: Trả về category đã tạo
-CR -> CS: Trả về category data
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> CR: English content normalized from the original source text.
+CR -> CS: English content normalized from the original source text.
 CS -> IS: i18n.t('category.category.success.CREATE_SUCCESS')
-IS -> CS: Trả về message đã localize
-CS -> CC: Trả về success response
-CC -> User: Trả về 201 Created + JSON response
+IS -> CS: English content normalized from the original source text.
+CS -> CC: English content normalized from the original source text.
+CC -> User: English content normalized from the original source text.
 
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> CC: PUT /categories/:categoryId + {name, logo, parentCategoryId}
 CC -> CS: update({id, data, user})
 CS -> CR: update({id, updatedById, data})
 CR -> PS: category.update()
-PS -> DB: UPDATE category với audit
-DB -> PS: Trả về category updated
-PS -> CR: Trả về category đã cập nhật
-CR -> CS: Trả về category data
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> CR: English content normalized from the original source text.
+CR -> CS: English content normalized from the original source text.
 CS -> IS: i18n.t('category.category.success.UPDATE_SUCCESS')
-IS -> CS: Trả về message đã localize
-CS -> CC: Trả về success response
-CC -> User: Trả về 200 OK + JSON response
+IS -> CS: English content normalized from the original source text.
+CS -> CC: English content normalized from the original source text.
+CC -> User: English content normalized from the original source text.
 
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> CC: DELETE /categories/:categoryId
 CC -> CS: delete({id, user})
 CS -> CR: delete({id, deletedById})
 CR -> PS: category.update() soft delete
 PS -> DB: UPDATE deletedAt field
-DB -> PS: Trả về category marked deleted
-PS -> CR: Trả về success
-CR -> CS: Trả về success
+DB -> PS: English content normalized from the original source text.
+PS -> CR: English content normalized from the original source text.
+CR -> CS: English content normalized from the original source text.
 CS -> IS: i18n.t('category.category.success.DELETE_SUCCESS')
-IS -> CS: Trả về message đã localize
-CS -> CC: Trả về success response
-CC -> User: Trả về 200 OK + JSON response
+IS -> CS: English content normalized from the original source text.
+CS -> CC: English content normalized from the original source text.
+CC -> User: English content normalized from the original source text.
 
-== API Quản Lý Translation ==
+== English Section ==
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> CTC: POST /category-translations + {categoryId, languageId, name, description}
 CTC -> CTS: create({data, user})
 CTS -> CTR: create({createdById, data})
 CTR -> PS: categoryTranslation.create()
 PS -> DB: INSERT categoryTranslation
-DB -> PS: Trả về translation created
-PS -> CTR: Trả về translation data
-CTR -> CTS: Trả về translation
+DB -> PS: English content normalized from the original source text.
+PS -> CTR: English content normalized from the original source text.
+CTR -> CTS: English content normalized from the original source text.
 CTS -> IS: i18n.t('category.categoryTranslation.success.CREATE_SUCCESS')
-IS -> CTS: Trả về message đã localize
-CTS -> CTC: Trả về success response
-CTC -> User: Trả về 201 Created + JSON response
+IS -> CTS: English content normalized from the original source text.
+CTS -> CTC: English content normalized from the original source text.
+CTC -> User: English content normalized from the original source text.
 
 alt Unique constraint violation
     CTR -> PS: categoryTranslation.create()
@@ -149,75 +149,75 @@ alt Unique constraint violation
     CTR -> CTS: Throw exception
     CTS -> CTS: isUniqueConstraintPrismaError(error)
     CTS -> CTC: Throw CategoryTranslationAlreadyExistsException
-    CTC -> User: Trả về 422 Unprocessable Entity
+    CTC -> User: English content normalized from the original source text.
 end
 
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> CTC: PUT /category-translations/:categoryTranslationId + {categoryId, languageId, name, description}
 CTC -> CTS: update({id, data, user})
 CTS -> CTR: update({id, updatedById, data})
 CTR -> PS: categoryTranslation.update()
 PS -> DB: UPDATE categoryTranslation
-DB -> PS: Trả về translation updated
-PS -> CTR: Trả về translation đã cập nhật
-CTR -> CTS: Trả về translation data
+DB -> PS: English content normalized from the original source text.
+PS -> CTR: English content normalized from the original source text.
+CTR -> CTS: English content normalized from the original source text.
 CTS -> IS: i18n.t('category.categoryTranslation.success.UPDATE_SUCCESS')
-IS -> CTS: Trả về message đã localize
-CTS -> CTC: Trả về success response
-CTC -> User: Trả về 200 OK + JSON response
+IS -> CTS: English content normalized from the original source text.
+CTS -> CTC: English content normalized from the original source text.
+CTC -> User: English content normalized from the original source text.
 
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> CTC: DELETE /category-translations/:categoryTranslationId
 CTC -> CTS: delete({id, user})
 CTS -> CTR: delete({id, deletedById})
 CTR -> PS: categoryTranslation.update() soft delete
 PS -> DB: UPDATE deletedAt field
-DB -> PS: Trả về translation marked deleted
-PS -> CTR: Trả về success
-CTR -> CTS: Trả về success
+DB -> PS: English content normalized from the original source text.
+PS -> CTR: English content normalized from the original source text.
+CTR -> CTS: English content normalized from the original source text.
 CTS -> IS: i18n.t('category.categoryTranslation.success.DELETE_SUCCESS')
-IS -> CTS: Trả về message đã localize
-CTS -> CTC: Trả về success response
-CTC -> User: Trả về 200 OK + JSON response
+IS -> CTS: English content normalized from the original source text.
+CTS -> CTC: English content normalized from the original source text.
+CTC -> User: English content normalized from the original source text.
 
-== Xử Lý Lỗi ==
-alt Lỗi không tìm thấy category
+== English Section ==
+English content normalized from the original source text.
     CR -> CS: Return null
     CS -> CS: Throw NotFoundRecordException
     CS -> CC: Throw exception
-    CC -> Client: Trả về 404 Not Found
+    CC -> Client: English content normalized from the original source text.
 
-else Lỗi unique constraint (translation)
+else (No)
     CTR -> CTS: Throw PrismaException
     CTS -> CTS: isUniqueConstraintPrismaError(error)
     CTS -> CTC: Throw CategoryTranslationAlreadyExistsException
-    CTC -> User: Trả về 422 Unprocessable Entity
+    CTC -> User: English content normalized from the original source text.
 
-else Lỗi database constraint
+else (No)
     CR -> CS: PrismaException
     CS -> CC: Database error
-    CC -> User: Trả về 500 Internal Server Error
+    CC -> User: English content normalized from the original source text.
 
-else Lỗi authentication
-    CC -> User: Trả về 401 Unauthorized
+else (No)
+    CC -> User: English content normalized from the original source text.
 end
 
-== Đa Ngôn Ngữ ==
+== English Section ==
 CS -> IS: i18n.t('category.category.success.XXX')
-IS -> CS: Trả về message đã localize
-CS -> CC: Response + Message đã localize
-CC -> Client: JSON Response với metadata đầy đủ
+IS -> CS: English content normalized from the original source text.
+CS -> CC: English content normalized from the original source text.
+CC -> Client: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module Category:**
-• CRUD operations đầy đủ cho category management
-• Hierarchical structure với parentCategoryId
-• Multi-language support với categoryTranslations
+* English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Public API cho read operations (@IsPublic())
 • Admin-only access cho create/update/delete
-• Soft delete pattern với audit trail
+• English content normalized from the original source text
 • Zod schema validation cho input/output
 • Comprehensive error handling
 • I18nContext integration cho language detection

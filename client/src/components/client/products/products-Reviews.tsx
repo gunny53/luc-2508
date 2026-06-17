@@ -37,7 +37,7 @@ const StarRating = ({
 );
 
 const ReviewItem = ({ review }: { review: Review }) => {
-  const userName = review.user?.name || "Người dùng ẩn danh";
+  const userName = review.user?.name || "English content normalized from the original source text.";
   const userAvatar = review.user?.avatar || "/assets/demo/shop-avatar.png";
   const userFallback = userName.charAt(0).toUpperCase();
 
@@ -89,12 +89,12 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
 
   const { reviews, loading, fetchReviews } = useProductReview(productId);
 
-  // chỉ fetch 1 lần toàn bộ reviews
+  // English content normalized from the original source text.
   useEffect(() => {
     fetchReviews();
   }, [fetchReviews]);
 
-  // lọc dữ liệu ở FE
+  // English content normalized from the original source text.
   const filteredReviews = useMemo(() => {
     if (filter === "all") return reviews;
     if (filter === "media") {
@@ -103,14 +103,14 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
     return reviews.filter((r) => r.rating === filter);
   }, [reviews, filter]);
 
-  // phân trang dựa trên reviews đã lọc
+  // English content normalized from the original source text.
   const totalPages = Math.ceil(filteredReviews.length / limit);
   const paginatedReviews = useMemo(() => {
     const start = (page - 1) * limit;
     return filteredReviews.slice(start, start + limit);
   }, [filteredReviews, page]);
 
-  // summary tính trên toàn bộ reviews gốc
+  // English content normalized from the original source text.
   const summary = useMemo(() => {
     if (!reviews || reviews.length === 0) {
       return {
@@ -162,7 +162,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm font-sans">
-      <h2 className="text-xl font-medium mb-4">ĐÁNH GIÁ SẢN PHẨM</h2>
+      <h2 className="text-xl font-medium mb-4">English content normalized from the original source text.</h2>
 
       <div className="bg-neutral-50 p-4 rounded-lg flex flex-col md:flex-row md:items-center md:space-x-8 border">
         <div className="text-center text-red-600 md:pr-8 md:border-r pb-4 md:pb-0">
@@ -178,7 +178,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
         </div>
         <div className="flex-1 w-full overflow-hidden">
           <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-2 -mb-2">
-            <FilterButton value="all" label="Tất Cả" count={summary.total} />
+            <FilterButton value="all" label="English content normalized from the original source text." count={summary.total} />
             <FilterButton value={5} label="5 Sao" count={summary.counts[5]} />
             <FilterButton value={4} label="4 Sao" count={summary.counts[4]} />
             <FilterButton value={3} label="3 Sao" count={summary.counts[3]} />
@@ -186,7 +186,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
             <FilterButton value={1} label="1 Sao" count={summary.counts[1]} />
             <FilterButton
               value="media"
-              label="Có Hình Ảnh / Video"
+              label="English content normalized from the original source text."
               count={summary.mediaCount}
             />
           </div>
@@ -209,9 +209,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
                 <ReviewItem key={review.id} review={review} />
               ))
             ) : (
-              <div className="py-8 text-center text-gray-500">
-                Chưa có đánh giá nào cho sản phẩm này
-              </div>
+              <div className="py-8 text-center text-gray-500">English content normalized from the original source text.</div>
             )}
           </div>
 

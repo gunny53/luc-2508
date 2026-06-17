@@ -38,17 +38,17 @@ export function useProvinces(): UseProvincesReturn {
   const [provincesData, setProvincesData] = useState<Province[]>([]);
   const [districtsData, setDistrictsData] = useState<District[]>([]);
   const [wardsData, setWardsData] = useState<Ward[]>([]);
-  
+
   // Selected values
   const [selectedProvince, setSelectedProvince] = useState<string>('');
   const [selectedDistrict, setSelectedDistrict] = useState<string>('');
   const [selectedWard, setSelectedWard] = useState<string>('');
-  
+
   // Loading states
   const [isLoadingProvinces, setIsLoadingProvinces] = useState<boolean>(false);
   const [isLoadingDistricts, setIsLoadingDistricts] = useState<boolean>(false);
   const [isLoadingWards, setIsLoadingWards] = useState<boolean>(false);
-  
+
   // Error state
   const [error, setError] = useState<string | null>(null);
 
@@ -108,18 +108,18 @@ export function useProvinces(): UseProvincesReturn {
     const fetchProvinces = async () => {
       setIsLoadingProvinces(true);
       setError(null);
-      
+
       try {
         const data = await provincesService.getProvinces();
         setProvincesData(data);
       } catch (err) {
         console.error('Failed to fetch provinces:', err);
-        setError('Không thể tải danh sách tỉnh/thành phố');
+        setError('English content normalized from the original source text.');
       } finally {
         setIsLoadingProvinces(false);
       }
     };
-    
+
     fetchProvinces();
   }, []);
 
@@ -133,19 +133,19 @@ export function useProvinces(): UseProvincesReturn {
     const fetchDistricts = async () => {
       setIsLoadingDistricts(true);
       setError(null);
-      
+
       try {
         const data = await provincesService.getDistrictsByProvince(selectedProvince);
         setDistrictsData(data);
         resetWard(); // Reset ward when province changes
       } catch (err) {
         console.error(`Failed to fetch districts for province ${selectedProvince}:`, err);
-        setError('Không thể tải danh sách quận/huyện');
+        setError('English content normalized from the original source text.');
       } finally {
         setIsLoadingDistricts(false);
       }
     };
-    
+
     fetchDistricts();
   }, [selectedProvince]);
 
@@ -159,18 +159,18 @@ export function useProvinces(): UseProvincesReturn {
     const fetchWards = async () => {
       setIsLoadingWards(true);
       setError(null);
-      
+
       try {
         const data = await provincesService.getWardsByDistrict(selectedDistrict);
         setWardsData(data);
       } catch (err) {
         console.error(`Failed to fetch wards for district ${selectedDistrict}:`, err);
-        setError('Không thể tải danh sách phường/xã');
+        setError('English content normalized from the original source text.');
       } finally {
         setIsLoadingWards(false);
       }
     };
-    
+
     fetchWards();
   }, [selectedDistrict]);
 

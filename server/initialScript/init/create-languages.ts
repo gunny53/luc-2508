@@ -2,19 +2,17 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-/**
- * Tạo các ngôn ngữ cơ bản nếu chưa tồn tại
- */
+/* English content normalized from the original source text. */
 async function createLanguages(): Promise<void> {
-  console.log('🔤 Bắt đầu tạo ngôn ngữ...')
-  
+  console.log('English content normalized from the original source text.')
+
   const languages = [
     {
       id: 'vi',
-      name: 'Tiếng Việt'
+      name: 'English content normalized from the original source text.'
     },
     {
-      id: 'en', 
+      id: 'en',
       name: 'English'
     }
   ]
@@ -31,13 +29,13 @@ async function createLanguages(): Promise<void> {
           name: language.name
         }
       })
-      console.log(`✅ Đã tạo ngôn ngữ: ${language.name} (${language.id})`)
+      console.log(`English content normalized from the original source text.${language.name} (${language.id})`)
     } else {
-      console.log(`ℹ️  Ngôn ngữ đã tồn tại: ${language.name} (${language.id})`)
+      console.log(`English content normalized from the original source text.${language.name} (${language.id})`)
     }
   }
 
-  console.log('✅ Hoàn thành tạo ngôn ngữ!')
+  console.log('English content normalized from the original source text.')
 }
 
 async function main(): Promise<void> {
@@ -45,7 +43,7 @@ async function main(): Promise<void> {
     await prisma.$connect()
     await createLanguages()
   } catch (error) {
-    console.error('❌ Lỗi khi tạo ngôn ngữ:', error)
+    console.error('English content normalized from the original source text.', error)
     throw error
   } finally {
     await prisma.$disconnect()
@@ -55,11 +53,11 @@ async function main(): Promise<void> {
 if (require.main === module) {
   main()
     .then(() => {
-      console.log('🎉 Script tạo ngôn ngữ hoàn thành!')
+      console.log('English content normalized from the original source text.')
       process.exit(0)
     })
     .catch((error) => {
-      console.error('💥 Script tạo ngôn ngữ thất bại:', error)
+      console.error('English content normalized from the original source text.', error)
       process.exit(1)
     })
 }

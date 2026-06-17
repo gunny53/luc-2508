@@ -8,17 +8,17 @@ import type { ActionItem } from "@/components/ui/data-table-component/data-table
 import type { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
 import { vi } from "date-fns/locale";
-import { 
-  ChevronDown, 
-  ChevronRight, 
-  Eye, 
-  Package, 
-  Printer, 
-  RefreshCw 
+import {
+  ChevronDown,
+  ChevronRight,
+  Eye,
+  Package,
+  Printer,
+  RefreshCw
 } from "lucide-react";
 import type { ManageOrder } from "@/types/order.interface";
 
-// Hàm tạo danh sách actions cho Order
+// English content normalized from the original source text.
 const getOrderActions = (
   order: ManageOrder,
   onViewDetail: ((orderId: string) => void) | undefined,
@@ -85,9 +85,9 @@ export const OrdersColumns = ({
       const isExpanded = expandedRows?.has(orderId) || false;
       const items = row.original.items;
       const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-      
+
       const toggleExpanded = (e: React.MouseEvent) => {
-        e.stopPropagation(); // Ngăn trigger onRowClick
+        e.stopPropagation(); // English content normalized from the original source text.
         if (setExpandedRows && expandedRows) {
           const newExpanded = new Set(expandedRows);
           if (isExpanded) {
@@ -98,7 +98,7 @@ export const OrdersColumns = ({
           setExpandedRows(newExpanded);
         }
       };
-      
+
       return (
         <div className="w-[50px] flex justify-center">
           <Button
@@ -133,13 +133,13 @@ export const OrdersColumns = ({
     cell: ({ row }) => {
       const items = row.original.items;
       const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-      
+
       return (
         <div className="w-[120px] text-center py-3">
           <div className="flex items-center justify-center gap-2">
             <Package className="h-4 w-4 text-gray-500" />
             <span className="text-sm">
-              {totalItems} sản phẩm
+              {totalItems} English content normalized from the original source text.
             </span>
           </div>
         </div>
@@ -153,7 +153,7 @@ export const OrdersColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title="Mã đơn hàng"
+        title="English content normalized from the original source text."
         className="justify-center text-center px-2"
       />
     ),
@@ -172,26 +172,24 @@ export const OrdersColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title="Mã vận đơn"
+        title="English content normalized from the original source text."
         className="justify-center text-center px-2"
       />
     ),
     cell: ({ row }) => {
       const orderCode = row.original.orderCode;
-      
+
       return (
         <div className="w-[120px] text-center py-3">
           {orderCode ? (
             <div
               className="font-medium text-blue-600 text-sm"
-              title={`Mã vận đơn: ${orderCode}`}
+              title={`English content normalized from the original source text.${orderCode}`}
             >
               {orderCode}
             </div>
           ) : (
-            <div className="text-gray-400 text-xs italic">
-              Chưa có
-            </div>
+            <div className="text-gray-400 text-xs italic">English content normalized from the original source text.</div>
           )}
         </div>
       );
@@ -217,7 +215,7 @@ export const OrdersColumns = ({
     },
   },
   {
-    accessorFn: (row) => row.userId, // Sử dụng userId thay vì receiver.name
+    accessorFn: (row) => row.userId, // English content normalized from the original source text.
     id: "customerName",
     header: ({ column }) => (
       <DataTableColumnHeader
@@ -228,7 +226,7 @@ export const OrdersColumns = ({
     ),
     cell: ({ getValue, row }) => {
       const userId = getValue<string>();
-      // Tạm thời hiển thị userId, sau này có thể join với user data
+      // English content normalized from the original source text.
       return (
         <div className="w-[160px] text-center py-3">
           <div className="font-medium truncate text-xs" title={userId}>
@@ -296,7 +294,7 @@ export const OrdersColumns = ({
 
       return (
         <div className="w-[160px] text-center py-3" title={label}>
-          <Badge 
+          <Badge
             variant="outline"
             className={`${color} border px-3 py-1.5 w-full justify-center font-medium text-xs inline-flex items-center gap-2`}
           >
@@ -321,8 +319,8 @@ export const OrdersColumns = ({
       const totalPayment = getValue<number>();
       const items = row.original.items;
       const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
-      
-      const formatCurrency = (amount: number) => 
+
+      const formatCurrency = (amount: number) =>
         new Intl.NumberFormat('vi-VN').format(amount);
 
       return (
@@ -331,7 +329,7 @@ export const OrdersColumns = ({
             {formatCurrency(totalPayment)}₫
           </div>
           <div className="text-xs text-gray-500">
-            {itemCount} sản phẩm
+            {itemCount} English content normalized from the original source text.
           </div>
         </div>
       );

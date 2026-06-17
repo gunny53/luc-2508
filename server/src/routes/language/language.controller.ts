@@ -36,9 +36,9 @@ export class LanguageController {
       createdById: user.userId
     } as any)
   }
-  // Không cho phép cập nhật id: Vì id là mã ngôn ngữ do người dùng tạo (ví dụ: 'en', 'vi'), nó nên bất biến (immutable). Nếu cần thay đổi id, bạn nên xóa ngôn ngữ cũ và tạo mới.
+  // English content normalized from the original source text.
 
-  // Kiểm tra soft delete: Theo nguyên tắc chung của soft delete, không nên cho phép cập nhật bản ghi đã bị xóa trừ khi có yêu cầu đặc biệt (ví dụ: khôi phục hoặc chỉnh sửa dữ liệu lịch sử).
+  // English content normalized from the original source text.
 
   @Put(':languageId')
   @ZodSerializerDto(GetLanguageDetailResDTO)

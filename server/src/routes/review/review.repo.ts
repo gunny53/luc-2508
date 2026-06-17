@@ -66,14 +66,14 @@ export class ReviewRepository {
         userId
       }
     })
-    // Mua hàng thì mới được review
+    // English content normalized from the original source text.
     if (!order) {
-      throw new BadRequestException('Đơn hàng không tồn tại hoặc không thuộc về bạn')
+      throw new BadRequestException('English content normalized from the original source text.')
     }
 
-    // Đơn hàng đã giao thì mới được review
+    // English content normalized from the original source text.
     if (order.status !== OrderStatus.DELIVERED) {
-      throw new BadRequestException('Đơn hàng chưa được giao')
+      throw new BadRequestException('English content normalized from the original source text.')
     }
     return order
   }
@@ -86,10 +86,10 @@ export class ReviewRepository {
       }
     })
     if (!review) {
-      throw new NotFoundException('Đánh giá không tồn tại hoặc không thuộc về bạn')
+      throw new NotFoundException('English content normalized from the original source text.')
     }
     if (review.updateCount >= 1) {
-      throw new BadRequestException('Bạn chỉ được phép sửa đánh giá 1 lần')
+      throw new BadRequestException('English content normalized from the original source text.')
     }
     return review
   }
@@ -122,7 +122,7 @@ export class ReviewRepository {
         })
         .catch((error) => {
           if (isUniqueConstraintPrismaError(error)) {
-            throw new ConflictException('Bạn đã đánh giá sản phẩm này rồi')
+            throw new ConflictException('English content normalized from the original source text.')
           }
           throw error
         })

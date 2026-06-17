@@ -6,16 +6,16 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /media/static/:filename
+English content normalized from the original source text.
 
 start
-:Nhận :filename;
+:English content normalized from the original source text;
 :res.sendFile(resolve(UPLOAD_DIR, filename));
-if (Thành công?) then (Có)
-  :Stream file về client;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   :200 OK;
-else (Không)
-  :Trả về 404 Not Found;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

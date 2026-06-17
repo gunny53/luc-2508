@@ -31,13 +31,11 @@ export class SearchSyncService {
         port: this.configService.get('redis.port'),
         ...(isPasswordProvided ? { password } : {})
       },
-      prefix: 'shopsifu:bull'
+      prefix: 'ecsite:bull'
     })
   }
 
-  /**
-   * Thêm job đồng bộ một sản phẩm
-   */
+  /* English content normalized from the original source text. */
   async addSyncProductJob(productId: string, action: 'create' | 'update' | 'delete' = 'create') {
     const jobData: SyncProductJobType = { productId, action }
 
@@ -55,9 +53,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Thêm job đồng bộ nhiều sản phẩm (batch)
-   */
+  /* English content normalized from the original source text. */
   async addSyncProductsBatchJob(productIds: string[], action: 'create' | 'update' | 'delete' = 'create') {
     const jobData: SyncProductsBatchJobType = { productIds, action }
 
@@ -75,9 +71,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Thêm job xóa sản phẩm khỏi ES
-   */
+  /* English content normalized from the original source text. */
   async addDeleteProductJob(productId: string) {
     try {
       await this.queue.add(
@@ -97,9 +91,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Lấy thông tin queue
-   */
+  /* English content normalized from the original source text. */
   async getQueueInfo() {
     try {
       const [waiting, active, completed, failed] = await Promise.all([
@@ -121,9 +113,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Xóa tất cả jobs trong queue
-   */
+  /* English content normalized from the original source text. */
   async clearQueue() {
     try {
       await Promise.all([
@@ -164,9 +154,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Đồng bộ một sản phẩm lên Elasticsearch
-   */
+  /* English content normalized from the original source text. */
   async syncProductToES(jobData: SyncProductJobType): Promise<void> {
     const { productId, action } = jobData
 
@@ -198,9 +186,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Đồng bộ nhiều sản phẩm lên Elasticsearch (batch)
-   */
+  /* English content normalized from the original source text. */
   async syncProductsBatchToES(jobData: SyncProductsBatchJobType): Promise<void> {
     const { productIds, action } = jobData
 
@@ -242,9 +228,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Lấy product với relations
-   */
+  /* English content normalized from the original source text. */
   private async getProductWithRelations(productId: string) {
     return await this.prisma.product.findUnique({
       where: { id: productId },
@@ -256,9 +240,7 @@ export class SearchSyncService {
     })
   }
 
-  /**
-   * Lấy products với relations
-   */
+  /* English content normalized from the original source text. */
   private async getProductsWithRelations(productIds: string[]) {
     return await this.prisma.product.findMany({
       where: {
@@ -273,9 +255,7 @@ export class SearchSyncService {
     })
   }
 
-  /**
-   * Xóa sản phẩm khỏi Elasticsearch
-   */
+  /* English content normalized from the original source text. */
   private async deleteProductFromES(productId: string): Promise<void> {
     try {
       const skus = await this.prisma.sKU.findMany({
@@ -299,9 +279,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Xóa nhiều sản phẩm khỏi Elasticsearch (batch)
-   */
+  /* English content normalized from the original source text. */
   private async deleteProductsBatchFromES(productIds: string[]): Promise<void> {
     try {
       const skus = await this.prisma.sKU.findMany({
@@ -328,9 +306,7 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Chuyển đổi Product thành ES documents
-   */
+  /* English content normalized from the original source text. */
   private transformProductToEsDocuments(product: any): EsProductDocumentType[] {
     const esDocuments: EsProductDocumentType[] = []
 
@@ -364,13 +340,11 @@ export class SearchSyncService {
     return esDocuments
   }
 
-  /**
-   * Parse attributes từ variants và specifications
-   */
+  /* English content normalized from the original source text. */
   private parseAttributesFromProduct(product: any, sku: any): Array<{ attrName: string; attrValue: string }> {
     const attrs: Array<{ attrName: string; attrValue: string }> = []
 
-    // Parse từ variants
+    // English content normalized from the original source text.
     if (product.variants && Array.isArray(product.variants)) {
       for (const variant of product.variants) {
         if (variant.value && variant.options && Array.isArray(variant.options)) {
@@ -384,7 +358,7 @@ export class SearchSyncService {
       }
     }
 
-    // Parse từ specifications
+    // English content normalized from the original source text.
     if (product.specifications && Array.isArray(product.specifications)) {
       for (const spec of product.specifications) {
         if (spec.name && spec.value) {

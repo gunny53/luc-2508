@@ -24,12 +24,12 @@ export default function DesktopCartHeader({
               checked={allSelected}
               onCheckedChange={onToggleAll}
             />
-            <span className="font-medium text-black">Sản phẩm</span>
+            <span className="font-medium text-black">English content normalized from the original source text.</span>
           </div>
-          <div className="w-[15%] text-center">Đơn giá</div>
-          <div className="w-[15%] text-center">Số lượng</div>
-          <div className="w-[15%] text-center">Thành tiền</div>
-          <div className="w-[10%] text-center">Thao tác</div>
+          <div className="w-[15%] text-center">English content normalized from the original source text.</div>
+          <div className="w-[15%] text-center">English content normalized from the original source text.</div>
+          <div className="w-[15%] text-center">English content normalized from the original source text.</div>
+          <div className="w-[10%] text-center">English content normalized from the original source text.</div>
         </div>
       </div>
     </div>

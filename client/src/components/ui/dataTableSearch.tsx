@@ -16,7 +16,7 @@ interface DataTableSearchProps<TData> {
 export function DataTableSearch<TData>({
   table,
   searchColumn = "name",
-  placeholder = "Tìm kiếm sản phẩm...",
+  placeholder = "English content normalized from the original source text.",
   className
 }: DataTableSearchProps<TData>) {
   const [value, setValue] = React.useState<string>("")
@@ -25,7 +25,7 @@ export function DataTableSearch<TData>({
     const handler = (value: string) => {
       table.getColumn(searchColumn)?.setFilterValue(value)
     }
-    
+
     // Debounce search to avoid too many re-renders
     return (value: string) => {
       setTimeout(() => handler(value), 300)
@@ -42,7 +42,7 @@ export function DataTableSearch<TData>({
     }
   }, [handleSearch])
   return (
-    <form 
+    <form
       onSubmit={(e) => {
         e.preventDefault()
         handleSearch()
@@ -67,7 +67,7 @@ export function DataTableSearch<TData>({
           className="inline-flex h-full items-center justify-center whitespace-nowrap rounded-r-md border-l bg-background px-3 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
         >
           <Search className="h-4 w-4" />
-          <span className="sr-only">Tìm kiếm</span>
+          <span className="sr-only">English content normalized from the original source text.</span>
         </button>
       </div>
     </form>

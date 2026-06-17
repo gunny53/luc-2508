@@ -28,8 +28,8 @@ export function SheetRework({
   onCancel,
   isConfirmLoading,
   className,
-  confirmText = "Xác nhận",
-  cancelText = "Hủy",
+  confirmText = "English content normalized from the original source text.",
+  cancelText = "English content normalized from the original source text.",
   loading = false,
 }: SheetReworkProps) {
   return (

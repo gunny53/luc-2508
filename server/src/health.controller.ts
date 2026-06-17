@@ -141,7 +141,7 @@ export class HealthController {
   @IsPublic()
   async testRetryMechanism() {
     try {
-      // Test retry mechanism với operation có thể fail
+      // English content normalized from the original source text.
       const result = await this.redisService.withRetry(
         async () => {
           // Simulate unreliable operation (50% fail rate)

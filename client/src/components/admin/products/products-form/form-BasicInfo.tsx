@@ -8,7 +8,7 @@ import { MediaForm } from "./form-Media/Media-Index";
 import { ProductCreateRequest } from "@/types/products.interface";
 import { FormState } from "./useProductsForm";  // ✅ Import FormState
 
-// Hàm format và parse tiền tệ
+// English content normalized from the original source text.
 const formatCurrency = (value: number): string => {
   if (isNaN(value)) return '';
   return new Intl.NumberFormat('en-US').format(value);
@@ -27,41 +27,41 @@ export function ProductBasicInfoForm({ productData, handleInputChange }: Product
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Thông tin chung</CardTitle>
+        <CardTitle>English content normalized from the original source text.</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-6">
-        {/* Tên sản phẩm */}
+        {/* English content normalized from the original source text. */}
         <div className="grid gap-3">
-          <Label htmlFor="product-name">Tên sản phẩm</Label>
+          <Label htmlFor="product-name">English content normalized from the original source text.</Label>
           <Input
             id="product-name"
             value={productData.name}
             onChange={(e) => handleInputChange('name', e.target.value)}
-            placeholder="Nhập tên sản phẩm"
+            placeholder="English content normalized from the original source text."
           />
         </div>
 
-        {/* Mô tả sản phẩm */}
+        {/* English content normalized from the original source text. */}
         <div className="grid gap-3">
-          <Label htmlFor="product-description">Mô tả</Label>
-          <RichTextEditor 
-            value={productData.description} 
-            onChange={(value) => handleInputChange('description', value)} 
+          <Label htmlFor="product-description">English content normalized from the original source text.</Label>
+          <RichTextEditor
+            value={productData.description}
+            onChange={(value) => handleInputChange('description', value)}
           />
         </div>
 
-        {/* Hình ảnh sản phẩm */}
+        {/* English content normalized from the original source text. */}
         <div className="grid gap-3">
-            <MediaForm 
-                images={productData.images} 
-                setImages={(newImages) => handleInputChange('images', newImages)} 
+            <MediaForm
+                images={productData.images}
+                setImages={(newImages) => handleInputChange('images', newImages)}
             />
         </div>
 
-        {/* Giá sản phẩm */}
+        {/* English content normalized from the original source text. */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="grid gap-3">
-            <Label htmlFor="base-price">Giá bán</Label>
+            <Label htmlFor="base-price">English content normalized from the original source text.</Label>
             <Input
               id="base-price"
               type="text"
@@ -71,7 +71,7 @@ export function ProductBasicInfoForm({ productData, handleInputChange }: Product
             />
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="virtual-price">Giá gốc</Label>
+            <Label htmlFor="virtual-price">English content normalized from the original source text.</Label>
             <Input
               id="virtual-price"
               type="text"

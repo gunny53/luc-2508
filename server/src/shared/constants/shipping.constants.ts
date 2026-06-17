@@ -1,9 +1,9 @@
 export const GHN_CLIENT = 'GHN_CLIENT' as const
 
-// GHN Payment Types - Theo tài liệu chính thức GHN
+// English content normalized from the original source text.
 export const GHN_PAYMENT_TYPE = {
-  PREPAID: 1, // Shop trả phí ship cho GHN (GHN vẫn tính phí ship)
-  COD: 2 // Thu tiền khi giao hàng (COD - bao gồm phí ship)
+  PREPAID: 1, // English content normalized from the original source text.
+  COD: 2 // English content normalized from the original source text.
 } as const
 
 // GHN Order status Mapping
@@ -19,7 +19,7 @@ export const GHN_ORDER_STATUS = {
 
 // GHN Service Types
 export const GHN_SERVICE_TYPE = {
-  STANDARD: 1, // Dịch vụ tiêu chuẩn
-  EXPRESS: 2, // Dịch vụ nhanh
-  ECONOMY: 3 // Dịch vụ tiết kiệm
+  STANDARD: 1, // English content normalized from the original source text.
+  EXPRESS: 2, // English content normalized from the original source text.
+  ECONOMY: 3 // English content normalized from the original source text.
 } as const

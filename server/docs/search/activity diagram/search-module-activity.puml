@@ -8,184 +8,184 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Tìm Kiếm Sản Phẩm - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Người dùng truy cập hệ thống;
+:English content normalized from the original source text;
 
-:GET /search/products với tham số truy vấn;
+:English content normalized from the original source text;
 note right
-Cấu Hình Endpoint:
-• @SkipThrottle() - Bỏ qua giới hạn tốc độ
-• @IsPublic() - Không cần xác thực
-• @ZodSerializerDto(SearchProductsResDTO) - Chuẩn hóa phản hồi
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
-:Trích xuất {q, page, limit, orderBy, sortBy, filters} từ truy vấn;
-:Xác thực tham số truy vấn với Zod schema;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 note right
-Xác Thực Truy Vấn (Zod Schema):
-• q: xác thực chuỗi (tùy chọn)
+English content normalized from the original source text.
+• English content normalized from the original source text
 • page: number.int().positive().default(1)
 • limit: number.int().positive().default(20)
 • orderBy: OrderBy enum (asc/desc)
 • sortBy: SortBy enum (price, sale, createdAt)
 • filters: brandIds, categoryIds, minPrice, maxPrice, attrs
-• Tiền xử lý trường mảng (brandIds, categoryIds)
+• English content normalized from the original source text
 end note
 
-if (Xác thực thành công?) then (có)
-  if (Có chuỗi truy vấn?) then (có)
-    :Xác thực chuỗi truy vấn;
-    :Cắt khoảng trắng chuỗi truy vấn;
-    if (Chuỗi truy vấn rỗng sau khi cắt?) then (có)
-      :Ném EmptySearchQueryException;
-      :Trả về 400 Bad Request;
-    else (không)
-      if (Độ dài truy vấn < 1?) then (có)
-        :Ném SearchQueryTooShortException;
-        :Trả về 400 Bad Request;
-      else (không)
-        :Bắt đầu phân tích ngôn ngữ tự nhiên;
+if (condition?) then (Yes)
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      if (condition?) then (Yes)
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+      else (No)
+        :English content normalized from the original source text;
         note right
-          Phân Tích Ngôn Ngữ Tự Nhiên:
-          • Tách truy vấn thành các từ khóa
-          • So khớp từ khóa với từ điển
-          • Trích xuất bộ lọc thuộc tính
-          • Xây dựng truy vấn có cấu trúc
+          English content normalized from the original source text.
+          • English content normalized from the original source text
+          • English content normalized from the original source text
+          • English content normalized from the original source text
+          • English content normalized from the original source text
           end note
-        :Lấy từ điển từ cache hoặc Elasticsearch;
-        if (Cache từ điển còn hiệu lực?) then (có)
-          :Sử dụng cache từ điển;
-        else (không)
-          :Tải từ điển từ Elasticsearch aggregations;
+        :English content normalized from the original source text;
+        if (condition?) then (Yes)
+          :English content normalized from the original source text;
+        else (No)
+          :English content normalized from the original source text;
           note right
-            Tổng Hợp Từ Điển:
-            • Nested aggregation trên attrs
+            English content normalized from the original source text.
+            • English content normalized from the original source text
             • Terms aggregation cho attrName
             • Terms aggregation cho attrValue
-            • Kích thước 100 cho mỗi cấp
-            • Thời gian cache: 30 phút
+            • English content normalized from the original source text
+            • English content normalized from the original source text
             end note
-          :Cache từ điển trong 30 phút;
+          :English content normalized from the original source text;
         endif
-        :Phân tích truy vấn ngôn ngữ tự nhiên;
-        :Tách chuỗi thành từ khóa;
-        :So khớp từ khóa với từ điển;
-        :Trích xuất bộ lọc thuộc tính;
-        :Xây dựng truy vấn có cấu trúc;
-        if (Tìm thấy thuộc tính đã phân tích?) then (có)
-          :Thêm thuộc tính đã phân tích vào bộ lọc;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        if (condition?) then (Yes)
+          :English content normalized from the original source text;
           note right
-            Trích Xuất Thuộc Tính:
-            • Ánh xạ ngôn ngữ tự nhiên thành bộ lọc có cấu trúc
-            • Thêm attrName và attrValue
-            • Kết hợp với bộ lọc hiện có
+            English content normalized from the original source text.
+            • English content normalized from the original source text
+            • English content normalized from the original source text
+            • English content normalized from the original source text
             end note
         endif
       endif
     endif
   endif
 
-  :Bắt đầu tìm kiếm Elasticsearch;
-  :Xây dựng truy vấn Elasticsearch phức tạp;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
-    Xây Dựng Truy Vấn ES:
-    • Multi-match query cho tìm kiếm văn bản
-    • Bool query với must/should/filter
-    • Fuzzy matching với fuzziness AUTO
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     • Boost fields (productName^3, productName^2)
     • Minimum should match 75%
-    • Phrase matching cho từng từ riêng lẻ
+    • English content normalized from the original source text
     end note
 
-  if (Có tìm kiếm văn bản?) then (có)
-    :Xây dựng multi-match query;
-    :Thêm fuzzy matching với fuzziness AUTO;
-    :Thêm phrase matching cho từng từ riêng lẻ;
-    :Áp dụng boost trường (productName^3, productName^2);
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
   endif
 
-  if (Có bộ lọc?) then (có)
-    :Xây dựng mệnh đề filter;
-    if (Bộ lọc thương hiệu?) then (có)
-      :Thêm terms filter cho brandIds;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
     endif
-    if (Bộ lọc danh mục?) then (có)
-      :Thêm terms filter cho categoryIds;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
     endif
-    if (Khoảng giá?) then (có)
-      :Thêm range filter cho skuPrice;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
     endif
-    if (Bộ lọc thuộc tính?) then (có)
-      :Thêm nested queries cho thuộc tính;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
       note right
         Nested Attribute Queries:
         • Nested path: 'attrs'
-        • Term queries cho attrName và attrValue
-        • Bool query với must clauses
+        • English content normalized from the original source text
+        • English content normalized from the original source text
         end note
     endif
   endif
 
-  :Xây dựng tùy chọn sắp xếp;
-  if (SortBy.Price?) then (có)
-    :Sắp xếp theo skuPrice với orderBy;
-  elseif (SortBy.Sale?) then (có)
-    :Sắp xếp theo _score desc;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   else
-    :Sắp xếp theo createdAt với orderBy;
+    :English content normalized from the original source text;
   endif
-  :Thêm _score sort làm thứ cấp;
+  :English content normalized from the original source text;
 
-  :Thực thi tìm kiếm Elasticsearch;
-  :Tính toán phân trang (from, size);
-  :Gửi yêu cầu tìm kiếm đến Elasticsearch;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
-    Tìm Kiếm Elasticsearch:
-    • Multi-match với best_fields
-    • Fuzzy matching với AUTO
-    • Filter clauses cho thương hiệu/danh mục/giá
-    • Nested queries cho thuộc tính
-    • Sort options với score
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     • Collapse by productId
-    • Timeout: 30 giây
+    • English content normalized from the original source text
     end note
 
-  if (Tìm kiếm thành công?) then (có)
-    :Xử lý kết quả tìm kiếm;
-    :Trích xuất _source từ hits;
-    :Tính tổng số mục;
-    :Xây dựng metadata phân trang;
-    :Định dạng dữ liệu phản hồi;
-    :Tạo thông báo thành công đa ngôn ngữ với I18nService;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     note right
-      Tích Hợp I18nService:
-      • Dịch thông báo thành công
-      • Hỗ trợ nhiều ngôn ngữ
+      English content normalized from the original source text.
+      • English content normalized from the original source text
+      • English content normalized from the original source text
       • Key: 'search.search.success.SEARCH_SUCCESS'
       end note
-    :Trả về kết quả tìm kiếm với metadata;
-  else (không)
-    :Phân loại loại lỗi;
-    if (Lỗi kết nối?) then (có)
-      :Ném ElasticsearchConnectionException;
-      :Trả về 503 Service Unavailable;
-    elseif (Lỗi timeout?) then (có)
-      :Ném SearchTimeoutException;
-      :Trả về 503 Service Unavailable;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     else
-      :Ném ElasticsearchQueryException;
-      :Trả về 500 Internal Server Error;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
   endif
 
-else (không)
-  :Trả về lỗi xác thực;
+else (No)
+  :English content normalized from the original source text;
 endif
 
-:Hoàn thành hoạt động;
+:English content normalized from the original source text;
 
 stop
 

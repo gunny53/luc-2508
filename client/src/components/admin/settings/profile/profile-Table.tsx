@@ -43,12 +43,12 @@ export function ProfileSettingsTable() {
         </Avatar>
       ),
     },
-    { label: "Tên người dùng", value: user.name || "Chưa có" },
-    // { label: "Họ và tên", value: fullName || "Chưa có" },
+    { label: "English content normalized from the original source text.", value: user.name || "English content normalized from the original source text." },
+    // English content normalized from the original source text.
     { label: "Email", value: user.email },
-    { label: "Số điện thoại", value: user.phoneNumber || "Chưa có" },
+    { label: "English content normalized from the original source text.", value: user.phoneNumber || "English content normalized from the original source text." },
     {
-      label: "Trạng thái tài khoản",
+      label: "English content normalized from the original source text.",
       value: (
         <Badge variant={user.status === "ACTIVE" ? "secondary" : "destructive"}>
           {user.status}
@@ -56,15 +56,15 @@ export function ProfileSettingsTable() {
       ),
     },
     {
-      label: "Vai trò tài khoản",
+      label: "English content normalized from the original source text.",
       value: (
         <Badge variant="outline">
           {typeof user.role === "string" ? user.role : user.role?.name}
         </Badge>
-      ), // ✅ // ✅ sửa ở đây
+      ), // English content normalized from the original source text.
     },
     {
-      label: "Ngày tạo tài khoản",
+      label: "English content normalized from the original source text.",
       value: new Date(user.createdAt).toLocaleDateString("vi-VN"),
     },
   ];
@@ -73,8 +73,8 @@ export function ProfileSettingsTable() {
     <>
       <SettingTable
         columns={columns}
-        title="Thông tin tài khoản"
-        subtitle="Quản lý thông tin tài khoản của bạn"
+        title="English content normalized from the original source text."
+        subtitle="English content normalized from the original source text."
         rightAction={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -84,9 +84,7 @@ export function ProfileSettingsTable() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => setOpenUpdate(true)}>
-                <Pencil className="w-4 h-4 mr-2" />
-                Chỉnh sửa
-              </DropdownMenuItem>
+                <Pencil className="w-4 h-4 mr-2" />English content normalized from the original source text.</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         }

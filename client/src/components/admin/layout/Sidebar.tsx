@@ -91,12 +91,12 @@ export function Sidebar({
   }, [isSettingsPage, settingsSidebarConfig, sidebarConfig]);
 
   useEffect(() => {
-    // Auto expand tất cả items có subItems khi component mount
+    // English content normalized from the original source text.
     const allWithSub = currentSidebarConfig
       .filter((item) => item.subItems && item.subItems.length > 0)
       .map((item) => item.href);
-    
-    // Chỉ set nếu expandedItems khác với allWithSub để tránh infinite loop
+
+    // English content normalized from the original source text.
     setExpandedItems(prev => {
       const newItems = allWithSub.filter(item => !prev.includes(item));
       if (newItems.length > 0) {
@@ -104,7 +104,7 @@ export function Sidebar({
       }
       return prev;
     });
-  }, [isSettingsPage]); // Chỉ dependency vào isSettingsPage thay vì currentSidebarConfig
+  }, [isSettingsPage]); // English content normalized from the original source text.
 
   const renderSettingsSidebar = () => (
     <div>
@@ -198,14 +198,14 @@ export function Sidebar({
               item.icon.type
                 ? React.createElement(item.icon.type, {
                     className: cn(
-                      "w-5 h-5", // Quay lại size cũ
+                      "w-5 h-5", // English content normalized from the original source text.
                       isItemActive ? "text-primary" : "text-black"
                     ),
                   })
                 : null}
               <span
                 className={cn(
-                  "text-sm font-semibold text-black", // Quay lại size và font cũ
+                  "text-sm font-semibold text-black", // English content normalized from the original source text.
                   level > 0 && "text-black font-normal hover:text-primary",
                   isItemActive && "text-primary"
                 )}
@@ -221,14 +221,14 @@ export function Sidebar({
               item.icon.type
                 ? React.createElement(item.icon.type, {
                     className: cn(
-                      "w-5 h-5", // Quay lại size cũ
+                      "w-5 h-5", // English content normalized from the original source text.
                       isItemActive ? "text-primary" : "text-black"
                     ),
                   })
                 : null}
               <span
                 className={cn(
-                  "text-sm font-semibold text-black", // Quay lại size và font cũ
+                  "text-sm font-semibold text-black", // English content normalized from the original source text.
                   level > 0 && "text-black font-normal hover:text-primary",
                   isItemActive && "text-primary"
                 )}
@@ -238,7 +238,7 @@ export function Sidebar({
             </Link>
           )}
 
-          {/* Hiện lại chevron icon để người dùng có thể toggle */}
+          {/* English content normalized from the original source text. */}
           {hasSubItems && (
             <ChevronDown
               className={cn(
@@ -249,7 +249,7 @@ export function Sidebar({
           )}
         </div>
 
-        {/* Chỉ hiển thị subItems khi isExpanded = true */}
+        {/* English content normalized from the original source text. */}
         {hasSubItems && isExpanded && (
           <div className="mt-1 space-y-0.5">
             {item.subItems?.map((subItem) => renderItem(subItem, level + 1))}
@@ -285,7 +285,7 @@ export function Sidebar({
             <Link href="/admin" className="flex items-center">
               <Image
                 src="/images/logo/png-jpeg/Logo-Full-Red.png"
-                alt="Shopsifu Logo"
+                alt="ECSite Logo"
                 width={116}
                 height={66}
                 className="mr-2"
@@ -310,7 +310,7 @@ export function Sidebar({
             {isSettingsPage
               ? renderSettingsSidebar()
               : currentSidebarConfig
-                  .filter((item) => item.title !== "Cài đặt")
+                  .filter((item) => item.title !== "English content normalized from the original source text.")
                   .map((item) => renderItem(item))}
           </nav>
         </div>

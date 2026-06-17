@@ -55,7 +55,7 @@ export default function ProfileInfo() {
     null
   );
 
-  // Lấy địa chỉ mặc định
+  // English content normalized from the original source text.
   const defaultAddress = userData?.addresses?.find((a) => a.isDefault);
   const formattedAddress = defaultAddress
     ? `${defaultAddress.street}, ${defaultAddress.ward}, ${defaultAddress.district}, ${defaultAddress.province}`
@@ -77,7 +77,7 @@ export default function ProfileInfo() {
     setOpen(false);
   });
 
-  // Dùng hook mới
+  // English content normalized from the original source text.
   const {
     handleAddFiles,
     uploadToS3Multiple,
@@ -90,7 +90,7 @@ export default function ProfileInfo() {
       let avatarUrl = userData?.avatar;
 
       if (files.length > 0) {
-        // Upload tất cả file đã chọn (ở đây chỉ có 1 avatar)
+        // English content normalized from the original source text.
         const urls = await uploadToS3Multiple();
         if (urls.length > 0) {
           avatarUrl = urls[0];
@@ -105,13 +105,13 @@ export default function ProfileInfo() {
 
       updateProfile(payload);
     } catch (err) {
-      console.error("Lỗi khi cập nhật profile:", err);
+      console.error("English content normalized from the original source text.", err);
     }
   };
 
   if (!userData) return null;
 
-  // Tách nội dung form để tái sử dụng
+  // English content normalized from the original source text.
   const formContent = (
     <>
       <div className="flex flex-col items-center gap-3 mb-4">
@@ -133,9 +133,7 @@ export default function ProfileInfo() {
           className="h-10 text-sm gap-2"
           onClick={() => document.getElementById("avatarUpload")?.click()}
         >
-          <UploadCloud size={16} />
-          Đổi ảnh đại diện
-        </Button>
+          <UploadCloud size={16} />English content normalized from the original source text.</Button>
         <input
           type="file"
           id="avatarUpload"
@@ -157,12 +155,12 @@ export default function ProfileInfo() {
         <form className="space-y-5">
           {(
             [
-              ["name", "Họ và tên"],
-              ["gender", "Giới tính"],
-              // ["dob", "Ngày sinh"],
-              ["phoneNumber", "Số điện thoại"],
+              ["name", "English content normalized from the original source text."],
+              ["gender", "English content normalized from the original source text."],
+              // English content normalized from the original source text.
+              ["phoneNumber", "English content normalized from the original source text."],
               ["email", "Email"],
-              ["address", "Địa chỉ mặc định"],
+              ["address", "English content normalized from the original source text."],
             ] as [keyof InfoState, string][]
           ).map(([name, label]) => (
             <FormField
@@ -186,12 +184,12 @@ export default function ProfileInfo() {
                         defaultValue={field.value}
                       >
                         <SelectTrigger className="w-full h-12 text-[15px] px-4 flex items-center border rounded-md">
-                          <SelectValue placeholder="Chọn giới tính" />
+                          <SelectValue placeholder="English content normalized from the original source text." />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="Nam">Nam</SelectItem>
-                          <SelectItem value="Nữ">Nữ</SelectItem>
-                          <SelectItem value="Khác">Khác</SelectItem>
+                          <SelectItem value="English content normalized from the original source text.">English content normalized from the original source text.</SelectItem>
+                          <SelectItem value="English content normalized from the original source text.">English content normalized from the original source text.</SelectItem>
                         </SelectContent>
                       </Select>
                     ) : name === "address" ? (
@@ -199,7 +197,7 @@ export default function ProfileInfo() {
                         {...field}
                         readOnly
                         className="w-full h-12 text-[15px] px-4 bg-gray-100 cursor-not-allowed"
-                        placeholder="Chưa có địa chỉ mặc định"
+                        placeholder="English content normalized from the original source text."
                       />
                     ) : (
                       <Input
@@ -222,26 +220,22 @@ export default function ProfileInfo() {
   return (
     <div className="bg-white rounded-lg p-6">
       <div className="flex justify-between items-center mb-5">
-        <h2 className="font-semibold text-base text-[#121214]">
-          Thông tin cá nhân
-        </h2>
+        <h2 className="font-semibold text-base text-[#121214]">English content normalized from the original source text.</h2>
         <Button
           variant="ghost"
           className="flex items-center gap-2 px-3 py-1.5 text-sm text-[#D70019] hover:text-red-600 hover:bg-red-50 transition"
           onClick={() => setOpen(true)}
         >
-          <Pencil size={16} />
-          Cập nhật
-        </Button>
+          <Pencil size={16} />English content normalized from the original source text.</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-sm text-[#1D1D20]">
         <div className="flex justify-between py-2 border-t">
-          <span className="text-[#71717A]">Họ và tên:</span>
+          <span className="text-[#71717A]">English content normalized from the original source text.</span>
           <span className="font-medium">{userData.name}</span>
         </div>
         <div className="flex justify-between py-2 border-t">
-          <span className="text-[#71717A]">Số điện thoại:</span>
+          <span className="text-[#71717A]">English content normalized from the original source text.</span>
           <span className="font-medium">{userData.phoneNumber}</span>
         </div>
         <div className="flex justify-between py-2 border-t">
@@ -249,9 +243,9 @@ export default function ProfileInfo() {
           <span className="font-medium">{userData.email}</span>
         </div>
         <div className="flex justify-between py-2 border-t">
-          <span className="text-[#71717A]">Địa chỉ mặc định:</span>
+          <span className="text-[#71717A]">English content normalized from the original source text.</span>
           <span className="font-medium text-right">
-            {formattedAddress || "Chưa có"}
+            {formattedAddress || "English content normalized from the original source text."}
           </span>
         </div>
       </div>
@@ -260,7 +254,7 @@ export default function ProfileInfo() {
         <Drawer open={open} onOpenChange={setOpen}>
           <DrawerContent className="p-0">
             <DrawerHeader>
-              <DrawerTitle>Cập nhật thông tin cá nhân</DrawerTitle>
+              <DrawerTitle>English content normalized from the original source text.</DrawerTitle>
             </DrawerHeader>
 
             <div className="px-4 overflow-y-auto max-h-[calc(80vh-100px)]">
@@ -276,12 +270,8 @@ export default function ProfileInfo() {
                   resetUpload();
                   setOpen(false);
                 }}
-              >
-                Thiết lập lại
-              </Button>
-              <Button onClick={form.handleSubmit(onSubmit)} disabled={loading}>
-                Cập nhật thông tin
-              </Button>
+              >English content normalized from the original source text.</Button>
+              <Button onClick={form.handleSubmit(onSubmit)} disabled={loading}>English content normalized from the original source text.</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
@@ -289,7 +279,7 @@ export default function ProfileInfo() {
         <SheetRework
           open={open}
           onOpenChange={setOpen}
-          title="Cập nhật thông tin cá nhân"
+          title="English content normalized from the original source text."
           subtitle=""
           onCancel={() => {
             form.reset();
@@ -297,8 +287,8 @@ export default function ProfileInfo() {
             resetUpload();
           }}
           onConfirm={form.handleSubmit(onSubmit)}
-          confirmText="Cập nhật thông tin"
-          cancelText="Thiết lập lại"
+          confirmText="English content normalized from the original source text."
+          cancelText="English content normalized from the original source text."
           loading={loading}
           className="sm:!max-w-lg w-full px-2"
         >

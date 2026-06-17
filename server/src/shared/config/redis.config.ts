@@ -11,14 +11,14 @@ export default registerAs('redis', (): Record<string, any> => {
     url: process.env.REDIS_URL || 'redis://localhost:6379',
     connectionName: process.env.REDIS_CONNECTION_NAME,
     requireAuth: process.env.REDIS_REQUIRE_AUTH === 'true',
-    keyPrefix: process.env.REDIS_KEY_PREFIX || 'shopsifu:',
+    keyPrefix: process.env.REDIS_KEY_PREFIX || 'ecsite:',
     defaultTtl: Number(process.env.REDIS_DEFAULT_TTL) || 300,
     enableLogging: process.env.REDIS_ENABLE_LOGGING !== 'false'
   }
 
   const commonRedisOptions = {
     lazyConnect: false,
-    connectionName: config.connectionName || 'shopsifu-main',
+    connectionName: config.connectionName || 'ecsite-main',
 
     connectTimeout: 20000,
     commandTimeout: 15000,

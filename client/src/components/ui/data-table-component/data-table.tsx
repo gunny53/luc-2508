@@ -22,7 +22,7 @@ export function DataTable<TData>({
   table,
   columns,
   loading = false,
-  notFoundMessage = 'Không có dữ liệu.',
+  notFoundMessage = 'English content normalized from the original source text.',
   onRowClick,
   Toolbar,
   pagination,

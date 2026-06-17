@@ -8,13 +8,13 @@ import langReducer from './features/lang/langSlice';
 import profileReducer from './features/auth/profileSlide';
 import ordersReducer from './features/checkout/ordersSilde';
 
-// Mã hoá dữ liệu khi lưu Redux persist
+// English content normalized from the original source text.
 const encryptor = encryptTransform({
   secretKey: process.env.NEXT_PUBLIC_REDUX_ENCRYPTION_KEY || '',
   onError: (err) => console.error('Encrypt error:', err),
 });
 
-// // Mã hoá dữ liệu khi lưu Redux persist (chỉ khi có secretKey)
+// English content normalized from the original source text.
 // const encryptor = secretKey
 //   ? encryptTransform({
 //       secretKey,
@@ -23,10 +23,10 @@ const encryptor = encryptTransform({
 //   : undefined;
 
 
-// Kết hợp reducer
+// English content normalized from the original source text.
 const rootReducer = combineReducers({
-  authShopsifu: authReducer,
-  langShopsifu: langReducer,
+  authECSite: authReducer,
+  langECSite: langReducer,
   profile: profileReducer,
   orders: ordersReducer,
 });
@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['authShopsifu', 'langShopsifu', 'profile', 'orders'], // Chỉ lưu auth, lang, profile và orders
+  whitelist: ['authECSite', 'langECSite', 'profile', 'orders'], // English content normalized from the original source text.
   transforms: [encryptor],
 };
 
@@ -54,7 +54,7 @@ export const makeStore = () => {
   return { store, persistor };
 };
 
-// Singleton (xài cho Provider & lib dùng chung)
+// English content normalized from the original source text.
 let storeInstance: ReturnType<typeof makeStore> | null = null;
 
 export const getStore = () => {

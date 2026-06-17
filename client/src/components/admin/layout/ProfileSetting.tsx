@@ -196,7 +196,7 @@
 //         <AlertDialogContent>
 //           <AlertDialogHeader>
 //             <AlertDialogTitle>
-//               {is2FAEnabled 
+//               {is2FAEnabled
 //                 ? t('admin.profileSettings.disable2FATitle')
 //                 : t('admin.profileSettings.enable2FATitle')}
 //             </AlertDialogTitle>
@@ -211,9 +211,9 @@
 //               {t('admin.profileSettings.cancel')}
 //             </AlertDialogCancel>
 //             <AlertDialogAction onClick={handleConfirm2FA} disabled={loading}>
-//               {loading 
+//               {loading
 //                 ? t('admin.profileSettings.processing')
-//                 : is2FAEnabled 
+//                 : is2FAEnabled
 //                   ? t('admin.profileSettings.disable')
 //                   : t('admin.profileSettings.enable')}
 //             </AlertDialogAction>
@@ -237,7 +237,7 @@
 //             <p className="text-sm text-gray-500 text-center">
 //               {t('admin.profileSettings.qrInstructions')}
 //             </p>
-            
+
 //             {/* TOTP Input Section */}
 //             <div className="w-full space-y-4 mt-4">
 //               <div className="space-y-2">
@@ -250,12 +250,12 @@
 //                   maxLength={6}
 //                 />
 //               </div>
-//               <Button 
+//               <Button
 //                 onClick={handleConfirmSetup}
 //                 disabled={loading || totpCode.length !== 6}
 //                 className="w-full"
 //               >
-//                 {loading 
+//                 {loading
 //                   ? t('admin.profileSettings.verifying')
 //                   : t('admin.profileSettings.activate2FA')}
 //               </Button>

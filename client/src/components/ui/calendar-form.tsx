@@ -1,6 +1,6 @@
 // import { Calendar } from "@/components/ui/calendar"
 // import { showToast } from "@/components/ui/toastify"
-// import { type DateRange } from "react-day-picker" // hoặc loại phù hợp nếu bạn dùng react-day-picker
+// English content normalized from the original source text.
 
 // export function CalendarForm() {
 //   const date = new Date()

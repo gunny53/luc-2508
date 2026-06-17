@@ -1,11 +1,11 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://shopsifu.live',
+  siteUrl: process.env.SITE_URL || 'https://ecsite.live',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'daily',
   priority: 0.7,
-  
+
   // Exclude admin routes and auth routes from sitemap
   exclude: [
     '/admin/*',
@@ -72,7 +72,7 @@ module.exports = {
     // Add common category pages (you should replace these with actual categories from your API)
     const commonCategories = [
       'thoi-trang-nam-cat.1',
-      'thoi-trang-nu-cat.2', 
+      'thoi-trang-nu-cat.2',
       'giay-dep-cat.3',
       'dien-thoai-cat.4',
       'laptop-cat.5',
@@ -127,7 +127,7 @@ module.exports = {
       }
     ],
     additionalSitemaps: [
-      'https://shopsifu.live/sitemap.xml',
+      'https://ecsite.live/sitemap.xml',
     ],
   },
 };

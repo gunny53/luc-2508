@@ -22,7 +22,7 @@ export const OrderSchema = z.object({
   deletedAt: z.union([z.string(), z.date()]).nullable(),
   createdAt: z.union([z.string(), z.date()]),
   updatedAt: z.union([z.string(), z.date()]),
-  // Thêm các field giá để trả về giống POST /orders/calculate
+  // English content normalized from the original source text.
   totalItemCost: z.number().optional(),
   totalShippingFee: z.number().optional(),
   totalVoucherDiscount: z.number().optional(),
@@ -49,9 +49,7 @@ export const ProductSKUSnapshotSchema = z.object({
   createdAt: z.union([z.string(), z.date()])
 })
 
-/**
- * Snapshot mã giảm giá tại thời điểm áp dụng cho đơn hàng
- */
+/* English content normalized from the original source text. */
 export const DiscountSnapshotSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -76,7 +74,7 @@ export const DiscountSnapshotSchema = z.object({
 export const OrderIncludeProductSKUSnapshotAndDiscountSchema = OrderSchema.extend({
   items: z.array(ProductSKUSnapshotSchema),
   discounts: z.array(DiscountSnapshotSchema),
-  // Thêm thông tin vận chuyển tối thiểu để tính phí ship khi thanh toán online
+  // English content normalized from the original source text.
   shipping: z
     .object({
       shippingFee: z.number().optional()

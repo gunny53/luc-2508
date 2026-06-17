@@ -23,7 +23,7 @@ export class SepayService {
     try {
       const { userId, paymentId } = await this.sepayRepo.receiver(body)
 
-      // Emit success event cho payment room (chỉ client nào join payment room mới nhận)
+      // English content normalized from the original source text.
       this.server.to(generateRoomPaymentId(paymentId)).emit('payment', {
         status: 'success',
         gateway: 'sepay',
@@ -34,8 +34,8 @@ export class SepayService {
         message: this.i18n.t('payment.payment.sepay.success.RECEIVER_SUCCESS')
       }
     } catch (error) {
-      // Nếu có lỗi (amount mismatch, payment not found, etc.)
-      // Không emit event vì đây là lỗi validation
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       throw error
     }
   }

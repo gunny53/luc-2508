@@ -21,9 +21,9 @@ export function useOrder() {
   const [orderDetail, setOrderDetail] = useState<Order | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const fetchProfile = useGetProfile(); // Hàm để fetch lại dữ liệu người dùng
+  const fetchProfile = useGetProfile(); // English content normalized from the original source text.
 
-  // 🔹 Lấy tất cả đơn hàng
+  // English content normalized from the original source text.
   const fetchAllOrders = useCallback(async (page = 1, limit = 10) => {
     setLoading(true);
     setError(null);
@@ -31,17 +31,17 @@ export function useOrder() {
       const res = await orderService.getAll({ page, limit });
       setOrders(res.data);
       setMetadata(res.metadata);
-      await fetchProfile.fetchProfile(); // Fetch lại dữ liệu người dùng sau khi lấy đơn hàng
+      await fetchProfile.fetchProfile(); // English content normalized from the original source text.
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi tải danh sách đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 Lấy đơn hàng theo trạng thái
+  // English content normalized from the original source text.
   const fetchOrdersByStatus = useCallback(
     async (status: OrderStatus, page = 1, limit = 10) => {
       setLoading(true);
@@ -52,7 +52,7 @@ export function useOrder() {
         setMetadata(res.metadata);
         return res;
       } catch (err: any) {
-        setError(err.message || "Lỗi khi tải đơn hàng theo trạng thái");
+        setError(err.message || "English content normalized from the original source text.");
         throw err;
       } finally {
         setLoading(false);
@@ -61,26 +61,26 @@ export function useOrder() {
     []
   );
 
-  // 🔹 Lấy chi tiết đơn hàng
+  // English content normalized from the original source text.
   const fetchOrderDetail = useCallback(async (orderId: string) => {
     setLoading(true);
     setError(null);
     try {
       const res = await orderService.getById(orderId);
 
-      const firstOrder = res.data ?? null; // ✅ chọn phần tử đầu
+      const firstOrder = res.data ?? null; // English content normalized from the original source text.
       setOrderDetail(firstOrder);
 
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi tải chi tiết đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 Tạo đơn hàng mới
+  // English content normalized from the original source text.
   const createOrder = useCallback(async (data: OrderCreateRequest) => {
     setLoading(true);
     setError(null);
@@ -88,14 +88,14 @@ export function useOrder() {
       const res: OrderCreateResponse = await orderService.create(data);
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi tạo đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 Huỷ đơn hàng
+  // English content normalized from the original source text.
   const cancelOrder = useCallback(async (orderId: string) => {
     setLoading(true);
     setError(null);
@@ -103,7 +103,7 @@ export function useOrder() {
       const res: OrderCancelResponse = await orderService.cancel(orderId);
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi huỷ đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);

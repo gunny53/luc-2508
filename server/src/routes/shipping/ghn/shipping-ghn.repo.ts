@@ -6,27 +6,21 @@ import { OrderShipping, OrderShippingStatus } from '@prisma/client'
 export class ShippingRepo {
   constructor(private readonly prisma: PrismaService) {}
 
-  /**
-   * Tìm shipping theo orderId
-   */
+  /* English content normalized from the original source text. */
   async findByOrderId(orderId: string): Promise<OrderShipping | null> {
     return this.prisma.orderShipping.findUnique({
       where: { orderId }
     })
   }
 
-  /**
-   * Tìm shipping theo orderCode
-   */
+  /* English content normalized from the original source text. */
   async findByOrderCode(orderCode: string): Promise<OrderShipping | null> {
     return this.prisma.orderShipping.findUnique({
       where: { orderCode }
     })
   }
 
-  /**
-   * Tạo hoặc cập nhật shipping
-   */
+  /* English content normalized from the original source text. */
   async upsertShipping(data: {
     orderId: string
     orderCode?: string
@@ -82,9 +76,7 @@ export class ShippingRepo {
     })
   }
 
-  /**
-   * Cập nhật trạng thái shipping
-   */
+  /* English content normalized from the original source text. */
   async updateStatus(orderId: string, status: OrderShippingStatus): Promise<OrderShipping> {
     return this.prisma.orderShipping.update({
       where: { orderId },
@@ -92,9 +84,7 @@ export class ShippingRepo {
     })
   }
 
-  /**
-   * Cập nhật trạng thái order khi shipping thay đổi
-   */
+  /* English content normalized from the original source text. */
   async updateOrderStatus(orderId: string, status: OrderShippingStatus): Promise<void> {
     const orderStatusMap: Record<string, 'PENDING_DELIVERY' | 'DELIVERED' | 'CANCELLED'> = {
       DELIVERED: 'DELIVERED',

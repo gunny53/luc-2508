@@ -9,7 +9,7 @@ import {
   VoucherType
 } from 'src/shared/constants/discount.constant'
 
-// Schema cho query request - lấy discounts khả dụng cho checkout
+// English content normalized from the original source text.
 export const GetAvailableDiscountsQuerySchema = z.object({
   limit: z.coerce.number().int().positive().default(20),
   cartItemIds: z
@@ -26,11 +26,11 @@ export const GetAvailableDiscountsQuerySchema = z.object({
 
 // Schema cho validate voucher code
 export const ValidateVoucherCodeBodySchema = z.object({
-  code: z.string().trim().min(1, 'Mã voucher không được để trống'),
+  code: z.string().trim().min(1, 'English content normalized from the original source text.'),
   cartItemIds: z.array(z.string()).optional()
 })
 
-// Schema response cho available discounts (không có metadata pagination)
+// English content normalized from the original source text.
 export const GetAvailableDiscountsResSchema = z.object({
   message: z.string().optional(),
   data: z.array(DiscountSchema)
@@ -48,7 +48,7 @@ export const ValidateVoucherCodeResSchema = z.object({
   })
 })
 
-// Schema cho admin management (giữ lại pagination cho admin)
+// English content normalized from the original source text.
 export const GetManageDiscountsQuerySchema = z.object({
   page: z.coerce.number().int().positive().default(1),
   limit: z.coerce.number().int().positive().default(10),
@@ -122,7 +122,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['endDate'],
-        message: 'Ngày kết thúc phải sau ngày bắt đầu'
+        message: 'English content normalized from the original source text.'
       })
     }
 
@@ -131,7 +131,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['code'],
-        message: 'Mã voucher chỉ được chứa chữ cái A-Z và số 0-9, tối đa 5 ký tự'
+        message: 'English content normalized from the original source text.'
       })
     }
 
@@ -140,7 +140,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
         return ctx.addIssue({
           code: 'custom',
           path: ['value'],
-          message: 'Phần trăm giảm giá phải từ 1% đến 100%'
+          message: 'English content normalized from the original source text.'
         })
       }
     }
@@ -149,7 +149,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['maxUsesPerUser'],
-        message: 'Số lần sử dụng tối đa per user không được vượt quá số lần sử dụng tối đa'
+        message: 'English content normalized from the original source text.'
       })
     }
 
@@ -162,7 +162,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['discountApplyType'],
-        message: 'Khi chọn áp dụng cụ thể, phải chọn ít nhất một brand, category hoặc product'
+        message: 'English content normalized from the original source text.'
       })
     }
   })

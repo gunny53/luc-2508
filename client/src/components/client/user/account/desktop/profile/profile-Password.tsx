@@ -95,7 +95,7 @@ export default function PasswordSection() {
     }
   };
 
-  // Nội dung form tái sử dụng
+  // English content normalized from the original source text.
   const formContent = (
     <>
       <div className="flex items-start gap-2 p-3 bg-blue-50 rounded-md mb-4 text-blue-700 text-sm">
@@ -177,7 +177,7 @@ export default function PasswordSection() {
 
       {lastUpdated && (
         <div className="flex items-center justify-between text-sm text-[#71717A]">
-          <p>Cập nhật lần cuối lúc:</p>
+          <p>English content normalized from the original source text.</p>
           <span className="font-medium text-[#1D1D20]">
             {formatDate(lastUpdated)}
           </span>

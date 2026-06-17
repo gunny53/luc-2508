@@ -96,7 +96,7 @@ export interface ShippingServiceResponse {
 }
 export interface CalculateShippingFeeResponse extends BaseShippingResponse<ShippingFee> {}
 
-// Định nghĩa chuẩn cho một phương thức vận chuyển đã được xử lý
+// English content normalized from the original source text.
 export interface ShippingMethod {
   id: string;
   name: string;
@@ -155,7 +155,7 @@ export interface OrderInfo {
   pick_warehouse_id: number;
   deliver_warehouse_id: number;
   current_warehouse_id: number;
-  log: OrderLog[];   
+  log: OrderLog[];
   tag: string[];
   note: string;
   required_note: string;

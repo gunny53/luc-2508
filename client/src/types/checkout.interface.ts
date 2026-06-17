@@ -18,8 +18,8 @@ export interface CustomerFormData {
 export interface ShippingAddress {
   receiverName?: string;
   receiverPhone?: string;
-  address?: string; 
-  addressDetail?: string; 
+  address?: string;
+  addressDetail?: string;
   ward?: string;
   district?: string;
   province?: string;
@@ -35,7 +35,7 @@ export interface Address {
   ward: string;
   district: string;
   province: string;
-  type: 'NHÀ RIÊNG' | 'VĂN PHÒNG';
+  type: 'English content normalized from the original source text.' | 'English content normalized from the original source text.';
 }
 
 // For the Redux checkout state (commonInfo.customerInfo)

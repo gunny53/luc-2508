@@ -8,119 +8,119 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Tổng Quan Hệ Thống E-commerce - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Người dùng truy cập hệ thống;
+:English content normalized from the original source text;
 
-if (Người dùng đã xác thực?) then (không)
-  :Hiển thị tùy chọn xác thực;
-  if (Phương thức đăng nhập?) then (Email/Password)
-    :Người dùng nhập thông tin đăng nhập;
-    :Validate thông tin đăng nhập;
-    if (Thông tin hợp lệ?) then (có)
-      if (2FA được bật?) then (có)
-        :Yêu cầu mã 2FA;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      if (condition?) then (Yes)
+        :English content normalized from the original source text;
         :Validate 2FA;
       endif
-      :Tạo access token;
+      :English content normalized from the original source text;
       :Set authentication cookies;
-      :Chuyển hướng đến dashboard;
-    else (không)
-      :Hiển thị lỗi đăng nhập;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
     endif
   else (Google OAuth)
-    :Chuyển hướng đến Google OAuth;
-    :Người dùng ủy quyền trên Google;
-    :Tạo/cập nhật tài khoản user;
-    :Tạo access token;
-    :Chuyển hướng đến dashboard;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
   endif
 endif
 
-:Người dùng đã được xác thực;
+:English content normalized from the original source text;
 
 fork
-  :Duyệt sản phẩm;
-  :Tìm kiếm sản phẩm;
-  :Lọc theo category/brand;
-  :Xem chi tiết sản phẩm;
-  :Thêm sản phẩm vào giỏ hàng;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 fork again
-  :Quản lý profile user;
-  :Cập nhật thông tin cá nhân;
-  :Quản lý địa chỉ;
-  :Đổi mật khẩu;
-  :Thiết lập 2FA;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 fork again
-  :Chức năng admin;
-  if (User có admin role?) then (có)
-    :Quản lý sản phẩm;
-    :Quản lý categories/brands;
-    :Quản lý users;
-    :Quản lý discounts;
-    :Xem thống kê hệ thống;
-  else (không)
-    :Từ chối truy cập;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 end fork
 
-:Người dùng tiến hành checkout;
+:English content normalized from the original source text;
 
-:Xem lại items trong giỏ hàng;
-:Áp dụng mã giảm giá;
-:Tính tổng đơn hàng;
-:Nhập thông tin giao hàng;
-:Chọn phương thức thanh toán;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 
-if (Phương thức thanh toán?) then (VNPay)
-  :Tạo VNPay payment URL;
-  :Chuyển hướng đến VNPay gateway;
-  :Người dùng hoàn thành thanh toán;
-  :VNPay xử lý thanh toán;
-  :VNPay chuyển hướng về;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   :Verify payment signature;
-  :Cập nhật trạng thái đơn hàng;
-  :Gửi WebSocket notification;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 else (Sepay)
-  :Tạo Sepay payment;
-  :Chuyển hướng đến Sepay gateway;
-  :Người dùng hoàn thành thanh toán;
-  :Sepay gửi webhook;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   :Verify webhook signature;
-  :Cập nhật trạng thái đơn hàng;
-  :Gửi WebSocket notification;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 endif
 
-if (Thanh toán thành công?) then (có)
-  :Cập nhật inventory;
-  :Gửi email xác nhận;
-  :Kích hoạt order fulfillment;
-  :Cập nhật thống kê user;
-else (không)
-  :Xử lý lỗi thanh toán;
-  :Khôi phục items trong giỏ hàng;
-  :Gửi thông báo lỗi;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 endif
 
-:Hoàn thành xử lý đơn hàng;
+:English content normalized from the original source text;
 
-if (User muốn đánh giá?) then (có)
-  :Viết đánh giá sản phẩm;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   :Upload media cho review;
-  :Gửi review;
-  :Cập nhật rating sản phẩm;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 endif
 
-:Session tiếp tục;
+:English content normalized from the original source text;
 
-if (User đăng xuất?) then (có)
-  :Xóa authentication tokens;
-  :Cập nhật trạng thái device;
-  :Chuyển hướng đến trang đăng nhập;
-else (không)
-  :Tiếp tục duyệt;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 
 stop

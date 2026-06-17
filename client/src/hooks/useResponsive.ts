@@ -12,7 +12,7 @@
 //       const width = window.innerWidth
 //       setIsMobile(width < 768) // sm, md
 //       setIsTablet(width >= 768 && width < 1024) // lg
-//       setIsDesktop(width >= 1024) // xl trở lên
+// English content normalized from the original source text.
 //     }
 
 //     handleResize()

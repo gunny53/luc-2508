@@ -11,7 +11,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { 
+import {
   Form,
   FormControl,
   FormDescription,
@@ -60,9 +60,9 @@ export function CategoryModalUpsert({
   const [loadingCategories, setLoadingCategories] = useState(false);
 
   // Upload media hook
-  const { 
-    files, 
-    uploadedUrls, 
+  const {
+    files,
+    uploadedUrls,
     isUploading,
     progress,
     error: uploadError,
@@ -98,7 +98,7 @@ export function CategoryModalUpsert({
       setCategories(response.data || []);
     } catch (error) {
       console.error("Error fetching categories:", error);
-      toast.error("Không thể tải danh sách danh mục");
+      toast.error("English content normalized from the original source text.");
     } finally {
       setLoadingCategories(false);
     }
@@ -138,24 +138,24 @@ export function CategoryModalUpsert({
       // File type validation
       const file = e.target.files[0];
       if (!file.type.startsWith('image/')) {
-        toast.error('Định dạng tệp không được hỗ trợ', {
-          description: 'Vui lòng chọn tệp hình ảnh (JPG, PNG, GIF, etc.)'
+        toast.error('English content normalized from the original source text.', {
+          description: 'English content normalized from the original source text.'
         });
         return;
       }
-      
+
       // Clear existing files first
       handleRemoveAllFiles();
-      
+
       // Add the new file (which will be compressed automatically)
       handleAddFiles(e.target.files);
     }
   };
-  
+
   // Handle logo upload
   const handleUploadLogo = async () => {
     if (files.length === 0) return;
-    
+
     const urls = await uploadFiles();
     if (urls.length > 0) {
       // Use the first uploaded image URL as logo
@@ -166,14 +166,14 @@ export function CategoryModalUpsert({
   // Handle form submission
   const handleSubmitForm = async (data: z.infer<typeof formSchema>) => {
     setLoading(true);
-    
+
     try {
       // No need to convert parentCategoryId anymore as it's already a string
       const processedData = {
         ...data,
         parentCategoryId: data.parentCategoryId || null,
       };
-      
+
       await onSubmit(processedData);
       onClose();
     } catch (error) {
@@ -219,34 +219,34 @@ export function CategoryModalUpsert({
                   <FormControl>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           className="w-full flex justify-between items-center"
                           disabled={loadingCategories}
                         >
                           <span className="flex items-center gap-2">
                             {loadingCategories && <Loader2 className="h-4 w-4 animate-spin" />}
-                            {loadingCategories 
-                              ? "Đang tải..."
-                              : field.value 
+                            {loadingCategories
+                              ? "English content normalized from the original source text."
+                              : field.value
                                 ? categories.find(cat => cat.id === field.value)?.name || t("parentPlaceholder")
-                                : t("parentPlaceholder") || "Chọn danh mục cha"
+                                : t("parentPlaceholder") || "English content normalized from the original source text."
                             }
                           </span>
                           <ChevronDown className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent className="w-full max-h-60 overflow-y-auto">
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           onClick={() => field.onChange(null)}
                           className={!field.value ? "bg-accent" : ""}
                         >
-                          {t("noParent") || "Không có danh mục cha"}
+                          {t("noParent") || "English content normalized from the original source text."}
                         </DropdownMenuItem>
                         {categories
                           .filter(cat => mode === 'edit' ? cat.id !== category?.id : true) // Exclude current category in edit mode
                           .map((cat) => (
-                            <DropdownMenuItem 
+                            <DropdownMenuItem
                               key={cat.id}
                               onClick={() => field.onChange(cat.id)}
                               className={field.value === cat.id ? "bg-accent" : ""}
@@ -276,10 +276,10 @@ export function CategoryModalUpsert({
                         <div className="relative group">
                           <Avatar className="h-16 w-16 border-2 border-gray-200">
                             {field.value ? (
-                              <AvatarImage 
-                                src={field.value} 
-                                alt="Logo preview" 
-                                className="object-cover" 
+                              <AvatarImage
+                                src={field.value}
+                                alt="Logo preview"
+                                className="object-cover"
                               />
                             ) : (
                               <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
@@ -287,45 +287,45 @@ export function CategoryModalUpsert({
                               </AvatarFallback>
                             )}
                           </Avatar>
-                          
+
                           {/* Overlay select button */}
-                          <button 
+                          <button
                             type="button"
                             onClick={() => document.getElementById('logo-upload')?.click()}
                             disabled={isUploading}
-                            aria-label={t("logoSelect") || 'Chọn logo'}
-                            title={t("logoSelect") || 'Chọn logo'}
+                            aria-label={t("logoSelect") || 'English content normalized from the original source text.'}
+                            title={t("logoSelect") || 'English content normalized from the original source text.'}
                             className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 rounded-full transition-opacity"
                           >
                             <Camera className="h-5 w-5 text-white" />
                           </button>
                         </div>
-                        
+
                         {/* Logo URL - Read Only */}
                         <div className="flex-1 space-y-1">
-                          <Input 
+                          <Input
                             {...field}
                             value={field.value || ""}
                             readOnly
-                            placeholder={t("logoPlaceholder") || 'URL sẽ được tạo sau khi tải lên'} 
+                            placeholder={t("logoPlaceholder") || 'English content normalized from the original source text.'}
                             className="bg-muted"
                           />
-                          
+
                           {/* Upload button only shown when a file is selected */}
                           {files.length > 0 && (
-                            <Button 
+                            <Button
                               type="button"
                               size="sm"
                               onClick={handleUploadLogo}
                               disabled={isUploading}
                               className="w-full"
                             >
-                              {isUploading ? t("logoUploading") || 'Đang tải lên...' : t("logoUpload") || 'Tải lên'}
+                              {isUploading ? t("logoUploading") || 'English content normalized from the original source text.' : t("logoUpload") || 'English content normalized from the original source text.'}
                             </Button>
                           )}
                         </div>
                       </div>
-                      
+
                       <input
                         id="logo-upload"
                         type="file"
@@ -333,26 +333,26 @@ export function CategoryModalUpsert({
                         onChange={handleFileChange}
                         disabled={isUploading}
                         accept="image/*"
-                        aria-label={t("logoSelect") || 'Chọn logo'}
+                        aria-label={t("logoSelect") || 'English content normalized from the original source text.'}
                       />
-                      
+
                       {/* Upload progress */}
                       {isUploading && (
                         <div className="space-y-1">
                           <Progress value={progress} className="h-1" />
                           <p className="text-xs text-muted-foreground">
-                            {t("logoUploadProgress") || 'Đang tải lên'} {progress}%
+                            {t("logoUploadProgress") || 'English content normalized from the original source text.'} {progress}%
                           </p>
                         </div>
                       )}
-                      
+
                       {/* File preview */}
                       {files.length > 0 && !isUploading && (
                         <div className="text-xs text-muted-foreground">
                           {files[0].name} ({Math.round(files[0].size / 1024)} KB)
                         </div>
                       )}
-                      
+
                       {/* Upload error */}
                       {uploadError && (
                         <p className="text-sm text-red-500">{uploadError}</p>

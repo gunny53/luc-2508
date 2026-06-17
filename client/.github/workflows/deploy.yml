@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       manual_rollback:
-        description: "Commit SHA hoặc tag để rollback (để trống để deploy bình thường)"
+        description: "English content normalized from the original source text."
         required: false
 
 jobs:
@@ -52,7 +52,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             source ~/.bashrc; source ~/.profile
-            # Cài đặt jq nếu chưa có
+            English content normalized from the original source text.
             if ! command -v jq &> /dev/null; then
               sudo apt-get update && sudo apt-get install -y jq
             fi
@@ -60,14 +60,14 @@ jobs:
             git fetch origin master && git reset --hard origin/master
             rm -rf .next node_modules
             npm ci && npm run build
-            pm2 describe client-shopsifu &>/dev/null && pm2 restart client-shopsifu || pm2 start dist/main.js --name client-shopsifu
-            # Thêm độ trễ để ứng dụng ghi log và PM2 cập nhật trạng thái
+            pm2 describe client-ecsite &>/dev/null && pm2 restart client-ecsite || pm2 start dist/main.js --name client-ecsite
+            English content normalized from the original source text.
             sleep 12
-            # Lấy trạng thái PM2 dưới dạng JSON
+            English content normalized from the original source text.
             pm2 jlist > /tmp/pm2_status.json
-            # Lấy log
-            pm2 logs client-shopsifu --lines 100 --nostream > /tmp/pm2_logs.txt
-            STATUS=$(pm2 info client-shopsifu | grep status | awk '{print $4}')
+            English content normalized from the original source text.
+            pm2 logs client-ecsite --lines 100 --nostream > /tmp/pm2_logs.txt
+            STATUS=$(pm2 info client-ecsite | grep status | awk '{print $4}')
             echo "$STATUS" > /tmp/app_status.txt
             if [[ "$STATUS" != "online" ]]; then
               exit 2
@@ -80,20 +80,20 @@ jobs:
         id: pm2_logs
         run: |
           sshpass -p "${{ secrets.STAGING_VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.STAGING_VPS_USERNAME }}@${{ secrets.STAGING_VPS_IP_HOST }} << 'EOF'
-            # Trích xuất thông tin từ pm2 jlist
-            PM2_INFO=$(jq -r '.[] | select(.name == "client-shopsifu") | "Name: \(.name)\nStatus: \(.pm2_env.status)\nPID: \(.pid)\nUptime: \(.pm2_env.uptime // 0 | tostring + \"ms\")\nCPU: \(.monit.cpu)%\nMemory: \(.monit.memory / 1024 / 1024 | tostring + \"MB\")"' /tmp/pm2_status.json 2>/dev/null)
+            English content normalized from the original source text.
+            PM2_INFO=$(jq -r '.[] | select(.name == "client-ecsite") | "Name: \(.name)\nStatus: \(.pm2_env.status)\nPID: \(.pid)\nUptime: \(.pm2_env.uptime // 0 | tostring + \"ms\")\nCPU: \(.monit.cpu)%\nMemory: \(.monit.memory / 1024 / 1024 | tostring + \"MB\")"' /tmp/pm2_status.json 2>/dev/null)
             if [ -z "$PM2_INFO" ]; then
-              PM2_INFO="Không tìm thấy process client-shopsifu hoặc không thể lấy trạng thái PM2"
+              PM2_INFO="English content normalized from the original source text."
             fi
             echo "::set-output name=pm2_info::$PM2_INFO"
-            # Lấy log, lọc bỏ dòng hệ thống
+            English content normalized from the original source text.
             if [ -f /tmp/pm2_logs.txt ]; then
               PM2_LOGS=$(grep -v '\[TAILING\]' /tmp/pm2_logs.txt | tail -n 100)
               if [ -z "$PM2_LOGS" ]; then
-                PM2_LOGS="Không có log ứng dụng hoặc log rỗng"
+                PM2_LOGS="English content normalized from the original source text."
               fi
             else
-              PM2_LOGS="Không có log ứng dụng hoặc file log không tồn tại"
+              PM2_LOGS="English content normalized from the original source text."
             fi
             echo "::set-output name=pm2_logs::$PM2_LOGS"
           EOF
@@ -130,15 +130,15 @@ jobs:
           COMMIT_SHA: ${{ steps.commit_info.outputs.commit_sha }}
           COMMIT_MESSAGE: ${{ steps.commit_info.outputs.commit_message }}
         run: |
-          # Kiểm tra DISCORD_WEBHOOK
+          English content normalized from the original source text.
           if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "Lỗi: DISCORD_WEBHOOK không được đặt"
+            echo "English content normalized from the original source text."
             exit 1
           else
-            echo "DISCORD_WEBHOOK đã được đặt"
+            echo "English content normalized from the original source text."
           fi
 
-          # Cài đặt jq để xử lý JSON
+          English content normalized from the original source text.
           sudo apt-get update && sudo apt-get install -y jq
 
           COLOR=3066993
@@ -148,12 +148,12 @@ jobs:
             ICON="❌"
           fi
 
-          # Thoát PM2_LOGS và PM2_INFO an toàn bằng jq
+          English content normalized from the original source text.
           ESCAPED_LOGS=$(echo "${PM2_LOGS:0:1500}" | jq -s -R .)
           ESCAPED_PM2_INFO=$(echo "$PM2_INFO" | jq -s -R .)
           ESCAPED_COMMIT_MESSAGE="$COMMIT_MESSAGE"
 
-          # Tạo JSON payload bằng jq để đảm bảo cú pháp đúng
+          English content normalized from the original source text.
           JSON_PAYLOAD=$(jq -n \
             --arg status "$STATUS" \
             --arg icon "$ICON" \
@@ -167,37 +167,21 @@ jobs:
             --arg logs "$ESCAPED_LOGS" \
             --arg run_id "$RUN_ID" \
             --arg color "$COLOR" \
-            '{
-              embeds: [{
-                title: "🚀 CLIENT - Thông báo triển khai",
-                color: ($color | tonumber),
-                fields: [
-                  { name: "Trạng thái", value: "\($icon) \($status)", inline: true },
-                  { name: "Nhánh", value: "`\($branch)`", inline: true },
-                  { name: "Commit", value: "[`\($commit)`](https://github.com/\($repo)/commit/\($commit))", inline: false },
-                  { name: "Commit SHA", value: "`\($commit_sha)`", inline: false },
-                  { name: "Commit Message", value: $commit_message, inline: false },
-                  { name: "Người thực hiện", value: "`\($actor)`", inline: true },
-                  { name: "Trạng thái PM2", value: "```\n\($pm2_info)\n```", inline: false }
-                ],
-                description: "**100 dòng log cuối:**\n```\n\($logs)\n```",
-                url: "https://github.com/\($repo)/actions/runs/\($run_id)"
-              }]
-            }')
+            'English content normalized from the original source text.')
 
-          # Ghi log payload để kiểm tra
+          English content normalized from the original source text.
           echo "JSON Payload: $JSON_PAYLOAD"
 
-          # Gửi yêu cầu và ghi lại phản hồi
+          English content normalized from the original source text.
           RESPONSE=$(curl -s -w "%{http_code}" -H "Content-Type: application/json" -X POST -d "$JSON_PAYLOAD" "$DISCORD_WEBHOOK")
           HTTP_CODE=${RESPONSE: -3}
           RESPONSE_BODY=${RESPONSE%???}
 
-          echo "Mã trạng thái HTTP: $HTTP_CODE"
-          echo "Nội dung phản hồi: $RESPONSE_BODY"
+          echo "English content normalized from the original source text."
+          echo "English content normalized from the original source text."
 
           if [ "$HTTP_CODE" != "204" ]; then
-            echo "Lỗi: Không thể gửi thông báo Discord"
+            echo "English content normalized from the original source text."
             exit 1
           fi
 
@@ -220,7 +204,7 @@ jobs:
             git reset --hard HEAD~1
             rm -rf dist node_modules
             npm ci && npm run build
-            pm2 restart client-shopsifu
+            pm2 restart client-ecsite
           EOF
 
   # 4. Manual Rollback
@@ -245,7 +229,7 @@ jobs:
             git reset --hard HEAD
             rm -rf dist node_modules
             npm ci && npm run build
-            pm2 restart client-shopsifu
+            pm2 restart client-ecsite
           EOF
 
 permissions:

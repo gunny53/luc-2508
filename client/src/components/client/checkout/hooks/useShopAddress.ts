@@ -33,18 +33,18 @@ export const useShopAddress = (shopId: string): UseShopAddressReturn => {
     try {
       console.log('Fetching user detail for shopId:', shopId);
       const response = await userService.getById(shopId);
-      
+
       console.log('User detail response:', response);
-      
+
       if (response.data?.addresses && response.data.addresses.length > 0) {
         const addresses = response.data.addresses;
-        // Ưu tiên tìm địa chỉ mặc định, nếu không có thì lấy địa chỉ đầu tiên
+        // English content normalized from the original source text.
         const addressToUse = addresses.find(addr => addr.isDefault) || addresses[0];
 
         if (addressToUse) {
           setShopAddress(addressToUse);
-          
-          // Lưu vào Redux state
+
+          // English content normalized from the original source text.
           dispatch(updateShopAddress({
             shopId,
             address: {
@@ -58,7 +58,7 @@ export const useShopAddress = (shopId: string): UseShopAddressReturn => {
               name: addressToUse.name,
             }
           }));
-          
+
           console.log('Shop address saved to Redux:', addressToUse);
         } else {
           setError('No valid address found for this shop');

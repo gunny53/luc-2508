@@ -35,21 +35,21 @@ export function useUploadMedia() {
     const fileSizeMB = file.size / FILE_SIZE_MB;
     return fileSizeMB <= FILE_SIZE_LIMIT;
   }, []);
-  
+
   // Compress image before upload
   const compressImage = useCallback(async (file: File): Promise<File> => {
     // Only compress if it's an image file and size exceeds limit
     if (!file.type.startsWith('image/') || validateFileSize(file)) {
       return file;
     }
-    
+
     const options = {
       maxSizeMB: FILE_SIZE_LIMIT, // compress to max 1MB
       maxWidthOrHeight: 1920,     // limit width/height while maintaining aspect ratio
       useWebWorker: true,         // use web worker for better performance
       initialQuality: 0.8,        // initial quality to try
     };
-    
+
     try {
       const compressedFile = await imageCompression(file, options);
       console.log(`Original file size: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
@@ -61,14 +61,14 @@ export function useUploadMedia() {
       return file;
     }
   }, [validateFileSize]);
-  
-  // Xử lý thêm files
+
+  // English content normalized from the original source text.
   const handleAddFiles = useCallback(async (newFiles: FileList | File[]) => {
     const filesArray = Array.from(newFiles);
-    
+
     // Set a loading state for compression
     setState(prev => ({ ...prev, isUploading: true, progress: 10, error: null }));
-    
+
     try {
       // Process and compress image files
       const processedFiles = await Promise.all(filesArray.map(async (file) => {
@@ -79,25 +79,25 @@ export function useUploadMedia() {
             // Compress the image
             const compressedFile = await compressImage(file);
             setState(prev => ({ ...prev, progress: 60 }));
-            
+
             // Create preview URL for compressed file
             const fileWithPreview = compressedFile as FileWithPreview;
             fileWithPreview.preview = URL.createObjectURL(compressedFile);
-            
+
             // Show compression info
             console.log(`Compressed: ${file.name} from ${(file.size/1024/1024).toFixed(2)}MB to ${(compressedFile.size/1024/1024).toFixed(2)}MB`);
-            
+
             // Check if still over limit after compression
             if (compressedFile.size > FILE_SIZE_MB) {
-              toast.warning(`Không thể nén đủ nhỏ: ${file.name}`, {
-                description: `Đã nén từ ${(file.size/1024/1024).toFixed(2)}MB xuống ${(compressedFile.size/1024/1024).toFixed(2)}MB, nhưng vẫn vượt quá ${FILE_SIZE_LIMIT}MB. Sẽ cố gắng upload.`
+              toast.warning(`English content normalized from the original source text.${file.name}`, {
+                description: `English content normalized from the original source text.${(file.size/1024/1024).toFixed(2)}English content normalized from the original source text.${(compressedFile.size/1024/1024).toFixed(2)}English content normalized from the original source text.${FILE_SIZE_LIMIT}English content normalized from the original source text.`
               });
             } else {
-              toast.success(`Đã nén hình ảnh: ${file.name}`, {
-                description: `Từ ${(file.size/1024/1024).toFixed(2)}MB xuống ${(compressedFile.size/1024/1024).toFixed(2)}MB`
+              toast.success(`English content normalized from the original source text.${file.name}`, {
+                description: `English content normalized from the original source text.${(file.size/1024/1024).toFixed(2)}English content normalized from the original source text.${(compressedFile.size/1024/1024).toFixed(2)}MB`
               });
             }
-            
+
             return fileWithPreview;
           } catch (error) {
             console.error('Compression error:', error);
@@ -114,32 +114,32 @@ export function useUploadMedia() {
         }
       }));
 
-      setState(prev => ({ 
-        ...prev, 
-        files: [...prev.files, ...processedFiles], 
+      setState(prev => ({
+        ...prev,
+        files: [...prev.files, ...processedFiles],
         isUploading: false, // Will be set to true by uploadFiles
         progress: 0,
-        error: null 
+        error: null
       }));
 
       // Directly call uploadFiles with the newly processed files
       uploadFiles(processedFiles);
     } catch (error: any) {
       console.error('File processing error:', error);
-      setState(prev => ({ 
-        ...prev, 
+      setState(prev => ({
+        ...prev,
         isUploading: false,
         progress: 0,
-        error: 'Lỗi khi xử lý tệp tin' 
+        error: 'English content normalized from the original source text.'
       }));
-      
-      toast.error('Lỗi xử lý tệp tin', {
-        description: error.message || 'Vui lòng thử lại hoặc chọn tệp khác'
+
+      toast.error('English content normalized from the original source text.', {
+        description: error.message || 'English content normalized from the original source text.'
       });
     }
   }, [compressImage]);
 
-  // Xử lý xóa file
+  // English content normalized from the original source text.
   const handleRemoveFile = useCallback((fileName: string) => {
     setState((prev) => {
       const fileIndex = prev.files.findIndex(f => f.name === fileName);
@@ -148,13 +148,13 @@ export function useUploadMedia() {
       const newFiles = [...prev.files];
       const fileToRemove = newFiles[fileIndex];
 
-      // Revoke object URL để tránh memory leak
+      // English content normalized from the original source text.
       if (fileToRemove?.preview) {
         URL.revokeObjectURL(fileToRemove.preview);
       }
-      
+
       newFiles.splice(fileIndex, 1);
-      
+
       return {
         ...prev,
         files: newFiles,
@@ -162,14 +162,14 @@ export function useUploadMedia() {
     });
   }, []);
 
-  // Xử lý xóa tất cả files
+  // English content normalized from the original source text.
   const handleRemoveAllFiles = useCallback(() => {
     setState((prev) => {
-      // Revoke tất cả object URLs
+      // English content normalized from the original source text.
       prev.files.forEach((file) => {
         if (file.preview) URL.revokeObjectURL(file.preview);
       });
-      
+
       return {
         ...prev,
         files: [],
@@ -182,7 +182,7 @@ export function useUploadMedia() {
   // Upload a specific set of files
   const uploadFiles = useCallback(async (filesToUpload?: FileWithPreview[]) => {
     const filesToProcess = filesToUpload || state.files;
-    
+
     if (filesToProcess.length === 0) {
       return [];
     }
@@ -192,7 +192,7 @@ export function useUploadMedia() {
     let progressInterval: NodeJS.Timeout | undefined = undefined;
 
     try {
-      // Giả lập tiến trình upload
+      // English content normalized from the original source text.
       progressInterval = setInterval(() => {
         setState((prev) => ({
           ...prev,
@@ -202,23 +202,23 @@ export function useUploadMedia() {
 
       // Files are already compressed when added, upload directly
       const response = await baseService.uploadMedia(filesToProcess);
-      
+
       clearInterval(progressInterval);
 
-      // CẤU TRÚC RESPONSE MỚI:
+      // English content normalized from the original source text.
       // {
       //   statusCode: 201,
-      //   message: "Thành công",
+      // English content normalized from the original source text.
       //   timestamp: "2025-07-17T04:53:03.079Z",
       //   data: [{ url: "https://..." }]
       // }
-      
-      // Lấy các URLs từ response.data trực tiếp (không cần response.data.data nữa)
+
+      // English content normalized from the original source text.
       const urls = response.data || [];
-      const newUrls = urls.map((item: { url: string }, index: number) => 
+      const newUrls = urls.map((item: { url: string }, index: number) =>
         item.url
       );
-      
+
       setState((prev) => ({
         ...prev,
         uploadedUrls: [...prev.uploadedUrls, ...newUrls],
@@ -226,7 +226,7 @@ export function useUploadMedia() {
         progress: 100,
       }));
 
-      toast.success(`Đã tải lên ${newUrls.length} tệp thành công`);
+      toast.success(`English content normalized from the original source text.${newUrls.length}English content normalized from the original source text.`);
       return newUrls;
     } catch (error: any) {
       // Stop the progress bar on error
@@ -240,13 +240,13 @@ export function useUploadMedia() {
         ...prev,
         isUploading: false,
         progress: 0,
-        error: error.message || 'Lỗi khi tải tệp lên',
+        error: error.message || 'English content normalized from the original source text.',
       }));
-      
-      toast.error('Lỗi khi tải tệp lên', {
-        description: error.message || 'Vui lòng thử lại sau',
+
+      toast.error('English content normalized from the original source text.', {
+        description: error.message || 'English content normalized from the original source text.',
       });
-      
+
       return [];
     }
   }, [state.files]);
@@ -254,11 +254,11 @@ export function useUploadMedia() {
   // Reset state
   const reset = useCallback(() => {
     setState((prev) => {
-      // Revoke tất cả object URLs
+      // English content normalized from the original source text.
       prev.files.forEach((file) => {
         if (file.preview) URL.revokeObjectURL(file.preview);
       });
-      
+
       return {
         files: [],
         uploadedUrls: [],

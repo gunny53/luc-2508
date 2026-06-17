@@ -1,6 +1,6 @@
 import { publicAxios, privateAxios } from '@/lib/api';
 import { API_ENDPOINTS } from '@/constants/api';
-import { 
+import {
     LangCreateRequest,
     LangCreateResponse,
     LangGetAllResponse,
@@ -12,7 +12,7 @@ import {
 import { PaginationRequest } from '@/types/base.interface';
 
 class LanguagesService {
-    // Lấy danh sách tất cả ngôn ngữ
+    // English content normalized from the original source text.
     async getAll(params?: PaginationRequest, signal?: AbortSignal): Promise<LangGetAllResponse> {
         try {
             const response = await privateAxios.get(API_ENDPOINTS.LANGUAGES.GETALL, {
@@ -25,11 +25,11 @@ class LanguagesService {
         }
     }
 
-    // Lấy thông tin ngôn ngữ theo ID
+    // English content normalized from the original source text.
     async getById(id: string, signal?: AbortSignal): Promise<LangGetByIdResponse> {
         try {
             const response = await privateAxios.get(
-                API_ENDPOINTS.LANGUAGES.GETBYID.replace(':id', id), 
+                API_ENDPOINTS.LANGUAGES.GETBYID.replace(':id', id),
                 { signal }
             );
             return response.data;
@@ -38,7 +38,7 @@ class LanguagesService {
         }
     }
 
-    // Tạo ngôn ngữ mới
+    // English content normalized from the original source text.
     async create(data: LangCreateRequest, signal?: AbortSignal): Promise<LangCreateResponse> {
         try {
             const response = await privateAxios.post(
@@ -52,7 +52,7 @@ class LanguagesService {
         }
     }
 
-    // Cập nhật ngôn ngữ
+    // English content normalized from the original source text.
     async update(id: string, data: LangUpdateRequest, signal?: AbortSignal): Promise<LangUpdateResponse> {
         try {
             const response = await privateAxios.put(
@@ -66,7 +66,7 @@ class LanguagesService {
         }
     }
 
-    // Xóa ngôn ngữ theo ID
+    // English content normalized from the original source text.
     async deleteById(id: string, signal?: AbortSignal): Promise<LangDeleteResponse> {
         try {
             const response = await privateAxios.delete(

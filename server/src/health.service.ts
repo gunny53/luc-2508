@@ -51,7 +51,7 @@ export class RedisHealthService {
     if (!this.redis) return
 
     try {
-      // Ping Redis để kiểm tra connection
+      // English content normalized from the original source text.
       const result = await this.redis.ping()
       if (result === 'PONG') {
         this.isHealthy = true
@@ -64,7 +64,7 @@ export class RedisHealthService {
       this.isHealthy = false
       this.logger.error(`Redis health check failed: ${error.message}`)
 
-      // Thử reconnect nếu connection bị mất
+      // English content normalized from the original source text.
       if (this.redis.status === 'end') {
         this.logger.log('Attempting to reconnect to Redis...')
         try {

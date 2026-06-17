@@ -8,18 +8,18 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // ✅ Tắt eslint khi build
+    ignoreDuringBuilds: true, // English content normalized from the original source text.
   },
   reactStrictMode: false,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**', // ✅ Cho phép tất cả hostname với HTTPS
+        hostname: '**', // English content normalized from the original source text.
       },
       {
         protocol: 'http',
-        hostname: '**', // ✅ Cho phép tất cả hostname với HTTP
+        hostname: '**', // English content normalized from the original source text.
       },
     ],
   },

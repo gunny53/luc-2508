@@ -47,7 +47,7 @@ export class ShippingConsumer extends WorkerHost {
   }
 
   async process(job: Job<CreateOrderType | GHNWebhookPayloadType, any, string>): Promise<any> {
-    this.logger.log(`[SHIPPING_CONSUMER] Xử lý job: ${job.id} - ${job.name}`)
+    this.logger.log(`English content normalized from the original source text.${job.id} - ${job.name}`)
 
     try {
       switch (job.name) {
@@ -63,15 +63,13 @@ export class ShippingConsumer extends WorkerHost {
           throw new Error(`Unknown job type: ${job.name}`)
       }
     } catch (error) {
-      this.logger.error(`[SHIPPING_CONSUMER] Lỗi job ${job.id}: ${error.message}`)
+      this.logger.error(`English content normalized from the original source text.${job.id}: ${error.message}`)
       await this.handleJobError(job, error)
       throw error
     }
   }
 
-  /**
-   * Xử lý tạo shipping order
-   */
+  /* English content normalized from the original source text. */
   private async processCreateShippingOrder(data: CreateOrderType) {
     const orderId = this.extractOrderIdFromClientOrderCode(data.client_order_code)
     if (!orderId) {
@@ -99,9 +97,7 @@ export class ShippingConsumer extends WorkerHost {
     }
   }
 
-  /**
-   * Xử lý GHN webhook
-   */
+  /* English content normalized from the original source text. */
   private async processWebhook(job: Job<GHNWebhookPayloadType>) {
     const { orderCode, status } = job.data
     if (!orderCode || !status) {
@@ -118,7 +114,7 @@ export class ShippingConsumer extends WorkerHost {
       return { message: 'Unknown status, keeping current', orderCode, status }
     }
 
-    // Chỉ cho phép GHN cập nhật order từ PICKUPED trở đi
+    // English content normalized from the original source text.
     const allowedStatuses = [
       OrderStatus.PICKUPED,
       OrderStatus.PENDING_DELIVERY,
@@ -274,24 +270,24 @@ export class ShippingConsumer extends WorkerHost {
    */
   private mapGHNStatusToOrderStatus(ghnStatus: string): (typeof OrderStatus)[keyof typeof OrderStatus] | null {
     const statusMap = {
-      // Tạo đơn hàng
+      // English content normalized from the original source text.
       ready_to_pick: OrderStatus.PICKUPED,
 
-      // Lấy hàng
+      // English content normalized from the original source text.
       picking: OrderStatus.PICKUPED,
       picked: OrderStatus.PICKUPED,
 
-      // Vận chuyển
+      // English content normalized from the original source text.
       storing: OrderStatus.PENDING_DELIVERY,
       transporting: OrderStatus.PENDING_DELIVERY,
       sorting: OrderStatus.PENDING_DELIVERY,
       delivering: OrderStatus.PENDING_DELIVERY,
 
-      // Giao hàng
+      // English content normalized from the original source text.
       delivered: OrderStatus.DELIVERED,
       delivery_fail: OrderStatus.PENDING_DELIVERY,
 
-      // Trả hàng
+      // English content normalized from the original source text.
       waiting_to_return: OrderStatus.RETURNED,
       return: OrderStatus.RETURNED,
       return_transporting: OrderStatus.RETURNED,
@@ -299,7 +295,7 @@ export class ShippingConsumer extends WorkerHost {
       returning: OrderStatus.RETURNED,
       returned: OrderStatus.RETURNED,
 
-      // Ngoại lệ
+      // English content normalized from the original source text.
       exception: OrderStatus.CANCELLED,
       damage: OrderStatus.CANCELLED,
       lost: OrderStatus.CANCELLED,
@@ -309,28 +305,26 @@ export class ShippingConsumer extends WorkerHost {
     return statusMap[ghnStatus as keyof typeof statusMap] || null
   }
 
-  /**
-   * Xử lý hủy đơn hàng GHN
-   */
+  /* English content normalized from the original source text. */
   private async processCancelGHNOrder(data: { orderCode: string; orderId: string }) {
     const { orderCode, orderId } = data
-    this.logger.log(`[SHIPPING_CONSUMER] Bắt đầu hủy đơn hàng GHN: ${orderCode} cho order: ${orderId}`)
+    this.logger.log(`English content normalized from the original source text.${orderCode} cho order: ${orderId}`)
 
     try {
-      // Gọi GHN API để hủy đơn hàng
+      // English content normalized from the original source text.
       const result = await this.ghnClient.order.cancelOrder({
         orderCodes: [orderCode]
       })
 
-      this.logger.log(`[SHIPPING_CONSUMER] Kết quả hủy đơn hàng GHN: ${JSON.stringify(result, null, 2)}`)
+      this.logger.log(`English content normalized from the original source text.${JSON.stringify(result, null, 2)}`)
 
-      // Kiểm tra kết quả từ GHN
+      // English content normalized from the original source text.
       if (result && Array.isArray(result)) {
         const orderResult = result.find((item: any) => item.order_code === orderCode)
         if (orderResult && orderResult.result === true) {
-          this.logger.log(`[SHIPPING_CONSUMER] Hủy đơn hàng GHN thành công: ${orderCode}`)
+          this.logger.log(`English content normalized from the original source text.${orderCode}`)
 
-          // Cập nhật trạng thái OrderShipping thành CANCELLED
+          // English content normalized from the original source text.
           await this.prismaService.orderShipping.update({
             where: { orderId },
             data: {
@@ -341,16 +335,16 @@ export class ShippingConsumer extends WorkerHost {
 
           return {
             success: true,
-            message: `Hủy đơn hàng GHN thành công: ${orderCode}`,
+            message: `English content normalized from the original source text.${orderCode}`,
             orderCode
           }
         }
       }
 
-      throw new Error(`Không thể hủy đơn hàng GHN: ${orderCode}`)
+      throw new Error(`English content normalized from the original source text.${orderCode}`)
     } catch (error) {
-      this.logger.error(`[SHIPPING_CONSUMER] Lỗi khi hủy đơn hàng GHN: ${error.message}`)
-      // Cập nhật trạng thái OrderShipping thành FAILED
+      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      // English content normalized from the original source text.
       await this.prismaService.orderShipping.update({
         where: { orderId },
         data: {
@@ -364,32 +358,30 @@ export class ShippingConsumer extends WorkerHost {
     }
   }
 
-  /**
-   * Xử lý tạo đơn hàng GHN
-   */
+  /* English content normalized from the original source text. */
   private async processCreateGHNOrder(data: { orderId: string }) {
     const { orderId } = data
-    this.logger.log(`[SHIPPING_CONSUMER] Bắt đầu tạo đơn hàng GHN cho order: ${orderId}`)
+    this.logger.log(`English content normalized from the original source text.${orderId}`)
 
     try {
-      // Lấy thông tin OrderShipping
+      // English content normalized from the original source text.
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId }
       })
 
       if (!orderShipping) {
-        throw new Error(`Không tìm thấy OrderShipping cho order: ${orderId}`)
+        throw new Error(`English content normalized from the original source text.${orderId}`)
       }
 
       if (orderShipping.status !== 'DRAFT') {
-        throw new Error(`OrderShipping status không phù hợp để tạo GHN order: ${orderShipping.status}`)
+        throw new Error(`English content normalized from the original source text.${orderShipping.status}`)
       }
 
       const isCodOrder = (orderShipping.codAmount || 0) > 0
       const paymentTypeId = isCodOrder ? 2 : 1
       const codAmount = isCodOrder ? orderShipping.codAmount || 0 : 0
 
-      // Tạo GHN order
+      // English content normalized from the original source text.
       const ghnOrderData = {
         from_address: orderShipping.fromAddress || '',
         from_name: orderShipping.fromName || '',
@@ -414,7 +406,7 @@ export class ShippingConsumer extends WorkerHost {
         payment_type_id: paymentTypeId, // 1 = PREPAID, 2 = COD
         items: [
           {
-            name: 'Sản phẩm',
+            name: 'English content normalized from the original source text.',
             quantity: 1,
             weight: orderShipping.weight || 0
           }
@@ -423,16 +415,16 @@ export class ShippingConsumer extends WorkerHost {
 
       this.logger.log(`[SHIPPING_CONSUMER] GHN order data: ${JSON.stringify(ghnOrderData, null, 2)}`)
 
-      // Gọi GHN API để tạo đơn hàng
+      // English content normalized from the original source text.
       const result = await this.ghnClient.order.createOrder(ghnOrderData)
 
-      this.logger.log(`[SHIPPING_CONSUMER] Kết quả tạo đơn hàng GHN: ${JSON.stringify(result, null, 2)}`)
+      this.logger.log(`English content normalized from the original source text.${JSON.stringify(result, null, 2)}`)
 
-      // Kiểm tra kết quả từ GHN
+      // English content normalized from the original source text.
       if (result && result.order_code) {
-        this.logger.log(`[SHIPPING_CONSUMER] Tạo đơn hàng GHN thành công: ${result.order_code}`)
+        this.logger.log(`English content normalized from the original source text.${result.order_code}`)
 
-        // Cập nhật OrderShipping với orderCode và status CREATED
+        // English content normalized from the original source text.
         await this.prismaService.orderShipping.update({
           where: { orderId },
           data: {
@@ -445,16 +437,16 @@ export class ShippingConsumer extends WorkerHost {
 
         return {
           success: true,
-          message: `Tạo đơn hàng GHN thành công: ${result.order_code}`,
+          message: `English content normalized from the original source text.${result.order_code}`,
           orderCode: result.order_code
         }
       }
 
-      throw new Error('Không thể tạo đơn hàng GHN')
+      throw new Error('English content normalized from the original source text.')
     } catch (error) {
-      this.logger.error(`[SHIPPING_CONSUMER] Lỗi khi tạo đơn hàng GHN: ${error.message}`)
+      this.logger.error(`English content normalized from the original source text.${error.message}`)
 
-      // Cập nhật trạng thái OrderShipping thành FAILED
+      // English content normalized from the original source text.
       await this.prismaService.orderShipping.update({
         where: { orderId },
         data: {

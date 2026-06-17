@@ -16,9 +16,7 @@ export class SearchRepo {
     private readonly configService: ConfigService
   ) {}
 
-  /**
-   * Tìm kiếm sản phẩm trong Elasticsearch
-   */
+  /* English content normalized from the original source text. */
   async searchProducts(query: SearchProductsQueryType): Promise<SearchProductsResType> {
     const { q, page = 1, limit = 20, orderBy = OrderBy.Desc, sortBy = SortBy.CreatedAt, filters } = query
 
@@ -152,7 +150,7 @@ export class SearchRepo {
     } catch (error) {
       this.logger.error('Search products failed:', error)
 
-      // Phân loại lỗi dựa trên error type
+      // English content normalized from the original source text.
       if (error.name === 'ConnectionError' || error.code === 'ECONNREFUSED') {
         throw ElasticsearchConnectionException
       }

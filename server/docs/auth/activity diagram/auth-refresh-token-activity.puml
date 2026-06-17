@@ -6,28 +6,28 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /auth/refresh-token
+English content normalized from the original source text.
 
 start
-:Đọc refresh_token từ cookie;
+:English content normalized from the original source text;
 :verifyRefreshToken();
-if (Không hợp lệ?) then (Có)
-  :Ném Unauthorized (401);
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-:Tìm refreshToken trong DB kèm user.role;
-if (Không tồn tại?) then (Có)
-  :Ném RefreshTokenAlreadyUsed (401);
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
 fork
-  :Cập nhật device { ip, userAgent };
+  :English content normalized from the original source text;
 fork again
-  :Xóa refreshToken cũ;
+  :English content normalized from the original source text;
 end fork
-:Tạo accessToken + refreshToken mới;
-:Set auth cookies mới;
-:Trả về 200 message;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 stop
 
 @enduml

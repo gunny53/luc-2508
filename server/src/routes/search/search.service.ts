@@ -30,10 +30,7 @@ export class SearchService {
     private readonly redisService: RedisService
   ) {}
 
-  /**
-   * 📚 Dictionary cache với Redis - optimize search parsing
-   * Cache dictionary attributes để parse natural language queries
-   */
+  /* English content normalized from the original source text. */
   @Cacheable({
     key: 'search:dictionary',
     ttl: 1800, // 30 minutes
@@ -82,24 +79,18 @@ export class SearchService {
     }
   }
 
-  /**
-   * 🗺️ Get dictionary as Map (wrapper for cached version)
-   * ⚡ Graceful fallback nếu cache fails
-   */
+  /* English content normalized from the original source text. */
   private async getDictionary(): Promise<Map<string, { normalizedValue: string; synonyms: string[] }[]>> {
     try {
       const dictionaryRecord = await this.getDictionaryRaw()
       return new Map(Object.entries(dictionaryRecord))
     } catch (error) {
       this.logger.warn('Dictionary cache failed, returning empty dictionary:', error)
-      return new Map() // Return empty Map để không break parsing logic
+      return new Map() // English content normalized from the original source text.
     }
   }
 
-  /**
-   * Parse natural language query thành structured query
-   * ⚡ Graceful fallback nếu dictionary fails
-   */
+  /* English content normalized from the original source text. */
   private async parseQuery(rawQuery: string): Promise<ParsedQuery> {
     try {
       const dictionary = await this.getDictionary()
@@ -141,10 +132,7 @@ export class SearchService {
     }
   }
 
-  /**
-   * 🔍 Intelligent search caching với adaptive TTL
-   * Popular searches cache lâu hơn, complex searches cache ngắn hơn
-   */
+  /* English content normalized from the original source text. */
   @Cacheable({
     key: 'search:products',
     ttl: 900, // 15 minutes base TTL
@@ -208,7 +196,7 @@ export class SearchService {
     }
   })
   async searchProducts(query: SearchProductsQueryType): Promise<SearchProductsResType> {
-    // Validate query trước khi parse
+    // English content normalized from the original source text.
     if (query.q) {
       const trimmedQuery = query.q.trim()
       if (!trimmedQuery) {
@@ -245,23 +233,21 @@ export class SearchService {
     }
   }
 
-  /**
-   * 🎯 Phân loại search type để optimize cache strategy
-   */
+  /* English content normalized from the original source text. */
   private getSearchType(query: SearchProductsQueryType): string {
     // Browse all (no search query, minimal filters)
     if (!query.q?.trim() && !this.hasComplexFilters(query.filters)) {
-      return 'browse' // Cache lâu nhất
+      return 'browse' // English content normalized from the original source text.
     }
 
-    // Simple search (chỉ có text query)
+    // English content normalized from the original source text.
     if (query.q?.trim() && !this.hasComplexFilters(query.filters)) {
-      return 'simple' // Cache trung bình
+      return 'simple' // English content normalized from the original source text.
     }
 
-    // Complex search (có nhiều filters)
+    // English content normalized from the original source text.
     if (this.hasComplexFilters(query.filters)) {
-      return 'complex' // Cache ngắn nhất
+      return 'complex' // English content normalized from the original source text.
     }
 
     return 'default'

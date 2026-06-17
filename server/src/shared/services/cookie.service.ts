@@ -12,7 +12,7 @@ export class CookieService {
   setAuthCookies(res: Response, accessToken: string, refreshToken: string): void {
     this.clearAuthCookies(res)
 
-    // Lấy options động từ config
+    // English content normalized from the original source text.
     const accessTokenOptions = this.configService.getOrThrow('cookie.accessToken.options')
     const refreshTokenOptions = this.configService.getOrThrow('cookie.refreshToken.options')
 

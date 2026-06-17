@@ -2,7 +2,7 @@
   "name": "ecommerce-nextjs-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://api.shopsifu.live/",
+  "proxy": "https://api.ecsite.live/",
   "scripts": {
     "analyze": "cross-env analyze=true next build",
     "dev": "next dev --turbopack -p 8000  --experimental-https --experimental-https-key ./certs/localhost-key.pem --experimental-https-cert ./certs/localhost.pem",

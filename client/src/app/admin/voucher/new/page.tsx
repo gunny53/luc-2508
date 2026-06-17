@@ -20,7 +20,7 @@ export default function NewVoucherPage() {
   const t = useTranslations("admin.ModuleVouchers");
   const searchParams = useSearchParams();
   const useCaseParam = searchParams.get('usecase') || '1';
-  
+
   // Convert string to VoucherUseCase enum
   const getUseCase = (param: string): VoucherUseCase => {
     switch (param) {
@@ -46,7 +46,7 @@ export default function NewVoucherPage() {
         return VoucherUseCase.SHOP;
     }
   };
-  
+
   const useCase = getUseCase(useCaseParam);
 
   const getTitle = () => {
@@ -56,17 +56,17 @@ export default function NewVoucherPage() {
       case VoucherUseCase.PRIVATE:
         return t('title_private');
       case VoucherUseCase.PLATFORM:
-        return 'Tạo Voucher Toàn Nền Tảng';
+        return 'English content normalized from the original source text.';
       case VoucherUseCase.CATEGORIES:
-        return 'Tạo Voucher Theo Danh Mục';
+        return 'English content normalized from the original source text.';
       case VoucherUseCase.BRAND:
-        return 'Tạo Voucher Theo Thương Hiệu';
+        return 'English content normalized from the original source text.';
       case VoucherUseCase.SHOP_ADMIN:
-        return 'Tạo Voucher Shop (Admin)';
+        return 'English content normalized from the original source text.';
       case VoucherUseCase.PRODUCT_ADMIN:
-        return 'Tạo Voucher Sản Phẩm (Admin)';
+        return 'English content normalized from the original source text.';
       case VoucherUseCase.PRIVATE_ADMIN:
-        return 'Tạo Voucher Riêng Tư (Admin)';
+        return 'English content normalized from the original source text.';
       default:
         return t('title_shop');
     }

@@ -1,29 +1,29 @@
-# Cải tiến DataTable với Server-side Pagination
+English content normalized from the original source text.
 
-## Các thay đổi đã thực hiện
+English content normalized from the original source text.
 
-### 1. Tối ưu hóa useServerDataTable hook
+English content normalized from the original source text.
 
-- **Giải quyết vòng lặp vô hạn**: Sử dụng `useRef` để lưu trữ các hàm callback ổn định, không thay đổi mỗi khi render
-- **Tối ưu hóa request**: Thêm AbortController để hủy request cũ khi request mới được tạo
-- **Tối ưu re-render**: Loại bỏ các hàm callback khỏi dependency array của useEffect
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
 
-### 2. Tăng cường service API
+English content normalized from the original source text.
 
-- Cập nhật API service để hỗ trợ AbortSignal cho phép hủy request
-- Định dạng hóa response để đảm bảo tương thích với hook
+- English content normalized from the original source text
+- English content normalized from the original source text
 
-### 3. Sử dụng memoization trong usePermissions
+English content normalized from the original source text.
 
-- Các hàm callback được memoized với `useCallback` để tránh tạo mới mỗi lần render
-- Loại bỏ các dependencies không cần thiết
+- English content normalized from the original source text
+- English content normalized from the original source text
 
-## Hướng dẫn sử dụng
+English content normalized from the original source text.
 
-### 1. Khai báo các hàm xử lý dữ liệu
+English content normalized from the original source text.
 
 ```typescript
-// Tạo các callbacks memoized để tránh tạo lại mỗi lần render
+English content normalized from the original source text.
 const getResponseData = useCallback((response: any) => {
   return response.data || [];
 }, []);
@@ -34,11 +34,11 @@ const getResponseMetadata = useCallback((response: any) => {
 
 const mapResponseToData = useCallback((item: ApiItemType): UiItemType => ({
   id: item.id,
-  // ... map các trường khác
+  English content normalized from the original source text.
 }), []);
 ```
 
-### 2. Sử dụng hook useServerDataTable
+English content normalized from the original source text.
 
 ```typescript
 const {
@@ -59,54 +59,54 @@ const {
 });
 ```
 
-### 3. Cập nhật dữ liệu sau CRUD
+English content normalized from the original source text.
 
 ```typescript
 const handleCreate = async (data) => {
   try {
     await yourService.create(data);
-    // Re-fetch data bằng cách kích hoạt thay đổi sort
+    English content normalized from the original source text.
     handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
   } catch (error) {
-    // Xử lý lỗi
+    English content normalized from the original source text.
   }
 };
 ```
 
-## Cách hoạt động
+English content normalized from the original source text.
 
-1. **Khởi tạo**:
-   - Hook khởi tạo state và useRef để theo dõi request hiện tại
-   - Các hàm callback được lưu trữ ổn định trong useRef
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
 2. **Fetching Data**:
-   - Khi dependency thay đổi (page, limit, search, sort), useEffect chạy
-   - Request cũ bị hủy thông qua AbortController
-   - Request mới được tạo và lưu vào activeRequestRef
-   - Dữ liệu được trích xuất và mapped thông qua các hàm callback
+   - English content normalized from the original source text
+   - English content normalized from the original source text
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
-3. **Tránh Race Condition**:
-   - Kiểm tra signal.aborted trước khi xử lý response
-   - Chỉ cập nhật state nếu request hiện tại là request mới nhất
-   - Cleanup function hủy request khi component unmount hoặc dependency thay đổi
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
-## Xử lý vấn đề NextJS stack frames
+English content normalized from the original source text.
 
-Khi API load lâu, NextJS original stackframes chạy liên tục là do:
+English content normalized from the original source text.
 
-1. **React Strict Mode**: NextJS mặc định chạy useEffect hai lần trong development
-2. **Waterfall requests**: Các stack frames là yêu cầu tài nguyên từ NextJS
-3. **Server Components & Suspense**: NextJS tải lại các Server Components
+1. **React Strict Mode**: English content normalized from the original source text.
+2. **Waterfall requests**: English content normalized from the original source text.
+3. **Server Components & Suspense**: English content normalized from the original source text.
 
-### Giải pháp:
+English content normalized from the original source text.
 
-1. **AbortController**: Đã triển khai để hủy request cũ, tránh race condition
-2. **Giảm re-render**: Sử dụng memoization để tránh tạo lại các hàm
-3. **Tối ưu dependency array**: Chỉ re-fetch khi thực sự cần thiết
+1. **AbortController**: English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
 
-## Các Best practices
+English content normalized from the original source text.
 
-1. Luôn memoize các hàm xử lý dữ liệu để tránh re-render không cần thiết
-2. Sử dụng AbortController để tránh race condition
-3. Kiểm tra response trước khi cập nhật state
-4. Sử dụng cleanup function trong useEffect
+English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.

@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /brand-translations/:brandTranslationId
+English content normalized from the original source text.
 
 actor "User" as U
 participant "BrandTranslationController" as BTC

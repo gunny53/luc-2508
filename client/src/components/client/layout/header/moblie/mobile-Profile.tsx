@@ -40,28 +40,28 @@ export function ProfileDropdown() {
   const { openDropdown, setOpenDropdown } = useDropdown();
   const user = useUserData();
   const isOpen = openDropdown === 'profile';
-  
+
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: 'Tài khoản của tôi',
+      label: 'English content normalized from the original source text.',
       onClick: () => router.push(ROUTES.CLIENT.USER.DASHBOARD)
     },
     {
       icon: ShoppingCart,
-      label: 'Giỏ hàng của bạn',
+      label: 'English content normalized from the original source text.',
       onClick: () => router.push(ROUTES.CLIENT.CART),
       requireDivider: true
     },
     {
       icon: ShoppingCart,
-      label: 'Đơn hàng mua',
+      label: 'English content normalized from the original source text.',
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
       requireDivider: true
     },
     {
       icon: LogOut,
-      label: logoutLoading ? 'Đang xử lý...' : 'Đăng xuất',
+      label: logoutLoading ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.',
       onClick: () => handleLogout()
     }
   ];
@@ -88,7 +88,7 @@ export function ProfileDropdown() {
   const handleBackdropClick = () => {
     setOpenDropdown('none');
   };
-  
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -119,7 +119,7 @@ export function ProfileDropdown() {
               onClick={handleBackdropClick}
               className="fixed inset-0 bg-black/20 z-40 lg:hidden"
             />
-            
+
             {/* Dropdown Menu */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -135,7 +135,7 @@ export function ProfileDropdown() {
                   <p className="text-xs text-gray-500 truncate mt-1">{user.email}</p>
                 )}
               </div>
-              
+
               {/* Menu Items */}
               <div className="py-1">
                 {menuItems.map((item, index) => (

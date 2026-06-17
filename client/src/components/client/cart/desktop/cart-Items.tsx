@@ -25,7 +25,7 @@ interface CartItemsProps {
   onQuantityChange: (itemId: string, quantity: number) => void;
 }
 
-export default function CartItems({ 
+export default function CartItems({
   item,
   checked,
   onCheckedChange,
@@ -112,14 +112,14 @@ export default function CartItems({
       return;
     }
 
-    // Gọi API với SKU mới, không phụ thuộc vào state cũ
+    // English content normalized from the original source text.
     const result = await updateCartItem(currentItem.id, {
       skuId: currentSku.id,
-      quantity: currentItem.quantity, 
+      quantity: currentItem.quantity,
     }, true);
 
-    // Sau khi API chạy (thành công hay thất bại), hook `useCart` đã cập nhật lại state
-    // và component sẽ re-render với dữ liệu mới. Chỉ cần đóng Popover.
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
     setIsPopoverOpen(false);
   };
 
@@ -180,25 +180,23 @@ export default function CartItems({
             </Link>
             <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
                 <PopoverTrigger asChild>
-                <button 
+                <button
                     className="text-sm text-muted-foreground mt-1 bg-gray-50 p-1 rounded-sm inline-flex items-center gap-1 hover:bg-gray-100"
                     onClick={(e) => {
                         fetchProductDetails(currentItem.sku.product.id);
                     }}
                 >
-                    Phân loại: {currentItem.sku.value} <ChevronDown className="w-4 h-4" />
+                    English content normalized from the original source text. {currentItem.sku.value} <ChevronDown className="w-4 h-4" />
                 </button>
                 </PopoverTrigger>
                 <PopoverContent className="w-80">
                 <div className="grid gap-4">
                     <div className="space-y-2">
-                    <h4 className="font-medium leading-none">Chọn phân loại</h4>
-                    <p className="text-sm text-muted-foreground">
-                        Chọn biến thể sản phẩm bạn muốn.
-                    </p>
+                    <h4 className="font-medium leading-none">English content normalized from the original source text.</h4>
+                    <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
                     </div>
                     <Separator />
-                    {isLoading && <p>Đang tải...</p>}
+                    {isLoading && <p>English content normalized from the original source text.</p>}
                     {error && <p className="text-red-500">{error}</p>}
                     {productDetails && (
                     <div className="space-y-4">
@@ -242,9 +240,9 @@ export default function CartItems({
                     )}
                     <Separator />
                     <div className="flex justify-end gap-2">
-                        <Button variant="outline" onClick={() => setIsPopoverOpen(false)} disabled={isUpdating}>Trở lại</Button>
+                        <Button variant="outline" onClick={() => setIsPopoverOpen(false)} disabled={isUpdating}>English content normalized from the original source text.</Button>
                       <Button onClick={handleConfirmUpdate} disabled={!currentSku || currentSku.id === currentItem.sku.id || isUpdating}>
-                        {isUpdating ? 'Đang cập nhật...' : 'Xác nhận'}
+                        {isUpdating ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
                       </Button>
                     </div>
                 </div>
@@ -267,22 +265,22 @@ export default function CartItems({
 
       {/* Quantity: w-[15%] */}
       <div className="w-[15%] flex items-center justify-center">
-        <button 
-          onClick={() => handleQuantityChange(quantity - 1)} 
+        <button
+          onClick={() => handleQuantityChange(quantity - 1)}
           className="p-1 border rounded-l disabled:opacity-50"
           disabled={quantity <= 1 || isUpdating}
         >
           <Minus size={16} />
         </button>
-        <input 
-          type="number" 
-          value={quantity} 
-          onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10) || 1)} 
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10) || 1)}
           disabled={isUpdating}
           className="w-12 text-center border-t border-b outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none disabled:opacity-50"
         />
-        <button 
-          onClick={() => handleQuantityChange(quantity + 1)} 
+        <button
+          onClick={() => handleQuantityChange(quantity + 1)}
           className="p-1 border rounded-r disabled:opacity-50"
           disabled={quantity >= currentItem.sku.stock || isUpdating}
         >

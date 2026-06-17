@@ -69,4 +69,4 @@ export function AnimatedButton({ children, className, ...props }: ButtonProps) {
       </Button>
     </motion.div>
   )
-} 
+}

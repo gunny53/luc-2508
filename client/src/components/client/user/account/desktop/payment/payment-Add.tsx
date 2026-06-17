@@ -31,7 +31,7 @@ export default function PaymentAdd({
   const handleAddCard = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: Gửi dữ liệu lên server tại đây
+    // English content normalized from the original source text.
     setTimeout(() => {
       setLoading(false);
       onOpenChange(false);

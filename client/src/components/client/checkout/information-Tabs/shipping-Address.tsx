@@ -23,8 +23,8 @@ interface ShippingAddressProps {
   onSelectExistingAddress: (address: Address) => void;
 }
 
-export function ShippingAddress({ 
-  formData, 
+export function ShippingAddress({
+  formData,
   handleChange,
   addresses,
   onSelectExistingAddress
@@ -35,7 +35,7 @@ export function ShippingAddress({
   const [savedAddresses, setSavedAddresses] = useState<ProfileAddress[]>([]);
   const [isLoadingAddresses, setIsLoadingAddresses] = useState(true);
 
-  // Hooks để lấy data cho việc mapping names
+  // English content normalized from the original source text.
   const { data: provincesData } = useProvinces();
   const { data: districtsData } = useDistricts(
     { provinceId: parseInt(formData.province?.split('|')[0] || '0') },
@@ -50,12 +50,12 @@ export function ShippingAddress({
   const handleAddressFormChange = useCallback((provinceId: string, districtId: string, wardCode: string) => {
     // Only update if not selecting existing address to prevent conflicts
     if (!isSelectingAddress) {
-      // Lấy tên tương ứng với ID
+      // English content normalized from the original source text.
       const provinceName = provincesData?.data?.find(p => p.ProvinceID.toString() === provinceId)?.ProvinceName || '';
       const districtName = districtsData?.data?.find(d => d.DistrictID.toString() === districtId)?.DistrictName || '';
       const wardName = wardsData?.data?.find(w => w.WardCode === wardCode)?.WardName || '';
 
-      // Cập nhật formData với format "ID|Name" để information-Index có thể parse đúng
+      // English content normalized from the original source text.
       if (provinceId && provinceName) {
         handleChange('province', `${provinceId}|${provinceName}`);
       }
@@ -66,7 +66,7 @@ export function ShippingAddress({
         handleChange('ward', `${wardCode}|${wardName}`);
       }
 
-      // Lưu thông tin vào Redux với tên tương ứng
+      // English content normalized from the original source text.
       dispatch(setShippingInfo({
         provinceId,
         districtId,
@@ -98,15 +98,15 @@ export function ShippingAddress({
 
   const handleAddressSelect = (id: string) => {
     setSelectedAddressId(id);
-    
+
     const selected = savedAddresses.find((addr) => addr.id === id);
     if (selected) {
       console.log('[ShippingAddress] Selected address:', selected);
-      
+
       if (!isSelectingAddress) {
         setIsSelectingAddress(true);
       }
-      
+
       const addressToUpdate: Address = {
         id: selected.id,
         isDefault: selected.isDefault,
@@ -116,10 +116,10 @@ export function ShippingAddress({
         ward: `${selected.wardCode}|${selected.ward}`,
         district: `${selected.districtId}|${selected.district}`,
         province: `${selected.provinceId}|${selected.province}`,
-        type: selected.addressType === 'HOME' ? 'NHÀ RIÊNG' : 'VĂN PHÒNG',
+        type: selected.addressType === 'HOME' ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.',
       };
 
-      // Lưu thông tin shipping vào Redux từ địa chỉ có sẵn
+      // English content normalized from the original source text.
       dispatch(setShippingInfo({
         provinceId: selected.provinceId?.toString() || '',
         districtId: selected.districtId?.toString() || '',
@@ -128,7 +128,7 @@ export function ShippingAddress({
         districtName: selected.district,
         wardName: selected.ward
       }));
-      
+
       setTimeout(() => {
         onSelectExistingAddress(addressToUpdate);
       }, 0);
@@ -140,9 +140,7 @@ export function ShippingAddress({
       <CardHeader className="pb-3">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 sm:justify-between">
           <CardTitle className="flex items-center text-base font-semibold">
-            <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
-            Thông tin nhận hàng
-          </CardTitle>
+            <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />English content normalized from the original source text.</CardTitle>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
             {!isSelectingAddress && savedAddresses.length > 0 && (
               <Button
@@ -150,37 +148,33 @@ export function ShippingAddress({
                 size="sm"
                 className="h-8 text-sm w-full sm:w-auto"
                 onClick={() => {
-                  // Đánh dấu chuyển sang chế độ chọn địa chỉ có sẵn
+                  // English content normalized from the original source text.
                   setIsSelectingAddress(true);
-                  
+
                   // Clear any previously selected address
                   if (selectedAddressId) {
                     setSelectedAddressId('');
                   }
                 }}
               >
-                <Book className="h-4 w-4 mr-1.5 flex-shrink-0" />
-                Chọn địa chỉ có sẵn
-              </Button>
+                <Book className="h-4 w-4 mr-1.5 flex-shrink-0" />English content normalized from the original source text.</Button>
             )}
           </div>
         </div>
         <CardDescription className="text-sm font-light mt-2">
-          {isSelectingAddress ? 'Chọn địa chỉ giao hàng có sẵn' : 'Địa chỉ giao hàng của bạn'}
+          {isSelectingAddress ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {/* Luôn hiển thị trường tên người nhận và số điện thoại, ngay cả khi đang chọn địa chỉ có sẵn */}
+          {/* English content normalized from the original source text. */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
-              <Label htmlFor="receiverName" className="text-xs font-medium">
-                Tên người nhận
-              </Label>
+              <Label htmlFor="receiverName" className="text-xs font-medium">English content normalized from the original source text.</Label>
               <Input
                 id="receiverName"
                 name="receiverName"
-                placeholder="Nhập tên người nhận"
+                placeholder="English content normalized from the original source text."
                 value={formData.receiverName || ''}
                 onChange={handleChange}
                 className="text-sm"
@@ -188,13 +182,11 @@ export function ShippingAddress({
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="receiverPhone" className="text-xs font-medium">
-                Số điện thoại người nhận
-              </Label>
+              <Label htmlFor="receiverPhone" className="text-xs font-medium">English content normalized from the original source text.</Label>
               <Input
                 id="receiverPhone"
                 name="receiverPhone"
-                placeholder="Nhập số điện thoại người nhận"
+                placeholder="English content normalized from the original source text."
                 value={formData.receiverPhone || ''}
                 onChange={handleChange}
                 className="text-sm"
@@ -211,7 +203,7 @@ export function ShippingAddress({
                 className="space-y-3"
               >
                 {isLoadingAddresses ? (
-                  <p>Đang tải địa chỉ...</p>
+                  <p>English content normalized from the original source text.</p>
                 ) : (
                   savedAddresses.map((address) => (
                   <div
@@ -220,8 +212,8 @@ export function ShippingAddress({
                       selectedAddressId === address.id ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'
                     }`}
                   >
-                    <RadioGroupItem 
-                      value={address.id} 
+                    <RadioGroupItem
+                      value={address.id}
                       id={address.id}
                       className="mt-1"
                     />
@@ -231,10 +223,10 @@ export function ShippingAddress({
                     >
                       <div className="flex items-center gap-2">
                         <span className="text-sm bg-gray-100 px-2 py-0.5 rounded">
-                          {address.addressType === 'HOME' ? 'Nhà riêng' : 'Văn phòng'}
+                          {address.addressType === 'HOME' ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
                         </span>
                         {address.isDefault && (
-                          <span className="text-xs text-red-500">MẶC ĐỊNH</span>
+                          <span className="text-xs text-red-500">English content normalized from the original source text.</span>
                         )}
                       </div>
                       <div className="text-sm">
@@ -246,7 +238,7 @@ export function ShippingAddress({
               )}
               </RadioGroup>
               <div className="flex items-center">
-                <span className="text-sm mr-2">hoặc</span>
+                <span className="text-sm mr-2">English content normalized from the original source text.</span>
                 <Button
                   variant="link"
                   className="text-red-500 font-normal p-0 h-auto text-sm hover:text-red-600"
@@ -254,7 +246,7 @@ export function ShippingAddress({
                     // Update local state
                     setIsSelectingAddress(false);
                     setSelectedAddressId('');
-                    
+
                     // Clear address data
                     const clearedAddressData: Address = {
                       id: '',
@@ -264,23 +256,21 @@ export function ShippingAddress({
                       ward: '',
                       district: '',
                       province: '',
-                      type: 'NHÀ RIÊNG',
+                      type: 'English content normalized from the original source text.',
                       isDefault: false
                     };
-                    
+
                     setTimeout(() => {
                       onSelectExistingAddress(clearedAddressData);
                     }, 0);
                   }}
-                >
-                  nhập địa chỉ mới
-                </Button>
+                >English content normalized from the original source text.</Button>
               </div>
             </div>
           ) : (
             <>
               {/* Address Selection Form */}
-              <SimpleAddressSelect 
+              <SimpleAddressSelect
                 disabled={false}
                 onAddressChange={handleAddressFormChange}
                 initialValues={{
@@ -289,16 +279,14 @@ export function ShippingAddress({
                   wardCode: formData.ward?.split('|')[0] || '',
                 }}
               />
-              
+
               {/* Specific Address Detail */}
               <div className="space-y-1">
-                <Label htmlFor="address" className="text-xs font-medium">
-                  Địa chỉ cụ thể
-                </Label>
+                <Label htmlFor="address" className="text-xs font-medium">English content normalized from the original source text.</Label>
                 <Input
                   id="address"
                   name="address"
-                  placeholder="Số nhà, tên đường, khu vực..."
+                  placeholder="English content normalized from the original source text."
                   value={formData.address}
                   onChange={handleChange}
                   className="text-sm h-9"
@@ -309,13 +297,11 @@ export function ShippingAddress({
           )}
 
           <div className="space-y-1">
-            <Label htmlFor="note" className="text-xs font-medium">
-              Ghi chú
-            </Label>
+            <Label htmlFor="note" className="text-xs font-medium">English content normalized from the original source text.</Label>
             <Textarea
               id="note"
               name="note"
-              placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn"
+              placeholder="English content normalized from the original source text."
               value={formData.note}
               onChange={handleChange}
               className="h-20 text-sm resize-none"

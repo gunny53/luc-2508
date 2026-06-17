@@ -18,7 +18,7 @@ export enum OrderStatus {
   VERIFY_PAYMENT = "VERIFY_PAYMENT",
 }
 
-// --- Interfaces cho Tạo Đơn hàng (Create Order) ---
+// English content normalized from the original source text.
 interface ReceiverInfo {
   name: string;
   phone: string;
@@ -28,12 +28,9 @@ interface ReceiverInfo {
   wardCode: string;
 }
 
-// --- Interfaces cho Tạo Đơn hàng (Create Order) ---
+// English content normalized from the original source text.
 
-/**
- * @interface ShippingInfo
- * @description Thông tin chi tiết về gói hàng và dịch vụ vận chuyển được chọn.
- */
+/* English content normalized from the original source text. */
 interface ShippingInfo {
   length: number;
   weight: number;
@@ -44,10 +41,7 @@ interface ShippingInfo {
   shippingFee: number;
 }
 
-/**
- * @interface ShopOrderCreationInfo
- * @description Thông tin tạo đơn hàng cho một shop cụ thể.
- */
+/* English content normalized from the original source text. */
 interface ShopOrderCreationInfo {
   shopId: string;
   receiver: ReceiverInfo;
@@ -57,10 +51,7 @@ interface ShopOrderCreationInfo {
   isCod: boolean;
 }
 
-/**
- * @interface OrderCreateRequest
- * @description Cấu trúc request body để tạo một hoặc nhiều đơn hàng.
- */
+/* English content normalized from the original source text. */
 export interface OrderCreateRequest {
   shops: ShopOrderCreationInfo[];
   platformDiscountCodes: string[];
@@ -93,7 +84,7 @@ export interface OrderCreateResponse {
   }
 }
 
-// --- Interfaces cho Lấy Đơn hàng (Get Order) ---
+// English content normalized from the original source text.
 
 interface OrderReceiver {
   name: string;
@@ -107,7 +98,7 @@ interface ProductTranslation {
   description: string;
   languageId: string;
 }
- 
+
 export interface OrderItem {
   id: string;
   productId: string;
@@ -140,10 +131,7 @@ export interface Order {
   totalPrice: number;
 }
 
-/**
- * @interface ProductInfo
- * @description Thông tin chi tiết sản phẩm cho trang checkout
- */
+/* English content normalized from the original source text. */
 export interface ProductInfo {
   id: string;
   shopName: string;
@@ -152,7 +140,7 @@ export interface ProductInfo {
   quantity: number;
   subtotal: number;
   price: number;
-  variation?: string; // Thêm thuộc tính variation
+  variation?: string; // English content normalized from the original source text.
 }
 
 export interface OrderGetAllResponse {
@@ -167,15 +155,15 @@ export interface OrderGetByIdResponse {
 
 
 export interface OrderCancelResponse {
-  // Dữ liệu trả về sau khi huỷ đơn
+  // English content normalized from the original source text.
   message: string;
 }
 
 export interface CreatePaymentVnPayUrl{
   amount: number;
   orderInfo: string;
-  orderId: string | number;  // paymentId có thể là string hoặc number từ API
-  locale: string | "vn";  
+  orderId: string | number;  // English content normalized from the original source text.
+  locale: string | "vn";
 }
 export interface CreatePaymentVnPayUrlResponse{
   statusCode: number;
@@ -186,7 +174,7 @@ export interface CreatePaymentVnPayUrlResponse{
   }
 }
 
-// Interface cho kết quả trả về từ hàm handleCreateOrder
+// English content normalized from the original source text.
 export interface OrderHandlerResult {
   success: boolean;
   paymentMethod?: string;
@@ -205,10 +193,7 @@ export interface OrderHandlerResult {
 // MANAGE ORDER INTERFACES
 // ==================================================
 
-/**
- * @interface ManageOrderUser
- * @description Thông tin user trong manage order
- */
+/* English content normalized from the original source text. */
 export interface ManageOrderUser {
   id: string;
   name: string;
@@ -216,20 +201,14 @@ export interface ManageOrderUser {
   phoneNumber: string;
 }
 
-/**
- * @interface ManageOrderProductTranslation
- * @description Thông tin dịch thuật sản phẩm
- */
+/* English content normalized from the original source text. */
 export interface ManageOrderProductTranslation {
   id: string;
   name: string;
   languageId: string;
 }
 
-/**
- * @interface ManageOrderItem
- * @description Chi tiết item trong đơn hàng manage
- */
+/* English content normalized from the original source text. */
 export interface ManageOrderItem {
   id: string;
   productId: string;
@@ -244,10 +223,7 @@ export interface ManageOrderItem {
   createdAt: string;
 }
 
-/**
- * @interface ManageOrder
- * @description Đơn hàng trong hệ thống quản lý
- */
+/* English content normalized from the original source text. */
 export interface ManageOrder {
   id: string;
   userId: string;
@@ -314,14 +290,8 @@ export interface UpdateStatusRequest{
   status: OrderStatus
   note: string;
 }
-/**
- * @interface Calculate Order
- * @description API Tính toán giá trị đơn hàng kèm mã giảm giá
- */
-/**
- * @interface ShopCalculationInfo
- * @description Thông tin để tính toán giá trị đơn hàng cho một shop.
- */
+/* English content normalized from the original source text. */
+/* English content normalized from the original source text. */
 interface ShopCalculationInfo {
   shopId: string;
   cartItemIds: string[];
@@ -329,10 +299,7 @@ interface ShopCalculationInfo {
   discountCodes: string[];
 }
 
-/**
- * @interface CalculateOrderRequest
- * @description Cấu trúc request body để tính toán giá trị cuối cùng của đơn hàng.
- */
+/* English content normalized from the original source text. */
 export interface CalculateOrderRequest {
   shops: ShopCalculationInfo[];
   platformDiscountCodes: string[];

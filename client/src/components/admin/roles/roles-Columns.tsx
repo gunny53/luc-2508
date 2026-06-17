@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { Permission, RoleGetAllResponse } from "@/types/auth/role.interface";
 import { Badge } from "@/components/ui/badge";
 
-// Extend Role type với đầy đủ thuộc tính cần thiết
+// English content normalized from the original source text.
 export interface Role {
   id: string;
   name: string;
@@ -102,17 +102,17 @@ export const RolesColumns = ({
     {
       accessorKey: "isActive",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Trạng thái" />
+        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
       ),
       cell: ({ row }) => {
         const isActive = row.getValue("isActive") as boolean;
         return (
           <div className="flex justify-start">
-            <Badge 
-              variant={isActive ? "default" : "outline"} 
+            <Badge
+              variant={isActive ? "default" : "outline"}
               className={isActive ? "bg-green-500 hover:bg-green-600" : "text-slate-500 border-slate-300"}
             >
-              {isActive ? "Hoạt động" : "Không hoạt động"}
+              {isActive ? "English content normalized from the original source text." : "English content normalized from the original source text."}
             </Badge>
           </div>
         );
@@ -121,7 +121,7 @@ export const RolesColumns = ({
     {
       accessorKey: "createdAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Tạo lúc" />
+        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
       ),
       cell: ({ row }) => {
         return (
@@ -134,7 +134,7 @@ export const RolesColumns = ({
     {
       accessorKey: "updatedAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Cập nhật lúc" />
+        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
       ),
       cell: ({ row }) => {
         return (

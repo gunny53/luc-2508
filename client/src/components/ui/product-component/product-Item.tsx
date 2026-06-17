@@ -7,7 +7,7 @@ import { getProductUrl } from '@/components/client/products/shared/routes';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface ProductItemProps {
-  product?: ClientProduct; // Sử dụng ClientProduct interface thay vì Product
+  product?: ClientProduct; // English content normalized from the original source text.
   isLoading?: boolean;
 }
 
@@ -31,17 +31,17 @@ export const ProductItemSkeleton: React.FC = () => {
 };
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
-  // Nếu đang loading hoặc không có dữ liệu sản phẩm, hiển thị skeleton
+  // English content normalized from the original source text.
   if (isLoading || !product) {
     return <ProductItemSkeleton />;
   }
 
-  // Tính toán giá hiển thị và giảm giá
+  // English content normalized from the original source text.
   const originalPrice = product.virtualPrice;
   const salePrice = product.basePrice;
   const hasDiscount = originalPrice > salePrice;
-  const discountPercent = hasDiscount 
-    ? Math.round(((originalPrice - salePrice) / originalPrice) * 100) 
+  const discountPercent = hasDiscount
+    ? Math.round(((originalPrice - salePrice) / originalPrice) * 100)
     : 0;
 
   return (
@@ -49,7 +49,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
       <div className="group block w-full bg-white border border-gray-200 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-200 ease-in-out cursor-pointer overflow-hidden">
         <div className="relative">
           <Image
-            src={product.images[0] || '/images/placeholder-product.png'} // Sử dụng ảnh đầu tiên trong mảng images
+            src={product.images[0] || '/images/placeholder-product.png'} // English content normalized from the original source text.
             alt={product.name}
             width={200}
             height={200}
@@ -77,7 +77,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
                   </span>
                 )}
               </div>
-              {/* ClientProduct không có trường sold, có thể thêm nếu API trả về */}
+              {/* English content normalized from the original source text. */}
             </div>
           </div>
         </div>

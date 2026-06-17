@@ -35,7 +35,7 @@ export default function ProductGalleryMobile({ media }: Props) {
   const handleTouchStart = (e: React.TouchEvent) => {
     dragStartX.current = e.touches[0].clientX;
     if (wrapperRef.current) {
-      // Dùng CSS class thay vì style
+      // English content normalized from the original source text.
       wrapperRef.current.classList.remove(styles.galleryWrapper);
       wrapperRef.current.classList.add(styles.galleryWrapperNoTransition);
     }
@@ -45,7 +45,7 @@ export default function ProductGalleryMobile({ media }: Props) {
     if (!wrapperRef.current || dragStartX.current === null) return;
     const deltaX = e.touches[0].clientX - dragStartX.current;
 
-    // Sử dụng CSS variable thay cho trực tiếp style.transform
+    // English content normalized from the original source text.
     wrapperRef.current.style.setProperty(
       "--translate-x",
       `calc(${-currentIndex * 100}% + ${deltaX}px)`
@@ -56,7 +56,7 @@ export default function ProductGalleryMobile({ media }: Props) {
     if (!wrapperRef.current || dragStartX.current === null) return;
     const deltaX = e.changedTouches[0].clientX - dragStartX.current;
 
-    // Thêm lại transition khi touch kết thúc
+    // English content normalized from the original source text.
     // wrapperRef.current.classList.add(styles.galleryWrapper);
     wrapperRef.current.classList.remove(styles.galleryWrapperNoTransition);
 
@@ -65,7 +65,7 @@ export default function ProductGalleryMobile({ media }: Props) {
     } else if (deltaX > 40 && currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
     } else {
-      // Reset về vị trí hiện tại nếu không thay đổi slide
+      // English content normalized from the original source text.
       wrapperRef.current.style.setProperty(
         "--translate-x",
         `-${currentIndex * 100}%`
@@ -131,10 +131,10 @@ export default function ProductGalleryMobile({ media }: Props) {
     }
   }, [currentIndex]);
 
-  // Sử dụng custom CSS module và CSS variables
+  // English content normalized from the original source text.
   useEffect(() => {
     if (wrapperRef.current) {
-      // luôn có transition khi đổi slide
+      // English content normalized from the original source text.
       wrapperRef.current.classList.add(styles.galleryWrapper);
       wrapperRef.current.style.setProperty(
         "--translate-x",
@@ -171,7 +171,7 @@ export default function ProductGalleryMobile({ media }: Props) {
                 <video
                   ref={(el) => {
                     videoRefs.current[index] = el;
-                  }} // ✅ không return gì, hợp lệ với React Ref
+                  }} // English content normalized from the original source text.
                   src={item.src}
                   preload="metadata"
                   className="w-full h-full object-contain"

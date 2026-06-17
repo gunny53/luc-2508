@@ -1,8 +1,8 @@
 import { BaseResponse, PaginationRequest } from "../base.interface";
 
-// Định nghĩa chi tiết dữ liệu permission
+// English content normalized from the original source text.
 export interface PermissionDetail {
-    id: string; // Thay đổi từ number sang string cho UUID
+    id: string; // English content normalized from the original source text.
     name: string;
     description: string;
     module: string;
@@ -17,7 +17,7 @@ export interface PermissionDetail {
     updatedAt: string;
 }
 
-// Interface request và response
+// English content normalized from the original source text.
 export interface PerCreateRequest {
     name: string;
     module: string;
@@ -32,13 +32,13 @@ export interface PerUpdateRequest {
     method: string;
 }
 
-// Loại bỏ generic và định nghĩa rõ kiểu data 
+// English content normalized from the original source text.
 export interface PerGetAllResponse extends BaseResponse {
-    data: PermissionDetail[]; // Chỉ định rõ kiểu dữ liệu tại đây
+    data: PermissionDetail[]; // English content normalized from the original source text.
 }
 
 export interface PerCreateResponse extends BaseResponse {
-    data: PermissionDetail; // Chỉ định rõ kiểu dữ liệu tại đây
+    data: PermissionDetail; // English content normalized from the original source text.
 }
 
 export interface PerUpdateResponse extends BaseResponse {
@@ -53,7 +53,7 @@ export interface PerGetByIdResponse extends BaseResponse {
     data: PermissionDetail;
 }
 
-// Interface khác
+// English content normalized from the original source text.
 export interface PerListResponse {
     data: PermissionDetail[];
     totalItems: number;
@@ -67,7 +67,7 @@ export interface PerDeleteRequest {
 }
 
 export interface PermissionItem {
-    id: string; // Thay đổi từ number sang string cho UUID
+    id: string; // English content normalized from the original source text.
     action: string;
     description: string;
 }

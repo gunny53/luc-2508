@@ -80,7 +80,7 @@ export interface User {
   addresses: UserAddress[];
 }
 
-// LẤY TẤT CẢ DANH SÁCH NGƯỜI DÙNG - GET ALL USER
+// English content normalized from the original source text.
 export interface UserGetAllResponse extends BaseResponse {
   data: User[];
   metadata: {
@@ -93,7 +93,7 @@ export interface UserGetAllResponse extends BaseResponse {
   };
 }
 
-// TẠO NGƯỜI DÙNG - CREATE USER
+// English content normalized from the original source text.
 export interface UserCreateRequest {
   email: string;
   name: string;
@@ -109,7 +109,7 @@ export interface UserCreateResponse extends BaseResponse {
   data: User;
 }
 
-// SỬA NGƯỜI DÙNG - UPDATE USER
+// English content normalized from the original source text.
 export interface UserUpdateRequest {
   // id excluded from the request body as it should be provided as URL parameter only
   email?: string;
@@ -124,5 +124,5 @@ export interface UserUpdateResponse extends BaseResponse {
   data: User;
 }
 
-// XÓA NGƯỜI DÙNG - DELETE USER
+// English content normalized from the original source text.
 export interface UserDeleteResponse extends BaseResponse {}

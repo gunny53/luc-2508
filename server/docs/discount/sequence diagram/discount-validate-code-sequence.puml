@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /discounts/validate-code
+English content normalized from the original source text.
 
-actor "Người dùng" as U
+English content normalized from the original source text.
 participant "DiscountController" as DC
 participant "DiscountService" as DS
 participant "DiscountRepo" as DR
@@ -26,7 +26,7 @@ DR --> DS: discount | null
 deactivate DR
 
 alt discount == null
-  DS --> DC: { isValid: false, error: 'Mã voucher không tồn tại' }
+  DS --> DC: English content normalized from the original source text.
   DC --> U: 200 OK + JSON
   deactivate DS
   deactivate DC
@@ -34,7 +34,7 @@ alt discount == null
 end
 
 alt discount.status != ACTIVE OR out of time OR out of uses
-  DS --> DC: { isValid: false, error: 'Không còn hiệu lực/Đã hết lượt sử dụng' }
+  DS --> DC: English content normalized from the original source text.
   DC --> U: 200 OK + JSON
   deactivate DS
   deactivate DC
@@ -43,7 +43,7 @@ end
 
 DS -> DS: orderTotal = calculateOrderTotalFromCartItems(cartItemIds)
 alt orderTotal < minOrderValue
-  DS --> DC: { isValid: false, error: 'Chưa đạt giá trị tối thiểu' }
+  DS --> DC: English content normalized from the original source text.
   DC --> U: 200 OK + JSON
   deactivate DS
   deactivate DC
@@ -54,7 +54,7 @@ alt discount.applyType == SPECIFIC
   DS -> DS: getCartItemInfo(cartItemIds) → { productIds, categoryIds, brandIds }
   DS -> DS: validate applicability (match any)
   alt not applicable
-    DS --> DC: { isValid: false, error: 'Không áp dụng cho sản phẩm này' }
+    DS --> DC: English content normalized from the original source text.
     DC --> U: 200 OK + JSON
     deactivate DS
     deactivate DC

@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
-import { 
-  selectShopProducts, 
-  applyVoucher, 
+import {
+  selectShopProducts,
+  applyVoucher,
   removeVoucher,
-  selectAppliedVouchers, 
+  selectAppliedVouchers,
   selectShippingInfo,
   selectShopOrders,
   updateShippingForShop,
@@ -29,10 +29,10 @@ import { Truck, Clock, X } from 'lucide-react';
 function ProductHeader() {
   return (
     <div className="hidden lg:grid grid-cols-12 gap-4 py-3 px-6 bg-gray-50 text-sm font-medium text-gray-500 border-b">
-      <div className="col-span-6">Sản phẩm</div>
-      <div className="col-span-2 text-center">Đơn giá</div>
-      <div className="col-span-2 text-center">Số lượng</div>
-      <div className="col-span-2 text-center">Thành tiền</div>
+      <div className="col-span-6">English content normalized from the original source text.</div>
+      <div className="col-span-2 text-center">English content normalized from the original source text.</div>
+      <div className="col-span-2 text-center">English content normalized from the original source text.</div>
+      <div className="col-span-2 text-center">English content normalized from the original source text.</div>
     </div>
   );
 }
@@ -56,7 +56,7 @@ function ProductItem({ item }: { item: ProductInfo }) {
             {item.name}
           </h3>
           <p className="text-gray-500 mt-1 text-xs lg:text-sm">
-            Phân loại: {item.variation}
+            English content normalized from the original source text. {item.variation}
           </p>
           {/* Mobile Only: Price & Quantity */}
           <div className="flex items-center justify-between mt-2 lg:hidden">
@@ -100,7 +100,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
   const selectedShippingMethod = currentShopOrder?.selectedShippingMethod;
 
   const [isShippingModalOpen, setIsShippingModalOpen] = useState(false);
-  
+
   const { shippingMethods, loading: shippingLoading, error: shippingError } = useShipping(shopId);
 
   const shopName = products.length > 0 ? products[0].shopName : 'Shop';
@@ -112,7 +112,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
     if (shippingMethods.length > 0 && !selectedShippingMethod) {
       const defaultMethod = shippingMethods[0];
       dispatch(updateShippingForShop({ shopId, shippingMethod: defaultMethod }));
-      // Cập nhật phí vận chuyển vào Redux state
+      // English content normalized from the original source text.
       dispatch(updateShippingFeeForShop({ shopId, shippingFee: defaultMethod.price }));
     }
   }, [dispatch, shopId, shippingMethods, selectedShippingMethod]);
@@ -123,7 +123,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
 
   const handleSelectShippingMethod = (method: ShippingMethod) => {
     dispatch(updateShippingForShop({ shopId, shippingMethod: method }));
-    // Cập nhật phí vận chuyển khi thay đổi phương thức
+    // English content normalized from the original source text.
     dispatch(updateShippingFeeForShop({ shopId, shippingFee: method.price }));
   };
 
@@ -152,33 +152,33 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
         <div className="flex flex-col gap-4">
           {/* Voucher Section */}
           <div className="">
-            <VoucherButton 
-              shopName={shopName} 
-              onApplyVoucher={handleApplyVoucher} 
+            <VoucherButton
+              shopName={shopName}
+              onApplyVoucher={handleApplyVoucher}
               shopId={shopId}
               cartItemIds={cartItemIds}
             />
           </div>
-          
+
           {/* Shipping Method Section */}
           <div className="border-t border-dashed border-gray-300 pt-3 bg-[#FAFDFF] px-6">
             {shippingLoading ? (
               <div className="flex items-center justify-center py-4">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                <span className="ml-2 text-sm text-gray-600">Đang tải phương thức vận chuyển...</span>
+                <span className="ml-2 text-sm text-gray-600">English content normalized from the original source text.</span>
               </div>
             ) : shippingError ? (
               <div className="text-center py-4">
                 <p className="text-red-600 text-sm mb-2">{shippingError}</p>
-                <p className="text-xs text-gray-500">Vui lòng kiểm tra lại địa chỉ giao hàng</p>
+                <p className="text-xs text-gray-500">English content normalized from the original source text.</p>
               </div>
             ) : !selectedShippingMethod ? (
               <div className="text-center py-4">
-                <p className="text-gray-600 text-sm mb-2">Chưa có phương thức vận chuyển khả dụng</p>
+                <p className="text-gray-600 text-sm mb-2">English content normalized from the original source text.</p>
                 <p className="text-xs text-gray-500">
-                  {!shippingInfo?.districtId || !shippingInfo?.wardCode 
-                    ? 'Vui lòng chọn địa chỉ giao hàng' 
-                    : 'Vui lòng kiểm tra lại địa chỉ giao hàng'
+                  {!shippingInfo?.districtId || !shippingInfo?.wardCode
+                    ? 'English content normalized from the original source text.'
+                    : 'English content normalized from the original source text.'
                   }
                 </p>
               </div>
@@ -186,10 +186,10 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-sm text-black">Phương thức vận chuyển:</span>
+                    <span className="text-sm text-black">English content normalized from the original source text.</span>
                     <span className="text-sm text-black">
-                      {selectedShippingMethod.name === 'Hàng nhẹ' ? 'Tiêu chuẩn' : 
-                       selectedShippingMethod.name === 'Hàng nặng' ? 'Siêu tốc' : 
+                      {selectedShippingMethod.name === 'English content normalized from the original source text.' ? 'English content normalized from the original source text.' :
+                       selectedShippingMethod.name === 'English content normalized from the original source text.' ? 'English content normalized from the original source text.' :
                        selectedShippingMethod.name}
                     </span>
                   </div>
@@ -200,7 +200,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3">
                   <span className="text-gray-700 font-medium text-sm">
                     ₫{selectedShippingMethod.price.toLocaleString()}
@@ -208,19 +208,17 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                   <button
                     onClick={() => setIsShippingModalOpen(true)}
                     className="text-sm text-blue-600 hover:text-blue-700 font-medium underline"
-                  >
-                    Thay Đổi
-                  </button>
+                  >English content normalized from the original source text.</button>
                 </div>
               </div>
             )}
           </div>
-          
+
           {/* Applied Voucher */}
           {appliedVoucher && (
             <div className="flex items-center justify-between px-6">
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">Voucher áp dụng:</span>
+                <span className="text-sm text-gray-600">English content normalized from the original source text.</span>
                 <span className="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
                   {appliedVoucher.code}
                 </span>
@@ -232,7 +230,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                 <button
                   onClick={() => handleRemoveVoucher(shopId)}
                   className="p-1 hover:bg-red-50 rounded-full transition-colors group"
-                  title="Bỏ voucher"
+                  title="English content normalized from the original source text."
                 >
                   <X className="h-4 w-4 text-gray-400 group-hover:text-red-500" />
                 </button>
@@ -241,7 +239,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
           )}
           {/* Total */}
           <div className="flex items-center justify-end gap-3 pt-2 px-6 border-t border-dashed">
-            <span className="text-sm text-gray-600">Tổng tiền:</span>
+            <span className="text-sm text-gray-600">English content normalized from the original source text.</span>
             <span className="text-xl font-bold text-primary">
               ₫{finalTotal.toLocaleString()}
             </span>
@@ -268,7 +266,7 @@ export function ProductsInfo() {
   const shopProducts = useSelector<RootState, Record<string, ProductInfo[]>>(selectShopProducts);
 
   if (Object.keys(shopProducts).length === 0) {
-    return <p>Không có sản phẩm nào trong giỏ hàng.</p>;
+    return <p>English content normalized from the original source text.</p>;
   }
 
   return (

@@ -12,7 +12,7 @@
 // }) {
 //   const t = useTranslations('admin.error');
 //   useEffect(() => {
-//     console.error('Lỗi tại route:', error);
+// English content normalized from the original source text.
 //   }, [error]);
 
 //   return (

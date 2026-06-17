@@ -22,7 +22,7 @@
 //       const activeCategories = Math.floor(totalCategories * 0.9); // 90% active
 //       const inactiveCategories = totalCategories - activeCategories;
 //       const rootCategories = Math.floor(totalCategories * 0.4); // 40% root categories
-      
+
 //       setStats({
 //         totalCategories,
 //         activeCategories,

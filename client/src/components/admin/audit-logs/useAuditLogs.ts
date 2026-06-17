@@ -22,7 +22,7 @@
 //       const response: AuditLogListResponse = await auditLogsService.getAll(queryParams);
 //       const data = response.data.map((item) => ({
 //         id: item.id,
-//         userEmail: item.userEmail,  
+//         userEmail: item.userEmail,
 //         timestamp: item.timestamp,
 //         action: item.action,
 //         entity: item.entity,

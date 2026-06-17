@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /cart (Add To Cart)
+English content normalized from the original source text.
 
-actor "Người dùng" as U
+English content normalized from the original source text.
 participant "AccessTokenGuard" as AG
 participant "CartController" as CC
 participant "CartService" as CS
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> CC: Forward với user
+AG --> CC: English content normalized from the original source text.
 activate CC
 
 CC -> CS: addToCart(user, { skuId, quantity })

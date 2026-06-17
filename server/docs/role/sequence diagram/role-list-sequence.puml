@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /roles
+English content normalized from the original source text.
 
 actor "Admin" as A
 participant "RoleController" as RC
@@ -23,9 +23,9 @@ RS -> RR: list({ page, limit, name })
 activate RR
 
 note right of RR
-Xây dựng where:
+English content normalized from the original source text.
 • deletedAt = null
-• name contains (insensitive) nếu có
+• English content normalized from the original source text
 Pagination:
 • skip/take theo page/limit
 end note

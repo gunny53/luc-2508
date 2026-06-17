@@ -1,16 +1,16 @@
-# Hướng dẫn triển khai useServerDataTable cho module Permissions
+English content normalized from the original source text.
 
-## Tổng quan các bước chính
+English content normalized from the original source text.
 
-1. Tạo adapter cho service API
-2. Cập nhật hook quản lý dữ liệu (usePermissions)
-3. Cập nhật component hiển thị (PermissionsTable)
+English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
 
-## Triển khai chi tiết
+English content normalized from the original source text.
 
-### 1. Tạo adapter cho service API
+English content normalized from the original source text.
 
-Adapter chuyển đổi cấu trúc dữ liệu API thành định dạng mà hook `useServerDataTable` có thể hiểu được.
+English content normalized from the original source text.
 
 ```typescript
 // src/utils/api-adapters.ts
@@ -21,7 +21,7 @@ export function createDataTableAdapter<T, P = any>(
 ) {
   return async (params?: P) => {
     const response = await fetchFunction(params);
-    
+
     return {
       data: response.data || [],
       metadata: response.metadata || {
@@ -37,9 +37,9 @@ export function createDataTableAdapter<T, P = any>(
 }
 ```
 
-### 2. Cập nhật hook quản lý dữ liệu (usePermissions)
+English content normalized from the original source text.
 
-Hook quản lý nghiệp vụ, sử dụng `useServerDataTable` để xử lý dữ liệu và phân trang.
+English content normalized from the original source text.
 
 ```typescript
 // src/components/admin/permissions/usePermissions-with-hook.ts
@@ -57,10 +57,10 @@ import { useServerDataTable } from "@/hooks/useServerDataTable";
 import { createDataTableAdapter } from "@/utils/api-adapters";
 
 export function usePermissions() {
-  // Tạo adapter cho service
+  English content normalized from the original source text.
   const permissionAdapter = createDataTableAdapter<PermissionDetail>(permissionService.getAll);
 
-  // Sử dụng hook useServerDataTable
+  English content normalized from the original source text.
   const {
     data: permissions,
     loading,
@@ -90,16 +90,16 @@ export function usePermissions() {
     defaultLimit: 10,
   });
 
-  // Logic xử lý các thao tác CRUD
+  English content normalized from the original source text.
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPermission, setSelectedPermission] = useState<Permission | null>(null);
 
-  // Xử lý thêm mới
+  English content normalized from the original source text.
   const handleCreate = async (data: PerCreateRequest) => {
     try {
       await permissionService.create(data);
       showToast("Permission created successfully", "success");
-      // Refresh dữ liệu bằng cách thay đổi sort
+      English content normalized from the original source text.
       handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
       handleCloseModal();
     } catch (error) {
@@ -107,12 +107,12 @@ export function usePermissions() {
     }
   };
 
-  // Xử lý cập nhật
+  English content normalized from the original source text.
   const handleUpdate = async (id: number, data: PerUpdateRequest) => {
     try {
       await permissionService.update(String(id), data);
       showToast("Permission updated successfully", "success");
-      // Refresh dữ liệu
+      English content normalized from the original source text.
       handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
       handleCloseModal();
     } catch (error) {
@@ -120,25 +120,25 @@ export function usePermissions() {
     }
   };
 
-  // Xử lý xóa
+  English content normalized from the original source text.
   const handleDelete = async (id: number) => {
     try {
       await permissionService.delete(String(id));
       showToast("Permission deleted successfully", "success");
-      // Refresh dữ liệu
+      English content normalized from the original source text.
       handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
     } catch (error) {
       showToast(parseApiError(error), "error");
     }
   };
 
-  // Xử lý mở modal
+  English content normalized from the original source text.
   const handleOpenModal = (permission: Permission | null = null) => {
     setSelectedPermission(permission);
     setIsModalOpen(true);
   };
 
-  // Xử lý đóng modal
+  English content normalized from the original source text.
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedPermission(null);
@@ -162,9 +162,9 @@ export function usePermissions() {
 }
 ```
 
-### 3. Cập nhật component hiển thị (PermissionsTable)
+English content normalized from the original source text.
 
-Component hiển thị giao diện người dùng, sử dụng hook quản lý dữ liệu đã được cập nhật.
+English content normalized from the original source text.
 
 ```tsx
 // src/components/admin/permissions/permissions-Table-with-hook.tsx
@@ -220,7 +220,7 @@ export function PermissionsTable() {
       await handleDelete(permissionToDelete.id);
       handleCloseDeleteModal();
     } catch (error) {
-      console.error("Lỗi khi xóa quyền:", error);
+      console.error("English content normalized from the original source text.
     } finally {
       setDeleteLoading(false);
     }
@@ -234,11 +234,11 @@ export function PermissionsTable() {
         await handleCreate(formData);
       }
     } catch (error) {
-      console.error("Lỗi khi xử lý quyền:", error);
+      console.error("English content normalized from the original source text.
     }
   };
 
-  // Tạo bảng với dữ liệu hiện tại
+  English content normalized from the original source text.
   const table = useDataTable({
     data: permissions,
     columns: PermissionsColumns({ onDelete: handleOpenDelete, onEdit: handleOpenModal }),
@@ -295,15 +295,15 @@ export function PermissionsTable() {
 }
 ```
 
-## Triển khai cho modules khác
+English content normalized from the original source text.
 
-Để áp dụng cho các modules khác (Users, Roles, Products, v.v.), bạn cần:
+English content normalized from the original source text.
 
-1. **Tạo adapter** cho service API tương ứng
-2. **Tạo hook quản lý dữ liệu** theo mẫu `usePermissions`
-3. **Cập nhật component hiển thị** sử dụng hook mới
+English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
 
-Ví dụ cho module Users:
+English content normalized from the original source text.
 
 ```typescript
 // useUsers.ts
@@ -314,7 +314,7 @@ import { useServerDataTable } from '@/hooks/useServerDataTable';
 
 export function useUsers() {
   const userAdapter = createDataTableAdapter(userService.getAll);
-  
+
   const {
     data: users,
     loading,
@@ -326,9 +326,9 @@ export function useUsers() {
       // Map user data
     })
   });
-  
-  // Thêm các hàm xử lý CRUD
-  
+
+  English content normalized from the original source text.
+
   return {
     users,
     loading,
@@ -338,8 +338,8 @@ export function useUsers() {
 }
 ```
 
-## Lưu ý
+English content normalized from the original source text.
 
-- Kiểm tra cấu trúc dữ liệu API trả về trước khi triển khai
-- Đảm bảo API hỗ trợ phân trang với các tham số `page`, `limit`, `search`, `sortBy`, `sortOrder`
-- Xử lý đúng các lỗi từ API để tăng trải nghiệm người dùng
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text

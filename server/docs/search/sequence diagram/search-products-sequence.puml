@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /search/products
+English content normalized from the original source text.
 
-actor "Khách/Người dùng" as U
+English content normalized from the original source text.
 participant "SearchController" as SC
 participant "SearchService" as SS
 participant "SearchRepo" as SR
@@ -22,54 +22,54 @@ activate SS
 
 note right of SS
 Validate query:
-• Nếu có q: trim và kiểm tra rỗng
-• Độ dài tối thiểu >= 1
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
-alt query.q tồn tại và hợp lệ
+English content normalized from the original source text.
   SS -> SS: parseQuery(query.q)
   note right of SS
   parseQuery:
-  • getDictionary() (có cache 30 phút)
-  • Tách tokens; match với từ điển → options
-  • q' = phần còn lại sau khi loại token thuộc tính
-  • Trả về { q', options }
+  • English content normalized from the original source text
+  • English content normalized from the original source text
+  • English content normalized from the original source text
+  • English content normalized from the original source text
   end note
   SS -> SS: getDictionary()
-  alt cache còn hiệu lực
-    SS -> SS: dùng dictionaryCache
-  else hết hạn
+  English content normalized from the original source text.
+    SS -> SS: English content normalized from the original source text.
+  else (No)
     SS -> ES: client.search(aggs: unique_attrs)
-    ES -> ESDB: AGGS trên attrs.attrName/attrValue
+    ES -> ESDB: English content normalized from the original source text.
     ESDB --> ES: aggregations
     ES --> SS: aggregations
     SS -> SS: build Map(attrName -> values[]); set cacheExpiry
   end
-  SS -> SS: hợp nhất options → query.filters.attrs
-  SS -> SS: gán query.q = parsed.q
+  SS -> SS: English content normalized from the original source text.
+  SS -> SS: English content normalized from the original source text.
 end
 
 SS -> SR: searchProducts(query)
 activate SR
 
 note right of SR
-Xây dựng esQuery:
-• bool.must: multi_match (productName^3) với q (nếu có)
-• bool.should: multi_match phrase cho từng token (productName^2)
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 • bool.filter: terms brandIds/categoryIds, range skuPrice, nested attrs
 Sort options:
 • Price → skuPrice { order }
 • Sale → _score desc
 • Default → createdAt { order }
-• Thêm _score desc thứ cấp
+• English content normalized from the original source text
 end note
 
 SR -> ES: search(index, esQuery, { size: limit, from, sort })
-ES -> ESDB: Thực thi truy vấn
+ES -> ESDB: English content normalized from the original source text.
 ESDB --> ES: hits + total
 ES --> SR: raw result
 
-SR -> SR: map hits → _source; tính metadata
+SR -> SR: English content normalized from the original source text.
 SR --> SS: { data, metadata }
 deactivate SR
 

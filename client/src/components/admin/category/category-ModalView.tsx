@@ -17,7 +17,7 @@ export function CategoryModalView({ open, onOpenChange, data }: CategoryDetailPr
   const t  = useTranslations('admin');
 
   if (!data) return null;
-  
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg w-full">
@@ -27,7 +27,7 @@ export function CategoryModalView({ open, onOpenChange, data }: CategoryDetailPr
         </DialogHeader>
         <div className="grid grid-cols-1 gap-2 py-2">
           <div><b>{t("category.modal.name")}:</b> {data.name}</div>
-          <div><b>{t("category.modal.status")}:</b> 
+          <div><b>{t("category.modal.status")}:</b>
             <span className={`ml-2 px-2 py-1 rounded text-xs ${data.isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
               {data.isActive ? t("category.status.active") : t("category.status.inactive")}
             </span>
@@ -35,7 +35,7 @@ export function CategoryModalView({ open, onOpenChange, data }: CategoryDetailPr
           <div><b>{t("category.modal.createdAt")}:</b> {format(new Date(data.createdAt), "yyyy-MM-dd HH:mm:ss")}</div>
           <div><b>{t("category.modal.updatedAt")}:</b> {format(new Date(data.updatedAt), "yyyy-MM-dd HH:mm:ss")}</div>
         </div>
-        
+
         <Collapsible>
           <CollapsibleTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-1 px-0">
@@ -48,7 +48,7 @@ export function CategoryModalView({ open, onOpenChange, data }: CategoryDetailPr
             </div>
           </CollapsibleContent>
         </Collapsible>
-        
+
         <DialogClose asChild>
           <Button variant="outline" className="w-full mt-4">{t("category.modal.close")}</Button>
         </DialogClose>

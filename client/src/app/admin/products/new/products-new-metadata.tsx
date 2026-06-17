@@ -44,7 +44,7 @@ export default function NewProductPage() {
       </div>
 
       <div className="mx-auto grid w-full max-w-7xl items-start gap-6">
-        <ProductFormWrapper 
+        <ProductFormWrapper
           onCreateSuccess={(productId: string) => {
             console.log('Navigating to edit page:', `/admin/products/${productId}`);
             router.push(`/admin/products/${productId}`);

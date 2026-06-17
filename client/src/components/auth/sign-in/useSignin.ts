@@ -17,7 +17,7 @@ export function useSignin() {
   const { fetchProfile } = useGetProfile()
   const { fetchAbility } = useGetAbility();
   const t  = useTranslations()
-  const Schema = LoginSchema(t)  
+  const Schema = LoginSchema(t)
   const userData = useUserData();
 
   type SigninData = Omit<z.infer<typeof Schema>, 'rememberMe'>
@@ -38,7 +38,7 @@ export function useSignin() {
       //     router.push(`${ROUTES.AUTH.VERIFY_2FA}?type=OTP`);
       //     showToast(response.message || t('auth.device.verification.required'), 'info');
       //     return;
-      //   }	
+      //   }
       //   if (response.verificationType === '2FA') {
       //     router.push(`${ROUTES.AUTH.VERIFY_2FA}?type=TOTP`);
       //     showToast(response.message || t('auth.device.verification.required'), 'info');

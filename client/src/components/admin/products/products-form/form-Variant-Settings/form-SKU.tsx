@@ -10,19 +10,19 @@ import { Sku, generateApiVariantName } from '@/utils/variantUtils';
 import type { OptionData } from './form-VariantInput';
 import { useSku, formatPrice } from './useSKU';
 
-// Import SkuDetail từ products interface
+// English content normalized from the original source text.
 import { SkuDetail } from '@/types/products.interface';
 
-// Sử dụng Partial<SkuDetail> để phù hợp với FormSku trong useProductsForm
+// English content normalized from the original source text.
 type FormSku = Partial<SkuDetail>;
 
 interface SKUListProps {
   options: OptionData[];
-  initialSkus?: FormSku[]; // Cập nhật kiểu dữ liệu để phù hợp
+  initialSkus?: FormSku[]; // English content normalized from the original source text.
   onUpdateSkus: (skus: Sku[]) => void;
 }
 
-// Component con để xử lý upload ảnh cho từng SKU
+// English content normalized from the original source text.
 interface SkuImageUploaderProps {
   skuId: string;
   imageUrl?: string;
@@ -34,13 +34,13 @@ function SkuImageUploader({ skuId, imageUrl, onUploadComplete }: SkuImageUploade
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Khi có URL mới được tải lên, gọi callback để cập nhật state cha
+    // English content normalized from the original source text.
     if (uploadedUrls.length > 0) {
-      // Kiểm tra kiểu dữ liệu của uploadedUrls
-      const newUrl = typeof uploadedUrls[0] === 'string' 
-        ? uploadedUrls[0] 
+      // English content normalized from the original source text.
+      const newUrl = typeof uploadedUrls[0] === 'string'
+        ? uploadedUrls[0]
         : (uploadedUrls[0] as any).url || '';
-        
+
       console.log('Image uploaded:', newUrl);
       onUploadComplete(skuId, newUrl);
     }
@@ -58,7 +58,7 @@ function SkuImageUploader({ skuId, imageUrl, onUploadComplete }: SkuImageUploade
   };
 
   return (
-    <div 
+    <div
       className="relative w-12 h-12 border border-dashed border-slate-300 rounded-md flex items-center justify-center cursor-pointer hover:bg-slate-50 transition-colors"
       onClick={handleImageClick}
     >
@@ -82,15 +82,15 @@ function SkuImageUploader({ skuId, imageUrl, onUploadComplete }: SkuImageUploade
 }
 
 
-// Thêm memo để tránh render lại không cần thiết
+// English content normalized from the original source text.
 import React from 'react';
 
 export const SKUList = React.memo(function SKUList({ options, initialSkus, onUpdateSkus }: SKUListProps) {
-  console.log('SKUList rendered with:'); 
+  console.log('SKUList rendered with:');
   console.log('Options length:', options?.length);
   console.log('Initial SKUs length:', initialSkus?.length);
-  
-  // In chi tiết về initialSkus (giới hạn log để tránh quá tải console)
+
+  // English content normalized from the original source text.
   if (initialSkus?.length) {
     console.log(`Initial SKUs details (showing ${Math.min(5, initialSkus.length)} of ${initialSkus.length}):`);
     initialSkus.slice(0, 5).forEach((sku, index) => {
@@ -105,16 +105,16 @@ export const SKUList = React.memo(function SKUList({ options, initialSkus, onUpd
   } else {
     console.log('No initial SKUs provided');
   }
-  
-  const skuHook = useSku({ 
-    options, 
-    initialSkus, 
+
+  const skuHook = useSku({
+    options,
+    initialSkus,
     onUpdateSkus: React.useCallback((updatedSkus) => {
       console.log('SKUList - onUpdateSkus callback with', updatedSkus.length, 'SKUs');
       onUpdateSkus(updatedSkus);
     }, [onUpdateSkus])
   });
-  
+
   const {
     skus,
     groupedSkus,
@@ -123,8 +123,8 @@ export const SKUList = React.memo(function SKUList({ options, initialSkus, onUpd
     toggleGroup,
     handleImageUpdate,
   } = skuHook;
-  
-  // In chi tiết về skus sau khi xử lý
+
+  // English content normalized from the original source text.
   console.log('Processed SKUs length:', skus.length);
   console.log('Grouped SKUs keys:', Object.keys(groupedSkus));
 
@@ -143,7 +143,7 @@ export const SKUList = React.memo(function SKUList({ options, initialSkus, onUpd
         <div className="border-t border-b border-slate-200">
           {Object.entries(groupedSkus).map(([groupKey, groupSkus]) => (
           <div key={groupKey} className="border-b border-slate-200 last:border-b-0">
-            <button 
+            <button
               type="button"
               onClick={() => toggleGroup(groupKey)}
               className="w-full flex justify-between items-center p-4 px-6 text-left hover:bg-slate-50 transition-colors"
@@ -161,7 +161,7 @@ export const SKUList = React.memo(function SKUList({ options, initialSkus, onUpd
                   return (
                     <div key={sku.id} className="px-4 grid grid-cols-12 gap-4 items-center py-2 border-t border-slate-200 first:border-t-0 hover:bg-slate-50 transition-colors">
                       <div className="col-span-1 flex items-center justify-center">
-                        <SkuImageUploader 
+                        <SkuImageUploader
                           skuId={sku.id}
                           imageUrl={sku.image}
                           onUploadComplete={handleImageUpdate}
@@ -181,7 +181,7 @@ export const SKUList = React.memo(function SKUList({ options, initialSkus, onUpd
                         />
                       </div>
                       <div className="col-span-3">
-                        <Input 
+                        <Input
                           type="number"
                           placeholder='0'
                           value={sku.stock === 0 ? '' : sku.stock}

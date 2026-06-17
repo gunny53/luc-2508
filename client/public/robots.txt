@@ -22,7 +22,7 @@ Disallow: /checkout/
 Disallow: /api/
 
 # Host
-Host: https://shopsifu.live
+Host: https://ecsite.live
 
 # Sitemaps
-Sitemap: https://shopsifu.live/sitemap.xml
+Sitemap: https://ecsite.live/sitemap.xml

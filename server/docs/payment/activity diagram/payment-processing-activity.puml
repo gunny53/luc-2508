@@ -8,111 +8,111 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Luồng Xử Lý Thanh Toán - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Người dùng khởi tạo thanh toán;
+:English content normalized from the original source text;
 
-:Tạo yêu cầu thanh toán với dữ liệu đơn hàng;
+:English content normalized from the original source text;
 
-if (Phương thức thanh toán?) then (VNPay)
-  :Lấy danh sách ngân hàng VNPay;
-  :Tạo URL thanh toán với VNPay;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
-  Tạo URL Thanh Toán:
-  • Xây dựng dữ liệu với PREFIX_PAYMENT_CODE
+  English content normalized from the original source text.
+  • English content normalized from the original source text
   • orderInfoWithPrefix = PREFIX_PAYMENT_CODE + paymentId
   • orderIdWithPrefix = PREFIX_PAYMENT_CODE + paymentId
   • vnp_Amount, vnp_OrderInfo, vnp_TxnRef
   • vnp_IpAddr, vnp_ReturnUrl, vnp_Locale
   • vnp_CurrCode, vnp_OrderType
   end note
-  :Chuyển hướng người dùng đến cổng thanh toán VNPay;
-  :Người dùng hoàn thành thanh toán trên VNPay;
-  :VNPay xử lý thanh toán;
-  :VNPay chuyển hướng đến URL trả về;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 
-  :Xác thực dữ liệu URL trả về;
-  :Kiểm tra chữ ký thanh toán với VnpayService;
-  if (Chữ ký hợp lệ?) then (có)
-    :Trích xuất thông tin thanh toán;
-    :Kiểm tra giao dịch trùng lặp;
-    if (Giao dịch chưa tồn tại?) then (có)
-      :Bắt đầu giao dịch database;
-      :Tạo bản ghi paymentTransaction;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
       note right
-      Dữ Liệu Giao Dịch VNPay:
+      English content normalized from the original source text.
       • gateway: 'vnpay'
-      • amountIn: vnp_Amount / 100 (chuyển đổi VND)
+      • English content normalized from the original source text
       • amountOut: 0
       • code: vnp_TxnRef
       • transactionContent: vnp_OrderInfo
       • referenceNumber: vnp_TransactionNo
       • body: JSON.stringify(vnpayData)
       end note
-      :Trích xuất paymentId từ PREFIX_PAYMENT_CODE;
-      :Xác thực và tìm payment với orders;
-      :Xác thực số tiền thanh toán;
-      if (Số tiền hợp lệ?) then (có)
-        :Cập nhật trạng thái payment thành SUCCESS;
-        :Cập nhật trạng thái orders thành PAID;
-        :Gửi thông báo WebSocket;
-        :Trả về thành công cho người dùng;
-      else (không)
-        :Trả về lỗi số tiền không khớp;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      if (condition?) then (Yes)
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+      else (No)
+        :English content normalized from the original source text;
       endif
-    else (đã tồn tại)
-      :Trả về lỗi giao dịch trùng lặp;
+    else (No)
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về lỗi chữ ký;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-  :VNPay gửi callback IPN;
-  :Xác thực chữ ký IPN với VnpayService;
-  if (Chữ ký IPN hợp lệ?) then (có)
-    :Kiểm tra payment đã xử lý chưa;
-    if (Chưa xử lý?) then (có)
-      :Trích xuất paymentId từ PREFIX_PAYMENT_CODE;
-      :Xác thực và tìm payment với orders;
-      :Xác thực số tiền thanh toán;
-      if (Số tiền hợp lệ?) then (có)
-        if (Thanh toán thành công?) then (có)
-          :Cập nhật payment thành SUCCESS;
-          :Cập nhật orders thành PAID;
-          :Gửi thông báo WebSocket;
-        else (không)
-          :Cập nhật payment thành FAILED;
-          :Cập nhật orders thành CANCELLED;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      if (condition?) then (Yes)
+        if (condition?) then (Yes)
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
+        else (No)
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
         endif
-        :Trả về RspCode: 00 cho VNPay;
-      else (không)
-        :Trả về RspCode: 04 cho VNPay;
+        :English content normalized from the original source text;
+      else (No)
+        :English content normalized from the original source text;
       endif
-    else (đã xử lý)
-      :Trả về RspCode: 02 cho VNPay;
+    else (No)
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về RspCode: 97 cho VNPay;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
 else (Sepay)
-  :Sepay xử lý thanh toán;
-  :Sepay gửi webhook;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 
-  :Xác thực PaymentAPIKey;
-  if (API Key hợp lệ?) then (có)
-    :Kiểm tra giao dịch trùng lặp;
-    if (Giao dịch chưa tồn tại?) then (có)
-      :Bắt đầu giao dịch database;
-      :Tạo bản ghi paymentTransaction;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
       note right
-      Dữ Liệu Giao Dịch Sepay:
+      English content normalized from the original source text.
       • id: body.id
       • gateway: body.gateway
-      • amountIn/amountOut dựa trên transferType
-      • transactionDate: parse từ body.transactionDate
+      • English content normalized from the original source text
+      • English content normalized from the original source text
       • accountNumber: body.accountNumber
       • subAccount: body.subAccount
       • accumulated: body.accumulated
@@ -121,48 +121,48 @@ else (Sepay)
       • referenceNumber: body.referenceCode
       • body: body.description
       end note
-      :Trích xuất paymentId từ PREFIX_PAYMENT_CODE;
-      :Xác thực và tìm payment với orders;
-      :Xác thực số tiền thanh toán;
-      if (Số tiền hợp lệ?) then (có)
-        :Cập nhật trạng thái payment thành SUCCESS;
-        :Cập nhật trạng thái orders thành PAID;
-        :Gửi thông báo WebSocket;
-        :Trả về thành công cho Sepay;
-      else (không)
-        :Trả về lỗi số tiền không khớp cho Sepay;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      if (condition?) then (Yes)
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+      else (No)
+        :English content normalized from the original source text;
       endif
-    else (đã tồn tại)
-      :Trả về lỗi giao dịch trùng lặp cho Sepay;
+    else (No)
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về lỗi xác thực API Key cho Sepay;
+  else (No)
+    :English content normalized from the original source text;
   endif
 endif
 
-:Hoàn thành xử lý thanh toán;
+:English content normalized from the original source text;
 
-if (Thanh toán thành công?) then (có)
-  :Kích hoạt thực hiện đơn hàng;
-  :Gửi email xác nhận;
-  :Cập nhật kho hàng;
-  :Gửi thông báo WebSocket real-time;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
   WebSocket Notification:
-  • Chỉ client join payment room mới nhận
+  • English content normalized from the original source text
   • Real-time notification
-  • Không emit khi thất bại
+  • English content normalized from the original source text
   • Event: {status: 'success', gateway: 'vnpay/sepay', paymentId}
   end note
-else (không)
-  :Xử lý thất bại thanh toán;
-  :Khôi phục sản phẩm giỏ hàng;
-  :Gửi thông báo thất bại;
-  :Cập nhật trạng thái payment thành FAILED;
-  :Cập nhật trạng thái orders thành CANCELLED;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 endif
 
-:Hoàn thành quy trình thanh toán;
+:English content normalized from the original source text;
 
 stop
 

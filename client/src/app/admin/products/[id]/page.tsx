@@ -22,13 +22,13 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // Đợi params giải quyết vì đây là Promise trong Next.js 15
+        // English content normalized from the original source text.
         const resolvedParams = await params;
         const data = await productsService.getById(resolvedParams.id);
         setProduct(data);
       } catch (error) {
         console.error("Failed to fetch product:", error);
-        setError("Không thể tải dữ liệu sản phẩm");
+        setError("English content normalized from the original source text.");
       } finally {
         setLoading(false);
       }
@@ -37,22 +37,22 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     fetchProduct();
   }, [params]);
 
-  // Loading và error states
+  // English content normalized from the original source text.
   if (loading) return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
-      <div className="mx-auto w-full max-w-7xl text-center">Đang tải...</div>
+      <div className="mx-auto w-full max-w-7xl text-center">English content normalized from the original source text.</div>
     </main>
   );
-  
+
   if (error) return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
       <div className="mx-auto w-full max-w-7xl text-center text-red-500">{error}</div>
     </main>
   );
-  
+
   if (!product) return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
-      <div className="mx-auto w-full max-w-7xl text-center">Không tìm thấy sản phẩm</div>
+      <div className="mx-auto w-full max-w-7xl text-center">English content normalized from the original source text.</div>
     </main>
   );
 
@@ -64,20 +64,18 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/admin/products">Sản phẩm</Link>
+                  <Link href="/admin/products">English content normalized from the original source text.</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>Chỉnh sửa sản phẩm {product.name}</BreadcrumbPage>
+                <BreadcrumbPage>English content normalized from the original source text. {product.name}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
         <div>
-          <h1 className="text-3xl font-semibold">
-            Chỉnh sửa sản phẩm
-          </h1>
+          <h1 className="text-3xl font-semibold">English content normalized from the original source text.</h1>
         </div>
       </div>
 

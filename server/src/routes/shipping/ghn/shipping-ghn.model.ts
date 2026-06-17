@@ -190,7 +190,7 @@ export const CreateOrderSchema = z.object({
 })
 
 export const GHNWebhookPayloadSchema = z.object({
-  // GHN API fields (camelCase only - theo tài liệu chính thức)
+  // English content normalized from the original source text.
   orderCode: z.string().optional(),
   status: z.string().optional(),
   Type: z.string().optional(),
@@ -237,8 +237,8 @@ export const GHNWebhookPayloadSchema = z.object({
 })
 
 export const GHNWebhookResponseSchema = z.object({
-  // GHN yêu cầu response code = 200 và JSON format
-  // Response này sẽ được GHN nhận để xác nhận webhook đã được xử lý
+  // English content normalized from the original source text.
+  // English content normalized from the original source text.
   message: z.string(),
   code: z.number().default(200),
   timestamp: z.string().optional(),

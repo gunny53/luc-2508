@@ -10,11 +10,11 @@ export function useProduct(slug: string, initialData?: ClientProductDetail) {
   const [error, setError] = useState<any>(null);
 
   useEffect(() => {
-    // Nếu không có initialData hoặc chuyển sang slug mới, fetch lại data
+    // English content normalized from the original source text.
     if (!initialData || !product) {
       setIsLoading(true);
       setError(null);
-      
+
       clientProductsService.getProductDetail(slug)
         .then((data: ClientProductDetail) => {
           console.log('✅ [useProduct] Fetched product data:', data.id);
@@ -30,7 +30,7 @@ export function useProduct(slug: string, initialData?: ClientProductDetail) {
     }
   }, [slug, initialData]);
 
-  // Nếu đổi slug, reset về initialData hoặc null
+  // English content normalized from the original source text.
   useEffect(() => {
     if (initialData) {
       setProduct(initialData);

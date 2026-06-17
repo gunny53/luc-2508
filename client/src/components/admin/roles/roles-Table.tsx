@@ -21,7 +21,7 @@ import DataTableViewOption from '@/components/ui/data-table-component/data-table
 
 export default function RolesTable() {
   const t = useTranslations("admin.roles")
-  
+
   const {
     data,
     loading,
@@ -81,15 +81,15 @@ export default function RolesTable() {
 
 
 
-    const columns = RolesColumns({ 
-      onDelete: handleOpenDelete, 
-      onEdit: (role) => handleOpenUpsertModal('edit', role) 
+    const columns = RolesColumns({
+      onDelete: handleOpenDelete,
+      onEdit: (role) => handleOpenUpsertModal('edit', role)
     });
 
     const table = useDataTable({ data: data, columns })
   return (
     <div className="w-full space-y-4">
-      {/* Hàng 1: Nút Thêm mới */}
+      {/* English content normalized from the original source text. */}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenUpsertModal('add')}>
           <PlusIcon className="w-4 h-4 mr-2" />
@@ -97,7 +97,7 @@ export default function RolesTable() {
         </Button>
       </div>
 
-      {/* Hàng 2: Search + View Option */}
+      {/* English content normalized from the original source text. */}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -138,7 +138,7 @@ export default function RolesTable() {
         />
       )}
 
-      {/* Modal xác nhận xóa */}
+      {/* English content normalized from the original source text. */}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {

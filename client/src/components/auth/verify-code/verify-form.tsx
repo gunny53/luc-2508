@@ -36,7 +36,7 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
     defaultValues: { otp: '' }
   })
 
-  // Khi nhập đủ 6 ký tự OTP thì tự động submit
+  // English content normalized from the original source text.
   const handleOTPChange = (value: string) => {
     form.setValue('otp', value, { shouldValidate: true })
     if (value.length === 6) {
@@ -52,7 +52,7 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
         {...props}
       >
         <AnimatedForm>
-          {/* Tiêu đề */}
+          {/* English content normalized from the original source text. */}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.verifyOtp.title')}</h1>

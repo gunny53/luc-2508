@@ -12,7 +12,7 @@ const config: Config = {
       },
     },
   },
-  darkMode: 'class', // Hoặc 'media' nếu bạn muốn tự động theo OS
+  darkMode: 'class', // English content normalized from the original source text.
   plugins: [],
 };
 

@@ -32,7 +32,7 @@ export default function MobileCartIndex() {
   );
   const [selectAll, setSelectAll] = useState(false);
 
-  // ✅ Toggle tất cả
+  // English content normalized from the original source text.
   const handleToggleAll = () => {
     const newValue = !selectAll;
     setSelectAll(newValue);
@@ -79,7 +79,7 @@ export default function MobileCartIndex() {
     setSelectedShops((prev) => ({ ...prev, [shopId]: allSelected }));
   };
 
-  // ✅ Update số lượng
+  // English content normalized from the original source text.
   const handleQuantityChange = async (itemId: string, quantity: number) => {
     if (quantity > 0) {
       const itemToUpdate = shopCarts
@@ -97,7 +97,7 @@ export default function MobileCartIndex() {
     }
   };
 
-  // ✅ Thay đổi SKU
+  // English content normalized from the original source text.
   const handleVariationChange = async (itemId: string, newSkuId: string) => {
     const item = shopCarts
       .flatMap((sc: ShopCart) => sc.cartItems)
@@ -110,7 +110,7 @@ export default function MobileCartIndex() {
     }
   };
 
-  // ✅ Xóa 1 sản phẩm
+  // English content normalized from the original source text.
   const handleRemoveItem = async (itemId: string) => {
     try {
       await removeItems([itemId]);
@@ -119,7 +119,7 @@ export default function MobileCartIndex() {
     }
   };
 
-  // ✅ Xóa tất cả sản phẩm đã chọn
+  // English content normalized from the original source text.
   const handleDeleteSelected = async () => {
     try {
       const selectedItemIds = Object.keys(selectedItems).filter(
@@ -127,7 +127,7 @@ export default function MobileCartIndex() {
       );
 
       if (selectedItemIds.length === 0) {
-        toast.error("Vui lòng chọn sản phẩm để xóa");
+        toast.error("English content normalized from the original source text.");
         return;
       }
 
@@ -136,14 +136,14 @@ export default function MobileCartIndex() {
       setSelectedShops({});
       setSelectAll(false);
 
-      toast.success(`Đã xóa ${selectedItemIds.length} sản phẩm khỏi giỏ hàng`);
+      toast.success(`English content normalized from the original source text.${selectedItemIds.length}English content normalized from the original source text.`);
     } catch (error) {
       console.error("Error removing selected items:", error);
-      toast.error("Có lỗi xảy ra khi xóa sản phẩm");
+      toast.error("English content normalized from the original source text.");
     }
   };
 
-  // ✅ Tính toán footer
+  // English content normalized from the original source text.
   const { total, totalSaved, selectedCount } = useMemo(() => {
     let currentTotal = 0;
     let currentTotalSaved = 0;
@@ -187,7 +187,7 @@ export default function MobileCartIndex() {
       .filter((shopCart: ShopCart) => shopCart.cartItems.length > 0);
 
     if (selectedShopCarts.length === 0) {
-      toast.error("Vui lòng chọn sản phẩm để thanh toán");
+      toast.error("English content normalized from the original source text.");
       return;
     }
 
@@ -232,7 +232,7 @@ export default function MobileCartIndex() {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       <div className="sticky top-0 z-10 bg-white shadow-sm">
-        <MobileCartHeader title="Giỏ hàng" />
+        <MobileCartHeader title="English content normalized from the original source text." />
       </div>
 
       <main className="flex-grow overflow-y-auto">
@@ -250,7 +250,7 @@ export default function MobileCartIndex() {
                 className="object-contain"
               />
             </div>
-            <p className="text-gray-500">Giỏ hàng của bạn còn trống</p>
+            <p className="text-gray-500">English content normalized from the original source text.</p>
           </div>
         ) : (
           <div className="pb-4">

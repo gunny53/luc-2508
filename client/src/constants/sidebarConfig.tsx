@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react';
-import { 
-  LayoutDashboard, 
-  ShoppingCart, 
-  Users, 
-  Package, 
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  Users,
+  Package,
   Settings,
   BarChart2,
   MessageSquare,
@@ -15,7 +15,7 @@ import {
   FolderClosed,
   ScrollText,
   Undo,
-  Tags // Thêm icon cho Brand
+  Tags // English content normalized from the original source text.
 } from 'lucide-react'
 import { useTranslations } from "next-intl";
 import { useUserData } from '@/hooks/useGetData-UserLogin';
@@ -31,11 +31,11 @@ export type SidebarItem = {
 export const useSidebarConfig = (): SidebarItem[] => {
   const t = useTranslations("admin.sidebar");
   const userData = useUserData();
-  
-  // Lấy role name từ user data
+
+  // English content normalized from the original source text.
   const userRole = userData?.role?.name;
 
-  // Base items cho tất cả role
+  // English content normalized from the original source text.
   const baseItems: SidebarItem[] = [
     {
       title: t('dashboard'),
@@ -63,7 +63,7 @@ export const useSidebarConfig = (): SidebarItem[] => {
           icon: null,
         },
       ],
-    },  
+    },
     {
       title: t('orders.orders'),
       href: '/admin/order',
@@ -95,7 +95,7 @@ export const useSidebarConfig = (): SidebarItem[] => {
     }
   ];
 
-  // Items chỉ dành cho ADMIN
+  // English content normalized from the original source text.
   const adminOnlyItems: SidebarItem[] = [
     {
       title: t('system.system'),
@@ -123,7 +123,7 @@ export const useSidebarConfig = (): SidebarItem[] => {
         //   icon: null,
         // },
       ],
-    },  
+    },
     {
       title: t('category.category'),
       href: '/admin/categories',
@@ -148,11 +148,11 @@ export const useSidebarConfig = (): SidebarItem[] => {
     }
   ];
 
-  // Trả về items dựa trên role
+  // English content normalized from the original source text.
   if (userRole === 'ADMIN') {
     return [...baseItems, ...adminOnlyItems];
   } else {
-    // SELLER hoặc role khác chỉ có access vào base items
+    // English content normalized from the original source text.
     return baseItems;
   }
 }
@@ -160,11 +160,11 @@ export const useSidebarConfig = (): SidebarItem[] => {
 export const useSettingsSidebarConfig = (): SidebarItem[] => {
   const t = useTranslations("admin.sidebar.settings");
   const userData = useUserData();
-  
-  // Lấy role name từ user data
+
+  // English content normalized from the original source text.
   const userRole = userData?.role?.name;
 
-  // Base settings cho tất cả role
+  // English content normalized from the original source text.
   const baseSettingsItems: SidebarItem[] = [
     {
       title: t('systemSettings'),
@@ -188,16 +188,16 @@ export const useSettingsSidebarConfig = (): SidebarItem[] => {
     }
   ];
 
-  // Settings chỉ dành cho ADMIN (có thể mở rộng sau)
+  // English content normalized from the original source text.
   const adminOnlySettingsItems: SidebarItem[] = [
-    // Có thể thêm các settings chỉ dành cho admin ở đây nếu cần
+    // English content normalized from the original source text.
   ];
 
-  // Trả về settings items dựa trên role
+  // English content normalized from the original source text.
   if (userRole === 'ADMIN') {
     return [...baseSettingsItems, ...adminOnlySettingsItems];
   } else {
-    // SELLER hoặc role khác chỉ có access vào base settings
+    // English content normalized from the original source text.
     return baseSettingsItems;
   }
 }

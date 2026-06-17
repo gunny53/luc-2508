@@ -66,11 +66,8 @@ export function ShippingModal({
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Truck className="h-5 w-5" />
-            Chọn phương thức vận chuyển
-          </DialogTitle>
-          <p className="text-sm text-gray-600 mt-1">
-            Phương thức vận chuyển liên kết với ShopSifu cho shop: <span className="font-medium">{shopName}</span>
+            <Truck className="h-5 w-5" />English content normalized from the original source text.</DialogTitle>
+          <p className="text-sm text-gray-600 mt-1">English content normalized from the original source text.<span className="font-medium">{shopName}</span>
           </p>
         </DialogHeader>
 
@@ -78,27 +75,25 @@ export function ShippingModal({
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="h-6 w-6 animate-spin mr-2" />
-              <span>Đang tải phương thức vận chuyển...</span>
+              <span>English content normalized from the original source text.</span>
             </div>
           ) : error ? (
             <div className="text-center py-8">
               <p className="text-red-600 mb-4">{error}</p>
-              <Button variant="outline" onClick={() => window.location.reload()}>
-                Thử lại
-              </Button>
+              <Button variant="outline" onClick={() => window.location.reload()}>English content normalized from the original source text.</Button>
             </div>
           ) : shippingMethods.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-gray-600 mb-4">Chưa có phương thức vận chuyển khả dụng</p>
-              <p className="text-sm text-gray-500">Vui lòng kiểm tra lại địa chỉ giao hàng</p>
+              <p className="text-gray-600 mb-4">English content normalized from the original source text.</p>
+              <p className="text-sm text-gray-500">English content normalized from the original source text.</p>
             </div>
           ) : (
             <RadioGroup value={selectedMethodId} onValueChange={setSelectedMethodId}>
               {shippingMethods.map((method: ShippingMethod) => (
                 <div
                   key={method.id}
-                  className={`border rounded-lg p-4 transition-all cursor-pointer ${selectedMethodId === method.id 
-                      ? 'border-red-500 bg-red-50' 
+                  className={`border rounded-lg p-4 transition-all cursor-pointer ${selectedMethodId === method.id
+                      ? 'border-red-500 bg-red-50'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                   onClick={() => setSelectedMethodId(method.id)}
@@ -111,8 +106,8 @@ export function ShippingModal({
                           <div className="flex items-center gap-2">
                             {getIcon(method.icon || 'truck')}
                             <span className="font-medium text-base">
-                              {method.name === 'Hàng nhẹ' ? 'Tiêu chuẩn' : 
-                               method.name === 'Hàng nặng' ? 'Siêu tốc' : 
+                              {method.name === 'English content normalized from the original source text.' ? 'English content normalized from the original source text.' :
+                               method.name === 'English content normalized from the original source text.' ? 'English content normalized from the original source text.' :
                                method.name}
                             </span>
                             <span className="text-lg font-semibold text-red-600">
@@ -120,18 +115,18 @@ export function ShippingModal({
                             </span>
                           </div>
                           <Badge variant="secondary" className="bg-red-100 text-red-700">
-                            {selectedMethodId === method.id ? 'Đã chọn' : 'Chọn'}
+                            {selectedMethodId === method.id ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
                           </Badge>
                         </div>
-                        
+
                         <div className="mt-2 space-y-2">
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <Clock className="h-4 w-4" />
-                            <span>{method.estimatedTime || 'Đang cập nhật'}</span>
+                            <span>{method.estimatedTime || 'English content normalized from the original source text.'}</span>
                           </div>
-                          
-                          <p className="text-sm text-gray-700">{method.description || 'Phương thức vận chuyển'}</p>
-                          
+
+                          <p className="text-sm text-gray-700">{method.description || 'English content normalized from the original source text.'}</p>
+
                           {method.features && method.features.length > 0 && (
                             <div className="space-y-1">
                               {method.features.map((feature: string, index: number) => (
@@ -154,23 +149,19 @@ export function ShippingModal({
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
               <MapPin className="h-4 w-4" />
-              <span>Lưu ý về vận chuyển</span>
+              <span>English content normalized from the original source text.</span>
             </div>
             <ul className="text-xs text-gray-600 space-y-1">
-              <li>• Thời gian giao hàng có thể thay đổi tùy theo điều kiện thời tiết và giao thông</li>
-              <li>• Đơn hàng sẽ được xử lý trong ngày làm việc (Thứ 2 - Thứ 6)</li>
-              <li>• Bạn sẽ nhận được thông báo khi đơn hàng được giao đến shipper</li>
+              <li>English content normalized from the original source text.</li>
+              <li>English content normalized from the original source text.</li>
+              <li>English content normalized from the original source text.</li>
             </ul>
           </div>
         </div>
 
         <div className="flex gap-3 pt-4 border-t">
-          <Button variant="outline" onClick={onClose} className="flex-1">
-            Trở Lại
-          </Button>
-          <Button onClick={handleConfirm} className="flex-1 bg-red-600 hover:bg-red-700">
-            Xác Nhận
-          </Button>
+          <Button variant="outline" onClick={onClose} className="flex-1">English content normalized from the original source text.</Button>
+          <Button onClick={handleConfirm} className="flex-1 bg-red-600 hover:bg-red-700">English content normalized from the original source text.</Button>
         </div>
       </DialogContent>
     </Dialog>

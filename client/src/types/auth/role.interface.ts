@@ -2,7 +2,7 @@ import { BaseResponse, PaginationRequest } from "../base.interface";
 
 
 export interface Permission {
-    id: string;  // Thay đổi từ number sang string cho UUID
+    id: string;  // English content normalized from the original source text.
     name: string;
     description: string;
     module: string;
@@ -38,7 +38,7 @@ export interface RoleResponse {
 
 export interface RoleGetAllResponse extends BaseResponse, PaginationRequest {
   data: Array<{
-    id: string;  // Thay đổi từ number sang string cho UUID
+    id: string;  // English content normalized from the original source text.
     name: string;
     description: string;
     isActive: boolean;
@@ -52,7 +52,7 @@ export interface RoleGetAllResponse extends BaseResponse, PaginationRequest {
 }
 
 export interface RoleGetByIdResponse {
-    id: string;  // Thay đổi từ number sang string cho UUID
+    id: string;  // English content normalized from the original source text.
     name: string;
     description: string;
     isActive: boolean;
@@ -71,12 +71,12 @@ export interface RoleCreateRequest {
     isActive?: boolean;
     isSystemRole?: boolean;
     isSuperAdmin?: boolean;
-    permissionIds?: string[];  // Thêm permissionIds cho phép tạo vai trò với quyền
+    permissionIds?: string[];  // English content normalized from the original source text.
 }
 
 export interface RoleCreateResponse extends BaseResponse {
     data:{
-        id: string,  // Thay đổi từ number sang string cho UUID
+        id: string,  // English content normalized from the original source text.
         name: string,
         description: string,
         createdById: string,
@@ -89,7 +89,7 @@ export interface RoleCreateResponse extends BaseResponse {
         isSuperAdmin: boolean,
         permissions: Permission[]
     }
-   
+
 }
 
 export interface RoleUpdateRequest {
@@ -98,7 +98,7 @@ export interface RoleUpdateRequest {
     isActive?: boolean;
     isSystemRole?: boolean;
     isSuperAdmin?: boolean;
-    permissionIds?: string[];  // Thay đổi từ number[] sang string[] cho UUID
+    permissionIds?: string[];  // English content normalized from the original source text.
 }
 
 export interface RoleUpdateResponse extends BaseResponse {
@@ -144,7 +144,7 @@ export interface RoleAssignPermissionResponse {
 }
 
 export interface Role {
-  id: string;  // Thay đổi từ number sang string cho UUID
+  id: string;  // English content normalized from the original source text.
   name: string;
   description?: string;
   isActive: boolean;

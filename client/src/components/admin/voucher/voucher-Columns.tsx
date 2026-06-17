@@ -38,7 +38,7 @@ export const voucherColumns = (
 ): ColumnDef<VoucherColumn>[] => {
   const t = useTranslations("admin.ModuleVouchers.Table");
   const userData = useUserData();
-  
+
   // Check if user is ADMIN
   const isAdmin = userData?.role?.name?.toLowerCase() === 'admin';
 
@@ -71,19 +71,19 @@ export const voucherColumns = (
         const startDate = new Date(row.original.startDate);
         const endDate = new Date(row.original.endDate);
         const now = new Date();
-        
-        // Tự động tính trạng thái dựa vào thời gian
+
+        // English content normalized from the original source text.
         let status = DiscountStatus.INACTIVE;
-        let statusText = 'Chưa hoạt động';
+        let statusText = 'English content normalized from the original source text.';
         let statusClass = 'bg-gray-100 text-gray-600';
-        
+
         if (now >= startDate && now <= endDate) {
           status = DiscountStatus.ACTIVE;
-          statusText = 'Đang diễn ra';
+          statusText = 'English content normalized from the original source text.';
           statusClass = 'bg-green-100 text-green-600';
         } else if (now > endDate) {
           status = DiscountStatus.EXPIRED;
-          statusText = 'Hết hạn';
+          statusText = 'English content normalized from the original source text.';
           statusClass = 'bg-red-100 text-red-600';
         }
 
@@ -100,7 +100,7 @@ export const voucherColumns = (
               </div>
               <div className="font-medium text-sm truncate">{name}</div>
               <div className="text-xs text-gray-500 uppercase font-mono">
-                Mã voucher: {code.trim() || 'N/A'}
+                English content normalized from the original source text. {code.trim() || 'N/A'}
               </div>
             </div>
           </div>
@@ -118,39 +118,39 @@ export const voucherColumns = (
     },
   ];
 
-  // Cột voucherType chỉ hiển thị khi user là ADMIN
+  // English content normalized from the original source text.
   const voucherTypeColumn: ColumnDef<VoucherColumn> = {
     accessorKey: 'voucherType',
     header: ({ column }) => <DataTableColumnHeader column={column} title={t('voucherType')} />,
     cell: ({ row }) => {
       const type = row.getValue('voucherType') as VoucherType;
       let badgeClass = 'border-purple-500 text-purple-500 bg-purple-50';
-      let typeText = 'Không xác định';
+      let typeText = 'English content normalized from the original source text.';
 
       switch (type) {
         case VoucherType.SHOP:
           badgeClass = 'border-purple-600 text-purple-600 bg-purple-50';
-          typeText = 'Cửa hàng';
+          typeText = 'English content normalized from the original source text.';
           break;
         case VoucherType.PRODUCT:
           badgeClass = 'border-indigo-600 text-indigo-600 bg-indigo-50';
-          typeText = 'Sản phẩm';
+          typeText = 'English content normalized from the original source text.';
           break;
         case VoucherType.PLATFORM:
           badgeClass = 'border-red-600 text-red-600 bg-red-50';
-          typeText = 'Nền tảng';
+          typeText = 'English content normalized from the original source text.';
           break;
         case VoucherType.CATEGORY:
           badgeClass = 'border-yellow-600 text-yellow-600 bg-yellow-50';
-          typeText = 'Danh mục';
+          typeText = 'English content normalized from the original source text.';
           break;
         case VoucherType.BRAND:
           badgeClass = 'border-pink-600 text-pink-600 bg-pink-50';
-          typeText = 'Thương hiệu';
+          typeText = 'English content normalized from the original source text.';
           break;
         case VoucherType.PRIVATE:
           badgeClass = 'border-gray-600 text-gray-600 bg-gray-50';
-          typeText = 'Riêng tư';
+          typeText = 'English content normalized from the original source text.';
           break;
       }
 
@@ -170,16 +170,16 @@ export const voucherColumns = (
       cell: ({ row }) => {
         const type = row.getValue('displayType') as DisplayType;
         let badgeClass = 'border-teal-500 text-teal-500 bg-teal-50';
-        let typeText = 'Không xác định';
+        let typeText = 'English content normalized from the original source text.';
 
         switch (type) {
           case DisplayType.PUBLIC:
             badgeClass = 'border-green-600 text-green-600 bg-green-50';
-            typeText = 'Công khai';
+            typeText = 'English content normalized from the original source text.';
             break;
           case DisplayType.PRIVATE:
             badgeClass = 'border-gray-600 text-gray-600 bg-gray-50';
-            typeText = 'Riêng tư';
+            typeText = 'English content normalized from the original source text.';
             break;
         }
 
@@ -194,7 +194,7 @@ export const voucherColumns = (
     {
       accessorKey: 'startDate',
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Thời gian lưu Mã giảm giá" />
+        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
       ),
       cell: ({ row }) => {
         const startDate = new Date(row.original.startDate);
@@ -209,7 +209,7 @@ export const voucherColumns = (
     },
     {
       accessorKey: 'maxUses',
-      header: ({ column }) => <DataTableColumnHeader column={column} title="Tổng lượt sử dụng tối đa" />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title="English content normalized from the original source text." />,
       cell: ({ row }) => {
         const maxUses = row.original.maxUses || 0;
         return <div className="text-center">{maxUses === 0 ? '∞' : maxUses}</div>;
@@ -217,7 +217,7 @@ export const voucherColumns = (
     },
     {
       accessorKey: 'usersUsed',
-      header: ({ column }) => <DataTableColumnHeader column={column} title="Đã dùng" />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title="English content normalized from the original source text." />,
       cell: ({ row }) => {
         const usersUsed = row.original.usersUsed || [];
         return <div className="text-center">{Array.isArray(usersUsed) ? usersUsed.length : 0}</div>;
@@ -234,7 +234,7 @@ export const voucherColumns = (
     },
   ];
 
-  // Kết hợp các columns dựa trên role của user
+  // English content normalized from the original source text.
   const allColumns = [
     ...baseColumns,
     ...(isAdmin ? [voucherTypeColumn] : []),

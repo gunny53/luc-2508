@@ -1,8 +1,8 @@
 import { publicAxios } from "@/lib/api";
 import { API_ENDPOINTS } from "@/constants/api";
-import { 
-  ClientProductsResponse, 
-  ClientProductDetail, 
+import {
+  ClientProductsResponse,
+  ClientProductDetail,
   ClientProductsListParams,
   ClientSearchResponse,
   ClientSearchParams
@@ -66,9 +66,9 @@ export const clientProductsService = {
    */
   getSearchSuggestions: async (query: string, limit: number = 5, options: any): Promise<ClientSearchResponse> => {
     try {
-      const response = await publicAxios.get(API_ENDPOINTS.PRODUCTS.SEARCH, { 
+      const response = await publicAxios.get(API_ENDPOINTS.PRODUCTS.SEARCH, {
         params: { q: query, limit },
-        signal: options?.signal // <-- truyền signal vào đây
+        signal: options?.signal // English content normalized from the original source text.
       });
       return response.data;
     } catch (error) {

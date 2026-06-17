@@ -1,12 +1,12 @@
 import { z } from 'zod'
 import { VnpLocale, VnpCurrCode, ProductCode, VnpCardType } from 'vnpay'
 
-// ================== SCHEMA TẠO URL THANH TOÁN ==================
+// English content normalized from the original source text.
 export const CreateVNPayPaymentBodySchema = z.object({
   amount: z.number(),
   orderInfo: z.string(),
   orderId: z.string(),
-  returnUrl: z.string().optional().default('https://shopsifu.live/checkout/payment-success'),
+  returnUrl: z.string().optional().default('https://ecsite.live/checkout/payment-success'),
   ipnUrl: z.string().optional(),
   locale: z.nativeEnum(VnpLocale).default(VnpLocale.VN),
   currency: z.nativeEnum(VnpCurrCode).default(VnpCurrCode.VND),
@@ -22,7 +22,7 @@ export const CreateVNPayPaymentResSchema = z.object({
   })
 })
 
-// ================== SCHEMA DANH SÁCH NGÂN HÀNG ==================
+// English content normalized from the original source text.
 export const VNPayBankListResSchema = z.object({
   message: z.string(),
   data: z.array(
@@ -36,7 +36,7 @@ export const VNPayBankListResSchema = z.object({
   )
 })
 
-// ================== SCHEMA XÁC THỰC URL TRẢ VỀ ==================
+// English content normalized from the original source text.
 export const VNPayReturnUrlSchema = z.object({
   vnp_TmnCode: z.string(),
   vnp_Amount: z.string(),
@@ -67,7 +67,7 @@ export const VNPayVerifyResSchema = z.object({
   })
 })
 
-// ================== SCHEMA TRUY VẤN KẾT QUẢ THANH TOÁN ==================
+// English content normalized from the original source text.
 export const VNPayQueryDrBodySchema = z.object({
   orderId: z.string(),
   orderInfo: z.string(),
@@ -92,7 +92,7 @@ export const VNPayQueryDrResSchema = z.object({
   })
 })
 
-// ================== SCHEMA HOÀN TIỀN ==================
+// English content normalized from the original source text.
 export const VNPayRefundBodySchema = z.object({
   orderId: z.string(),
   orderInfo: z.string(),

@@ -1,19 +1,13 @@
 import { BaseResponse, BaseEntity, PaginationMetadata } from "./base.interface"
 
-/**
- * @interface ShopInfo
- * @description Thông tin về shop trong giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface ShopInfo {
     id: string;
     name: string;
     avatar?: string;
 }
 
-/**
- * @interface ProductInfo
- * @description Thông tin về sản phẩm trong SKU
- */
+/* English content normalized from the original source text. */
 export interface ProductInfo {
     id: string;
     publishedAt: string;
@@ -31,10 +25,7 @@ export interface ProductInfo {
     productTranslations: any[];
 }
 
-/**
- * @interface SkuInfo
- * @description Thông tin về SKU trong giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface SkuInfo {
     id: string;
     value: string;
@@ -45,10 +36,7 @@ export interface SkuInfo {
     product: ProductInfo;
 }
 
-/**
- * @interface CartItem
- * @description Đại diện cho một mặt hàng trong giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface CartItem extends Partial<BaseEntity> {
     id: string;
     quantity: number;
@@ -57,32 +45,23 @@ export interface CartItem extends Partial<BaseEntity> {
     createdAt: string;
     updatedAt: string;
     sku: SkuInfo;
-    isSelected?: boolean; // Thêm trường này để hỗ trợ chọn mặt hàng
+    isSelected?: boolean; // English content normalized from the original source text.
 }
 
-/**
- * @interface ShopCart
- * @description Đại diện cho giỏ hàng của một shop
- */
+/* English content normalized from the original source text. */
 export interface ShopCart {
     shop: ShopInfo;
     cartItems: CartItem[];
-    isSelected?: boolean; // Thêm trường này để hỗ trợ chọn tất cả mặt hàng của shop
+    isSelected?: boolean; // English content normalized from the original source text.
 }
 
-/**
- * @interface CartListResponse
- * @description Response API khi lấy danh sách giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface CartListResponse extends BaseResponse {
     data: ShopCart[];
     metadata?: PaginationMetadata;
 }
 
-/**
- * @interface Cart
- * @description Tổng hợp giỏ hàng (được tính toán ở client)
- */
+/* English content normalized from the original source text. */
 export interface Cart {
     shops: ShopCart[];
     totalItems: number;
@@ -91,56 +70,38 @@ export interface Cart {
     totalSelectedPrice: number;
 }
 
-/**
- * @interface CartResponse
- * @description Response API khi thực hiện các thao tác với giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface CartResponse extends BaseResponse {
     data: CartItem | {
         cartItem?: CartItem;
     };
 }
 
-/**
- * @interface CartItemRequest
- * @description Request để thêm sản phẩm vào giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface CartItemRequest {
     skuId: string;
     quantity: number;
 }
 
-/**
- * @interface UpdateCartItemRequest
- * @description Request để cập nhật sản phẩm trong giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface UpdateCartItemRequest {
     skuId: string;
     quantity: number;
     isSelected?: boolean;
 }
 
-/**
- * @interface DeleteCartRequest
- * @description Request để xóa các sản phẩm khỏi giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface DeleteCartRequest {
     cartItemIds: string[];
 }
 
-/**
- * @interface SelectCartItemsRequest
- * @description Request để chọn/bỏ chọn nhiều sản phẩm trong giỏ hàng
- */
+/* English content normalized from the original source text. */
 export interface SelectCartItemsRequest {
     cartItemIds: string[];
     isSelected: boolean;
 }
 
-/**
- * @interface CartSummary
- * @description Tóm tắt thông tin giỏ hàng (được tính toán ở client)
- */
+/* English content normalized from the original source text. */
 export interface CartSummary {
     totalItems: number;
     totalSelectedItems: number;

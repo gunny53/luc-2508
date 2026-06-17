@@ -17,9 +17,9 @@ import { showToast } from "@/components/ui/toastify";
 import { Permission } from './permissions-Columns';
 import { PerCreateRequest, PerUpdateRequest } from '@/types/auth/permission.interface';
 import { Textarea } from "@/components/ui/textarea";
-import { 
+import {
   Select,
-  SelectContent, 
+  SelectContent,
   SelectGroup,
   SelectItem,
   SelectLabel,
@@ -108,7 +108,7 @@ export default function PermissionsModalUpsert({ open, onClose, permission, onSu
               required
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium mb-1">{t("admin.permissions.modal.module") || 'Module'}</label>
             <Input
@@ -118,7 +118,7 @@ export default function PermissionsModalUpsert({ open, onClose, permission, onSu
               required
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium mb-1">{t("admin.permissions.modal.path") || 'Path'}</label>
             <Input
@@ -128,7 +128,7 @@ export default function PermissionsModalUpsert({ open, onClose, permission, onSu
               required
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium mb-1">{t("admin.permissions.modal.method") || 'Method'}</label>
             <Select value={method} onValueChange={setMethod}>
@@ -148,9 +148,9 @@ export default function PermissionsModalUpsert({ open, onClose, permission, onSu
               </SelectContent>
             </Select>
           </div>
-          
 
-          
+
+
           <DialogFooter className="pt-4">
             <DialogClose asChild>
               <Button type="button" variant="outline" disabled={loading} onClick={onClose}>

@@ -466,46 +466,42 @@ export class ShippingService {
     }
   }
 
-  /**
-   * Hủy đơn hàng GHN
-   * @param orderCode Mã đơn hàng GHN cần hủy
-   * @returns Kết quả hủy đơn hàng
-   */
+  /* English content normalized from the original source text. */
   async cancelGHNOrder(orderCode: string): Promise<{ success: boolean; message: string }> {
     try {
-      this.logger.log(`[GHN_SERVICE] Bắt đầu hủy đơn hàng GHN: ${orderCode}`)
+      this.logger.log(`English content normalized from the original source text.${orderCode}`)
 
       if (!orderCode?.trim()) {
         throw new Error('Order code is required')
       }
 
-      // Gọi GHN API để hủy đơn hàng
+      // English content normalized from the original source text.
       const result = await this.ghnService.order.cancelOrder({
         orderCodes: [orderCode]
       })
 
-      this.logger.log(`[GHN_SERVICE] Kết quả hủy đơn hàng GHN: ${JSON.stringify(result, null, 2)}`)
+      this.logger.log(`English content normalized from the original source text.${JSON.stringify(result, null, 2)}`)
 
-      // Kiểm tra kết quả từ GHN
+      // English content normalized from the original source text.
       if (result && Array.isArray(result)) {
         const orderResult = result.find((item: any) => item.order_code === orderCode)
         if (orderResult && orderResult.result === true) {
           return {
             success: true,
-            message: `Hủy đơn hàng GHN thành công: ${orderCode}`
+            message: `English content normalized from the original source text.${orderCode}`
           }
         }
       }
 
       return {
         success: false,
-        message: `Không thể hủy đơn hàng GHN: ${orderCode}`
+        message: `English content normalized from the original source text.${orderCode}`
       }
     } catch (error) {
-      this.logger.error(`[GHN_SERVICE] Lỗi khi hủy đơn hàng GHN: ${error.message}`)
+      this.logger.error(`English content normalized from the original source text.${error.message}`)
       return {
         success: false,
-        message: `Lỗi khi hủy đơn hàng GHN: ${error.message}`
+        message: `English content normalized from the original source text.${error.message}`
       }
     }
   }

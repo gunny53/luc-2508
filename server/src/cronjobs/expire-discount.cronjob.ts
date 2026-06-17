@@ -20,7 +20,7 @@ export class ExpireDiscountCronjob {
       data: { discountStatus: DiscountStatus.EXPIRED }
     })
     if (result.count > 0) {
-      this.logger.log(`Đã cập nhật ${result.count} discount hết hạn thành EXPIRED.`)
+      this.logger.log(`English content normalized from the original source text.${result.count}English content normalized from the original source text.`)
     }
   }
 }

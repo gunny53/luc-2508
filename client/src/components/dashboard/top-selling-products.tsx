@@ -7,7 +7,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-// Khai báo kiểu dữ liệu cho props
+// English content normalized from the original source text.
 interface TopSellingProductsProps {
   products: { name: string; sold: number }[];
 }
@@ -17,8 +17,8 @@ export function TopSellingProductsTable({ products }: TopSellingProductsProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Tên sản phẩm</TableHead>
-          <TableHead className="text-right">Số lượng đã bán</TableHead>
+          <TableHead>English content normalized from the original source text.</TableHead>
+          <TableHead className="text-right">English content normalized from the original source text.</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

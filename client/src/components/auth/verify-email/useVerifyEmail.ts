@@ -16,7 +16,7 @@ export function useVerifyEmail() {
   const handleSendOTP = async (email: string): Promise<boolean> => {
     try {
       setLoading(true)
-      
+
       if (action === 'signup') {
         const response = await authService.register_send({ email })
         // showToast(response.message, 'success')

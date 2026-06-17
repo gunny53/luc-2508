@@ -2,14 +2,14 @@ import { SearchContent } from "@/components/client/search/search-Main";
 import { extractCategoryIds, extractCurrentCategoryId, isCategorySlug } from "@/utils/slugify";
 import { Metadata } from "next";
 
-// Định nghĩa interface cho params
+// English content normalized from the original source text.
 interface PageProps {
   params: Promise<{
     slug: string;
   }>
 }
 
-// Hàm để decode URL và clean text
+// English content normalized from the original source text.
 function cleanCategoryName(slug: string): string {
   try {
 
@@ -23,26 +23,26 @@ function cleanCategoryName(slug: string): string {
     return formatted;
   } catch (error) {
     console.error('Error decoding category name:', error);
-    // Fallback: chỉ thay thế dấu gạch ngang
+    // English content normalized from the original source text.
     return slug.split('-cat.')[0].replace(/-/g, ' ');
   }
 }
 
-// Hàm để tạo metadata động (cho SEO)
+// English content normalized from the original source text.
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  // *** FIX: Await params trước khi sử dụng (Next.js 15) ***
+  // English content normalized from the original source text.
   const { slug } = await params;
-  
-  // Xử lý tiêu đề dựa trên slug
-  let title = "Tìm kiếm sản phẩm | ShopSifu";
-  let description = "Tìm kiếm và mua sắm các sản phẩm chất lượng cao với giá tốt nhất tại ShopSifu";
-  
+
+  // English content normalized from the original source text.
+  let title = "English content normalized from the original source text.";
+  let description = "English content normalized from the original source text.";
+
   if (isCategorySlug(slug)) {
     const categoryName = cleanCategoryName(slug);
-    title = `Mua sắm online sản phẩm ${categoryName} | ShopSifu Việt Nam`;
-    description = `Khám phá các sản phẩm ${categoryName.toLowerCase()} chất lượng cao với giá tốt nhất tại ShopSifu. Giao hàng nhanh, đảm bảo chính hãng.`;
+    title = `English content normalized from the original source text.${categoryName}English content normalized from the original source text.`;
+    description = `English content normalized from the original source text.${categoryName.toLowerCase()}English content normalized from the original source text.`;
   }
-  
+
   return {
     title,
     description,
@@ -63,29 +63,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// Component chính của trang
+// English content normalized from the original source text.
 export default async function ProductPage({ params }: PageProps) {
-  // Await params trước khi sử dụng
+  // English content normalized from the original source text.
   const { slug } = await params;
-  
-  // Xác định thông tin category
+
+  // English content normalized from the original source text.
   let categoryIds: string[] = [];
   let currentCategoryId: string | null = null;
-  
-  // Kiểm tra nếu slug có hậu tố "-cat."
+
+  // English content normalized from the original source text.
   if (isCategorySlug(slug)) {
     categoryIds = extractCategoryIds(slug);
-    currentCategoryId = extractCurrentCategoryId(slug) || categoryIds[categoryIds.length - 1]; // ID cuối cùng là ID hiện tại
+    currentCategoryId = extractCurrentCategoryId(slug) || categoryIds[categoryIds.length - 1]; // English content normalized from the original source text.
   }
 
-  console.log('ProductPage:', { 
-    slug: decodeURIComponent(slug), 
+  console.log('ProductPage:', {
+    slug: decodeURIComponent(slug),
     categoryIds,
     currentCategoryId
   });
 
-  return <SearchContent 
-    categoryIds={categoryIds} 
-    currentCategoryId={currentCategoryId} 
+  return <SearchContent
+    categoryIds={categoryIds}
+    currentCategoryId={currentCategoryId}
   />;
 }

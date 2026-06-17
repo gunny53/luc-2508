@@ -24,11 +24,11 @@ interface CategoryModalProps {
   initialSelectedIds?: string[];
 }
 
-export function CategoryModal({ 
-  open, 
-  onOpenChange, 
-  onConfirm, 
-  initialSelectedIds = [] 
+export function CategoryModal({
+  open,
+  onOpenChange,
+  onConfirm,
+  initialSelectedIds = []
 }: CategoryModalProps) {
   const [parentCategories, setParentCategories] = useState<Category[]>([]);
   const [childCategories, setChildCategories] = useState<Category[]>([]);
@@ -53,27 +53,27 @@ export function CategoryModal({
       const params = { page: 1, limit: 100 };
       const response = await categoryService.getAll(params);
       setParentCategories(response.data);
-      
-      // Nếu có initialSelectedIds, tìm parent category và set selected
+
+      // English content normalized from the original source text.
       if (initialSelectedIds && initialSelectedIds.length > 0) {
-        // Tìm trong parent categories
+        // English content normalized from the original source text.
         const parentId = initialSelectedIds[0];
         const parent = response.data.find(p => p.id && p.id.toString() === parentId);
-        
+
         if (parent) {
           setSelectedParent(parent);
-          // Nếu có parent, load child categories
+          // English content normalized from the original source text.
           fetchChildCategories(parent.id);
         } else {
-          // Tìm xem nó có phải là child category không
+          // English content normalized from the original source text.
           for (const parent of response.data) {
             if (parent.id) {
               const childParams = { page: 1, limit: 100, parentCategoryId: parent.id.toString() };
               const childResponse = await categoryService.getAll(childParams);
               const child = childResponse.data.find(c => c.id && c.id.toString() === parentId);
-              
+
               if (child) {
-                // Tìm thấy trong child categories
+                // English content normalized from the original source text.
                 setSelectedParent(parent);
                 setChildCategories(childResponse.data);
                 setSelectedChildId(parentId);
@@ -84,7 +84,7 @@ export function CategoryModal({
         }
       }
     } catch (error) {
-      toast.error('Lỗi khi tải danh mục cha');
+      toast.error('English content normalized from the original source text.');
     } finally {
       setLoadingParents(false);
     }
@@ -97,18 +97,18 @@ export function CategoryModal({
       const params = { page: 1, limit: 100, parentCategoryId: parentId.toString() };
       const response = await categoryService.getAll(params);
       setChildCategories(response.data);
-      
-      // Nếu có initialSelectedIds và có child category trong initialSelectedIds
+
+      // English content normalized from the original source text.
       if (initialSelectedIds && initialSelectedIds.length > 1) {
         const childId = initialSelectedIds[1];
         const isChildInResponse = response.data.some(c => c.id && c.id.toString() === childId);
-        
+
         if (isChildInResponse) {
           setSelectedChildId(childId);
         }
       }
     } catch (error) {
-      toast.error('Lỗi khi tải danh mục con');
+      toast.error('English content normalized from the original source text.');
     } finally {
       setLoadingChildren(false);
     }
@@ -123,10 +123,10 @@ export function CategoryModal({
   const handleParentSelect = (parent: Category) => {
     console.log('Selected parent category:', parent);
     console.log('Parent ID type:', typeof parent.id, 'Value:', parent.id);
-    
+
     setSelectedParent(parent);
     setSelectedChildId(null);
-    
+
     if (parent.id) {
       // Log the ID that will be used for fetching children
       console.log('Fetching child categories with parent ID:', parent.id.toString());
@@ -135,19 +135,19 @@ export function CategoryModal({
   };
 
   const handleConfirm = () => {
-    // Tạo mảng categoryIds để gửi về
+    // English content normalized from the original source text.
     const categoryIds: string[] = [];
-    
+
     if (selectedParent?.id) {
-      // Sử dụng nguyên ID gốc, không thay đổi
+      // English content normalized from the original source text.
       categoryIds.push(selectedParent.id.toString());
     }
-    
+
     if (selectedChildId) {
-      // Sử dụng nguyên ID gốc, không thay đổi
+      // English content normalized from the original source text.
       categoryIds.push(selectedChildId);
     }
-    
+
     console.log('Sending original category IDs:', categoryIds);
     onConfirm(categoryIds, selectionPath);
     onOpenChange(false);
@@ -163,9 +163,9 @@ export function CategoryModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-none w-[80vw] max-w-5xl max-h-[80vh] flex flex-col">
         <DialogHeader className="flex-shrink-0">
-          <DialogTitle>Chọn danh mục sản phẩm</DialogTitle>
+          <DialogTitle>English content normalized from the original source text.</DialogTitle>
         </DialogHeader>
-        
+
         {/* Main Content - Fixed Height with Proper Overflow */}
         <div className="flex-1 min-h-0 overflow-hidden">
           <div className="grid grid-cols-4 gap-px bg-border rounded-lg" style={{ height: '450px' }}>
@@ -173,18 +173,18 @@ export function CategoryModal({
             {/* Parent Category Column */}
             <div className="bg-background flex flex-col overflow-auto">
               <div className="p-3 border-b bg-muted/30">
-                <h3 className="text-sm font-medium">Danh mục cha</h3>
+                <h3 className="text-sm font-medium">English content normalized from the original source text.</h3>
               </div>
               <div className="flex-1 overflow-hidden">
                 <ScrollArea className="h-full">
                   <div className="p-2 space-y-1">
                     {loadingParents ? (
                       <div className="flex items-center justify-center py-8">
-                        <p className="text-sm text-muted-foreground">Đang tải...</p>
+                        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
                       </div>
                     ) : parentCategories.length === 0 ? (
                       <div className="flex items-center justify-center py-8">
-                        <p className="text-sm text-muted-foreground">Không có dữ liệu</p>
+                        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
                       </div>
                     ) : (
                       parentCategories.map((parent) => (
@@ -194,8 +194,8 @@ export function CategoryModal({
                           className={cn(
                             'w-full text-left p-3 rounded-md flex justify-between items-center text-sm transition-colors',
                             'hover:bg-muted/50',
-                            selectedParent?.id === parent.id 
-                              ? 'bg-primary/10 text-primary border border-primary/20' 
+                            selectedParent?.id === parent.id
+                              ? 'bg-primary/10 text-primary border border-primary/20'
                               : 'border border-transparent'
                           )}
                           title={parent.name}
@@ -213,22 +213,22 @@ export function CategoryModal({
             {/* Child Category Column */}
             <div className="bg-background flex flex-col overflow-auto">
               <div className="p-3 border-b bg-muted/30">
-                <h3 className="text-sm font-medium">Danh mục con</h3>
+                <h3 className="text-sm font-medium">English content normalized from the original source text.</h3>
               </div>
               <div className="flex-1 overflow-hidden">
                 <ScrollArea className="h-full">
                   <div className="p-2 space-y-1">
                     {!selectedParent ? (
                       <div className="flex items-center justify-center py-8">
-                        <p className="text-sm text-muted-foreground">Vui lòng chọn danh mục cha</p>
+                        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
                       </div>
                     ) : loadingChildren ? (
                       <div className="flex items-center justify-center py-8">
-                        <p className="text-sm text-muted-foreground">Đang tải...</p>
+                        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
                       </div>
                     ) : childCategories.length === 0 ? (
                       <div className="flex items-center justify-center py-8">
-                        <p className="text-sm text-muted-foreground">Không có danh mục con</p>
+                        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
                       </div>
                     ) : (
                       childCategories.map((child) => (
@@ -256,20 +256,20 @@ export function CategoryModal({
             {/* 3rd Column - Reserved */}
             <div className="bg-background flex flex-col">
               <div className="p-3 border-b bg-muted/30">
-                <h3 className="text-sm font-medium text-muted-foreground">Dành cho tương lai</h3>
+                <h3 className="text-sm font-medium text-muted-foreground">English content normalized from the original source text.</h3>
               </div>
               <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm text-muted-foreground">Chưa sử dụng</p>
+                <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
               </div>
             </div>
 
             {/* 4th Column - Reserved */}
             <div className="bg-background flex flex-col">
               <div className="p-3 border-b bg-muted/30">
-                <h3 className="text-sm font-medium text-muted-foreground">Dành cho tương lai</h3>
+                <h3 className="text-sm font-medium text-muted-foreground">English content normalized from the original source text.</h3>
               </div>
               <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm text-muted-foreground">Chưa sử dụng</p>
+                <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
               </div>
             </div>
           </div>
@@ -277,16 +277,13 @@ export function CategoryModal({
 
         <DialogFooter className="flex-shrink-0 mt-4 pt-4 border-t">
           <div className="flex items-center justify-between w-full">
-            <div className="text-sm text-muted-foreground">
-              Đã chọn: <span className="text-foreground font-medium">{selectionPath || 'Chưa chọn'}</span>
+            <div className="text-sm text-muted-foreground">English content normalized from the original source text.<span className="text-foreground font-medium">{selectionPath || 'English content normalized from the original source text.'}</span>
             </div>
             <div className="flex gap-2">
               <DialogClose asChild>
-                <Button type="button" variant="outline">Hủy</Button>
+                <Button type="button" variant="outline">English content normalized from the original source text.</Button>
               </DialogClose>
-              <Button type="button" onClick={handleConfirm} disabled={!selectionPath}>
-                Xác nhận
-              </Button>
+              <Button type="button" onClick={handleConfirm} disabled={!selectionPath}>English content normalized from the original source text.</Button>
             </div>
           </div>
         </DialogFooter>

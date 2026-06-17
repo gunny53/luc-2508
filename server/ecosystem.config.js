@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'server-shopsifu',
+      name: 'server-ecsite',
       script: './dist/main.js',
       watch: 'false',
       instances: 'max',

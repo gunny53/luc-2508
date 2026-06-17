@@ -15,20 +15,20 @@ export default function OauthCallbackPage() {
     const handleOAuthCallback = async () => {
       try {
         const profileData = await fetchProfile();
-        
+
         if (profileData) {
           console.log('Profile fetched successfully:', profileData);
           setAuthSuccess(true);
-          
-          // Redirect dựa trên role
+
+          // English content normalized from the original source text.
           const userRole = profileData.role?.name?.toUpperCase();
           if (userRole === 'ADMIN' || userRole === 'SELLER') {
-            showToast('Đăng nhập thành công!', "success");
+            showToast('English content normalized from the original source text.', "success");
             setTimeout(() => {
               window.location.replace("/admin");
             }, 1000);
           } else {
-            showToast('Đăng nhập thành công!', "success");
+            showToast('English content normalized from the original source text.', "success");
             setTimeout(() => {
               window.location.replace("/");
             }, 1000);
@@ -38,7 +38,7 @@ export default function OauthCallbackPage() {
         }
       } catch (error) {
         console.error('OAuth callback error:', error);
-        showToast('Đăng nhập thất bại. Vui lòng thử lại.', "error");
+        showToast('English content normalized from the original source text.', "error");
         setTimeout(() => {
           router.push("/sign-in");
         }, 2000);
@@ -58,8 +58,8 @@ export default function OauthCallbackPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <p className="text-red-600 font-medium">Đăng nhập thất bại</p>
-          <p className="text-muted-foreground text-sm mt-1">Đang chuyển hướng...</p>
+          <p className="text-red-600 font-medium">English content normalized from the original source text.</p>
+          <p className="text-muted-foreground text-sm mt-1">English content normalized from the original source text.</p>
         </div>
       </div>
     );
@@ -75,8 +75,8 @@ export default function OauthCallbackPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <p className="text-green-600 font-medium">Đăng nhập thành công!</p>
-          <p className="text-muted-foreground text-sm mt-1">Đang chuyển hướng...</p>
+          <p className="text-green-600 font-medium">English content normalized from the original source text.</p>
+          <p className="text-muted-foreground text-sm mt-1">English content normalized from the original source text.</p>
         </div>
       </div>
     );
@@ -87,7 +87,7 @@ export default function OauthCallbackPage() {
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <div className="flex flex-col items-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
-        <p className="text-muted-foreground">Đang xử lý thông tin đăng nhập...</p>
+        <p className="text-muted-foreground">English content normalized from the original source text.</p>
       </div>
     </div>
   );

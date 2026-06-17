@@ -44,11 +44,11 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
   const setLink = useCallback(() => {
     if (!editor) return
     const previousUrl = editor.getAttributes("link").href
-    
+
     // Modern approach: set state variables instead of using window.prompt
     setLinkUrl(previousUrl || "")
     setLinkDialogOpen(true)
-    
+
     // When dialog is confirmed, this will be handled in a separate function
   }, [editor])
 
@@ -60,7 +60,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
     } else {
       editor.chain().focus().extendMarkRange("link").setLink({ href: linkUrl }).run()
     }
-    
+
     setLinkDialogOpen(false)
   }, [editor, linkUrl])
 
@@ -75,17 +75,17 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       fileInputRef.current.click();
     }
   }, [editor]);
-  
+
   // Handle file selection
   const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     if (!editor || !event.target.files?.length) return;
-    
+
     const file = event.target.files[0];
     if (!file.type.startsWith('image/')) {
       alert('Please select an image file');
       return;
     }
-    
+
     // Read the file as a data URL
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -94,7 +94,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         editor
           .chain()
           .focus()
-          .setImage({ 
+          .setImage({
             src: e.target.result,
             alt: file.name.split('.')[0] || 'Image',
             title: file.name
@@ -103,7 +103,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       }
     };
     reader.readAsDataURL(file);
-    
+
     // Clear the file input
     event.target.value = '';
   }, [editor]);
@@ -113,16 +113,16 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
   }
 
   // Button component for consistent styling and accessibility
-  const ToolbarButton = ({ 
-    onClick, 
-    isActive = false, 
+  const ToolbarButton = ({
+    onClick,
+    isActive = false,
     title,
-    children 
-  }: { 
-    onClick: () => void; 
-    isActive?: boolean; 
+    children
+  }: {
+    onClick: () => void;
+    isActive?: boolean;
     title: string;
-    children: React.ReactNode 
+    children: React.ReactNode
   }) => (
     <button
       type="button"
@@ -269,7 +269,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
           aria-label="Upload image"
         />
       </div>
-      
+
       {/* Link Dialog */}
       {/* Modal for inserting/editing links */}
       {linkDialogOpen && (
@@ -277,7 +277,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
           <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-medium text-lg">Insert Link</h3>
-              <button 
+              <button
                 type="button"
                 onClick={() => setLinkDialogOpen(false)}
                 className="text-gray-500 hover:text-gray-700"
@@ -286,7 +286,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
                 <CloseIcon className="w-4 h-4" />
               </button>
             </div>
-            
+
             <div className="mb-4">
               <label htmlFor="link-url" className="block text-sm font-medium mb-1">
                 URL
@@ -301,16 +301,16 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
                 autoFocus
               />
             </div>
-            
+
             <div className="flex justify-end gap-2">
               <button
-                type="button" 
+                type="button"
                 onClick={() => setLinkDialogOpen(false)}
                 className="border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-100"
               >
                 Cancel
               </button>
-              <button 
+              <button
                 type="button"
                 onClick={confirmLink}
                 className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 flex items-center gap-1"
@@ -405,7 +405,7 @@ export const RichTextEditor = ({ value, onChange, placeholder = "Type your conte
     // Handle Tab key (doesn't work well in editorProps)
     if (e.key === 'Tab') {
       e.preventDefault();
-      
+
       if (editor.isActive('listItem')) {
         if (e.shiftKey) {
           editor.commands.liftListItem('listItem');
@@ -422,18 +422,18 @@ export const RichTextEditor = ({ value, onChange, placeholder = "Type your conte
   return (
     <div className="flex flex-col justify-stretch min-h-[250px] relative">
       <Toolbar editor={editor} />
-      <div 
-        className="overflow-y-auto relative editor-container" 
+      <div
+        className="overflow-y-auto relative editor-container"
         onKeyDown={handleKeyDown}
         data-placeholder={placeholder}
       >
-        <EditorContent 
-          editor={editor} 
+        <EditorContent
+          editor={editor}
           className="h-full"
         />
         {editor && (
           <div className="text-xs text-gray-500 absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded">
-            {editor.getHTML().length} ký tự
+            {editor.getHTML().length} English content normalized from the original source text.
           </div>
         )}
       </div>

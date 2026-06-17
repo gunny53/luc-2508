@@ -7,7 +7,7 @@ async function clearProducts() {
     await prisma.$connect()
     console.log('🗑️  Starting to clear imported products and related data...')
 
-    // Tìm creator user (user được sử dụng để import)
+    // English content normalized from the original source text.
     const creatorUser = await prisma.user.findFirst({
       where: { role: { name: 'ADMIN' } },
       orderBy: { createdAt: 'desc' }
@@ -20,7 +20,7 @@ async function clearProducts() {
 
     console.log(`🎯 Clearing data imported by user: ${creatorUser.name} (${creatorUser.id})`)
 
-    // 1. Xóa ReviewMedia của reviews được import
+    // English content normalized from the original source text.
     const deletedReviewMedia = await prisma.reviewMedia.deleteMany({
       where: {
         review: {
@@ -32,7 +32,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedReviewMedia.count} review media`)
 
-    // 2. Xóa Reviews của products được import
+    // English content normalized from the original source text.
     const deletedReviews = await prisma.review.deleteMany({
       where: {
         product: {
@@ -42,7 +42,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedReviews.count} reviews`)
 
-    // 3. Xóa ProductTranslations của products được import
+    // English content normalized from the original source text.
     const deletedTranslations = await prisma.productTranslation.deleteMany({
       where: {
         product: {
@@ -52,7 +52,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedTranslations.count} product translations`)
 
-    // 4. Xóa ProductSKUSnapshots của products được import
+    // English content normalized from the original source text.
     const deletedProductSKUSnapshots = await prisma.productSKUSnapshot.deleteMany({
       where: {
         product: {
@@ -62,7 +62,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedProductSKUSnapshots.count} product SKU snapshots`)
 
-    // 5. Xóa SKUs của products được import
+    // English content normalized from the original source text.
     const deletedSKUs = await prisma.sKU.deleteMany({
       where: {
         product: {
@@ -72,7 +72,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedSKUs.count} SKUs`)
 
-    // 6. Xóa CartItems của products được import
+    // English content normalized from the original source text.
     const deletedCartItems = await prisma.cartItem.deleteMany({
       where: {
         sku: {
@@ -84,7 +84,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedCartItems.count} cart items`)
 
-    // 7. Xóa DiscountSnapshots của orders được import
+    // English content normalized from the original source text.
     const deletedDiscountSnapshots = await prisma.discountSnapshot.deleteMany({
       where: {
         order: {
@@ -94,7 +94,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedDiscountSnapshots.count} discount snapshots`)
 
-    // 8. Xóa Orders được tạo cho reviews (fake orders)
+    // English content normalized from the original source text.
     const deletedOrders = await prisma.order.deleteMany({
       where: {
         createdById: creatorUser.id,
@@ -105,7 +105,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedOrders.count} fake orders`)
 
-    // 9. Xóa Payments không có orders
+    // English content normalized from the original source text.
     const deletedPayments = await prisma.payment.deleteMany({
       where: {
         orders: {
@@ -115,7 +115,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedPayments.count} orphaned payments`)
 
-    // 10. Xóa Products được import
+    // English content normalized from the original source text.
     const deletedProducts = await prisma.product.deleteMany({
       where: {
         createdById: creatorUser.id
@@ -123,7 +123,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedProducts.count} products`)
 
-    // 11. Xóa BrandTranslations của brands được import
+    // English content normalized from the original source text.
     const deletedBrandTranslations = await prisma.brandTranslation.deleteMany({
       where: {
         brand: {
@@ -133,7 +133,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedBrandTranslations.count} brand translations`)
 
-    // 12. Xóa unused Brands (chỉ những brands được tạo bởi import script)
+    // English content normalized from the original source text.
     const unusedBrands = await prisma.brand.deleteMany({
       where: {
         createdById: creatorUser.id,
@@ -144,7 +144,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${unusedBrands.count} unused brands`)
 
-    // 13. Xóa CategoryTranslations của categories được import
+    // English content normalized from the original source text.
     const deletedCategoryTranslations = await prisma.categoryTranslation.deleteMany({
       where: {
         category: {
@@ -154,7 +154,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${deletedCategoryTranslations.count} category translations`)
 
-    // 14. Xóa unused Categories (chỉ những categories được tạo bởi import script)
+    // English content normalized from the original source text.
     const unusedCategories = await prisma.category.deleteMany({
       where: {
         createdById: creatorUser.id,
@@ -165,11 +165,11 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${unusedCategories.count} unused categories`)
 
-    // 15. Xóa ALL Orders trước khi xóa Users (để tránh foreign key constraint)
+    // English content normalized from the original source text.
     const remainingOrders = await prisma.order.deleteMany({})
     console.log(`🗑️  Deleted ${remainingOrders.count} remaining orders`)
 
-    // 16. Xóa unused Users (sellers và customers được tạo cho products)
+    // English content normalized from the original source text.
     const unusedUsers = await prisma.user.deleteMany({
       where: {
         createdById: creatorUser.id,
@@ -179,8 +179,8 @@ async function clearProducts() {
           },
           {
             OR: [
-              { createdProducts: { none: {} } }, // Sellers không có products
-              { reviews: { none: {} } } // Clients không có reviews
+              { createdProducts: { none: {} } }, // English content normalized from the original source text.
+              { reviews: { none: {} } } // English content normalized from the original source text.
             ]
           }
         ]
@@ -188,7 +188,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${unusedUsers.count} unused users (sellers/clients)`)
 
-    // 17. Xóa unused Addresses được tạo cho users
+    // English content normalized from the original source text.
     const unusedAddresses = await prisma.address.deleteMany({
       where: {
         createdById: creatorUser.id,
@@ -199,7 +199,7 @@ async function clearProducts() {
     })
     console.log(`🗑️  Deleted ${unusedAddresses.count} unused addresses`)
 
-    // 18. Xóa Discounts được import (vouchers)
+    // English content normalized from the original source text.
     const deletedDiscounts = await prisma.discount.deleteMany({
       where: {
         createdById: creatorUser.id
@@ -209,7 +209,7 @@ async function clearProducts() {
 
     console.log('✅ Successfully cleared all products and related data!')
 
-    // Hiển thị thống kê cuối cùng
+    // English content normalized from the original source text.
     const remainingProducts = await prisma.product.count()
     const remainingReviews = await prisma.review.count()
     const remainingSKUs = await prisma.sKU.count()
@@ -223,7 +223,7 @@ async function clearProducts() {
     console.log(`• Brands: ${remainingBrands}`)
     console.log(`• Categories: ${remainingCategories}`)
 
-    // 19. Clear cache để đảm bảo dữ liệu mới được load
+    // English content normalized from the original source text.
     console.log('\n🧹 Clearing application cache...')
     try {
       const cacheFlushUrl = process.env.APP_URL || 'http://localhost:3000'
@@ -252,7 +252,7 @@ async function clearProducts() {
   }
 }
 
-// Chạy script
+// English content normalized from the original source text.
 if (require.main === module) {
   clearProducts()
     .then(() => {
@@ -265,11 +265,11 @@ if (require.main === module) {
     })
 }
 
-// Function để clear tất cả data (fallback)
+// English content normalized from the original source text.
 async function clearAllData() {
   console.log('🗑️  Clearing ALL data (fallback mode)...')
 
-  // Xóa tất cả data theo thứ tự an toàn
+  // English content normalized from the original source text.
   await prisma.reviewMedia.deleteMany({})
   await prisma.review.deleteMany({})
   await prisma.productTranslation.deleteMany({})
@@ -288,7 +288,7 @@ async function clearAllData() {
 
   console.log('✅ Cleared ALL data')
 
-  // Clear cache sau khi xóa tất cả data
+  // English content normalized from the original source text.
   console.log('\n🧹 Clearing application cache...')
   try {
     const cacheFlushUrl = process.env.APP_URL || 'http://localhost:3000'

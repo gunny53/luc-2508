@@ -1,16 +1,12 @@
 import { ReactNode } from 'react';
 
-/**
- * Interface cho một Variant từ API
- */
+/* English content normalized from the original source text. */
 export interface VariantGroup {
   value: string;
   options: string[];
 }
 
-/**
- * Interface cho một SKU từ API
- */
+/* English content normalized from the original source text. */
 export interface Sku {
   id: string;
   value: string;
@@ -20,35 +16,29 @@ export interface Sku {
   productId: string;
 }
 
-/**
- * Interface cho các lựa chọn variant của người dùng
- */
+/* English content normalized from the original source text. */
 export type SelectedVariants = Record<string, string | null>;
 
-/**
- * Tạo chuỗi value theo định dạng SKU từ các lựa chọn variant
- * Ví dụ: Từ { "Color": "Red", "Size": "L" } -> "L-Red" hoặc "Red-L"
- * Tự động thử cả hai thứ tự để match với SKU từ API
- */
+/* English content normalized from the original source text. */
 export function createSkuValueFromSelectedVariants(
   selectedVariants: SelectedVariants,
   variantGroups: VariantGroup[]
 ): string[] {
   console.log('createSkuValueFromSelectedVariants called with:', { selectedVariants, variantGroups });
-  
-  // Kiểm tra xem đã chọn đủ tất cả variant chưa
+
+  // English content normalized from the original source text.
   const allVariantsSelected = Object.values(selectedVariants).every(val => val !== null);
-  
+
   if (!allVariantsSelected) {
     console.log('Not all variants selected, returning empty array');
     return [];
   }
 
-  // Lấy tất cả các giá trị variant đã chọn theo thứ tự của variantGroups
+  // English content normalized from the original source text.
   const selectedValues: string[] = [];
-  
+
   if (variantGroups.length > 0) {
-    // Sử dụng thứ tự của variantGroups nếu có
+    // English content normalized from the original source text.
     variantGroups.forEach(group => {
       const value = selectedVariants[group.value];
       if (value) {
@@ -56,7 +46,7 @@ export function createSkuValueFromSelectedVariants(
       }
     });
   } else {
-    // Fallback: lấy tất cả values từ selectedVariants
+    // English content normalized from the original source text.
     Object.values(selectedVariants).forEach(value => {
       if (value) {
         selectedValues.push(value);
@@ -74,13 +64,13 @@ export function createSkuValueFromSelectedVariants(
     return [selectedValues[0]];
   }
 
-  // Tạo tất cả các kết hợp có thể của thứ tự variants
+  // English content normalized from the original source text.
   const possibleCombinations: string[] = [];
-  
-  // Hàm tạo permutations
+
+  // English content normalized from the original source text.
   function getPermutations(arr: string[]): string[][] {
     if (arr.length <= 1) return [arr];
-    
+
     const result: string[][] = [];
     for (let i = 0; i < arr.length; i++) {
       const rest = [...arr.slice(0, i), ...arr.slice(i + 1)];
@@ -94,12 +84,12 @@ export function createSkuValueFromSelectedVariants(
 
   const permutations = getPermutations(selectedValues);
   console.log('Generated permutations:', permutations);
-  
-  // Tạo các format khác nhau cho mỗi permutation
+
+  // English content normalized from the original source text.
   permutations.forEach(perm => {
-    // Format 1: Liền nhau "A-B"
+    // English content normalized from the original source text.
     possibleCombinations.push(perm.join('-'));
-    // Format 2: Có khoảng trắng "A - B"
+    // English content normalized from the original source text.
     possibleCombinations.push(perm.join(' - '));
   });
 
@@ -107,57 +97,52 @@ export function createSkuValueFromSelectedVariants(
   return possibleCombinations;
 }
 
-/**
- * Tìm SKU dựa trên các lựa chọn variant
- */
+/* English content normalized from the original source text. */
 export function findMatchingSku(
   selectedVariants: SelectedVariants,
   skus: Sku[],
   variantGroups: VariantGroup[]
 ): Sku | null {
   console.log('findMatchingSku called with:', { selectedVariants, skus: skus.map(s => s.value), variantGroups });
-  
+
   const possibleSkuValues = createSkuValueFromSelectedVariants(selectedVariants, variantGroups);
-  
+
   if (possibleSkuValues.length === 0) {
     console.log('No possible SKU values generated');
     return null;
   }
-  
+
   console.log('Possible SKU values to try:', possibleSkuValues);
   console.log('Available SKU values from API:', skus.map(s => s.value));
-  
-  // Thử match với tất cả các khả năng
+
+  // English content normalized from the original source text.
   for (const skuValue of possibleSkuValues) {
     console.log(`Trying to match: "${skuValue}"`);
-    
-    // Normalize cả skuValue và sku.value để so sánh
+
+    // English content normalized from the original source text.
     const normalizedSkuValue = skuValue.replace(/\s*-\s*/g, '-');
     console.log(`Normalized to: "${normalizedSkuValue}"`);
-    
+
     const foundSku = skus.find(sku => {
       const normalizedApiValue = sku.value.replace(/\s*-\s*/g, '-');
       console.log(`Comparing "${normalizedSkuValue}" with "${normalizedApiValue}" (original: "${sku.value}")`);
       return normalizedApiValue === normalizedSkuValue;
     });
-    
+
     if (foundSku) {
       console.log(`✅ Found matching SKU: ${foundSku.value} for selected variants:`, selectedVariants);
       return foundSku;
     }
   }
-  
+
   console.log(`❌ No matching SKU found for variants:`, selectedVariants);
   console.log(`Tried combinations:`, possibleSkuValues);
   console.log(`Available SKUs:`, skus.map(s => s.value));
-  
+
   return null;
 }
 
-/**
- * Kiểm tra xem một option có sẵn không dựa trên các lựa chọn hiện tại
- * và các SKU hiện có
- */
+/* English content normalized from the original source text. */
 export function isOptionAvailable(
   variantType: string,
   option: string,
@@ -165,22 +150,22 @@ export function isOptionAvailable(
   skus: Sku[],
   variantGroups: VariantGroup[] = []
 ): boolean {
-  // Tạo một bản sao của selectedVariants với giả định rằng chọn option này
-  const testVariants = { 
-    ...selectedVariants, 
-    [variantType]: option 
+  // English content normalized from the original source text.
+  const testVariants = {
+    ...selectedVariants,
+    [variantType]: option
   };
-  
-  // Kiểm tra xem có variant nào chưa được chọn không
+
+  // English content normalized from the original source text.
   const hasUnselectedVariants = Object.values(testVariants).some(val => val === null);
-  
+
   if (hasUnselectedVariants) {
-    // Nếu còn variant chưa chọn, chỉ cần kiểm tra xem option này có trong bất kỳ SKU nào không
+    // English content normalized from the original source text.
     return skus.some(sku => sku.value.includes(option));
   } else {
-    // Nếu đã chọn đủ tất cả variant, thử tìm SKU matching với variantGroups đúng
+    // English content normalized from the original source text.
     const possibleSkuValues = createSkuValueFromSelectedVariants(testVariants, variantGroups);
-    
+
     return possibleSkuValues.some(skuValue => {
       const normalizedSkuValue = skuValue.replace(/\s*-\s*/g, '-');
       return skus.some(sku => {
@@ -191,16 +176,12 @@ export function isOptionAvailable(
   }
 }
 
-/**
- * Tính tổng stock cho tất cả SKU
- */
+/* English content normalized from the original source text. */
 export function getTotalStock(skus: Sku[]): number {
   return skus.reduce((sum, sku) => sum + sku.stock, 0);
 }
 
-/**
- * Lấy stock hiện tại dựa trên SKU đã chọn hoặc tổng stock
- */
+/* English content normalized from the original source text. */
 export function getCurrentStock(
   selectedVariants: SelectedVariants,
   skus: Sku[],
@@ -211,31 +192,27 @@ export function getCurrentStock(
 }
 
 // /**
-//  * Tạo thông báo về stock
+// English content normalized from the original source text.
 //  */
 // export function getStockMessage(stock: number): ReactNode {
 //   if (stock <= 0) {
-//     return <span className="text-red-500">Hết hàng</span>;
+// English content normalized from the original source text.
 //   }
-  
+
 //   if (stock <= 5) {
-//     return <span className="text-orange-500">Sắp hết hàng (còn {stock})</span>;
+// English content normalized from the original source text.
 //   }
-  
-//   return <span>Còn {stock}</span>;
+
+// English content normalized from the original source text.
 // }
 
-/**
- * Kiểm tra xem tất cả các variants đã được chọn chưa
- */
+/* English content normalized from the original source text. */
 export function areAllVariantsSelected(selectedVariants: SelectedVariants): boolean {
-  return Object.keys(selectedVariants).length > 0 && 
+  return Object.keys(selectedVariants).length > 0 &&
     Object.values(selectedVariants).every(val => val !== null);
 }
 
-/**
- * Tìm giá của SKU tương ứng với các variant đã chọn
- */
+/* English content normalized from the original source text. */
 export function findSelectedSkuPrice(
   selectedVariants: SelectedVariants,
   skus: Sku[],
@@ -246,15 +223,7 @@ export function findSelectedSkuPrice(
   return sku ? sku.price : defaultPrice;
 }
 
-/**
- * Hàm xử lý thêm sản phẩm vào giỏ hàng
- * @param selectedVariants Các variant đã được người dùng chọn
- * @param skus Danh sách SKU của sản phẩm
- * @param variantGroups Danh sách nhóm variant của sản phẩm
- * @param quantity Số lượng sản phẩm cần thêm vào giỏ hàng
- * @param addToCartFn Hàm addToCart từ useCart hook
- * @returns Promise với cart item ID hoặc false nếu thất bại
- */
+/* English content normalized from the original source text. */
 export async function handleAddToCart(
   selectedVariants: SelectedVariants,
   skus: Sku[],
@@ -262,35 +231,35 @@ export async function handleAddToCart(
   quantity: number,
   addToCartFn: (data: {skuId: string, quantity: number}, showNotification?: boolean) => Promise<string | boolean>
 ): Promise<string | false> {
-  // Tìm SKU phù hợp với các lựa chọn variant
+  // English content normalized from the original source text.
   const selectedSku = findMatchingSku(selectedVariants, skus, variantGroups);
-  
-  // Nếu không tìm thấy SKU phù hợp, trả về false
+
+  // English content normalized from the original source text.
   if (!selectedSku) {
-    console.error("Không tìm thấy SKU phù hợp với các lựa chọn");
+    console.error("English content normalized from the original source text.");
     return false;
   }
-  
-  // Kiểm tra tồn kho
+
+  // English content normalized from the original source text.
   if (selectedSku.stock <= 0) {
-    console.error("Sản phẩm đã hết hàng");
+    console.error("English content normalized from the original source text.");
     return false;
   }
-  
-  // Đảm bảo số lượng không vượt quá tồn kho
+
+  // English content normalized from the original source text.
   const safeQuantity = Math.min(quantity, selectedSku.stock);
-  
-  // Gọi hàm addToCart từ hook useCart
+
+  // English content normalized from the original source text.
   try {
     const result = await addToCartFn({
       skuId: selectedSku.id,
       quantity: safeQuantity
-    }, true); // true để hiển thị thông báo
-    
+    }, true); // English content normalized from the original source text.
+
     // Return cart item ID if available, otherwise false
     return typeof result === 'string' ? result : false;
   } catch (error) {
-    console.error("Lỗi khi thêm vào giỏ hàng:", error);
+    console.error("English content normalized from the original source text.", error);
     return false;
   }
 }

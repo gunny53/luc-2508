@@ -28,7 +28,7 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
   const [selectedDistrictId, setSelectedDistrictId] = useState(initialValues?.districtId || '');
   const [selectedWardCode, setSelectedWardCode] = useState(initialValues?.wardCode || '');
 
-  // Update state khi initialValues thay đổi (cho edit mode)
+  // English content normalized from the original source text.
   useEffect(() => {
     if (initialValues) {
       setSelectedProvinceId(initialValues.provinceId || '');
@@ -51,7 +51,7 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
     setSelectedProvinceId(value);
     setSelectedDistrictId('');
     setSelectedWardCode('');
-    
+
     if (onAddressChange) {
       onAddressChange(value, '', '');
     }
@@ -60,7 +60,7 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
   const handleDistrictChange = (value: string) => {
     setSelectedDistrictId(value);
     setSelectedWardCode('');
-    
+
     if (onAddressChange) {
       onAddressChange(selectedProvinceId, value, '');
     }
@@ -68,7 +68,7 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
 
   const handleWardChange = (value: string) => {
     setSelectedWardCode(value);
-    
+
     if (onAddressChange) {
       onAddressChange(selectedProvinceId, selectedDistrictId, value);
     }
@@ -86,14 +86,14 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
       {/* Province Select */}
       <div className="space-y-1">
         <div>
-          <Label className="text-xs font-medium">Tỉnh/Thành phố</Label>
+          <Label className="text-xs font-medium">English content normalized from the original source text.</Label>
           <Select
             disabled={disabled || provincesLoading}
             onValueChange={handleProvinceChange}
             value={selectedProvinceId}
           >
             <SelectTrigger className="text-sm h-9 w-full">
-              <SelectValue placeholder="Chọn tỉnh/thành phố" />
+              <SelectValue placeholder="English content normalized from the original source text." />
             </SelectTrigger>
             <SelectContent>
               {provinces?.data?.map((province) => (
@@ -113,14 +113,14 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
       {/* District Select */}
       <div className="space-y-1">
         <div>
-          <Label className="text-xs font-medium">Quận/Huyện</Label>
+          <Label className="text-xs font-medium">English content normalized from the original source text.</Label>
           <Select
             disabled={disabled || !selectedProvinceId || districtsLoading}
             onValueChange={handleDistrictChange}
             value={selectedDistrictId}
           >
             <SelectTrigger className="text-sm h-9 w-full">
-              <SelectValue placeholder="Chọn quận/huyện" />
+              <SelectValue placeholder="English content normalized from the original source text." />
             </SelectTrigger>
             <SelectContent>
               {districts?.data?.map((district) => (
@@ -140,14 +140,14 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
       {/* Ward Select - Full width on next row */}
       <div className="space-y-1 md:col-span-2">
         <div>
-          <Label className="text-xs font-medium">Phường/Xã</Label>
+          <Label className="text-xs font-medium">English content normalized from the original source text.</Label>
           <Select
             disabled={disabled || !selectedDistrictId || wardsLoading}
             onValueChange={handleWardChange}
             value={selectedWardCode}
           >
             <SelectTrigger className="text-sm h-9 w-full">
-              <SelectValue placeholder="Chọn phường/xã" />
+              <SelectValue placeholder="English content normalized from the original source text." />
             </SelectTrigger>
             <SelectContent>
               {wards?.data?.map((ward) => (

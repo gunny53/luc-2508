@@ -37,7 +37,7 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
   const { loading, handleSendOTP } = useVerifyEmail()
   const t = useTranslations('')
   const Schema = EmailSchema(t)
-  // Khởi tạo form với zod và react-hook-form
+  // English content normalized from the original source text.
 
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
@@ -96,7 +96,7 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
           className={cn('flex flex-col gap-6', className)}
         >
           <AnimatedForm>
-            {/* Tiêu đề */}
+            {/* English content normalized from the original source text. */}
             <AnimatedFormItem>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-4xl font-bold">{content.title}</h1>
@@ -136,11 +136,11 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
             {/* OAuth Form */}
             {action === 'signup' && <OAuthForm type="signup"/>}
 
-            {/* Link chuyển hướng */}
+            {/* English content normalized from the original source text. */}
             <AnimatedFormItem>
               <div className="text-center text-sm">
                 {content.linkText}{' '}
-                <Link 
+                <Link
                   href={content.linkHref}
                   className="underline underline-offset-4 text-primary hover:text-primary/90"
                 >
@@ -152,7 +152,7 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
         </form>
       </Form>
 
-      
+
     </>
   )
 }

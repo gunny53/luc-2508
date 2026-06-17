@@ -35,7 +35,7 @@ export function useOrder() {
     search: "",
   });
 
-  // 🔹 Lấy tất cả đơn hàng (Manage Orders)
+  // English content normalized from the original source text.
   const fetchAllOrders = useCallback(
     async (page = 1, limit = 10, search = "") => {
       setLoading(true);
@@ -52,7 +52,7 @@ export function useOrder() {
         }));
         return res;
       } catch (err: any) {
-        setError(err.message || "Lỗi khi tải danh sách đơn hàng");
+        setError(err.message || "English content normalized from the original source text.");
         throw err;
       } finally {
         setLoading(false);
@@ -61,16 +61,16 @@ export function useOrder() {
     []
   );
 
-  // 🔹 Lọc theo trạng thái - sử dụng manageOrderService
+  // English content normalized from the original source text.
   const fetchOrdersByStatus = useCallback(
     async (status: OrderStatus, page = 1, limit = 10) => {
       setLoading(true);
       setError(null);
       try {
-        const res = await manageOrderService.getAll({ 
-          page, 
-          limit, 
-          status 
+        const res = await manageOrderService.getAll({
+          page,
+          limit,
+          status
         });
         setOrders(res.data);
         setPagination((prev) => ({
@@ -81,7 +81,7 @@ export function useOrder() {
         }));
         return res;
       } catch (err: any) {
-        setError(err.message || "Lỗi khi tải đơn hàng theo trạng thái");
+        setError(err.message || "English content normalized from the original source text.");
         throw err;
       } finally {
         setLoading(false);
@@ -90,28 +90,28 @@ export function useOrder() {
     []
   );
 
-  // 🔹 Tìm kiếm
+  // English content normalized from the original source text.
   const handleSearch = (searchValue: string) => {
     const page = 1;
     const limit = pagination.limit ?? 10;
     fetchAllOrders(page, limit, searchValue);
   };
 
-  // 🔹 Chuyển trang
+  // English content normalized from the original source text.
   const handlePageChange = (page: number) => {
     const limit = pagination.limit ?? 10;
     const search = pagination.search ?? "";
     fetchAllOrders(page, limit, search);
   };
 
-  // 🔹 Đổi limit
+  // English content normalized from the original source text.
   const handleLimitChange = (limit: number) => {
     const page = 1;
     const search = pagination.search ?? "";
     fetchAllOrders(page, limit, search);
   };
 
-  // 🔹 Lấy chi tiết đơn hàng (Manage Order)
+  // English content normalized from the original source text.
   const fetchOrderDetail = useCallback(async (orderId: string) => {
     setLoading(true);
     setError(null);
@@ -120,14 +120,14 @@ export function useOrder() {
       setOrderDetail(res.data ?? null);
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi tải chi tiết đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 Tạo đơn hàng
+  // English content normalized from the original source text.
   const createOrder = useCallback(async (data: OrderCreateRequest) => {
     setLoading(true);
     setError(null);
@@ -135,14 +135,14 @@ export function useOrder() {
       const res: OrderCreateResponse = await orderService.create(data);
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi tạo đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 Cập nhật trạng thái đơn hàng
+  // English content normalized from the original source text.
   const updateOrderStatus = useCallback(async (orderId: string, data: UpdateStatusRequest) => {
     setLoading(true);
     setError(null);
@@ -150,14 +150,14 @@ export function useOrder() {
       const res = await manageOrderService.updateStatus(orderId, data);
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi cập nhật trạng thái đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 Huỷ đơn hàng
+  // English content normalized from the original source text.
   const cancelOrder = useCallback(async (orderId: string) => {
     setLoading(true);
     setError(null);
@@ -165,51 +165,51 @@ export function useOrder() {
       const res: OrderCancelResponse = await orderService.cancel(orderId);
       return res;
     } catch (err: any) {
-      setError(err.message || "Lỗi khi huỷ đơn hàng");
+      setError(err.message || "English content normalized from the original source text.");
       throw err;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 🔹 In hóa đơn GHN
+  // English content normalized from the original source text.
   const handlePrintInvoice = useCallback(async (orderId: string, orderCode?: string) => {
     try {
       console.log('Printing invoice for orderId:', orderId);
       console.log('Provided orderCode:', orderCode);
-      
-      // Nếu đã có orderCode từ tham số, dùng luôn
+
+      // English content normalized from the original source text.
       if (orderCode) {
         console.log('Using provided orderCode:', orderCode);
       } else {
-        // Nếu không có orderCode, tìm từ orderDetail hoặc orders
+        // English content normalized from the original source text.
         const order = orderDetail?.id === orderId ? orderDetail : orders.find(o => o.id === orderId);
         console.log('Found order from state:', order);
-        
+
         if (!order) {
           console.error('Order not found for ID:', orderId);
-          alert('Không tìm thấy thông tin đơn hàng. Vui lòng thử lại.');
+          alert('English content normalized from the original source text.');
           return;
         }
-        
+
         if (!order.orderCode) {
           console.error('Order found but missing orderCode:', order);
-          alert('Đơn hàng chưa có mã vận đơn. Không thể in hóa đơn.');
+          alert('English content normalized from the original source text.');
           return;
         }
-        
+
         orderCode = order.orderCode;
         console.log('Using orderCode from state:', orderCode);
       }
 
       if (!orderCode) {
-        alert('Không có mã vận đơn để in hóa đơn.');
+        alert('English content normalized from the original source text.');
         return;
       }
 
       console.log('Final orderCode to use:', orderCode);
 
-      // Bước 1: Gọi API gen-token
+      // English content normalized from the original source text.
       const tokenResponse = await fetch('https://dev-online-gateway.ghn.vn/shiip/public-api/v2/a5/gen-token', {
         method: 'POST',
         headers: {
@@ -231,7 +231,7 @@ export function useOrder() {
 
       const tokenData = await tokenResponse.json();
       console.log('Token data:', tokenData);
-      
+
       const printToken = tokenData.data?.token;
 
       if (!printToken) {
@@ -239,14 +239,14 @@ export function useOrder() {
         throw new Error('No token received from GHN');
       }
 
-      // Bước 2: Mở link printA5 trực tiếp với token
+      // English content normalized from the original source text.
       const printUrl = `https://dev-online-gateway.ghn.vn/a5/public-api/printA5?token=${printToken}`;
       console.log('Opening print URL:', printUrl);
       window.open(printUrl, '_blank');
-      
+
     } catch (error) {
       console.error('Error printing invoice:', error);
-      alert(`Lỗi in hóa đơn: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      alert(`English content normalized from the original source text.${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }, [orderDetail, orders]);
 

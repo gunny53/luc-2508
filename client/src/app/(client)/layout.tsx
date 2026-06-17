@@ -2,47 +2,47 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
-import { ShopsifuSocketProvider } from "@/providers/ShopsifuSocketProvider";
+import { ECSiteSocketProvider } from "@/providers/ECSiteSocketProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shopsifu.live/"),
-  title: "Shopsifu Việt Nam - Sàn Thương mại Điện tử",
+  metadataBase: new URL("https://ecsite.live/"),
+  title: "English content normalized from the original source text.",
   description:
-    "Shopsifu là sàn thương mại điện tử hiện đại, nơi bạn có thể mua sắm và bán hàng trực tuyến dễ dàng, nhanh chóng và an toàn.",
+    "English content normalized from the original source text.",
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    url: "https://shopsifu.live/",
-    siteName: "Shopsifu",
-    title: "Shopsifu Việt Nam - Sàn Thương mại Điện tử",
+    url: "https://ecsite.live/",
+    siteName: "ECSite",
+    title: "English content normalized from the original source text.",
     description:
-      "Mua sắm đa dạng sản phẩm, bán hàng trực tuyến hiệu quả trên nền tảng thương mại điện tử Shopsifu.",
+      "English content normalized from the original source text.",
     images: [
       {
-        url: "/banner_shopsifu.png", // 👉 thay bằng banner thực tế
+        url: "/banner_ecsite.png", // English content normalized from the original source text.
         width: 1200,
         height: 630,
-        alt: "Giao diện sàn thương mại điện tử Shopsifu",
+        alt: "English content normalized from the original source text.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shopsifu - Sàn Thương mại Điện tử Việt Nam",
+    title: "English content normalized from the original source text.",
     description:
-      "Khám phá nền tảng thương mại điện tử Shopsifu: mua sắm an toàn, bán hàng nhanh chóng, trải nghiệm tối ưu.",
-    images: ["/banner_shopsifu.png"],
+      "English content normalized from the original source text.",
+    images: ["/banner_ecsite.png"],
   },
   keywords: [
-    "Shopsifu",
-    "sàn thương mại điện tử",
-    "mua sắm trực tuyến",
-    "bán hàng online",
-    "website thương mại điện tử",
+    "ECSite",
+    "English content normalized from the original source text.",
+    "English content normalized from the original source text.",
+    "English content normalized from the original source text.",
+    "English content normalized from the original source text.",
     "ecommerce",
-    "mua bán online",
+    "English content normalized from the original source text.",
   ],
   robots: {
     index: true,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://shopsifu.live/",
+    canonical: "https://ecsite.live/",
   },
 };
 
@@ -67,9 +67,9 @@ export default function ClientLayout({
 }) {
   return (
     <ReactQueryProvider>
-      <ShopsifuSocketProvider>
+      <ECSiteSocketProvider>
         <div className={inter.className}>{children}</div>
-      </ShopsifuSocketProvider>
+      </ECSiteSocketProvider>
     </ReactQueryProvider>
   );
 }

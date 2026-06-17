@@ -7,7 +7,7 @@ import { OrderStatus } from '@/types/order.interface';
 import { DiscountStatus, VoucherType } from '@/types/discount.interface';
 import { useUserData } from '@/hooks/useGetData-UserLogin';
 
-// Interface cho thống kê seller
+// English content normalized from the original source text.
 export interface SellerStats {
   totalOrders: number;
   pendingPayment: number;
@@ -19,7 +19,7 @@ export interface SellerStats {
   error: string | null;
 }
 
-// Interface cho thống kê discount
+// English content normalized from the original source text.
 export interface DiscountStats {
   totalDiscounts: number;
   activeDiscounts: number;
@@ -33,7 +33,7 @@ export interface DiscountStats {
 
 export const useDbSeller = () => {
   const user = useUserData();
-  
+
   const [sellerStats, setSellerStats] = useState<SellerStats>({
     totalOrders: 0,
     pendingPayment: 0,
@@ -56,27 +56,27 @@ export const useDbSeller = () => {
     error: null,
   });
 
-  // Fetch thống kê discount cho seller
+  // English content normalized from the original source text.
   const fetchDiscountStats = useCallback(async () => {
     try {
       setDiscountStats(prev => ({ ...prev, isLoading: true, error: null }));
 
-      // Lấy tất cả discount của user hiện tại với limit 200
+      // English content normalized from the original source text.
       const response = await discountService.getAll({
         page: 1,
         limit: 200,
-        createdById: user?.id, // Thêm createdById để filter theo user
+        createdById: user?.id, // English content normalized from the original source text.
       });
 
       if (response.success && response.data) {
         const discounts = response.data;
         const totalDiscounts = discounts.length;
 
-        // Đếm theo trạng thái
+        // English content normalized from the original source text.
         const activeDiscounts = discounts.filter(discount => discount.discountStatus === DiscountStatus.ACTIVE).length;
         const expiredDiscounts = discounts.filter(discount => discount.discountStatus === DiscountStatus.EXPIRED).length;
-        
-        // Đếm theo loại voucher
+
+        // English content normalized from the original source text.
         const shopDiscounts = discounts.filter(discount => discount.voucherType === VoucherType.SHOP).length;
         const platformDiscounts = discounts.filter(discount => discount.voucherType === VoucherType.PLATFORM).length;
         const productDiscounts = discounts.filter(discount => discount.voucherType === VoucherType.PRODUCT).length;
@@ -93,36 +93,36 @@ export const useDbSeller = () => {
         });
 
       } else {
-        throw new Error(response.message || 'Không thể lấy dữ liệu discount');
+        throw new Error(response.message || 'English content normalized from the original source text.');
       }
     } catch (error) {
       console.error('Error fetching discount stats:', error);
       setDiscountStats(prev => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Có lỗi xảy ra khi lấy thống kê discount',
+        error: error instanceof Error ? error.message : 'English content normalized from the original source text.',
       }));
     }
   }, [user?.id]);
 
-  // Fetch thống kê đơn hàng cho seller
+  // English content normalized from the original source text.
   const fetchSellerStats = useCallback(async () => {
     try {
       setSellerStats(prev => ({ ...prev, isLoading: true, error: null }));
 
-      // Lấy tất cả đơn hàng của user hiện tại với limit 200
+      // English content normalized from the original source text.
       const response = await manageOrderService.getAll({
         page: 1,
         limit: 200,
-        // Thêm filter theo user nếu API hỗ trợ
-        // userId: user?.id, // Uncomment nếu API hỗ trợ filter theo userId
+        // English content normalized from the original source text.
+        // English content normalized from the original source text.
       });
 
       if (response.statusCode === 200 && response.data) {
         const orders = response.data;
         const totalOrders = orders.length;
 
-        // Đếm theo từng trạng thái
+        // English content normalized from the original source text.
         const pendingPayment = orders.filter(order => order.status === OrderStatus.PENDING_PAYMENT).length;
         const pendingPackaging = orders.filter(order => order.status === OrderStatus.PENDING_PACKAGING).length;
         const pendingDelivery = orders.filter(order => order.status === OrderStatus.PENDING_DELIVERY).length;
@@ -141,14 +141,14 @@ export const useDbSeller = () => {
         });
 
       } else {
-        throw new Error(response.message || 'Không thể lấy dữ liệu đơn hàng');
+        throw new Error(response.message || 'English content normalized from the original source text.');
       }
     } catch (error) {
       console.error('Error fetching seller stats:', error);
       setSellerStats(prev => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Có lỗi xảy ra khi lấy thống kê đơn hàng',
+        error: error instanceof Error ? error.message : 'English content normalized from the original source text.',
       }));
     }
   }, [user?.id]);

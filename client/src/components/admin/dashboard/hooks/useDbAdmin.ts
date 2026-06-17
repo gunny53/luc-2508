@@ -7,7 +7,7 @@ import { getAllBrands } from '@/services/admin/brandsService';
 import { categoryService } from '@/services/admin/categoryService';
 import { auditLogsService } from '@/services/admin/auditLogsService';
 
-// Interface cho thống kê dashboard
+// English content normalized from the original source text.
 export interface DashboardStats {
   totalUsers: number;
   recentUsersCount: number;
@@ -16,7 +16,7 @@ export interface DashboardStats {
   adminUsersCount: number;
   clientUsersCount: number;
   sellerUsersCount: number;
-  // Thêm thống kê từ modules khác
+  // English content normalized from the original source text.
   totalBrands: number;
   totalCategories: number;
   totalAuditLogs: number;
@@ -47,11 +47,11 @@ export interface ChartData {
   isLoading: boolean;
 }
 
-/** Helper: chuẩn hoá response không đồng nhất */
+/* English content normalized from the original source text. */
 function normalizeResponse(resp: any) {
   console.log('[useDbAdmin] raw response:', resp);
 
-  // Mảng data có thể nằm ở nhiều chỗ
+  // English content normalized from the original source text.
   const dataArr: unknown =
     (Array.isArray(resp?.data) && resp.data) ||
     (Array.isArray(resp?.items) && resp.items) ||
@@ -61,7 +61,7 @@ function normalizeResponse(resp: any) {
 
   const data: any[] = Array.isArray(dataArr) ? dataArr : [];
 
-  // Tổng items có thể là:
+  // English content normalized from the original source text.
   const totalItems: number =
     Number(resp?.metadata?.totalItems) ||
     Number(resp?.data?.metadata?.totalItems) ||
@@ -88,7 +88,7 @@ export const useDbAdmin = () => {
     recentUsersCount: 0,
     activeUsersCount: 0,
     verifiedUsersCount: 0,
-    adminUsersCount: 1, // Mặc định có 1 admin
+    adminUsersCount: 1, // English content normalized from the original source text.
     clientUsersCount: 0,
     sellerUsersCount: 0,
     totalBrands: 0,
@@ -111,17 +111,17 @@ export const useDbAdmin = () => {
     isLoading: true,
   });
 
-  // Fetch overview statistics từ tất cả modules
+  // English content normalized from the original source text.
   const fetchOverviewStats = useCallback(async () => {
     try {
       setOverviewStats(prev => ({ ...prev, isLoading: true, error: null }));
 
-      // Fetch data từ tất cả modules song song
+      // English content normalized from the original source text.
       const [usersResponse, brandsResponse, categoriesResponse, auditLogsResponse] = await Promise.allSettled([
-        userService.getAll({ page: 1, limit: 1 }), // Chỉ cần metadata
-        getAllBrands({ page: 1, limit: 1 }), // Chỉ cần metadata
-        categoryService.getAll({ page: 1, limit: 1 }), // Chỉ cần metadata
-        auditLogsService.getAll({ page: 1, limit: 1 }), // Chỉ cần metadata
+        userService.getAll({ page: 1, limit: 1 }), // English content normalized from the original source text.
+        getAllBrands({ page: 1, limit: 1 }), // English content normalized from the original source text.
+        categoryService.getAll({ page: 1, limit: 1 }), // English content normalized from the original source text.
+        auditLogsService.getAll({ page: 1, limit: 1 }), // English content normalized from the original source text.
       ]);
 
       let totalUsers = 0;
@@ -129,25 +129,25 @@ export const useDbAdmin = () => {
       let totalCategories = 0;
       let totalAuditLogs = 0;
 
-      // Xử lý kết quả users - dùng normalize function
+      // English content normalized from the original source text.
       if (usersResponse.status === 'fulfilled') {
         const normalized = normalizeResponse(usersResponse.value);
         totalUsers = normalized.totalItems;
       }
 
-      // Xử lý kết quả brands - dùng normalize function
+      // English content normalized from the original source text.
       if (brandsResponse.status === 'fulfilled') {
         const normalized = normalizeResponse(brandsResponse.value);
         totalBrands = normalized.totalItems;
       }
 
-      // Xử lý kết quả categories - dùng normalize function
+      // English content normalized from the original source text.
       if (categoriesResponse.status === 'fulfilled') {
         const normalized = normalizeResponse(categoriesResponse.value);
         totalCategories = normalized.totalItems;
       }
 
-      // Xử lý kết quả audit logs - dùng normalize function
+      // English content normalized from the original source text.
       if (auditLogsResponse.status === 'fulfilled') {
         const normalized = normalizeResponse(auditLogsResponse.value);
         totalAuditLogs = normalized.totalItems;
@@ -167,7 +167,7 @@ export const useDbAdmin = () => {
       setOverviewStats(prev => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Có lỗi xảy ra khi lấy thống kê tổng quan',
+        error: error instanceof Error ? error.message : 'English content normalized from the original source text.',
       }));
     }
   }, []);
@@ -182,12 +182,12 @@ export const useDbAdmin = () => {
         limit: 50,
       });
 
-      // Nếu API có field success=false → coi là lỗi
+      // English content normalized from the original source text.
       if (response?.success === false) {
-        throw new Error(response?.message || 'Không thể lấy dữ liệu người dùng');
+        throw new Error(response?.message || 'English content normalized from the original source text.');
       }
 
-      // Chuẩn hoá dữ liệu để không phụ thuộc exact shape
+      // English content normalized from the original source text.
       const { data: users, totalItems: totalUsers } = normalizeResponse(response);
 
       const now = Date.now();
@@ -203,10 +203,10 @@ export const useDbAdmin = () => {
       const clientUsersInSample = users.filter((u: any) => u?.role?.name === 'CLIENT').length;
       const sellerUsersInSample = users.filter((u: any) => u?.role?.name === 'SELLER').length;
 
-      const sampleSize = users.length || 1; // tránh chia 0
+      const sampleSize = users.length || 1; // English content normalized from the original source text.
       const est = (n: number) => Math.round((n / sampleSize) * totalUsers);
 
-      // Đảm bảo có ít nhất 1 admin
+      // English content normalized from the original source text.
       const estimatedAdminUsers = Math.max(1, est(adminUsersInSample));
 
       setUserStats({
@@ -228,7 +228,7 @@ export const useDbAdmin = () => {
         sellerUsersCount: est(sellerUsersInSample),
       }));
 
-      // Cập nhật chart data
+      // English content normalized from the original source text.
       setChartData({
         usersByRole: [
           { name: 'Admin', value: estimatedAdminUsers, color: '#8B5CF6' },
@@ -247,7 +247,7 @@ export const useDbAdmin = () => {
       setUserStats(prev => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Có lỗi xảy ra',
+        error: error instanceof Error ? error.message : 'English content normalized from the original source text.',
       }));
     }
   }, []);
@@ -265,7 +265,7 @@ export const useDbAdmin = () => {
     fetchAllStats();
   }, [fetchAllStats]);
 
-  // Update dashboard stats khi có overview stats
+  // English content normalized from the original source text.
   useEffect(() => {
     if (!overviewStats.isLoading && !overviewStats.error) {
       setDashboardStats(prev => ({

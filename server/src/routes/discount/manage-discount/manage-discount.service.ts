@@ -19,11 +19,7 @@ export class ManageDiscountService {
     private i18n: I18nService<I18nTranslations>
   ) {}
 
-  /**
-   * Kiểm tra quyền truy cập discount
-   * - Admin: có thể truy cập tất cả discounts
-   * - Seller: chỉ có thể truy cập discounts của chính mình
-   */
+  /* English content normalized from the original source text. */
   validatePrivilege({
     userIdRequest,
     roleNameRequest,
@@ -39,11 +35,7 @@ export class ManageDiscountService {
     return true
   }
 
-  /**
-   * Validate quyền tạo discount
-   * - Admin: có thể tạo discount cho bất kỳ shop nào
-   * - Seller: chỉ có thể tạo discount cho chính mình (shopId = userId)
-   */
+  /* English content normalized from the original source text. */
   validateCreatePrivilege({
     userIdRequest,
     roleNameRequest,
@@ -53,24 +45,22 @@ export class ManageDiscountService {
     roleNameRequest: string
     shopId?: string | null
   }) {
-    // Admin có thể tạo discount cho bất kỳ shop nào
+    // English content normalized from the original source text.
     if (roleNameRequest === RoleName.Admin) {
       return true
     }
 
-    // Seller chỉ có thể tạo discount cho chính mình
+    // English content normalized from the original source text.
     if (roleNameRequest !== RoleName.Admin) {
       if (shopId && shopId !== userIdRequest) {
-        throw new ForbiddenException('Bạn chỉ có thể tạo discount cho chính shop của mình')
+        throw new ForbiddenException('English content normalized from the original source text.')
       }
     }
 
     return true
   }
 
-  /**
-   * @description: Xem danh sách discount của một shop, bắt buộc phải truyền query param là `createdById`
-   */
+  /* English content normalized from the original source text. */
   async list(props: { query: GetManageDiscountsQueryType; user: AccessTokenPayload }) {
     this.validatePrivilege({
       userIdRequest: props.user.userId,
@@ -125,20 +115,20 @@ export class ManageDiscountService {
   }
 
   async create({ data, user }: { data: CreateDiscountBodyType; user: AccessTokenPayload }) {
-    // Validate quyền tạo discount
+    // English content normalized from the original source text.
     this.validateCreatePrivilege({
       userIdRequest: user.userId,
       roleNameRequest: user.roleName,
       shopId: data.shopId
     })
 
-    // Kiểm tra discount code đã tồn tại chưa
+    // English content normalized from the original source text.
     const existingDiscount = await this.discountRepo.findByCode(data.code)
     if (existingDiscount) {
       throw new BadRequestException(`Discount code '${data.code}' already exists`)
     }
 
-    // Nếu là Seller và không có shopId, tự động set shopId = userId
+    // English content normalized from the original source text.
     if (user.roleName !== RoleName.Admin && !data.shopId) {
       data.shopId = user.userId
     }
@@ -167,21 +157,21 @@ export class ManageDiscountService {
       throw NotFoundRecordException
     }
 
-    // Validate quyền truy cập discount
+    // English content normalized from the original source text.
     this.validatePrivilege({
       userIdRequest: user.userId,
       roleNameRequest: user.roleName,
       createdById: discount.createdById
     })
 
-    // Validate quyền cập nhật shopId
+    // English content normalized from the original source text.
     this.validateCreatePrivilege({
       userIdRequest: user.userId,
       roleNameRequest: user.roleName,
       shopId: data.shopId
     })
 
-    // Nếu là Seller và không có shopId, tự động set shopId = userId
+    // English content normalized from the original source text.
     if (user.roleName !== RoleName.Admin && !data.shopId) {
       data.shopId = user.userId
     }

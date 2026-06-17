@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Người Dùng - Tổng Quan Luồng Xử Lý
-note top : Hệ thống quản lý người dùng với phân quyền và xử lý lỗi toàn diện
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
 actor "Admin" as Admin
 actor "User" as User
@@ -22,99 +22,99 @@ participant "ActiveUser" as AU
 participant "PrismaService" as PS
 database "PostgreSQL" as DB
 
-== GET /users - Lấy Danh Sách Người Dùng ==
+== English Section ==
 Admin -> UC: GET /users?page=1&limit=10
 UC -> US: list(pagination)
 
 US -> UR: list(pagination)
-UR -> UR: Tính toán pagination metadata
+UR -> UR: English content normalized from the original source text.
 note right
-Logic Phân Trang:
+English content normalized from the original source text.
 • skip = (page - 1) * limit
 • take = limit
 • Parallel queries: count + findMany
 • Include role information
 end note
 
-UR -> PS: count() với WHERE deletedAt IS NULL
-UR -> PS: findMany() với include role
-PS -> DB: Thực thi parallel queries
-DB -> PS: Total count + users data với roles
-PS -> UR: Users với metadata
+UR -> PS: English content normalized from the original source text.
+UR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> UR: English content normalized from the original source text.
 UR -> US: Users data + metadata
 US -> IS: i18n.t('user.user.success.GET_SUCCESS')
-IS -> US: Trả về message đã localize
-US -> UC: Phản hồi + Message đã localize
-UC -> Admin: JSON với data + metadata
+IS -> US: English content normalized from the original source text.
+US -> UC: English content normalized from the original source text.
+UC -> Admin: English content normalized from the original source text.
 
-== GET /users/:userId - Chi Tiết Người Dùng ==
+== English Section ==
 Admin -> UC: GET /users/:userId
 UC -> US: findById(userId)
 
 US -> SUR: findUniqueIncludeRolePermissions({id})
-SUR -> PS: findUnique với include role permissions
-PS -> DB: Query user với role permissions
-DB -> PS: User profile đầy đủ
-PS -> SUR: Thông tin user + quyền hạn
-SUR -> US: User detail với role permissions
+SUR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> SUR: English content normalized from the original source text.
+SUR -> US: English content normalized from the original source text.
 
-alt User tồn tại
+English content normalized from the original source text.
     US -> IS: i18n.t('user.user.success.GET_DETAIL_SUCCESS')
-    IS -> US: Trả về message đã localize
+    IS -> US: English content normalized from the original source text.
     US -> UC: Success response
     UC -> Admin: JSON user detail
-else User không tồn tại
+else (No)
     US -> UC: NotFoundRecordException
     UC -> Admin: 404 Not Found
 end
 
-== POST /users - Tạo Người Dùng Mới ==
+== English Section ==
 Admin -> UC: POST /users + {email, name, password, roleId, ...}
 UC -> AU: @ActiveUser()
-AU -> UC: Trả về user context
+AU -> UC: English content normalized from the original source text.
 UC -> ARP: @ActiveRolePermissions('name')
-ARP -> UC: Trả về roleName
+ARP -> UC: English content normalized from the original source text.
 UC -> US: create({data, user, roleName})
 
 US -> US: verifyRole({roleNameAgent, roleIdTarget})
 note right
 Role Verification Logic:
-• Chỉ Admin có quyền tạo user với role Admin
-• Non-admin không thể tạo Admin user
-• Validate roleIdTarget hợp lệ
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
-alt Role verification thành công
+English content normalized from the original source text.
     US -> HS: hash(password)
-    HS -> US: Trả về hashedPassword
+    HS -> US: English content normalized from the original source text.
     US -> UR: create({createdById, data})
-    UR -> PS: INSERT user với audit fields
-    PS -> DB: INSERT user với hashedPassword
+    UR -> PS: English content normalized from the original source text.
+    PS -> DB: English content normalized from the original source text.
     DB -> PS: User created
-    PS -> UR: Trả về user đã tạo
-    UR -> US: Trả về user data
+    PS -> UR: English content normalized from the original source text.
+    UR -> US: English content normalized from the original source text.
     US -> IS: i18n.t('user.user.success.CREATE_SUCCESS')
-    IS -> US: Trả về message đã localize
+    IS -> US: English content normalized from the original source text.
     US -> UC: Success response
     UC -> Admin: 201 Created + JSON response
 
-else Role verification thất bại
+else (No)
     US -> UC: ForbiddenException
     UC -> Admin: 403 Forbidden
 end
 
-== PUT /users/:userId - Cập Nhật Người Dùng ==
+== English Section ==
 Admin -> UC: PUT /users/:userId + {data}
 UC -> AU: @ActiveUser()
-AU -> UC: Trả về user context
+AU -> UC: English content normalized from the original source text.
 UC -> ARP: @ActiveRolePermissions('name')
-ARP -> UC: Trả về roleName
+ARP -> UC: English content normalized from the original source text.
 UC -> US: update({id, data, user, roleName})
 
 US -> US: verifyYourself({userAgentId, userTargetId})
 note right
 Self-Operation Prevention:
-• Không thể cập nhật chính mình
+• English content normalized from the original source text
 • userAgentId !== userTargetId
 • Prevent self-modification
 end note
@@ -122,24 +122,24 @@ end note
 alt Self-operation check passed
     US -> SUR: findUnique({id})
     SUR -> PS: Query current user
-    PS -> DB: SELECT user với roleId
+    PS -> DB: English content normalized from the original source text.
     DB -> PS: Current user data
-    PS -> SUR: Trả về current user
-    SUR -> US: Trả về current user
+    PS -> SUR: English content normalized from the original source text.
+    SUR -> US: English content normalized from the original source text.
     US -> US: verifyRole({roleNameAgent, currentRoleId})
 
-    alt Role verification thành công
+    English content normalized from the original source text.
         US -> SUR: update({id}, {data, updatedById})
-        SUR -> PS: UPDATE user với audit
-        PS -> DB: UPDATE user với audit fields
+        SUR -> PS: English content normalized from the original source text.
+        PS -> DB: English content normalized from the original source text.
         DB -> PS: User updated
-        PS -> SUR: Trả về updated user
-        SUR -> US: Trả về user data
+        PS -> SUR: English content normalized from the original source text.
+        SUR -> US: English content normalized from the original source text.
         US -> IS: i18n.t('user.user.success.UPDATE_SUCCESS')
-        IS -> US: Trả về message đã localize
+        IS -> US: English content normalized from the original source text.
         US -> UC: Success response
         UC -> Admin: 200 OK + JSON response
-    else Role verification thất bại
+    else (No)
         US -> UC: ForbiddenException
         UC -> Admin: 403 Forbidden
     end
@@ -148,82 +148,82 @@ else Self-operation detected
     UC -> Admin: 403 Forbidden
 end
 
-== DELETE /users/:userId - Xóa Người Dùng ==
+== English Section ==
 Admin -> UC: DELETE /users/:userId
 UC -> AU: @ActiveUser()
-AU -> UC: Trả về user context
+AU -> UC: English content normalized from the original source text.
 UC -> ARP: @ActiveRolePermissions('name')
-ARP -> UC: Trả về roleName
+ARP -> UC: English content normalized from the original source text.
 UC -> US: delete({id, user, roleName})
 
 US -> US: verifyYourself({userAgentId, userTargetId})
 US -> SUR: findUnique({id})
 SUR -> PS: Query current user
-PS -> DB: SELECT user với roleId
+PS -> DB: English content normalized from the original source text.
 DB -> PS: Current user data
-PS -> SUR: Trả về current user
-SUR -> US: Trả về current user
+PS -> SUR: English content normalized from the original source text.
+SUR -> US: English content normalized from the original source text.
 US -> US: verifyRole({roleNameAgent, currentRoleId})
 
-alt Role verification thành công
+English content normalized from the original source text.
     US -> UR: delete({id, deletedById})
     UR -> PS: UPDATE deletedAt (soft delete)
     PS -> DB: UPDATE deletedAt field
     DB -> PS: User marked deleted
-    PS -> UR: Trả về success
-    UR -> US: Trả về success
+    PS -> UR: English content normalized from the original source text.
+    UR -> US: English content normalized from the original source text.
     US -> IS: i18n.t('user.user.success.DELETE_SUCCESS')
-    IS -> US: Trả về message đã localize
+    IS -> US: English content normalized from the original source text.
     US -> UC: Success response
     UC -> Admin: 200 OK + message
-else Role verification thất bại
+else (No)
     US -> UC: ForbiddenException
     UC -> Admin: 403 Forbidden
 end
 
-== Xử Lý Lỗi & Validation ==
-alt Lỗi unique constraint (email)
+== English Section ==
+English content normalized from the original source text.
     UR -> US: UserAlreadyExistsException
     US -> UC: Throw exception
     UC -> Admin: 422 Unprocessable Entity
 
-else Lỗi foreign key (roleId)
+else (No)
     UR -> US: RoleNotFoundException
     US -> UC: Throw exception
     UC -> Admin: 422 Unprocessable Entity
 
-else Lỗi không tìm thấy user
+else (No)
     SUR -> US: Return null
     US -> US: Throw NotFoundRecordException
     US -> UC: Throw exception
     UC -> Admin: 404 Not Found
 
-else Lỗi self-operation
+else (No)
     US -> UC: CannotUpdateOrDeleteYourselfException
     UC -> Admin: 403 Forbidden
 
-else Lỗi không đủ quyền
+else (No)
     US -> UC: ForbiddenException
     UC -> Admin: 403 Forbidden
 end
 
-== Trả Kết Quả ==
+== English Section ==
 US -> IS: i18n.t('user.user.success.XXX')
-IS -> US: Trả về message đã localize
-US -> UC: Phản hồi + Message đã localize
-UC -> Admin: JSON Response với metadata đầy đủ
+IS -> US: English content normalized from the original source text.
+US -> UC: English content normalized from the original source text.
+UC -> Admin: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module User:**
+* English content normalized from the original source text
 • Role-based access control (Admin/Seller/User)
-• Password hashing với HashingService
+• English content normalized from the original source text
 • Self-operation prevention
 • Admin privilege validation
-• Soft delete với audit trail
+• English content normalized from the original source text
 • Unique constraint validation (email)
 • Foreign key validation (roleId)
-• Multi-language support với I18nService
-• Pagination với metadata
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Comprehensive error handling
 end note
 

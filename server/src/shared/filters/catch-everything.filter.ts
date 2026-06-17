@@ -14,7 +14,7 @@ export class CatchEverythingFilter implements ExceptionFilter {
     let message = exception instanceof HttpException ? exception.getResponse() : 'Internal Server Error'
     if (isUniqueConstraintPrismaError(exception)) {
       httpStatus = HttpStatus.CONFLICT
-      message = 'Record đã tồn tại'
+      message = 'English content normalized from the original source text.'
     }
     const responseBody = {
       statusCode: httpStatus,

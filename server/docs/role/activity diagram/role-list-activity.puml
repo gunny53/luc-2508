@@ -6,15 +6,15 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /roles
+English content normalized from the original source text.
 
 start
-:Nhận page, limit, name?;
-:Xây dựng where (deletedAt=null, name filter nếu có);
-:Thực thi count + findMany song song;
-:Tính metadata;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, data, metadata };
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -18,9 +18,9 @@ export class EmailService {
   }
 
   async sendOTP(payload: { email: string; code: string }) {
-    const subject = 'Mã OTP'
+    const subject = 'English content normalized from the original source text.'
     return this.resend.emails.send({
-      from: 'Shopsifu Ecommerce <no-reply@shopsifu.live>',
+      from: 'ECSite Ecommerce <no-reply@ecsite.live>',
       to: [payload.email],
       subject,
       react: <OTPEmail otpCode={payload.code} title={subject} />

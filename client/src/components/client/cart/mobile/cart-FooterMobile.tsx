@@ -29,7 +29,7 @@ export default function CartFooterMobile({
 
   return (
     <div className="w-full sticky bottom-0 bg-white border-t text-sm text-muted-foreground safe-area-inset-bottom">
-      {/* Voucher + Coin có thể reuse sau nếu cần, hiện tại bỏ qua giống desktop */}
+      {/* English content normalized from the original source text. */}
 
       {/* Bottom Row - Mobile optimized */}
       <div className="flex flex-col gap-2 px-3 py-2 bg-white min-h-[60px]">
@@ -43,7 +43,7 @@ export default function CartFooterMobile({
               onCheckedChange={onToggleAll}
             />
             <label htmlFor="select-all-mobile" className="text-sm">
-              Chọn tất cả ({selectedCount})
+              English content normalized from the original source text.{selectedCount})
             </label>
 
             {selectedCount > 0 && (
@@ -53,7 +53,7 @@ export default function CartFooterMobile({
                 onClick={onDeleteSelected}
                 className="ml-2 text-red-600 border-red-300 hover:bg-red-50 hover:border-red-400 text-xs px-2 py-1 h-7"
               >
-                Xóa ({selectedCount})
+                English content normalized from the original source text.{selectedCount})
               </Button>
             )}
           </div>
@@ -63,7 +63,7 @@ export default function CartFooterMobile({
         <div className="flex items-center justify-between">
           <div className="flex-1 text-right">
             <div className="text-xs text-black mb-1">
-              Tổng thanh toán ({selectedCount} sản phẩm):
+              English content normalized from the original source text.{selectedCount} English content normalized from the original source text.
             </div>
             <div>
               <span className="text-red-500 font-medium text-lg">
@@ -71,7 +71,7 @@ export default function CartFooterMobile({
               </span>
               {totalSaved > 0 && (
                 <div className="text-xs text-muted-foreground">
-                  Tiết kiệm ₫{totalSaved.toLocaleString("vi-VN")}
+                  English content normalized from the original source text.{totalSaved.toLocaleString("vi-VN")}
                 </div>
               )}
             </div>
@@ -81,9 +81,7 @@ export default function CartFooterMobile({
             className="bg-red-500 hover:bg-red-600 text-white text-sm px-6 py-2 h-9 ml-3 whitespace-nowrap"
             onClick={onCheckout}
             disabled={selectedCount === 0}
-          >
-            Thanh toán
-          </Button>
+          >English content normalized from the original source text.</Button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-// import { DotsHorizontalIcon } from '@radix-ui/react-icons' // Thay thế bằng MoreHorizontal từ lucide-react
+// English content normalized from the original source text.
 import { MoreHorizontal } from 'lucide-react';
 import { Row } from '@tanstack/react-table'
 import React from 'react'; // Import React for JSX.Element
@@ -11,14 +11,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  // DropdownMenuShortcut, // Bỏ qua nếu không dùng
+  // English content normalized from the original source text.
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-// Giả sử bạn có một schema cho User hoặc một type chung cho row data
-// import { taskSchema } from "../data/schema" // Ví dụ từ Shadcn
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 
-// Định nghĩa kiểu cho một hành động thực thi lệnh
+// English content normalized from the original source text.
 interface CommandAction<TData> {
   type: 'command';
   label: string;
@@ -27,12 +27,12 @@ interface CommandAction<TData> {
   className?: string;
 }
 
-// Định nghĩa kiểu cho một dòng kẻ ngang separator
+// English content normalized from the original source text.
 interface SeparatorAction {
   type: 'separator';
 }
 
-// Union type cho các loại action có thể có
+// English content normalized from the original source text.
 export type ActionItem<TData> = CommandAction<TData> | SeparatorAction;
 
 interface DataTableRowActionsProps<TData> {
@@ -45,10 +45,10 @@ export function DataTableRowActions<TData>({
   row,
   actions = [],
 }: DataTableRowActionsProps<TData>) {
-  // const task = taskSchema.parse(row.original) // Ví dụ parse data nếu cần
+  // English content normalized from the original source text.
 
   if (!actions || actions.length === 0) {
-    return null; // Không render gì nếu không có actions
+    return null; // English content normalized from the original source text.
   }
 
   return (
@@ -57,27 +57,27 @@ export function DataTableRowActions<TData>({
         <Button
           variant="ghost"
           className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-          onClick={(e) => e.stopPropagation()} // Ngăn event bubble up
+          onClick={(e) => e.stopPropagation()} // English content normalized from the original source text.
         >
           <MoreHorizontal className="h-4 w-4" />
-          <span className="sr-only">Mở menu</span>
+          <span className="sr-only">English content normalized from the original source text.</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent 
-        align="end" 
+      <DropdownMenuContent
+        align="end"
         className="w-auto min-w-[160px]"
-        onClick={(e) => e.stopPropagation()} // Ngăn event bubble up từ menu content
+        onClick={(e) => e.stopPropagation()} // English content normalized from the original source text.
       >
         {actions.map((action, index) => {
           if (action.type === 'separator') {
             return <DropdownMenuSeparator key={index} />;
           }
-          // Nếu là 'command'
+          // English content normalized from the original source text.
           return (
             <DropdownMenuItem
               key={index}
               onClick={(e) => {
-                e.stopPropagation(); // Ngăn event bubble up
+                e.stopPropagation(); // English content normalized from the original source text.
                 action.onClick?.(row.original);
               }}
               className={action.className}
@@ -90,4 +90,4 @@ export function DataTableRowActions<TData>({
       </DropdownMenuContent>
     </DropdownMenu>
   )
-} 
+}

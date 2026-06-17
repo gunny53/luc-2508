@@ -42,7 +42,7 @@ export class SharedPaymentRepository {
   }
 
   async updatePaymentAndOrdersOnSuccess(paymentId: number, orders: Array<{ id: string }>) {
-    this.logger.log(`[SHARED_PAYMENT] Bắt đầu xử lý thanh toán thành công cho paymentId: ${paymentId}`)
+    this.logger.log(`English content normalized from the original source text.${paymentId}`)
 
     // 1. Update payment status
     await this.updatePaymentStatus(paymentId, PaymentStatus.SUCCESS)
@@ -53,24 +53,24 @@ export class SharedPaymentRepository {
       OrderStatus.PENDING_PACKAGING
     )
 
-    this.logger.log(`[SHARED_PAYMENT] Payment và orders status updated thành công`)
+    this.logger.log(`English content normalized from the original source text.`)
 
-    // 3. Tạo GHN order cho các orders có online payment
+    // English content normalized from the original source text.
     try {
       for (const order of orders) {
-        this.logger.log(`[SHARED_PAYMENT] Bắt đầu tạo GHN order cho order: ${order.id}`)
+        this.logger.log(`English content normalized from the original source text.${order.id}`)
 
         const result = await this.sharedShippingRepository.createGHNOrderForOrder(order.id)
 
         if (result.success) {
-          this.logger.log(`[SHARED_PAYMENT] Đã enqueue job tạo GHN order cho order: ${order.id}`)
+          this.logger.log(`English content normalized from the original source text.${order.id}`)
         } else {
-          this.logger.warn(`[SHARED_PAYMENT] Không thể tạo GHN order cho order: ${order.id}: ${result.message}`)
+          this.logger.warn(`English content normalized from the original source text.${order.id}: ${result.message}`)
         }
       }
     } catch (error) {
-      this.logger.error(`[SHARED_PAYMENT] Lỗi khi tạo GHN orders: ${error.message}`)
-      // Không throw error vì payment đã thành công, chỉ log warning
+      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      // English content normalized from the original source text.
     }
   }
 
@@ -90,7 +90,7 @@ export class SharedPaymentRepository {
 
   async updatePaymentAndOrdersOnFailed(paymentId: number, orders: Array<{ id: string }>) {
     await this.updatePaymentStatus(paymentId, PaymentStatus.FAILED)
-    // Chỉ hủy các đơn đang ở trạng thái PENDING_PAYMENT
+    // English content normalized from the original source text.
     await this.prismaService.order.updateMany({
       where: {
         id: { in: orders.map((o) => o.id) },
@@ -113,13 +113,13 @@ export class SharedPaymentRepository {
       await this.updatePaymentStatusInTransaction(tx, paymentId, PaymentStatus.FAILED)
     })
 
-    // Thử hủy GHN order nếu đã tồn tại (an toàn idempotent)
+    // English content normalized from the original source text.
     try {
       for (const order of orders) {
         await this.sharedShippingRepository.cancelGHNOrderForOrder(order.id)
       }
     } catch (error) {
-      this.logger.warn(`[SHARED_PAYMENT] Lỗi khi enqueue hủy GHN cho các orders: ${error?.message}`)
+      this.logger.warn(`English content normalized from the original source text.${error?.message}`)
     }
 
     await this.paymentProducer.removeJob(paymentId)

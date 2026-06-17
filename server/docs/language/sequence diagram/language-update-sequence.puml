@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng PUT /languages/:languageId
+English content normalized from the original source text.
 
 actor "Admin" as A
 participant "LanguageController" as LC

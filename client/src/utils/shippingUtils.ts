@@ -33,7 +33,7 @@ export const shippingUtils = {
   getDistrictName: async (provinceId: string | number, districtId: string | number): Promise<string | null> => {
     const pId = typeof provinceId === 'string' ? parseInt(provinceId) : provinceId;
     const dId = typeof districtId === 'string' ? parseInt(districtId) : districtId;
-    
+
     // Check cache first
     let districts = districtsCache.get(pId);
     if (!districts) {
@@ -48,7 +48,7 @@ export const shippingUtils = {
         return null;
       }
     }
-    
+
     const district = districts?.find(d => d.DistrictID === dId);
     return district?.DistrictName || null;
   },
@@ -56,7 +56,7 @@ export const shippingUtils = {
   // Get ward name by code (requires district ID to fetch if not cached)
   getWardName: async (districtId: string | number, wardCode: string): Promise<string | null> => {
     const dId = typeof districtId === 'string' ? parseInt(districtId) : districtId;
-    
+
     // Check cache first
     let wards = wardsCache.get(dId);
     if (!wards) {
@@ -71,7 +71,7 @@ export const shippingUtils = {
         return null;
       }
     }
-    
+
     const ward = wards?.find(w => w.WardCode === wardCode);
     return ward?.WardName || null;
   },
@@ -85,7 +85,7 @@ export const shippingUtils = {
   // Parse address data from "id|name" format
   parseAddressData: (addressString: string) => {
     if (!addressString) return { id: '', name: '' };
-    
+
     const parts = addressString.split('|');
     return {
       id: parts[0] || '',

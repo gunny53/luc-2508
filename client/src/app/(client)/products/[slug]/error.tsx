@@ -17,7 +17,7 @@ export default function Error({ error, reset }: ErrorProps) {
   const [autoRetryEnabled, setAutoRetryEnabled] = useState(true);
   const router = useRouter();
 
-  // Auto-retry mechanism mỗi 8 giây
+  // English content normalized from the original source text.
   useEffect(() => {
     if (!autoRetryEnabled) return;
 
@@ -61,16 +61,14 @@ export default function Error({ error, reset }: ErrorProps) {
           <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
             <AlertCircle className="w-6 h-6 text-red-600" />
           </div>
-          <CardTitle className="text-xl font-semibold text-gray-900">
-            Không thể tải sản phẩm
-          </CardTitle>
+          <CardTitle className="text-xl font-semibold text-gray-900">English content normalized from the original source text.</CardTitle>
         </CardHeader>
-        
+
         <CardContent className="space-y-4">
           <div className="text-center text-gray-600">
-            <p className="mb-2">Đã xảy ra lỗi khi tải thông tin sản phẩm.</p>
+            <p className="mb-2">English content normalized from the original source text.</p>
             <p className="text-sm text-gray-500">
-              {error.message || 'Vui lòng thử lại sau ít phút.'}
+              {error.message || 'English content normalized from the original source text.'}
             </p>
           </div>
 
@@ -79,14 +77,14 @@ export default function Error({ error, reset }: ErrorProps) {
               <div className="flex items-center justify-center space-x-2 text-blue-700">
                 <RefreshCw className="w-4 h-4 animate-spin" />
                 <span className="text-sm">
-                  Tự động thử lại sau {countdown} giây
+                  English content normalized from the original source text. {countdown} English content normalized from the original source text.
                 </span>
               </div>
             </div>
           )}
 
           <div className="space-y-3">
-            <Button 
+            <Button
               onClick={handleManualRetry}
               disabled={isRetrying}
               className="w-full"
@@ -94,41 +92,33 @@ export default function Error({ error, reset }: ErrorProps) {
             >
               {isRetrying ? (
                 <>
-                  <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                  Đang thử lại...
-                </>
+                  <RefreshCw className="w-4 h-4 mr-2 animate-spin" />English content normalized from the original source text.</>
               ) : (
                 <>
-                  <RefreshCw className="w-4 h-4 mr-2" />
-                  Thử lại ngay
-                </>
+                  <RefreshCw className="w-4 h-4 mr-2" />English content normalized from the original source text.</>
               )}
             </Button>
 
-            <Button 
+            <Button
               onClick={goHome}
               variant="outline"
               className="w-full"
             >
-              <Home className="w-4 h-4 mr-2" />
-              Về trang chủ
-            </Button>
+              <Home className="w-4 h-4 mr-2" />English content normalized from the original source text.</Button>
 
             {autoRetryEnabled && (
-              <Button 
+              <Button
                 onClick={() => setAutoRetryEnabled(false)}
                 variant="ghost"
                 className="w-full text-gray-500"
                 size="sm"
-              >
-                Tắt tự động thử lại
-              </Button>
+              >English content normalized from the original source text.</Button>
             )}
           </div>
 
           {error.digest && (
             <div className="text-xs text-gray-400 text-center border-t pt-3">
-              Mã lỗi: {error.digest}
+              English content normalized from the original source text. {error.digest}
             </div>
           )}
         </CardContent>

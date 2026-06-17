@@ -45,9 +45,7 @@ export const AddressSchema = z.object({
   updatedAt: z.union([z.string(), z.date()])
 })
 
-/**
- * Áp dụng cho Response của api GET('profile') và GET('users/:userId')
- */
+/* English content normalized from the original source text. */
 export const GetUserProfileResSchema = z.object({
   message: z.string().optional(),
   data: UserSchema.omit({
@@ -82,9 +80,7 @@ export const GetUserProfileResSchema = z.object({
   })
 })
 
-/**
- * Áp dụng cho Response của api PUT('profile') và PUT('users/:userId')
- */
+/* English content normalized from the original source text. */
 export const UpdateProfileResSchema = z.object({
   data: UserSchema.omit({
     password: true,

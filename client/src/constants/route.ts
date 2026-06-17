@@ -21,7 +21,7 @@ export const ROUTES = {
     USER:{
       BASE: '/user',
       DASHBOARD: '/user/dashboard',
-      LANGUAGE: '/user/language',  
+      LANGUAGE: '/user/language',
       ORDERS: '/user/orders',
       PROFILE: '/user/profile',
     },
@@ -65,10 +65,10 @@ export const ROUTES = {
 // ==================================================
 // ROUTE CONFIGURATION
 
-// Routes chỉ ADMIN được truy cập
+// English content normalized from the original source text.
 export const ADMIN_ONLY_ROUTES = [
   '/admin/audit-logs',
-  '/admin/device', 
+  '/admin/device',
   '/admin/languages',
   '/admin/permissions',
   '/admin/roles',
@@ -76,43 +76,43 @@ export const ADMIN_ONLY_ROUTES = [
   '/admin/users'
 ] as const;
 
-// Routes SELLER được truy cập (bên cạnh ADMIN)
+// English content normalized from the original source text.
 export const SELLER_ALLOWED_ROUTES = [
   '/admin', // Dashboard
   '/admin/brand',
-  '/admin/category', 
+  '/admin/category',
   '/admin/order',
   '/admin/products',
   '/admin/voucher'
 ] as const;
 
-// Tất cả admin routes (ADMIN + SELLER)
+// English content normalized from the original source text.
 export const ALL_ADMIN_ROUTES = [
   ...ADMIN_ONLY_ROUTES,
   ...SELLER_ALLOWED_ROUTES
 ] as const;
 
-// Routes cần authentication nhưng không phân biệt role
+// English content normalized from the original source text.
 export const AUTH_REQUIRED_ROUTES = [
   '/cart',
   '/checkout',
   '/user'
 ] as const;
 
-// Định nghĩa các route cần bảo vệ (bao gồm cả admin và user routes)
+// English content normalized from the original source text.
 export const PROTECTED_ROUTES = [
   ...AUTH_REQUIRED_ROUTES,
-  '/admin' // Tất cả admin routes đều cần protection
+  '/admin' // English content normalized from the original source text.
 ] as const;
 
-// Routes chỉ dành cho CLIENT (không được truy cập admin)
+// English content normalized from the original source text.
 export const CLIENT_ONLY_ROUTES = [
   '/cart',
   '/checkout',
   '/user'
 ] as const;
 
-// Định nghĩa các route public (không cần auth)
+// English content normalized from the original source text.
 export const PUBLIC_ROUTES = [
   '/',
   '/sign-in',

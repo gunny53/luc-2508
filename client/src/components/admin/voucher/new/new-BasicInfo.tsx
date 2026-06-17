@@ -20,29 +20,29 @@ interface BasicInfoProps {
   updateFormData: (field: keyof VoucherFormState, value: any) => void;
   errors: Record<string, string>;
   useCase: VoucherUseCase;
-  isEdit?: boolean; // Thêm prop isEdit
+  isEdit?: boolean; // English content normalized from the original source text.
 }
 
 const getVoucherTypeName = (useCase: VoucherUseCase) => {
   switch (useCase) {
     case VoucherUseCase.SHOP:
-      return 'Voucher toàn Shop';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.PRODUCT:
-      return 'Voucher sản phẩm';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.PRIVATE:
-      return 'Voucher riêng tư';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.PLATFORM:
-      return 'Voucher toàn nền tảng';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.CATEGORIES:
-      return 'Voucher theo danh mục';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.BRAND:
-      return 'Voucher theo thương hiệu';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.SHOP_ADMIN:
       return 'Voucher shop (Admin)';
     case VoucherUseCase.PRODUCT_ADMIN:
-      return 'Voucher sản phẩm (Admin)';
+      return 'English content normalized from the original source text.';
     case VoucherUseCase.PRIVATE_ADMIN:
-      return 'Voucher riêng tư (Admin)';
+      return 'English content normalized from the original source text.';
     default:
       return 'Voucher';
   }
@@ -52,11 +52,11 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
   const [startDateOpen, setStartDateOpen] = useState(false);
   const [endDateOpen, setEndDateOpen] = useState(false);
 
-  // Debug log để kiểm tra useCase
+  // English content normalized from the original source text.
   console.log('VoucherBasicInfo useCase:', useCase, typeof useCase);
   console.log('VoucherTypeName:', getVoucherTypeName(useCase));
 
-  // Helper function để tạo danh sách giờ
+  // English content normalized from the original source text.
   const generateHours = () => {
     return Array.from({ length: 24 }, (_, i) => {
       const hour = i.toString().padStart(2, '0');
@@ -64,7 +64,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
     });
   };
 
-  // Helper function để tạo danh sách phút
+  // English content normalized from the original source text.
   const generateMinutes = () => {
     return Array.from({ length: 60 }, (_, i) => {
       const minute = i.toString().padStart(2, '0');
@@ -74,22 +74,22 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
 
   const handleDateSelect = (field: 'startDate' | 'endDate', date: Date | undefined) => {
     if (date) {
-      // Giữ nguyên thời gian hiện tại nếu có, hoặc set mặc định là 00:00
+      // English content normalized from the original source text.
       const currentDateTime = formData[field] ? new Date(formData[field]) : null;
       const selectedDate = new Date(date);
-      
+
       if (currentDateTime) {
         selectedDate.setHours(currentDateTime.getHours());
         selectedDate.setMinutes(currentDateTime.getMinutes());
       } else {
-        // Set thời gian mặc định
+        // English content normalized from the original source text.
         if (field === 'startDate') {
-          selectedDate.setHours(0, 0, 0, 0); // 00:00 cho ngày bắt đầu
+          selectedDate.setHours(0, 0, 0, 0); // English content normalized from the original source text.
         } else {
-          selectedDate.setHours(23, 59, 0, 0); // 23:59 cho ngày kết thúc
+          selectedDate.setHours(23, 59, 0, 0); // English content normalized from the original source text.
         }
       }
-      
+
       updateFormData(field, selectedDate.toISOString());
     }
     if (field === 'startDate') setStartDateOpen(false);
@@ -98,21 +98,21 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
 
   const handleTimeChange = (field: 'startDate' | 'endDate', type: 'hour' | 'minute', value: string) => {
     const currentDate = formData[field] ? new Date(formData[field]) : new Date();
-    
+
     if (type === 'hour') {
       currentDate.setHours(parseInt(value));
     } else {
       currentDate.setMinutes(parseInt(value));
     }
-    
+
     updateFormData(field, currentDate.toISOString());
   };
 
-  // Helper để lấy giá trị giờ phút từ datetime
+  // English content normalized from the original source text.
   const getTimeValue = (dateTimeString: string, type: 'hour' | 'minute') => {
     if (!dateTimeString) return type === 'hour' ? '00' : '00';
     const date = new Date(dateTimeString);
-    return type === 'hour' 
+    return type === 'hour'
       ? date.getHours().toString().padStart(2, '0')
       : date.getMinutes().toString().padStart(2, '0');
   };
@@ -127,13 +127,13 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
     );
   };
 
-  // Helper function để xác định màu sắc badge theo useCase
+  // English content normalized from the original source text.
   const getBadgeStyle = (useCase: VoucherUseCase) => {
     const isAdminCase = [
-      VoucherUseCase.PLATFORM, 
-      VoucherUseCase.CATEGORIES, 
-      VoucherUseCase.BRAND, 
-      VoucherUseCase.SHOP_ADMIN, 
+      VoucherUseCase.PLATFORM,
+      VoucherUseCase.CATEGORIES,
+      VoucherUseCase.BRAND,
+      VoucherUseCase.SHOP_ADMIN,
       VoucherUseCase.PRODUCT_ADMIN,
       VoucherUseCase.PRIVATE_ADMIN
     ].includes(useCase);
@@ -148,7 +148,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
 
     return {
       container: "bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200",
-      icon: "text-blue-600", 
+      icon: "text-blue-600",
       text: "text-blue-700"
     };
   };
@@ -167,18 +167,18 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
       <CardHeader className="pb-6 border-b border-gray-100">
         <CardTitle className="flex items-center gap-3 text-lg font-semibold text-gray-900">
           <div className="w-1 h-6 bg-gradient-to-b from-red-500 to-red-600 rounded-full" />
-          {isEdit ? 'Chỉnh sửa thông tin cơ bản' : 'Thông tin cơ bản'}
+          {isEdit ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
         </CardTitle>
         {isEdit && (
           <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
             <div className="flex items-start gap-2">
               <AlertCircle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm text-amber-800">
-                <p className="font-medium">Một số thông tin không thể chỉnh sửa:</p>
+                <p className="font-medium">English content normalized from the original source text.</p>
                 <ul className="mt-1 list-disc list-inside text-xs space-y-0.5">
-                  <li>Mã voucher và thời gian bắt đầu</li>
-                  <li>Loại giảm giá và giá trị giảm giá</li>
-                  <li>Lượt sử dụng tối đa và lượt sử dụng/người</li>
+                  <li>English content normalized from the original source text.</li>
+                  <li>English content normalized from the original source text.</li>
+                  <li>English content normalized from the original source text.</li>
                 </ul>
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
             <Tag className={cn("w-3.5 h-3.5", badgeStyle.icon)} />
             <span className={cn("text-xs font-medium", badgeStyle.text)}>{getVoucherTypeName(useCase)}</span>
           </div>
-          {/* Thêm badge admin nếu là case admin */}
+          {/* English content normalized from the original source text. */}
           {[VoucherUseCase.PLATFORM, VoucherUseCase.CATEGORIES, VoucherUseCase.BRAND, VoucherUseCase.SHOP_ADMIN, VoucherUseCase.PRODUCT_ADMIN, VoucherUseCase.PRIVATE_ADMIN].includes(useCase) && (
             <div className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full font-medium">
               Admin Only
@@ -197,17 +197,15 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
           )}
         </div>
       </CardHeader>
-      
+
       <CardContent className="p-6 space-y-6">
-        {/* Tên chương trình giảm giá */}
+        {/* English content normalized from the original source text. */}
         <div className="space-y-2">
-          <RequiredLabel htmlFor="voucher-name">
-            Tên chương trình giảm giá
-          </RequiredLabel>
+          <RequiredLabel htmlFor="voucher-name">English content normalized from the original source text.</RequiredLabel>
           <div className="relative">
             <Input
               id="voucher-name"
-              placeholder="Nhập tên chương trình giảm giá..."
+              placeholder="English content normalized from the original source text."
               value={formData.name}
               onChange={(e) => updateFormData('name', e.target.value)}
               className={cn(
@@ -228,17 +226,13 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
               </span>
             </div>
           </div>
-          <p className="text-xs text-gray-600">
-            Tên này không được hiển thị cho người mua
-          </p>
+          <p className="text-xs text-gray-600">English content normalized from the original source text.</p>
           <ErrorMessage error={errors.name} />
         </div>
 
-        {/* Mã voucher */}
+        {/* English content normalized from the original source text. */}
         <div className="space-y-2">
-          <RequiredLabel htmlFor="voucher-code">
-            Mã voucher
-          </RequiredLabel>
+          <RequiredLabel htmlFor="voucher-code">English content normalized from the original source text.</RequiredLabel>
           <div className="relative">
             <Input
               id="voucher-code"
@@ -266,23 +260,19 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
             </div>
           </div>
           <p className="text-xs text-gray-600">
-            {isEdit ? "Mã voucher không thể thay đổi khi chỉnh sửa" : "Chỉ được sử dụng chữ cái viết hoa(A-Z), số (0-9)"}
+            {isEdit ? "English content normalized from the original source text." : "English content normalized from the original source text."}
           </p>
           <ErrorMessage error={errors.code} />
         </div>
 
-        {/* Thời gian sử dụng mã */}
+        {/* English content normalized from the original source text. */}
         <div className="space-y-4">
-          <RequiredLabel>
-            Thời gian sử dụng
-          </RequiredLabel>
-          
+          <RequiredLabel>English content normalized from the original source text.</RequiredLabel>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Ngày bắt đầu */}
+            {/* English content normalized from the original source text. */}
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-gray-700 uppercase tracking-wide">
-                Từ ngày
-              </Label>
+              <Label className="text-xs font-medium text-gray-700 uppercase tracking-wide">English content normalized from the original source text.</Label>
               <Popover open={!isEdit && startDateOpen} onOpenChange={!isEdit ? setStartDateOpen : undefined}>
                 <PopoverTrigger asChild>
                   <Button
@@ -307,7 +297,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
                         </div>
                       </div>
                     ) : (
-                      "Chọn ngày và giờ bắt đầu"
+                      "English content normalized from the original source text."
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -323,7 +313,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
                     />
                     <div className="p-4 space-y-4 w-32">
                       <div className="space-y-2">
-                        <Label className="text-xs font-medium text-gray-700">Giờ</Label>
+                        <Label className="text-xs font-medium text-gray-700">English content normalized from the original source text.</Label>
                         <Select
                           value={getTimeValue(formData.startDate, 'hour')}
                           onValueChange={(value) => handleTimeChange('startDate', 'hour', value)}
@@ -341,7 +331,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-xs font-medium text-gray-700">Phút</Label>
+                        <Label className="text-xs font-medium text-gray-700">English content normalized from the original source text.</Label>
                         <Select
                           value={getTimeValue(formData.startDate, 'minute')}
                           onValueChange={(value) => handleTimeChange('startDate', 'minute', value)}
@@ -365,11 +355,9 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
               <ErrorMessage error={errors.startDate} />
             </div>
 
-            {/* Ngày kết thúc */}
+            {/* English content normalized from the original source text. */}
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-gray-700 uppercase tracking-wide">
-                Đến ngày
-              </Label>
+              <Label className="text-xs font-medium text-gray-700 uppercase tracking-wide">English content normalized from the original source text.</Label>
               <Popover open={endDateOpen} onOpenChange={setEndDateOpen}>
                 <PopoverTrigger asChild>
                   <Button
@@ -392,7 +380,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
                         </div>
                       </div>
                     ) : (
-                      "Chọn ngày và giờ kết thúc"
+                      "English content normalized from the original source text."
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -412,7 +400,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
                     />
                     <div className="p-4 space-y-4 w-32">
                       <div className="space-y-2">
-                        <Label className="text-xs font-medium text-gray-700">Giờ</Label>
+                        <Label className="text-xs font-medium text-gray-700">English content normalized from the original source text.</Label>
                         <Select
                           value={getTimeValue(formData.endDate, 'hour')}
                           onValueChange={(value) => handleTimeChange('endDate', 'hour', value)}
@@ -430,7 +418,7 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-xs font-medium text-gray-700">Phút</Label>
+                        <Label className="text-xs font-medium text-gray-700">English content normalized from the original source text.</Label>
                         <Select
                           value={getTimeValue(formData.endDate, 'minute')}
                           onValueChange={(value) => handleTimeChange('endDate', 'minute', value)}
@@ -454,11 +442,11 @@ export default function VoucherBasicInfo({ formData, updateFormData, errors, use
               <ErrorMessage error={errors.endDate} />
             </div>
           </div>
-          
+
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
             <div className="text-xs text-blue-800 flex items-start gap-2">
               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
-              <span>Voucher có thể được lưu trước thời gian sử dụng</span>
+              <span>English content normalized from the original source text.</span>
             </div>
           </div>
         </div>

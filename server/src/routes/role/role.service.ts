@@ -60,9 +60,7 @@ export class RoleService {
     }
   }
 
-  /**
-   * Kiểm tra xem role có phải là 1 trong 3 role cơ bản không
-   */
+  /* English content normalized from the original source text. */
   private async verifyRole(roleId: string) {
     const role = await this.roleRepo.findById(roleId)
     if (!role) {
@@ -83,7 +81,7 @@ export class RoleService {
         updatedById: user.userId,
         data
       })
-      await this.redisService.del(`role:${updatedRole.id}`) // Xóa cache của role đã cập nhật
+      await this.redisService.del(`role:${updatedRole.id}`) // English content normalized from the original source text.
       return {
         message: this.i18n.t('role.role.success.UPDATE_SUCCESS'),
         data: updatedRole
@@ -106,7 +104,7 @@ export class RoleService {
         id,
         deletedById: user.userId
       })
-      await this.redisService.del(`role:${id}`) // Xóa cache của role đã xóa
+      await this.redisService.del(`role:${id}`) // English content normalized from the original source text.
       return {
         message: this.i18n.t('role.role.success.DELETE_SUCCESS')
       }

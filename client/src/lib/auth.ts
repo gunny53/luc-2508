@@ -1,58 +1,58 @@
-// Key dùng để lưu token và user
+// English content normalized from the original source text.
 const TOKEN_KEY = 'token';
 const USER_KEY = 'user';
 
 import { getStore } from '@/store/store';
 
-// ✅ Lấy token từ localStorage
+// English content normalized from the original source text.
 export const getAccessToken = (): string | null => {
   const { store } = getStore();
-  return store.getState()?.authShopsifu?.accessToken || null;
+  return store.getState()?.authECSite?.accessToken || null;
 };
 
-// ✅ Lấy refreshtoken từ localStorage
+// English content normalized from the original source text.
 export const getRefreshToken = (): string | null => {
   const { store } = getStore();
-  return store.getState()?.authShopsifu?.refreshToken || null;
+  return store.getState()?.authECSite?.refreshToken || null;
 };
 
-// ✅ Lưu token vào localStorage
+// English content normalized from the original source text.
 export const setToken = (accessToken: string, refreshToken: string) => {
   const { store } = getStore();
-  store.dispatch({ type: 'authShopsifu/setCredentials', payload: { accessToken, refreshToken, user: null } });
+  store.dispatch({ type: 'authECSite/setCredentials', payload: { accessToken, refreshToken, user: null } });
 };
 
-// ✅ Xóa token khi logout
+// English content normalized from the original source text.
 export const removeToken = () => {
   const { store } = getStore();
   store.dispatch({ type: 'auth/logout' });
 };
 
-// ✅ Lưu thông tin người dùng (object → JSON)
+// English content normalized from the original source text.
 export const setUser = (user: any) => {
   if (typeof window === 'undefined') return;
   localStorage.setItem(USER_KEY, JSON.stringify(user));
 };
 
-// ✅ Lấy thông tin người dùng
+// English content normalized from the original source text.
 export const getUser = (): any | null => {
   if (typeof window === 'undefined') return null;
   const user = localStorage.getItem(USER_KEY);
   return user ? JSON.parse(user) : null;
 };
 
-// ✅ Xoá thông tin người dùng
+// English content normalized from the original source text.
 export const removeUser = () => {
   if (typeof window === 'undefined') return;
   localStorage.removeItem(USER_KEY);
 };
 
-// ✅ Check đã đăng nhập hay chưa
+// English content normalized from the original source text.
 export const isAuthenticated = (): boolean => {
   return !!getAccessToken();
 };
 
-// ✅ Xoá toàn bộ auth
+// English content normalized from the original source text.
 export const clearAuth = () => {
   removeToken();
   removeUser();

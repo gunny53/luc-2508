@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng PUT /roles/:roleId
+English content normalized from the original source text.
 
 actor "Admin" as A
 participant "RoleController" as RC
@@ -26,7 +26,7 @@ RC -> RS: update({ id, data, user })
 activate RS
 
 RS -> RS: verifyRole(id) (base role protection)
-alt Role là base role
+English content normalized from the original source text.
   RS --> RC: ProhibitedActionOnBaseRoleException (403)
   RC --> A: 403 Forbidden
   deactivate RS
@@ -37,9 +37,9 @@ end
 RS -> RR: update({ id, updatedById: user.userId, data })
 activate RR
 note right of RR
-Nếu có permissionIds:
+English content normalized from the original source text.
 • findMany permissions theo IDs
-• Nếu permission đã bị soft delete → throw Error
+• English content normalized from the original source text
 end note
 RR -> DB: role.update({ where: { id, deletedAt: null }, data: { ...fields, permissions.set(permissionIds), updatedById }, include: permissions (deletedAt=null) })
 DB --> RR: updatedRole

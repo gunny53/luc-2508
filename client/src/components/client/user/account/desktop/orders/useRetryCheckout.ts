@@ -25,23 +25,23 @@ export const useRetryCheckout = () => {
   // Load order data for retry
   const loadOrderForRetry = useCallback(async (orderId: string) => {
     if (!orderId) return null;
-    
+
     setIsLoading(true);
     try {
       const response = await orderService.getById(orderId);
       const orderData = response.data;
-      
+
       // Validate order can be retried
       if (orderData.status !== 'PENDING_PAYMENT') {
-        toast.error('Đơn hàng này không thể thanh toán lại');
+        toast.error('English content normalized from the original source text.');
         return null;
       }
-      
+
       setOrder(orderData);
       return orderData;
     } catch (error: any) {
       console.error('Error loading order for retry:', error);
-      toast.error('Không thể tải thông tin đơn hàng');
+      toast.error('English content normalized from the original source text.');
       return null;
     } finally {
       setIsLoading(false);
@@ -50,16 +50,16 @@ export const useRetryCheckout = () => {
 
   // Handle retry payment based on selected method
   const handleRetryPayment = useCallback(async (
-    orderId: string, 
+    orderId: string,
     paymentMethod: string
   ): Promise<RetryPaymentResult | null> => {
     if (!order) {
-      toast.error('Không tìm thấy thông tin đơn hàng');
+      toast.error('English content normalized from the original source text.');
       return null;
     }
 
     if (!paymentMethod) {
-      toast.error('Vui lòng chọn phương thức thanh toán');
+      toast.error('English content normalized from the original source text.');
       return null;
     }
 
@@ -70,16 +70,16 @@ export const useRetryCheckout = () => {
       } else if (paymentMethod === 'vnpay') {
         return await handleVNPayRetry(orderId);
       } else {
-        toast.error('Phương thức thanh toán không được hỗ trợ');
+        toast.error('English content normalized from the original source text.');
         return null;
       }
     } catch (error: any) {
       console.error('Retry payment error:', error);
-      toast.error('Có lỗi xảy ra khi xử lý thanh toán');
+      toast.error('English content normalized from the original source text.');
       return {
         success: false,
         paymentMethod,
-        error: error.message || 'Có lỗi xảy ra'
+        error: error.message || 'English content normalized from the original source text.'
       };
     } finally {
       setIsLoading(false);
@@ -92,8 +92,8 @@ export const useRetryCheckout = () => {
       throw new Error('Order data not found');
     }
 
-    toast.success('Đang chuẩn bị mã QR thanh toán...');
-    
+    toast.success('English content normalized from the original source text.');
+
     return {
       success: true,
       paymentMethod: 'sepay',
@@ -118,8 +118,8 @@ export const useRetryCheckout = () => {
         locale: 'vn'
       });
 
-      toast.success('Đang chuyển hướng đến cổng thanh toán VNPay...');
-      
+      toast.success('English content normalized from the original source text.');
+
       return {
         success: true,
         paymentMethod: 'vnpay',
@@ -133,8 +133,8 @@ export const useRetryCheckout = () => {
       };
     } catch (error: any) {
       console.error('Failed to generate VNPay URL for retry:', error);
-      toast.error('Không thể tạo URL thanh toán VNPay. Vui lòng thử lại.');
-      
+      toast.error('English content normalized from the original source text.');
+
       return {
         success: false,
         paymentMethod: 'vnpay',
@@ -152,8 +152,8 @@ export const useRetryCheckout = () => {
 
   // Navigate to payment success/failure
   const navigateToResult = useCallback((
-    orderId: string, 
-    totalAmount: number, 
+    orderId: string,
+    totalAmount: number,
     status: 'success' | 'failed' | 'pending' = 'pending'
   ) => {
     const params = new URLSearchParams({
@@ -162,7 +162,7 @@ export const useRetryCheckout = () => {
       status,
       retry: 'true'
     });
-    
+
     router.push(`/checkout/payment-success?${params.toString()}`);
   }, [router]);
 
@@ -178,14 +178,14 @@ export const useRetryCheckout = () => {
     isLoading,
     order,
     selectedPaymentMethod,
-    
+
     // Actions
     loadOrderForRetry,
     handleRetryPayment,
     updatePaymentMethod,
     navigateToResult,
     resetRetryState,
-    
+
     // Payment method handlers
     handleSepayRetry,
     handleVNPayRetry

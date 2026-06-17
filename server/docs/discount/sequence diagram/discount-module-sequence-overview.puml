@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Khuyến Mãi - Tổng Quan Luồng Xử Lý
-note top : Hệ thống quản lý khuyến mãi với validation phức tạp và phân quyền Admin/Seller
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
-actor "Khách hàng" as Client
-actor "Chủ shop" as ShopOwner
+English content normalized from the original source text.
+English content normalized from the original source text.
 actor "Admin" as Admin
 participant "DiscountController" as DC
 participant "ManageDiscountController" as MDC
@@ -21,20 +21,20 @@ participant "PrismaService" as PS
 participant "AccessTokenGuard" as AG
 database "PostgreSQL" as DB
 
-== Xác thực và Phân quyền ==
-Client -> AG: Request với cookies
-AG -> AG: Trích xuất access_token từ cookies
-AG -> AG: Xác minh JWT token
-AG -> AG: Tải quyền người dùng
-AG -> DC: Cho phép request với user context
+== English Section ==
+Client -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> DC: English content normalized from the original source text.
 
-== API Công Khai (Public Discounts) ==
+== English Section ==
 Client -> DC: GET /discounts/available?limit=20&cartItemIds=123,456&onlyShopDiscounts=true
 DC -> DS: getAvailableDiscounts(query)
 DS -> DR: getAvailableDiscounts(params)
 DR -> DR: buildAvailableDiscountsWhereClause()
 note right
-Logic Xây Dựng Query:
+English content normalized from the original source text.
 • WHERE deletedAt IS NULL
 • WHERE discountStatus = 'ACTIVE'
 • WHERE startDate <= now <= endDate
@@ -43,104 +43,104 @@ Logic Xây Dựng Query:
 • Include relations (products, categories, brands)
 end note
 DR -> PS: calculateOrderInfoFromCartItems(cartItemIds)
-PS -> DB: Query cart items với JOINs
-DB -> PS: Trả về cart items data
-PS -> DR: Trả về {orderTotal, shopId, productIds, categoryIds, brandIds}
-DR -> PS: discount.findMany() với complex where clause
-PS -> DB: Thực thi query với filters
-DB -> PS: Trả về available discounts
-PS -> DR: Trả về filtered discounts
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
 DR -> DR: filterAvailableDiscounts(discounts, cartItemIds)
 note right
-Logic Filter Phức Tạp:
-• Kiểm tra số lần sử dụng (maxUses)
-• Kiểm tra discountApplyType SPECIFIC
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Validate product/category/brand applicability
 • Filter theo cart items
 end note
-DR -> DS: Trả về available discounts
-DS -> DC: Trả về response với data
-DC -> Client: Trả về JSON với available discounts
+DR -> DS: English content normalized from the original source text.
+DS -> DC: English content normalized from the original source text.
+DC -> Client: English content normalized from the original source text.
 
 Client -> DC: POST /discounts/validate-code + {code: "ABC123", cartItemIds: ["123", "456"]}
 DC -> DS: validateVoucherCode(body)
 DS -> DR: findByCode(code)
-DR -> PS: discount.findUnique() với include relations
+DR -> PS: English content normalized from the original source text.
 PS -> DB: Query discount theo code
-DB -> PS: Trả về discount với relations
-PS -> DR: Trả về discount data
-DR -> DS: Trả về discount
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> DS: English content normalized from the original source text.
 
-alt Discount được tìm thấy
+English content normalized from the original source text.
     DS -> DS: validateDiscountEligibility()
     note right
-    Các Bước Xác Thực:
-    • Kiểm tra discountStatus = 'ACTIVE'
-    • Kiểm tra thời gian hiệu lực (startDate <= now <= endDate)
-    • Kiểm tra số lần sử dụng (usesCount < maxUses)
-    • Tính toán orderTotal từ cartItemIds
-    • Kiểm tra minOrderValue
-    • Kiểm tra discountApplyType SPECIFIC
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
     DS -> DS: calculateOrderTotalFromCartItems(cartItemIds)
-    DS -> PS: cartItem.findMany() với JOINs
+    DS -> PS: English content normalized from the original source text.
     PS -> DB: Query cart items
-    DB -> PS: Trả về cart items
-    PS -> DS: Trả về cart items data
+    DB -> PS: English content normalized from the original source text.
+    PS -> DS: English content normalized from the original source text.
     DS -> DS: calculateDiscountAmount(discount, orderTotal)
     note right
-    Tính Toán Khuyến Mãi:
+    English content normalized from the original source text.
     • PERCENTAGE: (orderTotal * value) / 100
     • FIX_AMOUNT: min(value, orderTotal)
     • Apply maxDiscountValue limit
     end note
-    DS -> DC: Trả về validation result với discountAmount
-    DC -> Client: Trả về 200 OK + validation details
+    DS -> DC: English content normalized from the original source text.
+    DC -> Client: English content normalized from the original source text.
 
-else Discount không tồn tại
-    DS -> DC: Trả về error response
-    DC -> Client: Trả về 400 Bad Request + error message
+else (No)
+    DS -> DC: English content normalized from the original source text.
+    DC -> Client: English content normalized from the original source text.
 end
 
-== API Quản Lý (Management Discounts) ==
-ShopOwner -> AG: Request với cookies
-AG -> AG: Trích xuất access_token từ cookies
-AG -> AG: Xác minh JWT token
-AG -> AG: Tải quyền người dùng
-AG -> MDC: Cho phép request với user context
+== English Section ==
+ShopOwner -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> MDC: English content normalized from the original source text.
 
 ShopOwner -> MDC: POST /manage-discount/discounts + {name, code, value, startDate, endDate, ...}
 MDC -> MDS: create({data, user})
 MDS -> MDS: validateCreatePrivilege()
 note right
-Xác Thực Quyền:
-• Admin: có thể tạo cho bất kỳ shop
-• Seller: chỉ tạo cho chính mình
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Auto-set shopId = userId cho Seller
 end note
-MDS -> DR: findByCode(code) kiểm tra trùng
-DR -> PS: discount.findUnique() với code
+MDS -> DR: English content normalized from the original source text.
+DR -> PS: English content normalized from the original source text.
 PS -> DB: Query discount theo code
-DB -> PS: Trả về existing discount
-PS -> DR: Trả về duplicate check result
-DR -> MDS: Trả về existing discount
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> MDS: English content normalized from the original source text.
 
-alt Code chưa tồn tại
+English content normalized from the original source text.
     MDS -> DR: create({createdById, data})
-    DR -> PS: discount.create() với relations
-    PS -> DB: INSERT discount với audit fields
-    DB -> PS: Trả về discount created
-    PS -> DR: Trả về new discount
-    DR -> MDS: Trả về created discount
+    DR -> PS: English content normalized from the original source text.
+    PS -> DB: English content normalized from the original source text.
+    DB -> PS: English content normalized from the original source text.
+    PS -> DR: English content normalized from the original source text.
+    DR -> MDS: English content normalized from the original source text.
     MDS -> IS: i18n.t('discount.discount.success.CREATE_SUCCESS')
-    IS -> MDS: Trả về message đã localize
-    MDS -> MDC: Trả về success response
-    MDC -> ShopOwner: Trả về 201 Created + JSON response
+    IS -> MDS: English content normalized from the original source text.
+    MDS -> MDC: English content normalized from the original source text.
+    MDC -> ShopOwner: English content normalized from the original source text.
 
-else Code đã tồn tại
+else (No)
     MDS -> MDC: Throw BadRequestException
-    MDC -> ShopOwner: Trả về 400 Bad Request
+    MDC -> ShopOwner: English content normalized from the original source text.
 end
 
 ShopOwner -> MDC: PUT /manage-discount/discounts/:discountId + {name, code, value, ...}
@@ -148,101 +148,101 @@ MDC -> MDS: update({discountId, data, user})
 MDS -> DR: findById(discountId)
 DR -> PS: discount.findUnique()
 PS -> DB: Query discount theo ID
-DB -> PS: Trả về discount data
-PS -> DR: Trả về discount
-DR -> MDS: Trả về discount info
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> MDS: English content normalized from the original source text.
 MDS -> MDS: validatePrivilege()
 note right
-Kiểm Soát Truy Cập:
-• Admin: truy cập tất cả discounts
-• Seller: chỉ truy cập của chính mình
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 • createdById validation
 end note
 MDS -> DR: update({id, updatedById, data})
-DR -> PS: discount.update() với relations
-PS -> DB: UPDATE discount với audit
-DB -> PS: Trả về discount updated
-PS -> DR: Trả về updated discount
-DR -> MDS: Trả về updated data
+DR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> MDS: English content normalized from the original source text.
 MDS -> IS: i18n.t('discount.discount.success.UPDATE_SUCCESS')
-IS -> MDS: Trả về message đã localize
-MDS -> MDC: Trả về success response
-MDC -> ShopOwner: Trả về 200 OK + JSON response
+IS -> MDS: English content normalized from the original source text.
+MDS -> MDC: English content normalized from the original source text.
+MDC -> ShopOwner: English content normalized from the original source text.
 
 ShopOwner -> MDC: DELETE /manage-discount/discounts/:discountId
 MDC -> MDS: delete({discountId, user})
 MDS -> DR: findById(discountId)
 DR -> PS: discount.findUnique()
 PS -> DB: Query discount theo ID
-DB -> PS: Trả về discount data
-PS -> DR: Trả về discount
-DR -> MDS: Trả về discount info
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> MDS: English content normalized from the original source text.
 MDS -> MDS: validatePrivilege()
 MDS -> DR: delete({id, deletedById})
 DR -> PS: discount.update() soft delete
 PS -> DB: UPDATE deletedAt field
-DB -> PS: Trả về discount marked deleted
-PS -> DR: Trả về success
-DR -> MDS: Trả về success
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> MDS: English content normalized from the original source text.
 MDS -> IS: i18n.t('discount.discount.success.DELETE_SUCCESS')
-IS -> MDS: Trả về message đã localize
-MDS -> MDC: Trả về success response
-MDC -> ShopOwner: Trả về 200 OK + JSON response
+IS -> MDS: English content normalized from the original source text.
+MDS -> MDC: English content normalized from the original source text.
+MDC -> ShopOwner: English content normalized from the original source text.
 
 ShopOwner -> MDC: GET /manage-discount/discounts?page=1&limit=10&createdById=123
 MDC -> MDS: list({query, user})
 MDS -> MDS: validatePrivilege()
 MDS -> DR: list(query)
 DR -> DR: buildAdminListWhereClause(filters)
-DR -> PS: discount.count() và discount.findMany()
-PS -> DB: Query với pagination và filters
-DB -> PS: Trả về totalItems và discounts
-PS -> DR: Trả về {data, metadata}
-DR -> MDS: Trả về discounts với pagination
+DR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> DR: English content normalized from the original source text.
+DR -> MDS: English content normalized from the original source text.
 MDS -> IS: i18n.t('discount.discount.success.GET_SUCCESS')
-IS -> MDS: Trả về message đã localize
-MDS -> MDC: Trả về response với data + metadata
-MDC -> ShopOwner: Trả về JSON với pagination
+IS -> MDS: English content normalized from the original source text.
+MDS -> MDC: English content normalized from the original source text.
+MDC -> ShopOwner: English content normalized from the original source text.
 
-== Xử Lý Lỗi ==
-alt Lỗi validation voucher
+== English Section ==
+English content normalized from the original source text.
     DS -> DC: ValidationException
-    DC -> Client: Trả về 400 Bad Request
+    DC -> Client: English content normalized from the original source text.
 
-else Lỗi phân quyền
+else (No)
     MDS -> MDC: ForbiddenException
-    MDC -> ShopOwner: Trả về 403 Forbidden
+    MDC -> ShopOwner: English content normalized from the original source text.
 
-else Lỗi không tìm thấy
+else (No)
     MDS -> MDC: NotFoundRecordException
-    MDC -> ShopOwner: Trả về 404 Not Found
+    MDC -> ShopOwner: English content normalized from the original source text.
 
-else Lỗi duplicate code
+else (No)
     MDS -> MDC: BadRequestException
-    MDC -> ShopOwner: Trả về 400 Bad Request
+    MDC -> ShopOwner: English content normalized from the original source text.
 
-else Lỗi database constraint
+else (No)
     DR -> MDS: PrismaException
     MDS -> MDC: Database error
-    MDC -> ShopOwner: Trả về 500 Internal Server Error
+    MDC -> ShopOwner: English content normalized from the original source text.
 end
 
-== Đa Ngôn Ngữ ==
+== English Section ==
 MDS -> IS: i18n.t('discount.discount.success.XXX')
-IS -> MDS: Trả về message đã localize
-MDS -> MDC: Phản hồi + Message đã localize
-MDC -> ShopOwner: JSON Response với metadata đầy đủ
+IS -> MDS: English content normalized from the original source text.
+MDS -> MDC: English content normalized from the original source text.
+MDC -> ShopOwner: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module Discount:**
-• Validation phức tạp cho voucher codes
-• Phân quyền Admin/Seller với access control
-• Tính toán discount amount theo loại (PERCENTAGE/FIX_AMOUNT)
-• Filter discounts theo cart items và applicability
-• Soft delete với audit fields
+* English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Pagination cho admin management
-• Đa ngôn ngữ với I18nService
-• Business rules validation (thời gian, số lần sử dụng, min order value)
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
 @enduml

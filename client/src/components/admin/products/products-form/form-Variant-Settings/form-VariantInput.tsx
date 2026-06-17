@@ -40,7 +40,7 @@ interface VariantInputProps {
   dragHandleProps?: Record<string, any>;
 }
 
-export function VariantInput({ 
+export function VariantInput({
   option,
   onDelete,
   onDone,
@@ -55,9 +55,9 @@ export function VariantInput({
 
   useEffect(() => {
     setLocalName(option.name);
-    const initialValues = option.values.map((value, index) => ({ 
+    const initialValues = option.values.map((value, index) => ({
       id: `value-${option.id}-${index}`,
-      value 
+      value
     }));
 
     if (initialValues.length === 0 || initialValues[initialValues.length - 1].value !== "") {
@@ -124,7 +124,7 @@ export function VariantInput({
             <div {...dragHandleProps} className="cursor-move touch-none">
               <GripVertical className="h-5 w-5 text-muted-foreground" />
             </div>
-            <div 
+            <div
             className="flex-1 cursor-pointer"
             onClick={onEdit}
             >
@@ -167,7 +167,7 @@ export function VariantInput({
                 onBlur={handleNameBlur}
               />
             </div>
-            
+
             {/* Option values input - indented */}
             <div className="space-y-2">
               <Label className="text-sm font-medium">

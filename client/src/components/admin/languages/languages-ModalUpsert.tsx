@@ -40,19 +40,19 @@ export default function LanguagesModalUpsert({
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState("")
   const t = useTranslations()
-  
-  // Reset form khi modal mở/đóng hoặc chuyển chế độ
+
+  // English content normalized from the original source text.
   useEffect(() => {
     if (mode === 'edit' && language) {
       setCode(language.code || "")
       setName(language.name || "")
       setIsActive(language.isActive ?? true)
-      setSearch("") // Reset search khi chuyển mode
+      setSearch("") // English content normalized from the original source text.
     } else if (mode === 'add') {
       setCode("")
       setName("")
       setIsActive(true)
-      setSearch("") // Reset search khi chuyển mode
+      setSearch("") // English content normalized from the original source text.
     }
   }, [mode, language, open])
 
@@ -70,7 +70,7 @@ export default function LanguagesModalUpsert({
     setLoading(true)
     try {
       await onSubmit({ code, name })
-      // onClose() được gọi trong component cha sau khi xử lý thành công
+      // English content normalized from the original source text.
     } catch (error) {
       showToast(t("admin.languages.error.generic"), "error")
     } finally {
@@ -78,13 +78,13 @@ export default function LanguagesModalUpsert({
     }
   }, [code, name, onSubmit, t]);
 
-  // Lấy danh sách code ngôn ngữ từ iso-639-1
+  // English content normalized from the original source text.
   const languageOptions = useCallback(() => ISO6391.getAllCodes().map(code => ({
     code,
     name: ISO6391.getNativeName(code) || ISO6391.getName(code)
   })), [])();
 
-  // Lọc theo search
+  // English content normalized from the original source text.
   const filteredOptions = useCallback(() => {
     return search
       ? languageOptions.filter(opt =>
@@ -108,8 +108,8 @@ export default function LanguagesModalUpsert({
             {mode === 'add' ? t("admin.languages.modal.title") : t("admin.languages.modalEdit.title")}
           </DialogTitle>
           <DialogDescription>
-            {mode === 'add' 
-              ? t("admin.languages.modal.subtitle") 
+            {mode === 'add'
+              ? t("admin.languages.modal.subtitle")
               : t("admin.languages.modalEdit.subtitle")}
           </DialogDescription>
         </DialogHeader>
@@ -147,11 +147,11 @@ export default function LanguagesModalUpsert({
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">{t("admin.languages.modal.name")}</label>
-            <Input 
-              value={name} 
-              onChange={e => setName(e.target.value)} 
-              required 
-              placeholder={t("admin.languages.modal.namePlaceholder")} 
+            <Input
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+              placeholder={t("admin.languages.modal.namePlaceholder")}
             />
           </div>
           <DialogFooter>
@@ -161,8 +161,8 @@ export default function LanguagesModalUpsert({
               </Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              {loading 
-                ? (mode === 'add' ? t("admin.languages.modal.processing") : t("admin.languages.modal.processing")) 
+              {loading
+                ? (mode === 'add' ? t("admin.languages.modal.processing") : t("admin.languages.modal.processing"))
                 : (mode === 'add' ? t("admin.languages.modal.save") : t("admin.languages.modal.save"))}
             </Button>
           </DialogFooter>

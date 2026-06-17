@@ -8,18 +8,18 @@ import { SKUSchema } from 'src/shared/models/shared-sku.model'
 import { z } from 'zod'
 
 function generateSKUs(variants: VariantsType) {
-  // Hàm hỗ trợ để tạo tất cả tổ hợp
+  // English content normalized from the original source text.
   function getCombinations(arrays: string[][]): string[] {
     return arrays.reduce((acc, curr) => acc.flatMap((x) => curr.map((y) => `${x}${x ? '-' : ''}${y}`)), [''])
   }
 
-  // Lấy mảng các options từ variants
+  // English content normalized from the original source text.
   const options = variants.map((variant) => variant.options)
 
-  // Tạo tất cả tổ hợp
+  // English content normalized from the original source text.
   const combinations = getCombinations(options)
 
-  // Chuyển tổ hợp thành SKU objects
+  // English content normalized from the original source text.
   return combinations.map((value) => ({
     value,
     price: 0,
@@ -28,9 +28,7 @@ function generateSKUs(variants: VariantsType) {
   }))
 }
 
-/**
- * Dành cho client và guest
- */
+/* English content normalized from the original source text. */
 export const GetProductsQuerySchema = z.object({
   page: z.coerce.number().int().positive().default(1),
   limit: z.coerce.number().int().positive().default(10),
@@ -58,18 +56,13 @@ export const GetProductsQuerySchema = z.object({
   sortBy: z.nativeEnum(SortBy).default(SortBy.CreatedAt)
 })
 
-/**
- * Dành cho Admin và Seller
- */
+/* English content normalized from the original source text. */
 export const GetManageProductsQuerySchema = GetProductsQuerySchema.extend({
   isPublic: z.preprocess((value) => value === 'true', z.boolean()).optional(),
   createdById: z.string()
 })
 
-/**
- * 🚀 Lightweight Product List Item - Optimized cho homepage
- * Chỉ chứa fields cần thiết cho UI list view
- */
+/* English content normalized from the original source text. */
 export const ProductListItemSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -135,17 +128,17 @@ export const CreateProductBodySchema = ProductSchema.pick({
   })
   .strict()
   .superRefine(({ variants, skus }, ctx) => {
-    // Kiểm tra xem số lượng SKU có hợp lệ hay không
+    // English content normalized from the original source text.
     const skuValueArray = generateSKUs(variants)
     if (skus.length !== skuValueArray.length) {
       return ctx.addIssue({
         code: 'custom',
         path: ['skus'],
-        message: `Số lượng SKU nên là ${skuValueArray.length}. Vui lòng kiểm tra lại.`
+        message: `English content normalized from the original source text.${skuValueArray.length}English content normalized from the original source text.`
       })
     }
 
-    // Kiểm tra từng SKU có hợp lệ hay không
+    // English content normalized from the original source text.
     let wrongSKUIndex = -1
     const isValidSKUs = skus.every((sku, index) => {
       const isValid = sku.value === skuValueArray[index].value
@@ -158,7 +151,7 @@ export const CreateProductBodySchema = ProductSchema.pick({
       ctx.addIssue({
         code: 'custom',
         path: ['skus'],
-        message: `Giá trị SKU index ${wrongSKUIndex} không hợp lệ. Vui lòng kiểm tra lại.`
+        message: `English content normalized from the original source text.${wrongSKUIndex}English content normalized from the original source text.`
       })
     }
   })

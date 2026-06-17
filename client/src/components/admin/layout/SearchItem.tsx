@@ -77,7 +77,7 @@ export function SearchItem() {
     </ul>
   );
 
-  // Lọc các item level 0 (menu chính)
+  // English content normalized from the original source text.
   const items = sidebarConfig.filter(item => !!item.title && !!item.href);
 
   return (
@@ -86,7 +86,7 @@ export function SearchItem() {
         <div className="flex items-center max-w-md w-full relative">
           <Search className="absolute left-3 h-4 w-4 text-gray-400" />
           <Input
-            placeholder="Tìm kiếm..."
+            placeholder="English content normalized from the original source text."
             className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 bg-white cursor-pointer"
             onFocus={() => setOpen(true)}
             readOnly

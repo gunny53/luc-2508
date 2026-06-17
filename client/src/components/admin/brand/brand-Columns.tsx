@@ -10,7 +10,7 @@ import { format } from "date-fns"
 import { Brand } from "@/types/admin/brands.interface"
 import { useTranslations } from "next-intl"
 
-// Hàm tạo danh sách actions cho Brand
+// English content normalized from the original source text.
 const getBrandActions = (
   brand: Brand,
   onDelete: (brand: Brand) => void,
@@ -40,8 +40,8 @@ type BrandColumnsProps = {
   onDelete: (brand: Brand) => void
 }
 
-export const BrandColumns = ({ 
-  onEdit, 
+export const BrandColumns = ({
+  onEdit,
   onDelete
 }: BrandColumnsProps): ColumnDef<Brand>[] => {
   const t = useTranslations("admin.ModuleBrands.Table");

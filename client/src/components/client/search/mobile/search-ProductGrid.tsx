@@ -36,7 +36,7 @@ export default function SearchProductGridMobile() {
     return () => observer.disconnect();
   }, [observerTarget, isLoading, hasNextPage, currentPage, handlePageChange]);
 
-  // Loading skeleton trang đầu
+  // English content normalized from the original source text.
   if (isLoading && products.length === 0) {
     return (
       <div className="grid grid-cols-2 gap-3">
@@ -51,31 +51,27 @@ export default function SearchProductGridMobile() {
     );
   }
 
-  // Lỗi
+  // English content normalized from the original source text.
   if (isError) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
-        <div className="text-red-500 mb-4">
-          Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.
-        </div>
+        <div className="text-red-500 mb-4">English content normalized from the original source text.</div>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
-        >
-          Thử lại
-        </button>
+        >English content normalized from the original source text.</button>
       </div>
     );
   }
 
-  // Không có sản phẩm
+  // English content normalized from the original source text.
   if (products.length === 0 && !isLoading) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
         <div className="text-black text-lg mb-2">
           {searchQuery
-            ? `Không tìm thấy kết quả nào cho từ khóa "${searchQuery}"`
-            : "Không tìm thấy sản phẩm nào"}
+            ? `English content normalized from the original source text.${searchQuery}"`
+            : "English content normalized from the original source text."}
         </div>
       </div>
     );
@@ -83,14 +79,14 @@ export default function SearchProductGridMobile() {
 
   return (
     <div className="space-y-4">
-      {/* Grid sản phẩm */}
+      {/* English content normalized from the original source text. */}
       <div className="grid grid-cols-2 gap-3">
         {products.map((product: ClientProduct) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
 
-      {/* Loading khi load thêm */}
+      {/* English content normalized from the original source text. */}
       {isLoading && products.length > 0 && (
         <div className="grid grid-cols-2 gap-3">
           {Array(4).fill(null).map((_, i) => (
@@ -103,7 +99,7 @@ export default function SearchProductGridMobile() {
         </div>
       )}
 
-      {/* Trigger load thêm */}
+      {/* English content normalized from the original source text. */}
       {hasNextPage && <div ref={setObserverTarget} className="h-10" />}
     </div>
   );

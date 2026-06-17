@@ -6,19 +6,19 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /products/:productId (Public)
+English content normalized from the original source text.
 
 start
-:Nhận request với productId;
-:Lấy languageId từ I18nContext;
-:Xây dựng where { id, deletedAt = null, publishedAt <= now };
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 :Include translations/skus/brand/categories theo languageId;
-:Thực thi findUnique;
-if (product tồn tại?) then (Có)
+:English content normalized from the original source text;
+if (condition?) then (Yes)
   :Build message i18n;
-  :Trả về JSON { message, data };
-else (Không)
-  :Ném NotFoundRecordException;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

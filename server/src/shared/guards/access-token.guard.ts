@@ -24,7 +24,7 @@ export class AccessTokenGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest()
 
-    // Extract và validate token
+    // English content normalized from the original source text.
     const decodedAccessToken = await this.extractAndValidateToken(request)
 
     // Check user permission
@@ -58,9 +58,9 @@ export class AccessTokenGuard implements CanActivate {
     const path = request.route?.path || request.url
     const method = request.method as keyof typeof HTTPMethod
     const cacheKey = `role:${roleId}`
-    // 1. Thử lấy từ cache
+    // English content normalized from the original source text.
     let cachedRole = await this.redisService.get<CachedRole>(cacheKey)
-    // 2. Nếu không có trong cache, thì truy vấn từ cơ sở dữ liệu
+    // English content normalized from the original source text.
     if (!cachedRole) {
       try {
         const role = await this.prismaService.role.findUniqueOrThrow({
@@ -91,7 +91,7 @@ export class AccessTokenGuard implements CanActivate {
       }
     }
 
-    // 3. Kiểm tra quyền truy cập
+    // English content normalized from the original source text.
     if (!cachedRole) {
       throw new ForbiddenException('Error.InvalidRole')
     }

@@ -13,7 +13,7 @@ export default function UsersPage() {
         {t("admin.users.subtitle")}
       </p>
     </div>
-    <UserTableWrapper />  
+    <UserTableWrapper />
   </div>
   )
 }

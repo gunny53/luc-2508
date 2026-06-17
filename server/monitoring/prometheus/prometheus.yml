@@ -2,9 +2,9 @@ global:
   scrape_interval: 15s
   evaluation_interval: 15s
   external_labels:
-    cluster: shopsifu-vps
+    cluster: ecsite-vps
     environment: production
-    application: shopsifu
+    application: ecsite
     datacenter: vps
 
 # Alerting rules
@@ -17,10 +17,10 @@ alerting:
     - static_configs:
         - targets:
             - alertmanager:9093
-            - shopsifu_alertmanager:9093
+            - ecsite_alertmanager:9093
 
 scrape_configs:
-  # Prometheus tự monitor
+  English content normalized from the original source text.
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
@@ -29,8 +29,8 @@ scrape_configs:
     scrape_timeout: 5s
     honor_labels: true
 
-  # ShopSifu API Server - Performance monitoring
-  - job_name: 'shopsifu-api'
+  # ECSite API Server - Performance monitoring
+  - job_name: 'ecsite-api'
     static_configs:
       - targets:
           [
@@ -76,10 +76,10 @@ scrape_configs:
     scrape_timeout: 5s
     honor_labels: true
 
-  # PostgreSQL với postgres_exporter - Database performance
+  English content normalized from the original source text.
   - job_name: 'postgres'
     static_configs:
-      - targets: ['shopsifu_postgres_exporter:9187']
+      - targets: ['ecsite_postgres_exporter:9187']
     scrape_interval: 15s
     scrape_timeout: 5s
     metrics_path: /metrics
@@ -93,10 +93,10 @@ scrape_configs:
         target_label: service
         replacement: 'postgresql'
 
-  # Redis với redis_exporter - Cache performance
+  English content normalized from the original source text.
   - job_name: 'redis'
     static_configs:
-      - targets: ['shopsifu_redis_exporter:9121']
+      - targets: ['ecsite_redis_exporter:9121']
     scrape_interval: 15s
     scrape_timeout: 5s
     metrics_path: /metrics
@@ -113,7 +113,7 @@ scrape_configs:
   # Node Exporter cho system metrics - Infrastructure monitoring
   - job_name: 'node'
     static_configs:
-      - targets: ['shopsifu_node_exporter:9100']
+      - targets: ['ecsite_node_exporter:9100']
     scrape_interval: 15s
     scrape_timeout: 5s
     metrics_path: /metrics
@@ -130,7 +130,7 @@ scrape_configs:
   # Grafana monitoring
   - job_name: 'grafana'
     static_configs:
-      - targets: ['shopsifu_grafana:3000']
+      - targets: ['ecsite_grafana:3000']
     metrics_path: /metrics
     scrape_interval: 30s
     scrape_timeout: 10s
@@ -147,7 +147,7 @@ scrape_configs:
   # System Monitor - Advanced system metrics cho high-load scenarios
   - job_name: 'system-monitor'
     static_configs:
-      - targets: ['shopsifu_system_monitor:9226']
+      - targets: ['ecsite_system_monitor:9226']
   # Blackbox synthetic probe
   - job_name: 'blackbox'
     metrics_path: /probe
@@ -166,7 +166,7 @@ scrape_configs:
   # Nginx exporter
   - job_name: 'nginx'
     static_configs:
-      - targets: ['shopsifu_nginx_exporter:9113']
+      - targets: ['ecsite_nginx_exporter:9113']
 
   # Loki metrics
   - job_name: 'loki'

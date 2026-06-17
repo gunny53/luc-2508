@@ -89,7 +89,7 @@ export class ProductRepo {
         lte: maxPrice
       }
     }
-    // Mặc định sort theo createdAt mới nhất
+    // English content normalized from the original source text.
     let caculatedOrderBy: Prisma.ProductOrderByWithRelationInput | Prisma.ProductOrderByWithRelationInput[] = {
       createdAt: orderBy
     }
@@ -300,11 +300,11 @@ export class ProductRepo {
     data: UpdateProductBodyType
   }): Promise<ProductType> {
     const { skus: dataSkus, categories, ...productData } = data
-    // SKU đã tồn tại trong DB nhưng không có trong data payload thì sẽ bị xóa
-    // SKU đã tồn tại trong DB nhưng có trong data payload thì sẽ được cập nhật
-    // SKY không tồn tại trong DB nhưng có trong data payload thì sẽ được thêm mới
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
 
-    // 1. Lấy danh sách SKU hiện tại trong DB
+    // English content normalized from the original source text.
     const existingSKUs = await this.prismaService.sKU.findMany({
       where: {
         productId: id,
@@ -312,11 +312,11 @@ export class ProductRepo {
       }
     })
 
-    // 2. Tìm các SKUs cần xóa (tồn tại trong DB nhưng không có trong data payload)
+    // English content normalized from the original source text.
     const skusToDelete = existingSKUs.filter((sku) => dataSkus.every((dataSku) => dataSku.value !== sku.value))
     const skuIdsToDelete = skusToDelete.map((sku) => sku.id)
 
-    // 3. Mapping ID vào trong data payload
+    // English content normalized from the original source text.
     const skusWithId = dataSkus.map((dataSku) => {
       const existingSku = existingSKUs.find((existingSKU) => existingSKU.value === dataSku.value)
       return {
@@ -325,10 +325,10 @@ export class ProductRepo {
       }
     })
 
-    // 4. Tìm các skus để cập nhật
+    // English content normalized from the original source text.
     const skusToUpdate = skusWithId.filter((sku) => sku.id !== null)
 
-    // 5. Tìm các skus để thêm mới
+    // English content normalized from the original source text.
     const skusToCreate = skusWithId
       .filter((sku) => sku.id === null)
       .map((sku) => {
@@ -340,7 +340,7 @@ export class ProductRepo {
         }
       })
     const [product] = await this.prismaService.$transaction([
-      // Cập nhật Product
+      // English content normalized from the original source text.
       this.prismaService.product.update({
         where: {
           id,
@@ -354,7 +354,7 @@ export class ProductRepo {
           }
         }
       }),
-      // Xóa mềm các SKU không có trong data payload
+      // English content normalized from the original source text.
       this.prismaService.sKU.updateMany({
         where: {
           id: {
@@ -366,7 +366,7 @@ export class ProductRepo {
           deletedById: updatedById
         }
       }),
-      // Cập nhật các SKU có trong data payload
+      // English content normalized from the original source text.
       ...skusToUpdate.map((sku) =>
         this.prismaService.sKU.update({
           where: {
@@ -381,7 +381,7 @@ export class ProductRepo {
           }
         })
       ),
-      // Thêm mới các SKU không có trong DB
+      // English content normalized from the original source text.
       this.prismaService.sKU.createMany({
         data: skusToCreate
       })

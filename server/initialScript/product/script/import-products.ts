@@ -22,7 +22,7 @@ export async function importProducts(
   let skippedCount = 0
   const productIds: string[] = []
 
-  // Lấy products hiện có để so sánh (thay đổi từ chỉ lấy theo creatorUserId)
+  // English content normalized from the original source text.
   const existingProducts = await tx.product.findMany({
     where: { deletedAt: null },
     select: {
@@ -50,7 +50,7 @@ export async function importProducts(
       const productsToCreate: any[] = []
 
       for (const processed of chunk) {
-        // ✅ Sử dụng sellerId thật thay vì creatorUserId
+        // English content normalized from the original source text.
         const sellerId = processed.sellerId || creatorUserId
 
         const newProductData = {
@@ -62,20 +62,20 @@ export async function importProducts(
           images: [...processed.validImages, ...processed.validVideos],
           variants: processed.variants,
           specifications: processed.specifications.length ? processed.specifications : null,
-          createdById: sellerId, // ✅ Thay đổi từ creatorUserId thành sellerId
+          createdById: sellerId, // English content normalized from the original source text.
           publishedAt: processed.shopeeData.is_available ? now : null,
           createdAt: now,
           updatedAt: now
         }
 
-        // Kiểm tra product hiện có (thay đổi logic tìm kiếm)
+        // English content normalized from the original source text.
         const existingProduct = existingProducts.find((ep) => ep.name === newProductData.name)
 
         if (!existingProduct) {
-          // Product mới
+          // English content normalized from the original source text.
           productsToCreate.push(newProductData)
         } else {
-          // Kiểm tra có thay đổi không
+          // English content normalized from the original source text.
           const hasChanged = hasDataChanged(existingProduct, newProductData as ProductData, [
             'description',
             'basePrice',
@@ -87,7 +87,7 @@ export async function importProducts(
           ])
 
           if (hasChanged) {
-            // Cập nhật product hiện có
+            // English content normalized from the original source text.
             await tx.product.update({
               where: { id: existingProduct.id },
               data: {
@@ -104,18 +104,18 @@ export async function importProducts(
             productIds.push(existingProduct.id)
             successCount++
           } else {
-            // Không có thay đổi, skip
+            // English content normalized from the original source text.
             productIds.push(existingProduct.id)
             skippedCount++
           }
         }
       }
 
-      // Tạo products mới
+      // English content normalized from the original source text.
       if (productsToCreate.length > 0) {
         await tx.product.createMany({ data: productsToCreate, skipDuplicates: true })
 
-        // Lấy lại IDs của products mới tạo (thay đổi logic tìm kiếm)
+        // English content normalized from the original source text.
         const createdProducts = await tx.product.findMany({
           where: {
             name: { in: productsToCreate.map((p) => p.name) },

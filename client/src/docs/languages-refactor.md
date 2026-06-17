@@ -41,7 +41,7 @@ This document explains the refactoring done to the languages module to align wit
 
 ```tsx
 // In a component
-const { 
+const {
   languages,
   pagination,
   loading,

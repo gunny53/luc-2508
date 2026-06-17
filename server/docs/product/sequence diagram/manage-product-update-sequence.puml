@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng PUT /manage-product/products/:productId
+English content normalized from the original source text.
 
 actor "ShopOwner/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -18,7 +18,7 @@ queue "BullMQ (search-sync)" as Q
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MPC: Forward với user
+AG --> MPC: English content normalized from the original source text.
 activate MPC
 
 MPC -> MPS: update({ productId, data, user })
@@ -42,7 +42,7 @@ end
 
 MPS -> MPS: validatePrivilege(userIdRequest=user.userId,\n roleNameRequest=user.roleName,\n createdById=product.createdById)
 
-alt Không hợp lệ
+English content normalized from the original source text.
   MPS -> MPS: throw ForbiddenException
   MPS --> MPC: 403 Forbidden
   MPC --> U: 403 Forbidden
@@ -52,12 +52,12 @@ alt Không hợp lệ
 end
 
 note right of PR
-Logic cập nhật SKUs (trong ProductRepo.update):
+English content normalized from the original source text.
 1) existingSKUs = sKU.findMany(productId, deletedAt=null)
 2) skusToDelete = existingSKUs - dataSkus (theo value)
-3) skusWithId = map dataSkus với id nếu value trùng
-4) skusToUpdate = skusWithId có id
-5) skusToCreate = skusWithId không có id => createMany
+English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
 end note
 
 MPS -> PR: update({ id=productId, updatedById=user.userId, data })

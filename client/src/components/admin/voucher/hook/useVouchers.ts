@@ -51,10 +51,10 @@ export function useVouchers() {
   } = useServerDataTable<Discount, VoucherColumn>({
     fetchData: useCallback((params: PaginationRequest) => {
         console.log('Fetching vouchers with params:', params);
-        
-        // Gọi API 
+
+        // English content normalized from the original source text.
         const apiParams = { ...params };
-        
+
         return discountService.getAll(apiParams);
     }, [user?.id]),
     getResponseData: (response) => {

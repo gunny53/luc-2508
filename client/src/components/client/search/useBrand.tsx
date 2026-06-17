@@ -11,7 +11,7 @@ export const useBrand = () => {
   const t = useTranslations();
   // Modal states
 
-  // Tạo các callbacks cho useServerDataTable
+  // English content normalized from the original source text.
   const getResponseData = useCallback((response: any) => {
     return response.data || [];
   }, []);
@@ -32,7 +32,7 @@ export const useBrand = () => {
     return brand;
   }, []);
 
-  // Sử dụng hook useServerDataTable để quản lý data và pagination
+  // English content normalized from the original source text.
   const {
     data,
     loading,
@@ -48,14 +48,14 @@ export const useBrand = () => {
     getResponseMetadata,
     mapResponseToData,
     initialSort: { sortBy: "updatedAt"},
-    defaultLimit: 12, // Tăng limit lên 12 để phù hợp với hiển thị 2 hàng, mỗi hàng 6 brand
+    defaultLimit: 12, // English content normalized from the original source text.
   });
 
   return {
     data,
     loading,
     pagination,
-    
+
     // Server-side pagination handlers
     handlePageChange,
     handleLimitChange,

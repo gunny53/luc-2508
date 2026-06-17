@@ -1,7 +1,7 @@
 {
-  "name": "shopsifu",
+  "name": "ecsite",
   "version": "1.0.0",
-  "description": "Shopsifu",
+  "description": "ECSite",
   "author": "TedyDev",
   "private": true,
   "scripts": {

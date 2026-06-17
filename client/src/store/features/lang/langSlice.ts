@@ -13,7 +13,7 @@ const languageSlice = createSlice({
       state.language = action.payload;
       localStorage.setItem("language", state.language);
       document.cookie = `NEXT_LOCALE=${state.language}; path=/;`;
-      
+
     },
     toggleLanguage: (state) => {
       state.language = state.language === "vi" ? "en" : "vi";

@@ -9,8 +9,8 @@ export const OrderEmpty = () => {
         alt="empty"
         className="w-36 h-36 object-contain"
       />
-      <p>Bạn chưa có đơn hàng nào</p>
-      <Button variant="link" className="text-primary px-0">Trang chủ</Button>
+      <p>English content normalized from the original source text.</p>
+      <Button variant="link" className="text-primary px-0">English content normalized from the original source text.</Button>
     </div>
   )
 }

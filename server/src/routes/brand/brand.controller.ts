@@ -18,9 +18,7 @@ import { AccessTokenPayload } from 'src/shared/types/jwt.type'
 export class BrandController {
   constructor(private readonly brandService: BrandService) {}
 
-  /**
-   * 🏷️ Brand list với smart caching - brands ít thay đổi
-   */
+  /* English content normalized from the original source text. */
   @Get()
   @IsPublic()
   @ZodSerializerDto(GetBrandsResDTO)
@@ -31,9 +29,7 @@ export class BrandController {
     return this.brandService.list(query as any)
   }
 
-  /**
-   * 🎯 Brand detail với ultra-long cache - brand info rất ít đổi
-   */
+  /* English content normalized from the original source text. */
   @Get(':brandId')
   @IsPublic()
   @ZodSerializerDto(GetBrandDetailResDTO)

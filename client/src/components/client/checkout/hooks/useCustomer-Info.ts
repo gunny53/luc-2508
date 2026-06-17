@@ -5,7 +5,7 @@ import { useProvinces } from '@/hooks/combobox/useProvinces';
 import { CustomerFormData } from '@/types/checkout.interface';
 
 export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void) {
-  // Parse formData để lấy code và name nếu có format "code|name"
+  // English content normalized from the original source text.
   const parseLocationData = (value: string | undefined) => {
     if (!value) return { code: '', name: '' };
     const parts = value.split('|');
@@ -26,22 +26,22 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
   const [shippingProvince, setShippingProvince] = useState<string>('');
   const [shippingDistrict, setShippingDistrict] = useState<string>('');
   const [shippingWard, setShippingWard] = useState<string>('');
-  
-  // Thêm state để lưu tên của các địa điểm đã chọn
+
+  // English content normalized from the original source text.
   const [customerProvinceName, setCustomerProvinceName] = useState<string>(provinceData.name);
   const [customerDistrictName, setCustomerDistrictName] = useState<string>(districtData.name);
   const [customerWardName, setCustomerWardName] = useState<string>(wardData.name);
   const [shippingProvinceName, setShippingProvinceName] = useState<string>('');
   const [shippingDistrictName, setShippingDistrictName] = useState<string>('');
   const [shippingWardName, setShippingWardName] = useState<string>('');
-  
+
   // Use the provinces hook for customer address
-  const { 
-    provinces, 
-    districts: customerDistricts, 
-    wards: customerWards, 
-    isLoadingProvinces, 
-    isLoadingDistricts: isLoadingCustomerDistricts, 
+  const {
+    provinces,
+    districts: customerDistricts,
+    wards: customerWards,
+    isLoadingProvinces,
+    isLoadingDistricts: isLoadingCustomerDistricts,
     isLoadingWards: isLoadingCustomerWards,
     setSelectedProvince: setCustomerProvinceCode,
     setSelectedDistrict: setCustomerDistrictCode,
@@ -51,18 +51,18 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     getWardName: getCustomerWardName,
     error: provincesError
   } = useProvinces();
-  
-  // Debug log để kiểm tra khi nào data được load
+
+  // English content normalized from the original source text.
   // Debug logging removed
   useEffect(() => {
     // Track province changes silently
   }, [customerProvince, customerProvinceName, provinces.length, isLoadingProvinces]);
-  
+
   // Separate instance for shipping address
-  const { 
-    districts: shippingDistricts, 
-    wards: shippingWards, 
-    isLoadingDistricts: isLoadingShippingDistricts, 
+  const {
+    districts: shippingDistricts,
+    wards: shippingWards,
+    isLoadingDistricts: isLoadingShippingDistricts,
     isLoadingWards: isLoadingShippingWards,
     setSelectedProvince: setShippingProvinceCode,
     setSelectedDistrict: setShippingDistrictCode,
@@ -71,8 +71,8 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     getDistrictName: getShippingDistrictName,
     getWardName: getShippingWardName
   } = useProvinces();
-  
-  // Load tên tỉnh/thành phố khi component được mount hoặc khi danh sách provinces thay đổi
+
+  // English content normalized from the original source text.
   useEffect(() => {
     if (customerProvince && provinces.length > 0 && !isLoadingProvinces) {
       const selectedProvince = provinces.find(p => p.value === customerProvince);
@@ -82,7 +82,7 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     }
   }, [customerProvince, provinces, isLoadingProvinces]);
 
-  // Load tên quận/huyện khi component được mount hoặc khi danh sách districts thay đổi
+  // English content normalized from the original source text.
   useEffect(() => {
     if (customerDistrict && customerDistricts.length > 0 && !isLoadingCustomerDistricts) {
       const selectedDistrict = customerDistricts.find(d => d.value === customerDistrict);
@@ -92,7 +92,7 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     }
   }, [customerDistrict, customerDistricts, isLoadingCustomerDistricts]);
 
-  // Load tên phường/xã khi component được mount hoặc khi danh sách wards thay đổi  
+  // English content normalized from the original source text.
   useEffect(() => {
     if (customerWard && customerWards.length > 0 && !isLoadingCustomerWards) {
       const selectedWard = customerWards.find(w => w.value === customerWard);
@@ -106,7 +106,7 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
   useEffect(() => {
     if (customerProvince) {
       setCustomerProvinceCode(customerProvince);
-      // Reset district và ward khi province thay đổi
+      // English content normalized from the original source text.
       setCustomerDistrict('');
       setCustomerDistrictName('');
       setCustomerWard('');
@@ -118,32 +118,32 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
   useEffect(() => {
     if (customerDistrict) {
       setCustomerDistrictCode(customerDistrict);
-      // Reset ward khi district thay đổi
+      // English content normalized from the original source text.
       setCustomerWard('');
       setCustomerWardName('');
     }
   }, [customerDistrict, setCustomerDistrictCode]);
-  
+
   // Update customerWardCode when customerWard changes
   useEffect(() => {
     if (customerWard) {
       setCustomerWardCode(customerWard);
-      // Lấy tên phường/xã nếu chưa có
+      // English content normalized from the original source text.
       if (!customerWardName) {
         const wardName = getCustomerWardName(customerWard);
         if (wardName) setCustomerWardName(wardName);
       }
     }
   }, [customerWard, customerWardName, setCustomerWardCode, getCustomerWardName]);
-  
+
   // Update shippingProvinceCode when shippingProvince changes
   useEffect(() => {
     if (shippingProvince && !sameAsCustomer) {
       setShippingProvinceCode(shippingProvince);
       setShippingDistrict('');
       setShippingWard('');
-      
-      // Lấy tên tỉnh/thành phố nếu chưa có
+
+      // English content normalized from the original source text.
       if (!shippingProvinceName) {
         const provinceName = getShippingProvinceName(shippingProvince);
         if (provinceName) setShippingProvinceName(provinceName);
@@ -159,37 +159,37 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     }
   }, [shippingDistrict, sameAsCustomer, setShippingDistrictCode]);
 
-  // Xử lý khi toggle switch "Giống thông tin khách hàng"
+  // English content normalized from the original source text.
   const handleSameAsCustomerChange = (checked: boolean) => {
     setSameAsCustomer(checked);
-    
+
     if (checked) {
-      // Cập nhật thông tin người nhận từ thông tin khách hàng
+      // English content normalized from the original source text.
       const evt1 = {
         target: {
           name: 'receiverName',
           value: formData.fullName
         }
       } as React.ChangeEvent<HTMLInputElement>;
-      
+
       const evt2 = {
         target: {
           name: 'receiverPhone',
           value: formData.phoneNumber
         }
       } as React.ChangeEvent<HTMLInputElement>;
-      
+
       handleChange(evt1);
       handleChange(evt2);
-      
-      // Copy địa chỉ
+
+      // English content normalized from the original source text.
       setShippingProvince(customerProvince);
       setShippingProvinceName(customerProvinceName);
       setShippingDistrict(customerDistrict);
       setShippingDistrictName(customerDistrictName);
       setShippingWard(customerWard);
       setShippingWardName(customerWardName);
-      
+
       // Set values in the hook
       if (customerProvince) setShippingProvinceCode(customerProvince);
       if (customerDistrict) setShippingDistrictCode(customerDistrict);
@@ -197,18 +197,18 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     }
   };
 
-  // Các hàm xử lý thay đổi giá trị dropdown cho địa chỉ khách hàng
+  // English content normalized from the original source text.
   const handleProvinceChange = (value: string) => {
     setCustomerProvince(value);
-    
-    // Lấy tên tỉnh/thành phố từ danh sách provinces
+
+    // English content normalized from the original source text.
     const selectedProvince = provinces.find(p => p.value === value);
     const provinceName = selectedProvince ? selectedProvince.label : '';
     setCustomerProvinceName(provinceName);
-    
+
     // Ensure we have a valid provinceName before updating form data
     if (provinceName) {
-      // Cập nhật form data với cả code và name
+      // English content normalized from the original source text.
       const evt = {
         target: {
           name: 'province',
@@ -219,8 +219,8 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     } else {
       console.warn('⚠️ Province name not found for code:', value);
     }
-    
-    // Nếu cùng địa chỉ, cập nhật địa chỉ giao hàng
+
+    // English content normalized from the original source text.
     if (sameAsCustomer) {
       setShippingProvince(value);
       setShippingProvinceName(provinceName);
@@ -234,15 +234,15 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
 
   const handleDistrictChange = (value: string) => {
     setCustomerDistrict(value);
-    
-    // Lấy tên quận/huyện từ danh sách customerDistricts
+
+    // English content normalized from the original source text.
     const selectedDistrict = customerDistricts.find(d => d.value === value);
     const districtName = selectedDistrict ? selectedDistrict.label : '';
     setCustomerDistrictName(districtName);
-    
+
     // Ensure we have a valid districtName before updating form data
     if (districtName) {
-      // Cập nhật form data với cả code và name
+      // English content normalized from the original source text.
       const evt = {
         target: {
           name: 'district',
@@ -253,8 +253,8 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     } else {
       console.warn('⚠️ District name not found for code:', value);
     }
-    
-    // Nếu cùng địa chỉ, cập nhật địa chỉ giao hàng
+
+    // English content normalized from the original source text.
     if (sameAsCustomer) {
       setShippingDistrict(value);
       setShippingDistrictName(districtName);
@@ -266,15 +266,15 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
 
   const handleWardChange = (value: string) => {
     setCustomerWard(value);
-    
-    // Lấy tên phường/xã từ danh sách customerWards
+
+    // English content normalized from the original source text.
     const selectedWard = customerWards.find(w => w.value === value);
     const wardName = selectedWard ? selectedWard.label : '';
     setCustomerWardName(wardName);
-    
+
     // Ensure we have a valid wardName before updating form data
     if (wardName) {
-      // Cập nhật form data với cả code và name
+      // English content normalized from the original source text.
       const evt = {
         target: {
           name: 'ward',
@@ -285,24 +285,24 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     } else {
       console.warn('⚠️ Ward name not found for code:', value);
     }
-    
-    // Nếu cùng địa chỉ, cập nhật địa chỉ giao hàng
+
+    // English content normalized from the original source text.
     if (sameAsCustomer) {
       setShippingWard(value);
       setShippingWardName(wardName);
     }
   };
-  
-  // Các hàm xử lý thay đổi giá trị dropdown cho địa chỉ giao hàng
+
+  // English content normalized from the original source text.
   const handleShippingProvinceChange = (value: string) => {
     setShippingProvince(value);
-    // Lấy tên tỉnh/thành phố
+    // English content normalized from the original source text.
     const provinceName = getShippingProvinceName(value);
     setShippingProvinceName(provinceName);
-    
+
     // Ensure we have a valid provinceName before updating form data
     if (provinceName) {
-      // Cập nhật form data với cả code và name
+      // English content normalized from the original source text.
       const evt = {
         target: {
           name: 'receiverProvince',
@@ -315,13 +315,13 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
 
   const handleShippingDistrictChange = (value: string) => {
     setShippingDistrict(value);
-    // Lấy tên quận/huyện
+    // English content normalized from the original source text.
     const districtName = getShippingDistrictName(value);
     setShippingDistrictName(districtName);
-    
+
     // Ensure we have a valid districtName before updating form data
     if (districtName) {
-      // Cập nhật form data với cả code và name
+      // English content normalized from the original source text.
       const evt = {
         target: {
           name: 'receiverDistrict',
@@ -330,19 +330,19 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
       } as React.ChangeEvent<HTMLInputElement>;
       handleChange(evt);
     } else {
-      console.warn('⚠️ Shipping district name not found for code:', value); 
+      console.warn('⚠️ Shipping district name not found for code:', value);
     }
   };
 
   const handleShippingWardChange = (value: string) => {
     setShippingWard(value);
-    // Lấy tên phường/xã
+    // English content normalized from the original source text.
     const wardName = getShippingWardName(value);
     setShippingWardName(wardName);
-    
+
     // Ensure we have a valid wardName before updating form data
     if (wardName) {
-      // Cập nhật form data với cả code và name
+      // English content normalized from the original source text.
       const evt = {
         target: {
           name: 'receiverWard',
@@ -370,24 +370,24 @@ export function useCustomerInfo(formData: CustomerFormData, handleChange: (e: Re
     shippingProvinceName,
     shippingDistrictName,
     shippingWardName,
-    
+
     // Data from hooks
     provinces,
     customerDistricts,
     customerWards,
     shippingDistricts,
     shippingWards,
-    
+
     // Loading states
     isLoadingProvinces,
     isLoadingCustomerDistricts,
     isLoadingCustomerWards,
     isLoadingShippingDistricts,
     isLoadingShippingWards,
-    
+
     // Error
     provincesError,
-    
+
     // Handlers
     handleSameAsCustomerChange,
     handleProvinceChange,

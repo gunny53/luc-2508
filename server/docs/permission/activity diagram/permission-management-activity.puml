@@ -8,57 +8,57 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Quản Lý Quyền - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Admin truy cập hệ thống;
+:English content normalized from the original source text;
 
-if (Hoạt động?) then (Lấy danh sách quyền)
+if (condition?) then (Yes)
   :GET /permissions?page=1&limit=10;
-  :Trích xuất pagination parameters;
-  :Validate query parameters với Zod;
-  if (Validation passed?) then (có)
-    :Tính toán pagination metadata;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     note right
-    Logic Phân Trang:
+    English content normalized from the original source text.
     • skip = (page - 1) * limit
     • take = limit
     • Parallel queries: count + findMany
-    • Tính toán totalPages, hasNext, hasPrev
+    • English content normalized from the original source text
     end note
-    :Thực thi parallel database queries;
-    :Count permissions với WHERE deletedAt IS NULL;
-    :FindMany permissions với pagination;
-    :Tính toán metadata (totalItems, totalPages, hasNext, hasPrev);
-    :Tạo localized success message;
-    :Trả về permissions với metadata;
-  else (không)
-    :Trả về validation error;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (Xem chi tiết quyền) then
+else (No)
   :GET /permissions/:permissionId;
-  :Trích xuất permissionId từ params;
-  :Validate permissionId với Zod;
-  if (Validation passed?) then (có)
-    :Query permission từ database;
-    :FindUnique với WHERE id = permissionId AND deletedAt IS NULL;
-    if (Permission tồn tại?) then (có)
-      :Tạo localized success message;
-      :Trả về permission detail;
-    else (không)
-      :Ném NotFoundRecordException;
-      :Trả về 404 Not Found;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về validation error;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (Tạo quyền mới) then
+else (No)
   :POST /permissions + {name, path, method, module};
-  :Trích xuất user từ @ActiveUser();
-  :Validate request body với Zod schema;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
     Data Validation:
     • name: required string
@@ -67,99 +67,99 @@ elseif (Tạo quyền mới) then
     • module: required string
     • Unique constraint: path + method
     end note
-  if (Validation passed?) then (có)
-    :Tạo permission với audit fields;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     note right
-    Logic Tạo Mới:
-    • INSERT permission với createdById
+    English content normalized from the original source text.
+    • English content normalized from the original source text
     • Audit trail: createdAt, createdById
     • Validate unique constraint
     end note
-    :Thực thi database INSERT;
-    if (Unique constraint valid?) then (có)
-      :Tạo localized success message;
-      :Trả về permission đã tạo;
-    else (không)
-      :Ném PermissionAlreadyExistsException;
-      :Trả về 422 Unprocessable Entity;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về validation error;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (Cập nhật quyền) then
+else (No)
   :PUT /permissions/:permissionId + {data};
-  :Trích xuất permissionId và user;
-  :Validate request data với Zod;
-  if (Validation passed?) then (có)
-    :Cập nhật permission với audit fields;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     note right
-    Logic Cập Nhật:
-    • UPDATE permission với updatedById
+    English content normalized from the original source text.
+    • English content normalized from the original source text
     • Include roles relationship
     • Validate unique constraint
     • Audit trail: updatedAt, updatedById
     end note
-    :Thực thi database UPDATE với include roles;
-    if (Permission tồn tại?) then (có)
-      if (Unique constraint valid?) then (có)
-        :Trích xuất roles từ updated permission;
-        :Xóa cached role data;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      if (condition?) then (Yes)
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
         note right
         Cache Management:
-        • Delete cached role data cho tất cả roles
+        • English content normalized from the original source text
         • Cache key: `role:${roleId}`
-        • Parallel deletion với Promise.all
+        • English content normalized from the original source text
         • Ensure cache consistency
         end note
-        :Thực thi Promise.all cho cache deletion;
-        :Tạo localized success message;
-        :Trả về updated permission;
-      else (không)
-        :Ném PermissionAlreadyExistsException;
-        :Trả về 422 Unprocessable Entity;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
+      else (No)
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
       endif
-    else (không)
-      :Ném NotFoundRecordException;
-      :Trả về 404 Not Found;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về validation error;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (Xóa quyền) then
+else (No)
   :DELETE /permissions/:permissionId;
-  :Trích xuất permissionId và user;
-  :Validate permissionId với Zod;
-  if (Validation passed?) then (có)
-    :Thực thi soft delete operation;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     note right
-    Logic Xóa:
+    English content normalized from the original source text.
     • Soft delete: UPDATE deletedAt field
     • Include roles relationship
     • Audit trail: deletedAt, deletedById
-    • Support hard delete với isHard flag
+    • English content normalized from the original source text
     end note
-    :Cập nhật permission với deletedAt và deletedById;
-    if (Permission tồn tại?) then (có)
-      :Trích xuất roles từ deleted permission;
-      :Xóa cached role data;
-      :Thực thi Promise.all cho cache deletion;
-      :Tạo localized success message;
-      :Trả về success response;
-    else (không)
-      :Ném NotFoundRecordException;
-      :Trả về 404 Not Found;
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về validation error;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
 else (Invalid operation)
-  :Trả về 400 Bad Request;
+  :English content normalized from the original source text;
 endif
 
-:Hoàn thành thao tác;
+:English content normalized from the original source text;
 
 stop
 

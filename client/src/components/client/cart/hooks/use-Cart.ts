@@ -7,16 +7,11 @@ import { Cart, CartItem, CartItemRequest, UpdateCartItemRequest, CartListRespons
 import { useAuthGuard } from '@/hooks/useAuthGuard';
 
 interface UseCartOptions {
-  /**
-   * Xác định liệu giỏ hàng có nên được tải tự động khi hook được khởi tạo
-   * @default false
-   */
+  /* English content normalized from the original source text. */
   autoFetch?: boolean;
 }
 
-/**
- * Custom hook để xử lý logic giỏ hàng - có thể sử dụng ở bất kỳ đâu trong ứng dụng
- */
+/* English content normalized from the original source text. */
 export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
   const [shopCarts, setShopCarts] = useState<ShopCart[]>([]);
   const [cart, setCart] = useState<Cart | null>(null);
@@ -24,7 +19,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const { isAuthenticated } = useAuthGuard({ silentCheck: true });
 
-  // Chuyển đổi dữ liệu từ API thành cart object trong client
+  // English content normalized from the original source text.
   const transformCartData = useCallback((data: ShopCart[]): Cart => {
     let totalItems = 0;
     let totalPrice = 0;
@@ -52,9 +47,9 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     };
   }, []);
 
-  // Lấy thông tin giỏ hàng - có thể gọi từ bất kỳ component nào
+  // English content normalized from the original source text.
   const fetchCart = useCallback(async (params?: string) => {
-    // Kiểm tra authentication trước khi fetch
+    // English content normalized from the original source text.
     if (!isAuthenticated) {
       setShopCarts([]);
       setCart(null);
@@ -63,12 +58,12 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
 
     try {
       setIsLoading(true);
-      // Tạo params object với limit 200 để hiển thị tất cả items trong cart
+      // English content normalized from the original source text.
       const queryParams = params ? JSON.parse(params) : {};
       const finalParams = { limit: 500, ...queryParams };
-      
+
       const response = await cartService.getCart(finalParams);
-      
+
       if (response.data && Array.isArray(response.data)) {
         setShopCarts(response.data as ShopCart[]);
         const transformedCart = transformCartData(response.data as ShopCart[]);
@@ -79,11 +74,11 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
         const transformedCart = transformCartData(cartData);
         setCart(transformedCart);
       }
-      
+
       return response;
     } catch (error: any) {
       console.error('Error fetching cart:', error);
-      const errorMessage = error.response?.data?.message || error.message || 'Không thể tải thông tin giỏ hàng. Vui lòng thử lại sau.';
+      const errorMessage = error.response?.data?.message || error.message || 'English content normalized from the original source text.';
       toast.error(errorMessage);
       setShopCarts([]);
       setCart(null);
@@ -95,20 +90,20 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
 
 
 
-  // Thêm sản phẩm vào giỏ hàng
+  // English content normalized from the original source text.
   const addToCart = useCallback(async (data: CartItemRequest, showNotification: boolean = true) => {
     try {
       setIsUpdating(true);
       const response = await cartService.addToCart(data);
-      
-      // Cập nhật lại giỏ hàng sau khi thêm thành công
+
+      // English content normalized from the original source text.
       await fetchCart();
-      
+
       if (showNotification) {
-        const successMessage = response.message || 'Đã thêm sản phẩm vào giỏ hàng.';
+        const successMessage = response.message || 'English content normalized from the original source text.';
         toast.success(successMessage);
       }
-      
+
       // Return the cart item ID from the API response
       // Handle both possible response structures
       let cartItemId: string | null = null;
@@ -121,12 +116,12 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
           cartItemId = response.data.cartItem.id;
         }
       }
-      
+
       return cartItemId || true;
     } catch (error: any) {
       console.error('Error adding item to cart:', error);
       if (showNotification) {
-        const errorMessage = error.response?.data?.message || error.message || 'Không thể thêm sản phẩm vào giỏ hàng. Vui lòng thử lại sau.';
+        const errorMessage = error.response?.data?.message || error.message || 'English content normalized from the original source text.';
         toast.error(errorMessage);
       }
       return false;
@@ -135,13 +130,13 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     }
   }, [fetchCart]);
 
-  // Cập nhật số lượng sản phẩm trong giỏ hàng
+  // English content normalized from the original source text.
   const updateCartItem = useCallback(async (itemId: string, data: UpdateCartItemRequest, showNotification: boolean = false) => {
     try {
       setIsUpdating(true);
       const response = await cartService.updateCartItem(itemId, data);
 
-      // Cập nhật UI trực tiếp từ response để đảm bảo dữ liệu mới nhất
+      // English content normalized from the original source text.
       if (response.data) {
         const cartData = (response.data as CartListResponse).data || response.data;
         if (Array.isArray(cartData)) {
@@ -149,22 +144,22 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
           const transformedCart = transformCartData(cartData);
           setCart(transformedCart);
         } else {
-          // Fallback nếu response không đúng định dạng
+          // English content normalized from the original source text.
           await fetchCart();
         }
       } else {
         await fetchCart();
       }
-      
+
       if (showNotification) {
-        const successMessage = response.message || 'Cập nhật giỏ hàng thành công';
+        const successMessage = response.message || 'English content normalized from the original source text.';
         toast.success(successMessage);
       }
       return response;
     } catch (error: any) {
       console.error('Error updating cart item:', error);
       if (showNotification) {
-        const errorMessage = error.response?.data?.message || error.message || 'Không thể cập nhật sản phẩm. Vui lòng thử lại sau.';
+        const errorMessage = error.response?.data?.message || error.message || 'English content normalized from the original source text.';
         toast.error(errorMessage);
       }
       return false;
@@ -173,24 +168,24 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     }
   }, [fetchCart, transformCartData]);
 
-  // Xóa sản phẩm khỏi giỏ hàng
+  // English content normalized from the original source text.
   const removeItems = useCallback(async (cartItemIds: string[], showNotification: boolean = true) => {
     try {
       setIsUpdating(true);
       const response = await cartService.deleteCartItems({ cartItemIds });
-      
-      // Cập nhật lại giỏ hàng sau khi xóa thành công
+
+      // English content normalized from the original source text.
       await fetchCart();
-      
+
       if (showNotification) {
-        const successMessage = response.message || 'Đã xóa sản phẩm khỏi giỏ hàng.';
+        const successMessage = response.message || 'English content normalized from the original source text.';
         toast.success(successMessage);
       }
       return true;
     } catch (error: any) {
       console.error('Error removing items from cart:', error);
       if (showNotification) {
-        const errorMessage = error.response?.data?.message || error.message || 'Không thể xóa sản phẩm. Vui lòng thử lại sau.';
+        const errorMessage = error.response?.data?.message || error.message || 'English content normalized from the original source text.';
         toast.error(errorMessage);
       }
       return false;
@@ -199,24 +194,24 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     }
   }, [fetchCart]);
 
-  // Chọn tất cả sản phẩm
+  // English content normalized from the original source text.
   const selectAllItems = useCallback(async (isSelected: boolean, showNotification: boolean = false) => {
     try {
       setIsUpdating(true);
       const response = await cartService.selectAllItems(isSelected);
-      
-      // Cập nhật lại giỏ hàng sau khi chọn/bỏ chọn tất cả
+
+      // English content normalized from the original source text.
       await fetchCart();
-      
+
       if (showNotification) {
-        const successMessage = response.message || `Đã ${isSelected ? 'chọn' : 'bỏ chọn'} tất cả sản phẩm`;
+        const successMessage = response.message || `English content normalized from the original source text.${isSelected ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}English content normalized from the original source text.`;
         toast.success(successMessage);
       }
       return true;
     } catch (error: any) {
       console.error('Error selecting all items:', error);
       if (showNotification) {
-        const errorMessage = error.response?.data?.message || error.message || 'Không thể cập nhật trạng thái chọn. Vui lòng thử lại sau.';
+        const errorMessage = error.response?.data?.message || error.message || 'English content normalized from the original source text.';
         toast.error(errorMessage);
       }
       return false;
@@ -225,20 +220,20 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     }
   }, [fetchCart]);
 
-  // Tính tổng tiền cho các sản phẩm đã chọn
+  // English content normalized from the original source text.
   const calculateSelectedTotal = useCallback((): { items: number; price: number } => {
     if (!cart || !cart.shops || cart.shops.length === 0) {
       return { items: 0, price: 0 };
     }
 
-    // Sử dụng giá trị đã được tính toán sẵn trong cart object
+    // English content normalized from the original source text.
     return {
       items: cart.totalSelectedItems,
       price: cart.totalSelectedPrice
     };
   }, [cart]);
 
-  // Tính toán các thông tin chi tiết về giỏ hàng
+  // English content normalized from the original source text.
   const getCartDetails = useCallback(() => {
     if (!cart) {
       return {
@@ -261,14 +256,14 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     };
   }, [cart]);
 
-  // Lấy thông tin giỏ hàng khi component được mount (nếu autoFetch = true và đã đăng nhập)
+  // English content normalized from the original source text.
   useEffect(() => {
     if (options.autoFetch && isAuthenticated) {
       fetchCart();
     }
   }, [fetchCart, options.autoFetch, isAuthenticated]);
 
-  // Cập nhật số lượng của một item trong giỏ hàng
+  // English content normalized from the original source text.
   const updateItemQuantity = useCallback(async (itemId: string, skuId: string, quantity: number) => {
     return await updateCartItem(itemId, { skuId, quantity });
   }, [updateCartItem]);
@@ -280,7 +275,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     isLoading,
     isUpdating,
     isAuthenticated,
-    
+
     // Actions
     fetchCart,
     addToCart,
@@ -288,7 +283,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     removeItems,
     selectAllItems,
     updateItemQuantity,
-    
+
     // Helpers
     calculateSelectedTotal,
     getCartDetails

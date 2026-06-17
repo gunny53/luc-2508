@@ -31,7 +31,7 @@ export function PasswordSecuritySession() {
         {t('user.account.security.total')} {totalSessions} {t('user.account.security.active')} {devices.length} {t('user.account.security.device')}
       </p>
 
-      {/* Danh sách thiết bị */}
+      {/* English content normalized from the original source text. */}
       <Accordion type="single" collapsible className="w-full">
         {devices.map((device, deviceIndex) => (
           <AccordionItem

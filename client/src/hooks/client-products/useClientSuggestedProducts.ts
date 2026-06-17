@@ -18,22 +18,22 @@ export function useClientSuggestedProducts({
   sortOrder = 'desc',
   categoryId,
 }: UseSuggestedProductsOptions = {}) {
-  // State để lưu trữ dữ liệu và trạng thái
+  // English content normalized from the original source text.
   const [products, setProducts] = useState<ClientProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [initialLoading, setInitialLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [hasMore, setHasMore] = useState(true);
   const [limit, setLimit] = useState(initialLimit);
-  
-  // Sử dụng useRef để theo dõi nếu component đã unmount
+
+  // English content normalized from the original source text.
   const isMounted = useRef(true);
-  
-  // Hàm fetch dữ liệu
+
+  // English content normalized from the original source text.
   const fetchProducts = useCallback(async (currentLimit: number) => {
     try {
       setLoading(true);
-      
+
       const response = await clientProductsService.getProducts({
         page: 1,
         limit: currentLimit,
@@ -41,8 +41,8 @@ export function useClientSuggestedProducts({
         sortOrder,
         categoryId,
       });
-      
-      // Chỉ cập nhật state nếu component vẫn mounted
+
+      // English content normalized from the original source text.
       if (isMounted.current) {
         setProducts(response.data || []);
         setHasMore((response.data?.length || 0) >= currentLimit);
@@ -59,8 +59,8 @@ export function useClientSuggestedProducts({
       }
     }
   }, [sortBy, sortOrder, categoryId]);
-  
-  // Xử lý "Xem thêm"
+
+  // English content normalized from the original source text.
   const loadMore = useCallback(() => {
     if (!loading && hasMore) {
       const newLimit = limit + incrementAmount;
@@ -68,22 +68,22 @@ export function useClientSuggestedProducts({
       fetchProducts(newLimit);
     }
   }, [loading, hasMore, limit, incrementAmount, fetchProducts]);
-  
-  // Fetch dữ liệu ban đầu
+
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Reset state khi các tham số thay đổi
+    // English content normalized from the original source text.
     setInitialLoading(true);
     setLimit(initialLimit);
     setHasMore(true);
-    
+
     fetchProducts(initialLimit);
-    
+
     // Cleanup function
     return () => {
       isMounted.current = false;
     };
   }, [fetchProducts, initialLimit]);
-  
+
   return {
     products,
     loading,

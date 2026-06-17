@@ -26,15 +26,15 @@ interface UsersModalUpsertProps {
   open: boolean;
   onClose: () => void;
   mode: 'add' | 'edit';
-  user: User | null; 
-  onSubmit: (data: User | UserCreateRequest) => Promise<void>; 
+  user: User | null;
+  onSubmit: (data: User | UserCreateRequest) => Promise<void>;
 }
 
 export default function UsersModalUpsert({
   roles, open, onClose, mode, user, onSubmit
 }: UsersModalUpsertProps) {
   const t = useTranslations()
-  
+
   // Form state
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -42,15 +42,15 @@ export default function UsersModalUpsert({
   const [confirmPassword, setConfirmPassword] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [avatar, setAvatar] = useState("")
-  const [roleId, setRoleId] = useState<string>('') 
+  const [roleId, setRoleId] = useState<string>('')
   const [status, setStatus] = useState("ACTIVE")
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
-  
+
   // Upload media hook
-  const { 
-    files, 
-    uploadedUrls, 
+  const {
+    files,
+    uploadedUrls,
     presignedData,
     isProcessing,
     isUploading,
@@ -66,8 +66,8 @@ export default function UsersModalUpsert({
 
   // Status options
   const STATUS_OPTIONS = [
-    { value: 'ACTIVE', label: t('admin.users.modal.statusActive') || 'Hoạt động' },
-    { value: 'INACTIVE', label: t('admin.users.modal.statusInactive') || 'Không hoạt động' },
+    { value: 'ACTIVE', label: t('admin.users.modal.statusActive') || 'English content normalized from the original source text.' },
+    { value: 'INACTIVE', label: t('admin.users.modal.statusInactive') || 'English content normalized from the original source text.' },
   ]
 
   // Reset form when modal opens or mode/user changes
@@ -81,7 +81,7 @@ export default function UsersModalUpsert({
       setStatus(user.status || "ACTIVE")
       setPassword("")
       setConfirmPassword("")
-      
+
       // Reset upload state
       resetUpload()
     } else if (mode === 'add') {
@@ -94,7 +94,7 @@ export default function UsersModalUpsert({
       setRoleId('')
       setStatus("ACTIVE")
       setErrors({})
-      
+
       // Reset upload state
       resetUpload()
     }
@@ -106,46 +106,46 @@ export default function UsersModalUpsert({
       // File type validation
       const file = e.target.files[0];
       if (!file.type.startsWith('image/')) {
-        toast.error('Định dạng tệp không được hỗ trợ', {
-          description: 'Vui lòng chọn tệp hình ảnh (JPG, PNG, GIF, etc.)'
+        toast.error('English content normalized from the original source text.', {
+          description: 'English content normalized from the original source text.'
         });
         return;
       }
-      
+
       // Clear existing files first
       handleRemoveAllFiles();
-      
+
       // Add the new file and process it (compress + get presigned URLs)
       handleAddFiles(e.target.files);
     }
   };
-  
+
   // Handle avatar upload
   const handleUploadAvatar = async () => {
     if (files.length === 0) return;
-    
-    // Nếu đã có presignedData thì upload luôn, nếu không thì process files trước
+
+    // English content normalized from the original source text.
     let urls: string[] = [];
-    
+
     if (presignedData.length > 0) {
-      // Đã có presigned URLs, upload trực tiếp
+      // English content normalized from the original source text.
       urls = await uploadToS3Multiple();
     } else {
-      // Chưa có presigned URLs, cần process files trước
+      // English content normalized from the original source text.
       await handleAddFiles(files);
       // Sau khi process xong, upload
       urls = await uploadToS3Multiple();
     }
-    
+
     if (urls.length > 0) {
       // Use the first uploaded image URL as avatar
       setAvatar(urls[0]);
     }
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       if (mode === 'add') {
         userCreateSchema(t).parse({
@@ -158,7 +158,7 @@ export default function UsersModalUpsert({
           status
         });
       } else {
-        // Kiểm tra xác thực cho mode edit, không yêu cầu password
+        // English content normalized from the original source text.
         userUpdateSchema(t).parse({
           email,
           name,
@@ -167,10 +167,10 @@ export default function UsersModalUpsert({
           status
         });
       }
-      
+
       setErrors({});
       setLoading(true);
-      
+
       try {
         if (mode === 'add') {
           const data: UserCreateRequest = {
@@ -184,7 +184,7 @@ export default function UsersModalUpsert({
           };
           await onSubmit(data);
         } else if (mode === 'edit' && user) {
-          // Chỉ gửi các trường được định nghĩa trong UserUpdateRequest (không bao gồm id)
+          // English content normalized from the original source text.
           const data: UserUpdateRequest = {
             name,
             phoneNumber,
@@ -192,12 +192,12 @@ export default function UsersModalUpsert({
             status,
             avatar,
           };
-          
-          // Email có thể không được sửa trong chế độ edit
+
+          // English content normalized from the original source text.
           if (!user.email.toLowerCase().includes('admin')) {
             data.email = email;
           }
-          
+
           // Construct the final object to submit, including the user's id
           const submitData: User = {
             ...user, // Start with the original user data to have a complete User object
@@ -229,12 +229,12 @@ export default function UsersModalUpsert({
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>
-            {mode === 'add' ? t('admin.users.modal.addTitle') || 'Thêm người dùng' : t('admin.users.modal.editTitle') || 'Chỉnh sửa người dùng'}
+            {mode === 'add' ? t('admin.users.modal.addTitle') || 'English content normalized from the original source text.' : t('admin.users.modal.editTitle') || 'English content normalized from the original source text.'}
           </DialogTitle>
           <DialogDescription>
-            {mode === 'add' 
-              ? t('admin.users.modal.addDescription') || 'Điền thông tin để thêm người dùng mới'
-              : t('admin.users.modal.editDescription') || 'Chỉnh sửa thông tin người dùng'
+            {mode === 'add'
+              ? t('admin.users.modal.addDescription') || 'English content normalized from the original source text.'
+              : t('admin.users.modal.editDescription') || 'English content normalized from the original source text.'
             }
           </DialogDescription>
         </DialogHeader>
@@ -243,12 +243,12 @@ export default function UsersModalUpsert({
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.name') || 'Họ tên'}
+                {t('admin.users.modal.name') || 'English content normalized from the original source text.'}
               </label>
-              <Input 
-                value={name} 
-                onChange={e => setName(e.target.value)} 
-                placeholder={t('admin.users.modal.name') || 'Họ tên'} 
+              <Input
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder={t('admin.users.modal.name') || 'English content normalized from the original source text.'}
               />
               {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
             </div>
@@ -257,10 +257,10 @@ export default function UsersModalUpsert({
               <label className="block text-sm font-medium mb-1">
                 {t('admin.users.modal.email') || 'Email'}
               </label>
-              <Input 
-                type="email" 
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
+              <Input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 placeholder={t('admin.users.modal.email') || 'Email'}
                 disabled={mode === 'edit'}
               />
@@ -269,31 +269,31 @@ export default function UsersModalUpsert({
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.phoneNumber') || 'Số điện thoại'}
+                {t('admin.users.modal.phoneNumber') || 'English content normalized from the original source text.'}
               </label>
-              <Input 
-                value={phoneNumber} 
-                onChange={e => setPhoneNumber(e.target.value)} 
-                placeholder={t('admin.users.modal.phoneNumber') || 'Số điện thoại'} 
+              <Input
+                value={phoneNumber}
+                onChange={e => setPhoneNumber(e.target.value)}
+                placeholder={t('admin.users.modal.phoneNumber') || 'English content normalized from the original source text.'}
               />
               {errors.phoneNumber && <p className="text-sm text-red-500 mt-1">{errors.phoneNumber}</p>}
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.avatar') || 'Ảnh đại diện'}
+                {t('admin.users.modal.avatar') || 'English content normalized from the original source text.'}
               </label>
-              
+
               <div className="space-y-3">
                 {/* Avatar preview with integrated select button */}
                 <div className="flex items-center space-x-4">
                   <div className="relative group">
                     <Avatar className="h-16 w-16 border-2 border-gray-200">
                       {avatar ? (
-                        <AvatarImage 
-                          src={avatar} 
-                          alt="Avatar preview" 
-                          className="object-cover" 
+                        <AvatarImage
+                          src={avatar}
+                          alt="Avatar preview"
+                          className="object-cover"
                         />
                       ) : (
                         <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
@@ -301,56 +301,56 @@ export default function UsersModalUpsert({
                         </AvatarFallback>
                       )}
                     </Avatar>
-                    
+
                     {/* Overlay select button */}
-                    <button 
+                    <button
                       type="button"
                       onClick={() => document.getElementById('avatar-upload')?.click()}
                       disabled={isUploading || isProcessing}
-                      aria-label={t('admin.users.modal.selectImage') || 'Chọn ảnh đại diện'}
-                      title={t('admin.users.modal.selectImage') || 'Chọn ảnh đại diện'}
+                      aria-label={t('admin.users.modal.selectImage') || 'English content normalized from the original source text.'}
+                      title={t('admin.users.modal.selectImage') || 'English content normalized from the original source text.'}
                       className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 rounded-full transition-opacity"
                     >
                       <Camera className="h-5 w-5 text-white" />
                     </button>
                   </div>
-                  
+
                   {/* Avatar URL - Read Only */}
                   <div className="flex-1 space-y-1">
-                    <Input 
-                      value={avatar} 
+                    <Input
+                      value={avatar}
                       readOnly
-                      placeholder={t('admin.users.modal.avatarUrl') || 'URL sẽ được tạo sau khi tải lên'} 
+                      placeholder={t('admin.users.modal.avatarUrl') || 'English content normalized from the original source text.'}
                       className="bg-muted"
                     />
-                    
-                    {/* Upload button - hiển thị khi có files và đã có presigned URLs */}
+
+                    {/* English content normalized from the original source text. */}
                     {files.length > 0 && presignedData.length > 0 && !isUploading && (
-                      <Button 
+                      <Button
                         type="button"
                         size="sm"
                         onClick={handleUploadAvatar}
                         disabled={isUploading || isProcessing}
                         className="w-full"
                       >
-                        {isUploading ? t('admin.users.modal.uploading') || 'Đang tải lên...' : t('admin.users.modal.uploadImage') || 'Tải lên'}
+                        {isUploading ? t('admin.users.modal.uploading') || 'English content normalized from the original source text.' : t('admin.users.modal.uploadImage') || 'English content normalized from the original source text.'}
                       </Button>
                     )}
-                    
-                    {/* Processing button - hiển thị khi đang xử lý files */}
+
+                    {/* English content normalized from the original source text. */}
                     {isProcessing && (
-                      <Button 
+                      <Button
                         type="button"
                         size="sm"
                         disabled
                         className="w-full"
                       >
-                        {progressMessage || 'Đang xử lý...'}
+                        {progressMessage || 'English content normalized from the original source text.'}
                       </Button>
                     )}
                   </div>
                 </div>
-                
+
                 <input
                   id="avatar-upload"
                   type="file"
@@ -358,27 +358,27 @@ export default function UsersModalUpsert({
                   onChange={handleFileChange}
                   disabled={isUploading || isProcessing}
                   accept="image/*"
-                  aria-label={t('admin.users.modal.selectImage') || 'Chọn ảnh đại diện'}
+                  aria-label={t('admin.users.modal.selectImage') || 'English content normalized from the original source text.'}
                 />
-                
+
                 {/* Upload progress */}
                 {(isUploading || isProcessing) && (
                   <div className="space-y-1">
                     <Progress value={progress} className="h-1" />
                     <p className="text-xs text-muted-foreground">
-                      {progress}% {t('admin.users.modal.completed') || 'đã hoàn thành'} - {progressMessage}
+                      {progress}% {t('admin.users.modal.completed') || 'English content normalized from the original source text.'} - {progressMessage}
                     </p>
                   </div>
                 )}
-                
+
                 {/* File preview */}
                 {files.length > 0 && !isUploading && !isProcessing && (
                   <div className="text-xs text-muted-foreground">
                     {files[0].name} ({Math.round(files[0].size / 1024)} KB)
-                    {presignedData.length > 0 && <span className="text-green-600 ml-2">✓ Sẵn sàng tải lên</span>}
+                    {presignedData.length > 0 && <span className="text-green-600 ml-2">English content normalized from the original source text.</span>}
                   </div>
                 )}
-                
+
                 {/* Upload error */}
                 {uploadError && (
                   <p className="text-sm text-red-500">{uploadError}</p>
@@ -388,12 +388,12 @@ export default function UsersModalUpsert({
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.role') || 'Vai trò'}
+                {t('admin.users.modal.role') || 'English content normalized from the original source text.'}
               </label>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full flex justify-between items-center">
-                    {roles.find(role => role.id === roleId)?.name || t('admin.users.modal.selectRole') || 'Chọn vai trò'}
+                    {roles.find(role => role.id === roleId)?.name || t('admin.users.modal.selectRole') || 'English content normalized from the original source text.'}
                     <ChevronDown size={16} />
                   </Button>
                 </DropdownMenuTrigger>
@@ -413,12 +413,12 @@ export default function UsersModalUpsert({
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.status') || 'Trạng thái'}
+                {t('admin.users.modal.status') || 'English content normalized from the original source text.'}
               </label>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full flex justify-between items-center">
-                    {STATUS_OPTIONS.find(option => option.value === status)?.label || 'Chọn trạng thái'}
+                    {STATUS_OPTIONS.find(option => option.value === status)?.label || 'English content normalized from the original source text.'}
                     <ChevronDown size={16} />
                   </Button>
                 </DropdownMenuTrigger>
@@ -435,31 +435,31 @@ export default function UsersModalUpsert({
               </DropdownMenu>
             </div>
 
-            {/* Chỉ hiển thị trường mật khẩu khi ở chế độ thêm mới */}
+            {/* English content normalized from the original source text. */}
             {mode === 'add' && (
               <>
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    {t('admin.users.modal.password') || 'Mật khẩu'}
+                    {t('admin.users.modal.password') || 'English content normalized from the original source text.'}
                   </label>
-                  <Input 
-                    type="password" 
-                    value={password} 
-                    onChange={e => setPassword(e.target.value)} 
-                    placeholder={t('admin.users.modal.password') || 'Mật khẩu'} 
+                  <Input
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder={t('admin.users.modal.password') || 'English content normalized from the original source text.'}
                   />
                   {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    {t('admin.users.modal.confirmPassword') || 'Xác nhận mật khẩu'}
+                    {t('admin.users.modal.confirmPassword') || 'English content normalized from the original source text.'}
                   </label>
-                  <Input 
-                    type="password" 
-                    value={confirmPassword} 
-                    onChange={e => setConfirmPassword(e.target.value)} 
-                    placeholder={t('admin.users.modal.confirmPassword') || 'Xác nhận mật khẩu'} 
+                  <Input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    placeholder={t('admin.users.modal.confirmPassword') || 'English content normalized from the original source text.'}
                   />
                   {errors.confirmPassword && <p className="text-sm text-red-500 mt-1">{errors.confirmPassword}</p>}
                 </div>
@@ -468,21 +468,21 @@ export default function UsersModalUpsert({
           </div>
 
           <DialogFooter className="mt-6">
-            <Button 
-              type="button" 
-              variant="outline" 
-              onClick={onClose} 
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onClose}
               disabled={loading}
             >
-              {t('admin.users.modal.cancel') || 'Hủy'}
+              {t('admin.users.modal.cancel') || 'English content normalized from the original source text.'}
             </Button>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={loading}
             >
-              {loading 
-                ? (mode === 'add' ? t('admin.users.modal.adding') || 'Đang thêm...' : t('admin.users.modal.saving') || 'Đang lưu...')
-                : (mode === 'add' ? t('admin.users.modal.add') || 'Thêm' : t('admin.users.modal.save') || 'Lưu')
+              {loading
+                ? (mode === 'add' ? t('admin.users.modal.adding') || 'English content normalized from the original source text.' : t('admin.users.modal.saving') || 'English content normalized from the original source text.')
+                : (mode === 'add' ? t('admin.users.modal.add') || 'English content normalized from the original source text.' : t('admin.users.modal.save') || 'English content normalized from the original source text.')
               }
             </Button>
           </DialogFooter>

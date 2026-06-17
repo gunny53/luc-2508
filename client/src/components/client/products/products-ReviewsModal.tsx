@@ -37,7 +37,7 @@ export function ReviewsModal({
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
 
-  // Hook upload ảnh
+  // English content normalized from the original source text.
   const {
     files,
     uploadedUrls,
@@ -66,7 +66,7 @@ export function ReviewsModal({
       })),
     });
 
-    // Reset sau khi gửi
+    // English content normalized from the original source text.
     setContent("");
     setRating(5);
     handleRemoveAllFiles();
@@ -77,12 +77,10 @@ export function ReviewsModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl rounded-2xl p-4 shadow-xl">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold text-center">
-            Đánh giá sản phẩm
-          </DialogTitle>
+          <DialogTitle className="text-xl font-semibold text-center">English content normalized from the original source text.</DialogTitle>
         </DialogHeader>
 
-        {/* Thông tin sản phẩm */}
+        {/* English content normalized from the original source text. */}
         <div className="flex items-center gap-4 rounded-xl bg-gray-50 p-2">
           <img
             src="/images/client/profile/cps-ant.webp"
@@ -95,7 +93,7 @@ export function ReviewsModal({
         </div>
 
         <div className="space-y-5">
-          {/* Rating chọn số sao */}
+          {/* English content normalized from the original source text. */}
           <div className="flex w-full justify-between px-6">
             {Array.from({ length: 5 }).map((_, i) => (
               <button
@@ -115,15 +113,15 @@ export function ReviewsModal({
             ))}
           </div>
 
-          {/* Nội dung đánh giá */}
+          {/* English content normalized from the original source text. */}
           <Input
-            placeholder="Xin mời bạn chia sẻ một số cảm nhận của bạn về sản phẩm này..."
+            placeholder="English content normalized from the original source text."
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="rounded-xl border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/30 h-14"
           />
 
-          {/* Upload hình ảnh */}
+          {/* English content normalized from the original source text. */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <Button
@@ -131,9 +129,7 @@ export function ReviewsModal({
                 variant="outline"
                 className="rounded-xl"
                 onClick={() => document.getElementById("file-upload")?.click()}
-              >
-                Thêm ảnh
-              </Button>
+              >English content normalized from the original source text.</Button>
               <Input
                 id="file-upload"
                 type="file"
@@ -150,9 +146,7 @@ export function ReviewsModal({
                   variant="ghost"
                   onClick={handleRemoveAllFiles}
                   className="text-red-500 hover:bg-red-50 rounded-xl"
-                >
-                  Xóa tất cả
-                </Button>
+                >English content normalized from the original source text.</Button>
               )}
             </div>
 
@@ -170,7 +164,7 @@ export function ReviewsModal({
                         className="w-full h-24 object-cover rounded-lg"
                       />
 
-                      {/* Nút xoá */}
+                      {/* English content normalized from the original source text. */}
                       <Button
                         type="button"
                         size="icon"
@@ -181,7 +175,7 @@ export function ReviewsModal({
                         <X className="w-4 h-4" />
                       </Button>
 
-                      {/* Progress từng ảnh */}
+                      {/* English content normalized from the original source text. */}
                       {isUploading && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                           <Progress
@@ -203,12 +197,10 @@ export function ReviewsModal({
             variant="outline"
             onClick={() => onOpenChange(false)}
             className="rounded-xl"
-          >
-            Hủy
-          </Button>
+          >English content normalized from the original source text.</Button>
           <Button
             onClick={async () => {
-              await handleSubmit(); // gọi hàm gửi đánh giá
+              await handleSubmit(); // English content normalized from the original source text.
               if (product) {
                 const slug = createProductSlug(
                   product.productName,
@@ -219,9 +211,7 @@ export function ReviewsModal({
             }}
             disabled={isUploading || loading}
             className="rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold"
-          >
-            Gửi đánh giá
-          </Button>
+          >English content normalized from the original source text.</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

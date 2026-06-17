@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /products/:productId (Public)
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "ProductController" as PC
@@ -27,7 +27,7 @@ Build where:
 • id = productId, deletedAt = null
 • publishedAt <= now (public only)
 Include:
-• productTranslations theo languageId ('all' => không filter)
+• English content normalized from the original source text
 • skus where deletedAt = null
 • brand with brandTranslations (filter theo language)
 • categories with categoryTranslations (filter theo language)

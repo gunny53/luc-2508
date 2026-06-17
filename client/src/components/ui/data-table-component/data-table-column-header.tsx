@@ -34,10 +34,10 @@ export function DataTableColumnHeader<TData, TValue>({
           <Button
             aria-label={
               column.getIsSorted() === 'desc'
-                ? `Sắp xếp giảm dần theo ${title}`
+                ? `English content normalized from the original source text.${title}`
                 : column.getIsSorted() === 'asc'
-                  ? `Sắp xếp tăng dần theo ${title}`
-                  : `Sắp xếp theo ${title}`
+                  ? `English content normalized from the original source text.${title}`
+                  : `English content normalized from the original source text.${title}`
             }
             variant="ghost"
             size="sm"
@@ -57,25 +57,21 @@ export function DataTableColumnHeader<TData, TValue>({
           {column.getCanSort() && (
             <>
               <DropdownMenuItem
-                aria-label="Sắp xếp tăng dần"
+                aria-label="English content normalized from the original source text."
                 onClick={() => column.toggleSorting(false)}
               >
                 <ArrowUpIcon
                   className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
                   aria-hidden="true"
-                />
-                Tăng dần
-              </DropdownMenuItem>
+                />English content normalized from the original source text.</DropdownMenuItem>
               <DropdownMenuItem
-                aria-label="Sắp xếp giảm dần"
+                aria-label="English content normalized from the original source text."
                 onClick={() => column.toggleSorting(true)}
               >
                 <ArrowDownIcon
                   className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
                   aria-hidden="true"
-                />
-                Giảm dần
-              </DropdownMenuItem>
+                />English content normalized from the original source text.</DropdownMenuItem>
             </>
           )}
           {column.getCanSort() && column.getCanHide() && (
@@ -83,18 +79,16 @@ export function DataTableColumnHeader<TData, TValue>({
           )}
           {column.getCanHide() && (
             <DropdownMenuItem
-              aria-label="Ẩn cột"
+              aria-label="English content normalized from the original source text."
               onClick={() => column.toggleVisibility(false)}
             >
               <EyeOffIcon
                 className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
                 aria-hidden="true"
-              />
-              Ẩn cột
-            </DropdownMenuItem>
+              />English content normalized from the original source text.</DropdownMenuItem>
           )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
   )
-} 
+}

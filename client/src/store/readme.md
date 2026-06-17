@@ -2,16 +2,16 @@
 
 # 🧠 Redux Store Setup (Next.js + Redux Toolkit + Persist + Encryption)
 
-Hệ thống Redux trong dự án này được cấu hình đầy đủ để hỗ trợ:
+English content normalized from the original source text.
 
-- Quản lý trạng thái xác thực (`authSlice`)
-- Lưu giữ state xuyên suốt phiên làm việc với `redux-persist`
-- Mã hoá dữ liệu Redux bằng `redux-persist-transform-encrypt`
-- Dễ mở rộng với nhiều slice mới như: cart, UI, language, orders...
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 ---
 
-## 📁 Cấu trúc thư mục
+English content normalized from the original source text.
 
 src/
 └── lib/
@@ -26,12 +26,12 @@ src/
 
 ## 🔧 1. `store.ts`
 
-### ✅ Vai trò:
+English content normalized from the original source text.
 
-- Kết hợp các slice vào root reducer
-- Kết hợp `redux-persist` để lưu lại Redux state
-- Mã hoá `auth` slice bằng `encryptTransform`
-- Export `getStore()` để dùng được ở toàn app
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 ### 🔐 Encryption:
 
@@ -43,13 +43,13 @@ const encryptor = encryptTransform({
 
 🧩 2. StoreProvider.tsx
 
-✅ Vai trò:
+English content normalized from the original source text.
 
-Bao bọc toàn bộ ứng dụng bằng Redux Provider
+English content normalized from the original source text.
 
-Sử dụng PersistGate để chờ state được khôi phục xong
+English content normalized from the original source text.
 
-📦 Dùng trong layout:
+English content normalized from the original source text.
 
 <StoreProvider>
   {children}
@@ -57,7 +57,7 @@ Sử dụng PersistGate để chờ state được khôi phục xong
 
 🔐 3. authSlice.ts
 
-✅ Quản lý:
+English content normalized from the original source text.
 
 user (object)
 
@@ -72,50 +72,50 @@ interface AuthState {
   token: string;
 }
 
-⚙️ 4. Sử dụng trong Component
+English content normalized from the original source text.
 
-📥 Đọc Redux:
+English content normalized from the original source text.
 
 const user = useSelector((state: RootState) => state.auth.user);
 
-📤 Cập nhật Redux:
+English content normalized from the original source text.
 
 dispatch(setCredentials({ user, token }));
 dispatch(logOutAndRevertAll());
 
-✅ Tính năng sẵn có
+English content normalized from the original source text.
 
-Tính năng
+English content normalized from the original source text.
 
-Có
+English content normalized from the original source text.
 
-Quản lý token, user
-
-✅
-
-Lưu Redux state sau reload
+English content normalized from the original source text.
 
 ✅
 
-Mã hoá state bằng secret key
+English content normalized from the original source text.
 
 ✅
 
-Reset toàn bộ Redux khi logout
+English content normalized from the original source text.
 
 ✅
 
-Dễ mở rộng thêm slice khác
+English content normalized from the original source text.
 
 ✅
 
-🚀 Mở rộng sau này
+English content normalized from the original source text.
 
-cartSlice – quản lý giỏ hàng
+✅
 
-uiSlice – quản lý modal/sidebar/theme
+English content normalized from the original source text.
 
-languageSlice – quản lý đa ngôn ngữ
+English content normalized from the original source text.
 
-orderSlice – theo dõi đơn hàng
+English content normalized from the original source text.
+
+English content normalized from the original source text.
+
+English content normalized from the original source text.
 ```

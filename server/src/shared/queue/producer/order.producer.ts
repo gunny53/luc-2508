@@ -18,7 +18,7 @@ export class OrderProducer {
           paymentId
         },
         {
-          delay: 1000 * 60 * 60 * 24, // delay 24 giờ
+          delay: 1000 * 60 * 60 * 24, // English content normalized from the original source text.
           jobId: jobId,
           removeOnComplete: true,
           removeOnFail: true

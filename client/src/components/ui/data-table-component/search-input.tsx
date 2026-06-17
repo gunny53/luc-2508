@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   onValueChange?: (value: string) => void;
-  onSearch?: (value: string) => void; // Gọi khi nhấn Enter hoặc icon search
+  onSearch?: (value: string) => void; // English content normalized from the original source text.
   placeholder?: string;
-  debounce?: number; // ms, nếu muốn debounce onChange/onSearch
-  icon?: React.ReactNode; // Cho phép custom icon
+  debounce?: number; // English content normalized from the original source text.
+  icon?: React.ReactNode; // English content normalized from the original source text.
   className?: string;
 }
 
@@ -18,7 +18,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   value: controlledValue,
   onValueChange,
   onSearch,
-  placeholder = "Tìm kiếm...",
+  placeholder = "English content normalized from the original source text.",
   debounce = 0,
   icon,
   className,
@@ -28,7 +28,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   const [localValue, setLocalValue] = React.useState(controlledValue || "");
   const debounceTimeout = React.useRef<NodeJS.Timeout | null>(null);
 
-  // Sync local value với controlled value khi thay đổi từ bên ngoài
+  // English content normalized from the original source text.
   React.useEffect(() => {
     if (controlledValue !== undefined) {
       setLocalValue(controlledValue);
@@ -44,33 +44,33 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     };
   }, []);
 
-  // Xử lý thay đổi input - luôn update local state ngay lập tức để UX mượt
+  // English content normalized from the original source text.
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    
-    // Luôn update local state ngay lập tức để typing mượt mà
+
+    // English content normalized from the original source text.
     setLocalValue(newValue);
-    
-    // Clear debounce timeout cũ
+
+    // English content normalized from the original source text.
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
     }
 
-    // Nếu có debounce, delay việc gọi onValueChange
+    // English content normalized from the original source text.
     if (debounce > 0) {
       debounceTimeout.current = setTimeout(() => {
         onValueChange?.(newValue);
       }, debounce);
     } else {
-      // Không debounce thì gọi ngay
+      // English content normalized from the original source text.
       onValueChange?.(newValue);
     }
-    
-    // Gọi onChange callback nếu có
+
+    // English content normalized from the original source text.
     onChange?.(e);
   };
 
-  // Xử lý khi nhấn Enter hoặc icon search
+  // English content normalized from the original source text.
   const handleSearch = () => {
     onSearch?.(localValue);
   };

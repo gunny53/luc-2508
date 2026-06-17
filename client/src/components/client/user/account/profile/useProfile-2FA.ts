@@ -92,11 +92,11 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
       })
       setIs2FAEnabled(true)
       fetchProfile();
-      // Lưu recovery codes từ response
+      // English content normalized from the original source text.
       setRecoveryCodes(response.data.recoveryCodes || [])
-      // Đóng modal QR code
+      // English content normalized from the original source text.
       setShowQRDialog(false)
-      // Mở modal recovery codes
+      // English content normalized from the original source text.
       setShowRecoveryCodesDialog(true)
       showToast(response.message, 'success')
     } catch (error: any) {
@@ -105,7 +105,7 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
     } finally {
       setLoading(false)
     }
-  }  // Hàm sao chép tất cả recovery codes
+  }  // English content normalized from the original source text.
   const copyAllRecoveryCodes = () => {
     if (recoveryCodes.length > 0) {
       const recoveryCodesText = recoveryCodes.join('\n');
@@ -115,31 +115,31 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
         })
         .catch((error) => {
           console.error('Error copying recovery codes:', error);
-          showToast('Không thể sao chép mã khôi phục', 'error');
+          showToast('English content normalized from the original source text.', 'error');
         });
     }
   };
 
-  // Hàm tải xuống recovery codes dưới dạng file text
+  // English content normalized from the original source text.
   const downloadRecoveryCodes = () => {
     if (recoveryCodes.length > 0) {
       const recoveryCodesText = recoveryCodes.join('\n');
       const blob = new Blob([recoveryCodesText], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
-      
+
       const downloadLink = document.createElement('a');
       downloadLink.href = url;
       downloadLink.download = 'recovery-codes.txt';
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
-      
-      // Giải phóng URL object
+
+      // English content normalized from the original source text.
       setTimeout(() => {
         URL.revokeObjectURL(url);
       }, 100);
-      
-      showToast('Đã tải xuống mã khôi phục', 'success');
+
+      showToast('English content normalized from the original source text.', 'success');
     }
   };
 

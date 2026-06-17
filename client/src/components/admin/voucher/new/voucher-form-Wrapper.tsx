@@ -14,7 +14,7 @@ const VoucherFormDynamic = dynamic(
 
 export default function VoucherFormWrapper({ useCase, onCreateSuccess }: VoucherFormWrapperProps) {
   return (
-    <VoucherFormDynamic 
+    <VoucherFormDynamic
       useCase={useCase}
       onCreateSuccess={onCreateSuccess}
     />

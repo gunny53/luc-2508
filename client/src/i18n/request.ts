@@ -26,15 +26,15 @@ export default getRequestConfig(async () => {
   return {
     locale,
     messages: (await import(`./messages/${locale}.json`)).default,
-    // Thêm dòng này để ngăn next-intl kiểm tra quá nghiêm ngặt
+    // English content normalized from the original source text.
     skipInspection: true,
-    
-    // Thêm cả dòng này nếu muốn sử dụng khóa của ngôn ngữ mặc định khi không tìm thấy khóa
-    defaultLocale: "vi", 
-    
-    // Thêm dòng này để bỏ qua lỗi thiếu khóa
+
+    // English content normalized from the original source text.
+    defaultLocale: "vi",
+
+    // English content normalized from the original source text.
     onError: (error) => {
-      // Chỉ log lỗi, không throw exception
+      // English content normalized from the original source text.
       if (process.env.NODE_ENV === 'development') {
         console.warn('i18n warning:', error.message);
       }

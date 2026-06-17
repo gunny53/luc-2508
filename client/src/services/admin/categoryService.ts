@@ -23,7 +23,7 @@ export const categoryService = {
     }
   },
 
-  // Lấy chi tiết danh mục theo ID
+  // English content normalized from the original source text.
   getById: async (id: string): Promise<CategoryGetByIdResponse> => {
     try {
       const url = API_ENDPOINTS.CATEGORIES.GET_BY_ID.replace(":categoriesId", id);
@@ -34,7 +34,7 @@ export const categoryService = {
     }
   },
 
-  // Tạo danh mục mới
+  // English content normalized from the original source text.
   create: async (data: CategoryCreateRequest): Promise<CategoryCreateResponse> => {
     try {
       const response = await privateAxios.post(API_ENDPOINTS.CATEGORIES.CREATE, data);
@@ -44,7 +44,7 @@ export const categoryService = {
     }
   },
 
-  // Cập nhật danh mục theo ID
+  // English content normalized from the original source text.
   update: async (
     id: string,
     data: CategoryUpdateRequest
@@ -58,7 +58,7 @@ export const categoryService = {
     }
   },
 
-  // Xoá danh mục theo ID
+  // English content normalized from the original source text.
   delete: async (id: string): Promise<CategoryDeleteResponse> => {
     try {
       const url = API_ENDPOINTS.CATEGORIES.DELETE_BY_ID.replace(":categoriesId", id);

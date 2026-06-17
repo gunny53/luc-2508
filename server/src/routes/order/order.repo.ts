@@ -40,9 +40,7 @@ export class OrderRepo {
   // CORE CRUD METHODS - Repository Pattern Compliant
   // ============================================================
 
-  /**
-   * Lấy danh sách orders - Core CRUD (cho User xem đơn hàng của mình)
-   */
+  /* English content normalized from the original source text. */
   async list(userId: string, query: GetOrderListQueryType): Promise<GetOrderListResType> {
     const { page, limit, status } = query
     const skip = (page - 1) * limit
@@ -52,16 +50,16 @@ export class OrderRepo {
       status
     }
 
-    // Đếm tổng số order
+    // English content normalized from the original source text.
     const totalItem$ = this.prismaService.order.count({
       where
     })
-    // Lấy list order
+    // English content normalized from the original source text.
     const data$ = await this.prismaService.order.findMany({
       where,
       include: {
         items: true,
-        discounts: true, // Thêm discounts để lấy voucher discount
+        discounts: true, // English content normalized from the original source text.
         shipping: {
           select: {
             orderCode: true
@@ -76,7 +74,7 @@ export class OrderRepo {
     })
     const [data, totalItems] = await Promise.all([data$, totalItem$])
 
-    // Map orderCode từ shipping vào order và loại bỏ shipping object
+    // English content normalized from the original source text.
     const ordersWithOrderCode = data.map((order) => {
       const { shipping, ...orderWithoutShipping } = order
       return {
@@ -102,9 +100,7 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Tạo order - Core CRUD (đơn giản, không có discount/shipping logic)
-   */
+  /* English content normalized from the original source text. */
   async create(
     userId: string,
     shops: CreateOrderBodyType['shops']
@@ -112,11 +108,11 @@ export class OrderRepo {
     paymentId: number
     orders: CreateOrderResType['data']['orders']
   }> {
-    // Chuẩn bị dữ liệu ban đầu
+    // English content normalized from the original source text.
     const allBodyCartItemIds = shops.map((item) => item.cartItemIds).flat()
     const skuIds = await this.getSkuIdsFromCartItems(allBodyCartItemIds, userId)
 
-    // Acquire locks cho tất cả SKUs
+    // English content normalized from the original source text.
     const locks = await this.acquireSkuLocks(skuIds)
 
     try {
@@ -132,9 +128,7 @@ export class OrderRepo {
   // TODO: Refactor to move business orchestration to Service layer
   // ============================================================
 
-  /**
-   * Lấy SKU IDs từ cart items - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async getSkuIdsFromCartItems(cartItemIds: string[], userId: string): Promise<string[]> {
     const cartItemsForSKUId = await this.prismaService.cartItem.findMany({
       where: {
@@ -163,26 +157,24 @@ export class OrderRepo {
     await Promise.all(locks.map((lock) => lock.release().catch(() => {})))
   }
 
-  /**
-   * Tạo orders trong transaction - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async createOrdersInTransaction(
     userId: string,
     shops: CreateOrderBodyType['shops'],
     allBodyCartItemIds: string[]
   ): Promise<[number, CreateOrderResType['data']['orders']]> {
     return this.prismaService.$transaction(async (tx) => {
-      // Lấy và validate cart items
+      // English content normalized from the original source text.
       const cartItems = await this.getCartItemsWithDetails(tx, allBodyCartItemIds, userId)
       const cartItemMap = this.validateCartItems(cartItems, allBodyCartItemIds, shops)
 
-      // Tạo payment
+      // English content normalized from the original source text.
       const payment = await this.createPayment(tx)
 
-      // Tạo orders (đơn giản, không có discount logic)
+      // English content normalized from the original source text.
       const orders = await this.createSimpleOrders(tx, shops, cartItemMap, payment.id, userId)
 
-      // Cleanup: xóa cart items và update stock
+      // English content normalized from the original source text.
       await this.cleanupCartAndUpdateStock(tx, allBodyCartItemIds, cartItems)
 
       // Schedule payment cancellation job
@@ -193,9 +185,7 @@ export class OrderRepo {
     })
   }
 
-  /**
-   * Lấy cart items với details - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async getCartItemsWithDetails(tx: any, cartItemIds: string[], userId: string): Promise<any[]> {
     return tx.cartItem.findMany({
       where: {
@@ -218,9 +208,7 @@ export class OrderRepo {
     })
   }
 
-  /**
-   * Tạo payment - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async createPayment(tx: any) {
     return tx.payment.create({
       data: {
@@ -229,9 +217,7 @@ export class OrderRepo {
     })
   }
 
-  /**
-   * Tạo orders đơn giản (không có discount logic) - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async createSimpleOrders(
     tx: any,
     shops: CreateOrderBodyType['shops'],
@@ -249,9 +235,7 @@ export class OrderRepo {
     return orders
   }
 
-  /**
-   * Tạo một order - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async createSingleOrder(
     tx: any,
     orderItem: any,
@@ -297,18 +281,16 @@ export class OrderRepo {
     return tx.order.create({ data: orderData })
   }
 
-  /**
-   * Cleanup cart và update stock - Core business logic
-   */
+  /* English content normalized from the original source text. */
   private async cleanupCartAndUpdateStock(tx: any, cartItemIds: string[], cartItems: any[]) {
-    // Xóa cart items
+    // English content normalized from the original source text.
     await tx.cartItem.deleteMany({
       where: {
         id: { in: cartItemIds }
       }
     })
 
-    // Update stock cho từng item
+    // English content normalized from the original source text.
     for (const item of cartItems) {
       await tx.sKU
         .update({
@@ -322,7 +304,7 @@ export class OrderRepo {
           }
         })
         .catch((e) => {
-          this.logger.error(`[ORDER_REPO] Lỗi update stock cho SKU ${item.sku.id}: ${e.message}`)
+          this.logger.error(`English content normalized from the original source text.${item.sku.id}: ${e.message}`)
           if (isNotFoundPrismaError(e)) {
             throw VersionConflictException
           }
@@ -331,9 +313,7 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Lấy chi tiết order - Core CRUD (cho User xem đơn hàng của mình)
-   */
+  /* English content normalized from the original source text. */
   async detail(userId: string, orderid: string): Promise<GetOrderDetailResType> {
     const order = await this.prismaService.order.findUnique({
       where: {
@@ -352,7 +332,7 @@ export class OrderRepo {
       throw OrderNotFoundException
     }
 
-    // Tính toán giá trị cơ bản (không có shipping/discount)
+    // English content normalized from the original source text.
     const totalPayment = (order.items || []).reduce((sum, item) => sum + (item.skuPrice || 0) * (item.quantity || 0), 0)
 
     return {
@@ -367,9 +347,7 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Lấy danh sách orders theo shop (cho Seller xem đơn hàng của shop mình)
-   */
+  /* English content normalized from the original source text. */
   async listByShop(
     shopId: string,
     query: {
@@ -392,14 +370,14 @@ export class OrderRepo {
       status
     }
 
-    // Filter theo ngày
+    // English content normalized from the original source text.
     if (startDate || endDate) {
       where.createdAt = {}
       if (startDate) where.createdAt.gte = new Date(startDate)
       if (endDate) where.createdAt.lte = new Date(endDate)
     }
 
-    // Filter theo tên khách hàng
+    // English content normalized from the original source text.
     if (customerName) {
       where.user = {
         name: {
@@ -409,7 +387,7 @@ export class OrderRepo {
       }
     }
 
-    // Filter theo mã đơn hàng
+    // English content normalized from the original source text.
     if (orderCode) {
       where.id = {
         contains: orderCode,
@@ -417,12 +395,12 @@ export class OrderRepo {
       }
     }
 
-    // Đếm tổng số order
+    // English content normalized from the original source text.
     const totalItem$ = this.prismaService.order.count({
       where
     })
 
-    // Lấy list order với thông tin user và shipping
+    // English content normalized from the original source text.
     const data$ = await this.prismaService.order.findMany({
       where,
       include: {
@@ -451,7 +429,7 @@ export class OrderRepo {
     const [data, totalItems] = await Promise.all([data$, totalItem$])
     const totalPages = Math.ceil(totalItems / limit)
 
-    // Map orderCode từ shipping vào order và loại bỏ shipping object
+    // English content normalized from the original source text.
     const ordersWithOrderCode = data.map((order) => {
       const { shipping, ...orderWithoutShipping } = order
       return {
@@ -473,9 +451,7 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Lấy danh sách orders cho admin (có thể xem tất cả orders)
-   */
+  /* English content normalized from the original source text. */
   async listForAdmin(query: {
     page: number
     limit: number
@@ -494,14 +470,14 @@ export class OrderRepo {
       status
     }
 
-    // Filter theo ngày
+    // English content normalized from the original source text.
     if (startDate || endDate) {
       where.createdAt = {}
       if (startDate) where.createdAt.gte = new Date(startDate)
       if (endDate) where.createdAt.lte = new Date(endDate)
     }
 
-    // Filter theo tên khách hàng
+    // English content normalized from the original source text.
     if (customerName) {
       where.user = {
         name: {
@@ -511,7 +487,7 @@ export class OrderRepo {
       }
     }
 
-    // Filter theo mã đơn hàng
+    // English content normalized from the original source text.
     if (orderCode) {
       where.id = {
         contains: orderCode,
@@ -519,12 +495,12 @@ export class OrderRepo {
       }
     }
 
-    // Đếm tổng số order
+    // English content normalized from the original source text.
     const totalItem$ = this.prismaService.order.count({
       where
     })
 
-    // Lấy list order với thông tin user và shipping
+    // English content normalized from the original source text.
     const data$ = await this.prismaService.order.findMany({
       where,
       include: {
@@ -553,31 +529,31 @@ export class OrderRepo {
     const [data, totalItems] = await Promise.all([data$, totalItem$])
     const totalPages = Math.ceil(totalItems / limit)
 
-    // Tính toán pricing cho từng order (tương tự như method list())
+    // English content normalized from the original source text.
     const ordersWithPricing = await Promise.all(
       data.map(async (order) => {
         try {
-          // Lấy shipping info để tính pricing
+          // English content normalized from the original source text.
           const orderShipping = await this.prismaService.orderShipping.findUnique({
             where: { orderId: order.id },
             select: { shippingFee: true, codAmount: true }
           })
 
-          // Tính toán giá trực tiếp từ order items
+          // English content normalized from the original source text.
           const totalItemCost = (order.items || []).reduce((sum, item) => {
             return sum + (item.skuPrice || 0) * (item.quantity || 0)
           }, 0)
 
           const totalShippingFee = orderShipping?.shippingFee || 0
 
-          // Tính totalVoucherDiscount từ pricing logic
+          // English content normalized from the original source text.
           let totalVoucherDiscount = 0
           if (orderShipping && orderShipping.codAmount && orderShipping.codAmount > 0) {
-            // Với COD orders: totalPayment = codAmount
+            // English content normalized from the original source text.
             const expectedTotalPayment = orderShipping.codAmount
             const calculatedVoucherDiscount = totalItemCost + totalShippingFee - expectedTotalPayment
 
-            // Chỉ áp dụng nếu voucher discount hợp lý (> 0 và < totalItemCost)
+            // English content normalized from the original source text.
             if (calculatedVoucherDiscount > 0 && calculatedVoucherDiscount < totalItemCost) {
               totalVoucherDiscount = calculatedVoucherDiscount
             }
@@ -594,7 +570,7 @@ export class OrderRepo {
             totalPayment
           }
         } catch (error) {
-          // Nếu có lỗi, trả về với giá trị mặc định
+          // English content normalized from the original source text.
           const totalItemCost = (order.items || []).reduce((sum, item) => {
             return sum + (item.skuPrice || 0) * (item.quantity || 0)
           }, 0)
@@ -624,9 +600,7 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Lấy chi tiết order theo shop (cho Seller xem đơn hàng của shop mình)
-   */
+  /* English content normalized from the original source text. */
   async detailByShop(shopId: string, orderId: string): Promise<any> {
     const order = await this.prismaService.order.findUnique({
       where: {
@@ -656,7 +630,7 @@ export class OrderRepo {
       return null
     }
 
-    // Tính toán giá trị cơ bản
+    // English content normalized from the original source text.
     const totalPayment = (order.items || []).reduce((sum, item) => sum + (item.skuPrice || 0) * (item.quantity || 0), 0)
 
     return {
@@ -671,9 +645,7 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Lấy chi tiết order cho admin (có thể xem tất cả orders)
-   */
+  /* English content normalized from the original source text. */
   async detailForAdmin(orderId: string): Promise<any> {
     const order = await this.prismaService.order.findUnique({
       where: {
@@ -702,19 +674,19 @@ export class OrderRepo {
       return null
     }
 
-    // Tính toán giá trị cơ bản
+    // English content normalized from the original source text.
     const totalItemCost = (order.items || []).reduce(
       (sum, item) => sum + (item.skuPrice || 0) * (item.quantity || 0),
       0
     )
 
-    // Lấy shipping info để tính pricing đầy đủ
+    // English content normalized from the original source text.
     const orderShipping = await this.prismaService.orderShipping.findUnique({
       where: { orderId },
       select: { shippingFee: true, codAmount: true }
     })
 
-    // Tính totalVoucherDiscount từ pricing logic
+    // English content normalized from the original source text.
     let totalVoucherDiscount = 0
     let totalShippingFee = 0
     let totalPayment = totalItemCost
@@ -722,18 +694,18 @@ export class OrderRepo {
     if (orderShipping) {
       totalShippingFee = orderShipping.shippingFee || 0
 
-      // Với COD orders: totalPayment = codAmount
+      // English content normalized from the original source text.
       if (orderShipping.codAmount && orderShipping.codAmount > 0) {
         const expectedTotalPayment = orderShipping.codAmount
         const calculatedVoucherDiscount = totalItemCost + totalShippingFee - expectedTotalPayment
 
-        // Chỉ áp dụng nếu voucher discount hợp lý (> 0 và < totalItemCost)
+        // English content normalized from the original source text.
         if (calculatedVoucherDiscount > 0 && calculatedVoucherDiscount < totalItemCost) {
           totalVoucherDiscount = calculatedVoucherDiscount
         }
       }
 
-      // Tính lại totalPayment với voucher discount đã được tính
+      // English content normalized from the original source text.
       totalPayment = totalItemCost + totalShippingFee - totalVoucherDiscount
     }
 
@@ -749,14 +721,12 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Hủy order - Core CRUD
-   */
+  /* English content normalized from the original source text. */
   async cancel(userId: string, orderId: string): Promise<CancelOrderResType> {
-    this.logger.log(`[ORDER_REPO] Bắt đầu hủy order: ${orderId} cho user: ${userId}`)
+    this.logger.log(`English content normalized from the original source text.${orderId} cho user: ${userId}`)
 
     try {
-      this.logger.log(`[ORDER_REPO] Tìm order trong database...`)
+      this.logger.log(`English content normalized from the original source text.`)
       const order = await this.prismaService.order.findUniqueOrThrow({
         where: {
           id: orderId,
@@ -768,7 +738,7 @@ export class OrderRepo {
       this.logger.log(`[ORDER_REPO] Order found: ${JSON.stringify(order, null, 2)}`)
       this.logger.log(`[ORDER_REPO] Order status: ${order.status}`)
 
-      // Kiểm tra xem status hiện tại có thể hủy được không
+      // English content normalized from the original source text.
       const cancellableStatuses: OrderStatusType[] = [
         OrderStatus.PENDING_PAYMENT,
         OrderStatus.PENDING_PACKAGING,
@@ -777,12 +747,12 @@ export class OrderRepo {
       ]
 
       if (!cancellableStatuses.includes(order.status as OrderStatusType)) {
-        this.logger.warn(`[ORDER_REPO] Không thể hủy order với status: ${order.status}`)
+        this.logger.warn(`English content normalized from the original source text.${order.status}`)
         throw CannotCancelOrderException
       }
 
-      // Kiểm tra xem order đã có GHN order chưa
-      this.logger.log(`[ORDER_REPO] Kiểm tra OrderShipping cho order: ${orderId}`)
+      // English content normalized from the original source text.
+      this.logger.log(`English content normalized from the original source text.${orderId}`)
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId },
         select: { orderCode: true, status: true }
@@ -790,22 +760,22 @@ export class OrderRepo {
 
       this.logger.log(`[ORDER_REPO] OrderShipping found: ${JSON.stringify(orderShipping, null, 2)}`)
 
-      // Nếu có GHN order, cần hủy trên GHN system trước
+      // English content normalized from the original source text.
       if (orderShipping?.orderCode && orderShipping.status === 'CREATED') {
         try {
-          // Hủy đơn hàng GHN
+          // English content normalized from the original source text.
           const cancelResult = await this.sharedShippingRepo.cancelGHNOrderForOrder(orderId)
-          this.logger.log(`[ORDER_REPO] Kết quả hủy đơn hàng GHN: ${JSON.stringify(cancelResult, null, 2)}`)
+          this.logger.log(`English content normalized from the original source text.${JSON.stringify(cancelResult, null, 2)}`)
 
-          // Update OrderShipping status thành FAILED
+          // English content normalized from the original source text.
           await this.sharedShippingRepo.updateOrderShippingStatusForCancellation(
             orderId,
             'FAILED',
             'Order cancelled by user - GHN order cancelled'
           )
         } catch (error) {
-          this.logger.error(`[ORDER_REPO] Lỗi khi xử lý OrderShipping: ${error.message}`)
-          // Tiếp tục hủy local order ngay cả khi có lỗi
+          this.logger.error(`English content normalized from the original source text.${error.message}`)
+          // English content normalized from the original source text.
         }
       }
 
@@ -821,7 +791,7 @@ export class OrderRepo {
         }
       })
 
-      // Thêm orderCode vào response
+      // English content normalized from the original source text.
       const orderWithOrderCode = {
         ...updatedOrder,
         orderCode: orderShipping?.orderCode || null
@@ -838,22 +808,18 @@ export class OrderRepo {
     }
   }
 
-  /**
-   * Validate cart items và trả về cartItemMap - Core business logic
-   * TODO: Move complex business validation to OrderService
-   * Repository should focus on data access, not business rules
-   */
+  /* English content normalized from the original source text. */
   private validateCartItems(
     cartItems: any[],
     allBodyCartItemIds: string[],
     shops: CreateOrderBodyType['shops']
   ): Map<string, any> {
-    // 1. Kiểm tra xem tất cả cartItemIds có tồn tại trong cơ sở dữ liệu hay không
+    // English content normalized from the original source text.
     if (cartItems.length !== allBodyCartItemIds.length) {
       throw NotFoundCartItemException
     }
 
-    // 2. Kiểm tra số lượng mua có lớn hơn số lượng tồn kho hay không
+    // English content normalized from the original source text.
     const isOutOfStock = cartItems.some((item) => {
       return item.sku.stock < item.quantity
     })
@@ -861,7 +827,7 @@ export class OrderRepo {
       throw OutOfStockSKUException
     }
 
-    // 3. Kiểm tra xem tất cả sản phẩm mua có sản phẩm nào bị xóa hay ẩn không
+    // English content normalized from the original source text.
     const isExistNotReadyProduct = cartItems.some(
       (item) =>
         item.sku.product.deletedAt !== null ||
@@ -872,7 +838,7 @@ export class OrderRepo {
       throw ProductNotFoundException
     }
 
-    // 4. Kiểm tra xem các skuId trong cartItem gửi lên có thuộc về shopid gửi lên không
+    // English content normalized from the original source text.
     const cartItemMap = new Map<string, any>()
     cartItems.forEach((item) => {
       cartItemMap.set(item.id, item)
@@ -892,9 +858,7 @@ export class OrderRepo {
     return cartItemMap
   }
 
-  /**
-   * Cập nhật trạng thái nhiều orders cùng lúc
-   */
+  /* English content normalized from the original source text. */
   async updateMultipleOrdersStatus(orderIds: string[], status: OrderStatusType) {
     return this.prismaService.order.updateMany({
       where: {

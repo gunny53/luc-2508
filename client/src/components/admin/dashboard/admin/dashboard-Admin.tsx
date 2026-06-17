@@ -4,10 +4,10 @@ import { Card } from '@/components/ui/card';
 import { useDbAdmin } from '../hooks/useDbAdmin';
 import OverviewStatsTable from '../admin/overview-stats-table'    ;
 import SimpleCharts from '../admin/simple-charts'
-import { 
-  Users, 
-  UserPlus, 
-  UserCheck, 
+import {
+  Users,
+  UserPlus,
+  UserCheck,
   Shield,
   Store,
   User,
@@ -23,7 +23,7 @@ export default function DashboardAdmin() {
     // Stats cards data cho User module
     const userStatsCards = [
         {
-        title: 'Tổng người dùng',
+        title: 'English content normalized from the original source text.',
         value: dashboardStats.totalUsers.toLocaleString(),
         icon: <Users className="w-6 h-6" />,
         changeType: 'info',
@@ -33,7 +33,7 @@ export default function DashboardAdmin() {
         title: 'Admin',
         value: dashboardStats.adminUsersCount.toString(),
         icon: <Shield className="w-6 h-6" />,
-        change: 'Quản trị viên',
+        change: 'English content normalized from the original source text.',
         changeType: 'neutral',
         color: 'purple'
         },
@@ -41,7 +41,7 @@ export default function DashboardAdmin() {
         title: 'Seller',
         value: dashboardStats.sellerUsersCount.toString(),
         icon: <Store className="w-6 h-6" />,
-        change: 'Người bán',
+        change: 'English content normalized from the original source text.',
         changeType: 'neutral',
         color: 'orange'
         },
@@ -49,7 +49,7 @@ export default function DashboardAdmin() {
         title: 'Client',
         value: dashboardStats.clientUsersCount.toString(),
         icon: <User className="w-6 h-6" />,
-        change: 'Khách hàng',
+        change: 'English content normalized from the original source text.',
         changeType: 'neutral',
         color: 'blue'
         }
@@ -106,7 +106,7 @@ export default function DashboardAdmin() {
                 ⚠️ {userStats.error}
             </p>
             </Card>
-        )}  
+        )}
 
         {/* Overview Statistics Table */}
         <OverviewStatsTable overviewStats={overviewStats} />
@@ -115,18 +115,14 @@ export default function DashboardAdmin() {
         <div>
             <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-semibold flex items-center">
-                    <Users className="w-5 h-5 mr-2" />
-                    Thống kê người dùng chi tiết
-                </h2>
-                <Button 
+                    <Users className="w-5 h-5 mr-2" />English content normalized from the original source text.</h2>
+                <Button
                     onClick={refreshStats}
-                    variant="outline" 
+                    variant="outline"
                     size="sm"
                     disabled={userStats.isLoading || overviewStats.isLoading}
                 >
-                    <RefreshCw className={`w-4 h-4 mr-2 ${(userStats.isLoading || overviewStats.isLoading) ? 'animate-spin' : ''}`} />
-                    Làm mới
-                </Button>
+                    <RefreshCw className={`w-4 h-4 mr-2 ${(userStats.isLoading || overviewStats.isLoading) ? 'animate-spin' : ''}`} />English content normalized from the original source text.</Button>
             </div>
             <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
             {userStatsCards.map((stat, index) => (
@@ -156,20 +152,20 @@ export default function DashboardAdmin() {
         <div className="grid gap-4 md:grid-cols-2">
             <Card className="p-6">
             <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Thống kê hệ thống</h3>
+                <h3 className="text-lg font-semibold">English content normalized from the original source text.</h3>
                 <Activity className="w-5 h-5 text-muted-foreground" />
             </div>
             <div className="space-y-3">
                 <div className="flex justify-between items-center text-sm">
-                <span>Tổng người dùng</span>
+                <span>English content normalized from the original source text.</span>
                 <span className="font-medium text-blue-600">{dashboardStats.totalUsers.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                <span>Tổng thương hiệu</span>
+                <span>English content normalized from the original source text.</span>
                 <span className="font-medium text-green-600">{dashboardStats.totalBrands.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                <span>Tổng danh mục</span>
+                <span>English content normalized from the original source text.</span>
                 <span className="font-medium text-purple-600">{dashboardStats.totalCategories.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
@@ -177,7 +173,7 @@ export default function DashboardAdmin() {
                 <span className="font-medium text-orange-600">{dashboardStats.totalAuditLogs.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm border-t pt-2">
-                <span>Tỷ lệ người dùng hoạt động</span>
+                <span>English content normalized from the original source text.</span>
                 <span className="font-medium text-green-600">
                     {((dashboardStats.activeUsersCount / dashboardStats.totalUsers) * 100 || 0).toFixed(1)}%
                 </span>
@@ -185,7 +181,7 @@ export default function DashboardAdmin() {
             </div>
             </Card>
 
-           
+
         </div>
 
         {/* Charts Section */}

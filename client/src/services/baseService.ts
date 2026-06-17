@@ -1,10 +1,10 @@
 import { privateAxios, publicAxios } from '@/lib/api';
 import { API_ENDPOINTS } from '@/constants/api';
-import { 
-  PaginationRequest, 
-  BaseResponse, 
-  MediaUploadResponse, 
-  PresignedUrlsRequest, 
+import {
+  PaginationRequest,
+  BaseResponse,
+  MediaUploadResponse,
+  PresignedUrlsRequest,
   PresignedUrlsResponse,
   PresignedFileRequest
 } from '@/types/base.interface';
@@ -12,16 +12,12 @@ import { AxiosError } from 'axios';
 
 
 export const baseService = {
-  /**
-   * Upload một hoặc nhiều file media (hình ảnh, video, etc.)
-   * @param files - Danh sách file cần upload
-   * @returns Promise với response chứa URLs của các file đã upload
-   */
+  /* English content normalized from the original source text. */
   uploadMedia: async (files: File[], signal?: AbortSignal): Promise<MediaUploadResponse> => {
     try {
       const formData = new FormData();
-      
-      // Thêm từng file vào form data với key "files"
+
+      // English content normalized from the original source text.
       files.forEach((file) => {
         formData.append('files', file);
       });
@@ -38,16 +34,12 @@ export const baseService = {
       const axiosError = error as AxiosError;
       console.error('Error uploading media:', axiosError);
       throw axiosError.response?.data || {
-        message: 'Có lỗi xảy ra khi tải lên tệp',
+        message: 'English content normalized from the original source text.',
       };
     }
   },
 
-  /**
-   * Lấy presigned URLs cho upload file trực tiếp lên S3
-   * @param files - Danh sách thông tin file cần lấy presigned URL
-   * @returns Promise với response chứa presigned URLs
-   */
+  /* English content normalized from the original source text. */
   getPresignedUrls: async (files: PresignedFileRequest[], signal?: AbortSignal): Promise<PresignedUrlsResponse> => {
     try {
       const requestBody: PresignedUrlsRequest = {
@@ -66,17 +58,12 @@ export const baseService = {
       const axiosError = error as AxiosError;
       console.error('Error getting presigned URLs:', axiosError);
       throw axiosError.response?.data || {
-        message: 'Có lỗi xảy ra khi lấy URL upload',
+        message: 'English content normalized from the original source text.',
       };
     }
   },
 
-  /**
-   * Upload file trực tiếp lên S3 sử dụng presigned URL
-   * @param file - File cần upload
-   * @param presignedUrl - Presigned URL từ server
-   * @returns Promise<void>
-   */
+  /* English content normalized from the original source text. */
   uploadToS3: async (file: File, presignedUrl: string, signal?: AbortSignal): Promise<void> => {
     try {
       const response = await fetch(presignedUrl, {
@@ -97,5 +84,5 @@ export const baseService = {
     }
   }
 
-  
+
 };

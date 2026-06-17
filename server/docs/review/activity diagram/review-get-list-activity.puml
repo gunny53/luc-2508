@@ -6,17 +6,17 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /reviews/products/:productId
+English content normalized from the original source text.
 
 start
-:Nhận productId + pagination;
-:Tính skip/take từ page/limit;
-:Thực thi count + findMany song song;
-:Include user (id,name,avatar) và medias;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 :ORDER BY createdAt DESC;
-:Tính metadata;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, data, metadata };
+:English content normalized from the original source text;
 stop
 
 @enduml

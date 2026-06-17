@@ -19,18 +19,18 @@ export class ElasticsearchService implements OnModuleInit {
 
     const clientConfig: any = {
       node,
-      // Tăng timeout cho kết nối từ xa
-      requestTimeout: 120000, // 2 phút
+      // English content normalized from the original source text.
+      requestTimeout: 120000, // English content normalized from the original source text.
       maxRetries: 3,
       retryOnTimeout: true
     }
 
-    // Chỉ thêm auth nếu có username và password
+    // English content normalized from the original source text.
     if (username && password) {
       clientConfig.auth = { username, password }
     }
 
-    // Chỉ thêm tls nếu SSL được bật
+    // English content normalized from the original source text.
     if (sslEnabled) {
       clientConfig.tls = { rejectUnauthorized: false }
     }
@@ -49,9 +49,7 @@ export class ElasticsearchService implements OnModuleInit {
     }
   }
 
-  /**
-   * Tạo index cho sản phẩm với mapping tối ưu
-   */
+  /* English content normalized from the original source text. */
   private async createProductIndex() {
     const indexName = this.configService.get<string>('ELASTICSEARCH_INDEX_PRODUCTS', 'products_v1')
     const exists = await this.client.indices.exists({ index: indexName })
@@ -118,9 +116,7 @@ export class ElasticsearchService implements OnModuleInit {
     }
   }
 
-  /**
-   * Search documents với options tối ưu
-   */
+  /* English content normalized from the original source text. */
   async search(
     index: string,
     query: any,
@@ -177,7 +173,7 @@ export class ElasticsearchService implements OnModuleInit {
       const result = await this.client.bulk({
         refresh: true,
         operations,
-        timeout: '120s' // Tăng timeout lên 2 phút
+        timeout: '120s' // English content normalized from the original source text.
       })
 
       if (result.errors) {

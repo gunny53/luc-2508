@@ -13,7 +13,7 @@ import { Category } from "@/types/admin/category.interface";
 // Use Category type from interface instead of local type
 export type CategoryTableData = Category;
 
-// Hàm tạo danh sách actions cho Category
+// English content normalized from the original source text.
 const getCategoryActions = (
   category: Category,
   onEdit: ((category: Category) => void) | undefined,
@@ -63,7 +63,7 @@ export const CategoryColumns = (param: CategoryColumnsProps = {}): ColumnDef<Cat
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={value => table.toggleAllPageRowsSelected(!!value)}
-          onClick={(e) => e.stopPropagation()} // Ngăn event bubble up
+          onClick={(e) => e.stopPropagation()} // English content normalized from the original source text.
           // aria-label={t('admin.pages.category.selectAll')}
         />
       ),
@@ -72,7 +72,7 @@ export const CategoryColumns = (param: CategoryColumnsProps = {}): ColumnDef<Cat
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
           onCheckedChange={value => row.toggleSelected(!!value)}
-          onClick={(e) => e.stopPropagation()} // Ngăn event bubble up
+          onClick={(e) => e.stopPropagation()} // English content normalized from the original source text.
           // aria-label={t('admin.pages.category.selectRow')}
         />
       ),

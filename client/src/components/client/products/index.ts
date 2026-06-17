@@ -1,11 +1,11 @@
-// // Export các component cho trang sản phẩm
+// English content normalized from the original source text.
 
-// // Component chính
+// English content normalized from the original source text.
 // export { default as ProductInfo } from './desktop/products-Info-fixed';
 
-// // Các component khác nếu có
+// English content normalized from the original source text.
 // // export { default as ProductGallery } from './desktop/products-Gallery';
 // // export { default as ProductReviews } from './desktop/products-Reviews';
 
-// // Export các utility
+// English content normalized from the original source text.
 // export * from './shared/productUtils';

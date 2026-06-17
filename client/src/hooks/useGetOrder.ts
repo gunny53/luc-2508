@@ -22,7 +22,7 @@ export const useGetOrders = () => {
         const response = await orderService.getAll(params, signal);
 
         if (!response?.data) {
-          throw new Error("Không có dữ liệu đơn hàng");
+          throw new Error("English content normalized from the original source text.");
         }
 
         setOrders(response);
@@ -31,7 +31,7 @@ export const useGetOrders = () => {
         const errorMessage =
           err?.response?.data?.message ||
           err?.message ||
-          "Không thể lấy danh sách đơn hàng";
+          "English content normalized from the original source text.";
         setError(errorMessage);
         toast.error(errorMessage);
         return null;

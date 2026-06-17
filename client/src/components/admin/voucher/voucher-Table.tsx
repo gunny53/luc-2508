@@ -34,9 +34,9 @@ export default function VoucherTable() {
     router.push(`/admin/voucher/edit/${voucher.id}`);
   };
 
-  const columns = voucherColumns({ 
-    onEdit: handleEditVoucher, // Sử dụng handleEditVoucher thay vì handleOpenUpsertModal
-    onDelete: handleOpenDelete 
+  const columns = voucherColumns({
+    onEdit: handleEditVoucher, // English content normalized from the original source text.
+    onDelete: handleOpenDelete
   });
 
   const table = useDataTable({
@@ -49,7 +49,7 @@ export default function VoucherTable() {
           <VoucherFormCreate />
         </div>
 
-      {/* Hàng 2: Search + View Option */}
+      {/* English content normalized from the original source text. */}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -77,7 +77,7 @@ export default function VoucherTable() {
         />
       </div>
 
-      {/* Modal xác nhận xóa */}
+      {/* English content normalized from the original source text. */}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {

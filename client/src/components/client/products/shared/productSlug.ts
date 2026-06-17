@@ -1,37 +1,24 @@
 // src/utils/productSlug.ts
 
-/**
- * Tạo slug sản phẩm từ tên và ID
- * Format: {tên-sản-phẩm}__{id}
- * Sử dụng "__" làm dấu phân tách giữa tên và ID để dễ dàng trích xuất ID UUID
- * Giữ nguyên dấu và chữ hoa, chỉ thay khoảng trắng bằng dấu -
- * @param name Tên sản phẩm
- * @param id ID sản phẩm
- * @returns Slug đã được format
- */
+/* English content normalized from the original source text. */
 export function createProductSlug(name: string, id: string | number): string {
-  // Thay khoảng trắng bằng dấu gạch nối, giữ nguyên dấu và chữ hoa
+  // English content normalized from the original source text.
   const nameSlug = name.trim().replace(/\s+/g, "-");
-  // Mã hóa URL để xử lý các ký tự đặc biệt nhưng vẫn giữ nguyên dấu
+  // English content normalized from the original source text.
   const encodedNameSlug = encodeURIComponent(nameSlug);
   return `${encodedNameSlug}__${id}`;
 }
 
-/**
- * Trích xuất ID sản phẩm từ slug
- * Format slug: {tên-sản-phẩm}__{id}
- * @param slug Slug sản phẩm
- * @returns ID sản phẩm hoặc slug gốc nếu không thể trích xuất
- */
+/* English content normalized from the original source text. */
 export function extractProductId(slug: string): string {
   try {
     // Decode slug first to handle URL-encoded characters
     const decodedSlug = decodeURIComponent(slug);
-    
-    // Tìm ID sử dụng dấu phân tách "__"
+
+    // English content normalized from the original source text.
     const parts = decodedSlug.split("__");
-    
-    // Nếu tìm thấy dấu phân tách "__", phần sau là ID đầy đủ
+
+    // English content normalized from the original source text.
     if (parts.length === 2) {
       return parts[1];
     }
@@ -39,41 +26,36 @@ export function extractProductId(slug: string): string {
     console.error('Error decoding slug:', slug, error);
     // Continue to fallback methods if decoding fails
   }
-  
-  // Xử lý URL cũ (tương thích ngược) - tìm UUID trong slug
+
+  // English content normalized from the original source text.
   const uuidPattern = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
   const match = slug.match(uuidPattern);
-  
+
   if (match) {
     return match[0];
   }
-  
-  // Nếu không tìm thấy định dạng nào, trả về slug nguyên bản
+
+  // English content normalized from the original source text.
   return slug;
 }
 
-/**
- * Trích xuất tên sản phẩm từ slug
- * Format slug: {tên-sản-phẩm}__{id}
- * @param slug Slug sản phẩm
- * @returns Tên sản phẩm đã được định dạng với dấu gạch nối thay cho khoảng trắng
- */
+/* English content normalized from the original source text. */
 export function extractProductName(slug: string): string | null {
   try {
     // Decode slug first to handle URL-encoded characters
     const decodedSlug = decodeURIComponent(slug);
-    
-    // Tìm tên sản phẩm sử dụng dấu phân tách "__"
+
+    // English content normalized from the original source text.
     const parts = decodedSlug.split("__");
-    
-    // Nếu tìm thấy dấu phân tách "__", phần trước là tên sản phẩm
+
+    // English content normalized from the original source text.
     if (parts.length === 2) {
       return parts[0];
     }
   } catch (error) {
     console.error('Error decoding slug for name extraction:', slug, error);
   }
-  
-  // Không tìm thấy tên sản phẩm trong định dạng mới
+
+  // English content normalized from the original source text.
   return null;
 }

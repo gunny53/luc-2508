@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /auth/refresh-token
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -22,7 +22,7 @@ activate AS
 
 AS -> TS: verifyRefreshToken(refreshToken)
 TS --> AS: { userId } | error
-alt lỗi verify
+English content normalized from the original source text.
   AS --> AC: UnauthorizedAccessException (401)
   AC --> C: 401 Unauthorized
   deactivate AS
@@ -55,7 +55,7 @@ AR --> AS: ok
 AS -> AS: generateTokens({ userId, deviceId, roleId, roleName })
 AS -> CS: setAuthCookies(res, accessToken, refreshToken)
 CS --> AS: ok
-AS --> AC: { message: 'Làm mới token thành công' }
+AS --> AC: English content normalized from the original source text.
 deactivate AS
 
 AC --> C: 200 OK + JSON

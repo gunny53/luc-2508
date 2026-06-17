@@ -17,16 +17,16 @@ const parsePrice = (value: string) => {
   return numericString === '' ? 0 : parseInt(numericString, 10);
 };
 
-// Import SkuDetail từ products interface
+// English content normalized from the original source text.
 import { SkuDetail } from '@/types/products.interface';
 
-// Sử dụng Partial<SkuDetail> để phù hợp với FormSku trong useProductsForm
+// English content normalized from the original source text.
 type FormSku = Partial<SkuDetail>;
 
 // Hook Props
 interface UseSkuProps {
   options: OptionData[];
-  initialSkus?: FormSku[]; // Cập nhật kiểu dữ liệu để phù hợp
+  initialSkus?: FormSku[]; // English content normalized from the original source text.
   onUpdateSkus: (skus: Sku[]) => void;
 }
 
@@ -35,61 +35,61 @@ function mapApiSkusToComponentSkus(apiSkus: FormSku[], options: OptionData[]): S
   console.log('mapApiSkusToComponentSkus called with:');
   console.log('API SKUs:', apiSkus);
   console.log('Options:', options);
-  
+
   if (!apiSkus?.length) {
     console.log('No API SKUs provided');
     return [];
   }
-  
+
   if (!options?.length) {
     console.log('No options provided');
     return [];
   }
-  
-  // Kiểm tra dữ liệu API
+
+  // English content normalized from the original source text.
   if (apiSkus.some(sku => !sku.value)) {
-    console.warn('Some API SKUs are missing value property:', 
+    console.warn('Some API SKUs are missing value property:',
       apiSkus.filter(sku => !sku.value).map(sku => sku.id));
   }
-  
+
   return apiSkus.map(apiSku => {
     try {
-      // Đảm bảo apiSku.value là string
+      // English content normalized from the original source text.
       const skuValue = apiSku.value || '';
-      
-      // Split value: "Đen-L" -> ["Đen", "L"]
+
+      // English content normalized from the original source text.
       const valueParts = skuValue.split('-');
       console.log(`Processing SKU ${apiSku.id}, value: ${skuValue}, parts:`, valueParts);
-      
-      // Tạo variantValues từ valueParts và options
+
+      // English content normalized from the original source text.
       const variantValues = options.map((option, index) => {
-        // Đảm bảo rằng chúng ta có một giá trị cho mỗi option, ngay cả khi valueParts thiếu
+        // English content normalized from the original source text.
         return {
           optionName: option.name,
           value: index < valueParts.length ? valueParts[index] : ''
         };
       });
-      
-      // Tạo name từ các valueParts để hiển thị thân thiện hơn
+
+      // English content normalized from the original source text.
       const name = valueParts.join(' / ');
-      
-      // Tạo một SKU mới với dữ liệu từ API
+
+      // English content normalized from the original source text.
       const mappedSku = {
-        id: apiSku.id ? String(apiSku.id) : `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`, 
-        name: name, // Thêm name theo yêu cầu của interface Sku
+        id: apiSku.id ? String(apiSku.id) : `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+        name: name, // English content normalized from the original source text.
         price: typeof apiSku.price === 'number' ? apiSku.price : 0,
         stock: typeof apiSku.stock === 'number' ? apiSku.stock : 0,
         image: apiSku.image || '',
         variantValues
       };
-      
+
       console.log('Mapped SKU:', mappedSku);
-      
+
       return mappedSku;
     } catch (error) {
       console.error(`Error processing SKU ${apiSku.id}:`, error);
-      
-      // Trả về một SKU mặc định trong trường hợp lỗi
+
+      // English content normalized from the original source text.
       return {
         id: apiSku.id || `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
         name: apiSku.value || 'Unknown',
@@ -109,109 +109,109 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
   const [skus, setSkus] = useState<Sku[]>([]);
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
 
-  // Tham chiếu để theo dõi xem update đến từ bên trong hay bên ngoài
+  // English content normalized from the original source text.
   const isInternalUpdate = useRef(false);
-  
-  // Thêm ref để theo dõi trạng thái khởi tạo
+
+  // English content normalized from the original source text.
   const isInitialized = useRef(false);
-  
+
   useEffect(() => {
-    console.log('useSku effect triggered:', { 
-      optionsLength: options.length, 
-      initialSkusLength: initialSkus?.length, 
+    console.log('useSku effect triggered:', {
+      optionsLength: options.length,
+      initialSkusLength: initialSkus?.length,
       isInternalUpdate: isInternalUpdate.current,
       isInitialized: isInitialized.current
     });
-    
-    // Nếu đã khởi tạo và là update từ bên trong, bỏ qua
+
+    // English content normalized from the original source text.
     if (isInitialized.current && isInternalUpdate.current) {
       console.log('Skipping effect due to internal update');
       isInternalUpdate.current = false;
       return;
     }
-    
-    // Kiểm tra điều kiện để quyết định nguồn dữ liệu SKU
+
+    // English content normalized from the original source text.
     const hasOptions = options && options.length > 0 && options.some(opt => opt.values && opt.values.length > 0);
     const hasInitialSkus = initialSkus && initialSkus.length > 0;
-    
-    // Log trạng thái
+
+    // English content normalized from the original source text.
     console.log('SKU data source conditions:', { hasOptions, hasInitialSkus });
-    
+
     let newSkus: Sku[] = [];
-    
+
     try {
       if (hasInitialSkus && hasOptions) {
-        // Có cả SKUs từ API và options -> dùng initialSkus
+        // English content normalized from the original source text.
         console.log('Using initialSkus from API', initialSkus);
         newSkus = mapApiSkusToComponentSkus(initialSkus, options);
       } else if (hasOptions) {
-        // Chỉ có options -> tạo mới SKUs từ options
+        // English content normalized from the original source text.
         console.log('Generating new SKUs from options', options);
         newSkus = generateSKUs(options);
       } else {
         console.log('Not enough data to create SKUs');
-        // Không có đủ dữ liệu để tạo SKUs
+        // English content normalized from the original source text.
         newSkus = [];
       }
-      
+
       console.log('Generated new SKUs:', newSkus);
-      
-      // Bảo toàn giá trị price, stock, image của SKUs hiện tại một cách thông minh hơn
+
+      // English content normalized from the original source text.
       const preservedSkus = newSkus.map(newSku => {
-        // Tìm SKU cũ theo nhiều tiêu chí khác nhau
+        // English content normalized from the original source text.
         let oldSku = null;
-        
-        // 1. Tìm theo ID (cho SKUs đã có từ API)
+
+        // English content normalized from the original source text.
         oldSku = skus.find(s => s.id === newSku.id);
-        
-        // 2. Nếu không tìm thấy bằng ID, thử tìm bằng name
+
+        // English content normalized from the original source text.
         if (!oldSku) {
           oldSku = skus.find(s => s.name === newSku.name);
         }
-        
-        // 3. Nếu vẫn không tìm thấy, thử tìm bằng pattern của variantValues
+
+        // English content normalized from the original source text.
         if (!oldSku) {
-          // Tạo mảng các giá trị variant để so sánh
+          // English content normalized from the original source text.
           const newValues = newSku.variantValues.map(v => v.value);
-          
+
           oldSku = skus.find(s => {
             if (!s.variantValues || !Array.isArray(s.variantValues)) return false;
-            
-            // Kiểm tra xem có bao nhiêu giá trị giống nhau
+
+            // English content normalized from the original source text.
             const oldValues = s.variantValues.map(v => v.value);
             const matchCount = newValues.filter(val => oldValues.includes(val)).length;
-            
-            // Nếu có ít nhất 1 giá trị trùng khớp và số lượng variantValues bằng nhau
+
+            // English content normalized from the original source text.
             return matchCount > 0 && oldValues.length === newValues.length;
           });
         }
-        
+
         if (oldSku) {
-          return { 
-            ...newSku, 
+          return {
+            ...newSku,
             price: oldSku.price || newSku.price,
             stock: oldSku.stock || newSku.stock,
             image: oldSku.image || newSku.image
           };
         }
-        
-        // Sử dụng basePrice từ product làm giá mặc định nếu có thể
+
+        // English content normalized from the original source text.
         return newSku;
       });
-      
+
       console.log('Setting skus state with preservedSkus:', preservedSkus.length);
-      
-      // Cập nhật state
+
+      // English content normalized from the original source text.
       setSkus(preservedSkus);
-      
+
       // Reset expanded state only if the primary option changes
       const oldFirstOption = skus[0]?.variantValues[0]?.optionName;
       const newFirstOption = options[0]?.name;
       if (oldFirstOption !== newFirstOption) {
           setExpandedGroups({});
       }
-      
-      // Đánh dấu đã khởi tạo sau lần đầu tiên
+
+      // English content normalized from the original source text.
       isInitialized.current = true;
     } catch (error) {
       console.error('Error processing SKUs:', error);
@@ -223,25 +223,25 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
     if (!skus || skus.length === 0) {
       return {};
     }
-    
+
     try {
-      // Kiểm tra xem mỗi SKU có variantValues không trước khi sử dụng
-      const hasValidVariantValues = skus.every(sku => 
-        sku.variantValues && 
-        Array.isArray(sku.variantValues) && 
+      // English content normalized from the original source text.
+      const hasValidVariantValues = skus.every(sku =>
+        sku.variantValues &&
+        Array.isArray(sku.variantValues) &&
         sku.variantValues.length > 0
       );
-      
+
       if (!hasValidVariantValues) {
         console.error('Some SKUs have invalid variantValues', skus);
         return {};
       }
-      
+
       return skus.reduce((acc, sku) => {
         try {
-          // Bảo vệ truy cập vào variantValues[0]
+          // English content normalized from the original source text.
           const groupKey = sku.variantValues[0]?.value || 'Unknown';
-          
+
           if (!acc[groupKey]) {
             acc[groupKey] = [];
           }
@@ -258,14 +258,14 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
     }
   }, [skus]);
 
-  // Thêm useEffect để xử lý cập nhật skus lên component cha
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Bỏ qua lần mount đầu tiên
+    // English content normalized from the original source text.
     if (!isInitialized.current) {
       return;
     }
-    
-    // Chỉ thông báo cập nhật khi thay đổi đến từ các hàm xử lý sự kiện nội bộ
+
+    // English content normalized from the original source text.
     if (isInternalUpdate.current && skus.length > 0) {
       console.log('Notifying parent of SKU update:', skus.length);
       onUpdateSkus(skus);
@@ -284,15 +284,15 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
 
     if (isNaN(numericValue)) return;
 
-    // Đánh dấu cập nhật nội bộ
+    // English content normalized from the original source text.
     isInternalUpdate.current = true;
     console.log(`handleSkuChange - Updating SKU ${skuId}, field: ${field}, value: ${value}`);
-    
+
     const updatedSkus = skus.map(sku =>
       sku.id === skuId ? { ...sku, [field]: numericValue } : sku
     );
     setSkus(updatedSkus);
-    // Không gọi onUpdateSkus ở đây, để useEffect xử lý
+    // English content normalized from the original source text.
   };
 
   const toggleGroup = (groupKey: string) => {
@@ -301,15 +301,15 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
 
   const handleImageUpdate = (skuId: string, newUrl: string) => {
     console.log(`handleImageUpdate - Updating image for SKU ${skuId} to ${newUrl}`);
-    
-    // Đánh dấu cập nhật nội bộ
+
+    // English content normalized from the original source text.
     isInternalUpdate.current = true;
-    
-    const updatedSkus = skus.map(sku => 
+
+    const updatedSkus = skus.map(sku =>
       sku.id === skuId ? { ...sku, image: newUrl } : sku
     );
     setSkus(updatedSkus);
-    // Không gọi onUpdateSkus ở đây, để useEffect xử lý
+    // English content normalized from the original source text.
   };
 
   return {

@@ -5,7 +5,7 @@ import { ShippingMethod } from '@/types/shipping.interface';
 
 // --- Interfaces cho State ---
 
-// Thông tin chung cho toàn bộ đơn hàng
+// English content normalized from the original source text.
 interface CommonOrderInfo {
   receiver: {
     name: string;
@@ -27,14 +27,14 @@ interface CommonOrderInfo {
   } | null;
 }
 
-// Thông tin riêng cho từng shop
-// Thông tin riêng cho từng shop
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 
 interface ShopOrderInfo {
   shopId: string;
   cartItemIds: string[];
   discountCodes: string[];
-  shippingFee: number; // Thêm phí vận chuyển cho từng shop
+  shippingFee: number; // English content normalized from the original source text.
   shopAddress?: {
     provinceId: number;
     districtId: number;
@@ -48,15 +48,15 @@ interface ShopOrderInfo {
   selectedShippingMethod: ShippingMethod | null;
 }
 
-// Cấu trúc state tổng thể cho slice này
+// English content normalized from the original source text.
 interface CheckoutState {
   commonInfo: CommonOrderInfo;
   shopOrders: ShopOrderInfo[];
-  shopProducts: Record<string, ProductInfo[]>; // Key là shopId
-  appliedVouchers: Record<string, AppliedVoucherInfo>; // Key là shopId
+  shopProducts: Record<string, ProductInfo[]>; // English content normalized from the original source text.
+  appliedVouchers: Record<string, AppliedVoucherInfo>; // English content normalized from the original source text.
   appliedPlatformVoucher: AppliedVoucherInfo | null; // For platform-wide voucher
-  platformDiscountCodes: string[]; // Mã giảm giá toàn sàn
-  calculationResult: any | null; // Kết quả tính toán từ API calculateOrder
+  platformDiscountCodes: string[]; // English content normalized from the original source text.
+  calculationResult: any | null; // English content normalized from the original source text.
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
@@ -86,11 +86,11 @@ const checkoutSlice = createSlice({
   name: 'checkout',
   initialState,
   reducers: {
-    // Cập nhật thông tin chung (người nhận, cổng thanh toán)
+    // English content normalized from the original source text.
     setCommonInfo(state, action: PayloadAction<Partial<CommonOrderInfo>>) {
       state.commonInfo = { ...state.commonInfo, ...action.payload };
     },
-    // Cập nhật thông tin shipping
+    // English content normalized from the original source text.
     setShippingInfo(state, action: PayloadAction<{
       provinceId: string;
       districtId: string;
@@ -101,16 +101,16 @@ const checkoutSlice = createSlice({
     }>) {
       state.commonInfo.shipping = action.payload;
     },
-    // Thiết lập danh sách các đơn hàng theo shop
-    // Thiết lập thông tin sản phẩm chi tiết cho các shop
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
     setShopProducts(state, action: PayloadAction<Record<string, ProductInfo[]>>) {
       state.shopProducts = action.payload;
     },
-    // Thiết lập danh sách các đơn hàng theo shop
+    // English content normalized from the original source text.
     setShopOrders(state, action: PayloadAction<ShopOrderInfo[]>) {
       state.shopOrders = action.payload;
     },
-    // Cập nhật mã giảm giá cho một shop cụ thể
+    // English content normalized from the original source text.
     updateDiscountForShop(state, action: PayloadAction<{ shopId: string; discountCodes: string[] }>) {
       const { shopId, discountCodes } = action.payload;
       const shopIndex = state.shopOrders.findIndex(order => order.shopId === shopId);
@@ -119,9 +119,9 @@ const checkoutSlice = createSlice({
       }
     },
 
-    // Cập nhật địa chỉ cho một shop cụ thể
-    updateShopAddress(state, action: PayloadAction<{ 
-      shopId: string; 
+    // English content normalized from the original source text.
+    updateShopAddress(state, action: PayloadAction<{
+      shopId: string;
       address: {
         provinceId: number;
         districtId: number;
@@ -136,60 +136,60 @@ const checkoutSlice = createSlice({
       const { shopId, address } = action.payload;
       const shopIndex = state.shopOrders.findIndex(order => order.shopId === shopId);
       if (shopIndex !== -1) {
-        // Nếu shop đã tồn tại, cập nhật địa chỉ
+        // English content normalized from the original source text.
         state.shopOrders[shopIndex].shopAddress = address;
       } else {
-        // Nếu shop chưa tồn tại, tạo một bản ghi mới
+        // English content normalized from the original source text.
         state.shopOrders.push({
           shopId,
-          cartItemIds: [], // Khởi tạo rỗng, sẽ được cập nhật sau
-          discountCodes: [], // Khởi tạo rỗng
-          shippingFee: 0, // Khởi tạo phí vận chuyển là 0
+          cartItemIds: [], // English content normalized from the original source text.
+          discountCodes: [], // English content normalized from the original source text.
+          shippingFee: 0, // English content normalized from the original source text.
           shopAddress: address,
-          selectedShippingMethod: null, // Khởi tạo là null
+          selectedShippingMethod: null, // English content normalized from the original source text.
         });
       }
     },
 
-    // Reset state về ban đầu (sau khi thanh toán thành công hoặc hủy bỏ)
+    // English content normalized from the original source text.
     clearCheckoutState: () => initialState,
 
-    // Áp dụng voucher cho một shop cụ thể
+    // English content normalized from the original source text.
     applyVoucher(state, action: PayloadAction<{ shopId: string; voucherInfo: AppliedVoucherInfo }>) {
       const { shopId, voucherInfo } = action.payload;
       state.appliedVouchers[shopId] = voucherInfo;
-      // Cập nhật discountCodes trong shopOrders để trigger recalculation
+      // English content normalized from the original source text.
       const shopIndex = state.shopOrders.findIndex(order => order.shopId === shopId);
       if (shopIndex !== -1) {
         state.shopOrders[shopIndex].discountCodes = [voucherInfo.code];
       }
     },
 
-    // Xóa voucher cho một shop cụ thể
+    // English content normalized from the original source text.
     removeVoucher(state, action: PayloadAction<{ shopId: string }>) {
       delete state.appliedVouchers[action.payload.shopId];
-      // Cập nhật discountCodes trong shopOrders để trigger recalculation
+      // English content normalized from the original source text.
       const shopIndex = state.shopOrders.findIndex(order => order.shopId === action.payload.shopId);
       if (shopIndex !== -1) {
         state.shopOrders[shopIndex].discountCodes = [];
       }
     },
 
-    // Áp dụng voucher cho toàn sàn
+    // English content normalized from the original source text.
     applyPlatformVoucher(state, action: PayloadAction<AppliedVoucherInfo | null>) {
       state.appliedPlatformVoucher = action.payload;
-      // Cập nhật platformDiscountCodes để trigger API calculateOrder
+      // English content normalized from the original source text.
       state.platformDiscountCodes = action.payload ? [action.payload.code] : [];
     },
 
-    // Xóa voucher của sàn
+    // English content normalized from the original source text.
     removePlatformVoucher(state) {
       state.appliedPlatformVoucher = null;
-      // Reset platformDiscountCodes để trigger recalculation
+      // English content normalized from the original source text.
       state.platformDiscountCodes = [];
     },
 
-    // Cập nhật phương thức vận chuyển cho một shop
+    // English content normalized from the original source text.
     updateShippingForShop(state, action: PayloadAction<{ shopId: string; shippingMethod: ShippingMethod | null }>) {
       const { shopId, shippingMethod } = action.payload;
       const shopIndex = state.shopOrders.findIndex(order => order.shopId === shopId);
@@ -198,7 +198,7 @@ const checkoutSlice = createSlice({
       }
     },
 
-    // Cập nhật phí vận chuyển cho một shop
+    // English content normalized from the original source text.
     updateShippingFeeForShop(state, action: PayloadAction<{ shopId: string; shippingFee: number }>) {
       const { shopId, shippingFee } = action.payload;
       const shopIndex = state.shopOrders.findIndex(order => order.shopId === shopId);
@@ -207,12 +207,12 @@ const checkoutSlice = createSlice({
       }
     },
 
-    // Cập nhật mã giảm giá toàn sàn
+    // English content normalized from the original source text.
     setPlatformDiscountCodes(state, action: PayloadAction<string[]>) {
       state.platformDiscountCodes = action.payload;
     },
 
-    // Lưu kết quả tính toán từ API calculateOrder
+    // English content normalized from the original source text.
     setCalculationResult(state, action: PayloadAction<any>) {
       state.calculationResult = action.payload;
     },
@@ -242,7 +242,7 @@ export const {
 
 const selectCheckoutState = (state: RootState) => state.orders;
 
-// Selector để lấy voucher của sàn đã áp dụng
+// English content normalized from the original source text.
 export const selectAppliedPlatformVoucher = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.appliedPlatformVoucher
@@ -250,32 +250,32 @@ export const selectAppliedPlatformVoucher = createSelector(
 
 
 
-// Selector để lấy thông tin chung
+// English content normalized from the original source text.
 export const selectCommonOrderInfo = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.commonInfo
 );
 
-// Selector để lấy thông tin shipping
+// English content normalized from the original source text.
 export const selectShippingInfo = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.commonInfo.shipping
 );
 
-// Selector để lấy thông tin các đơn hàng theo shop
-// Selector để lấy thông tin sản phẩm theo shop
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 export const selectShopProducts = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.shopProducts
 );
 
-// Selector để lấy thông tin các đơn hàng theo shop
+// English content normalized from the original source text.
 export const selectShopOrders = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.shopOrders
 );
 
-// Selector để lấy địa chỉ của một shop cụ thể
+// English content normalized from the original source text.
 export const selectShopAddress = (shopId: string) => createSelector(
   [selectCheckoutState],
   (checkout) => {
@@ -284,11 +284,11 @@ export const selectShopAddress = (shopId: string) => createSelector(
   }
 );
 
-// ** Selector quan trọng: Tự động tạo request body cho API từ state **
+// English content normalized from the original source text.
 export const selectOrderCreateRequest = createSelector(
   [selectCommonOrderInfo, selectShopOrders, selectCheckoutState],
   (commonInfo, shopOrders, checkout): OrderCreateRequest | null => {
-    // Chỉ tạo request khi có đủ thông tin cần thiết
+    // English content normalized from the original source text.
     if (!commonInfo.receiver || !commonInfo.paymentGateway || shopOrders.length === 0) {
       return null;
     }
@@ -300,7 +300,7 @@ export const selectOrderCreateRequest = createSelector(
         cartItemIds: shopOrder.cartItemIds,
         discountCodes: shopOrder.discountCodes,
         shippingInfo: {
-          length: 30, // Giá trị mặc định, có thể cập nhật sau
+          length: 30, // English content normalized from the original source text.
           weight: 2000,
           width: 20,
           height: 15,
@@ -315,19 +315,19 @@ export const selectOrderCreateRequest = createSelector(
   }
 );
 
-// Selector để lấy các voucher đã áp dụng
+// English content normalized from the original source text.
 export const selectAppliedVouchers = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.appliedVouchers
 );
 
-// Selector để tính tổng số tiền giảm giá từ tất cả các voucher (shop và platform)
+// English content normalized from the original source text.
 export const selectTotalDiscountAmount = createSelector(
   [selectAppliedVouchers, selectAppliedPlatformVoucher],
   (appliedVouchers, appliedPlatformVoucher) => {
     let totalDiscount = 0;
 
-    // Tính tổng giảm giá từ voucher của các shop
+    // English content normalized from the original source text.
     totalDiscount += Object.values(appliedVouchers).reduce((total, voucher) => {
       if (voucher && typeof voucher.discountAmount === 'number') {
         return total + voucher.discountAmount;
@@ -335,7 +335,7 @@ export const selectTotalDiscountAmount = createSelector(
       return total;
     }, 0);
 
-    // Cộng thêm giảm giá từ voucher của sàn nếu có
+    // English content normalized from the original source text.
     if (appliedPlatformVoucher && typeof appliedPlatformVoucher.discountAmount === 'number') {
       totalDiscount += appliedPlatformVoucher.discountAmount;
     }
@@ -344,7 +344,7 @@ export const selectTotalDiscountAmount = createSelector(
   }
 );
 
-// Selector để tạo request body cho API calculateOrder
+// English content normalized from the original source text.
 export const selectCalculateOrderRequest = createSelector(
   [selectShopOrders, selectCheckoutState],
   (shopOrders, checkout): CalculateOrderRequest | null => {
@@ -364,13 +364,13 @@ export const selectCalculateOrderRequest = createSelector(
   }
 );
 
-// Selector để lấy kết quả tính toán
+// English content normalized from the original source text.
 export const selectCalculationResult = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.calculationResult
 );
 
-// Selector để lấy mã giảm giá toàn sàn
+// English content normalized from the original source text.
 export const selectPlatformDiscountCodes = createSelector(
   [selectCheckoutState],
   (checkout) => checkout.platformDiscountCodes

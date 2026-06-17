@@ -8,13 +8,13 @@ import {
 } from '@/types/admin/voucher.interface';
 
 export const voucherService = {
-  // Lấy danh sách tất cả voucher
+  // English content normalized from the original source text.
   async getVouchers(params: any = {}) {
     const response = await privateAxios.get(API_ENDPOINTS.DISCOUNT.GETALL, { params });
     return response.data;
   },
 
-  // Lấy thông tin voucher theo ID
+  // English content normalized from the original source text.
   async getVoucherById(id: string) {
     const response = await privateAxios.get(
       API_ENDPOINTS.DISCOUNT.GET_BY_ID.replace(':discountId', id)
@@ -22,7 +22,7 @@ export const voucherService = {
     return response.data;
   },
 
-  // Tạo voucher mới
+  // English content normalized from the original source text.
   async createVoucher(data: VoucherCreateRequest) {
     const response = await privateAxios.post(
       API_ENDPOINTS.DISCOUNT.CREATE,
@@ -31,7 +31,7 @@ export const voucherService = {
     return response.data;
   },
 
-  // Cập nhật voucher
+  // English content normalized from the original source text.
   async updateVoucher(data: VoucherUpdateRequest) {
     const response = await privateAxios.patch(
       API_ENDPOINTS.DISCOUNT.UPDATE.replace(':discountId', data.id),
@@ -40,7 +40,7 @@ export const voucherService = {
     return response.data;
   },
 
-  // Xóa voucher theo ID
+  // English content normalized from the original source text.
   async deleteVoucher(id: string) {
     const response = await privateAxios.delete(
       API_ENDPOINTS.DISCOUNT.DELETE.replace(':discountId', id)
@@ -48,7 +48,7 @@ export const voucherService = {
     return response.data;
   },
 
-  // Lấy danh sách voucher khả dụng cho người dùng
+  // English content normalized from the original source text.
   async getAvailableVouchers(params: any = {}) {
     const response = await privateAxios.get(
       API_ENDPOINTS.DISCOUNT.GUEST_GET_DISCOUNT_LIST,
@@ -57,7 +57,7 @@ export const voucherService = {
     return response.data;
   },
 
-  // Xác thực voucher
+  // English content normalized from the original source text.
   async validateVoucher(data: ValidateVoucherRequest) {
     const response = await privateAxios.post(
       API_ENDPOINTS.DISCOUNT.VALIDATE_DISCOUNT,

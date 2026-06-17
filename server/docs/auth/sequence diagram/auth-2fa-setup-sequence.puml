@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /auth/2fa/setup
+English content normalized from the original source text.
 
 actor "User" as U
 participant "AuthController" as AC

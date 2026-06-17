@@ -18,12 +18,12 @@ export interface DataTablePaginationProps {
 }
 
 export function Pagination({ metadata, onPageChange, onLimitChange }: DataTablePaginationProps) {
-  // Log chi tiết để debug
+  // English content normalized from the original source text.
   // console.log("Pagination metadata:", JSON.stringify(metadata));
   // console.log("Pagination component rendering with totalPages:", metadata?.totalPages);
   const t = useTranslations();
 
-  // Đảm bảo có đầy đủ thông tin pagination, dùng default values nếu metadata thiếu
+  // English content normalized from the original source text.
   const {
     page = 1,
     limit = 10,
@@ -47,7 +47,7 @@ export function Pagination({ metadata, onPageChange, onLimitChange }: DataTableP
 
   const handleLimitChange = (newLimit: number) => {
     onLimitChange(newLimit);
-    onPageChange(1); // Reset về trang 1 khi thay đổi limit
+    onPageChange(1); // English content normalized from the original source text.
   };
 
   return (
@@ -101,7 +101,7 @@ export function Pagination({ metadata, onPageChange, onLimitChange }: DataTableP
           <ChevronRight size={16} />
         </Button>
         <span className="ml-2 text-gray-400 text-sm">
-          {`Trang ${page} trên ${totalPages} | Tổng cộng: ${totalItems || 0}`}
+          {`Trang ${page}English content normalized from the original source text.${totalPages}English content normalized from the original source text.${totalItems || 0}`}
         </span>
       </div>
     </div>

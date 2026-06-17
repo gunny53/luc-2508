@@ -1,17 +1,17 @@
-# Quản Lý Quyền (Permission Management)
+English content normalized from the original source text.
 
-Tài liệu này mô tả cách triển khai và sử dụng các API quản lý quyền trong ứng dụng ShopSifu.
+English content normalized from the original source text.
 
-## Mô Hình Dữ Liệu
+English content normalized from the original source text.
 
 ### Permission Object
 
 ```typescript
 interface Permission {
   id: number;
-  name: string;        // Tên quyền
-  description: string; // Mô tả quyền
-  module: string;      // Module/phần của ứng dụng
+  name: English content normalized from the original source text.
+  description: English content normalized from the original source text.
+  module: English content normalized from the original source text.
   path: string;        // API path
   method: string;      // HTTP method (GET, POST, PUT, DELETE, etc.)
   createdById: string;
@@ -25,10 +25,10 @@ interface Permission {
 
 ## API Endpoints
 
-### Lấy Danh Sách Quyền (Phân Trang)
+English content normalized from the original source text.
 
 ```typescript
-// Tham số
+English content normalized from the original source text.
 interface PaginationRequest {
   page: number;
   limit: number;
@@ -37,11 +37,11 @@ interface PaginationRequest {
   sortOrder?: 'asc' | 'desc';
 }
 
-// Gọi API
+English content normalized from the original source text.
 const response = await permissionService.getAll(paginationParams, abortSignal);
 ```
 
-### Tạo Quyền Mới
+English content normalized from the original source text.
 
 ```typescript
 interface PerCreateRequest {
@@ -52,11 +52,11 @@ interface PerCreateRequest {
   description?: string;
 }
 
-// Gọi API
+English content normalized from the original source text.
 const response = await permissionService.create(permissionData, abortSignal);
 ```
 
-### Cập Nhật Quyền
+English content normalized from the original source text.
 
 ```typescript
 interface PerUpdateRequest {
@@ -67,54 +67,54 @@ interface PerUpdateRequest {
   description?: string;
 }
 
-// Gọi API
+English content normalized from the original source text.
 const response = await permissionService.update(permissionId, updateData, abortSignal);
 ```
 
-### Xóa Quyền
+English content normalized from the original source text.
 
 ```typescript
-// Gọi API
+English content normalized from the original source text.
 const response = await permissionService.delete(permissionId, abortSignal);
 ```
 
-## Hook Quản Lý Quyền
+English content normalized from the original source text.
 
-Chúng tôi đã tạo một custom hook `usePermissions` để quản lý trạng thái và tương tác với API:
+English content normalized from the original source text. `usePermissions` English content normalized from the original source text.
 
 ```typescript
 const {
-  permissions,          // Danh sách quyền hiện tại
-  loading,              // Trạng thái loading
-  pagination,           // Thông tin phân trang
-  handleSearch,         // Xử lý tìm kiếm
-  handlePageChange,     // Xử lý chuyển trang
-  handleLimitChange,    // Xử lý thay đổi số lượng item/trang
-  isModalOpen,          // Trạng thái modal
-  selectedPermission,   // Quyền được chọn để sửa
-  handleCreate,         // Tạo quyền mới
-  handleUpdate,         // Cập nhật quyền
-  handleDelete,         // Xóa quyền
-  handleOpenModal,      // Mở modal
-  handleCloseModal,     // Đóng modal
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
+  English content normalized from the original source text.
 } = usePermissions();
 ```
 
-## Quản Lý Lỗi và Tối Ưu Hiệu Suất
+English content normalized from the original source text.
 
-1. **AbortSignal và Timeout**:
-   - Tất cả các API calls đều sử dụng AbortSignal để có thể hủy khi cần
-   - Có timeout 8 giây để tránh chờ đợi vô thời hạn
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
 2. **Debounced Search**:
-   - Tìm kiếm có debounce 500ms để giảm số lượng API calls
+   - English content normalized from the original source text
 
 3. **Memoization**:
-   - Tất cả các callback functions đều được memoized để tránh re-render không cần thiết
+   - English content normalized from the original source text
 
-## Ví Dụ Sử Dụng
+English content normalized from the original source text.
 
-### Tạo Quyền Mới
+English content normalized from the original source text.
 
 ```typescript
 const handleCreatePermission = async (data) => {
@@ -133,7 +133,7 @@ const handleCreatePermission = async (data) => {
 };
 ```
 
-### Cập Nhật Quyền
+English content normalized from the original source text.
 
 ```typescript
 const handleUpdatePermission = async (id, data) => {
@@ -154,28 +154,28 @@ const handleUpdatePermission = async (id, data) => {
 
 ## Best Practices
 
-1. **Luôn Xử Lý Lỗi**:
-   - Bọc các API calls trong try/catch
-   - Sử dụng AbortSignal để hủy các request không cần thiết
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
-2. **Quản Lý Trạng Thái Tốt**:
-   - Sử dụng memoized callbacks để tránh re-render không cần thiết
-   - Dùng useServerDataTable cho logic phân trang và tìm kiếm
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
 3. **UX**:
-   - Hiển thị trạng thái loading khi đang gọi API
-   - Hiển thị thông báo toast cho các tác vụ thành công/thất bại
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
-## Các Vấn Đề Phổ Biến và Cách Xử Lý
+English content normalized from the original source text.
 
-1. **API Chậm**:
-   - Đã triển khai timeout 8 giây
-   - Sử dụng AbortController để hủy yêu cầu khi component unmount
-   
-2. **Cache và Tối Ưu**:
-   - Có thể triển khai thêm cache cho các yêu cầu lặp lại
-   - Xem xét sử dụng React Query hoặc SWR cho quản lý dữ liệu nâng cao
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
 
-3. **Xử Lý Lỗi**:
-   - Đã triển khai error handling cơ bản
-   - Xem xét thêm retry logic cho các lỗi mạng tạm thời
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text
+
+English content normalized from the original source text.
+   - English content normalized from the original source text
+   - English content normalized from the original source text

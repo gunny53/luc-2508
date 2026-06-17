@@ -34,7 +34,7 @@ export const UpdateProfileSchema = (t: Translate) =>
   z.object({
     // firstName: z.string().min(1, { message: t('schema.validation.profile.firstNameRequired') }),
     // lastName: z.string().min(1, { message: t('schema.validation.profile.lastNameRequired') }),
-    name: z.string().min(3, { message: t('schema.validation.user.usernameMinLength') }), // ✅ Thêm dòng này
+    name: z.string().min(3, { message: t('schema.validation.user.usernameMinLength') }), // English content normalized from the original source text.
     phoneNumber: z.string().optional(),
     address: z.string().optional(),
     avatar: z.string().optional(),
@@ -79,10 +79,10 @@ export const userUpdateSchema = (t: Translate) => z.object({
   phoneNumber: z.string().min(1, t('admin.users.validation.phoneRequired')),
   roleId: z.string().min(1, t('admin.users.validation.roleRequired')),
   status: z.string(),
-  // Cho phép password trống hoặc phải dài tối thiểu 8 ký tự nếu có giá trị
+  // English content normalized from the original source text.
 });
 
-// ✅ Có return schema rõ ràng
+// English content normalized from the original source text.
 export const useUpdatePasswordSchema = (t: Translate) => z.object({
   password: z.string().min(1, { message: t('schema.validation.password.currentRequired') }),
   newPassword: passwordValidation(t),

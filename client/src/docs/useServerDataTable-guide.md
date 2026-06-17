@@ -1,17 +1,17 @@
-# Hướng dẫn sử dụng useServerDataTable Hook
+English content normalized from the original source text.
 
-## Giới thiệu
+English content normalized from the original source text.
 
-Hook `useServerDataTable` là một giải pháp hoàn chỉnh để xử lý các bảng dữ liệu với phân trang phía server, tìm kiếm và sắp xếp. Hook này được thiết kế để làm việc với API cung cấp dữ liệu theo trang và metadata phân trang.
+English content normalized from the original source text.
 
-## Cấu trúc dữ liệu API yêu cầu
+English content normalized from the original source text.
 
-API phải trả về dữ liệu trong định dạng sau:
+English content normalized from the original source text.
 
 ```typescript
 {
-  data: T[],       // Mảng các đối tượng dữ liệu
-  metadata: {      // Thông tin metadata phân trang
+  data: English content normalized from the original source text.
+  metadata: English content normalized from the original source text.
     totalItems: number,
     page: number,
     limit: number,
@@ -25,21 +25,21 @@ API phải trả về dữ liệu trong định dạng sau:
 }
 ```
 
-## Triển khai
+English content normalized from the original source text.
 
-### 1. Tạo API Adapter
+English content normalized from the original source text.
 
-Nếu API của bạn không trả về dữ liệu đúng định dạng trên, sử dụng adapter để chuyển đổi:
+English content normalized from the original source text.
 
 ```typescript
 import { createDataTableAdapter } from '@/utils/api-adapters';
 import { yourService } from '@/services/yourService';
 
-// Tạo adapter cho service của bạn
+English content normalized from the original source text.
 const adaptedFetchFunction = createDataTableAdapter(yourService.getAll);
 ```
 
-### 2. Sử dụng hook trong component
+English content normalized from the original source text.
 
 ```typescript
 import { useServerDataTable } from '@/hooks/useServerDataTable';
@@ -54,19 +54,19 @@ function useYourEntityHook() {
     handleSearch,
     handleSortChange,
   } = useServerDataTable({
-    fetchData: adaptedFetchFunction, // Hàm fetch dữ liệu (đã qua adapter)
-    mapResponseToData: (item) => ({  // Hàm chuyển đổi dữ liệu (tùy chọn)
-      // Chuyển đổi từ item gốc sang định dạng hiển thị
+    fetchData: English content normalized from the original source text.
+    mapResponseToData: English content normalized from the original source text.
+      English content normalized from the original source text.
       id: item.id,
       name: item.name,
-      // ... các trường khác
+      English content normalized from the original source text.
     }),
-    initialSort: { sortBy: 'id', sortOrder: 'asc' }, // Sắp xếp mặc định
-    defaultLimit: 10, // Số item mỗi trang mặc định
+    initialSort: English content normalized from the original source text.
+    defaultLimit: English content normalized from the original source text.
   });
 
-  // Các hàm xử lý nghiệp vụ khác như tạo, cập nhật, xóa
-  
+  English content normalized from the original source text.
+
   return {
     data,
     loading,
@@ -74,12 +74,12 @@ function useYourEntityHook() {
     handlePageChange,
     handleLimitChange,
     handleSearch,
-    // Các hàm xử lý khác
+    English content normalized from the original source text.
   };
 }
 ```
 
-### 3. Sử dụng trong React Component
+English content normalized from the original source text.
 
 ```tsx
 function YourEntityTable() {
@@ -91,12 +91,12 @@ function YourEntityTable() {
     handleLimitChange,
     handleSearch
   } = useYourEntityHook();
-  
+
   const table = useDataTable({
     data,
     columns: yourColumns
   });
-  
+
   return (
     <div>
       <SearchInput
@@ -104,7 +104,7 @@ function YourEntityTable() {
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search..."
       />
-      
+
       <DataTable
         table={table}
         columns={yourColumns}
@@ -120,25 +120,25 @@ function YourEntityTable() {
 }
 ```
 
-## Các tính năng
+English content normalized from the original source text.
 
-1. **Phân trang phía server**: Quản lý trạng thái trang và dữ liệu trên server.
-2. **Debounced Search**: Tìm kiếm với debounce để tránh quá nhiều request.
-3. **Sắp xếp**: Hỗ trợ sắp xếp theo nhiều trường khác nhau.
-4. **Xử lý lỗi**: Tích hợp với hệ thống hiển thị thông báo lỗi.
-5. **Chuyển đổi dữ liệu**: Có thể chuyển đổi dữ liệu từ API sang định dạng hiển thị thông qua mapResponseToData.
+English content normalized from the original source text.
+2. **Debounced Search**: English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
+English content normalized from the original source text.
 
-## Các vấn đề thường gặp
+English content normalized from the original source text.
 
-1. **API không trả về đúng định dạng**: Sử dụng adapter `createDataTableAdapter` để chuyển đổi.
+English content normalized from the original source text.
 
-2. **Dữ liệu không cập nhật sau khi thêm/xóa/sửa**: Gọi hàm `handleSortChange` với giá trị hiện tại để buộc refresh dữ liệu.
+English content normalized from the original source text.
 
-3. **Không hiển thị thông tin phân trang đúng**: Đảm bảo API trả về đầy đủ các trường metadata cần thiết.
+English content normalized from the original source text.
 
-## Lưu ý triển khai
+English content normalized from the original source text.
 
-- Luôn kiểm tra cấu trúc dữ liệu trả về từ API bằng console.log trước khi triển khai.
-- Sử dụng TypeScript để đảm bảo tính nhất quán của dữ liệu.
-- Bọc các lệnh gọi API trong try-catch để xử lý lỗi.
-- Sử dụng API adapters khi cần để duy trì tính linh hoạt khi API thay đổi.
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text

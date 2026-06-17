@@ -16,7 +16,7 @@ export class RedisService implements OnModuleDestroy {
 
   constructor(private readonly configService: ConfigService) {
     const redisUrl = this.configService.get<string>('redis.url') || 'redis://localhost:6379'
-    this.keyPrefix = this.configService.get<string>('redis.keyPrefix') || 'shopsifu:'
+    this.keyPrefix = this.configService.get<string>('redis.keyPrefix') || 'ecsite:'
 
     this.client = new Redis(redisUrl, {
       maxRetriesPerRequest: 3,
@@ -40,16 +40,12 @@ export class RedisService implements OnModuleDestroy {
     })
   }
 
-  /**
-   * Tạo cache key với prefix
-   */
+  /* English content normalized from the original source text. */
   private buildKey(key: string): string {
     return `${this.keyPrefix}${key}`
   }
 
-  /**
-   * Set giá trị vào cache
-   */
+  /* English content normalized from the original source text. */
   async set(key: string, value: any, ttl?: number): Promise<void> {
     try {
       const cacheKey = this.buildKey(key)
@@ -65,13 +61,11 @@ export class RedisService implements OnModuleDestroy {
       this.logger.debug(`Cached key: ${cacheKey} with TTL: ${cacheTtl}s`)
     } catch (error) {
       this.logger.error(`Failed to set cache for key ${key}:`, error)
-      // Không throw error để tránh break application
+      // English content normalized from the original source text.
     }
   }
 
-  /**
-   * Lấy giá trị từ cache
-   */
+  /* English content normalized from the original source text. */
   async get<T = any>(key: string): Promise<T | null> {
     try {
       const cacheKey = this.buildKey(key)
@@ -90,9 +84,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Xóa key khỏi cache
-   */
+  /* English content normalized from the original source text. */
   async del(key: string): Promise<boolean> {
     try {
       const cacheKey = this.buildKey(key)
@@ -105,9 +97,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Kiểm tra key có tồn tại không
-   */
+  /* English content normalized from the original source text. */
   async exists(key: string): Promise<boolean> {
     try {
       const cacheKey = this.buildKey(key)
@@ -119,9 +109,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Lấy TTL của key
-   */
+  /* English content normalized from the original source text. */
   async ttl(key: string): Promise<number> {
     try {
       const cacheKey = this.buildKey(key)
@@ -146,9 +134,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Tìm keys theo pattern
-   */
+  /* English content normalized from the original source text. */
   async keys(pattern: string): Promise<string[]> {
     try {
       const searchPattern = this.buildKey(pattern)
@@ -161,9 +147,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Xóa nhiều keys theo pattern
-   */
+  /* English content normalized from the original source text. */
   async deleteByPattern(pattern: string): Promise<number> {
     try {
       const keys = await this.keys(pattern)
@@ -179,9 +163,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Increment số
-   */
+  /* English content normalized from the original source text. */
   async increment(key: string, amount: number = 1): Promise<number> {
     try {
       const cacheKey = this.buildKey(key)
@@ -192,9 +174,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Decrement số
-   */
+  /* English content normalized from the original source text. */
   async decrement(key: string, amount: number = 1): Promise<number> {
     try {
       const cacheKey = this.buildKey(key)
@@ -205,9 +185,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Thử acquire 1 lock đơn giản qua SET NX EX
-   */
+  /* English content normalized from the original source text. */
   async tryAcquireLock(lockKey: string, ttlSeconds: number = 10): Promise<boolean> {
     try {
       const key = this.buildKey(`lock:${lockKey}`)
@@ -219,9 +197,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Giải phóng lock (best-effort)
-   */
+  /* English content normalized from the original source text. */
   async releaseLock(lockKey: string): Promise<void> {
     try {
       const key = this.buildKey(`lock:${lockKey}`)
@@ -243,9 +219,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Lấy Redis client để sử dụng advanced operations
-   */
+  /* English content normalized from the original source text. */
   getClient(): Redis {
     return this.client
   }
@@ -282,10 +256,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * ♻️ Graceful Shutdown - Cleanup khi module bị destroy
-   * Đảm bảo connections được đóng đúng cách
-   */
+  /* English content normalized from the original source text. */
   async onModuleDestroy() {
     try {
       this.logger.log('🔄 Initiating graceful Redis shutdown...')
@@ -305,7 +276,7 @@ export class RedisService implements OnModuleDestroy {
     } catch (error) {
       this.logger.error('❌ Error during Redis graceful shutdown:', error)
 
-      // Force disconnect nếu graceful shutdown fails
+      // English content normalized from the original source text.
       try {
         this.client.disconnect()
         this.logger.warn('⚠️ Redis connection force disconnected')
@@ -315,10 +286,7 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * 🛡️ Advanced error handling với fallback strategies
-   * Thử lại operation với backoff strategy
-   */
+  /* English content normalized from the original source text. */
   async withRetry<T>(operation: () => Promise<T>, maxRetries: number = 3, backoffMs: number = 1000): Promise<T | null> {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
@@ -340,9 +308,7 @@ export class RedisService implements OnModuleDestroy {
     return null
   }
 
-  /**
-   * 📊 Health check với detailed status
-   */
+  /* English content normalized from the original source text. */
   async getHealthStatus(): Promise<{
     status: 'healthy' | 'unhealthy' | 'degraded'
     details: any

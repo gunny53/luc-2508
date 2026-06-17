@@ -28,9 +28,7 @@ import { I18nTranslations } from 'src/shared/languages/generated/i18n.generated'
 import { PREFIX_PAYMENT_CODE } from 'src/shared/constants/other.constant'
 import { PaymentStatus } from 'src/shared/constants/payment.constant'
 
-/**
- * Service điều phối nghiệp vụ VNPay, không truy vấn DB trực tiếp
- */
+/* English content normalized from the original source text. */
 @Injectable()
 @WebSocketGateway({ namespace: 'payment' })
 export class VNPayService {
@@ -44,9 +42,7 @@ export class VNPayService {
     private readonly sharedWebsocketRepository: SharedWebsocketRepository
   ) {}
 
-  /**
-   * Lấy danh sách ngân hàng hỗ trợ VNPay
-   */
+  /* English content normalized from the original source text. */
   async getBankList(): Promise<VNPayBankListResType> {
     try {
       const banks = await this.vnpayService.getBankList()
@@ -65,9 +61,7 @@ export class VNPayService {
     }
   }
 
-  /**
-   * Tạo URL thanh toán VNPay
-   */
+  /* English content normalized from the original source text. */
   async createPayment(paymentData: CreateVNPayPaymentBodyType): Promise<CreateVNPayPaymentResType> {
     try {
       const paymentId = paymentData.orderId
@@ -98,16 +92,14 @@ export class VNPayService {
     }
   }
 
-  /**
-   * Xác thực returnUrl từ VNPay
-   */
+  /* English content normalized from the original source text. */
   async verifyReturnUrl(queryData: VNPayReturnUrlType): Promise<VNPayVerifyResType> {
     try {
       const verify = await this.vnpayService.verifyReturnUrl(queryData)
       if (verify.isSuccess && verify.isVerified && verify.vnp_ResponseCode === '00') {
         const { userId, paymentId } = await this.vnpayRepo.processVNPayWebhook(queryData)
 
-        // Emit success event cho payment room (chỉ client nào join payment room mới nhận)
+        // English content normalized from the original source text.
         this.server.to(generateRoomPaymentId(paymentId)).emit('payment', {
           status: 'success',
           gateway: 'vnpay',
@@ -133,9 +125,7 @@ export class VNPayService {
     }
   }
 
-  /**
-   * Truy vấn kết quả thanh toán
-   */
+  /* English content normalized from the original source text. */
   async queryDr(queryData: VNPayQueryDrBodyType): Promise<VNPayQueryDrResType> {
     try {
       const queryRequest = {
@@ -168,9 +158,7 @@ export class VNPayService {
     }
   }
 
-  /**
-   * Hoàn tiền giao dịch
-   */
+  /* English content normalized from the original source text. */
   async refund(refundData: VNPayRefundBodyType): Promise<VNPayRefundResType> {
     try {
       const refundRequest = {
@@ -206,21 +194,19 @@ export class VNPayService {
     }
   }
 
-  /**
-   * Xử lý IPN callback từ VNPay (chuẩn hóa, chỉ điều phối)
-   */
+  /* English content normalized from the original source text. */
   async processIpnCall(queryData: VNPayReturnUrlType): Promise<{ RspCode: string; Message: string }> {
     try {
-      // 1. Kiểm tra checksum (Test Case 6)
+      // English content normalized from the original source text.
       const verify = await this.vnpayService.verifyIpnCall(queryData)
       if (!verify.isVerified) {
         return { RspCode: '97', Message: 'Invalid Checksum' }
       }
 
-      // 2. Tìm payment và orders (Test Case 3)
+      // English content normalized from the original source text.
       let payment, orders, paymentId
       try {
-        // Sử dụng verify.vnp_Amount (đã được thư viện xử lý - chia 100)
+        // English content normalized from the original source text.
         const processedData = { ...queryData, vnp_Amount: String(verify.vnp_Amount) }
         const result = await this.vnpayRepo.verifyIpnCall(processedData)
         payment = result.payment
@@ -235,28 +221,28 @@ export class VNPayService {
         throw err
       }
 
-      // 3. Kiểm tra payment đã xử lý chưa (Test Case 4)
+      // English content normalized from the original source text.
       if (payment.status === PaymentStatus.SUCCESS || payment.status === PaymentStatus.FAILED) {
         return { RspCode: '02', Message: 'Order already confirmed' }
       }
 
-      // 4. Xử lý trạng thái giao dịch (Test Case 1, 2)
+      // English content normalized from the original source text.
       if (queryData.vnp_ResponseCode === '00') {
-        // Thành công
+        // English content normalized from the original source text.
         await this.vnpayRepo.updatePaymentAndOrdersOnSuccess(paymentId, orders)
 
-        // Emit success event cho payment room (chỉ client nào join payment room mới nhận)
+        // English content normalized from the original source text.
         this.server.to(generateRoomPaymentId(paymentId)).emit('payment', {
           status: 'success',
           gateway: 'vnpay',
           paymentId
         })
       } else {
-        // Không thành công - chỉ update DB, không emit event
+        // English content normalized from the original source text.
         await this.vnpayRepo.updatePaymentAndOrdersOnFailed(paymentId, orders)
-        // Không emit event khi thất bại (đồng nhất với Sepay)
+        // English content normalized from the original source text.
       }
-      // Trả về Confirm Success cho mọi trường hợp hợp lệ
+      // English content normalized from the original source text.
       return { RspCode: '00', Message: 'Confirm Success' }
     } catch (error) {
       console.error('VNPay IPN processing failed:', error)

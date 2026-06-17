@@ -8,125 +8,125 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Quản Lý Thương Hiệu - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Người dùng yêu cầu thao tác thương hiệu;
+:English content normalized from the original source text;
 
-if (Loại thao tác?) then (GET /brands - Lấy danh sách)
-  :Trích xuất pagination parameters;
-  :Lấy ngôn ngữ hiện tại từ I18nContext;
-  :Thực thi list query với pagination;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
-  Logic Truy Vấn Database:
+  English content normalized from the original source text.
   • WHERE deletedAt IS NULL
   • Include brandTranslations
   • Language-specific translations
   • ORDER BY createdAt DESC
-  • Pagination với metadata
+  • English content normalized from the original source text
   end note
-  :Áp dụng dịch thuật theo ngôn ngữ;
-  :Tính toán pagination metadata;
-  :Trả về danh sách brands với metadata;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 
-elseif (GET /brands/:brandId - Chi tiết thương hiệu)
-  :Trích xuất brandId từ params;
-  :Lấy ngôn ngữ hiện tại từ I18nContext;
-  :Thực thi findById query;
-  if (Brand được tìm thấy?) then (có)
-    :Load brand với translations;
-    :Áp dụng dịch thuật theo ngôn ngữ;
-    :Trả về brand detail;
-  else (không)
-    :Ném NotFoundRecordException;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (POST /brands - Tạo thương hiệu mới)
-  :Người dùng tạo thương hiệu mới;
-  :Authenticate user với @ActiveUser();
-  :Trích xuất {name, logo} từ body;
-  :Validate dữ liệu brand;
-  if (Dữ liệu hợp lệ?) then (có)
-    :Thực thi create operation;
-    :Tạo brand với audit fields;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     :Include brandTranslations;
-    :Trả về brand đã tạo;
-  else (không)
-    :Ném ValidationException;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (PUT /brands/:brandId - Cập nhật thương hiệu)
-  :Người dùng cập nhật thương hiệu;
-  :Authenticate user với @ActiveUser();
-  :Trích xuất brandId từ params;
-  :Trích xuất {name, logo} từ body;
-  :Validate dữ liệu brand;
-  if (Dữ liệu hợp lệ?) then (có)
-    :Thực thi update operation;
-    :Cập nhật brand với audit fields;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     :Include brandTranslations;
-    :Trả về brand đã cập nhật;
-  else (không)
-    :Ném ValidationException;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (DELETE /brands/:brandId - Xóa thương hiệu)
-  :Người dùng xóa thương hiệu;
-  :Authenticate user với @ActiveUser();
-  :Trích xuất brandId từ params;
-  :Thực thi soft delete operation;
-  :Cập nhật deletedAt field;
-  :Cập nhật deletedById;
-  :Trả về success response;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 
-elseif (POST /brand-translations - Tạo translation)
-  :Người dùng tạo translation;
-  :Authenticate user với @ActiveUser();
-  :Trích xuất {brandId, languageId, name, description} từ body;
-  :Validate dữ liệu translation;
-  if (Dữ liệu hợp lệ?) then (có)
-    :Kiểm tra unique constraint;
-    if (Translation đã tồn tại?) then (có)
-      :Ném BrandTranslationAlreadyExistsException;
-    else (không)
-      :Thực thi create operation;
-      :Tạo translation với audit fields;
-      :Trả về translation đã tạo;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Ném ValidationException;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (PUT /brand-translations/:brandTranslationId - Cập nhật translation)
-  :Người dùng cập nhật translation;
-  :Authenticate user với @ActiveUser();
-  :Trích xuất brandTranslationId từ params;
-  :Trích xuất {brandId, languageId, name, description} từ body;
-  :Validate dữ liệu translation;
-  if (Dữ liệu hợp lệ?) then (có)
-    :Thực thi update operation;
-    :Cập nhật translation với audit fields;
-    :Trả về translation đã cập nhật;
-  else (không)
-    :Ném ValidationException;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (DELETE /brand-translations/:brandTranslationId - Xóa translation)
-  :Người dùng xóa translation;
-  :Authenticate user với @ActiveUser();
-  :Trích xuất brandTranslationId từ params;
-  :Thực thi soft delete operation;
-  :Cập nhật deletedAt field;
-  :Cập nhật deletedById;
-  :Trả về success response;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 
-else (Thao tác không hợp lệ)
-  :Ném InvalidOperationException;
+else (No)
+  :English content normalized from the original source text;
 endif
 
-:Tạo localized success message;
-:Trả về JSON response với metadata;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 
 stop
 

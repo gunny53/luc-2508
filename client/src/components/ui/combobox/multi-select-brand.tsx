@@ -27,14 +27,14 @@ interface MultiSelectBrandProps {
 export function MultiSelectBrand({
   selectedBrands = [],
   onSelectionChange,
-  placeholder = "Chọn thương hiệu...",
+  placeholder = "English content normalized from the original source text.",
   className,
   disabled = false
 }: MultiSelectBrandProps) {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { brands, loading } = useCbbBrand();
-  
+
   // Filter brands based on search term
   const filteredBrands = brands.filter(brand =>
     brand.label.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,7 +42,7 @@ export function MultiSelectBrand({
 
   const handleSelect = (brand: BrandOption) => {
     const isSelected = selectedBrands.find(item => item.value === brand.value);
-    
+
     if (isSelected) {
       // Remove from selection
       const newSelection = selectedBrands.filter(item => item.value !== brand.value);
@@ -103,7 +103,7 @@ export function MultiSelectBrand({
                   ))}
                   {selectedBrands.length > 3 && (
                     <Badge variant="secondary" className="text-xs">
-                      +{selectedBrands.length - 3} khác
+                      +{selectedBrands.length - 3} English content normalized from the original source text.
                     </Badge>
                   )}
                 </>
@@ -117,7 +117,7 @@ export function MultiSelectBrand({
             <div className="flex items-center border-b px-3">
               <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
               <Input
-                placeholder="Tìm kiếm thương hiệu..."
+                placeholder="English content normalized from the original source text."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -127,7 +127,7 @@ export function MultiSelectBrand({
               {loading ? (
                 <div className="flex items-center justify-center py-6">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span className="ml-2 text-sm text-muted-foreground">Đang tải...</span>
+                  <span className="ml-2 text-sm text-muted-foreground">English content normalized from the original source text.</span>
                 </div>
               ) : (
                 <>
@@ -139,13 +139,13 @@ export function MultiSelectBrand({
                         onClick={clearAll}
                         className="w-full text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
-                        Xóa tất cả ({selectedBrands.length})
+                        English content normalized from the original source text.{selectedBrands.length})
                       </Button>
                     </div>
                   )}
                   <CommandGroup>
                     {filteredBrands.length === 0 ? (
-                      <CommandEmpty>Không tìm thấy thương hiệu nào.</CommandEmpty>
+                      <CommandEmpty>English content normalized from the original source text.</CommandEmpty>
                     ) : (
                       filteredBrands.map((brand) => {
                         const isSelected = selectedBrands.find(item => item.value === brand.value);
@@ -189,12 +189,12 @@ export function MultiSelectBrand({
           </Command>
         </PopoverContent>
       </Popover>
-      
+
       {/* Display selected brands below */}
       {selectedBrands.length > 0 && (
         <div className="mt-2 space-y-2">
           <div className="text-sm text-muted-foreground">
-            Đã chọn {selectedBrands.length} thương hiệu:
+            English content normalized from the original source text. {selectedBrands.length} English content normalized from the original source text.
           </div>
           <div className="flex flex-wrap gap-1">
             {selectedBrands.map((brand) => (

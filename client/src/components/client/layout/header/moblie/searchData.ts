@@ -1,7 +1,7 @@
 export const allSuggestions = [
-  'Điện thoại Samsung',
-  'Điện thoại iPhone',
-  'Điện thoại Xiaomi',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
   'MacBook Pro M2',
   'MacBook Air M1',
   'Tai nghe Sony WH-1000XM4',
@@ -10,23 +10,23 @@ export const allSuggestions = [
   'iPad Air 5',
   'Apple Watch Series 8',
   'Apple Watch SE',
-  'Bàn phím cơ',
-  'Bàn phím gaming',
-  'Chuột gaming',
-  'Chuột không dây',
-  'Màn hình Dell',
-  'Màn hình gaming',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
   'Laptop gaming',
-  'Laptop văn phòng',
+  'English content normalized from the original source text.',
   'PC gaming'
 ];
 
-// Danh sách danh mục phổ biến với thứ tự ưu tiên
+// English content normalized from the original source text.
 export const popularCategories = [
-  { order: 1, name: 'Điện thoại' },
+  { order: 1, name: 'English content normalized from the original source text.' },
   { order: 2, name: 'Laptop' },
-  { order: 3, name: 'Máy tính bảng' },
+  { order: 3, name: 'English content normalized from the original source text.' },
   { order: 4, name: 'Tai nghe' },
-  { order: 5, name: 'Đồng hồ thông minh' },
-  { order: 6, name: 'Phụ kiện' }
+  { order: 5, name: 'English content normalized from the original source text.' },
+  { order: 6, name: 'English content normalized from the original source text.' }
 ];

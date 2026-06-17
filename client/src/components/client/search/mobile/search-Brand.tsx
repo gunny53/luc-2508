@@ -10,10 +10,8 @@ export default function SearchBrand() {
   return (
     <div className="bg-white rounded-md shadow-sm border p-4">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-red-600 text-sm font-semibold uppercase">Thương hiệu nổi bật</h2>
-        <Link href="/brands" className="text-sm text-muted-foreground hover:underline">
-          Xem tất cả
-        </Link>
+        <h2 className="text-red-600 text-sm font-semibold uppercase">English content normalized from the original source text.</h2>
+        <Link href="/brands" className="text-sm text-muted-foreground hover:underline">English content normalized from the original source text.</Link>
       </div>
 
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">

@@ -26,27 +26,27 @@ export class HttpExceptionFilter extends BaseExceptionFilter {
     const status = exception.getStatus()
     const exceptionResponse = exception.getResponse() as any
 
-    // Lấy language từ request header hoặc query parameter
+    // English content normalized from the original source text.
     const lang = request.headers['accept-language'] || request.query.lang || 'en'
     const language = Array.isArray(lang) ? lang[0] : lang
 
-    // Kiểm tra nếu message là translation key (có dạng 'global.global.error.XXX')
+    // English content normalized from the original source text.
     if (exceptionResponse.message) {
       try {
         let translatedMessage: any
 
-        // Xử lý trường hợp message là string
+        // English content normalized from the original source text.
         if (typeof exceptionResponse.message === 'string') {
           const messageKey = exceptionResponse.message
 
-          // Kiểm tra xem có phải là translation key không
+          // English content normalized from the original source text.
           if (messageKey.includes('.')) {
             translatedMessage = await this.i18n.translate(messageKey as keyof I18nTranslations, { lang: language })
           } else {
             translatedMessage = messageKey
           }
         }
-        // Xử lý trường hợp message là array (validation errors)
+        // English content normalized from the original source text.
         else if (Array.isArray(exceptionResponse.message)) {
           translatedMessage = await Promise.all(
             exceptionResponse.message.map(async (error: any) => ({
@@ -58,12 +58,12 @@ export class HttpExceptionFilter extends BaseExceptionFilter {
             }))
           )
         }
-        // Trường hợp khác, giữ nguyên
+        // English content normalized from the original source text.
         else {
           translatedMessage = exceptionResponse.message
         }
 
-        // Cập nhật response với message đã được translate
+        // English content normalized from the original source text.
         const errorResponse = {
           message: translatedMessage,
           error: exceptionResponse.error || exception.message,
@@ -73,7 +73,7 @@ export class HttpExceptionFilter extends BaseExceptionFilter {
         return response.status(status).json(errorResponse)
       } catch (translateError) {
         this.logger.warn(`Failed to translate message: ${JSON.stringify(exceptionResponse.message)}`, translateError)
-        // Nếu không translate được, giữ nguyên message gốc
+        // English content normalized from the original source text.
       }
     }
 

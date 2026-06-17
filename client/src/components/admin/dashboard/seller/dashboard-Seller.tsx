@@ -2,9 +2,9 @@
 
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { 
-  Store, 
-  Package, 
+import {
+  Store,
+  Package,
   DollarSign,
   ShoppingCart,
   TrendingUp,
@@ -23,40 +23,40 @@ import { useDbSeller } from '../hooks/useDbSeller';
 export default function DashboardSeller() {
   const { sellerStats, discountStats, refreshStats } = useDbSeller();
 
-  // Stats cards data cho đơn hàng
+  // English content normalized from the original source text.
   const orderStatsCards = [
     {
-      title: 'Tổng số đơn hàng',
+      title: 'English content normalized from the original source text.',
       value: sellerStats.totalOrders.toString(),
       icon: <ShoppingCart className="w-6 h-6" />,
       color: 'blue'
     },
     {
-      title: 'Chưa thanh toán',
+      title: 'English content normalized from the original source text.',
       value: sellerStats.pendingPayment.toString(),
       icon: <Clock className="w-6 h-6" />,
       color: 'orange'
     },
     {
-      title: 'Chờ đóng gói',
+      title: 'English content normalized from the original source text.',
       value: sellerStats.pendingPackaging.toString(),
       icon: <Package className="w-6 h-6" />,
       color: 'purple'
     },
     {
-      title: 'Chờ giao hàng',
+      title: 'English content normalized from the original source text.',
       value: sellerStats.pendingDelivery.toString(),
       icon: <Truck className="w-6 h-6" />,
       color: 'blue'
     },
     {
-      title: 'Đã giao',
+      title: 'English content normalized from the original source text.',
       value: sellerStats.delivered.toString(),
       icon: <CheckCircle className="w-6 h-6" />,
       color: 'green'
     },
     {
-      title: 'Đã hủy',
+      title: 'English content normalized from the original source text.',
       value: sellerStats.cancelled.toString(),
       icon: <XCircle className="w-6 h-6" />,
       color: 'red'
@@ -66,31 +66,31 @@ export default function DashboardSeller() {
   // Stats cards data cho discount
   const discountStatsCards = [
     {
-      title: 'Tổng số khuyến mãi',
+      title: 'English content normalized from the original source text.',
       value: discountStats.totalDiscounts.toString(),
       icon: <Gift className="w-6 h-6" />,
       color: 'purple'
     },
     {
-      title: 'Đang hoạt động',
+      title: 'English content normalized from the original source text.',
       value: discountStats.activeDiscounts.toString(),
       icon: <Tag className="w-6 h-6" />,
       color: 'green'
     },
     {
-      title: 'Hết hạn',
+      title: 'English content normalized from the original source text.',
       value: discountStats.expiredDiscounts.toString(),
       icon: <Clock className="w-6 h-6" />,
       color: 'red'
     },
     {
-      title: 'Khuyến mãi shop',
+      title: 'English content normalized from the original source text.',
       value: discountStats.shopDiscounts.toString(),
       icon: <Store className="w-6 h-6" />,
       color: 'blue'
     },
     {
-      title: 'Khuyến mãi sản phẩm',
+      title: 'English content normalized from the original source text.',
       value: discountStats.productDiscounts.toString(),
       icon: <Package className="w-6 h-6" />,
       color: 'orange'
@@ -134,28 +134,22 @@ export default function DashboardSeller() {
     <div className="space-y-6 p-6 h-screen bg-white">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Tổng quan</h1>
-          <p className="text-muted-foreground">
-            Quản lý cửa hàng và theo dõi đơn hàng của bạn
-          </p>
+          <h1 className="text-3xl font-bold">English content normalized from the original source text.</h1>
+          <p className="text-muted-foreground">English content normalized from the original source text.</p>
         </div>
-        <Button 
+        <Button
           onClick={refreshStats}
-          variant="outline" 
+          variant="outline"
           size="sm"
           disabled={sellerStats.isLoading || discountStats.isLoading}
         >
-          <RefreshCw className={`w-4 h-4 mr-2 ${(sellerStats.isLoading || discountStats.isLoading) ? 'animate-spin' : ''}`} />
-          Làm mới
-        </Button>
+          <RefreshCw className={`w-4 h-4 mr-2 ${(sellerStats.isLoading || discountStats.isLoading) ? 'animate-spin' : ''}`} />English content normalized from the original source text.</Button>
       </div>
 
-      {/* Đơn hàng section */}
+      {/* English content normalized from the original source text. */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold flex items-center">
-          <ShoppingCart className="w-5 h-5 mr-2" />
-          Thống kê đơn hàng
-        </h2>
+          <ShoppingCart className="w-5 h-5 mr-2" />English content normalized from the original source text.</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {orderStatsCards.map((stat, index) => (
             <Card key={index} className="p-6 hover:shadow-md transition-shadow">
@@ -175,12 +169,10 @@ export default function DashboardSeller() {
         </div>
       </div>
 
-      {/* Khuyến mãi section */}
+      {/* English content normalized from the original source text. */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold flex items-center">
-          <Gift className="w-5 h-5 mr-2" />
-          Thống kê khuyến mãi
-        </h2>
+          <Gift className="w-5 h-5 mr-2" />English content normalized from the original source text.</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5">
           {discountStatsCards.map((stat, index) => (
             <Card key={index} className="p-6 hover:shadow-md transition-shadow">
@@ -200,59 +192,59 @@ export default function DashboardSeller() {
         </div>
       </div>
 
-      {/* Summary cards - tổng hợp không lặp lại */}
+      {/* English content normalized from the original source text. */}
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Tổng quan đơn hàng</h2>
+            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
             <Activity className="w-5 h-5 text-muted-foreground" />
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm">
-              <span>Tỷ lệ thành công</span>
+              <span>English content normalized from the original source text.</span>
               <span className="font-medium text-green-600">
                 {sellerStats.totalOrders > 0 ? ((sellerStats.delivered / sellerStats.totalOrders) * 100).toFixed(1) : 0}%
               </span>
             </div>
             <div className="flex justify-between items-center text-sm">
-              <span>Đang xử lý</span>
+              <span>English content normalized from the original source text.</span>
               <span className="font-medium text-orange-600">
                 {(sellerStats.pendingPayment + sellerStats.pendingPackaging + sellerStats.pendingDelivery).toLocaleString()}
               </span>
             </div>
             <div className="text-xs text-muted-foreground p-2 bg-blue-50 rounded">
-              📦 {sellerStats.totalOrders.toLocaleString()} đơn hàng tổng cộng
+              📦 {sellerStats.totalOrders.toLocaleString()} English content normalized from the original source text.
             </div>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Hiệu suất khuyến mãi</h2>
+            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
             <TrendingUp className="w-5 h-5 text-muted-foreground" />
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm">
-              <span>Tỷ lệ hoạt động</span>
+              <span>English content normalized from the original source text.</span>
               <span className="font-medium text-green-600">
                 {discountStats.totalDiscounts > 0 ? ((discountStats.activeDiscounts / discountStats.totalDiscounts) * 100).toFixed(1) : 0}%
               </span>
             </div>
             <div className="flex justify-between items-center text-sm">
-              <span>Cần gia hạn</span>
+              <span>English content normalized from the original source text.</span>
               <span className="font-medium text-red-600">
                 {discountStats.expiredDiscounts.toLocaleString()}
               </span>
             </div>
             <div className="text-xs text-muted-foreground p-2 bg-purple-50 rounded">
-              🎁 {discountStats.totalDiscounts.toLocaleString()} khuyến mãi tổng cộng
+              🎁 {discountStats.totalDiscounts.toLocaleString()} English content normalized from the original source text.
             </div>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Phân bổ khuyến mãi</h2>
+            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
             <Percent className="w-5 h-5 text-muted-foreground" />
           </div>
           <div className="space-y-3">
@@ -265,16 +257,12 @@ export default function DashboardSeller() {
             </div>
             <div className="flex justify-between items-center text-sm">
               <span className="flex items-center">
-                <Package className="w-4 h-4 mr-2 text-orange-500" />
-                Sản phẩm
-              </span>
+                <Package className="w-4 h-4 mr-2 text-orange-500" />English content normalized from the original source text.</span>
               <span className="font-medium">{discountStats.productDiscounts.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center text-sm">
               <span className="flex items-center">
-                <Percent className="w-4 h-4 mr-2 text-purple-500" />
-                Hệ thống
-              </span>
+                <Percent className="w-4 h-4 mr-2 text-purple-500" />English content normalized from the original source text.</span>
               <span className="font-medium">{discountStats.platformDiscounts.toLocaleString()}</span>
             </div>
           </div>

@@ -6,21 +6,21 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /auth/register
+English content normalized from the original source text.
 
 start
-:Nhận {email, password, confirmPassword, name, phoneNumber, code};
+:English content normalized from the original source text;
 :validateVerificationCode(REGISTER);
-if (OTP tồn tại & chưa hết hạn?) then (Có)
+if (condition?) then (Yes)
   :Hash password;
   fork
-    :Tạo user với role Client;
+    :English content normalized from the original source text;
   fork again
-    :Xóa verification code;
+    :English content normalized from the original source text;
   end fork
-  :Trả về 201 user (ẩn password);
-else (Không)
-  :Ném InvalidOTP hoặc OTPExpired (422);
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

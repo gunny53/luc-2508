@@ -6,17 +6,17 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /payment/vnpay/create-payment
+English content normalized from the original source text.
 
 start
-:Nhận paymentData { amount, orderInfo, orderId, ... };
-:Gắn PREFIX_PAYMENT_CODE vào orderInfo và orderId;
-:Gọi VnpayService.buildPaymentUrl(..., withHash=true);
-if (Thành công?) then (Có)
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
   :Build message i18n;
-  :Trả về 200 { message, data: { paymentUrl } };
-else (Không)
-  :Ném VNPayServiceUnavailableException;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /users
+English content normalized from the original source text.
 
-actor "Admin/Nhân viên" as A
+English content normalized from the original source text.
 participant "UserController" as UC
 participant "ActiveUser" as AU
 participant "ActiveRolePermissions('name')" as ARP

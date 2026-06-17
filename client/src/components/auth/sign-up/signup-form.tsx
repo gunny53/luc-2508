@@ -39,11 +39,11 @@ export function SignupForm({ email, className }: SignupFormProps) {
 
   const registerForm = useForm<RegisterRequest>({
     resolver: zodResolver(Schema),
-    defaultValues: { 
-      firstName: '', 
-      lastName: '', 
+    defaultValues: {
+      firstName: '',
+      lastName: '',
       username: '',
-      password: '', 
+      password: '',
       confirmPassword: '',
       phoneNumber: '',
     }
@@ -66,7 +66,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
               </div>
             </AnimatedFormItem>
 
-            <div className="grid gap-6">              
+            <div className="grid gap-6">
               <AnimatedFormItem>
                 <div className="grid grid-cols-2 gap-4">
                   <FormField
@@ -76,9 +76,9 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormItem>
                         <FormLabel>{t('auth.common.firstname')}</FormLabel>
                         <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder="Văn A"/>
+                          <Input
+                            {...field}
+                            placeholder="English content normalized from the original source text."/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -91,9 +91,9 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormItem>
                         <FormLabel>{t('auth.common.lastname')}</FormLabel>
                         <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder="Nguyễn"/>
+                          <Input
+                            {...field}
+                            placeholder="English content normalized from the original source text."/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -101,7 +101,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                   />
                 </div>
               </AnimatedFormItem>
-              
+
               <AnimatedFormItem>
                 <FormField
                   control={registerForm.control}
@@ -110,8 +110,8 @@ export function SignupForm({ email, className }: SignupFormProps) {
                     <FormItem>
                       <FormLabel>{t('auth.common.username')}</FormLabel>
                       <FormControl>
-                        <Input 
-                          {...field} 
+                        <Input
+                          {...field}
                           placeholder="nguyen_van_a"/>
                       </FormControl>
                       <FormMessage />

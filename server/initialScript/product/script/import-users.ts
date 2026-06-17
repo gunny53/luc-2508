@@ -48,7 +48,7 @@ export async function importUsers(
   }>[] = []
   let index = 1
   for (const [key, data] of entities) {
-    const email = `${roleName.toLowerCase()}${index}.shopsifu.ecommerce@gmail.com`
+    const email = `${roleName.toLowerCase()}${index}.ecsite.ecommerce@gmail.com`
     if (existingEmails.has(key)) {
       userMap.set(key, existingEmails.get(key)!)
       index++

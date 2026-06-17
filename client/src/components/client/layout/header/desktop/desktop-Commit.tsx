@@ -6,27 +6,27 @@ import { GiPriceTag } from "react-icons/gi";
 const commitments = [
   {
     icon: <BsPatchCheckFill  className="h-5 w-5 text-primary" />,
-    text: "100% hàng thật",
+    text: "English content normalized from the original source text.",
   },
   {
     icon: <FaTruckFast className="h-5 w-5 text-primary" />,
-    text: "Freeship mọi đơn",
+    text: "English content normalized from the original source text.",
   },
   {
     icon: <FaMoneyBillTransfer className="h-5 w-5 text-primary" />,
-    text: "Hoàn 200% nếu hàng giả",
+    text: "English content normalized from the original source text.",
   },
   {
     icon: <GoPackageDependencies className="h-5 w-5 text-primary" />,
-    text: "30 ngày đổi trả",
+    text: "English content normalized from the original source text.",
   },
   {
     icon: <GiPriceTag className="h-5 w-5 text-primary" />,
-    text: "Giá rẻ nhất",
+    text: "English content normalized from the original source text.",
   },
   {
     icon: <FaTruckPlane className="h-5 w-5 text-primary" />,
-    text: "Giao hàng toàn quốc",
+    text: "English content normalized from the original source text.",
   }
 ];
 
@@ -35,7 +35,7 @@ const DesktopCommit = () => {
     <div className="border-b bg-gray-50">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-start h-12 gap-6">
-        <span className="text-sm font-semibold text-primary">Cam kết</span>
+        <span className="text-sm font-semibold text-primary">English content normalized from the original source text.</span>
           <div className="flex flex-1 items-center justify-between cursor-pointer">
            {commitments.map((commit, index) => (
             <div key={index} className="flex flex-1 items-center">

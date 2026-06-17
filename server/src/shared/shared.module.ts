@@ -128,7 +128,7 @@ const sharedServices = [
       isGlobal: true,
       useFactory: (configService: ConfigService) => {
         const redisUrl = configService.get('redis.url') || process.env.REDIS_URL
-        const keyPrefix = configService.get('redis.keyPrefix') || 'shopsifu:'
+        const keyPrefix = configService.get('redis.keyPrefix') || 'ecsite:'
 
         return {
           stores: [createKeyv(redisUrl, { namespace: keyPrefix })]
@@ -147,7 +147,7 @@ const sharedServices = [
           tls: configService.get('redis.tls') || undefined,
           requireAuth: configService.get('redis.requireAuth') || false
         },
-        prefix: 'shopsifu:bull'
+        prefix: 'ecsite:bull'
       }),
       inject: [ConfigService]
     }),

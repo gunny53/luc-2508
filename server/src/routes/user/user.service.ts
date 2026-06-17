@@ -45,13 +45,13 @@ export class UserService {
       throw NotFoundRecordException
     }
 
-    // Lấy addresses và statistics để đáp ứng schema yêu cầu
+    // English content normalized from the original source text.
     const [addresses, orders] = await Promise.all([
       this.sharedUserRepository.listAddressesByUserId(id),
       this.sharedUserRepository.getUserOrders(id)
     ])
 
-    // Tính statistics từ orders
+    // English content normalized from the original source text.
     const totalOrders = orders?.length ?? 0
     const totalSpent = orders?.reduce((sum, order) => {
       const orderTotal = order.items?.reduce((itemSum, item) => itemSum + Number(item.skuPrice) * item.quantity, 0) ?? 0
@@ -75,7 +75,7 @@ export class UserService {
 
   async create({ data, user, roleName }: { data: CreateUserBodyType; user: AccessTokenPayload; roleName: string }) {
     try {
-      // Chỉ có admin agent mới có quyền tạo user với role là admin
+      // English content normalized from the original source text.
       await this.verifyRole({
         roleNameAgent: roleName,
         roleIdTarget: data.roleId
@@ -104,17 +104,13 @@ export class UserService {
     }
   }
 
-  /**
-   * Function này kiểm tra xem người thực hiện có quyền tác động đến người khác không.
-   * Vì chỉ có người thực hiện là admin role mới có quyền sau: Tạo admin user, update roleId thành admin, xóa admin user.
-   * Còn nếu không phải admin thì không được phép tác động đến admin
-   */
+  /* English content normalized from the original source text. */
   private async verifyRole({ roleNameAgent, roleIdTarget }) {
-    // Agent là admin thì cho phép
+    // English content normalized from the original source text.
     if (roleNameAgent === RoleName.Admin) {
       return true
     } else {
-      // Agent không phải admin thì roleIdTarget phải khác admin
+      // English content normalized from the original source text.
       const adminRoleId = await this.sharedRoleRepository.getAdminRoleId()
       if (roleIdTarget === adminRoleId) {
         throw new ForbiddenException()
@@ -135,13 +131,13 @@ export class UserService {
     roleName: string
   }) {
     try {
-      // Không thể cập nhật chính mình
+      // English content normalized from the original source text.
       this.verifyYourself({
         userAgentId: user.userId,
         userTargetId: id
       })
-      // Lấy roleId ban đầu của người được update để kiểm tra xem liệu người update có quyền update không
-      // Không dùng data.roleId vì dữ liệu này có thể bị cố tình truyền sai
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       const roleIdTarget = await this.getRoleIdByUserId(id)
       await this.verifyRole({
         roleNameAgent: roleName,
@@ -190,7 +186,7 @@ export class UserService {
 
   async delete({ id, user, roleName }: { id: string; user: AccessTokenPayload; roleName: string }) {
     try {
-      // Không thể xóa chính mình
+      // English content normalized from the original source text.
       this.verifyYourself({
         userAgentId: user.userId,
         userTargetId: id

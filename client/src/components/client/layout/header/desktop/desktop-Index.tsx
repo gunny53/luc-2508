@@ -31,8 +31,8 @@ function HeaderLayout() {
   return (
     <>
       <header
-        className={`text-white max-h-[125px] h-[75px] text-[13px] relative z-50 
-          bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-lg 
+        className={`text-white max-h-[125px] h-[75px] text-[13px] relative z-50
+          bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-lg
           transition-all duration-500 ease-in-out hidden md:block
           ${showHeader ? 'translate-y-0' : '-translate-y-full'}`}
       >
@@ -43,7 +43,7 @@ function HeaderLayout() {
               <div className="rounded-xl overflow-hidden">
                 <Image
                   src="/images/logo/png-jpeg/Logo-Full-White.png"
-                  alt="Shopsifu Logo"
+                  alt="ECSite Logo"
                   width={125}
                   height={40}
                   priority

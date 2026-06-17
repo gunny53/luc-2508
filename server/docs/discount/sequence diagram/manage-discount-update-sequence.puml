@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng PUT /manage-discount/discounts/:discountId
+English content normalized from the original source text.
 
 actor "Seller/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MDC: Forward với user
+AG --> MDC: English content normalized from the original source text.
 activate MDC
 
 MDC -> MDS: update({ discountId, data, user })
@@ -39,7 +39,7 @@ end
 
 MDS -> MDS: validatePrivilege(userIdRequest=user.userId, roleNameRequest=user.roleName, createdById=discount.createdById)
 MDS -> MDS: validateCreatePrivilege(userIdRequest=user.userId, roleNameRequest=user.roleName, shopId=data.shopId)
-alt Seller và không có shopId
+English content normalized from the original source text.
   MDS -> MDS: auto-set data.shopId = user.userId
 end
 

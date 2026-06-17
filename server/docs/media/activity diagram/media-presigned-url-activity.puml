@@ -6,15 +6,15 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /media/images/upload/presigned-url
+English content normalized from the original source text.
 
 start
-:Nhận { filename, filesize };
+:English content normalized from the original source text;
 :generateRandomFilename(filename);
 :S3 createPresignedUrlWithClient(randomFilename);
-:Tách base URL từ presignedUrl;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, presignedUrl, url };
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -64,8 +64,8 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
         <SheetHeader>
           {view === 'main' ? (
             <>
-              <SheetTitle>Danh mục sản phẩm</SheetTitle>
-              <SheetDescription>Khám phá các sản phẩm theo danh mục.</SheetDescription>
+              <SheetTitle>English content normalized from the original source text.</SheetTitle>
+              <SheetDescription>English content normalized from the original source text.</SheetDescription>
             </>
           ) : (
             <div className="flex items-center">
@@ -103,7 +103,7 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
                           href={createCategorySlug(selectedParent.label, [selectedParent.value])}
                           className="block px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-gray-100 rounded-md"
                         >
-                          Xem tất cả {selectedParent.label}
+                          English content normalized from the original source text. {selectedParent.label}
                         </Link>
                       </SheetClose>
                   )}

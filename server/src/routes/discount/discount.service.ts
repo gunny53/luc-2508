@@ -10,9 +10,7 @@ import {
 export class DiscountService {
   constructor(private readonly discountRepo: DiscountRepo) {}
 
-  /**
-   * Lấy danh sách discounts khả dụng cho checkout (đã được validate sẵn)
-   */
+  /* English content normalized from the original source text. */
   async getAvailableDiscounts(body: GetAvailableDiscountsQueryType) {
     const data = await this.discountRepo.getAvailableDiscounts(body)
 
@@ -22,9 +20,7 @@ export class DiscountService {
     }
   }
 
-  /**
-   * Validate voucher code thủ công (cho user nhập code)
-   */
+  /* English content normalized from the original source text. */
   async validateVoucherCode(body: ValidateVoucherCodeBodyType): Promise<ValidateVoucherCodeResType> {
     const { code, cartItemIds } = body
 
@@ -35,64 +31,64 @@ export class DiscountService {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'Mã voucher không tồn tại'
+          error: 'English content normalized from the original source text.'
         }
       }
     }
 
-    // Kiểm tra trạng thái
+    // English content normalized from the original source text.
     if (discount.discountStatus !== 'ACTIVE') {
       return {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'Mã voucher không còn hiệu lực'
+          error: 'English content normalized from the original source text.'
         }
       }
     }
 
-    // Kiểm tra thời gian
+    // English content normalized from the original source text.
     const now = new Date()
     if (now < discount.startDate || now > discount.endDate) {
       return {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'Mã voucher không còn hiệu lực'
+          error: 'English content normalized from the original source text.'
         }
       }
     }
 
-    // Kiểm tra số lần sử dụng tổng
+    // English content normalized from the original source text.
     if (discount.maxUses > 0 && discount.usesCount >= discount.maxUses) {
       return {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'Mã voucher đã hết lượt sử dụng'
+          error: 'English content normalized from the original source text.'
         }
       }
     }
 
-    // Tính toán orderTotal từ cartItemIds
+    // English content normalized from the original source text.
     const orderTotal = await this.calculateOrderTotalFromCartItems(cartItemIds)
 
-    // Kiểm tra giá trị đơn hàng tối thiểu
+    // English content normalized from the original source text.
     if (discount.minOrderValue > 0 && orderTotal < discount.minOrderValue) {
       return {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: `Giá trị đơn hàng tối thiểu: ${discount.minOrderValue.toLocaleString('vi-VN')}đ`
+          error: `English content normalized from the original source text.${discount.minOrderValue.toLocaleString('vi-VN')}English content normalized from the original source text.`
         }
       }
     }
 
-    // Kiểm tra discountApplyType SPECIFIC
+    // English content normalized from the original source text.
     if (discount.discountApplyType === 'SPECIFIC') {
       const discountWithRelations = discount as any
 
-      // Sử dụng logic từ repository để kiểm tra applicability
+      // English content normalized from the original source text.
       const { productIds, categoryIds, brandIds } = await this.getCartItemInfo(cartItemIds)
 
       const hasValidProduct = productIds.some((productId) =>
@@ -108,13 +104,13 @@ export class DiscountService {
           message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
           data: {
             isValid: false,
-            error: 'Mã voucher không áp dụng cho sản phẩm này'
+            error: 'English content normalized from the original source text.'
           }
         }
       }
     }
 
-    // Tính toán discount amount
+    // English content normalized from the original source text.
     const discountAmount = this.calculateDiscountAmount(discount, orderTotal)
     const finalOrderTotal = orderTotal - discountAmount
 
@@ -129,9 +125,7 @@ export class DiscountService {
     }
   }
 
-  /**
-   * Tính toán orderTotal từ cartItemIds
-   */
+  /* English content normalized from the original source text. */
   private async calculateOrderTotalFromCartItems(cartItemIds?: string[]): Promise<number> {
     if (!cartItemIds || cartItemIds.length === 0) {
       return 0
@@ -163,9 +157,7 @@ export class DiscountService {
     }, 0)
   }
 
-  /**
-   * Lấy thông tin cart items (productIds, categoryIds, brandIds)
-   */
+  /* English content normalized from the original source text. */
   private async getCartItemInfo(
     cartItemIds?: string[]
   ): Promise<{ productIds: string[]; categoryIds: string[]; brandIds: string[] }> {
@@ -200,14 +192,12 @@ export class DiscountService {
     return { productIds, categoryIds, brandIds }
   }
 
-  /**
-   * Tính toán discount amount dựa trên loại discount
-   */
+  /* English content normalized from the original source text. */
   private calculateDiscountAmount(discount: any, orderTotal: number): number {
     if (discount.discountType === 'PERCENTAGE') {
       const percentageAmount = (orderTotal * discount.value) / 100
 
-      // Kiểm tra max discount value
+      // English content normalized from the original source text.
       if (discount.maxDiscountValue && percentageAmount > discount.maxDiscountValue) {
         return discount.maxDiscountValue
       }

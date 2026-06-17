@@ -20,7 +20,7 @@ export class RoleRepo {
       deletedAt: null
     }
 
-    // Thêm filter theo name nếu có
+    // English content normalized from the original source text.
     if (name) {
       where.name = {
         contains: name,
@@ -85,7 +85,7 @@ export class RoleRepo {
     updatedById: string
     data: UpdateRoleBodyType
   }): Promise<RoleType> {
-    // Kiểm tra nếu có bất cứ permissionId nào mà đã soft delete thì không cho phép cập nhật
+    // English content normalized from the original source text.
     if (data.permissionIds.length > 0) {
       const permissions = await this.prismaService.permission.findMany({
         where: {

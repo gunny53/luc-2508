@@ -27,7 +27,7 @@ export function useDataTable<TData>({ data, columns }: UseDataTableProps<TData>)
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [sorting, setSorting] = useState<SortingState>([])
 
-  // Gọi hook ở top level với options đã được memoized - không qua useMemo
+  // English content normalized from the original source text.
   const table = useReactTable<TData>({
     data,
     columns,

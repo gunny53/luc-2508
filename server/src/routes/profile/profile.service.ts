@@ -35,7 +35,7 @@ export class ProfileService {
       throw NotFoundRecordException
     }
 
-    // Tính statistics trực tiếp từ userData.orders
+    // English content normalized from the original source text.
     const totalOrders = userData.orders?.length ?? 0
     const totalSpent =
       userData.orders?.reduce((sum, order) => {

@@ -11,10 +11,7 @@ import { IsPublic } from 'src/shared/decorators/auth.decorator'
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
-  /**
-   * 🔍 Smart search với intelligent caching strategy
-   * Popular searches cache lâu hơn, specific searches cache ngắn hơn
-   */
+  /* English content normalized from the original source text. */
   @Get('products')
   @ZodSerializerDto(SearchProductsResDTO)
   @Header('Cache-Control', 'public, max-age=600, s-maxage=900, stale-while-revalidate=1800')

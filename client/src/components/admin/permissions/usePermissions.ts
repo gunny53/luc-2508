@@ -11,14 +11,14 @@ import {
 import { useServerDataTable } from "@/hooks/useServerDataTable";
 
 export function usePermissions() {
-  // Tạo các callbacks memoized để tránh tạo lại mỗi lần render
+  // English content normalized from the original source text.
   const getResponseData = useCallback((response: any) => {
-    // Trích xuất mảng dữ liệu từ response
+    // English content normalized from the original source text.
     return response.data || [];
   }, []);
 
   const getResponseMetadata = useCallback((response: any) => {
-    // Trích xuất metadata từ response
+    // English content normalized from the original source text.
     return response.metadata;
   }, []);
 
@@ -37,7 +37,7 @@ export function usePermissions() {
     updatedAt: item.updatedAt,
   }), []);
 
-  // Setup our data table with direct API call và các hàm đã memoized
+  // English content normalized from the original source text.
   const {
     data: permissions,
     loading,
@@ -55,9 +55,9 @@ export function usePermissions() {
     initialSort: { sortBy: "createdAt", sortOrder: "asc" },
     defaultLimit: 10,
      requestConfig: {
-      includeSearch: false, // Không gửi tham số search trong request API
-      includeSort: false,   // Không gửi các tham số sắp xếp (sortBy, sortOrder)
-      includeCreatedById: true // Vẫn gửi tham số createdById nếu có
+      includeSearch: false, // English content normalized from the original source text.
+      includeSort: false,   // English content normalized from the original source text.
+      includeCreatedById: true // English content normalized from the original source text.
     },
   });
 
@@ -67,16 +67,16 @@ export function usePermissions() {
   );
 
   const handleCreate = async (data: PerCreateRequest) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       await permissionService.create(data, controller.signal);
       showToast("Permission created successfully", "success");
-      
-      // Hàm refreshData() sẽ kích hoạt useEffect trong hook để gọi lại API getAll
-      // và cập nhật state với dữ liệu mới nhất
+
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       refreshData();
       handleCloseModal();
     } catch (error) {
@@ -89,16 +89,16 @@ export function usePermissions() {
   };
 
   const handleUpdate = async (id: string, data: PerUpdateRequest) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       await permissionService.update(String(id), data, controller.signal);
       showToast("Permission updated successfully", "success");
-      
-      // Hàm refreshData() sẽ kích hoạt useEffect trong hook để gọi lại API getAll
-      // và cập nhật state với dữ liệu mới nhất
+
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       refreshData();
       handleCloseModal();
     } catch (error) {
@@ -111,16 +111,16 @@ export function usePermissions() {
   };
 
   const handleDelete = async (id: string) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       await permissionService.delete(String(id), controller.signal);
       showToast("Permission deleted successfully", "success");
-      
-      // Hàm refreshData() sẽ kích hoạt useEffect trong hook để gọi lại API getAll
-      // và cập nhật state với dữ liệu mới nhất
+
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       refreshData();
     } catch (error) {
       if (!controller.signal.aborted) {

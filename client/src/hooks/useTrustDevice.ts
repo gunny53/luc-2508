@@ -18,25 +18,25 @@ export function useTrustDevice() {
   const handleTrustDevice = async () => {
     try {
       setLoading(true)
-      // Gọi API xử lý tin tưởng thiết bị
+      // English content normalized from the original source text.
       await authService.trustDevice()
-      // Sau khi API thành công, xóa key khỏi session storage
+      // English content normalized from the original source text.
       sessionStorage.removeItem(TRUST_DEVICE_KEY)
-      // Đóng modal
+      // English content normalized from the original source text.
       setIsOpen(false)
-      // Hiển thị thông báo thành công
-      showToast('Thiết bị đã được tin tưởng', 'success')
+      // English content normalized from the original source text.
+      showToast('English content normalized from the original source text.', 'success')
     } catch (error) {
-      // Hiển thị lỗi nếu có
+      // English content normalized from the original source text.
       showToast(parseApiError(error), 'error')
     } finally {
-      // Luôn tắt trạng thái loading khi API hoàn thành (dù thành công hay thất bại)
+      // English content normalized from the original source text.
       setLoading(false)
     }
   }
 
   const handleClose = () => {
-    // Không cho đóng modal khi đang trong trạng thái loading
+    // English content normalized from the original source text.
     if (!loading) {
       setIsOpen(false)
       sessionStorage.removeItem(TRUST_DEVICE_KEY)

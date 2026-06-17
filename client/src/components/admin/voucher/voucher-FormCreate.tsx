@@ -16,14 +16,14 @@ import {
 } from "lucide-react";
 import { useUserData } from "@/hooks/useGetData-UserLogin";
 
-// Mock data cho các loại voucher
+// English content normalized from the original source text.
 interface VoucherType {
   id: string;
   nameKey: string;
   descKey: string;
   icon: React.ElementType;
   redirect: string;
-  requiredRole?: "ADMIN" | "SELLER"; // Thêm field phân quyền
+  requiredRole?: "ADMIN" | "SELLER"; // English content normalized from the original source text.
 }
 
 export default function VoucherFormCreate() {
@@ -31,11 +31,11 @@ export default function VoucherFormCreate() {
   const router = useRouter();
   const userData = useUserData();
 
-  // Kiểm tra role của user
+  // English content normalized from the original source text.
   const isAdmin = userData?.role?.name === "ADMIN";
   const isSeller = userData?.role?.name === "SELLER";
 
-  // Danh sách voucher cho SELLER (3 loại cơ bản)
+  // English content normalized from the original source text.
   const sellerVoucherTypes: VoucherType[] = [
     {
       id: "shop",
@@ -63,7 +63,7 @@ export default function VoucherFormCreate() {
     },
   ];
 
-  // Danh sách voucher cho ADMIN (6 loại platform)
+  // English content normalized from the original source text.
   const adminVoucherTypes: VoucherType[] = [
     {
       id: "platform",
@@ -115,14 +115,14 @@ export default function VoucherFormCreate() {
     },
   ];
 
-  // Xác định danh sách voucher hiển thị dựa trên role
+  // English content normalized from the original source text.
   const getVoucherTypes = () => {
     if (isAdmin) {
-      return adminVoucherTypes; // ADMIN thấy 6 loại platform vouchers (bao gồm cả private admin)
+      return adminVoucherTypes; // English content normalized from the original source text.
     } else if (isSeller) {
-      return sellerVoucherTypes; // SELLER chỉ thấy 3 loại cơ bản
+      return sellerVoucherTypes; // English content normalized from the original source text.
     }
-    return []; // Không có quyền
+    return []; // English content normalized from the original source text.
   };
 
   const voucherTypes = getVoucherTypes();
@@ -141,23 +141,21 @@ export default function VoucherFormCreate() {
         <p className="text-muted-foreground text-sm mt-1">
           {t("createVoucherDesc")}
         </p>
-        {/* Hiển thị thông tin role */}
+        {/* English content normalized from the original source text. */}
         <div className="mt-2">
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
             {isAdmin
-              ? "Admin - Toàn quyền"
+              ? "English content normalized from the original source text."
               : isSeller
-              ? "Seller - Quyền cơ bản"
-              : "Không có quyền"}
+              ? "English content normalized from the original source text."
+              : "English content normalized from the original source text."}
           </span>
         </div>
       </div>
 
       {voucherTypes.length === 0 ? (
         <div className="text-center py-8">
-          <p className="text-muted-foreground">
-            Bạn không có quyền tạo voucher.
-          </p>
+          <p className="text-muted-foreground">English content normalized from the original source text.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

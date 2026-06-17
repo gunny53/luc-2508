@@ -6,13 +6,13 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /auth/google-link
+English content normalized from the original source text.
 
 start
-:Nhận userAgent, ip;
-:Mã hóa state (base64);
-:Tạo OAuth URL với scope + state;
-:Trả về 200 { url };
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 stop
 
 @enduml

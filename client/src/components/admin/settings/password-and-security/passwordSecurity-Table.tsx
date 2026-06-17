@@ -23,7 +23,7 @@ export function PasswordSecurityTable() {
     showRecoveryCodesDialog,
     setShowRecoveryCodesDialog,
     qrCodeImage,
-    secret, 
+    secret,
     loading,
     Code,
     setCode,
@@ -44,17 +44,17 @@ export function PasswordSecurityTable() {
 
   const columns: SettingTableColumn[] = [
     {
-      label: "Mật khẩu",
-      value: "Thực hiện thay đổi mật khẩu",
+      label: "English content normalized from the original source text.",
+      value: "English content normalized from the original source text.",
       startIcon: <Lock />,
       endIcon: <ChevronRight />,
       onClick: () => setShowChangePassword(true)
     },    {
-      label: "Xác minh 2 bước",
+      label: "English content normalized from the original source text.",
       value: (
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${user?.twoFactorEnabled ? "bg-green-500" : "bg-red-500"}`}></div>
-          <span>{user?.twoFactorEnabled ? "Đã bật" : "Chưa bật"}</span>
+          <span>{user?.twoFactorEnabled ? "English content normalized from the original source text." : "English content normalized from the original source text."}</span>
         </div>
       ),
       startIcon: <Shield />,
@@ -62,16 +62,16 @@ export function PasswordSecurityTable() {
       onClick: handle2FAToggle
     },
     {
-      label: "Thiết bị đăng nhập",
-      value: "2 thiết bị đang hoạt động", // You might want to update this with actual count
+      label: "English content normalized from the original source text.",
+      value: "English content normalized from the original source text.", // You might want to update this with actual count
       startIcon: <Clock />,
       endIcon: <ChevronRight />,
       onClick: () => router.push('/admin/settings/session')
     },    {
-      label: "Tạo lại mã khôi phục",
+      label: "English content normalized from the original source text.",
       value: (
         <div className="flex items-center gap-2">
-          <span>Mã khôi phục sẽ được gửi về email của bạn</span>
+          <span>English content normalized from the original source text.</span>
         </div>
       ),
       startIcon: <KeyRound />,
@@ -84,15 +84,15 @@ export function PasswordSecurityTable() {
 
   return (
     <>
-      <SettingTable                                                                                               
-        title="Bảo mật & Mật khẩu"
-        subtitle="Quản lý bảo mật tài khoản và các thiết lập liên quan đến mật khẩu."
+      <SettingTable
+        title="English content normalized from the original source text."
+        subtitle="English content normalized from the original source text."
         columns={columns}
       />
       <ChangePasswordModal
         open={showChangePassword}
         onOpenChange={setShowChangePassword}
-      />      
+      />
       <Profile2FAModal
         showRegenerateConfirm={showRegenerateConfirm}
         setShowRegenerateConfirm={setShowRegenerateConfirm}

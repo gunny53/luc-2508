@@ -40,7 +40,7 @@ function PriceLine({ label, value, isBold = false }: { label: string; value: str
   );
 }
 
-export function FooterSection({ 
+export function FooterSection({
   variant = 'default',
   step = 'information',
   onPrevious,
@@ -54,20 +54,20 @@ export function FooterSection({
   const appliedPlatformVoucher = useSelector(selectAppliedPlatformVoucher);
   const calculationResult = useSelector(selectCalculationResult);
   const [isPlatformModalOpen, setPlatformModalOpen] = useState(false);
-  
-  // Sử dụng hook tự động tính toán để tránh vòng lặp vô hạn
+
+  // English content normalized from the original source text.
   const { calculationResult: autoCalculationResult, loading: calculationLoading, error: calculationError } = useAutoCalculateOrder();
 
-  // Không cần useEffect này nữa vì đã được xử lý trong Redux action
+  // English content normalized from the original source text.
   // useEffect(() => {
   //   const platformCodes = appliedPlatformVoucher ? [appliedPlatformVoucher.code] : [];
   //   dispatch(setPlatformDiscountCodes(platformCodes));
   // }, [appliedPlatformVoucher, dispatch]);
 
-  // Ưu tiên sử dụng kết quả từ API calculation, fallback về tính toán thủ công
+  // English content normalized from the original source text.
   const finalCalculationResult = autoCalculationResult || calculationResult;
-  
-  // Nếu có kết quả từ API, sử dụng trực tiếp
+
+  // English content normalized from the original source text.
   const subtotal = finalCalculationResult?.totalItemCost || Object.values(shopProducts).reduce((total, shopProducts) => {
     return total + shopProducts.reduce((shopTotal, product) => {
       return shopTotal + (product.price * product.quantity);
@@ -82,19 +82,19 @@ export function FooterSection({
     // The actual application logic is likely in the modal, this is for closing
     setPlatformModalOpen(false);
   };
-  
-  // Gửi tổng tiền thanh toán lên component cha nếu có callback
+
+  // English content normalized from the original source text.
   useEffect(() => {
     if (onTotalChange) {
       onTotalChange(totalPayment);
     }
-    // Cập nhật tổng số tiền vào Redux state mỗi khi nó thay đổi
+    // English content normalized from the original source text.
     dispatch(setCommonInfo({ amount: totalPayment }));
   }, [totalPayment, onTotalChange, dispatch]);
 
   const getButtonText = () => {
-    if (isSubmitting) return 'Đang xử lý...';
-    return step === 'information' ? 'Tiếp tục thanh toán' : 'Hoàn tất đặt hàng';
+    if (isSubmitting) return 'English content normalized from the original source text.';
+    return step === 'information' ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.';
   };
 
   if (variant === 'mobile') {
@@ -102,7 +102,7 @@ export function FooterSection({
       <div className="space-y-3">
         {/* Mobile Order Summary */}
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600">Tổng thanh toán</span>
+          <span className="text-gray-600">English content normalized from the original source text.</span>
           <span className="text-lg font-semibold text-primary">
             {formatCurrency(totalPayment)}
           </span>
@@ -111,15 +111,13 @@ export function FooterSection({
         {/* Mobile Voucher Input */}
         <div className="flex items-center gap-2">
           <Input
-            placeholder="Nhập mã giảm giá"
+            placeholder="English content normalized from the original source text."
             className="h-9 text-sm flex-1"
           />
           <Button
             variant="secondary"
             className="h-9 px-4 text-sm font-medium whitespace-nowrap"
-          >
-            Áp dụng
-          </Button>
+          >English content normalized from the original source text.</Button>
         </div>
 
         {/* Mobile Navigation */}
@@ -130,11 +128,9 @@ export function FooterSection({
               onClick={onPrevious}
               className="flex-1 h-10 text-sm font-medium"
             >
-              <ArrowLeft className="h-4 w-4 mr-1.5" />
-              Quay lại
-            </Button>
+              <ArrowLeft className="h-4 w-4 mr-1.5" />English content normalized from the original source text.</Button>
           )}
-          <Button 
+          <Button
             className="flex-1 h-10 text-sm font-medium"
             onClick={onNext}
             disabled={isSubmitting}
@@ -152,7 +148,7 @@ export function FooterSection({
       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md border">
         <div className="flex items-center gap-2">
           <Tag className="w-5 h-5 text-primary" />
-          <span className="text-sm font-medium">Voucher Sàn</span>
+          <span className="text-sm font-medium">English content normalized from the original source text.</span>
         </div>
         {appliedPlatformVoucher ? (
           <div className="flex items-center gap-2">
@@ -164,55 +160,53 @@ export function FooterSection({
             </button>
           </div>
         ) : (
-          <Button variant="link" className="p-0 h-auto text-sm" onClick={() => setPlatformModalOpen(true)}>
-            Chọn hoặc nhập mã
-          </Button>
+          <Button variant="link" className="p-0 h-auto text-sm" onClick={() => setPlatformModalOpen(true)}>English content normalized from the original source text.</Button>
         )}
       </div>
 
-      <h2 className="text-lg font-semibold">Tóm tắt đơn hàng</h2>
+      <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
       <div className="space-y-2">
         {calculationLoading ? (
           <div className="flex items-center justify-center py-4">
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-            <span className="ml-2 text-sm text-gray-600">Đang tính toán...</span>
+            <span className="ml-2 text-sm text-gray-600">English content normalized from the original source text.</span>
           </div>
         ) : calculationError ? (
           <div className="text-center py-4">
             <p className="text-red-600 text-sm mb-2">{calculationError}</p>
-            <p className="text-xs text-gray-500">Sử dụng tính toán tạm thời</p>
+            <p className="text-xs text-gray-500">English content normalized from the original source text.</p>
           </div>
         ) : null}
-        
+
         <div className="space-y-3">
-          <PriceLine label="Tổng tiền hàng" value={formatCurrency(subtotal)} />
+          <PriceLine label="English content normalized from the original source text." value={formatCurrency(subtotal)} />
           <div className="flex justify-between items-center text-sm">
-            <span className="text-gray-600">Tổng giảm giá</span>
+            <span className="text-gray-600">English content normalized from the original source text.</span>
             <span className="text-green-600 font-medium">-{formatCurrency(Math.abs(voucherDiscount))}</span>
           </div>
         </div>
 
         <div className="flex justify-between items-center text-sm">
-          <span className="text-gray-600">Phí vận chuyển</span>
+          <span className="text-gray-600">English content normalized from the original source text.</span>
           <span className="text-red-600 font-medium">{formatCurrency(shippingFee)}</span>
         </div>
 
         <Separator className="my-3" />
-        <PriceLine 
-          label="Tổng thanh toán" 
-          value={formatCurrency(totalPayment)} 
-          isBold={true} 
+        <PriceLine
+          label="English content normalized from the original source text."
+          value={formatCurrency(totalPayment)}
+          isBold={true}
         />
-        
+
         {finalCalculationResult && (
           <div className="text-xs text-gray-500 text-center mt-2">
-            {finalCalculationResult.shops?.length > 0 && `Tính toán từ ${finalCalculationResult.shops.length} shop`}
+            {finalCalculationResult.shops?.length > 0 && `English content normalized from the original source text.${finalCalculationResult.shops.length} shop`}
           </div>
         )}
       </div>
 
       {isPlatformModalOpen && (
-        <PlatformVoucherModal 
+        <PlatformVoucherModal
           isOpen={isPlatformModalOpen}
           onClose={() => setPlatformModalOpen(false)}
           onApplyVoucher={handleApplyPlatformVoucher}
@@ -228,11 +222,9 @@ export function FooterSection({
               onClick={onPrevious}
               className="flex-1 h-10 text-sm font-medium"
             >
-              <ArrowLeft className="h-4 w-4 mr-1.5" />
-              Quay lại
-            </Button>
+              <ArrowLeft className="h-4 w-4 mr-1.5" />English content normalized from the original source text.</Button>
           )}
-          <Button 
+          <Button
             className="flex-1 h-10 text-sm font-medium"
             onClick={onNext}
             disabled={isSubmitting}
@@ -240,9 +232,7 @@ export function FooterSection({
             {getButtonText()}
           </Button>
         </div>
-        <p className="text-xs text-center mt-3 text-gray-500">
-          Vui lòng kiểm tra lại thông tin trước khi đặt hàng
-        </p>
+        <p className="text-xs text-center mt-3 text-gray-500">English content normalized from the original source text.</p>
       </div>
     </div>
   );

@@ -1,30 +1,30 @@
 export const OrderStatus = {
-  // 🚫 Trạng thái ban đầu (sau khi tạo order)
-  PENDING_PAYMENT: 'PENDING_PAYMENT', // Chờ thanh toán (COD) hoặc xác nhận (Online)
+  // English content normalized from the original source text.
+  PENDING_PAYMENT: 'PENDING_PAYMENT', // English content normalized from the original source text.
 
-  // 📦 Trạng thái xử lý (Seller quản lý)
-  PENDING_PACKAGING: 'PENDING_PACKAGING', // Người bán đang chuẩn bị hàng
+  // English content normalized from the original source text.
+  PENDING_PACKAGING: 'PENDING_PACKAGING', // English content normalized from the original source text.
 
-  // 🚚 Trạng thái vận chuyển (Shipping)
-  PICKUPED: 'PICKUPED', // ĐVVC đã lấy hàng thành công
-  PENDING_DELIVERY: 'PENDING_DELIVERY', // Đơn hàng đang trong quá trình vận chuyển
+  // English content normalized from the original source text.
+  PICKUPED: 'PICKUPED', // English content normalized from the original source text.
+  PENDING_DELIVERY: 'PENDING_DELIVERY', // English content normalized from the original source text.
 
-  // ✅ Trạng thái hoàn thành
-  DELIVERED: 'DELIVERED', // Đã giao hàng thành công
+  // English content normalized from the original source text.
+  DELIVERED: 'DELIVERED', // English content normalized from the original source text.
 
-  // ❌ Trạng thái hủy/hoàn
-  CANCELLED: 'CANCELLED', // Đơn hàng bị hủy
-  RETURNED: 'RETURNED' // Đơn hàng bị hoàn trả
+  // English content normalized from the original source text.
+  CANCELLED: 'CANCELLED', // English content normalized from the original source text.
+  RETURNED: 'RETURNED' // English content normalized from the original source text.
 } as const
 
 export type OrderStatusType = (typeof OrderStatus)[keyof typeof OrderStatus]
 
-// 🎯 Flow chuẩn hóa cho cả COD và Online
+// English content normalized from the original source text.
 export const ORDER_STATUS_FLOW = {
   // COD Flow: PENDING_PAYMENT → PENDING_PACKAGING → PICKUPED → PENDING_DELIVERY → DELIVERED
   // Online Flow: PENDING_PACKAGING → PICKUPED → PENDING_DELIVERY → DELIVERED
 
-  // Trạng thái chỉ Admin có thể cập nhật
+  // English content normalized from the original source text.
   ADMIN_ONLY: [
     OrderStatus.PENDING_PAYMENT,
     OrderStatus.PENDING_PACKAGING,
@@ -35,14 +35,14 @@ export const ORDER_STATUS_FLOW = {
     OrderStatus.RETURNED
   ],
 
-  // Flow chuyển đổi hợp lệ
+  // English content normalized from the original source text.
   VALID_TRANSITIONS: {
     [OrderStatus.PENDING_PAYMENT]: [OrderStatus.PENDING_PACKAGING, OrderStatus.CANCELLED],
     [OrderStatus.PENDING_PACKAGING]: [OrderStatus.PICKUPED, OrderStatus.CANCELLED],
     [OrderStatus.PICKUPED]: [OrderStatus.PENDING_DELIVERY, OrderStatus.CANCELLED],
     [OrderStatus.PENDING_DELIVERY]: [OrderStatus.DELIVERED, OrderStatus.CANCELLED],
     [OrderStatus.DELIVERED]: [OrderStatus.RETURNED],
-    [OrderStatus.CANCELLED]: [], // Không thể chuyển từ CANCELLED
-    [OrderStatus.RETURNED]: [] // Không thể chuyển từ RETURNED
+    [OrderStatus.CANCELLED]: [], // English content normalized from the original source text.
+    [OrderStatus.RETURNED]: [] // English content normalized from the original source text.
   }
 } as const

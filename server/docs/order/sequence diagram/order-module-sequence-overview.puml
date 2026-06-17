@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Đơn Hàng - Tổng Quan Luồng Xử Lý
-note top : Hệ thống quản lý đơn hàng với validation phức tạp, discount handling và multi-shop support
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
-actor "Người dùng" as User
+English content normalized from the original source text.
 participant "OrderController" as OC
 participant "OrderService" as OS
 participant "OrderRepo" as OR
@@ -20,64 +20,64 @@ participant "Redis Redlock" as RL
 participant "BullMQ Queue" as BQ
 database "PostgreSQL" as DB
 
-== Xác thực và Phân quyền ==
-User -> AG: Request với cookies
-AG -> AG: Trích xuất access_token từ cookies
-AG -> AG: Xác minh JWT token
-AG -> AG: Tải quyền người dùng
-AG -> OC: Cho phép request với user context
+== English Section ==
+User -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> AG: English content normalized from the original source text.
+AG -> OC: English content normalized from the original source text.
 
-== GET /orders - Lấy Danh Sách Đơn Hàng ==
+== English Section ==
 User -> OC: GET /orders?page=1&limit=10&status=PENDING_PAYMENT
 OC -> OS: list(user, query)
 OS -> OR: list(userId, query)
-OR -> PS: order.count() và order.findMany()
+OR -> PS: English content normalized from the original source text.
 note right
 Database Query Logic:
 • WHERE userId = user.userId
 • Filter theo status (optional)
 • Include order items
-• Pagination với skip/take
+• English content normalized from the original source text
 • ORDER BY createdAt DESC
 end note
-PS -> DB: Thực thi query với pagination
-DB -> PS: Trả về orders với metadata
-PS -> OR: Trả về {data, metadata}
-OR -> OS: Trả về orders data
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> OR: English content normalized from the original source text.
+OR -> OS: English content normalized from the original source text.
 OS -> IS: i18n.t('order.order.success.GET_SUCCESS')
-IS -> OS: Trả về message đã localize
-OS -> OC: Trả về response với data + metadata
-OC -> User: Trả về JSON response
+IS -> OS: English content normalized from the original source text.
+OS -> OC: English content normalized from the original source text.
+OC -> User: English content normalized from the original source text.
 
-== POST /orders - Tạo Đơn Hàng Mới ==
+== English Section ==
 User -> OC: POST /orders + {shopId, receiver, cartItemIds, discountCodes}
 OC -> OS: create(user, body)
 OS -> OS: validateDiscountCodes()
 note right
 Discount Validation Logic:
-• Thu thập tất cả discount codes
-• Kiểm tra tồn tại trong database
-• Validate trạng thái ACTIVE
-• Kiểm tra thời gian hiệu lực
-• Validate maxUses và maxUsesPerUser
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
-alt Discount codes được cung cấp
-    OS -> PS: discount.findMany() với codes
-    PS -> DB: Query discounts với relations
-    DB -> PS: Trả về discounts data
-    PS -> OS: Trả về discounts
+English content normalized from the original source text.
+    OS -> PS: English content normalized from the original source text.
+    PS -> DB: English content normalized from the original source text.
+    DB -> PS: English content normalized from the original source text.
+    PS -> OS: English content normalized from the original source text.
     OS -> PS: discountSnapshot.groupBy() cho usage count
     PS -> DB: Query user usage count
-    DB -> PS: Trả về usage data
-    PS -> OS: Trả về usage map
+    DB -> PS: English content normalized from the original source text.
+    PS -> OS: English content normalized from the original source text.
     OS -> OS: validateDiscountEligibility()
     note right
     Validation Steps:
-    • Kiểm tra discountStatus = 'ACTIVE'
+    • English content normalized from the original source text
     • Validate startDate <= now <= endDate
-    • Kiểm tra maxUses và maxUsesPerUser
-    • Throw exceptions nếu không hợp lệ
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 end
 
@@ -85,37 +85,37 @@ OS -> OR: create(userId, body)
 OR -> OR: validateCartItems()
 note right
 Cart Items Validation:
-• Kiểm tra tất cả cartItemIds tồn tại
+• English content normalized from the original source text
 • Validate stock quantity
-• Kiểm tra product publish status
+• English content normalized from the original source text
 • Validate shop ownership
 end note
 
-OR -> RL: Acquire locks cho tất cả SKUs
+OR -> RL: English content normalized from the original source text.
 note right
 Redis Lock Logic:
-• Lock tất cả SKU IDs cần mua
-• Timeout 3 giây
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Prevent race conditions
 end note
-RL -> OR: Trả về locks
+RL -> OR: English content normalized from the original source text.
 
-OR -> PS: $transaction() bắt đầu
+OR -> PS: English content normalized from the original source text.
 PS -> DB: BEGIN TRANSACTION
 
-OR -> PS: cartItem.findMany() với includes
-PS -> DB: Query cart items với relations
-DB -> PS: Trả về cart items data
-PS -> OR: Trả về cart items
+OR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> OR: English content normalized from the original source text.
 
 OR -> OR: validateCartItems()
-alt Validation thành công
-    OR -> PS: payment.create() với status PENDING
+English content normalized from the original source text.
+    OR -> PS: English content normalized from the original source text.
     PS -> DB: INSERT payment record
-    DB -> PS: Trả về payment ID
-    PS -> OR: Trả về payment
+    DB -> PS: English content normalized from the original source text.
+    PS -> OR: English content normalized from the original source text.
 
-    loop Cho mỗi shop order
+    English content normalized from the original source text.
         OR -> OR: calculateOrderTotal()
         OR -> OR: processDiscounts()
         note right
@@ -126,55 +126,55 @@ alt Validation thành công
         • Update discount usage count
         end note
 
-        OR -> PS: order.create() với items
-        PS -> DB: INSERT order với relations
-        DB -> PS: Trả về order data
-        PS -> OR: Trả về order
+        OR -> PS: English content normalized from the original source text.
+        PS -> DB: English content normalized from the original source text.
+        DB -> PS: English content normalized from the original source text.
+        PS -> OR: English content normalized from the original source text.
 
-        OR -> PS: discountSnapshot.create() cho mỗi discount
+        OR -> PS: English content normalized from the original source text.
         PS -> DB: INSERT discount snapshots
-        DB -> PS: Trả về snapshot data
-        PS -> OR: Trả về snapshots
+        DB -> PS: English content normalized from the original source text.
+        PS -> OR: English content normalized from the original source text.
     end
 
     OR -> PS: cartItem.deleteMany()
     PS -> DB: DELETE cart items
-    DB -> PS: Trả về delete count
-    PS -> OR: Trả về success
+    DB -> PS: English content normalized from the original source text.
+    PS -> OR: English content normalized from the original source text.
 
     OR -> PS: SKU.update() decrement stock
-    PS -> DB: UPDATE SKU stock với optimistic lock
-    DB -> PS: Trả về updated SKU
-    PS -> OR: Trả về success
+    PS -> DB: English content normalized from the original source text.
+    DB -> PS: English content normalized from the original source text.
+    PS -> OR: English content normalized from the original source text.
 
     OR -> OP: addCancelPaymentJob(paymentId)
-    OP -> BQ: Add job với delay 24h
-    BQ -> OP: Trả về job queued
-    OP -> OR: Trả về success
+    OP -> BQ: English content normalized from the original source text.
+    BQ -> OP: English content normalized from the original source text.
+    OP -> OR: English content normalized from the original source text.
 end
 
 PS -> DB: COMMIT TRANSACTION
 DB -> PS: Transaction committed
-PS -> OR: Trả về {paymentId, orders}
+PS -> OR: English content normalized from the original source text.
 
-OR -> RL: Release tất cả locks
+OR -> RL: English content normalized from the original source text.
 RL -> OR: Locks released
-OR -> OS: Trả về result
+OR -> OS: English content normalized from the original source text.
 OS -> IS: i18n.t('order.order.success.CREATE_SUCCESS')
-IS -> OS: Trả về message đã localize
-OS -> OC: Trả về success response
-OC -> User: Trả về 201 Created + JSON response
+IS -> OS: English content normalized from the original source text.
+OS -> OC: English content normalized from the original source text.
+OC -> User: English content normalized from the original source text.
 
-== GET /orders/:orderId - Chi Tiết Đơn Hàng ==
+== English Section ==
 User -> OC: GET /orders/:orderId
 OC -> OS: detail(user, orderId)
 OS -> OR: detail(userId, orderId)
-OR -> PS: order.findUnique() với includes
-PS -> DB: Query order với items và discounts
-DB -> PS: Trả về order detail
-PS -> OR: Trả về order data
+OR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> OR: English content normalized from the original source text.
 
-alt Order được tìm thấy
+English content normalized from the original source text.
     OR -> OR: calculateOrderTotals()
     note right
     Total Calculation:
@@ -182,61 +182,61 @@ alt Order được tìm thấy
     • totalVoucherDiscount = sum(discount amounts)
     • totalPayment = totalItemCost - totalVoucherDiscount
     end note
-    OR -> OS: Trả về order với totals
+    OR -> OS: English content normalized from the original source text.
     OS -> IS: i18n.t('order.order.success.GET_DETAIL_SUCCESS')
-    IS -> OS: Trả về message đã localize
-    OS -> OC: Trả về success response
-    OC -> User: Trả về 200 OK + JSON response
+    IS -> OS: English content normalized from the original source text.
+    OS -> OC: English content normalized from the original source text.
+    OC -> User: English content normalized from the original source text.
 
-else Order không tồn tại
+else (No)
     OR -> OS: Throw OrderNotFoundException
     OS -> OC: Throw exception
-    OC -> User: Trả về 404 Not Found
+    OC -> User: English content normalized from the original source text.
 end
 
-== PUT /orders/:orderId - Hủy Đơn Hàng ==
+== English Section ==
 User -> OC: PUT /orders/:orderId
 OC -> OS: cancel(user, orderId)
 OS -> OR: cancel(userId, orderId)
 OR -> PS: order.findUniqueOrThrow()
 PS -> DB: Query order theo ID
-DB -> PS: Trả về order data
-PS -> OR: Trả về order
+DB -> PS: English content normalized from the original source text.
+PS -> OR: English content normalized from the original source text.
 
-alt Order tồn tại và có thể hủy
+English content normalized from the original source text.
     OR -> OR: validateCancelEligibility()
     note right
     Cancel Validation:
-    • Kiểm tra status = PENDING_PAYMENT
+    • English content normalized from the original source text
     • Validate user ownership
     • Check business rules
     end note
 
-    OR -> PS: order.update() với status CANCELLED
+    OR -> PS: English content normalized from the original source text.
     PS -> DB: UPDATE order status
-    DB -> PS: Trả về updated order
-    PS -> OR: Trả về updated data
-    OR -> OS: Trả về success
+    DB -> PS: English content normalized from the original source text.
+    PS -> OR: English content normalized from the original source text.
+    OR -> OS: English content normalized from the original source text.
     OS -> IS: i18n.t('order.order.success.CANCEL_SUCCESS')
-    IS -> OS: Trả về message đã localize
-    OS -> OC: Trả về success response
-    OC -> User: Trả về 200 OK + JSON response
+    IS -> OS: English content normalized from the original source text.
+    OS -> OC: English content normalized from the original source text.
+    OC -> User: English content normalized from the original source text.
 
-else Order không thể hủy
+else (No)
     OR -> OS: Throw CannotCancelOrderException
     OS -> OC: Throw exception
-    OC -> User: Trả về 400 Bad Request
+    OC -> User: English content normalized from the original source text.
 end
 
-== POST /orders/calculate - Tính Toán Đơn Hàng ==
+== English Section ==
 User -> OC: POST /orders/calculate + {cartItemIds, discountCodes}
 OC -> OS: calculate(user, body)
-OS -> PS: cartItem.findMany() với includes
-PS -> DB: Query cart items với relations
-DB -> PS: Trả về cart items data
-PS -> OS: Trả về cart items
+OS -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> OS: English content normalized from the original source text.
 
-alt Cart items tồn tại
+English content normalized from the original source text.
     OS -> OS: calculateTotalPayment()
     OS -> OS: processDiscountCalculation()
     note right
@@ -247,74 +247,74 @@ alt Cart items tồn tại
     • Apply max discount limits
     end note
 
-    alt Có discount codes
-        OS -> PS: discount.findMany() với filters
+    English content normalized from the original source text.
+        OS -> PS: English content normalized from the original source text.
         PS -> DB: Query active discounts
-        DB -> PS: Trả về discounts
-        PS -> OS: Trả về discounts
+        DB -> PS: English content normalized from the original source text.
+        PS -> OS: English content normalized from the original source text.
 
         OS -> PS: discountSnapshot.groupBy() cho usage
         PS -> DB: Query user usage count
-        DB -> PS: Trả về usage data
-        PS -> OS: Trả về usage map
+        DB -> PS: English content normalized from the original source text.
+        PS -> OS: English content normalized from the original source text.
 
         OS -> OS: validateAndCalculateDiscounts()
         OS -> OS: calculateFinalTotals()
     end
 
-    OS -> OC: Trả về calculation result
-    OC -> User: Trả về 200 OK + calculation data
+    OS -> OC: English content normalized from the original source text.
+    OC -> User: English content normalized from the original source text.
 
-else Cart items rỗng
-    OS -> OC: Trả về empty calculation
-    OC -> User: Trả về 200 OK + zero totals
+else (No)
+    OS -> OC: English content normalized from the original source text.
+    OC -> User: English content normalized from the original source text.
 end
 
-== Xử Lý Lỗi ==
-alt Lỗi validation cart items
+== English Section ==
+English content normalized from the original source text.
     OR -> OS: Throw NotFoundCartItemException
     OS -> OC: Throw exception
-    OC -> User: Trả về 404 Not Found
+    OC -> User: English content normalized from the original source text.
 
-else Lỗi out of stock
+else (No)
     OR -> OS: Throw OutOfStockSKUException
     OS -> OC: Throw exception
-    OC -> User: Trả về 400 Bad Request
+    OC -> User: English content normalized from the original source text.
 
-else Lỗi discount validation
+else (No)
     OS -> OC: Throw BadRequestException
-    OC -> User: Trả về 400 Bad Request
+    OC -> User: English content normalized from the original source text.
 
-else Lỗi transaction
+else (No)
     PS -> DB: ROLLBACK TRANSACTION
     DB -> PS: Transaction rolled back
     PS -> OR: Throw PrismaException
     OR -> OS: Throw exception
     OS -> OC: Throw exception
-    OC -> User: Trả về 500 Internal Server Error
+    OC -> User: English content normalized from the original source text.
 
-else Lỗi authentication
-    OC -> User: Trả về 401 Unauthorized
+else (No)
+    OC -> User: English content normalized from the original source text.
 end
 
-== Đa Ngôn Ngữ ==
+== English Section ==
 OS -> IS: i18n.t('order.order.success.XXX')
-IS -> OS: Trả về message đã localize
-OS -> OC: Phản hồi + Message đã localize
-OC -> User: JSON Response với metadata đầy đủ
+IS -> OS: English content normalized from the original source text.
+OS -> OC: English content normalized from the original source text.
+OC -> User: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module Order:**
-• Multi-shop order creation với validation phức tạp
-• Redis lock để tránh race conditions
-• Transaction-based order creation với rollback
-• Discount/voucher validation và calculation
+* English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 • BullMQ queue cho payment cancellation
 • Optimistic locking cho SKU stock updates
 • Comprehensive error handling
-• Multi-language support với I18nService
-• Audit trail với createdById, updatedById
-• Stock validation và decrement
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
 @enduml

@@ -140,7 +140,7 @@ export function Profile2FAModal({
             </Button>
           </div>
         </DialogContent>
-      </Dialog>      {/* Recovery Codes Dialog - Hiển thị sau khi kích hoạt 2FA thành công */}
+      </Dialog>      {/* English content normalized from the original source text. */}
       <Dialog open={showRecoveryCodesDialog} onOpenChange={setShowRecoveryCodesDialog}>
         <DialogContent className="max-w-lg bg-[#23272f] text-white rounded-xl p-0 overflow-hidden">
           <div className="px-8 pt-8 pb-2">
@@ -151,7 +151,7 @@ export function Profile2FAModal({
               {t('admin.profileSettings.QrCode.description')}
             </DialogDescription>
           </div>
-          
+
           <div className="px-8 pb-8">
             {/* Recovery codes display */}
             <div className="mb-6">
@@ -168,11 +168,11 @@ export function Profile2FAModal({
                   </div>
                 )}
               </div>
-              
+
               <div className="bg-blue-900/30 border border-blue-500/30 rounded-md p-3 text-sm text-blue-300 mb-4">
                 <p>{t('admin.profileSettings.QrCode.email')}</p>
               </div>
-              
+
               {/* Actions buttons */}
               <div className="flex gap-3 mt-4">
                 <Button
@@ -185,7 +185,7 @@ export function Profile2FAModal({
                   </svg>
                   {t('admin.profileSettings.QrCode.copy')}
                 </Button>
-                
+
                 <Button
                   onClick={downloadRecoveryCodes}
                   className="bg-[#383c44] hover:bg-[#4c505a] text-white flex-1"
@@ -199,7 +199,7 @@ export function Profile2FAModal({
                 </Button>
               </div>
             </div>
-            
+
             {/* Close button */}
             <Button
               onClick={() => setShowRecoveryCodesDialog(false)}
@@ -209,7 +209,7 @@ export function Profile2FAModal({
             </Button>
           </div>
         </DialogContent>
-      </Dialog>     
+      </Dialog>
        {/* QR Code Dialog */}
       <Dialog open={showQRDialog} onOpenChange={setShowQRDialog}>
         <DialogContent className="max-w-lg bg-[#23272f] text-white rounded-xl p-0 overflow-hidden">
@@ -220,7 +220,7 @@ export function Profile2FAModal({
             </DialogDescription>
           </div>
           <div className="px-8 pb-2">
-            {/* Bước 1: Tải app */}
+            {/* English content normalized from the original source text. */}
             <div className="flex items-center gap-4 mb-6">
               <Smartphone className="w-10 h-10 text-gray-400" />
               <div>
@@ -230,9 +230,9 @@ export function Profile2FAModal({
                 </div>
               </div>
             </div>
-            {/* Bước 2: QR */}
+            {/* English content normalized from the original source text. */}
             <div className="mb-6">
-              <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.qr')}</div>              
+              <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.qr')}</div>
               <div className="flex flex-col items-center">
                 {qrCodeImage ? (
                   <img src={qrCodeImage} alt="QR Code" width={160} height={160} />
@@ -244,15 +244,15 @@ export function Profile2FAModal({
                 {t('admin.profileSettings.QrCode.openQr')}
               </div>
             </div>
-            {/* Bước 3: Secret code */}
+            {/* English content normalized from the original source text. */}
             <div className="mb-6">
               <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.secret')}</div>
               <div className="bg-[#181a20] rounded-md px-4 py-3 font-mono text-lg tracking-widest text-blue-300 select-all break-all">
                 {secret}
               </div>
             </div>
-            
-            {/* Nhập mã xác minh */}
+
+            {/* English content normalized from the original source text. */}
             <div className="mb-2">
               <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.confirm')}</div>
               <div className="text-gray-300 text-sm mb-2">{t('admin.profileSettings.QrCode.6code')}</div>

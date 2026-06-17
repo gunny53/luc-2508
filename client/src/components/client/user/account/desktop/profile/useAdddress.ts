@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addressService } from "@/services/addressService";
-import { 
-  AddAddressRequest, 
+import {
+  AddAddressRequest,
   UpdateAddressRequest,
   AddressGetAllResponse,
   AddressGetByIdResponse,
@@ -68,13 +68,13 @@ export const useAddress = () => {
 
   /* ------------------- CREATE ------------------- */
   const createAddress = async (
-    payload: AddAddressRequest, 
+    payload: AddAddressRequest,
     onSuccess?: () => void
   ) => {
     setLoading(true);
     try {
       const { message } = await addressService.create(payload);
-      showToast(message || "Thêm địa chỉ thành công", "success");
+      showToast(message || "English content normalized from the original source text.", "success");
       await fetchProfile();
       onSuccess?.();
     } catch (error) {
@@ -86,14 +86,14 @@ export const useAddress = () => {
 
   /* ------------------- UPDATE ------------------- */
   const updateAddress = async (
-    id: string, 
-    payload: UpdateAddressRequest, 
+    id: string,
+    payload: UpdateAddressRequest,
     onSuccess?: () => void
   ) => {
     setLoading(true);
     try {
       const { message } = await addressService.update(id, payload);
-      showToast(message || "Cập nhật địa chỉ thành công", "success");
+      showToast(message || "English content normalized from the original source text.", "success");
       await fetchProfile();
       onSuccess?.();
     } catch (error) {
@@ -108,7 +108,7 @@ export const useAddress = () => {
     setLoading(true);
     try {
       const { message }: DeleteAddressResponse = await addressService.delete(id);
-      showToast(message || "Xóa địa chỉ thành công", "success");
+      showToast(message || "English content normalized from the original source text.", "success");
       await fetchProfile();
       onSuccess?.();
     } catch (error) {
@@ -119,8 +119,8 @@ export const useAddress = () => {
   };
 
   /* ------------------- UTILITY FUNCTIONS ------------------- */
-  
-  // Function để fetch và map addresses
+
+  // English content normalized from the original source text.
   const fetchAndMapAddresses = async (): Promise<AddressFormValues[]> => {
     const data = await getAllAddresses();
     if (!data) return [];
@@ -142,92 +142,92 @@ export const useAddress = () => {
     }));
   };
 
-  // Function để tìm kiếm địa chỉ matching dựa vào tên
+  // English content normalized from the original source text.
   const findMatchingAddress = async (addressDetail: any) => {
     try {
       const { shippingService } = await import('@/services/shippingService');
-      
+
       console.log('Finding match for address:', addressDetail);
-      
+
       // Load provinces
       const provincesResult = await shippingService.getProvinces();
       console.log('Provinces loaded:', provincesResult.data?.length);
-      
-      const matchedProvince = provincesResult.data?.find((p: any) => 
+
+      const matchedProvince = provincesResult.data?.find((p: any) =>
         p.ProvinceName?.trim().toLowerCase() === addressDetail.province?.trim().toLowerCase()
       );
-      
+
       console.log('Matched province:', matchedProvince);
-      
+
       if (!matchedProvince) {
         console.log('No province match found for:', addressDetail.province);
         return { provinceId: '', districtId: '', wardCode: '' };
       }
-      
+
       // Load districts
-      const districtsResult = await shippingService.getDistricts({ 
-        provinceId: matchedProvince.ProvinceID 
+      const districtsResult = await shippingService.getDistricts({
+        provinceId: matchedProvince.ProvinceID
       });
       console.log('Districts loaded:', districtsResult.data?.length);
-      
-      const matchedDistrict = districtsResult.data?.find((d: any) => 
+
+      const matchedDistrict = districtsResult.data?.find((d: any) =>
         d.DistrictName?.trim().toLowerCase() === addressDetail.district?.trim().toLowerCase()
       );
-      
+
       console.log('Matched district:', matchedDistrict);
-      
+
       if (!matchedDistrict) {
         console.log('No district match found for:', addressDetail.district);
-        return { 
-          provinceId: matchedProvince.ProvinceID.toString(), 
-          districtId: '', 
-          wardCode: '' 
+        return {
+          provinceId: matchedProvince.ProvinceID.toString(),
+          districtId: '',
+          wardCode: ''
         };
       }
-      
+
       // Load wards
-      const wardsResult = await shippingService.getWards({ 
-        districtId: matchedDistrict.DistrictID 
+      const wardsResult = await shippingService.getWards({
+        districtId: matchedDistrict.DistrictID
       });
       console.log('Wards loaded:', wardsResult.data?.length);
-      
-      const matchedWard = wardsResult.data?.find((w: any) => 
+
+      const matchedWard = wardsResult.data?.find((w: any) =>
         w.WardName?.trim().toLowerCase() === addressDetail.ward?.trim().toLowerCase()
       );
-      
+
       console.log('Matched ward:', matchedWard);
-      
+
       const result = {
         provinceId: matchedProvince.ProvinceID.toString(),
         districtId: matchedDistrict.DistrictID.toString(),
         wardCode: matchedWard?.WardCode || ''
       };
-      
+
       console.log('Final matching result:', result);
       return result;
-      
+
     } catch (error) {
       console.error('Error finding matching address:', error);
       return { provinceId: '', districtId: '', wardCode: '' };
     }
   };
 
-  // Function để prepare address data cho edit
+  // English content normalized from the original source text.
   const prepareAddressForEdit = async (addressId: string): Promise<{
     addressData: AddressFormValues | null;
     matchedIds: { provinceId: string; districtId: string; wardCode: string };
   }> => {
     try {
       const addressDetail = await getAddressById(addressId);
-      
+
       if (!addressDetail) {
         return { addressData: null, matchedIds: { provinceId: '', districtId: '', wardCode: '' } };
       }
 
-      // Tìm kiếm địa chỉ matching
+      // English content normalized from the original source text.
       const matchedAddress = await findMatchingAddress(addressDetail);
-      
-      // Tạo form data
+
+      // English content normalized from the original source text.
       const formData: AddressFormValues = {
         id: addressDetail.id,
         recipient: addressDetail.recipient || "",
@@ -260,7 +260,7 @@ export const useAddress = () => {
     }
   };
 
-  // Function để handle save với validation
+  // English content normalized from the original source text.
   const handleSaveAddress = async (
     data: AddressFormValues,
     editingAddressId?: string,
@@ -296,11 +296,11 @@ export const useAddress = () => {
       }
     } catch (error) {
       console.error('Error saving address:', error);
-      throw error; // Re-throw để component có thể handle
+      throw error; // English content normalized from the original source text.
     }
   };
 
-  // Function để format full address
+  // English content normalized from the original source text.
   const formatFullAddress = (data: AddressFormValues) =>
     [data.detail, data.ward, data.district, data.province]
       .filter(Boolean)

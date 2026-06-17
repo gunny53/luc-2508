@@ -6,18 +6,18 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: PUT /cart/:cartItemId
+English content normalized from the original source text.
 
 start
-:Xác thực AccessToken và tải user context;
-:Nhận cartItemId + body { skuId, quantity };
-:ValidateSKU(isCreate=false): kiểm tra SKU, stock, publish status;
-if (Hợp lệ?) then (Có)
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
   :Update cartItem theo id+userId;
   :Build message i18n;
-  :Trả về 200 { message, data };
-else (Không)
-  :Ném 400/404 theo từng lỗi, hoặc 404 nếu cartItem không tồn tại;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

@@ -36,4 +36,4 @@ export interface AduitGetStatsResponse {
   totalSuccessLogs: number;
   totalFailureLogs: number;
   totalEntities: number;
-} 
+}

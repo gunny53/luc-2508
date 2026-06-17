@@ -33,30 +33,30 @@ export const OrderTabs = ({ counts }: { counts: Record<string, number> }) => {
   }, []);
 
   const tabValues = [
-    { value: "all", label: "Tất cả", count: counts.all },
+    { value: "all", label: "English content normalized from the original source text.", count: counts.all },
     {
       value: OrderStatus.PENDING_PAYMENT,
-      label: "Chờ thanh toán",
+      label: "English content normalized from the original source text.",
       count: counts.pendingPayment,
     },
     {
       value: OrderStatus.PENDING_PACKAGING,
-      label: "Đang đóng gói",
+      label: "English content normalized from the original source text.",
       count: counts.pendingPackaging,
     },
     {
       value: OrderStatus.PICKUPED,
-      label: "Chờ lấy hàng",
+      label: "English content normalized from the original source text.",
       count: counts.pickuped,
     },
     {
       value: OrderStatus.PENDING_DELIVERY,
-      label: "Đang giao hàng",
+      label: "English content normalized from the original source text.",
       count: counts.pendingDelivery,
     },
-    { value: OrderStatus.DELIVERED, label: "Đã giao", count: counts.delivered },
-    { value: OrderStatus.RETURNED, label: "Trả hàng", count: counts.returned },
-    { value: OrderStatus.CANCELLED, label: "Đã huỷ", count: counts.cancelled },
+    { value: OrderStatus.DELIVERED, label: "English content normalized from the original source text.", count: counts.delivered },
+    { value: OrderStatus.RETURNED, label: "English content normalized from the original source text.", count: counts.returned },
+    { value: OrderStatus.CANCELLED, label: "English content normalized from the original source text.", count: counts.cancelled },
   ];
 
   return (
@@ -67,33 +67,14 @@ export const OrderTabs = ({ counts }: { counts: Record<string, number> }) => {
             <TabsTrigger
               key={tab.value}
               value={tab.value}
-              className="
-                relative flex-shrink-0 whitespace-nowrap
-                text-xs font-medium text-gray-600
-                px-3 py-2 rounded-md
-                hover:bg-gray-50 hover:text-gray-800
-                data-[state=active]:bg-[#D70018]/10 
-                data-[state=active]:text-[#D70018]
-                data-[state=active]:font-semibold
-                transition-all duration-200
-                flex items-center gap-2
-              "
+              className="\n                relative flex-shrink-0 whitespace-nowrap\n                text-xs font-medium text-gray-600\n                px-3 py-2 rounded-md\n                hover:bg-gray-50 hover:text-gray-800\n                data-[state=active]:bg-[#D70018]/10 \n                data-[state=active]:text-[#D70018]\n                data-[state=active]:font-semibold\n                transition-all duration-200\n                flex items-center gap-2\n              "
             >
               <span>{tab.label}</span>
 
-              {/* Count badge - Hình tròn đẹp */}
+              {/* English content normalized from the original source text. */}
               {tab.count > 0 && (
                 <div
-                  className="
-                  w-5 h-5 rounded-full
-                  bg-gradient-to-r from-[#D70018] to-[#FF4444]
-                  text-white text-[10px] font-bold
-                  flex items-center justify-center
-                  shadow-md
-                  data-[state=active]:from-white data-[state=active]:to-white 
-                  data-[state=active]:text-[#D70018]
-                  transition-all duration-200
-                "
+                  className="\n                  w-5 h-5 rounded-full\n                  bg-gradient-to-r from-[#D70018] to-[#FF4444]\n                  text-white text-[10px] font-bold\n                  flex items-center justify-center\n                  shadow-md\n                  data-[state=active]:from-white data-[state=active]:to-white \n                  data-[state=active]:text-[#D70018]\n                  transition-all duration-200\n                "
                 >
                   {tab.count > 99 ? "99+" : tab.count}
                 </div>

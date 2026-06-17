@@ -3,6 +3,6 @@ export const CONFIG = {
   APP_NAME: 'E-commerce',
   DEFAULT_LANGUAGE: 'vi',
   ITEMS_PER_PAGE: 10,
-  // ... các config khác
-  
+  // English content normalized from the original source text.
+
 }

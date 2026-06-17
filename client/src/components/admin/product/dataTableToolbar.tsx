@@ -21,13 +21,7 @@ export function DataTableToolbar<TData>({ table, categories }: DataTableToolbarP
   return (
     <div className="flex items-center justify-between">      <div className="flex flex-1 items-center space-x-2">
         <DataTableSearch table={table} />
-        {/* <DateRangePicker
-          date={date}
-          onDateChange={(newDate: DateRange | undefined) => {
-            setDate(newDate)
-            //Ở đây bạn có thể xử lý bộ lọc ngày
-          }}
-        /> */}
+        {/* English content normalized from the original source text. */}
         <DataTableFacetedFilter
           column={table.getColumn("category")}
           title={t("admin.dataTableToolbar.categories")}

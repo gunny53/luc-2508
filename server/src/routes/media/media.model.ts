@@ -9,7 +9,7 @@ export const BatchPresignedUploadBodySchema = z.object({
       })
     )
     .min(1)
-    .max(100) // Giống như FilesInterceptor
+    .max(100) // English content normalized from the original source text.
 })
 
 export const UploadFilesResSchema = z.object({

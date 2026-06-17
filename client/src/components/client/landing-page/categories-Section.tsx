@@ -22,17 +22,17 @@ interface CategoryOption {
   parentCategoryId?: string | null;
 }
 
-// 1. Tách CategoryItem thành component riêng với memo
+// English content normalized from the original source text.
 const CategoryItem = memo(({ category }: { category: CategoryOption }) => (
   <CarouselItem key={category.value} className="pl-4 basis-auto">
     <Link
       href={createCategorySlug(category.label, category.value)}
       className="group/item transition-transform duration-300 block"
-      prefetch={false} // Không prefetch để giảm network requests
+      prefetch={false} // English content normalized from the original source text.
     >
       <motion.div
         className="px-6 py-3 rounded-full border border-gray-300 hover:border-red-500 hover:bg-white hover:shadow-md transition-all duration-300"
-        whileHover={{ scale: 1.02 }} // Micro animation thay vì CSS transform
+        whileHover={{ scale: 1.02 }} // English content normalized from the original source text.
         whileTap={{ scale: 0.98 }}
       >
         <span className="text-sm font-medium text-gray-600 whitespace-nowrap group-hover/item:text-red-500 transition-colors duration-300 tracking-wide">
@@ -45,7 +45,7 @@ const CategoryItem = memo(({ category }: { category: CategoryOption }) => (
 
 CategoryItem.displayName = 'CategoryItem';
 
-// 2. Tách SkeletonLoader thành component riêng
+// English content normalized from the original source text.
 const SkeletonLoader = memo(() => (
   <>
     {Array.from({ length: 8 }).map((_, index) => (
@@ -60,18 +60,16 @@ const SkeletonLoader = memo(() => (
 
 SkeletonLoader.displayName = 'SkeletonLoader';
 
-// 3. Tách EmptyState thành component riêng
+// English content normalized from the original source text.
 const EmptyState = memo(() => (
   <CarouselItem className="pl-4 basis-auto">
-    <div className="px-6 py-3 text-gray-500">
-      Không có danh mục nào
-    </div>
+    <div className="px-6 py-3 text-gray-500">English content normalized from the original source text.</div>
   </CarouselItem>
 ));
 
 EmptyState.displayName = 'EmptyState';
 
-// 4. Tách NavigationButtons thành component riêng
+// English content normalized from the original source text.
 const NavigationButtons = memo(() => (
   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
     <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-4 bg-white/80 backdrop-blur-sm shadow-md hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed" />
@@ -82,7 +80,7 @@ const NavigationButtons = memo(() => (
 NavigationButtons.displayName = 'NavigationButtons';
 
 function CategoriesSectionComponent() {
-  // Sử dụng hook để lấy danh mục cấp cao nhất (parentCategoryId = null)
+  // English content normalized from the original source text.
   const { categories, loading } = useCbbCategory(null);
 
   // 5. Memoize carousel options
@@ -91,12 +89,12 @@ function CategoriesSectionComponent() {
     dragFree: true,
   }), []);
 
-  // 6. Memoize category items để tránh re-render
+  // English content normalized from the original source text.
   const categoryItems = useMemo(() => {
     if (loading) return <SkeletonLoader />;
-    
+
     if (categories.length === 0) return <EmptyState />;
-    
+
     return categories.map((category: CategoryOption) => (
       <CategoryItem key={category.value} category={category} />
     ));
@@ -105,9 +103,7 @@ function CategoriesSectionComponent() {
   // 7. Memoize title component
   const sectionTitle = useMemo(() => (
     <h2 className="text-lg font-bold text-gray-800 mb-3.5 flex items-center justify-center gap-1.5">
-      <span className="tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-red-500/20">
-        KHÁM PHÁ DANH MỤC
-      </span>
+      <span className="tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-red-500/20">English content normalized from the original source text.</span>
     </h2>
   ), []);
 
@@ -119,7 +115,7 @@ function CategoriesSectionComponent() {
         {/* Categories Section */}
         <div className="mt-5">
           {sectionTitle}
-          
+
           <div className="mt-6">
             <Carousel
               opts={carouselOpts}
@@ -128,7 +124,7 @@ function CategoriesSectionComponent() {
               <CarouselContent className="-ml-4">
                 {categoryItems}
               </CarouselContent>
-              
+
               <NavigationButtons />
             </Carousel>
           </div>
@@ -138,5 +134,5 @@ function CategoriesSectionComponent() {
   );
 }
 
-// 8. Export component với memo
+// English content normalized from the original source text.
 export const CategoriesSection = memo(CategoriesSectionComponent);

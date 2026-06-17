@@ -20,21 +20,21 @@ export interface CartGroup {
 
 export const mockCartItems: CartGroup[] = [
   {
-    shop: "Gia Dụng Việt !",
+    shop: "English content normalized from the original source text.",
     items: [
       {
         id: "1",
-        name: "Vòi lavabo, Vòi chậu rửa mặt lavab...",
+        name: "English content normalized from the original source text.",
         image: "/mock/voi.png",
-        variation: "Thân trúc 30 cm+dây",
-        variations: ["Thân trúc 20 cm", "Thân trúc 30 cm+dây", "Thân trúc 40 cm"],
+        variation: "English content normalized from the original source text.",
+        variations: ["English content normalized from the original source text.", "English content normalized from the original source text.", "English content normalized from the original source text."],
         price: 335000,
         originalPrice: 580000,
         quantity: 1,
       },
       {
         id: "2",
-        name: "Bộ 3 nồi inox đáy từ cao cấp",
+        name: "English content normalized from the original source text.",
         image: "/mock/noi.png",
         variation: "20cm - 24cm - 26cm",
         price: 820000,
@@ -43,9 +43,9 @@ export const mockCartItems: CartGroup[] = [
       },
       {
         id: "3",
-        name: "Giá treo khăn nhà tắm đa năng",
+        name: "English content normalized from the original source text.",
         image: "/mock/gia.png",
-        variation: "Kích thước 40cm",
+        variation: "English content normalized from the original source text.",
         price: 195000,
         originalPrice: 260000,
         quantity: 1,
@@ -57,16 +57,16 @@ export const mockCartItems: CartGroup[] = [
     items: [
       {
         id: "4",
-        name: "Khuyên tai nụ Hemera hạt trai nuôi",
+        name: "English content normalized from the original source text.",
         image: "/mock/khuyen.png",
-        variation: "1 đôi, Hồng cam 9 - 9,5mm",
+        variation: "English content normalized from the original source text.",
         price: 95000,
         quantity: 1,
         soldOut: true,
       },
       {
         id: "5",
-        name: "Lắc tay bạc Hemera ngọc trai tự nhiên",
+        name: "English content normalized from the original source text.",
         image: "/mock/lactay.png",
         variation: "Size M",
         price: 185000,
@@ -76,19 +76,19 @@ export const mockCartItems: CartGroup[] = [
     ],
   },
   {
-    shop: "CỬA HÀNG MỸ PHẨM GREEN",
+    shop: "English content normalized from the original source text.",
     items: [
       {
         id: "6",
-        name: "Son dưỡng môi không màu Lipice",
+        name: "English content normalized from the original source text.",
         image: "/mock/son.png",
-        variation: "Hương bạc hà",
+        variation: "English content normalized from the original source text.",
         price: 42000,
         quantity: 3,
       },
       {
         id: "7",
-        name: "Kem chống nắng Anessa SPF50",
+        name: "English content normalized from the original source text.",
         image: "/mock/anessa.png",
         variation: "60ml",
         price: 230000,
@@ -100,20 +100,20 @@ export const mockCartItems: CartGroup[] = [
 ];
 
 export const trendingSearches = [
-    { id: 1, text: 'iPhone 15', category: 'Điện thoại', count: '8.5K' },
+    { id: 1, text: 'iPhone 15', category: 'English content normalized from the original source text.', count: '8.5K' },
     { id: 2, text: 'Laptop Gaming', category: 'Laptop', count: '6.2K' },
-    { id: 3, text: 'Tai nghe không dây', category: 'Âm thanh', count: '5.1K' },
-    { id: 4, text: 'Máy tính bảng', category: 'Tablet', count: '4.7K' },
-    { id: 5, text: 'Camera an ninh', category: 'Thiết bị thông minh', count: '3.9K' },
+    { id: 3, text: 'English content normalized from the original source text.', category: 'English content normalized from the original source text.', count: '5.1K' },
+    { id: 4, text: 'English content normalized from the original source text.', category: 'Tablet', count: '4.7K' },
+    { id: 5, text: 'Camera an ninh', category: 'English content normalized from the original source text.', count: '3.9K' },
 ];
 
-// Dữ liệu mẫu cho các danh mục phổ biến
+// English content normalized from the original source text.
 export const popularCategories = [
-    { id: 1, name: 'Smartphone', image: '/images/demo/3.webp', count: '12K+ sản phẩm' },
-    { id: 2, name: 'Laptop', image: '/images/demo/3.webp', count: '8K+ sản phẩm' },
-    { id: 3, name: 'Tai nghe', image: '/images/demo/3.webp', count: '5K+ sản phẩm' },
-    { id: 4, name: 'Đồng hồ thông minh', image: '/images/demo/3.webp', count: '3K+ sản phẩm' },
-    { id: 5, name: 'Máy ảnh', image: '/images/demo/3.webp', count: '2K+ sản phẩm' },
+    { id: 1, name: 'Smartphone', image: '/images/demo/3.webp', count: 'English content normalized from the original source text.' },
+    { id: 2, name: 'Laptop', image: '/images/demo/3.webp', count: 'English content normalized from the original source text.' },
+    { id: 3, name: 'Tai nghe', image: '/images/demo/3.webp', count: 'English content normalized from the original source text.' },
+    { id: 4, name: 'English content normalized from the original source text.', image: '/images/demo/3.webp', count: 'English content normalized from the original source text.' },
+    { id: 5, name: 'English content normalized from the original source text.', image: '/images/demo/3.webp', count: 'English content normalized from the original source text.' },
 ];
 
 
@@ -133,7 +133,7 @@ export interface Category {
 export const categories: Category[] = [
   {
     id: '1',
-    name: 'Điện thoại',
+    name: 'English content normalized from the original source text.',
     children: [
       { id: 'p1', name: 'iPhone 15 Pro', image: '/images/demo/1.webp' },
       { id: 'p2', name: 'Samsung S24', image: '/images/demo/2.webp' },
@@ -149,10 +149,10 @@ export const categories: Category[] = [
   },
   {
     id: '3',
-    name: 'Phụ kiện',
+    name: 'English content normalized from the original source text.',
     children: [
       { id: 'p5', name: 'Tai nghe AirPods', image: '/images/demo/5.webp' },
-      { id: 'p6', name: 'Sạc dự phòng', image: '/images/demo/1.webp' },
+      { id: 'p6', name: 'English content normalized from the original source text.', image: '/images/demo/1.webp' },
     ],
   },
 ];

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { 
+import {
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/drawer";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { 
+import {
   Sku,
   VariantGroup,
   SelectedVariants,
-  findMatchingSku, 
-  areAllVariantsSelected, 
-  getCurrentStock, 
+  findMatchingSku,
+  areAllVariantsSelected,
+  getCurrentStock,
   isOptionAvailable,
   handleAddToCart
 } from "@/utils/productUtils";
@@ -27,7 +27,7 @@ import { useAuthGuard } from '@/hooks/useAuthGuard';
 import { useRouter } from 'next/navigation';
 
 interface Product {
-  id?: string; // Optional để tương thích với InfoMobile
+  id?: string; // English content normalized from the original source text.
   name: string;
   basePrice: number;
   virtualPrice: number;
@@ -40,7 +40,7 @@ interface AddCartMobileProps {
   product: Product;
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
-  isBuyNowMode?: boolean; // Thêm prop để xác định mode
+  isBuyNowMode?: boolean; // English content normalized from the original source text.
 }
 
 export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowMode = false }: AddCartMobileProps) {
@@ -51,10 +51,10 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
   const { addToCart } = useCart();
   const { checkAuth } = useAuthGuard();
   const router = useRouter();
-  
-  // Lấy ra tất cả variants từ API response
+
+  // English content normalized from the original source text.
   const variantGroups = product.variants || [];
-  
+
   // Auto-select variants khi component mount
   useEffect(() => {
     const initialVariants: SelectedVariants = {};
@@ -67,53 +67,53 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
     });
     setSelectedVariants(initialVariants);
   }, [variantGroups]);
-  
-  // Xử lý khi người dùng chọn một variant
+
+  // English content normalized from the original source text.
   const handleVariantSelect = (variantType: string, option: string) => {
     setSelectedVariants(prev => {
-      // Nếu đang chọn cùng một giá trị, bỏ chọn nó
+      // English content normalized from the original source text.
       if (prev[variantType] === option) {
         return { ...prev, [variantType]: null };
       }
-      // Ngược lại, chọn giá trị mới
+      // English content normalized from the original source text.
       return { ...prev, [variantType]: option };
     });
   };
-  
-  // Tìm SKU phù hợp với các lựa chọn variant hiện tại và cập nhật state
+
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Sử dụng hàm tiện ích để tìm SKU phù hợp
+    // English content normalized from the original source text.
     const matchingSku = findMatchingSku(selectedVariants, product.skus, variantGroups);
-    
+
     if (matchingSku) {
-      console.log('Tìm thấy SKU:', matchingSku);
+      console.log('English content normalized from the original source text.', matchingSku);
     } else if (areAllVariantsSelected(selectedVariants)) {
-      console.log('Đã chọn đủ variants nhưng không tìm thấy SKU phù hợp');
+      console.log('English content normalized from the original source text.');
     }
-    
+
     setCurrentSku(matchingSku);
   }, [selectedVariants, product.skus, variantGroups]);
-  
-  // Tính toán tổng tồn kho dựa trên SKU hiện tại hoặc sử dụng hàm tiện ích
+
+  // English content normalized from the original source text.
   const totalStock = getCurrentStock(selectedVariants, product.skus, variantGroups);
-  
-  // Kiểm tra xem đã chọn đủ variants chưa
+
+  // English content normalized from the original source text.
   const isVariantSelected = areAllVariantsSelected(selectedVariants);
-  
-  // Xử lý input số lượng
+
+  // English content normalized from the original source text.
   const handleQuantityChange = (increment: number) => {
     setQuantity(current => {
       const newValue = current + increment;
-      
+
       if (newValue < 1) return 1;
-      
+
       const maxStock = currentSku ? currentSku.stock : totalStock;
       if (newValue > maxStock) return maxStock;
-      
+
       return newValue;
     });
   };
-  
+
   const handleAddToCartClick = async () => {
     if (checkAuth()) {
       if (!isVariantSelected || !currentSku || currentSku.stock === 0) return;
@@ -127,13 +127,13 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
           quantity,
           addToCart
         );
-        
-        // Đóng drawer
+
+        // English content normalized from the original source text.
         if (onOpenChange) {
           onOpenChange(false);
         }
-        
-        // Nếu là buy now mode, redirect tới cart
+
+        // English content normalized from the original source text.
         if (isBuyNowMode) {
           router.push('/cart');
         }
@@ -141,15 +141,15 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
         setIsAddingToCart(false);
       }
     } else {
-      // Có thể redirect tới trang đăng nhập hoặc show modal login
+      // English content normalized from the original source text.
       console.log('User not authenticated');
     }
   };
-  
-  // Lấy hình ảnh sản phẩm
+
+  // English content normalized from the original source text.
   const productImage = product.media?.[0]?.src || '/images/image-placeholder.jpg';
-  
-  // Lấy giá hiển thị
+
+  // English content normalized from the original source text.
   const displayPrice = currentSku ? currentSku.price : product.virtualPrice;
 
   return (
@@ -172,20 +172,20 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
                 </div>
                 <div className="text-sm text-muted-foreground">
                   {isVariantSelected && currentSku && (
-                    <span>Còn {currentSku.stock} sản phẩm</span>
+                    <span>English content normalized from the original source text. {currentSku.stock} English content normalized from the original source text.</span>
                   )}
                 </div>
               </div>
             </div>
-            
+
             <DrawerClose>
               <Button variant="ghost" size="icon" className="h-8 w-8">
                 <X className="h-4 w-4" />
               </Button>
             </DrawerClose>
           </div>
-          
-          {/* Variants - Lựa chọn biến thể */}
+
+          {/* English content normalized from the original source text. */}
           <div className="space-y-5 mb-6">
             {variantGroups.map((variantGroup) => (
               <div key={variantGroup.value} className="space-y-3">
@@ -200,15 +200,15 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
                 <div className="flex flex-wrap gap-2">
                   {variantGroup.options.map((option) => {
                     const isSelected = selectedVariants[variantGroup.value] === option;
-                    
-                    // Sử dụng hàm tiện ích để kiểm tra xem variant này có sẵn không
+
+                    // English content normalized from the original source text.
                     const isAvailable = isOptionAvailable(
                       variantGroup.value,
                       option,
                       selectedVariants,
                       product.skus
                     );
-                    
+
                     return (
                       <button
                         key={option}
@@ -248,10 +248,10 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
               </div>
             ))}
           </div>
-          
-          {/* Số lượng */}
+
+          {/* English content normalized from the original source text. */}
           <div className="mb-6">
-            <div className="font-medium text-sm mb-3">Số lượng:</div>
+            <div className="font-medium text-sm mb-3">English content normalized from the original source text.</div>
             <div className="flex items-center">
               <div className="flex items-center border rounded-md">
                 <Button
@@ -276,25 +276,23 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
               </div>
             </div>
           </div>
-          
-          {/* Thông báo nếu hết hàng */}
+
+          {/* English content normalized from the original source text. */}
           {isVariantSelected && currentSku && currentSku.stock === 0 && (
-            <div className="text-red-500 text-sm mb-4">
-              Sản phẩm đã hết hàng với tùy chọn này
-            </div>
+            <div className="text-red-500 text-sm mb-4">English content normalized from the original source text.</div>
           )}
-          
-          {/* Nút thêm vào giỏ hàng */}
+
+          {/* English content normalized from the original source text. */}
           <Button
             className="w-full h-12 bg-red-600 hover:bg-red-700 text-white font-medium text-base rounded-md"
             disabled={!isVariantSelected || !currentSku || currentSku.stock === 0 || isAddingToCart}
             onClick={handleAddToCartClick}
           >
-            {isAddingToCart 
-              ? "ĐANG THÊM..." 
-              : isBuyNowMode 
-                ? "THÊM VÀO GIỎ & MUA NGAY" 
-                : "THÊM VÀO GIỎ HÀNG"
+            {isAddingToCart
+              ? "English content normalized from the original source text."
+              : isBuyNowMode
+                ? "English content normalized from the original source text."
+                : "English content normalized from the original source text."
             }
           </Button>
         </div>

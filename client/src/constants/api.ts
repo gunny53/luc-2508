@@ -18,19 +18,19 @@ export const API_ENDPOINTS = {
     UPDATE_ADDRESS: `${API_BASE}/profile/addresses/:addressId`,
     DELETE_ADDRESS: `${API_BASE}/profile/addresses/:addressId`,
     CHANGE_PASSWORD_PROFILE: `${API_BASE}/profile/change-password`,
-    // SIGN-UP 
+    // SIGN-UP
     SIGNUP: `${API_BASE}/auth/complete-registration`,
     SIGNUP_SEND: `${API_BASE}/auth/initiate-registration`,
-    // CHANGE PASSWORD 
+    // CHANGE PASSWORD
     CHANGE_PASSWORD: `${API_BASE}/auth/password/change`,
-    // RESET PASSWORD 
+    // RESET PASSWORD
     RESET_PASSWORD: `${API_BASE}/auth/password/set-new`,
     RESET_PASSWORD_SEND: `${API_BASE}/auth/password/initiate-reset`,
     //VERIFY & RESEND
     VERIFY_OTP: `${API_BASE}/auth/otp/verify`,
-    VERIFY_2FA: `${API_BASE}/auth/2fa/verify`, //TOTP hoặc RECOVERY
+    VERIFY_2FA: `${API_BASE}/auth/2fa/verify`, // English content normalized from the original source text.
     RESEND_OTP: `${API_BASE}/auth/otp/resend`,
-    //SETUP 2FA 
+    //SETUP 2FA
     SETUP_2FA: `${API_BASE}/auth/2fa/setup`,
     CONFIRM_2FA: `${API_BASE}/auth/2fa/confirm-setup`,
     DISABLE_2FA: `${API_BASE}/auth/2fa/disable`,
@@ -46,7 +46,7 @@ export const API_ENDPOINTS = {
     UPLOAD_MEDIA: `${API_BASE}/media/images/upload`,
     GET_PRESIGN_URL: `${API_BASE}/media/images/upload/presigned-urls`
   },
-  // QUẢN LÝ NGƯỜI DÙNG - USERS
+  // English content normalized from the original source text.
   USERS:{
     GETALL: `${API_BASE}/users`,
     GETBYID: `${API_BASE}/users/:id`,
@@ -54,7 +54,7 @@ export const API_ENDPOINTS = {
     POST: `${API_BASE}/users`,
     DELETE_BY_ID: `${API_BASE}/users/:id`,
   },
-  // QUẢN LÝ VAI TRÒ - ROLES
+  // English content normalized from the original source text.
   ROLES:{
     GETALL: `${API_BASE}/roles`,
     GETBYID: `${API_BASE}/roles/:id`,
@@ -63,7 +63,7 @@ export const API_ENDPOINTS = {
     POST_ROLE_PERMISSIONS: `${API_BASE}/roles/:id/assign-permissions`,
     DELETE_BY_ID: `${API_BASE}/roles/:id`,
   },
-  // QUẢN LÝ QUYỀN - PERMISSIONS
+  // English content normalized from the original source text.
   PERMISSION:{
     GETALL: `${API_BASE}/permissions`,
     GETBYID: `${API_BASE}/permissions/:id`,
@@ -71,7 +71,7 @@ export const API_ENDPOINTS = {
     POST: `${API_BASE}/permissions`,
     DELETE_BY_ID: `${API_BASE}/permissions/:id`,
   },
-  // QUẢN LÝ NGÔN NGỮ - LANGUAGES
+  // English content normalized from the original source text.
   LANGUAGES:{
     GETALL: `${API_BASE}/languages`,
     GETBYID: `${API_BASE}/languages/:id`,
@@ -79,7 +79,7 @@ export const API_ENDPOINTS = {
     POST: `${API_BASE}/languages`,
     DELETE_BY_ID: `${API_BASE}/languages/:id`,
   },
-  // QUẢN LÝ SẢN PHẨM - PRODUCTS
+  // English content normalized from the original source text.
   MANAGE_PRODUCTS: {
     LIST: `${API_BASE}/manage-product/products`,
     DETAIL: `${API_BASE}/manage-product/products/:id`,
@@ -99,14 +99,14 @@ export const API_ENDPOINTS = {
     DETAIL: `${API_BASE}/products/:id`,
     SEARCH: `${API_BASE}/search/products`,
   },
-  // QUẢN LÝ GIỎ HÀNG - CART
+  // English content normalized from the original source text.
   CART:{
     GET_CART: `${API_BASE}/cart`,
     ADD_TO_CART: `${API_BASE}/cart`,
     UPDATE_CART_ITEM: `${API_BASE}/cart/:id`,
     DELETE_CART: `${API_BASE}/cart/delete`,
   },
-  // THỐNG KÊ LOGS - AUDIT LOGS
+  // English content normalized from the original source text.
   AUDIT_LOGS: {
     GETALL: `${API_BASE}/audit-logs`,
     GET_STATS: `${API_BASE}/audit-logs/stats`,
@@ -114,13 +114,13 @@ export const API_ENDPOINTS = {
     GET_ACTIONS: `${API_BASE}/audit-logs/actions`,
     GET_ENTITIES: `${API_BASE}/audit-logs/entities`,
   },
-  // QUẢN LÝ SESSION - SESSIONS
+  // English content normalized from the original source text.
   SESSIONS: {
     GETALL: `${API_BASE}/sessions`,
     REVOKE: `${API_BASE}/sessions/revoke`,
     REVOKE_ALL: `${API_BASE}/sessions/revoke-all`
   },
-  //QUẢN LÝ THƯƠNG HIỆU - BRAND
+  // English content normalized from the original source text.
   BRANDS:{
     GETALL: `${API_BASE}/brands`,
     GET_BY_ID: `${API_BASE}/brands/:brandsId`,
@@ -135,7 +135,7 @@ export const API_ENDPOINTS = {
     UPDATE: `${API_BASE}/brands/:brandsId`,
     DELETE: `${API_BASE}/brands/:brandsId`
   },
-  // QUẢN LÝ DANH MỤC - CATEGORIES
+  // English content normalized from the original source text.
   CATEGORIES:{
     GETALL: `${API_BASE}/categories`,
     GET_BY_ID: `${API_BASE}/categories/:categoriesId`,
@@ -150,7 +150,7 @@ export const API_ENDPOINTS = {
     UPDATE: `${API_BASE}/categories/:categoriesId`,
     DELETE: `${API_BASE}/categories/:categoriesId`
   },
-  // QUẢN LÝ ĐƠN HÀNG - ORDERS
+  // English content normalized from the original source text.
   ORDERS: {
     GETALL: `${API_BASE}/orders`,
     GET_BY_ID: `${API_BASE}/orders/:orderId`,
@@ -164,14 +164,14 @@ export const API_ENDPOINTS = {
     GET_BY_ID: `${API_BASE}/manage-order/orders/:orderId`,
     UPDATE_STATUS: `${API_BASE}/manage-order/orders/:orderId/status`
   },
-  // ĐÁNH GIÁ SẢN PHẨM - REVIEWS
+  // English content normalized from the original source text.
   REVIEW:{
     GET_BY_ID: `${API_BASE}/reviews/products/:productId`,
     CREATE: `${API_BASE}/reviews`,
     UPDATE: `${API_BASE}/reviews/:reviewId`,
     DELETE: `${API_BASE}/reviews/:reviewId`
   },
-  // QUẢN LÝ MÃ GIẢM GIÁ - DISCOUNT
+  // English content normalized from the original source text.
   DISCOUNT:{
     GETALL: `${API_BASE}/manage-discount/discounts`,
     CREATE: `${API_BASE}/manage-discount/discounts`,
@@ -181,7 +181,7 @@ export const API_ENDPOINTS = {
     GUEST_GET_DISCOUNT_LIST: `${API_BASE}/discounts/available`,
     VALIDATE_DISCOUNT: `${API_BASE}/discounts/validate-code`
   },
-  // QUẢN LÝ VẬN CHUYỂN - SHIPPING - ADDRESS
+  // English content normalized from the original source text.
   ADDRESS:{
     GET_PROVINCES: `${API_BASE}/shipping/ghn/address/provinces`,
     GET_DISTRICTS: `${API_BASE}/shipping/ghn/address/districts`,

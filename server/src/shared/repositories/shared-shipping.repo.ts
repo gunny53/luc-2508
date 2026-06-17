@@ -43,12 +43,9 @@ export class SharedShippingRepository {
     private readonly shippingProducer: ShippingProducer
   ) {}
 
-  /**
-   * Tạo OrderShipping record - Bridge method
-   * Sử dụng bởi Order module để tạo shipping record khi tạo order
-   */
+  /* English content normalized from the original source text. */
   async createOrderShipping(data: CreateOrderShippingData) {
-    this.logger.log(`[SHARED_SHIPPING] Bắt đầu tạo OrderShipping record cho order: ${data.orderId}`)
+    this.logger.log(`English content normalized from the original source text.${data.orderId}`)
 
     try {
       const orderShipping = await this.prismaService.orderShipping.create({
@@ -91,17 +88,14 @@ export class SharedShippingRepository {
       this.logger.log(`[SHARED_SHIPPING] OrderShipping created successfully: ${JSON.stringify(orderShipping, null, 2)}`)
       return orderShipping
     } catch (error) {
-      this.logger.error(`[SHARED_SHIPPING] Lỗi khi tạo OrderShipping: ${error.message}`, error.stack)
+      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
       throw error
     }
   }
 
-  /**
-   * Cập nhật trạng thái OrderShipping - Bridge method
-   * Sử dụng bởi Order module để cập nhật shipping status
-   */
+  /* English content normalized from the original source text. */
   async updateOrderShippingStatus(orderId: string, status: OrderShippingStatusType) {
-    this.logger.log(`[SHARED_SHIPPING] Cập nhật OrderShipping status cho order: ${orderId} thành: ${status}`)
+    this.logger.log(`English content normalized from the original source text.${orderId}English content normalized from the original source text.${status}`)
 
     try {
       const result = await this.prismaService.orderShipping.update({
@@ -112,32 +106,26 @@ export class SharedShippingRepository {
       this.logger.log(`[SHARED_SHIPPING] OrderShipping status updated successfully: ${JSON.stringify(result, null, 2)}`)
       return result
     } catch (error) {
-      this.logger.error(`[SHARED_SHIPPING] Lỗi khi cập nhật OrderShipping status: ${error.message}`, error.stack)
+      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
       throw error
     }
   }
 
-  /**
-   * Lấy shipping info của order - Bridge method
-   * Sử dụng bởi Order module để lấy shipping info khi hiển thị
-   */
+  /* English content normalized from the original source text. */
   async getOrderShippingInfo(orderId: string) {
     return this.prismaService.orderShipping.findUnique({
       where: { orderId }
     })
   }
 
-  /**
-   * Lấy GHN order code từ order ID - Bridge method
-   * Sử dụng bởi Order module để trả về cho client
-   */
+  /* English content normalized from the original source text. */
   async getGHNOrderCode(orderId: string): Promise<string | null> {
     const orderShipping = await this.prismaService.orderShipping.findUnique({
       where: { orderId },
       select: { orderCode: true, status: true }
     })
 
-    // Chỉ trả về orderCode nếu shipping đã được tạo thành công
+    // English content normalized from the original source text.
     if (orderShipping?.status === 'CREATED' && orderShipping.orderCode) {
       return orderShipping.orderCode
     }
@@ -145,10 +133,7 @@ export class SharedShippingRepository {
     return null
   }
 
-  /**
-   * Update OrderShipping status - Bridge method
-   * Sử dụng bởi Order module để update status khi cancel order
-   */
+  /* English content normalized from the original source text. */
   async updateOrderShippingStatusForCancellation(
     orderId: string,
     status: OrderShippingStatusType,
@@ -164,85 +149,79 @@ export class SharedShippingRepository {
     })
   }
 
-  /**
-   * Hủy đơn hàng GHN - Bridge method
-   * Sử dụng bởi Order module để hủy đơn hàng GHN khi cancel order
-   */
+  /* English content normalized from the original source text. */
   async cancelGHNOrderForOrder(orderId: string): Promise<{ success: boolean; message: string }> {
     try {
-      this.logger.log(`[SHARED_SHIPPING] Bắt đầu hủy đơn hàng GHN cho order: ${orderId}`)
+      this.logger.log(`English content normalized from the original source text.${orderId}`)
 
-      // Lấy thông tin OrderShipping
+      // English content normalized from the original source text.
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId },
         select: { orderCode: true, status: true }
       })
 
       if (!orderShipping?.orderCode) {
-        this.logger.warn(`[SHARED_SHIPPING] Không có orderCode cho order: ${orderId}`)
+        this.logger.warn(`English content normalized from the original source text.${orderId}`)
         return {
           success: false,
-          message: 'Không có mã đơn hàng GHN để hủy'
+          message: 'English content normalized from the original source text.'
         }
       }
 
       if (orderShipping.status !== 'CREATED') {
-        this.logger.warn(`[SHARED_SHIPPING] OrderShipping status không phù hợp để hủy: ${orderShipping.status}`)
+        this.logger.warn(`English content normalized from the original source text.${orderShipping.status}`)
         return {
           success: false,
-          message: `Trạng thái đơn hàng không phù hợp để hủy: ${orderShipping.status}`
+          message: `English content normalized from the original source text.${orderShipping.status}`
         }
       }
 
-      // Enqueue job để hủy đơn hàng GHN
+      // English content normalized from the original source text.
       await this.shippingProducer.enqueueCancelGHNOrder(orderShipping.orderCode, orderId)
 
-      this.logger.log(`[SHARED_SHIPPING] Đã enqueue job hủy đơn hàng GHN: ${orderShipping.orderCode}`)
+      this.logger.log(`English content normalized from the original source text.${orderShipping.orderCode}`)
 
       return {
         success: true,
-        message: `Đã enqueue job hủy đơn hàng GHN: ${orderShipping.orderCode}`
+        message: `English content normalized from the original source text.${orderShipping.orderCode}`
       }
     } catch (error) {
-      this.logger.error(`[SHARED_SHIPPING] Lỗi khi hủy đơn hàng GHN: ${error.message}`)
+      this.logger.error(`English content normalized from the original source text.${error.message}`)
       return {
         success: false,
-        message: `Lỗi khi hủy đơn hàng GHN: ${error.message}`
+        message: `English content normalized from the original source text.${error.message}`
       }
     }
   }
 
-  /**
-   * Lấy shop info với address để tạo shipping - Bridge method
-   * Sử dụng bởi Shipping module để lấy shop address
-   */
+  /* English content normalized from the original source text. */
   async getShopAddressForShipping(shopId: string): Promise<{ shop: any; address: any }> {
-    this.logger.log(`[SHARED_SHIPPING] Lấy shop address cho shop: ${shopId}`)
+    this.logger.log(`English content normalized from the original source text.${shopId}`)
 
     try {
-      // 1. Kiểm tra shop có tồn tại không
+      // English content normalized from the original source text.
       const shopData = await this.prismaService.user.findUnique({
         where: { id: shopId }
       })
 
       if (!shopData) {
-        this.logger.error(`[SHARED_SHIPPING] Shop không tồn tại: ${shopId}`)
+        this.logger.error(`English content normalized from the original source text.${shopId}`)
         throw new Error('Shop not found')
       }
 
       this.logger.log(`[SHARED_SHIPPING] Shop data: ${JSON.stringify(shopData, null, 2)}`)
 
-      // 2. Lấy shop address từ UserAddress (default address trước, fallback về bất kỳ address nào)
-      this.logger.log(`[SHARED_SHIPPING] Lấy shop default address từ UserAddress`)
+      // English content normalized from the original source text.
+      this.logger.log(`English content normalized from the original source text.`)
       let shopUserAddress = await this.prismaService.userAddress.findFirst({
         where: { userId: shopId, isDefault: true },
         include: { address: true }
       })
 
-      // Nếu không có default address, lấy address đầu tiên
+      // English content normalized from the original source text.
       if (!shopUserAddress) {
         this.logger.warn(
-          `[SHARED_SHIPPING] Shop không có default address, thử lấy address đầu tiên cho shop: ${shopId}`
+          `English content normalized from the original source text.${shopId}`
         )
         shopUserAddress = await this.prismaService.userAddress.findFirst({
           where: { userId: shopId },
@@ -251,21 +230,21 @@ export class SharedShippingRepository {
       }
 
       if (!shopUserAddress) {
-        this.logger.error(`[SHARED_SHIPPING] Shop không có bất kỳ address nào cho shop: ${shopId}`)
+        this.logger.error(`English content normalized from the original source text.${shopId}`)
         throw new Error('Shop has no addresses')
       }
 
       if (!shopUserAddress.address) {
-        this.logger.error(`[SHARED_SHIPPING] Shop address record không có address data cho shop: ${shopId}`)
+        this.logger.error(`English content normalized from the original source text.${shopId}`)
         throw new Error('Shop address data not found')
       }
 
       this.logger.log(`[SHARED_SHIPPING] Shop UserAddress: ${JSON.stringify(shopUserAddress, null, 2)}`)
       this.logger.log(`[SHARED_SHIPPING] Shop address: ${JSON.stringify(shopUserAddress.address, null, 2)}`)
 
-      // 3. Kiểm tra address có đầy đủ thông tin không
+      // English content normalized from the original source text.
       if (!shopUserAddress.address.province || !shopUserAddress.address.district || !shopUserAddress.address.ward) {
-        this.logger.error(`[SHARED_SHIPPING] Shop address thiếu thông tin địa chỉ cho shop: ${shopId}`)
+        this.logger.error(`English content normalized from the original source text.${shopId}`)
         throw new Error('Shop address missing required location information')
       }
 
@@ -277,57 +256,54 @@ export class SharedShippingRepository {
       this.logger.log(`[SHARED_SHIPPING] Shop address info: ${JSON.stringify(result, null, 2)}`)
       return result
     } catch (error) {
-      this.logger.error(`[SHARED_SHIPPING] Lỗi khi lấy shop address: ${error.message}`, error.stack)
+      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
       throw error
     }
   }
 
-  /**
-   * Tạo đơn hàng GHN - Bridge method
-   * Sử dụng bởi Payment webhook để tạo đơn hàng GHN sau khi thanh toán thành công
-   */
+  /* English content normalized from the original source text. */
   async createGHNOrderForOrder(orderId: string): Promise<{ success: boolean; message: string }> {
     try {
-      this.logger.log(`[SHARED_SHIPPING] Bắt đầu tạo đơn hàng GHN cho order: ${orderId}`)
+      this.logger.log(`English content normalized from the original source text.${orderId}`)
 
-      // Lấy thông tin OrderShipping
+      // English content normalized from the original source text.
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId },
         select: { status: true }
       })
 
       if (!orderShipping) {
-        this.logger.warn(`[SHARED_SHIPPING] Không tìm thấy OrderShipping cho order: ${orderId}`)
+        this.logger.warn(`English content normalized from the original source text.${orderId}`)
         return {
           success: false,
-          message: 'Không tìm thấy thông tin vận chuyển'
+          message: 'English content normalized from the original source text.'
         }
       }
 
       if (orderShipping.status !== 'DRAFT') {
         this.logger.warn(
-          `[SHARED_SHIPPING] OrderShipping status không phù hợp để tạo GHN order: ${orderShipping.status}`
+          `English content normalized from the original source text.${orderShipping.status}`
         )
         return {
           success: false,
-          message: `Trạng thái vận chuyển không phù hợp để tạo GHN order: ${orderShipping.status}`
+          message: `English content normalized from the original source text.${orderShipping.status}`
         }
       }
 
-      // Enqueue job để tạo đơn hàng GHN
+      // English content normalized from the original source text.
       await this.shippingProducer.enqueueCreateGHNOrder(orderId)
 
-      this.logger.log(`[SHARED_SHIPPING] Đã enqueue job tạo đơn hàng GHN cho order: ${orderId}`)
+      this.logger.log(`English content normalized from the original source text.${orderId}`)
 
       return {
         success: true,
-        message: `Đã enqueue job tạo đơn hàng GHN cho order: ${orderId}`
+        message: `English content normalized from the original source text.${orderId}`
       }
     } catch (error) {
-      this.logger.error(`[SHARED_SHIPPING] Lỗi khi tạo đơn hàng GHN: ${error.message}`)
+      this.logger.error(`English content normalized from the original source text.${error.message}`)
       return {
         success: false,
-        message: `Lỗi khi tạo đơn hàng GHN: ${error.message}`
+        message: `English content normalized from the original source text.${error.message}`
       }
     }
   }

@@ -31,7 +31,7 @@ interface MediaFormProps {
 }
 
 export const MediaForm = ({ images, setImages }: MediaFormProps) => {
-    // Các state hiện tại
+    // English content normalized from the original source text.
     const {
         imageObjects,
         fileInputRef,
@@ -52,31 +52,31 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
         handleDragStart: onDragStart,
         isUploading,
     } = useMediaForm({ initialImageUrls: images });
-    
-    // Thêm ref để theo dõi thay đổi
+
+    // English content normalized from the original source text.
     const prevImagesRef = useRef<string[]>([]);
-    
-    // Thay thế useEffect hiện tại
+
+    // English content normalized from the original source text.
     useEffect(() => {
-        // Lọc các URLs có giá trị (loại bỏ null, undefined, chuỗi rỗng)
+        // English content normalized from the original source text.
         const newUrls = imageObjects
             .map(img => img.url)
             .filter(url => url && url.trim() !== '');
-            
+
         const prevUrls = prevImagesRef.current;
-        
-        // Chỉ cập nhật khi thực sự thay đổi và không phải do parent truyền xuống
+
+        // English content normalized from the original source text.
         const urlsChanged = JSON.stringify(newUrls) !== JSON.stringify(prevUrls);
         const differentFromProps = JSON.stringify(newUrls) !== JSON.stringify(images);
-        
+
         if (urlsChanged && differentFromProps) {
             prevImagesRef.current = newUrls;
-            // Khi xóa hết ảnh, truyền mảng rỗng thay vì null
+            // English content normalized from the original source text.
             setImages(newUrls.length > 0 ? newUrls : []);
-            console.log('Media component - Cập nhật images:', newUrls.length > 0 ? newUrls : []);
+            console.log('English content normalized from the original source text.', newUrls.length > 0 ? newUrls : []);
         }
     }, [imageObjects]);
-    
+
     const [activeId, setActiveId] = useState<string | null>(null);
 
     const sensors = useSensors(
@@ -106,48 +106,46 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
         <div className="grid gap-3">
             <div className="flex justify-between items-center">
                 {!isSelectionMode ? (
-                    <Label>Hình ảnh sản phẩm</Label>
+                    <Label>English content normalized from the original source text.</Label>
                 ) : (
                     <div className="flex items-center gap-3 w-full">
                         <Checkbox
                             id="select-all-images"
                             checked={allSelected}
                             onCheckedChange={handleSelectAll}
-                            aria-label="Chọn tất cả ảnh"
+                            aria-label="English content normalized from the original source text."
                         />
                         <Label htmlFor="select-all-images" className="text-sm font-medium cursor-pointer">
-                            Đã chọn {selectedImages.length} / {images.length}
+                            English content normalized from the original source text. {selectedImages.length} / {images.length}
                         </Label>
-                        <Button 
+                        <Button
                             variant="ghost"
                             size="sm"
                             className="ml-auto text-red-500 hover:text-red-600 hover:bg-red-50"
                             onClick={handleRemoveSelected}
                         >
-                            <Trash2 className="w-4 h-4 mr-2" />
-                            Xóa mục đã chọn
-                        </Button>
+                            <Trash2 className="w-4 h-4 mr-2" />English content normalized from the original source text.</Button>
                     </div>
                 )}
             </div>
-            
-            {/* Input ẩn để chọn file */}
-            <input 
-                type="file" 
-                ref={fileInputRef} 
-                onChange={handleFileChange} 
-                accept="image/*" 
-                multiple 
+
+            {/* English content normalized from the original source text. */}
+            <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                accept="image/*"
+                multiple
                 className="hidden"
-                title="Chọn hình ảnh sản phẩm"
-                aria-label="Chọn hình ảnh sản phẩm"
+                title="English content normalized from the original source text."
+                aria-label="English content normalized from the original source text."
             />
-            
+
             {images.length === 0 ? (
                 <div
                     className={`flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
-                        isDragOver 
-                            ? 'border-primary bg-primary/10' 
+                        isDragOver
+                            ? 'border-primary bg-primary/10'
                             : 'border-gray-300 hover:border-primary'
                     }`}
                     onClick={handleImageUpload}
@@ -158,10 +156,10 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                 >
                     <UploadCloud className={`w-8 h-8 ${isDragOver ? 'text-primary' : 'text-gray-400'}`} />
                     <p className="mt-3 font-semibold text-sm">
-                        {isDragOver ? 'Thả file vào đây' : 'Tải lên hình ảnh sản phẩm'}
+                        {isDragOver ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                        {isDragOver ? 'Thả để tải lên' : 'Kéo thả hoặc chọn file từ máy tính'}
+                        {isDragOver ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
                     </p>
                 </div>
             ) : (
@@ -203,7 +201,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                                         className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg text-center cursor-pointer hover:border-primary transition-colors aspect-square h-full w-full"
                                     >
                                         <UploadCloud className="w-5 h-5 text-gray-400" />
-                                        <p className="text-xs font-medium mt-1">Thêm ảnh</p>
+                                        <p className="text-xs font-medium mt-1">English content normalized from the original source text.</p>
                                     </div>
                                 )}
                             </div>
@@ -232,7 +230,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                             <div className="absolute inset-0 bg-primary/5 border-2 border-primary border-dashed rounded-lg flex items-center justify-center z-10 pointer-events-none">
                                 <div className="text-center">
                                     <UploadCloud className="w-10 h-10 text-primary mx-auto" />
-                                    <p className="mt-2 text-lg font-semibold text-primary">Thả ảnh vào đây</p>
+                                    <p className="mt-2 text-lg font-semibold text-primary">English content normalized from the original source text.</p>
                                 </div>
                             </div>
                         )}

@@ -18,7 +18,7 @@ export const useProductReview = (productId: string) => {
   const [totalItems, setTotalItems] = useState<number>(0);
   const [loading, setLoading] = useState(false);
 
-  // Lấy danh sách review theo productId
+  // English content normalized from the original source text.
   const fetchReviews = useCallback(
     async (params?: PaginationRequest) => {
       if (!productId) return;
@@ -40,7 +40,7 @@ export const useProductReview = (productId: string) => {
     [productId]
   );
 
-  // Tạo review mới
+  // English content normalized from the original source text.
   const createReview = useCallback(
     async (payload: CreateReviewRequest) => {
       try {
@@ -57,7 +57,7 @@ export const useProductReview = (productId: string) => {
     [fetchReviews]
   );
 
-  // Cập nhật review
+  // English content normalized from the original source text.
   const updateReview = useCallback(
     async (reviewId: string, payload: UpdateReviewRequest) => {
       try {
@@ -74,7 +74,7 @@ export const useProductReview = (productId: string) => {
     [fetchReviews]
   );
 
-  // Xóa review
+  // English content normalized from the original source text.
   const deleteReview = useCallback(
     async (reviewId: string) => {
       try {

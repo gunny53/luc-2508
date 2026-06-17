@@ -6,17 +6,17 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /payment/vnpay/bank-list
+English content normalized from the original source text.
 
 start
-:Nhận request;
-:Gọi VnpayService.getBankList();
-if (Thành công?) then (Có)
-  :Map kết quả về dạng chuẩn hoá;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   :Build message i18n;
-  :Trả về 200 { message, data };
-else (Không)
-  :Ném VNPayServiceUnavailableException;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

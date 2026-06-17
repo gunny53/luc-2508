@@ -31,7 +31,7 @@ export class GoogleService {
   }
   getAuthorizationUrl({ userAgent, ip }: GoogleAuthStateType) {
     const scope = ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
-    // Chuyển Object sang string base64 an toàn bỏ lên url
+    // English content normalized from the original source text.
     const stateString = Buffer.from(
       JSON.stringify({
         userAgent,
@@ -50,7 +50,7 @@ export class GoogleService {
     try {
       let userAgent = 'Unknown'
       let ip = 'Unknown'
-      // 1. Lấy state từ url
+      // English content normalized from the original source text.
       try {
         if (state) {
           const clientInfo = JSON.parse(Buffer.from(state, 'base64').toString()) as GoogleAuthStateType
@@ -60,11 +60,11 @@ export class GoogleService {
       } catch (error) {
         console.error('Error parsing state', error)
       }
-      // 2. Dùng code để lấy token
+      // English content normalized from the original source text.
       const { tokens } = await this.oauth2Client.getToken(code)
       this.oauth2Client.setCredentials(tokens)
 
-      // 3. Lấy thông tin google user
+      // English content normalized from the original source text.
       const oauth2 = google.oauth2({
         auth: this.oauth2Client,
         version: 'v2'
@@ -77,7 +77,7 @@ export class GoogleService {
       let user = await this.authRepository.findUniqueUserIncludeRole({
         email: data.email
       })
-      // Nếu không có user tức là người mới, vậy nên sẽ tiến hành đăng ký
+      // English content normalized from the original source text.
       if (!user) {
         const clientRoleId = await this.sharedRoleRepository.getClientRoleId()
         const randomPassword = uuidv4()
@@ -87,7 +87,7 @@ export class GoogleService {
           name: data.name ?? '',
           password: hashedPassword,
           roleId: clientRoleId,
-          phoneNumber: null, // ✅ Sử dụng null thay vì empty string
+          phoneNumber: null, // English content normalized from the original source text.
           avatar: data.picture ?? null
         })
       }
@@ -103,10 +103,10 @@ export class GoogleService {
         roleName: user.role.name
       })
 
-      // Set cookies thay vì trả về tokens
+      // English content normalized from the original source text.
       this.cookieService.setAuthCookies(res, authTokens.accessToken, authTokens.refreshToken)
 
-      return { message: 'Đăng nhập bằng Google thành công' }
+      return { message: 'English content normalized from the original source text.' }
     } catch (error) {
       console.error('Error in googleCallback', error)
       throw error

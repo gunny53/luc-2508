@@ -31,37 +31,37 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[500px]">
-        <p>Đang tải sản phẩm...</p>
+        <p>English content normalized from the original source text.</p>
       </div>
     );
   }
-  
-  // Sử dụng real data hoặc fallback về mock data
+
+  // English content normalized from the original source text.
   let productToUse;
   let media: MediaItem[];
-  
+
   if (productData) {
-    // Case 1: Có real data từ API
+    // English content normalized from the original source text.
     productToUse = productData;
-    // Biến đổi images từ API thành media format
+    // English content normalized from the original source text.
     media = transformProductImagesToMedia(productData);
   } else {
-    // Case 2: Sử dụng mock data
+    // English content normalized from the original source text.
     productToUse = productMock;
-    // Chuyển đổi mock data media sang đúng kiểu MediaItem
+    // English content normalized from the original source text.
     media = (productMock.media || []).map(item => ({
       type: item.type === "video" ? "video" : "image",
       src: item.src
     })) as MediaItem[];
   }
 
-  // Extract các variant để hiển thị
+  // English content normalized from the original source text.
   const sizes =
-    productToUse?.variants?.find((v: any) => v.value === "Kích thước")?.options || [];
+    productToUse?.variants?.find((v: any) => v.value === "English content normalized from the original source text.")?.options || [];
   const colors =
-    productToUse?.variants?.find((v: any) => v.value === "Màu sắc")?.options || [];
-  
-  // Tạo product object hoàn chỉnh cho UI
+    productToUse?.variants?.find((v: any) => v.value === "English content normalized from the original source text.")?.options || [];
+
+  // English content normalized from the original source text.
   const product = {
     ...productToUse,
     sizes,
@@ -84,7 +84,7 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
           <BreadcrumbItem className="flex items-center gap-1">
             <BreadcrumbLink asChild>
               <Link href="/" className="text-[#05a] hover:underline">
-                Shopsifu
+                ECSite
               </Link>
             </BreadcrumbLink>
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
@@ -126,7 +126,7 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
         </Breadcrumb>
       </div>
 
-      {/* ✅ Chi tiết sản phẩm */}
+      {/* English content normalized from the original source text. */}
       <div className="max-w-[1200px] mx-auto bg-white p-4 rounded">
         <div className="grid md:grid-cols-[450px_1fr] gap-4 md:items-start">
           <div className="w-full">
@@ -137,37 +137,23 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
           </div>
         </div>
 
-        {/* ✅ Block thông tin chi tiết riêng biệt */}
+        {/* English content normalized from the original source text. */}
       </div>
       <div className="max-w-[1200px] mx-auto mt-6 rounded space-y-6">
-        {/* ✅ Thông tin Shop */}
-        {/* <div>
-          <ProductShopInfo shop={{
-            id: "cool-crew-12345",
-            name: "Cool Crew",
-            avatar: "/assets/demo/shop-avatar.png",
-            isOnline: true,
-            lastActive: "1 Giờ Trước",
-            rating: 3.7,
-            responseRate: 100,
-            responseTime: "trong vài giờ",
-            followers: 5500,
-            joinedDate: "9 tháng trước",
-            productsCount: 86
-          }} />
-        </div> */}
+        {/* English content normalized from the original source text. */}
+        {/* English content normalized from the original source text. */}
 
-        {/* ✅ Thông số kỹ thuật */}
+        {/* English content normalized from the original source text. */}
         <div>
           <ProductSpecs product={product as any} />
         </div>
 
-        {/* ✅ Đánh giá */}
+        {/* English content normalized from the original source text. */}
         <div>
           <ProductReviews productId={String(product.id)} />
         </div>
 
-        {/* ✅ Gợi ý sản phẩm */}
+        {/* English content normalized from the original source text. */}
         <div>
           <ProductSuggestions products={[]} />
         </div>

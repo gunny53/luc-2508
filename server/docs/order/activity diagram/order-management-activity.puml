@@ -8,78 +8,78 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Quản Lý Đơn Hàng - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Người dùng yêu cầu thao tác đơn hàng;
+:English content normalized from the original source text;
 
-if (Loại thao tác?) then (GET /orders - Lấy danh sách)
-  :Trích xuất user từ JWT token;
-  :Lấy query parameters {page, limit, status};
-  :Thực thi list query với pagination;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
-  Logic Truy Vấn Database:
+  English content normalized from the original source text.
   • WHERE userId = user.userId
   • Filter theo status (optional)
   • Include order items
-  • Pagination với skip/take
+  • English content normalized from the original source text
   • ORDER BY createdAt DESC
-  • Tính toán metadata
+  • English content normalized from the original source text
   end note
-  :Tính toán pagination metadata;
-  :Tạo localized success message;
-  :Trả về danh sách orders với metadata;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 
-elseif (POST /orders - Tạo đơn hàng mới) then
-  :Người dùng tạo đơn hàng mới;
-  :Trích xuất {shopId, receiver, cartItemIds, discountCodes} từ body;
-  :Validate discount codes nếu có;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   note right
   Discount Validation Logic:
-  • Thu thập tất cả discount codes
-  • Kiểm tra tồn tại trong database
-  • Validate trạng thái ACTIVE
-  • Kiểm tra thời gian hiệu lực
-  • Validate maxUses và maxUsesPerUser
+  • English content normalized from the original source text
+  • English content normalized from the original source text
+  • English content normalized from the original source text
+  • English content normalized from the original source text
+  • English content normalized from the original source text
   end note
-  if (Discount codes được cung cấp?) then (có)
-    :Lấy thông tin discounts từ database;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     :Validate discount eligibility;
-    if (Discounts hợp lệ?) then (có)
-      :Tiếp tục xử lý;
-    else (không)
-      :Ném BadRequestException;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Bỏ qua validation discount;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-  :Acquire Redis locks cho tất cả SKUs;
+  :English content normalized from the original source text;
   note right
   Redis Lock Logic:
-  • Lock tất cả SKU IDs cần mua
-  • Timeout 3 giây
+  • English content normalized from the original source text
+  • English content normalized from the original source text
   • Prevent race conditions
   end note
 
-  :Bắt đầu database transaction;
-  :Lấy cart items với relations;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   :Validate cart items;
   note right
   Cart Items Validation:
-  • Kiểm tra tất cả cartItemIds tồn tại
+  • English content normalized from the original source text
   • Validate stock quantity
-  • Kiểm tra product publish status
+  • English content normalized from the original source text
   • Validate shop ownership
   end note
 
-  if (Validation thành công?) then (có)
-    :Tạo payment record với status PENDING;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
 
-    loop Cho mỗi shop order
-      :Tính toán order total;
-      :Xử lý discounts nếu có;
+    English content normalized from the original source text.
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
       note right
       Discount Processing:
       • Validate discount eligibility
@@ -88,84 +88,84 @@ elseif (POST /orders - Tạo đơn hàng mới) then
       • Update discount usage count
       end note
 
-      :Tạo order với items;
-      :Tạo discount snapshots;
-      :Cập nhật discount usage count;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     end
 
-    :Xóa cart items;
-    :Decrement SKU stock với optimistic lock;
-    :Thêm cancel payment job vào queue;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     note right
     Queue Job Logic:
-    • Delay 24 giờ
-    • Auto-cancel payment nếu chưa thanh toán
-    • Remove job sau khi hoàn thành
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
     :Commit transaction;
     :Release Redis locks;
-    :Trả về success response;
-  else (không)
+    :English content normalized from the original source text;
+  else (No)
     :Rollback transaction;
     :Release Redis locks;
-    :Ném validation exception;
+    :English content normalized from the original source text;
   endif
 
-elseif (GET /orders/:orderId - Chi tiết đơn hàng) then
-  :Trích xuất orderId từ params;
-  :Trích xuất user từ JWT token;
-  :Thực thi findById query;
-  if (Order được tìm thấy?) then (có)
-    :Load order với items và discounts;
-    :Tính toán order totals;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     note right
     Total Calculation:
     • totalItemCost = sum(items * price * quantity)
     • totalVoucherDiscount = sum(discount amounts)
     • totalPayment = totalItemCost - totalVoucherDiscount
     end note
-    :Tạo localized success message;
-    :Trả về order detail với totals;
-  else (không)
-    :Ném OrderNotFoundException;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (PUT /orders/:orderId - Hủy đơn hàng) then
-  :Người dùng hủy đơn hàng;
-  :Trích xuất orderId từ params;
-  :Trích xuất user từ JWT token;
-  :Tìm order theo ID;
-  if (Order tồn tại?) then (có)
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
     :Validate cancel eligibility;
     note right
     Cancel Validation:
-    • Kiểm tra status = PENDING_PAYMENT
+    • English content normalized from the original source text
     • Validate user ownership
     • Check business rules
     end note
-    if (Order có thể hủy?) then (có)
-      :Cập nhật order status thành CANCELLED;
-      :Cập nhật updatedById;
-      :Tạo localized success message;
-      :Trả về success response;
-    else (không)
-      :Ném CannotCancelOrderException;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Ném OrderNotFoundException;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-elseif (POST /orders/calculate - Tính toán đơn hàng) then
-  :Người dùng tính toán đơn hàng;
-  :Trích xuất {cartItemIds, discountCodes} từ body;
-  :Lấy cart items với relations;
-  if (Cart items tồn tại?) then (có)
-    :Tính toán total payment;
-    if (Có discount codes?) then (có)
-      :Lấy thông tin discounts từ database;
+else (No)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
       :Validate discount eligibility;
-      :Tính toán discount amounts;
+      :English content normalized from the original source text;
       note right
       Discount Calculation:
       • Validate discount codes
@@ -173,21 +173,21 @@ elseif (POST /orders/calculate - Tính toán đơn hàng) then
       • Calculate discount amounts
       • Apply max discount limits
       end note
-      :Tính toán final totals;
-    else (không)
-      :Bỏ qua discount calculation;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
     endif
-    :Trả về calculation result;
-  else (không)
-    :Trả về zero totals;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-else (Thao tác không hợp lệ)
-  :Ném InvalidOperationException;
+else (No)
+  :English content normalized from the original source text;
 endif
 
-:Tạo thông báo thành công đa ngôn ngữ;
-:Trả về JSON response với metadata;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 
 stop
 

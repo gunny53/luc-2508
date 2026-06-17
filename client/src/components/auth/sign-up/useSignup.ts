@@ -25,10 +25,10 @@ export function useSignup() {
         confirmPassword: data.confirmPassword,
         phoneNumber: data.phoneNumber,
       })
-      
+
       const successMessage = response?.message || (t('admin.showToast.auth.registerSuccessful'))
       showToast(t(successMessage), 'success')
-      
+
       router.push('/sign-in')
     } catch (error) {
       showToast(parseApiError(error), 'error')

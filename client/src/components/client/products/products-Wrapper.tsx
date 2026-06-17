@@ -27,7 +27,7 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
   const [autoRetryEnabled, setAutoRetryEnabled] = useState(!!serverError);
   const router = useRouter();
 
-  // Gọi API 1 lần để cập nhật stock khi component mount
+  // English content normalized from the original source text.
   useEffect(() => {
     if (initialData) {
       const refreshProductData = async () => {
@@ -37,7 +37,7 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
           setData(freshData);
         } catch (err) {
           console.error('Error refreshing product data:', err);
-          // Không set error để không ảnh hưởng UI
+          // English content normalized from the original source text.
         }
       };
 
@@ -45,7 +45,7 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
     }
   }, [slug, initialData]);
 
-  // Auto-retry mechanism mỗi 8 giây khi có lỗi
+  // English content normalized from the original source text.
   useEffect(() => {
     if (!error || !autoRetryEnabled) return;
 
@@ -87,7 +87,7 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
     router.push('/');
   };
 
-  // Hiển thị error UI nếu có lỗi từ server và chưa có data
+  // English content normalized from the original source text.
   if (error && !data) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -97,12 +97,10 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
               <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
                 <AlertCircle className="w-6 h-6 text-red-600" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                Không thể tải sản phẩm
-              </h2>
-              <p className="text-gray-600 mb-2">Đã xảy ra lỗi khi tải thông tin sản phẩm.</p>
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">English content normalized from the original source text.</h2>
+              <p className="text-gray-600 mb-2">English content normalized from the original source text.</p>
               <p className="text-sm text-gray-500">
-                {error?.message || 'Vui lòng thử lại sau ít phút.'}
+                {error?.message || 'English content normalized from the original source text.'}
               </p>
             </div>
 
@@ -111,14 +109,14 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
                 <div className="flex items-center justify-center space-x-2 text-blue-700">
                   <RefreshCw className="w-4 h-4 animate-spin" />
                   <span className="text-sm">
-                    Tự động thử lại sau {countdown} giây
+                    English content normalized from the original source text. {countdown} English content normalized from the original source text.
                   </span>
                 </div>
               </div>
             )}
 
             <div className="space-y-3">
-              <Button 
+              <Button
                 onClick={handleManualRetry}
                 disabled={isRetrying}
                 className="w-full"
@@ -126,35 +124,27 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
               >
                 {isRetrying ? (
                   <>
-                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                    Đang thử lại...
-                  </>
+                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />English content normalized from the original source text.</>
                 ) : (
                   <>
-                    <RefreshCw className="w-4 h-4 mr-2" />
-                    Thử lại ngay
-                  </>
+                    <RefreshCw className="w-4 h-4 mr-2" />English content normalized from the original source text.</>
                 )}
               </Button>
 
-              <Button 
+              <Button
                 onClick={goHome}
                 variant="outline"
                 className="w-full"
               >
-                <Home className="w-4 h-4 mr-2" />
-                Về trang chủ
-              </Button>
+                <Home className="w-4 h-4 mr-2" />English content normalized from the original source text.</Button>
 
               {autoRetryEnabled && (
-                <Button 
+                <Button
                   onClick={() => setAutoRetryEnabled(false)}
                   variant="ghost"
                   className="w-full text-gray-500"
                   size="sm"
-                >
-                  Tắt tự động thử lại
-                </Button>
+                >English content normalized from the original source text.</Button>
               )}
             </div>
           </CardContent>

@@ -12,8 +12,8 @@ export function useScrollHeader(threshold = 100) {
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     const now = Date.now();
-    
-    // Chỉ xử lý sau mỗi 16ms (tương đương ~60fps)
+
+    // English content normalized from the original source text.
     if (now - lastUpdate.current < 16) {
       return;
     }
@@ -23,11 +23,11 @@ export function useScrollHeader(threshold = 100) {
         const delta = currentScrollY - lastScrollY.current;
         const newDirection = delta > 0 ? 'down' : 'up';
 
-        // Luôn hiện header khi scroll lên hoặc ở gần đầu trang
+        // English content normalized from the original source text.
         if (newDirection === 'up' || currentScrollY < threshold) {
           setShowHeader(true);
-        } 
-        // Ẩn header khi scroll xuống và đã scroll đủ xa
+        }
+        // English content normalized from the original source text.
         else if (newDirection === 'down' && currentScrollY > threshold && Math.abs(delta) > 10) {
           setShowHeader(false);
         }
@@ -43,18 +43,18 @@ export function useScrollHeader(threshold = 100) {
   }, [threshold]);
 
   useEffect(() => {
-    // Luôn hiện header khi component mount
+    // English content normalized from the original source text.
     setShowHeader(true);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     // Reset header khi resize window
     const onResize = () => {
       if (window.scrollY < threshold) {
         setShowHeader(true);
       }
     };
-    
+
     window.addEventListener('resize', onResize, { passive: true });
 
     return () => {

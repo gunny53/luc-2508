@@ -8,38 +8,35 @@ import { Client } from '@elastic/elasticsearch'
 const prisma = new PrismaClient()
 const logger = new Logger('SyncToElasticsearch')
 
-// Cấu hình Elasticsearch
+// English content normalized from the original source text.
 const ES_CONFIG = {
   node: 'http://103.147.186.84:9200',
   indexName: 'products'
 }
 
-/**
- * Clean Elasticsearch index trước khi sync
- * Xóa tất cả documents cũ để tránh trùng lặp
- */
+/* English content normalized from the original source text. */
 async function cleanElasticsearchIndex(): Promise<void> {
   const client = new Client({ node: ES_CONFIG.node })
 
   try {
-    logger.log('🧹 Bắt đầu clean Elasticsearch index...')
+    logger.log('English content normalized from the original source text.')
 
-    // Kiểm tra kết nối
+    // English content normalized from the original source text.
     const info = await client.info()
-    logger.log(`✅ Kết nối ES thành công - Version: ${info.version.number}`)
+    logger.log(`English content normalized from the original source text.${info.version.number}`)
 
-    // Kiểm tra index có tồn tại không
+    // English content normalized from the original source text.
     const indexExists = await client.indices.exists({ index: ES_CONFIG.indexName })
 
     if (indexExists) {
-      // Đếm documents hiện tại
+      // English content normalized from the original source text.
       const count = await client.count({ index: ES_CONFIG.indexName })
-      logger.log(`📊 Index ${ES_CONFIG.indexName} có ${count.count} documents`)
+      logger.log(`📊 Index ${ES_CONFIG.indexName}English content normalized from the original source text.${count.count} documents`)
 
       if (count.count > 0) {
-        logger.log(`🗑️  Đang xóa ${count.count} documents cũ...`)
+        logger.log(`English content normalized from the original source text.${count.count}English content normalized from the original source text.`)
 
-        // Xóa tất cả documents
+        // English content normalized from the original source text.
         const deleteResult = await client.deleteByQuery({
           index: ES_CONFIG.indexName,
           body: {
@@ -49,46 +46,43 @@ async function cleanElasticsearchIndex(): Promise<void> {
           }
         })
 
-        logger.log(`✅ Đã xóa ${deleteResult.deleted} documents`)
+        logger.log(`English content normalized from the original source text.${deleteResult.deleted} documents`)
 
-        // Tùy chọn xóa index hoàn toàn để tạo mới
-        logger.log('🔄 Đang xóa index để tạo mới...')
+        // English content normalized from the original source text.
+        logger.log('English content normalized from the original source text.')
         await client.indices.delete({ index: ES_CONFIG.indexName })
-        logger.log(`✅ Đã xóa index ${ES_CONFIG.indexName}`)
+        logger.log(`English content normalized from the original source text.${ES_CONFIG.indexName}`)
       } else {
-        logger.log(`✅ Index ${ES_CONFIG.indexName} đã trống`)
+        logger.log(`✅ Index ${ES_CONFIG.indexName}English content normalized from the original source text.`)
       }
     } else {
-      logger.log(`ℹ️  Index ${ES_CONFIG.indexName} chưa tồn tại`)
+      logger.log(`ℹ️  Index ${ES_CONFIG.indexName}English content normalized from the original source text.`)
     }
 
-    logger.log('🧹 Clean Elasticsearch hoàn thành!')
+    logger.log('English content normalized from the original source text.')
   } catch (error) {
-    logger.error('❌ Lỗi khi clean Elasticsearch:', error)
+    logger.error('English content normalized from the original source text.', error)
     throw error
   } finally {
     await client.close()
   }
 }
 
-/**
- * Sync tất cả products đã import lên Elasticsearch
- * Sử dụng cơ chế batch processing và NestJS application context
- */
+/* English content normalized from the original source text. */
 async function syncAllProductsToElasticsearch(): Promise<void> {
   let app: any = null
 
   try {
-    logger.log('🚀 Bắt đầu sync tất cả products lên Elasticsearch...')
+    logger.log('English content normalized from the original source text.')
 
-    // Bước 1: Clean Elasticsearch trước
+    // English content normalized from the original source text.
     await cleanElasticsearchIndex()
 
-    // Bước 2: Lấy tất cả products đã import (có createdById)
+    // English content normalized from the original source text.
     const products = await prisma.product.findMany({
       where: {
         deletedAt: null,
-        createdById: { not: undefined } // Chỉ lấy products được import
+        createdById: { not: undefined } // English content normalized from the original source text.
       },
       select: {
         id: true,
@@ -96,35 +90,35 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
       }
     })
 
-    logger.log(`📦 Tìm thấy ${products.length} products cần sync`)
+    logger.log(`English content normalized from the original source text.${products.length}English content normalized from the original source text.`)
 
     if (products.length === 0) {
-      logger.warn('⚠️ Không có products nào để sync')
+      logger.warn('English content normalized from the original source text.')
       return
     }
 
-    // Bước 3: Tạo NestJS application context để sử dụng SearchSyncService
-    logger.log('🔧 Khởi tạo NestJS application context...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
     app = await NestFactory.createApplicationContext(AppModule)
     const searchSyncService = app.get(SearchSyncService)
 
-    // Bước 4: Sync theo batch để tránh quá tải
+    // English content normalized from the original source text.
     const batchSize = 100
     const batches = Array.from({ length: Math.ceil(products.length / batchSize) }, (_, i) =>
       products.slice(i * batchSize, (i + 1) * batchSize)
     )
 
-    logger.log(`📦 Sẽ sync ${products.length} products trong ${batches.length} batches`)
+    logger.log(`English content normalized from the original source text.${products.length} products trong ${batches.length} batches`)
 
     let successCount = 0
     let failCount = 0
 
-    // Sync từng batch
+    // English content normalized from the original source text.
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i]
       const productIds = batch.map((p) => p.id)
 
-      logger.log(`🔄 Đang sync batch ${i + 1}/${batches.length} với ${batch.length} products...`)
+      logger.log(`English content normalized from the original source text.${i + 1}/${batches.length}English content normalized from the original source text.${batch.length} products...`)
 
       try {
         await searchSyncService.syncProductsBatchToES({
@@ -133,16 +127,16 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
         })
 
         successCount += batch.length
-        logger.log(`✅ Đã sync thành công batch ${i + 1}/${batches.length}`)
+        logger.log(`English content normalized from the original source text.${i + 1}/${batches.length}`)
 
-        // Log tên các products đã sync
+        // English content normalized from the original source text.
         batch.forEach((product) => {
           logger.log(`  ✅ Queued sync for product: ${product.name}`)
         })
       } catch (error) {
         failCount += batch.length
-        logger.error(`❌ Lỗi khi sync batch ${i + 1}/${batches.length}:`, error)
-        // Tiếp tục với batch tiếp theo thay vì dừng toàn bộ
+        logger.error(`English content normalized from the original source text.${i + 1}/${batches.length}:`, error)
+        // English content normalized from the original source text.
       }
     }
 
@@ -151,18 +145,18 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
     logger.error('❌ Sync failed:', error)
     throw error
   } finally {
-    // Đóng NestJS application context
+    // English content normalized from the original source text.
     if (app) {
       await app.close()
-      logger.log('🔌 Đã đóng NestJS application context')
+      logger.log('English content normalized from the original source text.')
     }
 
     await prisma.$disconnect()
-    logger.log('🔌 Đã ngắt kết nối database')
+    logger.log('English content normalized from the original source text.')
   }
 }
 
-// Chạy script
+// English content normalized from the original source text.
 if (require.main === module) {
   syncAllProductsToElasticsearch()
     .then(() => {

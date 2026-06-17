@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { shippingService } from "@/services/shippingService";
 import { GetDistrictsParams, GetWardsParams } from "@/types/shipping.interface";
 
-// Hook để lấy danh sách tỉnh/thành phố
+// English content normalized from the original source text.
 export const useProvinces = () => {
   return useQuery({
     queryKey: ["provinces"],
@@ -12,7 +12,7 @@ export const useProvinces = () => {
   });
 };
 
-// Hook để lấy danh sách quận/huyện theo tỉnh
+// English content normalized from the original source text.
 export const useDistricts = (params: GetDistrictsParams, enabled: boolean = true) => {
   return useQuery({
     queryKey: ["districts", params.provinceId],
@@ -23,7 +23,7 @@ export const useDistricts = (params: GetDistrictsParams, enabled: boolean = true
   });
 };
 
-// Hook để lấy danh sách phường/xã theo quận
+// English content normalized from the original source text.
 export const useWards = (params: GetWardsParams, enabled: boolean = true) => {
   return useQuery({
     queryKey: ["wards", params.districtId],

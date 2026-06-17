@@ -5,7 +5,7 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Xác Thực - Tổng Quan Luồng Xử Lý
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -22,7 +22,7 @@ participant "CookieService" as CS
 database "Database" as DB
 participant "Google OAuth" as GO
 
-== Luồng Đăng Ký ==
+== English Section ==
 C -> AC: POST /auth/register
 AC -> AS: register(body)
 AS -> AR: findUniqueVerificationCode()
@@ -36,7 +36,7 @@ AR -> DB: DELETE verification_code
 AS -> AC: return user
 AC -> C: return success
 
-== Luồng Gửi OTP ==
+== English Section ==
 C -> AC: POST /auth/otp
 AC -> AS: sendOTP(body)
 AS -> SUR: findUnique(email)
@@ -48,7 +48,7 @@ ES -> C: Send email
 AS -> AC: return success
 AC -> C: return success
 
-== Luồng Đăng Nhập ==
+== English Section ==
 C -> AC: POST /auth/login
 AC -> AS: login(body, res)
 AS -> AR: findUniqueUserIncludeRole()
@@ -69,7 +69,7 @@ CS -> C: Set cookies
 AS -> AC: return success
 AC -> C: return success
 
-== Luồng Google OAuth ==
+== English Section ==
 C -> AC: GET /auth/google-link
 AC -> GS: getAuthorizationUrl()
 GS -> GO: Generate OAuth URL
@@ -89,7 +89,7 @@ GS -> TS: signRefreshToken()
 GS -> AC: return tokens
 AC -> C: Redirect with tokens
 
-== Luồng Refresh Token ==
+== English Section ==
 C -> AC: POST /auth/refresh-token
 AC -> AS: refreshToken(refreshToken, res)
 AS -> TS: verifyRefreshToken()
@@ -106,7 +106,7 @@ CS -> C: Set cookies
 AS -> AC: return success
 AC -> C: return success
 
-== Luồng Đăng Xuất ==
+== English Section ==
 C -> AC: POST /auth/logout
 AC -> AS: logout(refreshToken)
 AS -> TS: verifyRefreshToken()
@@ -117,7 +117,7 @@ AR -> DB: UPDATE device
 AS -> AC: return success
 AC -> C: return success
 
-== Luồng Thiết Lập 2FA ==
+== English Section ==
 C -> AC: POST /auth/2fa/setup
 AC -> AS: setupTwoFactorAuth(userId)
 AS -> SUR: findUnique(userId)
@@ -129,7 +129,7 @@ SUR -> DB: UPDATE user
 AS -> AC: return secret, uri
 AC -> C: return secret, uri
 
-== Luồng Quên Mật Khẩu ==
+== English Section ==
 C -> AC: POST /auth/forgot-password
 AC -> AS: forgotPassword(body)
 AS -> SUR: findUnique(email)
@@ -145,13 +145,13 @@ AS -> AC: return success
 AC -> C: return success
 
 note bottom
-**Đặc điểm chính của module Auth:**
-• Multi-factor authentication (2FA) với TOTP và OTP
+* English content normalized from the original source text
+• English content normalized from the original source text
 • Google OAuth integration
 • JWT token management (access + refresh)
-• Device tracking và session management
-• Email verification với OTP
-• Password hashing và security
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Cookie-based authentication
 • Comprehensive error handling
 end note

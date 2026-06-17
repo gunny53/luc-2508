@@ -69,23 +69,17 @@ export function DataTableExport<TData>({ table }: DataTableExportProps<TData>) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="ml-auto h-8">
-          <Download className="mr-2 h-4 w-4" />
-          Xuất file
-        </Button>
+          <Download className="mr-2 h-4 w-4" />English content normalized from the original source text.</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           onClick={() => handleExport("csv")}
           disabled={isExporting}
-        >
-          Xuất CSV
-        </DropdownMenuItem>
+        >English content normalized from the original source text.</DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => handleExport("excel")}
           disabled={isExporting}
-        >
-          Xuất Excel
-        </DropdownMenuItem>
+        >English content normalized from the original source text.</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

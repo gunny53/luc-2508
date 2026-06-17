@@ -53,12 +53,12 @@ export const useGetProfile = () => {
       const errorMessage = err.response?.data?.message || err.message || 'Failed to fetch profile';
       setError(errorMessage);
       toast.error(errorMessage);
-      
+
       // Clear profile on critical errors
       if (err.response?.status === 401 || err.response?.status === 403) {
         dispatch(clearProfile());
       }
-      
+
       return null;
     } finally {
       setLoading(false);

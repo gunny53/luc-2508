@@ -1,123 +1,122 @@
 // lib/metadata.ts
 export const metadataConfig = {
     '/sign-in': {
-      title: 'Đăng nhập tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Đăng nhập tài khoản để tiếp tục mua sắm cùng Shopsifu.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/sign-up': {
-      title: 'Đăng ký tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Tạo tài khoản mới và bắt đầu mua sắm ngay.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/forgot-password': {
-      title: 'Quên mật khẩu tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Đặt lại mật khẩu một cách nhanh chóng.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/reset-password': {
-      title: 'Đặt lại mật khẩu tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Nhập mật khẩu mới để khôi phục tài khoản của bạn.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/verify-code': {
-      title: 'Xác minh mã OTP tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xác minh tài khoản của bạn bằng mã OTP.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/verify-2fa': {
-      title: 'Xác minh mã OTP tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xác minh tài khoản của bạn bằng mã OTP.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/user/dashboard': {
-      title: 'Trang tổng quan - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xem tổng quan về hoạt động mua sắm của bạn.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/user/orders': {
-      title: 'Đơn hàng của tôi - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xem và quản lý các đơn hàng đã đặt.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/user/profile': {
-      title: 'Thông tin tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xem và cập nhật thông tin cá nhân của bạn.',  
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/cart': {
-      title: 'Giỏ hàng - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xem và quản lý các sản phẩm trong giỏ hàng của bạn.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     // --------------------------------SELLER------------------------------------ //
     '/seller/sign-up': {
-      title: 'Đăng ký tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Tạo tài khoản mới và bắt đầu mua sắm ngay.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/seller/forgot-password': {
-      title: 'Quên mật khẩu tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Đặt lại mật khẩu một cách nhanh chóng.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/seller/reset-password': {
-      title: 'Đặt lại mật khẩu tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Nhập mật khẩu mới để khôi phục tài khoản của bạn.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
     '/seller/verify-code': {
-      title: 'Xác minh mã OTP tài khoản - Mua sắm Online | Shopsifu Việt Nam',
-      description: 'Xác minh tài khoản của bạn bằng mã OTP.',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     },
 
     // --------------------------------ADMIN------------------------------------ //
     '/admin':{
-      title:'Shopsifu - Kênh người bán',
-      description:'Shopsifu - Tổng quan bán hàng'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
-    '/admin/products':{ 
-      title:'Shopsifu - Quản lý sản phẩm',
-      description:'Shopsifu - Quản lý sản phẩm'
+    '/admin/products':{
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/products/new':{
-      title:'Shopsifu - Thêm sản phẩm mới',
-      description:'Shopsifu - Thêm sản phẩm mới'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/products/[id]':{
-      title:'Shopsifu - Chỉnh sửa sản phẩm',
-      description:'Shopsifu - Chỉnh sửa sản phẩm'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/category':{
-      title:'Shopsifu - Quản lý danh mục',
-      description:'Shopsifu - Quản lý danh mục'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/order':{
-      title:'Shopsifu - Danh sách đơn hàng',
-      description:'Shopsifu - Danh sách đơn hàng'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/voucher':{
-      title:'Shopsifu - Quản lý mã giảm giá',
-      description:'Shopsifu - Quản lý mã giảm giá'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/voucher/new':{
-      title:'Shopsifu - Thêm mã giảm giá mới',
-      description:'Shopsifu - Thêm mã giảm giá mới'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/voucher/edit/[id]':{
-      title:'Shopsifu - Chỉnh sửa mã giảm giá',
-      description:'Shopsifu - Chỉnh sửa mã giảm giá'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/permissions':{
-      title:'Shopsifu - Quản lý quyền hạn',
-      description:'Shopsifu - Quản lý quyền hạn'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/roles':{
-      title:'Shopsifu - Quản lý vai trò',
-      description:'Shopsifu - Quản lý vai trò'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/users':{
-      title:'Shopsifu - Quản lý người dùng',
-      description:'Shopsifu - Quản lý người dùng'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/audit-log':{
-      title:'Shopsifu - Nhật ký hoạt động',
-      description:'Shopsifu - Nhật ký hoạt động'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/languages':{
-      title:'Shopsifu - Quản lý ngôn ngữ',
-      description:'Shopsifu - Quản lý ngôn ngữ'
+      title:'English content normalized from the original source text.',
+      description:'English content normalized from the original source text.'
     },
     '/admin/brand': {
-      title: 'Shopsifu - Quản lý thương hiệu',
-      description: 'Shopsifu - Quản lý thương hiệu'
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.'
     },
   } satisfies Record<string, { title: string; description: string }>
-  

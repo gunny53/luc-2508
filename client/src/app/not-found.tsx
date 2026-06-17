@@ -6,12 +6,8 @@ export default function NotFound() {
       {/* Text Section */}
       <div className="w-full lg:w-1/2 flex flex-col items-center justify-center text-center">
         <p className="text-7xl md:text-8xl lg:text-9xl font-extrabold text-gray-300 tracking-wider">404</p>
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700 mt-4">
-          Không tìm thấy trang
-        </h1>
-        <p className="text-lg md:text-xl text-gray-500 mt-6 mb-10 max-w-xl">
-        Rất tiếc, không tìm thấy trang bạn đang tìm kiếm. Có thể trang đó đã bị xóa, đổi tên hoặc không tồn tại.
-        </p>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700 mt-4">English content normalized from the original source text.</h1>
+        <p className="text-lg md:text-xl text-gray-500 mt-6 mb-10 max-w-xl">English content normalized from the original source text.</p>
         <a
           href="/"
           className="flex items-center space-x-2 bg-[#D0201C] hover:bg-[#b31a18] text-white px-6 py-3 rounded transition duration-200"
@@ -24,7 +20,7 @@ export default function NotFound() {
               clipRule="evenodd"
             />
             </svg>
-            <span>Trở lại trang chủ</span>
+            <span>English content normalized from the original source text.</span>
         </a>
       </div>
 

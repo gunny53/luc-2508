@@ -1,6 +1,6 @@
 import { privateAxios } from "@/lib/api";
 import { API_ENDPOINTS } from '@/constants/api';
-import { 
+import {
   Address,
   AddAddressRequest,
   AddAddressResponse,
@@ -14,7 +14,7 @@ import {
 class AddressService {
   async getAll(params?: Record<string, any>) {
     const res = await privateAxios.get<AddressGetAllResponse>(API_ENDPOINTS.AUTH.GET_ALL_ADDRESS, { params });
-    return res.data; // data có { message, data }
+    return res.data; // English content normalized from the original source text.
   }
 
   async getById(id: string) {

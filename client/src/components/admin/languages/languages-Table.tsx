@@ -55,11 +55,11 @@ export function LanguagesTable() {
     setDeleteLoading(true);
     try {
       await deleteLanguage(languageToDelete.code);
-      // Đóng modal xác nhận xóa sau khi xóa thành công
+      // English content normalized from the original source text.
       handleCloseDeleteModal();
-      // Lưu ý: refreshData đã được gọi trong deleteLanguage
+      // English content normalized from the original source text.
     } catch (error) {
-      // Lỗi đã được xử lý trong deleteLanguage
+      // English content normalized from the original source text.
       console.error('Error deleting language:', error);
     } finally {
       setDeleteLoading(false);
@@ -75,16 +75,16 @@ export function LanguagesTable() {
         // Create
         await createLanguage({ id: values.code, name: values.name });
       }
-      // Đóng modal sau khi thực hiện thành công
+      // English content normalized from the original source text.
       handleCloseModal();
-      // Lưu ý: refreshData đã được gọi trong createLanguage/updateLanguage
+      // English content normalized from the original source text.
     } catch (error) {
-      // Lỗi đã được xử lý trong createLanguage/updateLanguage
+      // English content normalized from the original source text.
       console.error('Error handling language operation:', error);
     }
   }, [selectedLanguage, createLanguage, updateLanguage, handleCloseModal]);
 
-  // Sử dụng useDataTable để tạo bảng từ dữ liệu
+  // English content normalized from the original source text.
   const table = useDataTable({
     data: languages,
     columns: LanguagesColumns({ onDelete: handleOpenDelete, onEdit: handleEdit }),
@@ -92,7 +92,7 @@ export function LanguagesTable() {
 
   return (
    <div className="w-full space-y-4">
-  {/* Hàng 1: Nút Thêm mới */}
+  {/* English content normalized from the original source text. */}
   <div className="flex justify-end">
     <Button onClick={() => handleOpenModal()}>
       <PlusIcon className="w-4 h-4 mr-2" />
@@ -100,7 +100,7 @@ export function LanguagesTable() {
     </Button>
   </div>
 
-  {/* Hàng 2: Search + View Option */}
+  {/* English content normalized from the original source text. */}
   <div className="flex justify-between flex-wrap gap-4 items-center">
     <div className="flex-1">
       <SearchInput
@@ -135,7 +135,7 @@ export function LanguagesTable() {
     />
   </div>
 
-  {/* Modal thêm/sửa */}
+  {/* English content normalized from the original source text. */}
   <LanguagesModalUpsert
     open={isModalOpen}
     onClose={handleCloseModal}
@@ -144,7 +144,7 @@ export function LanguagesTable() {
     onSubmit={handleSubmit}
   />
 
-  {/* Modal xác nhận xóa */}
+  {/* English content normalized from the original source text. */}
   <ConfirmDeleteModal
     open={deleteOpen}
     onClose={() => {

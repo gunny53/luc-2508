@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import { ProductDetail } from "@/types/products.interface";
 
-// Định nghĩa Props cho component Wrapper
+// English content normalized from the original source text.
 interface ProductFormWrapperProps {
   initialData?: ProductDetail | null;
   onCreateSuccess?: (newProductId: string) => void;
@@ -16,8 +16,8 @@ const ProductFormDynamic = dynamic(
 
 export default function ProductFormWrapper({ initialData, onCreateSuccess }: ProductFormWrapperProps) {
   return (
-    <ProductFormDynamic 
-      initialData={initialData} 
+    <ProductFormDynamic
+      initialData={initialData}
       onCreateSuccess={onCreateSuccess}
     />
   );

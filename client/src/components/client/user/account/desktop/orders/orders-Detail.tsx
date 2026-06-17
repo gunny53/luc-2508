@@ -16,7 +16,7 @@ import { Phone, ChevronLeft, AlertTriangle } from "lucide-react";
 import { useOrder } from "./useOrder";
 import { Order, OrderItem } from "@/types/order.interface";
 import Link from "next/link";
-import { createProductSlug } from "@/components/client/products/shared/productSlug"; // Đường dẫn đến hàm tạo slug
+import { createProductSlug } from "@/components/client/products/shared/productSlug"; // English content normalized from the original source text.
 import { OrderTimeline } from "./orders-Timeline";
 import OrderInfo from "./orders-Info";
 
@@ -73,20 +73,20 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
   };
 
   if (loading || !order) {
-    return <div>Đang tải...</div>;
+    return <div>English content normalized from the original source text.</div>;
   }
 
   const statusMap: Record<
     string,
     { label: string; variant?: "default" | "destructive" }
   > = {
-    PENDING_PAYMENT: { label: "Chờ thanh toán" },
-    PENDING_PACKAGING: { label: "Đang đóng gói" },
-    PENDING_PICKUP: { label: "Chờ lấy hàng" },
-    PENDING_DELIVERY: { label: "Đang giao hàng" },
-    DELIVERED: { label: "Đã giao hàng" },
-    RETURNED: { label: "Đã trả hàng" },
-    CANCELLED: { label: "Đã hủy", variant: "destructive" },
+    PENDING_PAYMENT: { label: "English content normalized from the original source text." },
+    PENDING_PACKAGING: { label: "English content normalized from the original source text." },
+    PENDING_PICKUP: { label: "English content normalized from the original source text." },
+    PENDING_DELIVERY: { label: "English content normalized from the original source text." },
+    DELIVERED: { label: "English content normalized from the original source text." },
+    RETURNED: { label: "English content normalized from the original source text." },
+    CANCELLED: { label: "English content normalized from the original source text.", variant: "destructive" },
   };
 
   const currentStatus = statusMap[order.status] || { label: order.status };
@@ -114,22 +114,20 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
         className="flex items-center gap-1 text-muted-foreground text-sm bg-white rounded-lg p-4 border cursor-pointer"
       >
         <ChevronLeft className="w-5 h-5" />
-        <span className="text-[#121214] text-sm">
-          Lịch sử mua hàng
-          <span className="font-medium text-[#CFCFD3]">
+        <span className="text-[#121214] text-sm">English content normalized from the original source text.<span className="font-medium text-[#CFCFD3]">
             {" "}
-            / Chi tiết đơn hàng
+            English content normalized from the original source text.
           </span>
         </span>
       </Link>
 
       <section className="bg-white rounded-lg border p-4 space-y-3">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold">Tiến trình đơn hàng</h2>
+          <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
           <span className="text-sm font-medium">
             {order.status === "DELIVERED"
-              ? `Đơn hàng đã hoàn thành: ${order.orderCode}`
-              : `Mã vận đơn: ${order.orderCode}`}
+              ? `English content normalized from the original source text.${order.orderCode}`
+              : `English content normalized from the original source text.${order.orderCode}`}
           </span>
         </div>
         <OrderTimeline
@@ -146,14 +144,14 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
         </section>
       )}
 
-      {/* Tổng quan */}
+      {/* English content normalized from the original source text. */}
       <section className="bg-white rounded-lg border p-4 space-y-3">
-        <h2 className="text-lg font-semibold">Tổng quan</h2>
+        <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
         <div className="flex flex-wrap items-center gap-2 text-sm">
-          <span className="font-medium">Mã thanh toán: #{order.paymentId}</span>
+          <span className="font-medium">English content normalized from the original source text.{order.paymentId}</span>
           <span className="text-muted-foreground">•</span>
           <span className="text-muted-foreground">
-            Ngày đặt: {new Date(order.createdAt).toLocaleDateString("vi-VN")}
+            English content normalized from the original source text. {new Date(order.createdAt).toLocaleDateString("vi-VN")}
           </span>
           <span className="text-muted-foreground">•</span>
           <Badge
@@ -177,7 +175,7 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-[#d70018] font-semibold">
-                  {(selectedItem?.skuPrice ?? 0).toLocaleString()}đ
+                  {(selectedItem?.skuPrice ?? 0).toLocaleString()}English content normalized from the original source text.
                 </span>
               </div>
               <span className="text-xs bg-gray-100 rounded px-2 py-0.5">
@@ -186,9 +184,9 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
             </div>
           </div>
           <div className="flex flex-col items-end gap-2 min-w-[100px]">
-            <span className="text-sm">Số lượng: {totalQuantity}</span>
+            <span className="text-sm">English content normalized from the original source text. {totalQuantity}</span>
             <div className="flex gap-2">
-              {/* Nút Mua lại - chỉ hiển thị cho trạng thái DELIVERED, RETURNED, CANCELLED */}
+              {/* English content normalized from the original source text. */}
               {(order.status === "DELIVERED" ||
                 order.status === "RETURNED" ||
                 order.status === "CANCELLED") && (
@@ -205,26 +203,22 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                       router.push(`/products/${slug}`);
                     }
                   }}
-                >
-                  Mua lại
-                </Button>
+                >English content normalized from the original source text.</Button>
               )}
-              {/* Nút Thanh toán lại - chỉ hiển thị cho trạng thái PENDING_PAYMENT */}
+              {/* English content normalized from the original source text. */}
               {order.status === "PENDING_PAYMENT" && (
                 <Button
                   variant="outline"
                   size="sm"
                   className="border-[#0066cc] text-[#0066cc] hover:bg-[#0066cc] hover:text-white min-w-[120px]"
                   onClick={() => {
-                    // Chuyển hướng đến trang retry payment
+                    // English content normalized from the original source text.
                     router.push(`/checkout/retry/${order.id}`);
                   }}
-                >
-                  Tiếp tục thanh toán
-                </Button>
+                >English content normalized from the original source text.</Button>
               )}
 
-              {/* Nút Hủy đơn hàng - chỉ hiển thị cho trạng thái PENDING_PAYMENT */}
+              {/* English content normalized from the original source text. */}
               {(order.status === "PENDING_PAYMENT" ||
                 order.status === "PENDING_PACKAGING") && (
                 <Button
@@ -232,9 +226,7 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                   size="sm"
                   className="text-red-500 border-red-500 hover:bg-red-50 min-w-[110px]"
                   onClick={handleCancelClick}
-                >
-                  Hủy đơn hàng
-                </Button>
+                >English content normalized from the original source text.</Button>
               )}
             </div>
           </div>
@@ -243,39 +235,39 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-10 gap-3">
-        {/* Cột trái */}
+        {/* English content normalized from the original source text. */}
         <div className="md:col-span-5 flex flex-col space-y-3">
-          {/* Thông tin khách hàng */}
+          {/* English content normalized from the original source text. */}
           <section className="bg-white rounded-lg border p-4 space-y-3">
-            <h2 className="text-lg font-semibold">Thông tin khách hàng</h2>
+            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
             <div className="px-2 space-y-2 text-base">
               <div className="flex justify-between border-b pb-2">
-                <span className="text-muted-foreground">Họ và tên:</span>
+                <span className="text-muted-foreground">English content normalized from the original source text.</span>
                 <span className="font-sm">{order.receiver?.name}</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span className="text-muted-foreground">Số điện thoại:</span>
+                <span className="text-muted-foreground">English content normalized from the original source text.</span>
                 <span className="font-sm">{order.receiver?.phone}</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span className="text-muted-foreground">Địa chỉ:</span>
+                <span className="text-muted-foreground">English content normalized from the original source text.</span>
                 <span className="font-sm text-right max-w-[70%]">
                   {order.receiver?.address}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Ghi chú:</span>
+                <span className="text-muted-foreground">English content normalized from the original source text.</span>
                 <span className="text-muted-foreground">-</span>
               </div>
             </div>
           </section>
 
-          {/* Thông tin hỗ trợ */}
+          {/* English content normalized from the original source text. */}
           <section className="bg-white rounded-lg border p-4 py-6 space-y-3">
-            <h2 className="text-lg font-semibold">Thông tin hỗ trợ</h2>
+            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm">Số điện thoại:</span>
+                <span className="text-sm">English content normalized from the original source text.</span>
                 <span className="font-semibold">18002097</span>
               </div>
               <Button
@@ -283,102 +275,88 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                 size="sm"
                 className="border-[#d70018] text-[#d70018] hover:bg-[#d70018] hover:text-white"
               >
-                <Phone className="w-4 h-4 mr-1" /> Liên hệ
-              </Button>
+                <Phone className="w-4 h-4 mr-1" />English content normalized from the original source text.</Button>
             </div>
           </section>
 
-          {/* Trung tâm bảo hành */}
+          {/* English content normalized from the original source text. */}
           <section className="bg-white rounded-lg border p-4 space-y-3 flex-1">
-            <h2 className="text-lg font-semibold">Trung tâm bảo hành</h2>
+            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
             <div className="flex justify-between border-b">
-              <span>Danh sách trung tâm bảo hành</span>
-              <Button variant="link" className="text-primary px-0">
-                Truy cập
-              </Button>
+              <span>English content normalized from the original source text.</span>
+              <Button variant="link" className="text-primary px-0">English content normalized from the original source text.</Button>
             </div>
             <div className="flex justify-between">
-              <span>Bảo hành tại Shopsifu</span>
-              <Button variant="link" className="text-primary px-0">
-                Truy cập
-              </Button>
+              <span>English content normalized from the original source text.</span>
+              <Button variant="link" className="text-primary px-0">English content normalized from the original source text.</Button>
             </div>
           </section>
         </div>
 
-        {/* Thông tin thanh toán */}
+        {/* English content normalized from the original source text. */}
         <section className="bg-white rounded-lg border p-6 space-y-4 md:col-span-5 flex flex-col shadow-sm h-full">
-          <h2 className="text-lg font-semibold">Thông tin thanh toán</h2>
+          <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
 
-          {/* Sản phẩm */}
+          {/* English content normalized from the original source text. */}
           <div className="p-2 space-y-3">
-            <h3 className="text-base font-medium bg-neutral-100 rounded-xs px-2 py-1">
-              Sản phẩm
-            </h3>
+            <h3 className="text-base font-medium bg-neutral-100 rounded-xs px-2 py-1">English content normalized from the original source text.</h3>
             <div className="flex px-2 justify-between border-b pb-2">
-              <span>Số lượng sản phẩm:</span>
+              <span>English content normalized from the original source text.</span>
               <span>{totalQuantity}</span>
             </div>
             <div className="flex px-2 justify-between border-b pb-2">
-              <span>Tổng tiền hàng:</span>
-              <span>{totalAmount.toLocaleString()}đ</span>
+              <span>English content normalized from the original source text.</span>
+              <span>{totalAmount.toLocaleString()}English content normalized from the original source text.</span>
             </div>
             <div className="flex px-2 justify-between border-b pb-2">
-              <span>Phí vận chuyển:</span>
+              <span>English content normalized from the original source text.</span>
               <span>
                 {shippingFee === 0
-                  ? "Miễn phí"
-                  : `${shippingFee.toLocaleString()}đ`}
+                  ? "English content normalized from the original source text."
+                  : `${shippingFee.toLocaleString()}English content normalized from the original source text.`}
               </span>
             </div>
             <div className="flex px-2 justify-between border-b pb-2 text-green-600">
-              <span>Giảm giá:</span>
-              <span>-{discount.toLocaleString()}đ</span>
+              <span>English content normalized from the original source text.</span>
+              <span>-{discount.toLocaleString()}English content normalized from the original source text.</span>
             </div>
           </div>
 
-          {/* Thanh toán */}
+          {/* English content normalized from the original source text. */}
           <div className="p-2 space-y-3 mt-3">
-            <h3 className="text-base font-medium bg-neutral-100 rounded-xs px-2 py-1">
-              Thanh toán
-            </h3>
+            <h3 className="text-base font-medium bg-neutral-100 rounded-xs px-2 py-1">English content normalized from the original source text.</h3>
             <div className="flex px-2 justify-between border-b pb-2 font-semibold text-[#d70018] text-lg">
-              <span>Tổng số tiền</span>
-              <span>{finalAmount.toLocaleString()}đ</span>
+              <span>English content normalized from the original source text.</span>
+              <span>{finalAmount.toLocaleString()}English content normalized from the original source text.</span>
             </div>
-            <p className="text-xs px-2 text-muted-foreground border-b pb-2">
-              (Đã bao gồm VAT và được làm tròn)
-            </p>
+            <p className="text-xs px-2 text-muted-foreground border-b pb-2">English content normalized from the original source text.</p>
             <div className="flex px-2 justify-between text-red-600">
-              <span>Tổng số tiền đã thanh toán</span>
+              <span>English content normalized from the original source text.</span>
               <span>
                 {order.status === "PICKUPED" ||
                 order.status === "PENDING_DELIVERY" ||
                 order.status === "DELIVERED"
                   ? order.totalPayment.toLocaleString()
                   : "0"}
-                đ
+                English content normalized from the original source text.
               </span>
             </div>
           </div>
         </section>
       </div>
 
-      {/* Modal xác nhận hủy đơn hàng */}
+      {/* English content normalized from the original source text. */}
       <Dialog open={showCancelDialog} onOpenChange={handleCancelDialogClose}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <div className="flex items-center gap-2">
               <AlertTriangle className="h-5 w-5 text-amber-500" />
-              <DialogTitle>Xác nhận hủy đơn hàng</DialogTitle>
+              <DialogTitle>English content normalized from the original source text.</DialogTitle>
             </div>
             <DialogDescription className="text-left">
-              Bạn có chắc chắn muốn hủy đơn hàng{" "}
-              <span className="font-semibold">#{order?.paymentId}</span> không?
-              <br />
-              <span className="text-red-600 text-sm mt-2 block">
-                Lưu ý: Hành động này không thể hoàn tác.
-              </span>
+              English content normalized from the original source text.{" "}
+              <span className="font-semibold">#{order?.paymentId}</span>English content normalized from the original source text.<br />
+              <span className="text-red-600 text-sm mt-2 block">English content normalized from the original source text.</span>
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2">
@@ -386,16 +364,14 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
               variant="outline"
               onClick={handleCancelDialogClose}
               disabled={isCancelling}
-            >
-              Không, giữ lại
-            </Button>
+            >English content normalized from the original source text.</Button>
             <Button
               variant="destructive"
               onClick={handleConfirmCancel}
               disabled={isCancelling}
               className="text-white"
             >
-              {isCancelling ? "Đang hủy..." : "Có, hủy đơn hàng"}
+              {isCancelling ? "English content normalized from the original source text." : "English content normalized from the original source text."}
             </Button>
           </DialogFooter>
         </DialogContent>

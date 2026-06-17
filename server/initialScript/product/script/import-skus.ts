@@ -18,7 +18,7 @@ export async function importSKUs(
     return
   }
 
-  // Validate dữ liệu SKU
+  // English content normalized from the original source text.
   const validSkus = skus.filter((sku) => {
     if (!sku.value || !sku.value.trim()) {
       return false
@@ -36,7 +36,7 @@ export async function importSKUs(
     return
   }
 
-  // Kiểm tra SKUs hiện có để tránh duplicate
+  // English content normalized from the original source text.
   const existingSkus = await tx.sKU.findMany({
     where: {
       productId: { in: [...new Set(validSkus.map((s) => s.productId))] },
@@ -54,7 +54,7 @@ export async function importSKUs(
     existingSkuMap.set(`${sku.productId}-${sku.value}`, sku.id)
   })
 
-  // Lọc ra SKUs mới cần tạo
+  // English content normalized from the original source text.
   const newSkus = validSkus.filter((sku) => {
     const key = `${sku.productId}-${sku.value}`
     return !existingSkuMap.has(key)

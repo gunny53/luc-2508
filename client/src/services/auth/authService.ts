@@ -1,8 +1,8 @@
 import { publicAxios, privateAxios, refreshAxios } from '@/lib/api';
-import { 
-  LoginRequest, 
-  LoginResponse, 
-  RegisterRequest, 
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest,
   RegisterResponse,
   RegisterSendRequest,
   SendOTPRequest,
@@ -34,7 +34,7 @@ export const authService = {
     return response.data;
   },
 
-  // ĐĂNG NHẬP TÀI KHOẢN - SIGN-IN
+  // English content normalized from the original source text.
   login: async (data: LoginRequest): Promise<LoginResponse> => {
     const response = await privateAxios.post<LoginResponse>(API_ENDPOINTS.AUTH.SIGNIN, data);
     // return response.data;
@@ -46,7 +46,7 @@ export const authService = {
   },
 
 
-  // ĐĂNG KÝ TÀI KHOẢN - SIGN-UP
+  // English content normalized from the original source text.
   register: async (data: RegisterRequest): Promise<RegisterResponse> => {
     const response = await privateAxios.post<RegisterResponse>(API_ENDPOINTS.AUTH.SIGNUP, data);
     return response.data;
@@ -58,7 +58,7 @@ export const authService = {
   },
 
 
-  // ĐỔI MẬT KHẨU TÀI KHOẢN - RESET PASSWORD
+  // English content normalized from the original source text.
   resetPassword: async (data: ResetPasswordRequest): Promise<ResetPasswordResponse> => {
     const response = await privateAxios.post<ResetPasswordResponse>(
       API_ENDPOINTS.AUTH.RESET_PASSWORD,
@@ -69,9 +69,9 @@ export const authService = {
   resetPassword_send: async(data: ResetPasswordSendRequest): Promise<ResetPasswordResponse> =>{
      const response = await privateAxios.post(API_ENDPOINTS.AUTH.RESET_PASSWORD_SEND, data);
      return response.data;
-  }, 
+  },
 
-  // XÁC THỰC & GỬI CODE - VERIFY & SEND CODE
+  // English content normalized from the original source text.
   verify2fa: async (data: Verify2faRequest): Promise<Verify2faResponse> => {
     const response = await privateAxios.post<Verify2faResponse>(
       API_ENDPOINTS.AUTH.VERIFY_2FA,
@@ -101,12 +101,12 @@ export const authService = {
   },
 
 
-  // THIẾT LẬP 2FA - SETUP 2FA
+  // English content normalized from the original source text.
   setup2fa: async (): Promise<Setup2faResponse> => {
     const response = await privateAxios.post<Setup2faResponse>(API_ENDPOINTS.AUTH.SETUP_2FA, {})
     return response.data
   },
-  
+
   disable2fa: async (data: Disable2faRequest): Promise<Disable2faResponse> => {
     const response = await privateAxios.post<Disable2faResponse>(
       API_ENDPOINTS.AUTH.DISABLE_2FA,
@@ -127,7 +127,7 @@ export const authService = {
     return response.data
   },
 
-  // KHÁC
+  // English content normalized from the original source text.
   refreshToken: async (): Promise<RefreshTokenResponse> => {
     const response = await refreshAxios.post<RefreshTokenResponse>(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
     return response.data;

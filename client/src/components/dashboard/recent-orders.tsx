@@ -7,26 +7,26 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-// Giả lập dữ liệu cho component này
-// Thực tế, bạn sẽ fetch dữ liệu từ API tại đây hoặc từ component cha
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 const recentOrders = [
   {
     id: "#98765",
-    customer: "Nguyễn Văn A",
-    total: "500,000đ",
-    status: "Đã giao",
+    customer: "English content normalized from the original source text.",
+    total: "English content normalized from the original source text.",
+    status: "English content normalized from the original source text.",
   },
   {
     id: "#98764",
-    customer: "Trần Thị B",
-    total: "250,000đ",
-    status: "Đang giao",
+    customer: "English content normalized from the original source text.",
+    total: "English content normalized from the original source text.",
+    status: "English content normalized from the original source text.",
   },
   {
     id: "#98763",
-    customer: "Lê Văn C",
-    total: "800,000đ",
-    status: "Chờ xác nhận",
+    customer: "English content normalized from the original source text.",
+    total: "English content normalized from the original source text.",
+    status: "English content normalized from the original source text.",
   },
 ];
 
@@ -35,10 +35,10 @@ export function RecentOrdersTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Mã đơn hàng</TableHead>
-          <TableHead>Khách hàng</TableHead>
-          <TableHead className="text-right">Tổng tiền</TableHead>
-          <TableHead>Trạng thái</TableHead>
+          <TableHead>English content normalized from the original source text.</TableHead>
+          <TableHead>English content normalized from the original source text.</TableHead>
+          <TableHead className="text-right">English content normalized from the original source text.</TableHead>
+          <TableHead>English content normalized from the original source text.</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

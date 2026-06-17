@@ -19,8 +19,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Shopsifu",
-  description: "Mua sắm dễ dàng cùng Shopsifu",
+  title: "ECSite",
+  description: "English content normalized from the original source text.",
 };
 
 

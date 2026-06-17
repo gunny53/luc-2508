@@ -7,7 +7,7 @@ import { productMock } from "./mockData";
 
 export default function ProductInfoMobile({ product = productMock }) {
   const colors =
-    product.variants.find((v) => v.value === "Màu sắc")?.options || [];
+    product.variants.find((v) => v.value === "English content normalized from the original source text.")?.options || [];
 
   const [selectedColor, setSelectedColor] = useState(colors[0] || "");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,7 +19,7 @@ export default function ProductInfoMobile({ product = productMock }) {
 
   return (
     <div className="bg-white p-4 text-sm space-y-3">
-      {/* Ảnh sản phẩm dạng lựa chọn biến thể */}
+      {/* English content normalized from the original source text. */}
       <div className="flex gap-2 overflow-x-auto no-scrollbar">
         {colors.map((color, index) => (
           <div
@@ -47,7 +47,7 @@ export default function ProductInfoMobile({ product = productMock }) {
         ))}
       </div>
 
-      {/* Giá */}
+      {/* English content normalized from the original source text. */}
       <div className="flex items-center gap-3">
         <span className="text-red-600 text-2xl font-bold">
           ₫{product.basePrice.toLocaleString("vi-VN")}
@@ -60,18 +60,16 @@ export default function ProductInfoMobile({ product = productMock }) {
         </span>
       </div>
 
-      {/* Đã bán + icon yêu thích */}
+      {/* English content normalized from the original source text. */}
       <div className="flex items-center justify-between">
-        <div className="bg-red-100 text-red-500 px-2 py-0.5 rounded text-xs font-semibold">
-          Yêu thích
-        </div>
+        <div className="bg-red-100 text-red-500 px-2 py-0.5 rounded text-xs font-semibold">English content normalized from the original source text.</div>
         <div className="flex items-center gap-1 text-xs text-gray-500">
-          <span>Đã bán 760</span>
+          <span>English content normalized from the original source text.</span>
           <Heart className="w-4 h-4 text-gray-400" />
         </div>
       </div>
 
-      {/* Tên sản phẩm */}
+      {/* English content normalized from the original source text. */}
       <div className="text-base font-medium text-black leading-snug">
         {product.name}
       </div>

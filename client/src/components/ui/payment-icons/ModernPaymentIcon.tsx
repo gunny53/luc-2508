@@ -55,7 +55,7 @@ export function ModernPaymentIcon({ type, size = 32, className }: PaymentIconPro
   if (!config) return null;
 
   return (    <motion.div
-      whileHover={{ 
+      whileHover={{
         scale: 1.03,
         y: -2,
       }}
@@ -114,7 +114,7 @@ export function ModernPaymentIcon({ type, size = 32, className }: PaymentIconPro
           }}
         />
         {/* Glow Border */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500"
           animate={{
             boxShadow: [

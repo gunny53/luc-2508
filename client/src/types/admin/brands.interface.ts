@@ -12,7 +12,7 @@ export interface BrandTranslation {
   updatedAt?: string;
 }
 
-// Interface chính cho Brand
+// English content normalized from the original source text.
 export interface Brand {
   id: string;
   name: string;
@@ -26,7 +26,7 @@ export interface Brand {
   brandTranslations: BrandTranslation[];
 }
 
-// Request interface cho create và update
+// English content normalized from the original source text.
 export interface BrandCreateRequest {
   name: string;
   logo?: string;
@@ -59,5 +59,5 @@ export interface BrandGetByIdResponse {
 
 // Params interface
 export interface BrandParams extends PaginationRequest {
-  // Thêm các trường tìm kiếm đặc thù cho Brand nếu cần
+  // English content normalized from the original source text.
 }

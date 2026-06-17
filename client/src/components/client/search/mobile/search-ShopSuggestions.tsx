@@ -1,15 +1,13 @@
 export default function ShopSuggestion() {
   return (
     <div className="bg-white p-3 sm:p-4 border rounded shadow-sm space-y-2">
-      <h2 className="text-sm font-semibold text-gray-700">
-        SHOP LIÊN QUAN ĐẾN "HOA"
-      </h2>
+      <h2 className="text-sm font-semibold text-gray-700">English content normalized from the original source text.</h2>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex items-center gap-3 sm:gap-4">
           <div className="w-12 h-12 bg-gray-200 rounded-full" />
           <div className="text-sm">
-            <div className="font-semibold">Lattafa Perfume Việt Nam</div>
+            <div className="font-semibold">English content normalized from the original source text.</div>
             <div className="text-xs text-gray-500">★ 5.0 | 7,6k Followers</div>
           </div>
           <button className="ml-auto sm:ml-4 px-3 py-1 text-sm border rounded text-primary border-primary">

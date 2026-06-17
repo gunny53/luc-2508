@@ -42,20 +42,20 @@ export function useUploadMediaPresign() {
     const fileSizeMB = file.size / FILE_SIZE_MB;
     return fileSizeMB <= FILE_SIZE_LIMIT;
   }, []);
-  
+
   // Compress image before upload (reuse from original)
   const compressImage = useCallback(async (file: File): Promise<File> => {
     if (!file.type.startsWith('image/') || validateFileSize(file)) {
       return file;
     }
-    
+
     const options = {
       maxSizeMB: FILE_SIZE_LIMIT,
       maxWidthOrHeight: 1920,
       useWebWorker: true,
       initialQuality: 0.8,
     };
-    
+
     try {
       const compressedFile = await imageCompression(file, options);
       console.log(`Original: ${(file.size / 1024 / 1024).toFixed(2)}MB → Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`);
@@ -82,37 +82,37 @@ export function useUploadMediaPresign() {
     await baseService.uploadToS3(file, presignedUrl);
   }, []);
 
-  // Xử lý thêm files (compress + get presigned URLs only)
+  // English content normalized from the original source text.
   const handleAddFiles = useCallback(async (newFiles: FileList | File[]) => {
     const filesArray = Array.from(newFiles);
-    
-    setState(prev => ({ 
-      ...prev, 
-      isProcessing: true, 
-      progress: 0, 
+
+    setState(prev => ({
+      ...prev,
+      isProcessing: true,
+      progress: 0,
       error: null,
       currentStep: 'compressing'
     }));
-    
+
     try {
       // Step 1: Compress images (0-50%)
       setState(prev => ({ ...prev, progress: 10 }));
-      
+
       const processedFiles = await Promise.all(filesArray.map(async (file, index) => {
         if (file.type.startsWith('image/') && file.size > FILE_SIZE_MB) {
           const compressedFile = await compressImage(file);
-          
+
           // Update progress during compression
           const compressionProgress = 10 + (index + 1) / filesArray.length * 40;
           setState(prev => ({ ...prev, progress: compressionProgress }));
-          
+
           const fileWithPreview = compressedFile as FileWithPreview;
           fileWithPreview.preview = URL.createObjectURL(compressedFile);
-          
+
           if (compressedFile.size > FILE_SIZE_MB) {
-            toast.warning(`Không thể nén đủ nhỏ: ${file.name}`);
+            toast.warning(`English content normalized from the original source text.${file.name}`);
           }
-          
+
           return fileWithPreview;
         } else {
           const fileWithPreview = file as FileWithPreview;
@@ -123,12 +123,12 @@ export function useUploadMediaPresign() {
 
       // Step 2: Get presigned URLs (50-100%)
       setState(prev => ({ ...prev, currentStep: 'getting-urls', progress: 50 }));
-      
+
       const presignedData = await getPresignedUrls(processedFiles);
-      
+
       // Complete processing
-      setState(prev => ({ 
-        ...prev, 
+      setState(prev => ({
+        ...prev,
         files: processedFiles,
         presignedData,
         isProcessing: false,
@@ -136,24 +136,24 @@ export function useUploadMediaPresign() {
         currentStep: 'idle'
       }));
 
-      toast.success(`Đã sẵn sàng tải lên ${processedFiles.length} tệp`);
+      toast.success(`English content normalized from the original source text.${processedFiles.length}English content normalized from the original source text.`);
       return { processedFiles, presignedData };
 
     } catch (error: any) {
       console.error('Processing error:', error);
-      
-      setState(prev => ({ 
-        ...prev, 
+
+      setState(prev => ({
+        ...prev,
         isProcessing: false,
         progress: 0,
-        error: error.message || 'Lỗi khi xử lý tệp',
+        error: error.message || 'English content normalized from the original source text.',
         currentStep: 'idle'
       }));
-      
-      toast.error('Lỗi khi xử lý tệp', {
-        description: error.message || 'Vui lòng thử lại sau',
+
+      toast.error('English content normalized from the original source text.', {
+        description: error.message || 'English content normalized from the original source text.',
       });
-      
+
       return { processedFiles: [], presignedData: [] };
     }
   }, [compressImage, getPresignedUrls]);
@@ -162,20 +162,20 @@ export function useUploadMediaPresign() {
   const uploadToS3Multiple = useCallback(async (files?: FileWithPreview[], presignedData?: PresignedUrlData[]) => {
     const filesToUpload = files || state.files;
     const presignedDataToUse = presignedData || state.presignedData;
-    
+
     if (filesToUpload.length === 0 || presignedDataToUse.length === 0) {
-      toast.error('Không có tệp để tải lên');
+      toast.error('English content normalized from the original source text.');
       return [];
     }
 
-    setState(prev => ({ 
-      ...prev, 
-      isUploading: true, 
+    setState(prev => ({
+      ...prev,
+      isUploading: true,
       progress: 0,
       error: null,
       currentStep: 'uploading'
     }));
-    
+
     try {
       const uploadPromises = filesToUpload.map(async (file, index) => {
         const presignedInfo = presignedDataToUse[index];
@@ -184,48 +184,48 @@ export function useUploadMediaPresign() {
         }
 
         await uploadToS3(file, presignedInfo.presignedUrl);
-        
+
         // Update progress during upload
         const uploadProgress = (index + 1) / filesToUpload.length * 100;
         setState(prev => ({ ...prev, progress: uploadProgress }));
-        
+
         return presignedInfo.url; // Return final URL
       });
 
       const uploadedUrls = await Promise.all(uploadPromises);
 
       // Complete upload
-      setState(prev => ({ 
-        ...prev, 
+      setState(prev => ({
+        ...prev,
         uploadedUrls: [...prev.uploadedUrls, ...uploadedUrls],
         isUploading: false,
         progress: 100,
         currentStep: 'idle'
       }));
 
-      toast.success(`Đã tải lên ${uploadedUrls.length} tệp thành công`);
+      toast.success(`English content normalized from the original source text.${uploadedUrls.length}English content normalized from the original source text.`);
       return uploadedUrls;
 
     } catch (error: any) {
       console.error('Upload error:', error);
-      
-      setState(prev => ({ 
-        ...prev, 
+
+      setState(prev => ({
+        ...prev,
         isUploading: false,
         progress: 0,
-        error: error.message || 'Lỗi khi tải tệp lên',
+        error: error.message || 'English content normalized from the original source text.',
         currentStep: 'idle'
       }));
-      
-      toast.error('Lỗi khi tải tệp lên', {
-        description: error.message || 'Vui lòng thử lại sau',
+
+      toast.error('English content normalized from the original source text.', {
+        description: error.message || 'English content normalized from the original source text.',
       });
-      
+
       return [];
     }
   }, [state.files, state.presignedData, uploadToS3]);
 
-  // Xử lý xóa file (reuse from original)
+  // English content normalized from the original source text.
   const handleRemoveFile = useCallback((fileName: string) => {
     setState((prev) => {
       const fileIndex = prev.files.findIndex(f => f.name === fileName);
@@ -237,9 +237,9 @@ export function useUploadMediaPresign() {
       if (fileToRemove?.preview) {
         URL.revokeObjectURL(fileToRemove.preview);
       }
-      
+
       newFiles.splice(fileIndex, 1);
-      
+
       return {
         ...prev,
         files: newFiles,
@@ -247,13 +247,13 @@ export function useUploadMediaPresign() {
     });
   }, []);
 
-  // Xử lý xóa tất cả files (reuse from original)
+  // English content normalized from the original source text.
   const handleRemoveAllFiles = useCallback(() => {
     setState((prev) => {
       prev.files.forEach((file) => {
         if (file.preview) URL.revokeObjectURL(file.preview);
       });
-      
+
       return {
         ...prev,
         files: [],
@@ -271,7 +271,7 @@ export function useUploadMediaPresign() {
   // Upload specific files (for manual trigger)
   const uploadFiles = useCallback(async (filesToUpload?: FileWithPreview[]) => {
     const filesToProcess = filesToUpload || state.files;
-    
+
     if (filesToProcess.length === 0) {
       return { processedFiles: [], presignedData: [] };
     }
@@ -285,7 +285,7 @@ export function useUploadMediaPresign() {
       prev.files.forEach((file) => {
         if (file.preview) URL.revokeObjectURL(file.preview);
       });
-      
+
       return {
         files: [],
         uploadedUrls: [],
@@ -303,11 +303,11 @@ export function useUploadMediaPresign() {
   const getProgressMessage = useCallback(() => {
     switch (state.currentStep) {
       case 'compressing':
-        return 'Đang nén ảnh...';
+        return 'English content normalized from the original source text.';
       case 'getting-urls':
-        return 'Đang lấy URL upload...';
+        return 'English content normalized from the original source text.';
       case 'uploading':
-        return 'Đang tải lên S3...';
+        return 'English content normalized from the original source text.';
       default:
         return '';
     }

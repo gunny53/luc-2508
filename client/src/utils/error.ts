@@ -1,52 +1,52 @@
 // utils/error.ts
 
 export const ERROR_MESSAGES: Record<string, string> = {
-    'Error.InvalidOTP': 'Mã OTP không chính xác',
-    'Error.InvalidTOTP': 'Mã TOTP không chính xác',
-    'Error.OTPExpired': 'Mã OTP đã hết hạn',
-    'Error.InvalidCredentials': 'Email hoặc mật khẩu không đúng',
-    'Error.EmailNotFound': 'Email này chưa được đăng ký trong hệ thống',
-    'Error.EmailInvalid': 'Email không hợp lệ, vui lòng kiểm tra lại',
-    'Error.TooManyRequests': 'Bạn đã yêu cầu quá nhiều lần. Vui lòng thử lại sau ít phút',
-    'Error.ServerError': 'Hệ thống đang gặp sự cố, vui lòng thử lại sau',
-    'Error.UserExists': 'Người dùng đã tồn tại',
-    'Error.UserNotFound': 'Không tìm thấy người dùng',
-    'Error.Auth.Otp.Invalid': 'Mã OTP không hợp lệ hoặc đã hết hạn',
-    'Error.Auth.Password.Invalid"': 'Mật khẩu không hợp lệ',
-    'Error.TOTPAlreadyEnabled': 'Tài khoản của bạn đã được bật xác thực 2 bước',
-    'Error.EmailAlreadyExists': 'Email đã tồn tại',
-    'Error.LanguageNotFound': 'Ngôn ngữ không tồn tại',
-    'Error.LanguageCodeExists': 'Mã ngôn ngữ đã tồn tại',
-    'Error.LanguageCodeInvalid': 'Mã ngôn ngữ không hợp lệ',
-    'Error.LanguageNameExists': 'Tên ngôn ngữ đã tồn tại',
-    'Error.LanguageNameInvalid': 'Tên ngôn ngữ không hợp lệ',
-    'Error.LanguageCodeTooShort': 'Mã ngôn ngữ phải có ít nhất 2 ký tự',
-    'Error.LanguageCreateFailed': 'Tạo ngôn ngữ thất bại',
-    'Error.LanguageUpdateFailed': 'Cập nhật ngôn ngữ thất bại',
-    'Error.LanguageDeleteFailed': 'Xóa ngôn ngữ thất bại',
-    'Error.Auth.Email.NotFound': 'Email này chưa được đăng ký trong hệ thống',
-    'Error.Language.AlreadyExists': 'Mã ngôn ngữ đã tồn tại',
-    'Error.Auth.Email.AlreadyExists': 'Email đã tồn tại trong hệ thống',
-    // ➕ thêm các mã khác tùy theo backend
+    'Error.InvalidOTP': 'English content normalized from the original source text.',
+    'Error.InvalidTOTP': 'English content normalized from the original source text.',
+    'Error.OTPExpired': 'English content normalized from the original source text.',
+    'Error.InvalidCredentials': 'English content normalized from the original source text.',
+    'Error.EmailNotFound': 'English content normalized from the original source text.',
+    'Error.EmailInvalid': 'English content normalized from the original source text.',
+    'Error.TooManyRequests': 'English content normalized from the original source text.',
+    'Error.ServerError': 'English content normalized from the original source text.',
+    'Error.UserExists': 'English content normalized from the original source text.',
+    'Error.UserNotFound': 'English content normalized from the original source text.',
+    'Error.Auth.Otp.Invalid': 'English content normalized from the original source text.',
+    'Error.Auth.Password.Invalid"': 'English content normalized from the original source text.',
+    'Error.TOTPAlreadyEnabled': 'English content normalized from the original source text.',
+    'Error.EmailAlreadyExists': 'English content normalized from the original source text.',
+    'Error.LanguageNotFound': 'English content normalized from the original source text.',
+    'Error.LanguageCodeExists': 'English content normalized from the original source text.',
+    'Error.LanguageCodeInvalid': 'English content normalized from the original source text.',
+    'Error.LanguageNameExists': 'English content normalized from the original source text.',
+    'Error.LanguageNameInvalid': 'English content normalized from the original source text.',
+    'Error.LanguageCodeTooShort': 'English content normalized from the original source text.',
+    'Error.LanguageCreateFailed': 'English content normalized from the original source text.',
+    'Error.LanguageUpdateFailed': 'English content normalized from the original source text.',
+    'Error.LanguageDeleteFailed': 'English content normalized from the original source text.',
+    'Error.Auth.Email.NotFound': 'English content normalized from the original source text.',
+    'Error.Language.AlreadyExists': 'English content normalized from the original source text.',
+    'Error.Auth.Email.AlreadyExists': 'English content normalized from the original source text.',
+    // English content normalized from the original source text.
 }
 
 export function parseApiError(error: any): string {
-    const fallback = 'Có lỗi xảy ra. Vui lòng thử lại sau.'
-    
-    // Kiểm tra nếu error có format mới
+    const fallback = 'English content normalized from the original source text.'
+
+    // English content normalized from the original source text.
     if (error?.response?.data?.errors) {
         const errors = error.response.data.errors
         if (Array.isArray(errors) && errors.length > 0) {
-            // Lấy error đầu tiên
+            // English content normalized from the original source text.
             const firstError = errors[0]
             const errorCode = firstError.message
-            
-            // Trả về message tương ứng hoặc description gốc
+
+            // English content normalized from the original source text.
             return ERROR_MESSAGES[errorCode] || firstError.message || fallback
         }
     }
 
-    // Fallback về cách xử lý cũ nếu không phải format mới
+    // English content normalized from the original source text.
     const errMsg = error?.response?.data?.message || error?.message
 
     if (Array.isArray(errMsg)) {
@@ -58,4 +58,3 @@ export function parseApiError(error: any): string {
 
     return fallback
 }
-  

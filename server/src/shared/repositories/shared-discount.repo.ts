@@ -35,10 +35,7 @@ export class SharedDiscountRepository {
   // DATA ACCESS METHODS - Repository Pattern
   // ============================================================
 
-  /**
-   * Lấy discounts theo codes - Bridge method
-   * Sử dụng bởi Order module để lấy discount data
-   */
+  /* English content normalized from the original source text. */
   async findDiscountsByCodes(discountCodes: string[]): Promise<DiscountWithIncludes[]> {
     if (discountCodes.length === 0) {
       return []
@@ -54,10 +51,7 @@ export class SharedDiscountRepository {
     })
   }
 
-  /**
-   * Lấy platform discounts theo codes - Bridge method
-   * Sử dụng bởi Order module để lấy platform discount data
-   */
+  /* English content normalized from the original source text. */
   async findPlatformDiscountsByCodes(discountCodes: string[]): Promise<DiscountWithIncludes[]> {
     if (discountCodes.length === 0) {
       return []
@@ -80,10 +74,7 @@ export class SharedDiscountRepository {
     })
   }
 
-  /**
-   * Lấy active discounts theo codes trong transaction - Bridge method
-   * Sử dụng bởi Order module để lấy valid discounts
-   */
+  /* English content normalized from the original source text. */
   async findActiveDiscountsByCodes(tx: any, discountCodes: string[]): Promise<DiscountWithIncludes[]> {
     return tx.discount.findMany({
       where: {
@@ -101,10 +92,7 @@ export class SharedDiscountRepository {
     })
   }
 
-  /**
-   * Lấy usage count của user cho discounts - Bridge method
-   * Sử dụng bởi Order module để kiểm tra usage limit
-   */
+  /* English content normalized from the original source text. */
   async getUserDiscountUsage(userId: string, discountIds: string[]): Promise<Map<string, number>> {
     const userDiscountUsage = await this.prismaService.discountSnapshot.groupBy({
       by: ['discountId'],
@@ -122,10 +110,7 @@ export class SharedDiscountRepository {
     )
   }
 
-  /**
-   * Update discount usage count - Bridge method
-   * Sử dụng bởi Order module để update usage khi apply discount
-   */
+  /* English content normalized from the original source text. */
   async updateDiscountUsage(tx: any, discountId: string, userId: string): Promise<void> {
     await tx.discount.update({
       where: { id: discountId },
@@ -136,10 +121,7 @@ export class SharedDiscountRepository {
     })
   }
 
-  /**
-   * Tạo discount snapshot trong transaction - Bridge method
-   * Sử dụng bởi Order module để tạo discount snapshot
-   */
+  /* English content normalized from the original source text. */
   async createDiscountSnapshot(tx: any, discountSnapshotData: any, orderId: string): Promise<void> {
     await tx.discountSnapshot.create({
       data: {
@@ -149,10 +131,7 @@ export class SharedDiscountRepository {
     })
   }
 
-  /**
-   * Lấy discount snapshots của order - Bridge method
-   * Sử dụng bởi Order module để lấy discount info khi hiển thị
-   */
+  /* English content normalized from the original source text. */
   async findDiscountSnapshotsByOrderId(orderId: string): Promise<any[]> {
     return this.prismaService.discountSnapshot.findMany({
       where: { orderId }

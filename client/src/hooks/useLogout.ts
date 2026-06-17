@@ -12,27 +12,27 @@ export function useLogout() {
   const handleLogout = async () => {
     setLoading(true);
     try {
-      // 1. Gọi API logout ở phía server trước
+      // English content normalized from the original source text.
       await authService.logout({});
     } catch (error) {
-      // Ghi lại lỗi API nhưng không dừng quá trình đăng xuất phía client
+      // English content normalized from the original source text.
       console.error('API logout failed, proceeding with client-side cleanup:', error);
     } finally {
-      // 2. Dọn dẹp toàn bộ trạng thái phía client bất kể API thành công hay thất bại
+      // English content normalized from the original source text.
       await clearClientState();
 
-      // 3. Lấy CSRF token mới để chuẩn bị cho lần đăng nhập tiếp theo
+      // English content normalized from the original source text.
       try {
         await authService.getCsrfToken();
       } catch (error) {
         console.error('Failed to fetch new CSRF token after logout:', error);
       }
 
-      // 4. Hiển thị thông báo thành công và điều hướng
-      showToast('Đăng xuất thành công!', 'success');
+      // English content normalized from the original source text.
+      showToast('English content normalized from the original source text.', 'success');
 
-      // 5. Điều hướng về trang đăng nhập bằng cách tải lại trang
-      // Điều này đảm bảo dọn dẹp triệt để mọi trạng thái còn sót lại trong bộ nhớ
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       window.location.href = ROUTES.AUTH.SIGNIN;
     }
   };

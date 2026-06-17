@@ -6,22 +6,22 @@ export async function importCategories(
   creatorUserId: string,
   tx: PrismaClient
 ): Promise<Map<string, string>> {
-  const categorySet = new Set<string>(['Khác'])
+  const categorySet = new Set<string>(['English content normalized from the original source text.'])
   const categoryHierarchy = new Map<string, { parent?: string; level: number }>()
 
   products.forEach((p) => {
     const names = p.breadcrumb.slice(1, -1).slice(0, 3)
     if (names.length) {
-      // Thêm category cấp 1
+      // English content normalized from the original source text.
       categorySet.add(names[0])
       categoryHierarchy.set(names[0], { level: 1 })
 
-      // Thêm category cấp 2 (nếu có)
+      // English content normalized from the original source text.
       if (names.length > 1) {
         categorySet.add(names[1])
         categoryHierarchy.set(names[1], { parent: names[0], level: 2 })
 
-        // Thêm category cấp 3 (nếu có)
+        // English content normalized from the original source text.
         if (names.length > 2) {
           categorySet.add(names[2])
           categoryHierarchy.set(names[2], { parent: names[1], level: 3 })
@@ -52,7 +52,7 @@ export async function importCategories(
         }
       })
 
-      // 🔑 Cập nhật categoryMap để các category con có thể tìm thấy parent
+      // English content normalized from the original source text.
       categoryMap.set(name, {
         id: createdCategory.id,
         parentCategoryId: parentCategory ? (parentCategory as any).id : null

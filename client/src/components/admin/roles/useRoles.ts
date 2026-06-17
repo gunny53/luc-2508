@@ -17,20 +17,20 @@ import { useTranslations } from "next-intl"
 
 export function useRoles() {
   const t = useTranslations();
-  
+
   // Modal states
   const [upsertOpen, setUpsertOpen] = useState(false)
   const [modalMode, setModalMode] = useState<'add' | 'edit'>('add')
   const [roleToEdit, setRoleToEdit] = useState<Role | null>(null)
-  
+
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [roleToDelete, setRoleToDelete] = useState<Role | null>(null)
   const [deleteLoading, setDeleteLoading] = useState(false)
-  
+
   // Permissions data for the modal
   const [permissionsData, setPermissionsData] = useState<Record<string, PermissionDetail[]>>({})
   const [isPermissionsLoading, setIsPermissionsLoading] = useState(true)
-  
+
   // Callbacks for useServerDataTable
   const getResponseData = useCallback((response: any) => {
     return response.data || []
@@ -51,7 +51,7 @@ export function useRoles() {
   const mapResponseToData = useCallback((role: any): Role => {
     return {
       ...role,
-      id: role.id, // Giữ nguyên id dạng string/UUID từ API
+      id: role.id, // English content normalized from the original source text.
       description: role.description || "",
       isActive: role.isActive ?? true,
     }
@@ -75,9 +75,9 @@ export function useRoles() {
     initialSort: { sortBy: "createdAt", sortOrder: "asc" },
     defaultLimit: 10,
      requestConfig: {
-      includeSearch: false, // Không gửi tham số search trong request API
-      includeSort: false,   // Không gửi các tham số sắp xếp (sortBy, sortOrder)
-      includeCreatedById: true // Vẫn gửi tham số createdById nếu có
+      includeSearch: false, // English content normalized from the original source text.
+      includeSort: false,   // English content normalized from the original source text.
+      includeCreatedById: true // English content normalized from the original source text.
     },
   })
 
@@ -85,48 +85,48 @@ export function useRoles() {
   const fetchPermissions = useCallback(async () => {
     try {
       setIsPermissionsLoading(true)
-      // Truyền limit=1000 để lấy tất cả permissions mà không cần sắp xếp từ API
-      const response = await permissionService.getAll({ 
-        page: 1, 
+      // English content normalized from the original source text.
+      const response = await permissionService.getAll({
+        page: 1,
         limit: 1000
       })
-      
-      // Kiểm tra cấu trúc dữ liệu trả về
+
+      // English content normalized from the original source text.
       const responseData = Array.isArray(response.data) ? response.data : [];
-      console.log("Permissions API response data:", responseData.length ? "Có dữ liệu" : "Không có dữ liệu");
-      
-      // Nếu API không hỗ trợ sort, chúng ta có thể sắp xếp mảng kết quả ở client
-      // Sắp xếp data theo module trước khi tiếp tục xử lý
+      console.log("Permissions API response data:", responseData.length ? "English content normalized from the original source text." : "English content normalized from the original source text.");
+
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       const sortedData = [...responseData].sort((a, b) => {
         const moduleA = a.module || "OTHERS";
         const moduleB = b.module || "OTHERS";
         return moduleA.localeCompare(moduleB);
       });
-      
-      // Tạo cấu trúc dữ liệu phù hợp dựa trên module (vì API không còn gộp sẵn)
-      // Sử dụng sortedData thay vì response.data để dữ liệu đã được sắp xếp
+
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       const groupedPermissions = sortedData.reduce((acc: Record<string, PermissionDetail[]>, item) => {
-        // Lấy module làm key để gộp permissions
+        // English content normalized from the original source text.
         const moduleKey = item.module || "OTHERS";
-        
+
         if (!acc[moduleKey]) {
           acc[moduleKey] = [];
         }
-        
-        // Tạo action hiển thị đầy đủ: METHOD + Path
+
+        // English content normalized from the original source text.
         const enrichedItem = {
           ...item,
           action: `${item.method} - ${item.path}`
         };
-        
+
         acc[moduleKey].push(enrichedItem);
         return acc;
       }, {});
-      
-      // Lưu dữ liệu đã nhóm vào state
+
+      // English content normalized from the original source text.
       setPermissionsData(groupedPermissions)
-      
-      // Log thông tin để debug
+
+      // English content normalized from the original source text.
       console.log("Permissions grouped by modules:", Object.keys(groupedPermissions));
       console.log("Total permissions count:", sortedData.length);
     } catch (error) {
@@ -145,27 +145,27 @@ export function useRoles() {
   const addRole = async (data: RoleCreateRequest) => {
     try {
       const response = await roleService.create(data)
-      showToast(response.message || "Tạo vai trò thành công", "success")
+      showToast(response.message || "English content normalized from the original source text.", "success")
       refreshData()
       handleCloseUpsertModal()
       return response
     } catch (error) {
       showToast(parseApiError(error), "error")
-      console.error("Lỗi khi tạo vai trò:", error)
+      console.error("English content normalized from the original source text.", error)
       return null
     }
   }
 
   const editRole = async (id: string, data: RoleUpdateRequest) => {
     try {
-      const response = await roleService.update(id, data) // id đã là string nên không cần chuyển đổi
-      showToast(response.message || "Cập nhật vai trò thành công", "success")
+      const response = await roleService.update(id, data) // English content normalized from the original source text.
+      showToast(response.message || "English content normalized from the original source text.", "success")
       refreshData()
       handleCloseUpsertModal()
       return response
     } catch (error) {
       showToast(parseApiError(error), "error")
-      console.error("Lỗi khi cập nhật vai trò:", error)
+      console.error("English content normalized from the original source text.", error)
       return null
     }
   }
@@ -174,13 +174,13 @@ export function useRoles() {
     if (roleToDelete) {
       setDeleteLoading(true)
       try {
-        const response = await roleService.delete(roleToDelete.id) // id đã là string nên không cần String()
-        showToast(response.message || "Xóa vai trò thành công", "success")
+        const response = await roleService.delete(roleToDelete.id) // English content normalized from the original source text.
+        showToast(response.message || "English content normalized from the original source text.", "success")
         refreshData()
         handleCloseDeleteModal()
       } catch (error) {
         showToast(parseApiError(error), "error")
-        console.error("Lỗi khi xóa vai trò:", error)
+        console.error("English content normalized from the original source text.", error)
       } finally {
         setDeleteLoading(false)
       }
@@ -202,30 +202,30 @@ export function useRoles() {
   const fetchRoleDetails = async (roleId: string) => {
     try {
       setIsPermissionsLoading(true)
-      const response = await roleService.getById(roleId) // roleId đã là string
-      
-      // Kiểm tra và log API response để debug
+      const response = await roleService.getById(roleId) // English content normalized from the original source text.
+
+      // English content normalized from the original source text.
       console.log("Role API response structure:", response);
-      
+
       // Update roleToEdit with full details including permissions
       if (response) {
-        // API có thể trả về dữ liệu trong cấu trúc khác nhau
-        // Cần kiểm tra cấu trúc phản hồi từ API
+        // English content normalized from the original source text.
+        // English content normalized from the original source text.
         let roleDetails: any;
-        
+
         if (typeof response === 'object' && response !== null) {
-          // Kiểm tra nếu response có trường data và data chứa thông tin role
+          // English content normalized from the original source text.
           if ('data' in response && response.data && typeof response.data === 'object') {
             roleDetails = response.data;
             console.log("Using response.data as role details");
           } else {
-            // Sử dụng trực tiếp response nếu nó chứa thông tin role
+            // English content normalized from the original source text.
             roleDetails = response;
             console.log("Using direct response as role details");
           }
-          
+
           console.log("API Response for role details:", roleDetails);
-          
+
           // Extract the necessary data and explicitly type as Role
           const roleData: Role = {
             id: roleDetails.id,
@@ -238,19 +238,19 @@ export function useRoles() {
             deletedAt: roleDetails.deletedAt,
             createdAt: roleDetails.createdAt,
             updatedAt: roleDetails.updatedAt,
-            // Làm phong phú permissions với trường action để phù hợp với UI
-            permissions: Array.isArray(roleDetails.permissions) 
+            // English content normalized from the original source text.
+            permissions: Array.isArray(roleDetails.permissions)
               ? roleDetails.permissions.map((p: any) => ({
                   ...p,
-                  id: p.id.toString(), // Đảm bảo id là string
-                  action: `${p.method} - ${p.path}` // Thêm trường action cho UI
+                  id: p.id.toString(), // English content normalized from the original source text.
+                  action: `${p.method} - ${p.path}` // English content normalized from the original source text.
                 }))
               : []
           }
-          
-          // Lưu roleData vào state và log thông tin
+
+          // English content normalized from the original source text.
           setRoleToEdit(roleData)
-          
+
           // Log for debugging
           console.log("Processed role data:", roleData)
           console.log("Permissions count:", roleData.permissions?.length || 0)
@@ -259,26 +259,26 @@ export function useRoles() {
       }
     } catch (error) {
       showToast(parseApiError(error), "error")
-      console.error("Lỗi khi lấy chi tiết vai trò:", error)
+      console.error("English content normalized from the original source text.", error)
     } finally {
       setIsPermissionsLoading(false)
     }
   }
-  
+
   const handleOpenUpsertModal = (mode: 'add' | 'edit', role?: Role) => {
     setModalMode(mode)
-    
+
     if (mode === 'edit' && role) {
       console.log("Opening edit modal for role:", role)
       setRoleToEdit(role)
       // Fetch detailed role info including permissions
       fetchRoleDetails(role.id)
-      // Lưu ý: role.id đã là string, phù hợp với UUID từ API
+      // English content normalized from the original source text.
     } else {
       console.log("Opening add modal")
       setRoleToEdit(null)
     }
-    
+
     setUpsertOpen(true)
   }
 
@@ -291,14 +291,14 @@ export function useRoles() {
     data: roles,
     loading,
     pagination,
-    
+
     // Server-side pagination handlers
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
     refreshData,
-    
+
     // Delete
     deleteOpen,
     roleToDelete,

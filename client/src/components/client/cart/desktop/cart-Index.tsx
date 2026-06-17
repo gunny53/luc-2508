@@ -18,48 +18,48 @@ import { toast } from 'sonner';
 import { setShopOrders, setCommonInfo, setShopProducts } from "@/store/features/checkout/ordersSilde";
 
 export default function DesktopCartPageMobile() {
-  // Sử dụng CartContext thay vì mock data
-  const { 
-    cart, 
-    shopCarts, 
-    isLoading, 
-    updateCartItemAndRefresh, 
+  // English content normalized from the original source text.
+  const {
+    cart,
+    shopCarts,
+    isLoading,
+    updateCartItemAndRefresh,
     removeItems,
     selectAllItems,
     lastUpdated,
-    forceRefresh 
+    forceRefresh
   } = useCart();
 
   const [selectedShops, setSelectedShops] = useState<Record<string, boolean>>({});
   const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>({});
   const [selectAll, setSelectAll] = useState(false);
-  
-  // Track manual selections để tránh bị override bởi API sync
+
+  // English content normalized from the original source text.
   const manualSelectionsRef = useRef<Set<string>>(new Set());
 
-  // Gọi API get cart khi component mount để luôn có data mới nhất
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Force refresh cart khi vào trang
+    // English content normalized from the original source text.
     const refreshCart = async () => {
       try {
         await forceRefresh();
       } catch (error) {
         console.error('Error refreshing cart on mount:', error);
-        // API error sẽ được handle bởi CartContext, không cần toast thêm
+        // English content normalized from the original source text.
       }
     };
-    
-    refreshCart();
-  }, []); // Empty dependency để chỉ chạy 1 lần khi mount
 
-  // Listen for manual item selection events (từ Buy Now flow)
+    refreshCart();
+  }, []); // English content normalized from the original source text.
+
+  // English content normalized from the original source text.
   useEffect(() => {
     const handleForceSelectItem = (event: CustomEvent) => {
       const { itemId, isSelected } = event.detail;
-      
+
       // Mark as manual selection
       manualSelectionsRef.current.add(itemId);
-      
+
       setSelectedItems(prev => ({
         ...prev,
         [itemId]: isSelected
@@ -77,28 +77,28 @@ export default function DesktopCartPageMobile() {
     };
   }, []);
 
-  // Đồng bộ trạng thái selected từ API với state local
+  // English content normalized from the original source text.
   useEffect(() => {
     if (shopCarts && shopCarts.length > 0) {
       const shopSelectedState: Record<string, boolean> = {};
       const itemSelectedState: Record<string, boolean> = {};
-      
+
       let allSelected = true;
-      
+
       shopCarts.forEach((shopCart: ShopCart) => {
         const allItemsSelected = shopCart.cartItems.every((item: CartItem) => item.isSelected);
         shopSelectedState[shopCart.shop.id] = allItemsSelected;
-        
+
         if (!allItemsSelected) allSelected = false;
-        
+
         shopCart.cartItems.forEach((item: CartItem) => {
-          // Chỉ update từ API nếu không phải manual selection
+          // English content normalized from the original source text.
           if (!manualSelectionsRef.current.has(item.id)) {
             itemSelectedState[item.id] = item.isSelected || false;
           }
         });
       });
-      
+
       setSelectedItems(prev => ({
         ...prev,
         ...itemSelectedState
@@ -108,68 +108,68 @@ export default function DesktopCartPageMobile() {
     }
   }, [shopCarts, lastUpdated]);
 
-  // Chọn/bỏ chọn tất cả sản phẩm của một shop
+  // English content normalized from the original source text.
   const handleToggleShop = async (shopId: string, items: CartItem[]) => {
     const isChecked = !selectedShops[shopId];
-    
-    // Cập nhật UI ngay lập tức để có phản hồi tốt
+
+    // English content normalized from the original source text.
     const updatedItems = { ...selectedItems };
     const updatedShops = { ...selectedShops, [shopId]: isChecked };
-    
+
     items.forEach((item) => {
       updatedItems[item.id] = isChecked;
     });
-    
+
     setSelectedShops(updatedShops);
     setSelectedItems(updatedItems);
-    
+
     // API call removed as per request
   };
 
-  // Chọn/bỏ chọn một sản phẩm
+  // English content normalized from the original source text.
   const handleToggleItem = async (
     shopId: string,
     itemId: string,
     shopItems: CartItem[]
   ) => {
     const newIsSelected = !selectedItems[itemId];
-    
+
     // Mark as manual selection
     manualSelectionsRef.current.add(itemId);
-    
-    // Cập nhật UI ngay lập tức để có phản hồi tốt
+
+    // English content normalized from the original source text.
     const updatedItems = { ...selectedItems, [itemId]: newIsSelected };
     setSelectedItems(updatedItems);
-    
+
     const allSelected = shopItems.every((item) => updatedItems[item.id]);
     setSelectedShops((prev) => ({ ...prev, [shopId]: allSelected }));
 
     // API call removed as per request
   };
 
-  // Chọn/bỏ chọn tất cả sản phẩm
+  // English content normalized from the original source text.
   const handleToggleAll = async () => {
     const newValue = !selectAll;
     setSelectAll(newValue);
-    
-    // Cập nhật UI ngay lập tức
+
+    // English content normalized from the original source text.
     const updatedShops: Record<string, boolean> = {};
     const updatedItems: Record<string, boolean> = {};
-    
+
     shopCarts.forEach((shopCart: ShopCart) => {
       updatedShops[shopCart.shop.id] = newValue;
       shopCart.cartItems.forEach((item: CartItem) => {
         updatedItems[item.id] = newValue;
       });
     });
-    
+
     setSelectedShops(updatedShops);
     setSelectedItems(updatedItems);
 
     // API call removed as per request
   };
 
-  // Thay đổi SKU của sản phẩm
+  // English content normalized from the original source text.
   const handleVariationChange = async (itemId: string, newSkuId: string) => {
     const item = shopCarts.flatMap((sc: ShopCart) => sc.cartItems).find((item: CartItem) => item.id === itemId);
     if (item) {
@@ -177,7 +177,7 @@ export default function DesktopCartPageMobile() {
     }
   };
 
-  // Xóa sản phẩm khỏi giỏ hàng
+  // English content normalized from the original source text.
   const handleRemoveItem = async (itemId: string) => {
     try {
       await removeItems([itemId]);
@@ -186,52 +186,52 @@ export default function DesktopCartPageMobile() {
     }
   };
 
-  // Xóa tất cả sản phẩm đã chọn
+  // English content normalized from the original source text.
   const handleDeleteSelected = async () => {
     try {
-      // Lấy tất cả các cart item IDs đã được chọn
+      // English content normalized from the original source text.
       const selectedItemIds = Object.keys(selectedItems).filter(itemId => selectedItems[itemId]);
-      
+
       if (selectedItemIds.length === 0) {
-        toast.error("Vui lòng chọn sản phẩm để xóa");
+        toast.error("English content normalized from the original source text.");
         return;
       }
 
-      // Gọi API để xóa tất cả items đã chọn
+      // English content normalized from the original source text.
       await removeItems(selectedItemIds);
-      
-      // Reset selected state sau khi xóa thành công
+
+      // English content normalized from the original source text.
       setSelectedItems({});
       setSelectedShops({});
       setSelectAll(false);
-      
-      toast.success(`Đã xóa ${selectedItemIds.length} sản phẩm khỏi giỏ hàng`);
+
+      toast.success(`English content normalized from the original source text.${selectedItemIds.length}English content normalized from the original source text.`);
     } catch (error) {
       console.error("Error removing selected items from cart:", error);
-      toast.error("Có lỗi xảy ra khi xóa sản phẩm");
+      toast.error("English content normalized from the original source text.");
     }
   };
 
   const handleQuantityChange = async (itemId: string, quantity: number) => {
     if (quantity > 0) {
-      // Tìm cart item để lấy skuId hiện tại
+      // English content normalized from the original source text.
       const itemToUpdate = shopCarts
         .flatMap((shop: ShopCart) => shop.cartItems)
         .find((item: CartItem) => item.id === itemId);
 
       if (itemToUpdate) {
-        await updateCartItemAndRefresh(itemId, { 
-          quantity, 
-          skuId: itemToUpdate.sku.id // Thêm skuId vào payload
+        await updateCartItemAndRefresh(itemId, {
+          quantity,
+          skuId: itemToUpdate.sku.id // English content normalized from the original source text.
         });
       }
     } else {
-      // Nếu số lượng là 0, coi như xóa sản phẩm
+      // English content normalized from the original source text.
       await handleRemoveItem(itemId);
     }
   };
 
-  // ✅ Tính toán các giá trị footer dựa trên state `selectedItems` và `itemQuantities` để cập nhật UI tức thì
+  // English content normalized from the original source text.
   const { total, totalSaved, selectedCount } = useMemo(() => {
     let currentTotal = 0;
     let currentTotalSaved = 0;
@@ -260,17 +260,17 @@ export default function DesktopCartPageMobile() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Handle URL param để force select item khi redirect từ Buy Now
+  // English content normalized from the original source text.
   useEffect(() => {
     const selectItemId = searchParams.get('selectItem');
     if (selectItemId) {
-      // Mark as manual selection và update state
+      // English content normalized from the original source text.
       manualSelectionsRef.current.add(selectItemId);
       setSelectedItems(prev => ({
         ...prev,
         [selectItemId]: true
       }));
-      
+
       // Clear URL param
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.delete('selectItem');
@@ -279,34 +279,34 @@ export default function DesktopCartPageMobile() {
   }, [searchParams]);
 
   const handleCheckout = () => {
-    // 1. Lọc ra các shop có sản phẩm được chọn
+    // English content normalized from the original source text.
     const selectedShopCarts = shopCarts
       .map((shopCart: ShopCart) => ({
         ...shopCart,
-        // 2. Trong mỗi shop, chỉ giữ lại các cartItems được chọn
+        // English content normalized from the original source text.
         cartItems: shopCart.cartItems.filter((item: CartItem) => selectedItems[item.id]),
       }))
-      // 3. Chỉ giữ lại các shop có ít nhất 1 sản phẩm được chọn sau khi lọc
+      // English content normalized from the original source text.
       .filter((shopCart: ShopCart) => shopCart.cartItems.length > 0);
 
     if (selectedShopCarts.length === 0) {
-      toast.error("Vui lòng chọn sản phẩm để thanh toán");
+      toast.error("English content normalized from the original source text.");
       return;
     }
 
-    // 4. Tạo payload cho Redux action `setShopOrders`
+    // English content normalized from the original source text.
     const shopOrdersPayload = selectedShopCarts.map((shopCart: ShopCart) => ({
       shopId: shopCart.shop.id,
       cartItemIds: shopCart.cartItems.map((item: CartItem) => item.id),
-      discountCodes: [], // Tạm thởi để trống
+      discountCodes: [], // English content normalized from the original source text.
     }));
 
-    // 4b. Tạo payload cho Redux action `setShopProducts`
+    // English content normalized from the original source text.
     const shopProductsPayload = selectedShopCarts.reduce((acc: Record<string, ProductInfo[]>, shopCart: ShopCart) => {
       acc[shopCart.shop.id] = shopCart.cartItems.map((item: CartItem) => ({
         id: item.id,
         name: item.sku.product.name,
-        image: item.sku.image, // Lấy ảnh từ SKU
+        image: item.sku.image, // English content normalized from the original source text.
         variation: item.sku.value,
         quantity: item.quantity,
         subtotal: item.sku.price * item.quantity,
@@ -316,7 +316,7 @@ export default function DesktopCartPageMobile() {
       return acc;
     }, {});
 
-    // 4c. Tạo cartItemIds string để truyền vào URL
+    // English content normalized from the original source text.
     const allCartItemIds = selectedShopCarts
       .flatMap((shopCart: ShopCart) => shopCart.cartItems.map((item: CartItem) => item.id))
       .join(',');
@@ -329,12 +329,12 @@ export default function DesktopCartPageMobile() {
       shopProductsPayload
     });
 
-    // 5. Dispatch các action để cập nhật Redux state
+    // English content normalized from the original source text.
     dispatch(setShopOrders(shopOrdersPayload));
     dispatch(setShopProducts(shopProductsPayload));
-    dispatch(setCommonInfo({ amount: total, receiver: null, paymentGateway: null })); // Cập nhật tổng tiền
+    dispatch(setCommonInfo({ amount: total, receiver: null, paymentGateway: null })); // English content normalized from the original source text.
 
-    // 6. Điều hướng đến trang thanh toán với cartItemIds trong URL
+    // English content normalized from the original source text.
     router.push(`/checkout/${allCartItemIds}`);
   };
 
@@ -343,7 +343,7 @@ export default function DesktopCartPageMobile() {
       {isLoading ? (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <span className="ml-2 text-lg">Đang tải giỏ hàng...</span>
+          <span className="ml-2 text-lg">English content normalized from the original source text.</span>
         </div>
       ) : shopCarts && shopCarts.length > 0 ? (
         <>
@@ -364,7 +364,7 @@ export default function DesktopCartPageMobile() {
               {/* Items */}
                {shopCart.cartItems.map((cartItem: CartItem) => {
                  const isChecked = !!selectedItems[cartItem.id];
-                 
+
                  return (
                    <DesktopCartItem
                      key={cartItem.id}
@@ -386,12 +386,12 @@ export default function DesktopCartPageMobile() {
       ) : (
         <div className="p-10 text-center flex flex-col items-center justify-center">
           <Image src="/images/client/cart/Cart-empty-v2.webp" alt="Empty Cart" width={200} height={200} className="object-contain mb-4" />
-          <div className="text-xl font-medium">Giỏ hàng của bạn đang trống</div>
-          <p className="text-gray-500 mt-2">Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+          <div className="text-xl font-medium">English content normalized from the original source text.</div>
+          <p className="text-gray-500 mt-2">English content normalized from the original source text.</p>
         </div>
       )}
 
-      {/* ✅ Footer bên dưới tất cả cart */}
+      {/* English content normalized from the original source text. */}
       {(shopCarts && shopCarts.length > 0) && (
         <CartFooter
           total={total}
@@ -399,8 +399,8 @@ export default function DesktopCartPageMobile() {
           selectedCount={selectedCount}
           allSelected={selectAll}
           onToggleAll={handleToggleAll}
-          onCheckout={handleCheckout} // Truyền hàm checkout xuống footer
-          onDeleteSelected={handleDeleteSelected} // Truyền hàm xóa sản phẩm đã chọn
+          onCheckout={handleCheckout} // English content normalized from the original source text.
+          onDeleteSelected={handleDeleteSelected} // English content normalized from the original source text.
         />
       )}
     </div>

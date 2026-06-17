@@ -6,24 +6,24 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /auth/google/callback
+English content normalized from the original source text.
 
 start
 :Parse state (userAgent, ip);
-:Đổi code lấy tokens;
-:Lấy userinfo từ Google;
-if (Không có email?) then (Có)
-  :Redirect với errorMessage;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-:Tìm user theo email;
-if (Không có?) then (Có)
-  :Lấy clientRoleId;
-  :Tạo user ngầm với random password;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
 endif
-:Tạo device;
+:English content normalized from the original source text;
 :generateTokens(userId, deviceId, role);
-:Redirect redirectUri với tokens;
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -5,9 +5,7 @@ import { PrismaService } from 'src/shared/services/prisma.service'
 export class SharedOrderRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  /**
-   * Lấy thông tin order với shipping để Shipping module sử dụng
-   */
+  /* English content normalized from the original source text. */
   async getOrderWithShippingForGHN(orderId: string) {
     return this.prismaService.order.findUnique({
       where: {
@@ -30,17 +28,14 @@ export class SharedOrderRepository {
     })
   }
 
-  /**
-   * Lấy order code GHN từ order ID
-   * Sử dụng bởi Order module để trả về cho client
-   */
+  /* English content normalized from the original source text. */
   async getGHNOrderCode(orderId: string): Promise<string | null> {
     const orderShipping = await this.prismaService.orderShipping.findUnique({
       where: { orderId },
       select: { orderCode: true, status: true }
     })
 
-    // Chỉ trả về orderCode nếu shipping đã được tạo thành công
+    // English content normalized from the original source text.
     if (orderShipping?.status === 'CREATED' && orderShipping.orderCode) {
       return orderShipping.orderCode
     }

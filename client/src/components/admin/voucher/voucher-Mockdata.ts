@@ -3,8 +3,8 @@ import { Discount, DiscountGetAllResponse, DiscountType, DiscountStatus, Discoun
 const mockDiscounts: Discount[] = [
   {
     id: 'd1',
-    name: 'Giảm giá mùa hè',
-    description: 'Giảm 20% cho toàn bộ đơn hàng từ 100k.',
+    name: 'English content normalized from the original source text.',
+    description: 'English content normalized from the original source text.',
     code: 'SUMMER20',
     value: 20,
     maxDiscountValue: 50000,
@@ -26,8 +26,8 @@ const mockDiscounts: Discount[] = [
   },
   {
     id: 'd2',
-    name: 'Voucher toàn sàn 100k',
-    description: 'Giảm ngay 100k cho đơn hàng từ 500k.',
+    name: 'English content normalized from the original source text.',
+    description: 'English content normalized from the original source text.',
     code: 'PLATFORM100K',
     value: 100000,
     minOrderValue: 500000,
@@ -48,8 +48,8 @@ const mockDiscounts: Discount[] = [
   },
   {
     id: 'd3',
-    name: 'Freeship đơn 0đ',
-    description: 'Miễn phí vận chuyển tối đa 15k.',
+    name: 'English content normalized from the original source text.',
+    description: 'English content normalized from the original source text.',
     code: 'FREESHIP15K',
     value: 15000,
     maxDiscountValue: 15000,
@@ -71,8 +71,8 @@ const mockDiscounts: Discount[] = [
   },
   {
     id: 'd4',
-    name: 'Voucher riêng tư',
-    description: 'Voucher bí mật chỉ dành cho bạn.',
+    name: 'English content normalized from the original source text.',
+    description: 'English content normalized from the original source text.',
     code: 'PRIVATE4U',
     value: 99000,
     minOrderValue: 300000,

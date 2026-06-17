@@ -13,22 +13,22 @@ import { ReviewsModal } from "@/components/client/products/products-ReviewsModal
 
 const statusConfig = {
   PENDING_PAYMENT: {
-    label: "Chờ thanh toán",
+    label: "English content normalized from the original source text.",
     bg: "bg-amber-100 text-amber-700",
   },
   PENDING_PACKAGING: {
-    label: "Đang đóng gói",
+    label: "English content normalized from the original source text.",
     bg: "bg-orange-100 text-orange-700",
   },
-  PICKUPED: { label: "Chờ lấy hàng", bg: "bg-blue-100 text-blue-700" },
+  PICKUPED: { label: "English content normalized from the original source text.", bg: "bg-blue-100 text-blue-700" },
   PENDING_DELIVERY: {
-    label: "Đang giao hàng",
+    label: "English content normalized from the original source text.",
     bg: "bg-purple-100 text-purple-700",
   },
-  DELIVERED: { label: "Đã giao hàng", bg: "bg-green-100 text-green-700" },
-  RETURNED: { label: "Đã trả hàng", bg: "bg-gray-100 text-gray-700" },
-  CANCELLED: { label: "Đã hủy", bg: "bg-red-100 text-red-700" },
-  VERIFY_PAYMENT: { label: "Đã xác nhận", bg: "bg-green-100 text-green-700" },
+  DELIVERED: { label: "English content normalized from the original source text.", bg: "bg-green-100 text-green-700" },
+  RETURNED: { label: "English content normalized from the original source text.", bg: "bg-gray-100 text-gray-700" },
+  CANCELLED: { label: "English content normalized from the original source text.", bg: "bg-red-100 text-red-700" },
+  VERIFY_PAYMENT: { label: "English content normalized from the original source text.", bg: "bg-green-100 text-green-700" },
 };
 
 interface Props {
@@ -84,7 +84,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
             <div className="h-full flex items-center justify-center">
               <div className="text-center">
                 <div className="animate-spin w-8 h-8 border-2 border-[#D70018] border-t-transparent rounded-full mx-auto mb-4"></div>
-                <p className="text-gray-600">Đang tải đơn hàng...</p>
+                <p className="text-gray-600">English content normalized from the original source text.</p>
               </div>
             </div>
           ) : error ? (
@@ -113,8 +113,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                   >
                     {/* Header */}
                     <div className="flex justify-between items-center mb-3 pb-2 border-b">
-                      <span className="text-sm text-gray-600">
-                        Mã: <strong>{order.id}</strong>
+                      <span className="text-sm text-gray-600">English content normalized from the original source text.<strong>{order.id}</strong>
                       </span>
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-medium ${status.bg}`}
@@ -146,12 +145,12 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                         </h4>
                         {order.items.length > 1 && (
                           <p className="text-xs text-gray-500 mb-2">
-                            và {order.items.length - 1} sản phẩm khác
+                            English content normalized from the original source text. {order.items.length - 1} English content normalized from the original source text.
                           </p>
                         )}
                         <div className="text-xs text-gray-500 space-y-1">
                           <p>
-                            Ngày đặt:{" "}
+                            English content normalized from the original source text.{" "}
                             {new Date(order.createdAt).toLocaleDateString(
                               "vi-VN"
                             )}
@@ -162,7 +161,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                               (sum, item) => sum + item.quantity,
                               0
                             )}{" "}
-                            sản phẩm
+                            English content normalized from the original source text.
                           </p>
                         </div>
                       </div>
@@ -170,7 +169,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                       {/* Price & Actions */}
                       <div className="text-right">
                         <div className="mb-3">
-                          <p className="text-xs text-gray-500">Tổng tiền</p>
+                          <p className="text-xs text-gray-500">English content normalized from the original source text.</p>
                           <p className="font-bold text-[#D70018] text-lg">
                             {order.totalPayment.toLocaleString()}₫
                           </p>
@@ -193,13 +192,10 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                                 orderId: order.id,
                               });
                             }}
-                          >
-                            Đánh giá
-                          </Button>
+                          >English content normalized from the original source text.</Button>
                         )}
 
-                        <div className="flex items-center gap-1 text-xs text-[#D70018] font-medium">
-                          Chi tiết <ArrowRight className="w-3 h-3" />
+                        <div className="flex items-center gap-1 text-xs text-[#D70018] font-medium">English content normalized from the original source text.<ArrowRight className="w-3 h-3" />
                         </div>
                       </div>
                     </div>
@@ -227,8 +223,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                       setVisibleCount((prev) => prev + 10);
                     }}
                     className="text-[#D70018] border-[#D70018]/30 hover:bg-[#D70018] hover:text-white"
-                  >
-                    Xem thêm <ChevronDown className="w-4 h-4 ml-1" />
+                  >English content normalized from the original source text.<ChevronDown className="w-4 h-4 ml-1" />
                   </Button>
                 </div>
               )}

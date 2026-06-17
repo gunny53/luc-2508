@@ -38,7 +38,7 @@ export interface Discount {
   description: string;
   code: string;
   value: number;
-  maxDiscountValue?: number | null; // Có thể null cho trường hợp không giới hạn
+  maxDiscountValue?: number | null; // English content normalized from the original source text.
   minOrderValue: number;
   startDate: string;
   endDate: string;
@@ -46,7 +46,7 @@ export interface Discount {
   usesCount: number;
   maxUsesPerUser: number;
   usersUsed: string[];
-  shopId: string | null; // PLATFORM voucher có thể có shopId = null
+  shopId: string | null; // English content normalized from the original source text.
   isPlatform: boolean;
   voucherType: VoucherType;
   discountType: DiscountType;

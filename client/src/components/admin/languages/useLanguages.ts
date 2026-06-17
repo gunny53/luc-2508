@@ -3,8 +3,8 @@ import { Language } from "./languages-Columns"
 import { languagesService } from "@/services/admin/languagesService"
 import { showToast } from "@/components/ui/toastify"
 import { parseApiError } from "@/utils/error"
-import { 
-  LangCreateRequest, 
+import {
+  LangCreateRequest,
   LangUpdateRequest,
   LangGetAllResponse
 } from "@/types/admin/languages.interface"
@@ -12,7 +12,7 @@ import { useServerDataTable } from "@/hooks/useServerDataTable"
 import { t } from "i18next"
 
 export function useLanguages() {
-  // Tạo các callbacks memoized để tránh tạo lại mỗi lần render
+  // English content normalized from the original source text.
   const getResponseData = useCallback((response: any) => {
     return response.data || [];
   }, []);
@@ -37,7 +37,7 @@ export function useLanguages() {
     updatedAt: lang.updatedAt
   }), []);
 
-  // Sử dụng hook useServerDataTable để quản lý data và pagination
+  // English content normalized from the original source text.
   const {
     data: languages,
     loading,
@@ -61,10 +61,10 @@ export function useLanguages() {
 
   // Get language by ID
   const getLanguageById = useCallback(async (id: string) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       const response = await languagesService.getById(id, controller.signal);
       return response;
@@ -80,14 +80,14 @@ export function useLanguages() {
 
   // Create new language
   const createLanguage = useCallback(async (data: LangCreateRequest) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       const response = await languagesService.create(data, controller.signal);
       showToast(t('admin.showToast.language.createSuccessful'), "success");
-      refreshData(); // Refresh data sau khi tạo thành công
+      refreshData(); // English content normalized from the original source text.
       return response;
     } catch (error) {
       if (!controller.signal.aborted) {
@@ -101,14 +101,14 @@ export function useLanguages() {
 
   // Update language
   const updateLanguage = useCallback(async (id: string, data: LangUpdateRequest) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       const response = await languagesService.update(id, data, controller.signal);
       showToast(t('admin.showToast.language.updateSuccessful'), "success");
-      refreshData(); // Refresh data sau khi cập nhật thành công
+      refreshData(); // English content normalized from the original source text.
       return response;
     } catch (error) {
       if (!controller.signal.aborted) {
@@ -122,14 +122,14 @@ export function useLanguages() {
 
   // Delete language
   const deleteLanguage = useCallback(async (id: string) => {
-    // Tạo controller mới để có thể hủy request
+    // English content normalized from the original source text.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout 8 giây
-    
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // English content normalized from the original source text.
+
     try {
       const response = await languagesService.deleteById(id, controller.signal);
       showToast(t('admin.showToast.language.deleteSuccessful'), "success");
-      refreshData(); // Refresh data sau khi xóa thành công
+      refreshData(); // English content normalized from the original source text.
       return response;
     } catch (error) {
       if (!controller.signal.aborted) {
@@ -157,7 +157,7 @@ export function useLanguages() {
 
   return {
     languages,
-    pagination, // Thay thế các thuộc tính pagination riêng lẻ
+    pagination, // English content normalized from the original source text.
     isModalOpen,
     selectedLanguage,
     loading,

@@ -66,10 +66,10 @@ export const userColumns = (
         return (
           <Avatar className="h-12 w-12">
             {user.avatar ? (
-              <AvatarImage 
+              <AvatarImage
                 src={user.avatar}
-                alt={user.name || "User avatar"} 
-                className="object-cover" 
+                alt={user.name || "User avatar"}
+                className="object-cover"
               />
             ) : (
               <AvatarFallback className="bg-primary/10 text-primary">
@@ -114,7 +114,7 @@ export const userColumns = (
               ? 'border-green-600 text-green-600 bg-green-50'
               : 'border-gray-500 text-gray-500 bg-gray-50'}
           >
-            {isActive ? 'Hoạt động' : 'Không hoạt động'}
+            {isActive ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
           </Badge>
         );
       },

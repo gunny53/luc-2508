@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { showToast } from '@/components/ui/toastify';
 import { parseApiError } from '@/utils/error';
 import { userService } from '@/services/admin/userService';
-import { roleService } from '@/services/roleService'; 
+import { roleService } from '@/services/roleService';
 import { User, UserCreateRequest, UserRole } from '@/types/admin/user.interface';
 import { useServerDataTable } from '@/hooks/useServerDataTable';
 import { useTranslations } from 'next-intl'
@@ -13,7 +13,7 @@ export const useUsers = () => {
   const [upsertOpen, setUpsertOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'add' | 'edit'>('add');
   const [userToEdit, setUserToEdit] = useState<User | null>(null);
-  
+
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState<User | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -21,7 +21,7 @@ export const useUsers = () => {
   // Roles state
   const [roles, setRoles] = useState<UserRole[]>([]);
 
-  // Tạo các callbacks cho useServerDataTable
+  // English content normalized from the original source text.
   const getResponseData = useCallback((response: any) => {
     return response.data || [];
   }, []);
@@ -42,7 +42,7 @@ export const useUsers = () => {
     return user;
   }, []);
 
-  // Sử dụng hook useServerDataTable để quản lý data và pagination
+  // English content normalized from the original source text.
   const {
     data: users,
     loading,
@@ -59,12 +59,12 @@ export const useUsers = () => {
     mapResponseToData,
     initialSort: { sortBy: "createdAt", sortOrder: "asc" },
     defaultLimit: 10,
-    // Cấu hình để không gửi các tham số search và sort
-    // Điều này giúp tránh lỗi khi API không hỗ trợ các tham số này
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
     requestConfig: {
-      includeSearch: false, // Không gửi tham số search trong request API
-      includeSort: false,   // Không gửi các tham số sắp xếp (sortBy, sortOrder)
-      includeCreatedById: true // Vẫn gửi tham số createdById nếu có
+      includeSearch: false, // English content normalized from the original source text.
+      includeSort: false,   // English content normalized from the original source text.
+      includeCreatedById: true // English content normalized from the original source text.
     },
   });
 
@@ -72,7 +72,7 @@ export const useUsers = () => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        // Truyền tham số thông qua options với tham số all-records
+        // English content normalized from the original source text.
         const response = await roleService.getAll({ limit: 100, page: 1 } as any);
         // Map response data to UserRole structure
         const userRoles: UserRole[] = response.data.map((role: any) => ({
@@ -105,7 +105,7 @@ export const useUsers = () => {
     try {
       // Extract id for URL parameter and prepare update data without backend-managed fields
       const { id, createdById, updatedById, deletedById, deletedAt, createdAt, updatedAt, role, ...updateData } = user;
-      
+
       await userService.update(id, updateData);
       showToast(t('system.toasts.updateSuccess'), 'success');
       refreshData();
@@ -158,14 +158,14 @@ export const useUsers = () => {
     data: users,
     loading,
     pagination,
-    
+
     // Server-side pagination handlers
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
     refreshData,
-    
+
     // Delete
     deleteOpen,
     userToDelete,

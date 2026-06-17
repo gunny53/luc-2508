@@ -32,8 +32,8 @@ export function SigninForm({ className, ...props }: React.ComponentPropsWithoutR
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(Schema),
-    defaultValues: { 
-      email: '', 
+    defaultValues: {
+      email: '',
       password: '',
       rememberMe: false
     }
@@ -54,7 +54,7 @@ export function SigninForm({ className, ...props }: React.ComponentPropsWithoutR
         {...props}
       >
         <AnimatedForm>
-          {/* Tiêu đề */}
+          {/* English content normalized from the original source text. */}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t("auth.login.title")}</h1>
@@ -161,7 +161,7 @@ export function SigninForm({ className, ...props }: React.ComponentPropsWithoutR
             {/* OAuth Form */}
             <OAuthForm type="signin" />
 
-            {/* Link đến đăng ký */}
+            {/* English content normalized from the original source text. */}
             <AnimatedFormItem>
               <div className="text-center text-sm">
                 {t("auth.login.no account")}{" "}

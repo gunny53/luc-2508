@@ -234,7 +234,7 @@ function BannerSectionComponent() {
 												className="relative rounded-md bg-gradient-to-r from-red-500 via-red-600 to-red-500 hover:from-red-600 hover:via-red-500 hover:to-red-600 text-white hover:shadow-xl hover:shadow-red-500/30 hover:scale-105 transition-all duration-500 overflow-hidden group/btn"
 											>
 												<Link href={banner.link} className="inline-flex items-center gap-1.5">
-													<span className="relative z-10 font-medium">Khám phá</span>
+													<span className="relative z-10 font-medium">English content normalized from the original source text.</span>
 													<motion.span
 														className="relative z-10"
 														animate={{ x: [0, 5, 0], opacity: [1, 0.8, 1], transition: { repeat: Infinity, duration: 1.5, ease: "easeInOut" } }}

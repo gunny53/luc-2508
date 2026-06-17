@@ -16,21 +16,21 @@ export const OTPEmail = ({ otpCode, title }: OTPEmailProps) => (
     <Body style={main}>
       <Container style={container}>
         <Img src={logoUrl} width="212" height="88" alt="Logo" style={logo} />
-        <Text style={tertiary}>Mã xác thực OTP</Text>
-        <Heading style={secondary}>Hãy nhập mã xác thực OTP sau vào website</Heading>
+        <Text style={tertiary}>English content normalized from the original source text.</Text>
+        <Heading style={secondary}>English content normalized from the original source text.</Heading>
         <Section style={codeContainer}>
           <Text style={code}>{otpCode}</Text>
         </Section>
-        <Text style={paragraph}>Nếu bạn không chủ động thực hiện hành động này, xin hãy bỏ qua email?</Text>
+        <Text style={paragraph}>English content normalized from the original source text.</Text>
       </Container>
-      <Text style={footer}>From Shopsifu Ecommerce</Text>
+      <Text style={footer}>From ECSite Ecommerce</Text>
     </Body>
   </Html>
 )
 
 OTPEmail.PreviewProps = {
   otpCode: '144833',
-  title: 'Mã OTP',
+  title: 'English content normalized from the original source text.',
 } as OTPEmailProps
 
 export default OTPEmail

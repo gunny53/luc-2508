@@ -28,7 +28,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
     }
   };
 
-  // Helper để tạo inline style cho width (cần thiết cho progress bar)
+  // English content normalized from the original source text.
   const getProgressWidth = (value: number, total: number) => {
     const percentage = total > 0 ? (value / total) * 100 : 0;
     return { width: `${percentage}%` };
@@ -39,7 +39,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Phân bố vai trò</CardTitle>
+            <CardTitle>English content normalized from the original source text.</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="animate-pulse space-y-3">
@@ -49,10 +49,10 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
-            <CardTitle>Trạng thái người dùng</CardTitle>
+            <CardTitle>English content normalized from the original source text.</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="animate-pulse space-y-3">
@@ -70,14 +70,14 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
       {/* User Roles Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>Phân bố vai trò</CardTitle>
+          <CardTitle>English content normalized from the original source text.</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
             {usersByRole.map((item) => {
               const total = usersByRole.reduce((sum, role) => sum + role.value, 0);
               const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
-              
+
               return (
                 <div key={item.name} className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
@@ -92,18 +92,18 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
               );
             })}
           </div>
-          
+
           {/* Simple progress bars */}
           <div className="mt-4 space-y-2">
             {usersByRole.map((item) => {
               const total = usersByRole.reduce((sum, role) => sum + role.value, 0);
               const percentage = total > 0 ? (item.value / total) * 100 : 0;
-              
+
               return (
                 <div key={`bar-${item.name}`} className="flex items-center space-x-2">
                   <span className="text-xs w-12 text-gray-600">{item.name}</span>
                   <div className="flex-1 bg-gray-200 rounded-full h-2 relative overflow-hidden">
-                    <div 
+                    <div
                       className={`h-2 rounded-full transition-all duration-500 ${getRoleColorClass(item.name)}`}
                       style={getProgressWidth(item.value, total)}
                     />
@@ -119,14 +119,14 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
       {/* User Status Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>Trạng thái người dùng</CardTitle>
+          <CardTitle>English content normalized from the original source text.</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {usersByStatus.map((item) => {
               const total = usersByStatus.reduce((sum, status) => sum + status.value, 0);
               const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
-              
+
               return (
                 <div key={item.name} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div className="flex items-center space-x-3">
@@ -141,10 +141,10 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
               );
             })}
           </div>
-          
+
           {/* Summary */}
           <div className="mt-4 p-3 bg-blue-50 rounded-lg text-center">
-            <div className="text-sm text-gray-600">Tổng người dùng</div>
+            <div className="text-sm text-gray-600">English content normalized from the original source text.</div>
             <div className="text-2xl font-bold text-blue-600">
               {usersByStatus.reduce((sum, status) => sum + status.value, 0).toLocaleString()}
             </div>

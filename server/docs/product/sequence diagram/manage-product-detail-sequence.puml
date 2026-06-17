@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /manage-product/products/:productId
+English content normalized from the original source text.
 
 actor "ShopOwner/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MPC: Forward với user
+AG --> MPC: English content normalized from the original source text.
 activate MPC
 
 MPC -> MPS: getDetail({ productId, user })
@@ -40,7 +40,7 @@ end
 
 MPS -> MPS: validatePrivilege(userIdRequest=user.userId,\n roleNameRequest=user.roleName,\n createdById=product.data.createdById)
 
-alt Không hợp lệ
+English content normalized from the original source text.
   MPS -> MPS: throw ForbiddenException
   MPS --> MPC: 403 Forbidden
   MPC --> U: 403 Forbidden

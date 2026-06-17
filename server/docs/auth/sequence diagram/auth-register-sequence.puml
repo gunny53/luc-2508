@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /auth/register
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -26,15 +26,15 @@ AS -> AR: findUniqueVerificationCode({ email_type })
 AR -> DB: verificationCode.findUnique()
 DB --> AR: verificationCode | null
 AR --> AS: code | null
-alt Mã OTP không tồn tại
+English content normalized from the original source text.
   AS --> AC: InvalidOTPException (422)
   AC --> C: 422 Unprocessable Entity
   deactivate AS
   deactivate AC
   stop
 end
-AS -> HP: kiểm tra expiresAt
-alt Mã OTP đã hết hạn
+AS -> HP: English content normalized from the original source text.
+English content normalized from the original source text.
   AS --> AC: OTPExpiredException (422)
   AC --> C: 422 Unprocessable Entity
   deactivate AS
@@ -47,19 +47,19 @@ SRR --> AS: clientRoleId
 AS -> HS: hash(password)
 HS --> AS: hashedPassword
 
-par Tạo user
+English content normalized from the original source text.
   AS -> AR: createUser({ email, name, phoneNumber, password: hashedPassword, roleId: clientRoleId })
   AR -> DB: user.create()
   DB --> AR: user
   AR --> AS: user (omit password, totpSecret)
-and Xóa OTP
+English content normalized from the original source text.
   AS -> AR: deleteVerificationCode({ email_type: { email, type: REGISTER } })
   AR -> DB: verificationCode.delete()
   DB --> AR: deleted
   AR --> AS: ok
 end
 
-AS --> AC: 201 Created + user (ẩn password)
+AS --> AC: English content normalized from the original source text.
 deactivate AS
 
 AC --> C: 201 Created + JSON

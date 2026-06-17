@@ -2,7 +2,7 @@ import { Activity } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { JSX } from 'react';
 
-// Khai báo kiểu dữ liệu cho props
+// English content normalized from the original source text.
 interface RecentActivitiesProps {
   activities: { text: string; icon: JSX.Element; date: string }[];
 }
@@ -23,7 +23,7 @@ export function RecentActivitiesList({ activities }: RecentActivitiesProps) {
           </div>
         ))
       ) : (
-        <p className="text-sm text-muted-foreground">Chưa có hoạt động nào gần đây.</p>
+        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
       )}
     </div>
   );

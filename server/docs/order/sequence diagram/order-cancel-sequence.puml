@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng PUT /orders/:orderId (Cancel)
+English content normalized from the original source text.
 
-actor "Người dùng" as U
+English content normalized from the original source text.
 participant "AccessTokenGuard" as AG
 participant "OrderController" as OC
 participant "OrderService" as OS
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> OC: Forward với user
+AG --> OC: English content normalized from the original source text.
 activate OC
 
 OC -> OS: cancel(user, orderId)

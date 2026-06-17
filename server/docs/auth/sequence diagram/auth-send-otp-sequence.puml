@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /auth/otp
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -63,7 +63,7 @@ alt error
   stop
 end
 
-AS --> AC: { message: 'Gửi mã OTP thành công' }
+AS --> AC: English content normalized from the original source text.
 deactivate AS
 
 AC --> C: 200 OK + JSON

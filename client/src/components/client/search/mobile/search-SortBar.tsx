@@ -4,15 +4,15 @@ import { ChevronUp, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 export default function SearchSortBar() {
-  const [sort, setSort] = useState<'Liên Quan' | 'Mới Nhất' | 'Bán Chạy' | 'Giá'>('Liên Quan');
+  const [sort, setSort] = useState<'English content normalized from the original source text.' | 'English content normalized from the original source text.' | 'English content normalized from the original source text.' | 'English content normalized from the original source text.'>('English content normalized from the original source text.');
   const [priceAsc, setPriceAsc] = useState(true);
 
   const handleSort = (option: typeof sort) => {
-    if (option === 'Giá') {
-      if (sort === 'Giá') {
+    if (option === 'English content normalized from the original source text.') {
+      if (sort === 'English content normalized from the original source text.') {
         setPriceAsc(!priceAsc);
       } else {
-        setSort('Giá');
+        setSort('English content normalized from the original source text.');
         setPriceAsc(true);
       }
     } else {
@@ -20,7 +20,7 @@ export default function SearchSortBar() {
     }
   };
 
-  const sortOptions: Array<typeof sort> = ['Liên Quan', 'Mới Nhất', 'Bán Chạy'];
+  const sortOptions: Array<typeof sort> = ['English content normalized from the original source text.', 'English content normalized from the original source text.', 'English content normalized from the original source text.'];
 
   return (
     <div className="sticky top-[56px] z-[998] bg-white border-b">
@@ -45,15 +45,15 @@ export default function SearchSortBar() {
 
         <div className="flex items-center">
           <button
-            onClick={() => handleSort('Giá')}
+            onClick={() => handleSort('English content normalized from the original source text.')}
             className={`flex items-center gap-1 px-2 sm:px-3 py-1 font-medium ${
-              sort === 'Giá'
+              sort === 'English content normalized from the original source text.'
                 ? 'text-[#ee4d2d] border-b-2 border-[#ee4d2d]'
                 : 'text-gray-700'
             }`}
           >
-            Giá
-            {sort === 'Giá' &&
+            English content normalized from the original source text.
+            {sort === 'English content normalized from the original source text.' &&
               (priceAsc ? <ChevronUp size={14} /> : <ChevronDown size={14} />)}
           </button>
         </div>

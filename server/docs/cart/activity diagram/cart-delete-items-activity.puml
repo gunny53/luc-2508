@@ -6,15 +6,15 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /cart/delete
+English content normalized from the original source text.
 
 start
-:Xác thực AccessToken và tải user context;
-:Nhận body { cartItemIds };
-:Xóa nhiều cart items theo userId;
-:Trả về số lượng đã xóa { count };
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, data: { count } };
+:English content normalized from the original source text;
 stop
 
 @enduml

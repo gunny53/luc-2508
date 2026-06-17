@@ -12,20 +12,20 @@ interface ProductsFooterProps {
   onChat?: () => void;
 }
 
-export default function ProductsFooter({ 
-  product, 
-  onAddToCart, 
-  onBuyNow, 
-  onChat 
+export default function ProductsFooter({
+  product,
+  onAddToCart,
+  onBuyNow,
+  onChat
 }: ProductsFooterProps) {
   const [isAddCartOpen, setIsAddCartOpen] = useState(false);
   const [isBuyNowMode, setIsBuyNowMode] = useState(false);
-  
+
   const handleAddToCart = (skuId: string, quantity: number) => {
     if (onAddToCart) {
       onAddToCart(skuId, quantity);
     }
-    // Đóng drawer sau khi thêm vào giỏ hàng
+    // English content normalized from the original source text.
     setIsAddCartOpen(false);
   };
 
@@ -53,7 +53,7 @@ export default function ProductsFooter({
         {/* Divider */}
         <div className="w-px h-6 bg-gray-300 mx-2" />
 
-        {/* Thêm vào giỏ hàng */}
+        {/* English content normalized from the original source text. */}
         <button
           onClick={handleAddToCartClick}
           className="flex-1 h-10 w-24 rounded-none border-none text-red-600 hover:bg-red-50 text-base flex items-center justify-center gap-2 transition-all"

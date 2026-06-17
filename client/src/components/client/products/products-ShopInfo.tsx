@@ -25,30 +25,30 @@ interface ShopInfoProps {
 }
 
 export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
-  // Kiểm tra xem hiện tại có đang ở chế độ mobile hay không
+  // English content normalized from the original source text.
   const isMobile = useIsMobile();
-  
-  // Tạo dữ liệu tĩnh cho UI demo
+
+  // English content normalized from the original source text.
   const defaultShop = {
     id: "cool-crew-12345",
     name: "Cool Crew",
-    avatar: "/images/logo/coolcrew-logo.png", // Đường dẫn hình ảnh mặc định
+    avatar: "/images/logo/coolcrew-logo.png", // English content normalized from the original source text.
     isOnline: true,
-    lastActive: "1 giờ trước",
+    lastActive: "English content normalized from the original source text.",
     rating: 3.7,
     responseRate: 100,
-    responseTime: "trong vài giờ",
+    responseTime: "English content normalized from the original source text.",
     followers: 5500,
-    joinedDate: "9 tháng trước",
+    joinedDate: "English content normalized from the original source text.",
     productsCount: 86
   };
-  
-  // Kết hợp dữ liệu mặc định với dữ liệu từ props
+
+  // English content normalized from the original source text.
   const demoShop = { ...defaultShop, ...shop };
 
   return (
     <div className={cn(
-      "bg-white rounded-sm overflow-hidden", 
+      "bg-white rounded-sm overflow-hidden",
       isMobile ? "mt-2" : "border",
       className
     )}>
@@ -61,7 +61,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           "relative rounded-full overflow-hidden",
           isMobile ? "w-10 h-10 mr-3" : "w-16 h-16 mr-4"
         )}>
-          <Image 
+          <Image
             src={demoShop.avatar || "/images/placeholder.png"}
             alt={demoShop.name}
             width={isMobile ? 40 : 64}
@@ -92,9 +92,9 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
 
         {/* Action buttons */}
         {isMobile ? (
-          <Button 
-            variant="outline" 
-            size="sm" 
+          <Button
+            variant="outline"
+            size="sm"
             className="border-red-500 text-red-500 hover:bg-red-50 hover:text-red-600 h-8 px-2 text-xs"
             asChild
           >
@@ -105,9 +105,9 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           </Button>
         ) : (
           <div className="flex gap-2">
-            <Button 
-              variant="outline" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className="border-red-500 text-red-500 hover:bg-red-50 hover:text-red-600"
               asChild
             >
@@ -116,9 +116,9 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
                 Chat Ngay
               </Link>
             </Button>
-            
-            <Button 
-              variant="outline" 
+
+            <Button
+              variant="outline"
               size="sm"
               className="border-gray-300 text-gray-700 hover:bg-gray-50"
               asChild
@@ -148,9 +148,9 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn(
             "text-muted-foreground",
             isMobile ? "text-[10px]" : "text-sm"
-          )}>Đánh Giá</div>
+          )}>English content normalized from the original source text.</div>
         </div>
-        
+
         <div className={cn(
           "border-r",
           isMobile ? "px-2" : "px-4"
@@ -162,9 +162,9 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn(
             "text-muted-foreground",
             isMobile ? "text-[10px]" : "text-sm"
-          )}>{isMobile ? "Sản Phẩm" : "Sản Phẩm"}</div>
+          )}>{isMobile ? "English content normalized from the original source text." : "English content normalized from the original source text."}</div>
         </div>
-        
+
         <div className={cn(
           "border-r",
           isMobile ? "px-2" : "px-4"
@@ -172,13 +172,13 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn(
             "font-medium",
             isMobile ? "text-[10px] leading-tight" : "text-lg"
-          )}>trong vài giờ</div>
+          )}>English content normalized from the original source text.</div>
           <div className={cn(
             "text-muted-foreground",
             isMobile ? "text-[10px]" : "text-sm"
-          )}>{isMobile ? "T.Gian P.Hồi" : "Thời Gian Phản Hồi"}</div>
+          )}>{isMobile ? "English content normalized from the original source text." : "English content normalized from the original source text."}</div>
         </div>
-        
+
         <div className={cn(
           isMobile ? "px-2" : "px-4"
         )}>
@@ -189,7 +189,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn(
             "text-muted-foreground",
             isMobile ? "text-[10px]" : "text-sm"
-          )}>{isMobile ? "Tỉ Lệ P.Hồi" : "Tỉ Lệ Phản Hồi"}</div>
+          )}>{isMobile ? "English content normalized from the original source text." : "English content normalized from the original source text."}</div>
         </div>
       </div>
 
@@ -210,7 +210,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
             isMobile ? "text-[10px]" : ""
           )}>{demoShop.joinedDate}</span>
         </div>
-        
+
         <div className={cn(
           "flex items-center",
           isMobile ? "gap-1" : "gap-2 justify-end"
@@ -218,7 +218,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <span className={cn(
             "text-muted-foreground",
             isMobile ? "text-[10px]" : ""
-          )}>Người Theo Dõi:</span>
+          )}>English content normalized from the original source text.</span>
           <span className={cn(
             "font-medium text-red-500",
             isMobile ? "text-[10px]" : ""

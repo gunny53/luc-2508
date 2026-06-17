@@ -1,9 +1,6 @@
 import { BaseResponse } from "../base.interface";
 
-/**
- * Kiểu dữ liệu người dùng đã được làm phẳng, thân thiện với client.
- * Đây là mô hình chuẩn để sử dụng trong toàn bộ ứng dụng (Redux, components, hooks).
- */
+/* English content normalized from the original source text. */
 export interface Address {
   id: string;
   name: string;
@@ -37,7 +34,7 @@ export interface AddAddressRequest {
   phoneNumber?: string;
   recipient?: string;
   isDefault: boolean;
-  // Thêm các trường mới
+  // English content normalized from the original source text.
   provinceId: number;
   districtId: number;
   wardCode: string;
@@ -59,7 +56,7 @@ export interface UpdateAddressRequest {
   phoneNumber?: string;
   recipient?: string;
   isDefault?: boolean;
-  // Thêm các trường mới
+  // English content normalized from the original source text.
   provinceId?: number;
   districtId?: number;
   wardCode?: string;
@@ -94,7 +91,7 @@ export interface UserProfile {
   role: {
     id: number;
     name: string;
-    permissions: any[]; // hoặc định nghĩa kỹ hơn nếu cần
+    permissions: any[]; // English content normalized from the original source text.
   };
   status: string;
   twoFactorEnabled: boolean;
@@ -114,10 +111,7 @@ export interface UserProfile {
   };
 }
 
-/**
- * Kiểu dữ liệu gốc trả về từ API get-profile.
- * Chỉ sử dụng trong service và hook `useGetProfile` để chuyển đổi.
- */
+/* English content normalized from the original source text. */
 export interface UserProfileResponse extends BaseResponse {
   data: {
     id: string;
@@ -126,7 +120,7 @@ export interface UserProfileResponse extends BaseResponse {
     role: {
       id: number;
       name: string;
-      permissions: any[]; // hoặc định nghĩa kỹ hơn nếu cần
+      permissions: any[]; // English content normalized from the original source text.
     };
     avatar: string | null;
     status: string;
@@ -182,7 +176,7 @@ export interface UpdateProfileResponse extends BaseResponse {
   };
 }
 
-// ĐỔI MẬT KHẨU TÀI KHOẢN ĐÃ ĐĂNG NHẬP - CHANGE PASSWORD
+// English content normalized from the original source text.
 export interface ChangePasswordRequest {
   currentPassword: string;
   newPassword: string;
@@ -194,7 +188,7 @@ export interface ChangePasswordResponse extends BaseResponse {
   verificationType?: string;
 }
 
-//Đổi mật khẩu profile
+// English content normalized from the original source text.
 export interface ChangePasswordProfileRequest {
   password: string;
   newPassword: string;

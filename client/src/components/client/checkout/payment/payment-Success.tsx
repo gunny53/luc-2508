@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { useShopsifuSocket } from '@/providers/ShopsifuSocketProvider';
+import { useECSiteSocket } from '@/providers/ECSiteSocketProvider';
 import { formatCurrency } from '@/utils/formatter';
 import { CheckCircle2, Home, Loader2, ShoppingBag, XCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -24,8 +24,8 @@ interface PaymentStatusProps {
 export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMethod }: PaymentStatusProps) {
   const [status, setStatus] = useState(initialStatus);
   const dispatch = useDispatch();
-  
-  // Log để debug initialStatus và paymentMethod
+
+  // English content normalized from the original source text.
   useEffect(() => {
     console.log('[Payment Status Component]', {
       initialStatus,
@@ -34,8 +34,8 @@ export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMeth
       totalAmount
     });
   }, [initialStatus, paymentMethod, orderId, totalAmount]);
-  
-  // Cập nhật state từ initialStatus khi thay đổi
+
+  // English content normalized from the original source text.
   useEffect(() => {
     console.log('[Payment Status] initialStatus updated:', initialStatus);
     setStatus(initialStatus);
@@ -49,29 +49,29 @@ export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMeth
     }
   }, [status, dispatch]);
 
-  // Theo dõi trạng thái thanh toán nếu là pending
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Không gọi API trong các trường hợp sau:
-    // 1. Status đã xác định (success/failed)
-    // 2. OrderId không hợp lệ (N/A hoặc không định dạng đúng)
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
+    // English content normalized from the original source text.
     if (
-      status !== 'pending' || 
-      !orderId || 
+      status !== 'pending' ||
+      !orderId ||
       orderId === 'N/A' ||
-      !orderId.match(/^[a-zA-Z0-9]+$/) // Kiểm tra OrderId có hợp lệ không
+      !orderId.match(/^[a-zA-Z0-9]+$/) // English content normalized from the original source text.
     ) return;
-    
+
     const checkPaymentStatus = async () => {
       try {
         const orderData = await orderService.getById(orderId);
-        
-        // Nếu đơn hàng đã được thanh toán
-        if (orderData.data.status === OrderStatus.PICKUPED || 
-            orderData.data.status === OrderStatus.PENDING_DELIVERY || 
+
+        // English content normalized from the original source text.
+        if (orderData.data.status === OrderStatus.PICKUPED ||
+            orderData.data.status === OrderStatus.PENDING_DELIVERY ||
             orderData.data.status === OrderStatus.DELIVERED) {
           setStatus('success');
-        } 
-        // Nếu đơn hàng đã bị hủy
+        }
+        // English content normalized from the original source text.
         else if (orderData.data.status === OrderStatus.CANCELLED) {
           setStatus('failed');
         }
@@ -80,42 +80,42 @@ export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMeth
       }
     };
 
-    // Nếu là VNPay, đợi socket check trước 8 giây, sau đó mới fallback về API
+    // English content normalized from the original source text.
     if (paymentMethod === 'vnpay') {
       console.log('[VNPay] Waiting for socket confirmation for 8 seconds before API fallback');
-      
+
       const fallbackTimer = setTimeout(() => {
         console.log('[VNPay] Socket timeout, falling back to API check');
         checkPaymentStatus();
-        
-        // Sau đó check định kỳ bằng API
+
+        // English content normalized from the original source text.
         const intervalId = setInterval(checkPaymentStatus, 3000);
-        
-        // Cleanup function sẽ clear interval này
+
+        // English content normalized from the original source text.
         return () => clearInterval(intervalId);
-      }, 8000); // Đợi 8 giây
-      
+      }, 8000); // English content normalized from the original source text.
+
       return () => clearTimeout(fallbackTimer);
     } else {
-      // Với các phương thức khác, check ngay bằng API
+      // English content normalized from the original source text.
       checkPaymentStatus();
-      
-      // Sau đó check định kỳ
+
+      // English content normalized from the original source text.
       const intervalId = setInterval(checkPaymentStatus, 3000);
-      
+
       return () => clearInterval(intervalId);
     }
   }, [orderId, status, paymentMethod]);
 
-  // Log trước khi render để debug
+  // English content normalized from the original source text.
   console.log(`[PaymentStatus] Rendering view for status: ${status} (initialStatus: ${initialStatus}, paymentMethod: ${paymentMethod})`);
-  
+
   if (status === 'pending') {
-    return <PendingView 
-             orderId={orderId} 
+    return <PendingView
+             orderId={orderId}
              totalAmount={totalAmount}
-             paymentMethod={paymentMethod} 
-             onPaymentSuccess={() => setStatus('success')} 
+             paymentMethod={paymentMethod}
+             onPaymentSuccess={() => setStatus('success')}
            />;
   }
 
@@ -134,20 +134,18 @@ const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: n
         <div className="mx-auto bg-green-100 rounded-full p-4 w-fit">
           <CheckCircle2 className="h-16 w-16 text-green-600" />
         </div>
-        <CardTitle className="text-2xl font-bold text-green-800 mt-4">Thanh toán thành công!</CardTitle>
-        <CardDescription className="text-gray-600">
-          Cảm ơn bạn đã mua sắm. Đơn hàng của bạn đang được xử lý.
-        </CardDescription>
+        <CardTitle className="text-2xl font-bold text-green-800 mt-4">English content normalized from the original source text.</CardTitle>
+        <CardDescription className="text-gray-600">English content normalized from the original source text.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4 pt-6">
         <div className="text-left bg-gray-50 p-4 rounded-lg border">
-          <h3 className="font-semibold text-lg mb-3">Chi tiết đơn hàng</h3>
+          <h3 className="font-semibold text-lg mb-3">English content normalized from the original source text.</h3>
           <div className="flex justify-between items-center">
-            <span className="text-gray-500">Mã đơn hàng:</span>
+            <span className="text-gray-500">English content normalized from the original source text.</span>
             <span className="font-mono font-semibold text-gray-800">{orderId}</span>
           </div>
           <div className="flex justify-between items-center mt-2">
-            <span className="text-gray-500">Tổng thanh toán:</span>
+            <span className="text-gray-500">English content normalized from the original source text.</span>
             <span className="font-bold text-lg text-green-700">{formatCurrency(totalAmount)}</span>
           </div>
         </div>
@@ -155,15 +153,11 @@ const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: n
       <CardFooter className="flex flex-col sm:flex-row gap-4 pt-4">
         <Button asChild className="w-full" variant="outline">
           <Link href="/">
-            <Home className="mr-2 h-4 w-4" />
-            Quay về trang chủ
-          </Link>
+            <Home className="mr-2 h-4 w-4" />English content normalized from the original source text.</Link>
         </Button>
         <Button asChild className="w-full">
           <Link href="/user/orders">
-            <ShoppingBag className="mr-2 h-4 w-4" />
-            Xem lịch sử mua hàng
-          </Link>
+            <ShoppingBag className="mr-2 h-4 w-4" />English content normalized from the original source text.</Link>
         </Button>
       </CardFooter>
     </Card>
@@ -171,53 +165,53 @@ const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: n
 );
 
 // View for pending payment
-const PendingView = ({ 
-  orderId, 
-  totalAmount, 
+const PendingView = ({
+  orderId,
+  totalAmount,
   paymentMethod = 'vnpay',
-  onPaymentSuccess 
-}: { 
-  orderId: string; 
-  totalAmount: number; 
+  onPaymentSuccess
+}: {
+  orderId: string;
+  totalAmount: number;
   paymentMethod?: string;
-  onPaymentSuccess: () => void 
+  onPaymentSuccess: () => void
 }) => {
-  const { connect, disconnect } = useShopsifuSocket();
+  const { connect, disconnect } = useECSiteSocket();
   const [paymentId, setPaymentId] = useState<string>('');
 
-  // Xác định paymentId từ orderId hoặc từ URL params
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Với VNPay, trích xuất paymentId từ OrderInfo trong URL nếu có
+    // English content normalized from the original source text.
     if (paymentMethod === 'vnpay') {
       const searchParams = new URLSearchParams(window.location.search);
       const orderInfo = searchParams.get('vnp_OrderInfo');
-      
+
       if (orderInfo && orderInfo.startsWith('DH')) {
-        // Lấy paymentId từ OrderInfo (định dạng "DH12345")
+        // English content normalized from the original source text.
         setPaymentId(orderInfo.replace('DH', ''));
         console.log(`[VNPay] Extracted paymentId: ${orderInfo.replace('DH', '')}`);
       } else {
-        // Nếu không có trong URL, có thể sử dụng orderId làm paymentId
+        // English content normalized from the original source text.
         setPaymentId(orderId);
       }
     } else {
-      // Với các phương thức khác, dùng orderId làm paymentId
+      // English content normalized from the original source text.
       setPaymentId(orderId);
     }
   }, [orderId, paymentMethod]);
 
   useEffect(() => {
-    // Kết nối socket cho tất cả các phương thức thanh toán khi có paymentId hợp lệ
+    // English content normalized from the original source text.
     if (
-      !paymentId || 
-      paymentId === 'N/A' || 
-      !paymentId.match(/^[a-zA-Z0-9]+$/) // Kiểm tra paymentId có hợp lệ không
+      !paymentId ||
+      paymentId === 'N/A' ||
+      !paymentId.match(/^[a-zA-Z0-9]+$/) // English content normalized from the original source text.
     ) {
       console.log('[Socket] Invalid paymentId, not connecting');
       return;
     }
-    
-    // Kết nối socket với paymentId
+
+    // English content normalized from the original source text.
     console.log(`[Socket] Connecting with paymentId: ${paymentId} for ${paymentMethod} payment`);
     connect(paymentId);
     return () => disconnect();
@@ -225,13 +219,13 @@ const PendingView = ({
   }, [paymentId, paymentMethod]);
 
   useEffect(() => {
-    // Theo dõi sự kiện storage cho tất cả các phương thức thanh toán
+    // English content normalized from the original source text.
     if (!paymentId || paymentId === 'N/A') {
       console.log('[Storage Events] No valid paymentId for storage listening');
       return;
     }
-    
-    // Kiểm tra localStorage hiện tại (để xử lý trường hợp đã được cập nhật nhưng chưa kích hoạt sự kiện)
+
+    // English content normalized from the original source text.
     try {
       const existingData = localStorage.getItem('payment_event');
       if (existingData) {
@@ -246,8 +240,8 @@ const PendingView = ({
     } catch (err) {
       console.error('Error checking local storage:', err);
     }
-    
-    // Lắng nghe sự kiện thay đổi từ các tab khác
+
+    // English content normalized from the original source text.
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key === 'payment_event' && event.newValue) {
         try {
@@ -262,12 +256,12 @@ const PendingView = ({
         }
       }
     };
-    
+
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [paymentId, onPaymentSuccess, paymentMethod]);
 
-  // Chọn màu dựa vào phương thức thanh toán
+  // English content normalized from the original source text.
   const getPaymentColors = () => {
     switch (paymentMethod) {
       case 'vnpay':
@@ -296,10 +290,10 @@ const PendingView = ({
         };
     }
   };
-  
+
   const colors = getPaymentColors();
-  
-  // Logo dựa vào phương thức thanh toán
+
+  // English content normalized from the original source text.
   const getPaymentLogo = () => {
     switch (paymentMethod) {
       case 'vnpay':
@@ -310,7 +304,7 @@ const PendingView = ({
         return null;
     }
   };
-  
+
   const paymentLogo = getPaymentLogo();
   const router = useRouter();
 
@@ -330,41 +324,34 @@ const PendingView = ({
           <div className="mx-auto p-4 w-fit">
             <Loader2 className={`h-16 w-16 text-${colors.text} animate-spin`} />
           </div>
-          <CardTitle className={`text-2xl font-bold text-${colors.textDark} mt-4`}>
-            Đang chờ xác nhận thanh toán
-          </CardTitle>
-          <CardDescription className="text-gray-600">
-            Hệ thống đang chờ xác nhận thanh toán cho đơn hàng của bạn. 
-            Vui lòng không đóng trang này.
-          </CardDescription>
+          <CardTitle className={`text-2xl font-bold text-${colors.textDark} mt-4`}>English content normalized from the original source text.</CardTitle>
+          <CardDescription className="text-gray-600">English content normalized from the original source text.</CardDescription>
         </CardHeader>
-        
+
         <CardContent className="space-y-4 pt-6">
           <div className="text-left bg-gray-50 p-4 rounded-lg border">
-            <h3 className="font-semibold text-lg mb-3">Thông tin đơn hàng</h3>
+            <h3 className="font-semibold text-lg mb-3">English content normalized from the original source text.</h3>
             <div className="flex justify-between items-center">
-              <span className="text-gray-500">Mã đơn hàng:</span>
+              <span className="text-gray-500">English content normalized from the original source text.</span>
               <span className="font-mono font-semibold text-gray-800">{orderId}</span>
             </div>
             <div className="flex justify-between items-center mt-2">
-              <span className="text-gray-500">Tổng thanh toán:</span>
+              <span className="text-gray-500">English content normalized from the original source text.</span>
               <span className="font-bold text-lg text-blue-700">{formatCurrency(totalAmount)}</span>
             </div>
           </div>
-          
+
           <div className="text-center text-sm text-gray-500 mt-4">
-            <p>Trang sẽ tự động cập nhật khi thanh toán thành công</p>
-            <p className="mt-1">Nếu bạn đã hoàn tất thanh toán, vui lòng đợi trong giây lát</p>
+            <p>English content normalized from the original source text.</p>
+            <p className="mt-1">English content normalized from the original source text.</p>
           </div>
-          
+
           <Button
             onClick={() => router.push('/')}
             variant="outline"
             className="w-full mt-4"
           >
-            <Home className="mr-2 h-4 w-4" />
-            Về trang chủ
-          </Button>
+            <Home className="mr-2 h-4 w-4" />English content normalized from the original source text.</Button>
         </CardContent>
       </Card>
     </div>
@@ -379,22 +366,17 @@ const FailureView = ({ orderId }: { orderId: string }) => (
           <div className="mx-auto bg-red-100 rounded-full p-4 w-fit">
             <XCircle className="h-16 w-16 text-red-600" />
           </div>
-          <CardTitle className="text-2xl font-bold text-red-800 mt-4">Thanh toán thất bại</CardTitle>
-          <CardDescription className="text-gray-600">
-            Đã có lỗi xảy ra trong quá trình thanh toán cho đơn hàng <span className="font-mono">{orderId}</span>.
+          <CardTitle className="text-2xl font-bold text-red-800 mt-4">English content normalized from the original source text.</CardTitle>
+          <CardDescription className="text-gray-600">English content normalized from the original source text.<span className="font-mono">{orderId}</span>.
           </CardDescription>
         </CardHeader>
         <CardFooter className="flex flex-col sm:flex-row gap-4 pt-6">
           <Button asChild className="w-full" variant="outline">
-            <Link href="/checkout">
-              Thử lại thanh toán
-            </Link>
+            <Link href="/checkout">English content normalized from the original source text.</Link>
           </Button>
           <Button asChild className="w-full">
             <Link href="/">
-              <Home className="mr-2 h-4 w-4" />
-              Quay về trang chủ
-            </Link>
+              <Home className="mr-2 h-4 w-4" />English content normalized from the original source text.</Link>
           </Button>
         </CardFooter>
       </Card>

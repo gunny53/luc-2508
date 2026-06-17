@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { useTranslations } from "next-intl";
 
-// Interface mới theo PerGetByIdResponse
+// English content normalized from the original source text.
 export type Permission = {
   id: string;
   name: string;

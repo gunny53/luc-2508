@@ -6,20 +6,20 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /manage-product/products
+English content normalized from the original source text.
 
 start
-:Xác thực AccessToken và tải user context;
-:Nhận body { productData, categories[], skus[] };
-:Validate DTO (Zod) bao gồm superRefine đối chiếu SKUs với variants;
-if (Hợp lệ?) then (Có)
-  :product.create với audit fields (createdById), connect categories, createMany SKUs;
-  :Include relations để trả về đầy đủ dữ liệu;
-  :enqueue addSyncProductJob(productId, 'create') vào BullMQ;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
   :Build message i18n;
-  :Trả về 201 { message, data };
-else (Không)
-  :Ném ValidationException (422/400);
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

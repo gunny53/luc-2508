@@ -23,7 +23,7 @@ export default function OrderHistory() {
     cancelled: 0,
   });
 
-  // 👇 Đặt useEffect ở đây
+  // English content normalized from the original source text.
   useEffect(() => {
     const fetchCounts = async () => {
       const [
@@ -72,10 +72,10 @@ export default function OrderHistory() {
       {/* Tabs list */}
       <OrderTabs counts={counts} />
 
-      {/* Bộ lọc ngày */}
+      {/* English content normalized from the original source text. */}
       <OrderDateFilter />
 
-      {/* Nội dung tab */}
+      {/* English content normalized from the original source text. */}
       <OrderTabContent currentTab={currentTab} onTabChange={setCurrentTab} />
     </Tabs>
   );

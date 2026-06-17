@@ -12,12 +12,12 @@ export const useBrand = () => {
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
-  
+
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [brandToDelete, setBrandToDelete] = useState<Brand | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
-  // Tạo các callbacks cho useServerDataTable
+  // English content normalized from the original source text.
   const getResponseData = useCallback((response: any) => {
     return response.data || [];
   }, []);
@@ -38,7 +38,7 @@ export const useBrand = () => {
     return brand;
   }, []);
 
-  // Sử dụng hook useServerDataTable để quản lý data và pagination
+  // English content normalized from the original source text.
   const {
     data,
     loading,
@@ -61,12 +61,12 @@ export const useBrand = () => {
   const createBrand = async (brand: BrandCreateRequest) => {
     try {
       const response = await brandsService.createBrand(brand);
-      showToast(`Thêm thương hiệu thành công: ${brand.name}`, 'success');
+      showToast(`English content normalized from the original source text.${brand.name}`, 'success');
       refreshData();
       handleCloseModal();
       return true;
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'Không thể thêm thương hiệu. Vui lòng thử lại sau.';
+      const errorMessage = error.response?.data?.message || 'English content normalized from the original source text.';
       showToast(errorMessage, 'error');
       return false;
     }
@@ -75,12 +75,12 @@ export const useBrand = () => {
   const updateBrand = async (id: number | string, brand: BrandUpdateRequest) => {
     try {
       const response = await brandsService.updateBrand(id, brand);
-      showToast(`Cập nhật thương hiệu thành công: ${brand.name}`, 'success');
+      showToast(`English content normalized from the original source text.${brand.name}`, 'success');
       refreshData();
       handleCloseModal();
       return true;
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'Không thể cập nhật thương hiệu. Vui lòng thử lại sau.';
+      const errorMessage = error.response?.data?.message || 'English content normalized from the original source text.';
       showToast(errorMessage, 'error');
       return false;
     }
@@ -91,12 +91,12 @@ export const useBrand = () => {
       setDeleteLoading(true);
       try {
         const response = await brandsService.deleteBrand(brandToDelete.id);
-        showToast(`Xóa thương hiệu thành công: ${brandToDelete.name}`, 'success');
+        showToast(`English content normalized from the original source text.${brandToDelete.name}`, 'success');
         refreshData();
         setDeleteOpen(false);
         setBrandToDelete(null);
       } catch (error: any) {
-        const errorMessage = error.response?.data?.message || 'Không thể xóa thương hiệu. Vui lòng thử lại sau.';
+        const errorMessage = error.response?.data?.message || 'English content normalized from the original source text.';
         showToast(errorMessage, 'error');
       } finally {
         setDeleteLoading(false);
@@ -128,14 +128,14 @@ export const useBrand = () => {
     data,
     loading,
     pagination,
-    
+
     // Server-side pagination handlers
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
     refreshData,
-    
+
     // Delete
     deleteOpen,
     brandToDelete,

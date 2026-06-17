@@ -6,28 +6,28 @@ interface OrderInfoProps {
 }
 
 const statusMapping: Record<string, string> = {
-  ready_to_pick: "Mới tạo đơn hàng",
-  picking: "Nhân viên đang lấy hàng",
-  cancel: "Hủy đơn hàng",
-  money_collect_picking: "Đang thu tiền người gửi",
-  picked: "Nhân viên đã lấy hàng",
-  storing: "Hàng đang nằm ở kho",
-  transporting: "Đang luân chuyển hàng",
-  sorting: "Đang phân loại hàng hóa",
-  delivering: "Nhân viên đang giao cho người nhận",
-  money_collect_delivering: "Nhân viên đang thu tiền người nhận",
-  delivered: "Nhân viên đã giao hàng thành công",
-  delivery_fail: "Nhân viên giao hàng thất bại",
-  waiting_to_return: "Đang đợi trả hàng về cho người gửi",
-  return: "Trả hàng",
-  return_transporting: "Đang luân chuyển hàng trả",
-  return_sorting: "Đang phân loại hàng trả",
-  returning: "Nhân viên đang đi trả hàng",
-  return_fail: "Nhân viên trả hàng thất bại",
-  returned: "Nhân viên trả hàng thành công",
-  exception: "Đơn hàng ngoại lệ không nằm trong quy trình",
-  damage: "Hàng bị hư hỏng",
-  lost: "Hàng bị mất",
+  ready_to_pick: "English content normalized from the original source text.",
+  picking: "English content normalized from the original source text.",
+  cancel: "English content normalized from the original source text.",
+  money_collect_picking: "English content normalized from the original source text.",
+  picked: "English content normalized from the original source text.",
+  storing: "English content normalized from the original source text.",
+  transporting: "English content normalized from the original source text.",
+  sorting: "English content normalized from the original source text.",
+  delivering: "English content normalized from the original source text.",
+  money_collect_delivering: "English content normalized from the original source text.",
+  delivered: "English content normalized from the original source text.",
+  delivery_fail: "English content normalized from the original source text.",
+  waiting_to_return: "English content normalized from the original source text.",
+  return: "English content normalized from the original source text.",
+  return_transporting: "English content normalized from the original source text.",
+  return_sorting: "English content normalized from the original source text.",
+  returning: "English content normalized from the original source text.",
+  return_fail: "English content normalized from the original source text.",
+  returned: "English content normalized from the original source text.",
+  exception: "English content normalized from the original source text.",
+  damage: "English content normalized from the original source text.",
+  lost: "English content normalized from the original source text.",
 };
 
 const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
@@ -41,17 +41,13 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
 
   if (loading) {
     return (
-      <p className="text-center text-gray-500">
-        Đang tải thông tin đơn hàng...
-      </p>
+      <p className="text-center text-gray-500">English content normalized from the original source text.</p>
     );
   }
 
   if (!orderInfo) {
     return (
-      <p className="text-center text-gray-500">
-        Không tìm thấy thông tin vận đơn.
-      </p>
+      <p className="text-center text-gray-500">English content normalized from the original source text.</p>
     );
   }
 
@@ -59,29 +55,23 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
   ? orderInfo.log[orderInfo.log.length - 1]?.status
   : undefined;
 
-  // danh sách log đảo ngược (mới nhất ở trên)
+  // English content normalized from the original source text.
   const logs = orderInfo.log ? [...orderInfo.log].reverse() : [];
   const visibleLogs = logs.slice(0, visibleCount);
 
   return (
     <div className="bg-white p-4 max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Thông tin đơn hàng
-        </h2>
+        <h2 className="text-lg font-semibold text-gray-800">English content normalized from the original source text.</h2>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Chi tiết */}
+        {/* English content normalized from the original source text. */}
         <div className="flex-1 bg-white p-4 space-y-4">
-          <h3 className="text-lg lg:text-xl font-semibold text-gray-700 border-b pb-2">
-            Chi tiết
-          </h3>
+          <h3 className="text-lg lg:text-xl font-semibold text-gray-700 border-b pb-2">English content normalized from the original source text.</h3>
 
           <p className="flex items-center justify-between gap-2">
-            <span className="text-gray-600 font-medium flex-shrink-0">
-              Trạng thái:
-            </span>
+            <span className="text-gray-600 font-medium flex-shrink-0">English content normalized from the original source text.</span>
             <span
               className={`font-bold flex-1 text-right ${
                 currentStatus === "delivered"
@@ -94,38 +84,30 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
           </p>
 
           <p className="flex items-center justify-between gap-2">
-            <span className="text-gray-600 font-medium flex-shrink-0">
-              Người nhận:
-            </span>
+            <span className="text-gray-600 font-medium flex-shrink-0">English content normalized from the original source text.</span>
             <span className="flex-1 text-right text-gray-800 break-words">
               {orderInfo.to_name}
             </span>
           </p>
 
           <p className="flex items-center justify-between gap-2">
-            <span className="text-gray-600 font-medium flex-shrink-0">
-              Địa chỉ:
-            </span>
+            <span className="text-gray-600 font-medium flex-shrink-0">English content normalized from the original source text.</span>
             <span className="flex-1 text-right text-gray-800 break-words">
               {orderInfo.to_address}
             </span>
           </p>
 
           <p className="flex items-center justify-between gap-2">
-            <span className="text-gray-600 font-medium flex-shrink-0">
-              SĐT:
-            </span>
+            <span className="text-gray-600 font-medium flex-shrink-0">English content normalized from the original source text.</span>
             <span className="flex-1 text-right text-gray-800">
               {orderInfo.to_phone}
             </span>
           </p>
         </div>
 
-        {/* Lịch sử */}
+        {/* English content normalized from the original source text. */}
         <div className="flex-1 bg-white p-4">
-          <h3 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">
-            Lịch sử vận chuyển
-          </h3>
+          <h3 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">English content normalized from the original source text.</h3>
           <div className="relative border-l-2 border-dashed border-gray-200 ml-4">
             {visibleLogs.length > 0 ? (
               visibleLogs.map((item, index) => {
@@ -169,27 +151,23 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
                 );
               })
             ) : (
-              <p className="ml-4 text-gray-500">Chưa có lịch sử vận chuyển.</p>
+              <p className="ml-4 text-gray-500">English content normalized from the original source text.</p>
             )}
           </div>
 
-          {/* Nút xem thêm / thu gọn */}
+          {/* English content normalized from the original source text. */}
           {logs.length > 5 && (
             <div className="mt-2 text-center">
               {visibleCount < logs.length ? (
                 <button
                   onClick={() => setVisibleCount((prev) => prev + 5)}
                   className="text-blue-500 hover:underline"
-                >
-                  Xem thêm
-                </button>
+                >English content normalized from the original source text.</button>
               ) : (
                 <button
                   onClick={() => setVisibleCount(5)}
                   className="text-blue-500 hover:underline"
-                >
-                  Thu gọn
-                </button>
+                >English content normalized from the original source text.</button>
               )}
             </div>
           )}

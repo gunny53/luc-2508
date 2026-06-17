@@ -25,7 +25,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
 
-// Sử dụng trực tiếp categoryService để lấy dữ liệu danh mục từ API
+// English content normalized from the original source text.
 import { categoryService } from '@/services/admin/categoryService';
 import { Category } from '@/types/admin/category.interface';
 
@@ -37,8 +37,8 @@ interface ProductsFilterProps<TData> {
   currentCategoryFilter?: string | null;
 }
 
-export function ProductsFilter<TData>({ 
-  table, 
+export function ProductsFilter<TData>({
+  table,
   onPriceFilterChange,
   currentPriceFilter,
   onCategoryFilterChange,
@@ -46,12 +46,12 @@ export function ProductsFilter<TData>({
 }: ProductsFilterProps<TData>) {
   const t = useTranslations("admin.ModuleProduct.Filter");
 
-  // Không cần kiểm tra column tồn tại để dùng filter
+  // English content normalized from the original source text.
   // const categoryColumn = table.getColumn("category");
   // const priceColumn = table.getColumn("price");
   // const sizeColumn = table.getColumn("size");
-  
-  // State để lưu danh sách danh mục
+
+  // English content normalized from the original source text.
   const [categories, setCategories] = React.useState<Array<{
     value: string;
     label: string;
@@ -59,14 +59,14 @@ export function ProductsFilter<TData>({
     parentCategoryId?: string | null;
   }>>([]);
   const [loadingCategories, setLoadingCategories] = React.useState(true);
-  
-  // Gọi API lấy danh sách danh mục khi component mount
+
+  // English content normalized from the original source text.
   React.useEffect(() => {
     const fetchCategories = async () => {
       try {
         setLoadingCategories(true);
         const response = await categoryService.getAll({ page: 1, limit: 100 });
-        
+
         if (response.data) {
           const mappedCategories = response.data.map((category) => ({
             value: category.id,
@@ -82,31 +82,31 @@ export function ProductsFilter<TData>({
         setLoadingCategories(false);
       }
     };
-    
+
     fetchCategories();
   }, []);
 
-  // Lấy giá mặc định hoặc giá từ currentPriceFilter nếu có
+  // English content normalized from the original source text.
   const defaultMinPrice = 1000;
   const defaultMaxPrice = 10000000;
   const [priceRange, setPriceRange] = React.useState<[number, number]>([
     (currentPriceFilter && currentPriceFilter.minPrice !== null) ? currentPriceFilter.minPrice : defaultMinPrice,
     (currentPriceFilter && currentPriceFilter.maxPrice !== null) ? currentPriceFilter.maxPrice : defaultMaxPrice
   ]);
-  
-  // Cập nhật priceRange khi currentPriceFilter thay đổi từ bên ngoài
+
+  // English content normalized from the original source text.
   React.useEffect(() => {
     if (currentPriceFilter) {
       const newMin = currentPriceFilter.minPrice !== null ? currentPriceFilter.minPrice : defaultMinPrice;
       const newMax = currentPriceFilter.maxPrice !== null ? currentPriceFilter.maxPrice : defaultMaxPrice;
-      
-      // Chỉ cập nhật khi giá trị thực sự thay đổi để tránh re-render không cần thiết
+
+      // English content normalized from the original source text.
       if (priceRange[0] !== newMin || priceRange[1] !== newMax) {
         setPriceRange([newMin, newMax]);
       }
     }
   }, [currentPriceFilter]);
-  
+
   // Apply server-side filtering via API parameters
   const applyPriceFilter = () => {
     if (onPriceFilterChange) {
@@ -122,21 +122,21 @@ export function ProductsFilter<TData>({
       onPriceFilterChange(null, null);
     }
   };
-  
-  // Xử lý khi chọn danh mục (chỉ chọn 1 danh mục)
+
+  // English content normalized from the original source text.
   const handleCategoryChange = (categoryId: string) => {
     if (onCategoryFilterChange) {
-      // Nếu categoryId trùng với categoryId hiện tại, xóa filter (toggle)
+      // English content normalized from the original source text.
       if (categoryId === currentCategoryFilter) {
         onCategoryFilterChange(null);
       } else {
-        // Nếu chọn danh mục khác, thay thế danh mục đang chọn
+        // English content normalized from the original source text.
         onCategoryFilterChange(categoryId);
       }
     }
   };
-  
-  // Xử lý xóa filter danh mục
+
+  // English content normalized from the original source text.
   const clearCategoryFilter = () => {
     if (onCategoryFilterChange) {
       onCategoryFilterChange(null);
@@ -146,22 +146,22 @@ export function ProductsFilter<TData>({
 
   return (
     <div className="flex items-center space-x-2">
-      {/* --- Bộ lọc Danh mục --- */}
+      {/* English content normalized from the original source text. */}
       {(
         <Popover>
           <PopoverTrigger asChild>
-            <Button 
-              variant="outline" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className={cn(
                 "h-8",
-                currentCategoryFilter 
-                  ? "border-primary/50 bg-primary/10" 
+                currentCategoryFilter
+                  ? "border-primary/50 bg-primary/10"
                   : "border-dashed"
               )}
             >
               <PlusCircle className="mr-2 h-4 w-4" />
-              {t("category") || "Danh mục"}
+              {t("category") || "English content normalized from the original source text."}
               {currentCategoryFilter && (
                 <>
                   <Separator orientation="vertical" className="mx-2 h-4" />
@@ -174,13 +174,13 @@ export function ProductsFilter<TData>({
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0" align="start">
             <Command>
-              <CommandInput placeholder={t("searchCategory") || "Tìm kiếm danh mục..."} />
+              <CommandInput placeholder={t("searchCategory") || "English content normalized from the original source text."} />
               <CommandList>
-                <CommandEmpty>{t("noResults") || "Không tìm thấy kết quả."}</CommandEmpty>
+                <CommandEmpty>{t("noResults") || "English content normalized from the original source text."}</CommandEmpty>
                 <CommandGroup>
                   {loadingCategories ? (
                     <CommandItem disabled>
-                      <span className="opacity-70">{t("loading") || "Đang tải..."}</span>
+                      <span className="opacity-70">{t("loading") || "English content normalized from the original source text."}</span>
                     </CommandItem>
                   ) : (
                     categories.map((category) => {
@@ -215,7 +215,7 @@ export function ProductsFilter<TData>({
                         onSelect={clearCategoryFilter}
                         className="justify-center text-center"
                       >
-                        {t("clearFilters") || "Xóa bộ lọc"}
+                        {t("clearFilters") || "English content normalized from the original source text."}
                       </CommandItem>
                     </CommandGroup>
                   </>
@@ -226,33 +226,33 @@ export function ProductsFilter<TData>({
         </Popover>
       )}
 
-      {/* --- Bộ lọc Giá --- */}
+      {/* English content normalized from the original source text. */}
       {(
         <Popover>
           <PopoverTrigger asChild>
-            <Button 
-              variant="outline" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className={cn(
                 "h-8",
-                priceRange[0] !== defaultMinPrice || priceRange[1] !== defaultMaxPrice 
-                  ? "border-primary/50 bg-primary/10" 
+                priceRange[0] !== defaultMinPrice || priceRange[1] !== defaultMaxPrice
+                  ? "border-primary/50 bg-primary/10"
                   : "border-dashed"
               )}
             >
               <PlusCircle className="mr-2 h-4 w-4" />
-              {t("price") || "Giá"}
+              {t("price") || "English content normalized from the original source text."}
               {(priceRange[0] !== defaultMinPrice || priceRange[1] !== defaultMaxPrice) && (
                 <>
                   <Separator orientation="vertical" className="mx-2 h-4" />
                   <Badge variant="secondary" className="rounded-sm px-1 font-normal">
-                    {new Intl.NumberFormat('vi-VN', { 
-                      style: 'currency', 
+                    {new Intl.NumberFormat('vi-VN', {
+                      style: 'currency',
                       currency: 'VND',
-                      notation: 'compact' 
-                    }).format(priceRange[0])} - {new Intl.NumberFormat('vi-VN', { 
-                      style: 'currency', 
-                      currency: 'VND', 
+                      notation: 'compact'
+                    }).format(priceRange[0])} - {new Intl.NumberFormat('vi-VN', {
+                      style: 'currency',
+                      currency: 'VND',
                       notation: 'compact'
                     }).format(priceRange[1])}
                   </Badge>
@@ -262,7 +262,7 @@ export function ProductsFilter<TData>({
           </PopoverTrigger>
           <PopoverContent className="w-64 p-4" align="start">
             <div className="space-y-4">
-              <h4 className="font-medium leading-none">{t("priceRange") || "Khoảng giá"}</h4>
+              <h4 className="font-medium leading-none">{t("priceRange") || "English content normalized from the original source text."}</h4>
               <Slider
                 defaultValue={[1000, 10000000]}
                 value={priceRange}
@@ -282,24 +282,24 @@ export function ProductsFilter<TData>({
               <div className="flex flex-col gap-2 pt-2">
                 {(currentPriceFilter?.minPrice !== null || currentPriceFilter?.maxPrice !== null) && (
                   <p className="text-sm text-muted-foreground italic">
-                    {t("activeFilter") || "Bộ lọc đang áp dụng"}: {currentPriceFilter?.minPrice?.toLocaleString('vi-VN')} - {currentPriceFilter?.maxPrice?.toLocaleString('vi-VN')} VND
+                    {t("activeFilter") || "English content normalized from the original source text."}: {currentPriceFilter?.minPrice?.toLocaleString('vi-VN')} - {currentPriceFilter?.maxPrice?.toLocaleString('vi-VN')} VND
                   </p>
                 )}
                 <div className="flex justify-end space-x-2">
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
+                  <Button
+                    variant="ghost"
+                    size="sm"
                     onClick={clearPriceFilter}
-                    title={t("clearFilter") || "Xóa bộ lọc"}
+                    title={t("clearFilter") || "English content normalized from the original source text."}
                   >
-                    {t("clear") || "Xóa"}
+                    {t("clear") || "English content normalized from the original source text."}
                   </Button>
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     onClick={applyPriceFilter}
-                    title={t("applyFilter") || "Áp dụng bộ lọc"}
+                    title={t("applyFilter") || "English content normalized from the original source text."}
                   >
-                    {t("apply") || "Áp dụng"}
+                    {t("apply") || "English content normalized from the original source text."}
                   </Button>
                 </div>
               </div>

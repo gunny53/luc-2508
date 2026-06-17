@@ -6,21 +6,21 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: PUT /reviews/:reviewId
+English content normalized from the original source text.
 
 start
-:Nhận reviewId + body + user;
+:English content normalized from the original source text;
 :validateOrder(orderId,userId) & validateUpdateReview(reviewId,userId);
-if (Hợp lệ?) then (Có)
+if (condition?) then (Yes)
   :BEGIN TRANSACTION;
   :review.update (increment updateCount);
   :reviewMedia.deleteMany(reviewId);
   :reviewMedia.createManyAndReturn(medias);
   :COMMIT;
   :Build message i18n;
-  :Trả về 200 { message, data };
-else (Không)
-  :Ném BadRequest/NotFound theo case;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

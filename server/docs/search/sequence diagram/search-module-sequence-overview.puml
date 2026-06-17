@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Tìm Kiếm - Tổng Quan Luồng Xử Lý
-note top : Hệ thống tìm kiếm sản phẩm với Elasticsearch và xử lý ngôn ngữ tự nhiên
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
-actor "Người Dùng" as Client
+English content normalized from the original source text.
 participant "SearchController" as SC
 participant "SearchService" as SS
 participant "SearchRepo" as SR
@@ -17,293 +17,293 @@ participant "SearchSyncService" as SSS
 participant "SearchSyncConsumer" as SSC
 participant "I18nService" as IS
 database "Elasticsearch" as ESDB
-queue "Hàng Đợi Đồng Bộ Tìm Kiếm" as SSQ
+English content normalized from the original source text.
 
-== GET /search/products - Tìm Kiếm Sản Phẩm ==
+== English Section ==
 Client -> SC: GET /search/products?q=query&page=1&limit=20&filters=...
 note right
-Tham Số Tìm Kiếm:
-• q: Chuỗi tìm kiếm (tùy chọn)
-• page: Số trang (mặc định: 1)
-• limit: Kết quả mỗi trang (mặc định: 20)
-• orderBy: Thứ tự sắp xếp (asc/desc, mặc định: desc)
-• sortBy: Trường sắp xếp (price, sale, createdAt, mặc định: createdAt)
-• filters: Thương hiệu, danh mục, khoảng giá, thuộc tính
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
 SC -> SS: searchProducts(query)
 note right
-Cấu Hình Controller:
-• @SkipThrottle() - Bỏ qua giới hạn tốc độ
-• @IsPublic() - Không cần xác thực
-• @ZodSerializerDto(SearchProductsResDTO) - Chuẩn hóa phản hồi
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
-SS -> SS: Xác thực tham số truy vấn
+SS -> SS: English content normalized from the original source text.
 note right
-Xác Thực Truy Vấn:
-• Kiểm tra q không rỗng sau khi cắt khoảng trắng
-• Xác thực độ dài tối thiểu (>= 1)
-• Xử lý truy vấn tìm kiếm rỗng
-• Xác thực tham số bộ lọc với Zod schema
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
-alt Xác thực truy vấn thành công
-    alt Có chuỗi truy vấn
+English content normalized from the original source text.
+    English content normalized from the original source text.
         SS -> SS: parseQuery(rawQuery)
         note right
-        Xử Lý Ngôn Ngữ Tự Nhiên:
-        • Tách chuỗi thành các từ khóa
-        • So khớp từ khóa với từ điển
-        • Trích xuất bộ lọc thuộc tính
-        • Xây dựng truy vấn có cấu trúc
+        English content normalized from the original source text.
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
         end note
 
         SS -> SS: getDictionary()
         note right
-        Quản Lý Từ Điển:
-        • Cache từ điển trong 30 phút
-        • Tải từ Elasticsearch aggregations
-        • Ánh xạ tên và giá trị thuộc tính
-        • Hỗ trợ từ đồng nghĩa
+        English content normalized from the original source text.
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
         end note
 
-        alt Cache từ điển còn hiệu lực
-            SS -> SS: Sử dụng cache từ điển
-        else Cache từ điển hết hạn
-            SS -> ES: Tải từ điển từ ES
-            ES -> ESDB: Tìm kiếm với aggregations
+        English content normalized from the original source text.
+            SS -> SS: English content normalized from the original source text.
+        else (No)
+            SS -> ES: English content normalized from the original source text.
+            ES -> ESDB: English content normalized from the original source text.
             note right
-            Tổng Hợp Từ Điển:
-            • Nested aggregation trên attrs
+            English content normalized from the original source text.
+            • English content normalized from the original source text
             • Terms aggregation cho attrName
             • Terms aggregation cho attrValue
-            • Kích thước 100 cho mỗi cấp
+            • English content normalized from the original source text
             end note
-            ESDB -> ES: Dữ liệu tổng hợp
-            ES -> SS: Dữ liệu từ điển
-            SS -> SS: Cache từ điển trong 30 phút
+            ESDB -> ES: English content normalized from the original source text.
+            ES -> SS: English content normalized from the original source text.
+            SS -> SS: English content normalized from the original source text.
         end
 
-        SS -> SS: Phân tích truy vấn ngôn ngữ tự nhiên
+        SS -> SS: English content normalized from the original source text.
         note right
-        Logic Phân Tích Truy Vấn:
-        • Tách chuỗi thành từ khóa
-        • So khớp từ khóa với từ điển
-        • Trích xuất bộ lọc thuộc tính
-        • Xây dựng truy vấn có cấu trúc
-        • Xử lý từ đồng nghĩa
+        English content normalized from the original source text.
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
         end note
 
-        alt Tìm thấy thuộc tính đã phân tích
-            SS -> SS: Thêm thuộc tính đã phân tích vào bộ lọc
+        English content normalized from the original source text.
+            SS -> SS: English content normalized from the original source text.
             note right
-            Trích Xuất Thuộc Tính:
-            • Ánh xạ ngôn ngữ tự nhiên thành bộ lọc có cấu trúc
-            • Thêm attrName và attrValue
-            • Kết hợp với bộ lọc hiện có
+            English content normalized from the original source text.
+            • English content normalized from the original source text
+            • English content normalized from the original source text
+            • English content normalized from the original source text
             end note
         end
     end
 
     SS -> SR: searchProducts(processedQuery)
-    SR -> SR: Xây dựng truy vấn Elasticsearch
+    SR -> SR: English content normalized from the original source text.
     note right
-    Xây Dựng Truy Vấn ES:
-    • Multi-match query cho tìm kiếm văn bản
-    • Bool query với must/should/filter
-    • Fuzzy matching với fuzziness AUTO
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     • Boost fields (productName^3, productName^2)
     • Minimum should match 75%
-    • Phrase matching cho từng từ riêng lẻ
+    • English content normalized from the original source text
     end note
 
     SR -> ES: search(index, query, options)
-    ES -> ESDB: Thực thi truy vấn tìm kiếm
+    ES -> ESDB: English content normalized from the original source text.
     note right
-    Tìm Kiếm Elasticsearch:
-    • Multi-match với best_fields
-    • Fuzzy matching với AUTO
-    • Filter clauses cho thương hiệu/danh mục/giá
-    • Nested queries cho thuộc tính
-    • Sort options với score
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     • Collapse by productId
-    • Timeout: 30 giây
+    • English content normalized from the original source text
     end note
 
-    alt Tìm kiếm thành công
-        ESDB -> ES: Kết quả tìm kiếm
-        ES -> SR: Hits và metadata
-        SR -> SR: Xử lý kết quả tìm kiếm
+    English content normalized from the original source text.
+        ESDB -> ES: English content normalized from the original source text.
+        ES -> SR: English content normalized from the original source text.
+        SR -> SR: English content normalized from the original source text.
         note right
-        Xử Lý Kết Quả:
-        • Trích xuất _source từ hits
-        • Tính tổng số mục
-        • Xây dựng metadata phân trang
-        • Định dạng dữ liệu phản hồi
+        English content normalized from the original source text.
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
+        • English content normalized from the original source text
         end note
-        SR -> SS: Kết quả đã xử lý
+        SR -> SS: English content normalized from the original source text.
         SS -> IS: i18n.t('search.search.success.SEARCH_SUCCESS')
-        IS -> SS: Trả về message đã localize
-        SS -> SC: Phản hồi thành công với thông báo
-        SC -> Client: JSON với dữ liệu + metadata
+        IS -> SS: English content normalized from the original source text.
+        SS -> SC: English content normalized from the original source text.
+        SC -> Client: English content normalized from the original source text.
 
-    else Tìm kiếm thất bại
-        ESDB -> ES: Lỗi
-        ES -> SR: Chi tiết lỗi
-        SR -> SR: Phân loại loại lỗi
+    else (No)
+        ESDB -> ES: English content normalized from the original source text.
+        ES -> SR: English content normalized from the original source text.
+        SR -> SR: English content normalized from the original source text.
         note right
-        Phân Loại Lỗi:
+        English content normalized from the original source text.
         • ConnectionError → ElasticsearchConnectionException
         • TimeoutError → SearchTimeoutException
-        • Lỗi khác → ElasticsearchQueryException
+        • English content normalized from the original source text
         end note
-        SR -> SS: Exception cụ thể
-        SS -> SC: Phản hồi lỗi
-        SC -> Client: Lỗi 500/503
+        SR -> SS: English content normalized from the original source text.
+        SS -> SC: English content normalized from the original source text.
+        SC -> Client: English content normalized from the original source text.
     end
 
-else Xác thực truy vấn thất bại
+else (No)
     SS -> SC: ValidationException
     SC -> Client: 400 Bad Request
 end
 
-== Hoạt Động Đồng Bộ Nền ==
-note over SSS, SSC: Xử lý job nền
+== English Section ==
+note over SSS, SSC: English content normalized from the original source text.
 
-alt Đồng bộ sản phẩm vào Elasticsearch
+English content normalized from the original source text.
     SSS -> SSC: process(syncProductJob)
     SSC -> SSS: syncProductToES(productId, action)
     SSS -> SSS: getProductWithRelations(productId)
     SSS -> SSS: transformProductToEsDocuments(product)
     SSS -> ES: indexProduct(document)
-    ES -> ESDB: INDEX tài liệu sản phẩm
-    ESDB -> ES: trả về kết quả index
-    ES -> SSS: trả về kết quả đồng bộ
+    ES -> ESDB: English content normalized from the original source text.
+    ESDB -> ES: English content normalized from the original source text.
+    ES -> SSS: English content normalized from the original source text.
 end
 
-alt Đồng bộ hàng loạt sản phẩm
+English content normalized from the original source text.
     SSS -> SSC: process(syncProductsBatchJob)
     SSC -> SSS: syncProductsBatchToES(batchData)
     SSS -> SSS: getProductsWithRelations(productIds)
-    loop Cho mỗi sản phẩm
+    English content normalized from the original source text.
         SSS -> SSS: transformProductToEsDocuments(product)
         SSS -> ES: indexProduct(document)
-        ES -> ESDB: INDEX tài liệu sản phẩm
+        ES -> ESDB: English content normalized from the original source text.
     end
-    ES -> SSS: trả về kết quả đồng bộ hàng loạt
+    ES -> SSS: English content normalized from the original source text.
 end
 
-alt Xóa sản phẩm khỏi Elasticsearch
+English content normalized from the original source text.
     SSS -> SSC: process(deleteProductJob)
     SSC -> SSS: syncProductToES(productId, action: delete)
     SSS -> SSS: deleteProductFromES(productId)
     SSS -> ES: deleteProduct(productId)
-    ES -> ESDB: DELETE tài liệu sản phẩm
-    ESDB -> ES: trả về kết quả xóa
-    ES -> SSS: trả về kết quả xóa
+    ES -> ESDB: English content normalized from the original source text.
+    ESDB -> ES: English content normalized from the original source text.
+    ES -> SSS: English content normalized from the original source text.
 end
 
-== Xử Lý Lỗi & Xác Thực ==
-alt Lỗi truy vấn rỗng
+== English Section ==
+English content normalized from the original source text.
     SS -> SC: EmptySearchQueryException
     SC -> Client: 400 Bad Request
     note right
-    Lỗi Truy Vấn Rỗng:
-    • Chuỗi truy vấn rỗng sau khi cắt khoảng trắng
-    • Thông báo lỗi rõ ràng
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
-else Lỗi truy vấn quá ngắn
+else (No)
     SS -> SC: SearchQueryTooShortException
     SC -> Client: 400 Bad Request
     note right
-    Lỗi Truy Vấn Quá Ngắn:
-    • Độ dài truy vấn < yêu cầu tối thiểu (1)
-    • Xác thực độ dài truy vấn
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
-else Lỗi tải từ điển
+else (No)
     SS -> SC: DictionaryLoadException
     SC -> Client: 500 Internal Server Error
     note right
-    Lỗi Từ Điển:
-    • Không thể tải từ Elasticsearch
-    • Cache miss và tải thất bại
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
-else Lỗi phân tích từ điển
+else (No)
     SS -> SC: DictionaryParseException
     SC -> Client: 400 Bad Request
     note right
-    Lỗi Phân Tích:
-    • Không thể phân tích ngôn ngữ tự nhiên
-    • Phân tích từ điển thất bại
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
-else Lỗi kết nối Elasticsearch
+else (No)
     SR -> SS: ElasticsearchConnectionException
-    SS -> SC: Phản hồi lỗi
+    SS -> SC: English content normalized from the original source text.
     SC -> Client: 503 Service Unavailable
     note right
-    Lỗi Kết Nối:
-    • Elasticsearch không khả dụng
-    • Kết nối mạng thất bại
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
-else Lỗi timeout tìm kiếm
+else (No)
     SR -> SS: SearchTimeoutException
-    SS -> SC: Phản hồi lỗi
+    SS -> SC: English content normalized from the original source text.
     SC -> Client: 503 Service Unavailable
     note right
-    Lỗi Timeout:
-    • Timeout truy vấn tìm kiếm
-    • Truy vấn chạy quá lâu
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 
-else Lỗi truy vấn tìm kiếm
+else (No)
     SR -> SS: ElasticsearchQueryException
-    SS -> SC: Phản hồi lỗi
+    SS -> SC: English content normalized from the original source text.
     SC -> Client: 500 Internal Server Error
     note right
-    Lỗi Truy Vấn:
-    • Cú pháp truy vấn không hợp lệ
-    • Index không tìm thấy
-    • Lỗi ES khác
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 end
 
-== Quản Lý Cache ==
-alt Hoạt động cache từ điển
-    SS -> SS: Kiểm tra thời gian hết hạn cache
+== English Section ==
+English content normalized from the original source text.
+    SS -> SS: English content normalized from the original source text.
     note right
-    Quản Lý Cache:
-    • Thời gian cache: 30 phút
-    • Kiểm tra thời gian hết hạn cache
-    • Tải dữ liệu mới nếu hết hạn
-    • Cache bộ nhớ với Map
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 end
 
-== Trả Kết Quả ==
+== English Section ==
 SS -> IS: i18n.t('search.search.success.SEARCH_SUCCESS')
-IS -> SS: Trả về message đã localize
-SS -> SC: Phản hồi + Thông báo đã localize
-SC -> Client: JSON Response với metadata đầy đủ
+IS -> SS: English content normalized from the original source text.
+SS -> SC: English content normalized from the original source text.
+SC -> Client: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module Tìm Kiếm:**
-• Tích hợp Elasticsearch với truy vấn nâng cao
-• Xử lý ngôn ngữ tự nhiên với cache từ điển (30 phút)
-• Tìm kiếm đa trường với fuzzy matching và phrase matching
-• Bộ lọc nâng cao (thương hiệu, danh mục, giá, thuộc tính lồng nhau)
-• Phân trang với metadata đầy đủ
-• Xử lý lỗi toàn diện với exception cụ thể
-• API công khai (không cần xác thực)
-• Bỏ qua giới hạn tốc độ cho hiệu suất tìm kiếm
-• Hỗ trợ đa ngôn ngữ với I18nService
-• Hoạt động đồng bộ nền với BullMQ
-• Trích xuất thuộc tính dựa trên từ điển
+* English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 
 @enduml

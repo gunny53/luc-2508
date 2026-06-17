@@ -22,11 +22,11 @@ import { useDataTable } from '@/hooks/useDataTable';
 export function ProductsTable() {
   const t = useTranslations('admin.ModuleProduct');
   const router = useRouter();
-  
+
   // State cho modal barcode
   const [barcodeModalOpen, setBarcodeModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductColumn | null>(null);
-  
+
   const {
     data,
     loading,
@@ -69,7 +69,7 @@ export function ProductsTable() {
   const columns = productsColumns({ onEdit, onDelete: handleOpenDelete, onView, onViewBarcode });
   const table = useDataTable({ data, columns });
 
-  // Tạo component riêng cho Search và Filter để tránh re-render
+  // English content normalized from the original source text.
   const SearchAndFilterSection = React.memo(() => (
     <div className="flex items-center space-x-2">
       <SearchInput
@@ -78,8 +78,8 @@ export function ProductsTable() {
         placeholder={t('searchPlaceholder')}
         className="w-full md:max-w-sm"
       />
-      <ProductsFilter 
-        table={table} 
+      <ProductsFilter
+        table={table}
         onPriceFilterChange={handlePriceFilterChange}
         currentPriceFilter={priceFilter}
         onCategoryFilterChange={handleCategoryFilterChange}
@@ -88,7 +88,7 @@ export function ProductsTable() {
     </div>
   ));
 
-  // Toolbar component - chỉ chứa Export và View options
+  // English content normalized from the original source text.
   const ProductsTableToolbar = React.useCallback(({ table }: { table: TanstackTable<ProductColumn> }) => (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">

@@ -6,19 +6,19 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /users
+English content normalized from the original source text.
 
 start
-:Nhận { data } + user + roleName;
+:English content normalized from the original source text;
 :verifyRole(roleNameAgent, roleIdTarget);
-if (Không hợp lệ?) then (Có)
-  :Ném ForbiddenException (403);
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
 :Hash password;
-:Tạo user với audit createdById;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 201 { message, data };
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -20,16 +20,16 @@ export function useVerify() {
     const verifyOTP = async (code: string) => {
     try {
       setLoading(true)
-      
-      // API trả về message và statusCode 
+
+      // English content normalized from the original source text.
       // {message: "Auth.Otp.Verified", statusCode: 200}
       const response = await authService.verifyOTP({ code })
-      
-      // Hiển thị message từ API response 
+
+      // English content normalized from the original source text.
       const successMessage = response?.message || t('admin.showToast.auth.authSuccessful')
       showToast(t(successMessage), 'success')
-      
-      // Chỉ cần kiểm tra action từ URL để quyết định chuyển hướng
+
+      // English content normalized from the original source text.
       if (action === 'forgot') {
         router.replace(ROUTES.AUTH.RESET_PASSWORD)
       } else if (action === 'signup') {
@@ -46,11 +46,11 @@ export function useVerify() {
   const resendOTP = async () => {
     try {
       setLoading(true)
-      
-      // Sử dụng phương thức resendOTP từ authService mà không có tham số
+
+      // English content normalized from the original source text.
       const response = await authService.resendOTP()
-      
-      // Hiển thị message từ API response hoặc message mặc định
+
+      // English content normalized from the original source text.
       const successMessage = response?.message || t('admin.showToast.auth.sentNewOtp')
       showToast(t(successMessage), 'success')
     } catch (error) {

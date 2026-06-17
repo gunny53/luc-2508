@@ -6,27 +6,27 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /payment/vnpay/verify-ipn
+English content normalized from the original source text.
 
 start
-:Nhận query vnp_*;
-:verifyIpnCall với VnpayService;
-if (isVerified?) then (Không)
-  :Trả về { RspCode: '97', Message: 'Invalid Checksum' };
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-:verifyIpnCall repo → tìm payment, orders, paymentId;
-if (payment đã xử lý?) then (Có)
-  :Trả về { RspCode: '02', Message: 'Order already confirmed' };
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-if (vnp_ResponseCode == '00'?) then (Có)
+if (condition?) then (Yes)
   :updatePaymentAndOrdersOnSuccess(paymentId, orders);
-  :Emit WebSocket đến payment room;
-else (Không)
+  :English content normalized from the original source text;
+else (No)
   :updatePaymentAndOrdersOnFailed(paymentId, orders);
 endif
-:Trả về { RspCode: '00', Message: 'Confirm Success' };
+:English content normalized from the original source text;
 stop
 
 @enduml

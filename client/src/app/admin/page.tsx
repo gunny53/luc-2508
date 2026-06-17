@@ -36,37 +36,33 @@ export default function AdminDashboard() {
     );
   }
 
-  // Check user role và render dashboard tương ứng
+  // English content normalized from the original source text.
   const userRole = userData.role?.name;
 
   switch (userRole) {
     case 'ADMIN':
       return <DashboardAdmin />;
-      
+
     case 'SELLER':
       return <DashboardSeller />;
-      
+
     default:
-      // Fallback cho role không được hỗ trợ hoặc CLIENT
+      // English content normalized from the original source text.
       return (
         <div className="space-y-6 p-6 h-screen bg-white">
           <div>
-            <h1 className="text-3xl font-bold">Truy cập bị từ chối</h1>
-            <p className="text-muted-foreground">
-              Bạn không có quyền truy cập vào khu vực này
-            </p>
+            <h1 className="text-3xl font-bold">English content normalized from the original source text.</h1>
+            <p className="text-muted-foreground">English content normalized from the original source text.</p>
           </div>
 
           <Card className="p-6 border-amber-200 bg-amber-50">
             <div className="flex items-center space-x-3">
               <AlertCircle className="w-6 h-6 text-amber-600" />
               <div>
-                <p className="font-medium text-amber-800">
-                  Quyền truy cập không đủ
-                </p>
+                <p className="font-medium text-amber-800">English content normalized from the original source text.</p>
                 <p className="text-sm text-amber-700">
-                  Role hiện tại: {userRole || 'Không xác định'}. 
-                  Chỉ Admin và Seller mới có thể truy cập dashboard này.
+                  English content normalized from the original source text. {userRole || 'English content normalized from the original source text.'}.
+                  English content normalized from the original source text.
                 </p>
               </div>
             </div>

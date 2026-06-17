@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Quyền - Tổng Quan Luồng Xử Lý
-note top : Hệ thống quản lý quyền với cache management và role relationships
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
 actor "Admin" as Admin
 participant "PermissionController" as PC
@@ -17,55 +17,55 @@ participant "CacheManager" as CM
 database "PostgreSQL" as DB
 database "Redis" as RD
 
-== GET /permissions - Lấy Danh Sách Quyền ==
+== English Section ==
 Admin -> PC: GET /permissions?page=1&limit=10
 PC -> PS: list(pagination)
 
 PS -> PR: list(pagination)
-PR -> PR: Tính toán pagination metadata
+PR -> PR: English content normalized from the original source text.
 note right
-Logic Phân Trang:
+English content normalized from the original source text.
 • skip = (page - 1) * limit
 • take = limit
 • Parallel queries: count + findMany
-• Tính toán totalPages, hasNext, hasPrev
+• English content normalized from the original source text
 end note
 
-PR -> DB: count() với WHERE deletedAt IS NULL
-PR -> DB: findMany() với pagination
+PR -> DB: English content normalized from the original source text.
+PR -> DB: English content normalized from the original source text.
 DB -> PR: Total count + permissions data
-PR -> PS: Permissions với metadata
+PR -> PS: English content normalized from the original source text.
 PS -> IS: i18n.t('permission.permission.success.GET_SUCCESS')
-IS -> PS: Trả về message đã localize
-PS -> PC: Phản hồi + Message đã localize
-PC -> Admin: JSON với data + metadata
+IS -> PS: English content normalized from the original source text.
+PS -> PC: English content normalized from the original source text.
+PC -> Admin: English content normalized from the original source text.
 
-== GET /permissions/:id - Chi Tiết Quyền ==
+== English Section ==
 Admin -> PC: GET /permissions/:permissionId
 PC -> PS: findById(permissionId)
 
 PS -> PR: findById(id)
-PR -> DB: findUnique với WHERE deletedAt IS NULL
+PR -> DB: English content normalized from the original source text.
 DB -> PR: Permission data
 PR -> PS: Permission info
 
-alt Permission tồn tại
+English content normalized from the original source text.
     PS -> IS: i18n.t('permission.permission.success.GET_DETAIL_SUCCESS')
-    IS -> PS: Trả về message đã localize
+    IS -> PS: English content normalized from the original source text.
     PS -> PC: Success response
     PC -> Admin: JSON permission detail
-else Permission không tồn tại
+else (No)
     PS -> PC: NotFoundRecordException
     PC -> Admin: 404 Not Found
 end
 
-== POST /permissions - Tạo Quyền Mới ==
+== English Section ==
 Admin -> PC: POST /permissions + {name, path, method, module}
 PC -> PS: create({data, user})
 
-PS -> PS: Validate data với Zod schema
+PS -> PS: English content normalized from the original source text.
 note right
-Xác Thực Dữ Liệu:
+English content normalized from the original source text.
 • name: required string
 • path: required string (API path)
 • method: required string (HTTP method)
@@ -74,51 +74,51 @@ Xác Thực Dữ Liệu:
 end note
 
 PS -> PR: create({createdById, data})
-PR -> DB: INSERT permission với audit fields
+PR -> DB: English content normalized from the original source text.
 note right
-Logic Tạo Mới:
-• INSERT permission với createdById
+English content normalized from the original source text.
+• English content normalized from the original source text
 • Audit trail: createdAt, createdById
 • Validate unique constraint
 end note
 DB -> PR: Permission created
 PR -> PS: New permission
 PS -> IS: i18n.t('permission.permission.success.CREATE_SUCCESS')
-IS -> PS: Trả về message đã localize
+IS -> PS: English content normalized from the original source text.
 PS -> PC: Success response
 PC -> Admin: 201 Created + JSON response
 
-== PUT /permissions/:id - Cập Nhật Quyền ==
+== English Section ==
 Admin -> PC: PUT /permissions/:permissionId + {data}
 PC -> PS: update({id, data, user})
 
 PS -> PR: update({id, updatedById, data})
-PR -> DB: UPDATE permission với include roles
+PR -> DB: English content normalized from the original source text.
 note right
-Logic Cập Nhật:
-• UPDATE permission với updatedById
+English content normalized from the original source text.
+• English content normalized from the original source text
 • Include roles relationship
 • Validate unique constraint
 • Audit trail: updatedAt, updatedById
 end note
-DB -> PR: Updated permission với roles
+DB -> PR: English content normalized from the original source text.
 PR -> PS: Updated data
 
 alt Update successful
     PS -> PS: deleteCachedRole(roles)
     note right
-    Quản Lý Cache:
-    • Delete cached role data cho tất cả roles
+    English content normalized from the original source text.
+    • English content normalized from the original source text
     • Cache key: `role:${roleId}`
-    • Parallel deletion với Promise.all
+    • English content normalized from the original source text
     • Ensure cache consistency
     end note
-    PS -> CM: del(cacheKey) cho mỗi role
+    PS -> CM: English content normalized from the original source text.
     CM -> RD: Delete cache entries
     RD -> CM: Cache cleared
     CM -> PS: Cache operation result
     PS -> IS: i18n.t('permission.permission.success.UPDATE_SUCCESS')
-    IS -> PS: Trả về message đã localize
+    IS -> PS: English content normalized from the original source text.
     PS -> PC: Success response
     PC -> Admin: 200 OK + JSON response
 else Update failed
@@ -126,30 +126,30 @@ else Update failed
     PC -> Admin: 400/404 Error
 end
 
-== DELETE /permissions/:id - Xóa Quyền ==
+== English Section ==
 Admin -> PC: DELETE /permissions/:permissionId
 PC -> PS: delete({id, user})
 
 PS -> PR: delete({id, deletedById})
 PR -> DB: UPDATE deletedAt (soft delete)
 note right
-Logic Xóa:
+English content normalized from the original source text.
 • Soft delete: UPDATE deletedAt field
 • Include roles relationship
 • Audit trail: deletedAt, deletedById
-• Support hard delete với isHard flag
+• English content normalized from the original source text
 end note
-DB -> PR: Permission marked deleted với roles
+DB -> PR: English content normalized from the original source text.
 PR -> PS: Deleted data
 
 alt Delete successful
     PS -> PS: deleteCachedRole(roles)
-    PS -> CM: del(cacheKey) cho mỗi role
+    PS -> CM: English content normalized from the original source text.
     CM -> RD: Delete cache entries
     RD -> CM: Cache cleared
     CM -> PS: Cache operation result
     PS -> IS: i18n.t('permission.permission.success.DELETE_SUCCESS')
-    IS -> PS: Trả về message đã localize
+    IS -> PS: English content normalized from the original source text.
     PS -> PC: Success response
     PC -> Admin: 200 OK + message
 else Delete failed
@@ -157,26 +157,26 @@ else Delete failed
     PC -> Admin: 404 Not Found
 end
 
-== Xử Lý Lỗi & Validation ==
-alt Lỗi unique constraint
+== English Section ==
+English content normalized from the original source text.
     PS -> PC: PermissionAlreadyExistsException
     PC -> Admin: 422 Unprocessable Entity
     note right
-    Lỗi Unique Constraint:
-    • path + method combination đã tồn tại
-    • Duplicate permission không được phép
+    English content normalized from the original source text.
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     • Clear error message cho user
     end note
 
-else Lỗi không tìm thấy
+else (No)
     PS -> PC: NotFoundRecordException
     PC -> Admin: 404 Not Found
 
-else Lỗi validation dữ liệu
+else (No)
     PS -> PC: ValidationException
     PC -> Admin: 422 Unprocessable Entity
 
-else Lỗi database
+else (No)
     PS -> PC: DatabaseException
     PC -> Admin: 500 Internal Server Error
 end
@@ -185,10 +185,10 @@ end
 alt Cache operations
     PS -> CM: del(cacheKey)
     note right
-    Thao Tác Cache:
-    • Delete role cache khi permission thay đổi
+    English content normalized from the original source text.
+    • English content normalized from the original source text
     • Cache key format: `role:${roleId}`
-    • Parallel deletion với Promise.all
+    • English content normalized from the original source text
     • Ensure data consistency
     end note
     CM -> RD: Delete cache entries
@@ -196,19 +196,19 @@ alt Cache operations
     CM -> PS: Cache operation result
 end
 
-== Trả Kết Quả ==
+== English Section ==
 PS -> IS: i18n.t('permission.permission.success.XXX')
-IS -> PS: Trả về message đã localize
-PS -> PC: Phản hồi + Message đã localize
-PC -> Admin: JSON Response với metadata đầy đủ
+IS -> PS: English content normalized from the original source text.
+PS -> PC: English content normalized from the original source text.
+PC -> Admin: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module Permission:**
-• CRUD operations đầy đủ với audit trail
-• Soft delete pattern với hard delete option
+* English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Cache management cho role relationships
 • Unique constraint validation (path + method)
-• Pagination với metadata đầy đủ
+• English content normalized from the original source text
 • Multi-language support
 • Comprehensive error handling
 • Role relationship management

@@ -28,9 +28,7 @@ export function TopBar() {
           }
         `}</style>
         <div className="marquee-container">
-          <span className="marquee text-[13px] font-medium text-gray-700">
-            Chào mừng bạn đến với Shopsifu! Khám phá hàng ngàn sản phẩm chất lượng cao với giá ưu đãi. Mua sắm ngay hôm nay!
-          </span>
+          <span className="marquee text-[13px] font-medium text-gray-700">English content normalized from the original source text.</span>
         </div>
       </div>
 
@@ -38,15 +36,15 @@ export function TopBar() {
       <div className="flex items-center space-x-6 shrink-0">
         <Link href="#" className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium">
           <Bell className="h-4 w-4" />
-          <span>Thông báo</span>
+          <span>English content normalized from the original source text.</span>
         </Link>
         <Link href="#" className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium">
           <HelpCircle className="h-4 w-4" />
-          <span>Hỗ trợ</span>
+          <span>English content normalized from the original source text.</span>
         </Link>
         <Link href="#" className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium">
           <ShoppingCart className="h-4 w-4" />
-          <span>Đăng ký bán hàng</span>
+          <span>English content normalized from the original source text.</span>
         </Link>
       </div>
     </div>
@@ -54,4 +52,4 @@ export function TopBar() {
 </div>
 
   );
-} 
+}

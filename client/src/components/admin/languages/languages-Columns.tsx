@@ -17,12 +17,12 @@ export type Language = {
   updatedAt: string;
 };
 
-// Hàm tạo danh sách actions cho Language
+// English content normalized from the original source text.
 const getLanguageActions = (
   language: Language,
   onDelete: (language: Language) => void,
   onEdit: (language: Language) => void,
-  t: (key: string) => string // Tham số t để dịch
+  t: (key: string) => string // English content normalized from the original source text.
 ): ActionItem<Language>[] => [
   {
     type: "command",

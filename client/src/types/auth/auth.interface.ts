@@ -22,7 +22,7 @@ export interface Permissions {
   [key: string]: PermissionActions | undefined;
 }
 
-// LẤY DANH SÁCH QUYỀN HẠN - GET ABILITY
+// English content normalized from the original source text.
 export interface GetAbilityResponse extends BaseResponse {
     data: {
         permissions: Permissions;
@@ -35,12 +35,12 @@ export interface oAuthLoginResponse {
     url: string
   }
 }
-// ĐĂNG XUẤT TÀI KHOẢN - LOGOUT
+// English content normalized from the original source text.
 export interface LogoutRequest {
   refreshToken?: string
 }
 
-// ĐĂNG NHẬP TÀI KHOẢN - SIGN-IN
+// English content normalized from the original source text.
 export interface LoginRequest {
   email: string
   password: string
@@ -65,7 +65,7 @@ export interface RequestDeviceResponse extends BaseResponse{
 
 
 
-// ĐĂNG KÝ TÀI KHOẢN - SIGN-UP
+// English content normalized from the original source text.
 export interface RegisterRequest {
   firstName: string
   lastName: string
@@ -90,7 +90,7 @@ export interface RegisterSendRequest{
 }
 
 
-// ĐỔI MẬT KHẨU TÀI KHOẢN - RESET PASSWORD
+// English content normalized from the original source text.
 export interface ResetPasswordSendRequest{
   email: string
 }
@@ -105,7 +105,7 @@ export interface ResetPasswordResponse extends BaseResponse{
 }
 
 
-// XÁC THỰC & GỬI CODE - VERIFY + SEND CODE
+// English content normalized from the original source text.
 export interface VerifyOTPRequest {
   code: string
 }
@@ -164,7 +164,7 @@ export interface SendOTPResponse {
 
 
 
-// THIẾT LẬP 2FA - SETUP 2FA
+// English content normalized from the original source text.
 export interface Setup2faResponse extends BaseResponse {
   data:{
     secret: string
@@ -181,7 +181,7 @@ export interface Confirm2faResponse {
   data:{
     recoveryCodes:[]
   }
-  
+
 }
 
 

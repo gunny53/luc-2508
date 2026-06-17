@@ -16,7 +16,7 @@ export default function DesktopSidebar() {
 
   return (
     <aside className="bg-gradient-to-br from-white via-gray-50/30 to-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full md:w-[320px] h-full flex flex-col border border-gray-100 relative overflow-hidden">
-      
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-3">
         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-red-500/5 to-transparent rounded-full translate-x-8 -translate-y-8"></div>
@@ -32,8 +32,8 @@ export default function DesktopSidebar() {
             </svg>
           </div>
           <div>
-            <h3 className="font-bold text-gray-800">Tài khoản</h3>
-            <p className="text-sm text-gray-500">Quản lý thông tin cá nhân</p>
+            <h3 className="font-bold text-gray-800">English content normalized from the original source text.</h3>
+            <p className="text-sm text-gray-500">English content normalized from the original source text.</p>
           </div>
         </div>
       </div>
@@ -79,8 +79,8 @@ export default function DesktopSidebar() {
                     <span
                       className={cn(
                         "font-semibold transition-all duration-200",
-                        isActive 
-                          ? "text-red-600" 
+                        isActive
+                          ? "text-red-600"
                           : "text-gray-700 group-hover:text-red-600"
                       )}
                     >
@@ -89,7 +89,7 @@ export default function DesktopSidebar() {
                   </div>
 
                   {/* Arrow Indicator */}
-                  <ChevronRight 
+                  <ChevronRight
                     className={cn(
                       "w-5 h-5 transition-all duration-200",
                       isActive
@@ -128,7 +128,7 @@ export default function DesktopSidebar() {
               )}
             </div>
             <span className="font-semibold transition-colors duration-200 group-hover:text-red-600">
-              {logoutLoading ? "Đang đăng xuất..." : t("auth.common.logout")}
+              {logoutLoading ? "English content normalized from the original source text." : t("auth.common.logout")}
             </span>
           </div>
 
@@ -140,4 +140,4 @@ export default function DesktopSidebar() {
       </div>
     </aside>
   );
-} 
+}

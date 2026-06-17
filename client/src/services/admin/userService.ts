@@ -13,19 +13,19 @@ import {
 import { PaginationRequest } from '@/types/base.interface';
 
 export const userService = {
-    // Lấy danh sách tất cả người dùng
+    // English content normalized from the original source text.
     async getAll(params: any): Promise<UserGetAllResponse> {
         const response = await privateAxios.get(API_ENDPOINTS.USERS.GETALL, { params });
         return response.data;
     },
-    // Lấy thông tin người dùng theo ID
+    // English content normalized from the original source text.
     async getById(id: string): Promise<{ data: User }> {
         const response = await privateAxios.get(
             API_ENDPOINTS.USERS.GETBYID.replace(':id', String(id))
         );
         return response.data;
     },
-    // Tạo người dùng mới
+    // English content normalized from the original source text.
     async create(data: UserCreateRequest): Promise<UserCreateResponse> {
         const response = await privateAxios.post(
             API_ENDPOINTS.USERS.POST,
@@ -33,7 +33,7 @@ export const userService = {
         );
         return response.data;
     },
-    // Cập nhật người dùng
+    // English content normalized from the original source text.
     async update(id: string, data: UserUpdateRequest): Promise<UserUpdateResponse> {
         const response = await privateAxios.put(
             API_ENDPOINTS.USERS.UPDATE.replace(':id', String(id)),
@@ -41,7 +41,7 @@ export const userService = {
         );
         return response.data;
     },
-    // Xóa người dùng theo ID
+    // English content normalized from the original source text.
     async delete(id: string): Promise<UserDeleteResponse> {
         const response = await privateAxios.delete(
             API_ENDPOINTS.USERS.DELETE_BY_ID.replace(':id', String(id))

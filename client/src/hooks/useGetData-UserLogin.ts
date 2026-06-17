@@ -5,24 +5,20 @@ import { useMemo } from 'react';
 import { selectUserProfile } from '@/store/features/auth/profileSlide';
 import { RootState } from '@/store/store';
 
-/**
- * Custom hook để lấy và định dạng dữ liệu người dùng từ Redux store.
- * Hook này phải được sử dụng trong một component client.
- * @returns Một đối tượng thông tin người dùng đã được định dạng hoặc null nếu chưa đăng nhập.
- */
+/* English content normalized from the original source text. */
 export const useUserData = () => {
   const user = useSelector((state: RootState) => selectUserProfile(state));
 
   const userInfo = useMemo(() => {
-    // Nếu không có dữ liệu người dùng (chưa đăng nhập), trả về null.
+    // English content normalized from the original source text.
     if (!user) {
       return null;
     }
 
-    // Ghép họ và tên một cách an toàn để tiện sử dụng
+    // English content normalized from the original source text.
     // const name = [user.firstName, user.lastName].filter(Boolean).join(' ');
 
-    // Trả về một đối tượng mới bao gồm tất cả các thuộc tính của user và thuộc tính 'name'
+    // English content normalized from the original source text.
     return {
       ...user,
     };

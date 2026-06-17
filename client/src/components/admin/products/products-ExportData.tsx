@@ -31,7 +31,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
-// Định nghĩa các định dạng file để dễ dàng tái sử dụng và mở rộng
+// English content normalized from the original source text.
 const fileFormats = [
   { value: "xlsx", label: "Excel (.xlsx)" },
   { value: "csv", label: "CSV (.csv)" },
@@ -39,8 +39,8 @@ const fileFormats = [
 ];
 
 interface ProductsExportDataProps<TData> {
-  table?: Table<TData>; // Prop `table` là optional
-  data: TData[];       // Prop `data` là bắt buộc để có dữ liệu export
+  table?: Table<TData>; // English content normalized from the original source text.
+  data: TData[];       // English content normalized from the original source text.
 }
 
 export function ProductsExportData<TData>({ table, data }: ProductsExportDataProps<TData>) {
@@ -51,15 +51,15 @@ export function ProductsExportData<TData>({ table, data }: ProductsExportDataPro
   const [fileType, setFileType] = useState(fileFormats[0].value);
 
   const handleExport = () => {
-    console.log("Đang export với các thiết lập:", {
+    console.log("English content normalized from the original source text.", {
       dateRange: date,
       format: fileType,
       selectedRows: table?.getFilteredSelectedRowModel().rows.map((row) => row.original),
       allData: data,
     });
-    // TODO: Thêm logic tạo file thực tế ở đây (ví dụ: dùng 'xlsx', 'jspdf')
-    alert(`Đang xuất file ${fileType.toUpperCase()}... (Kiểm tra console để xem dữ liệu)`);
-    setIsOpen(false); // Đóng dialog sau khi export
+    // English content normalized from the original source text.
+    alert(`English content normalized from the original source text.${fileType.toUpperCase()}English content normalized from the original source text.`);
+    setIsOpen(false); // English content normalized from the original source text.
   };
 
   return (

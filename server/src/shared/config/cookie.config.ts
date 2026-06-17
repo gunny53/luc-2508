@@ -8,11 +8,11 @@ export default registerAs(
       name: 'access_token',
       options: {
         httpOnly: true,
-        // Mặc định secure=true ở production, có thể override bằng COOKIE_SECURE
+        // English content normalized from the original source text.
         secure: ((process.env.COOKIE_SECURE ?? process.env.NODE_ENV !== 'development') ? 'true' : 'false') === 'true',
         sameSite: 'none',
         path: process.env.COOKIE_ACCESS_TOKEN_PATH ?? '/',
-        // Bỏ qua domain nếu giá trị không hợp lệ (ví dụ '/') để tránh lỗi "option domain is invalid"
+        // English content normalized from the original source text.
         domain:
           process.env.COOKIE_ACCESS_TOKEN_DOMAIN && process.env.COOKIE_ACCESS_TOKEN_DOMAIN !== '/'
             ? process.env.COOKIE_ACCESS_TOKEN_DOMAIN

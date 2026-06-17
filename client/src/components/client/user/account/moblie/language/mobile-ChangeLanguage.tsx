@@ -9,7 +9,7 @@ import Link from "next/link";
 import clsx from "clsx";
 
 const LANGUAGES = [
-  { code: "vi", label: "Tiếng Việt" },
+  { code: "vi", label: "English content normalized from the original source text." },
   { code: "en", label: "English" },
 ];
 

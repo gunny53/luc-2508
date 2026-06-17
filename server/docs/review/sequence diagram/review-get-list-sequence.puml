@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /reviews/products/:productId
+English content normalized from the original source text.
 
-actor "Khách/Người dùng" as U
+English content normalized from the original source text.
 participant "ReviewController" as RC
 participant "ReviewService" as RS
 participant "ReviewRepository" as RR

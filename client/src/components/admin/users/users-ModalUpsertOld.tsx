@@ -31,8 +31,8 @@
 //   open: boolean;
 //   onClose: () => void;
 //   mode: 'add' | 'edit';
-//   user: User | null; 
-//   onSubmit: (data: User | UserCreateRequest) => Promise<void>; 
+//   user: User | null;
+//   onSubmit: (data: User | UserCreateRequest) => Promise<void>;
 // }
 
 // export default function UsersModalUpsert({
@@ -51,19 +51,19 @@
 //   const [bio, setBio] = useState("")
 //   const [avatar, setAvatar] = useState<File | null>(null)
 //   const [countryCode, setCountryCode] = useState("")
-//   const [roleId, setRoleId] = useState(1) 
+//   const [roleId, setRoleId] = useState(1)
 //   const [status, setStatus] = useState("ACTIVE")
 //   const [loading, setLoading] = useState(false)
 //   const [errors, setErrors] = useState<Record<string, string>>({})
 
 //   // These should ideally come from an API or a shared constant
 //   const STATUS_OPTIONS = [
-//     { value: 'ACTIVE', label: t('Hoạt động') },
-//     { value: 'INACTIVE', label: t('Không hoạt động') },
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 //   ]
 
 //   useEffect(() => {
-//     setStep(1); 
+//     setStep(1);
 //     if (mode === 'edit' && user) {
 //       setFirstName(user.userProfile?.firstName || "")
 //       setLastName(user.userProfile?.lastName || "")
@@ -139,7 +139,7 @@
 //           });
 //           setErrors(formattedErrors);
 //         }
-//         return; 
+//         return;
 //       }
 //     }
 
@@ -156,7 +156,7 @@
 //           username,
 //           phoneNumber,
 //           bio,
-//           avatar: '', 
+//           avatar: '',
 //           countryCode,
 //         };
 //         await onSubmit(data);
@@ -197,8 +197,8 @@
 //           {errors.lastName && <p className="text-sm text-red-500 mt-1">{errors.lastName}</p>}
 //         </div>
 //         <div>
-//           <label className="block text-sm font-medium mb-1">{t('Tên người dùng')}</label>
-//           <Input value={username} onChange={e => setUsername(e.target.value)} required placeholder={t('Tên người dùng')} />
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 //           {errors.username && <p className="text-sm text-red-500 mt-1">{errors.username}</p>}
 //         </div>
 //         <div>
@@ -293,10 +293,10 @@
 //       <DialogContent className="max-w-3xl">
 //         <DialogHeader>
 //           <DialogTitle>
-//             {mode === 'add' ? `${t('admin.users.modal.addTitle')} - ${t('Bước')} ${step}/2` : t('admin.users.modal.editTitle')}
+// English content normalized from the original source text.
 //           </DialogTitle>
 //           <DialogDescription>
-//             {mode === 'add' 
+//             {mode === 'add'
 //               ? (step === 1 ? t('admin.users.modal.addDescription') : t('admin.users.modal.passwordStepDescription'))
 //               : t('admin.users.modal.editDescription')
 //             }
@@ -314,14 +314,14 @@
 //                 {t('admin.users.modal.cancel')}
 //               </Button>
 //             </DialogClose>
-            
+
 //             {mode === 'add' && step === 1 && (
-//               <Button type="button" onClick={handleNextStep}>{t('Tiếp theo')}</Button>
+// English content normalized from the original source text.
 //             )}
 
 //             {mode === 'add' && step === 2 && (
 //               <>
-//                 <Button type="button" variant="outline" onClick={() => setStep(1)}>{t('Quay lại')}</Button>
+// English content normalized from the original source text.
 //                 <Button type="submit" disabled={loading}>
 //                   {loading ? t('admin.users.modal.loadingAdd') : t('admin.users.modal.confirmAdd')}
 //                 </Button>

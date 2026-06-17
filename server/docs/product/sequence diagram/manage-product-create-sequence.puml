@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /manage-product/products
+English content normalized from the original source text.
 
 actor "ShopOwner/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -18,21 +18,21 @@ queue "BullMQ (search-sync)" as Q
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MPC: Forward với user
+AG --> MPC: English content normalized from the original source text.
 activate MPC
 
 MPC -> MPS: create({ data, user })
 activate MPS
 
 note right of MPS
-Body gồm: publishedAt, name, description, basePrice,\nvirtualPrice, brandId, images, variants, specifications,\ncategories[], skus[] (theo UpsertSKUBodySchema)
+English content normalized from the original source text.
 SuperRefine validate SKUs vs variants trong DTO layer
 end note
 
 MPS -> PR: create({ createdById: user.userId, data })
 activate PR
 PR -> DB: product.create({ data: { ...productData,\n categories.connect, skus.createMany({ createdById }) }, include: relations })
-DB --> PR: created product (kèm translations/skus/brand/categories)
+DB --> PR: English content normalized from the original source text.
 PR -> SSS: addSyncProductJob(product.id, 'create')
 SSS -> Q: enqueue SYNC_PRODUCT_JOB
 SSS --> PR: ok (log)

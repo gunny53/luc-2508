@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng DELETE /manage-discount/discounts/:discountId
+English content normalized from the original source text.
 
 actor "Seller/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MDC: Forward với user
+AG --> MDC: English content normalized from the original source text.
 activate MDC
 
 MDC -> MDS: delete({ discountId, user })

@@ -6,29 +6,29 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /payment/receiver (Webhook)
+English content normalized from the original source text.
 
 start
-:Xác thực PaymentAPIKey;
-if (API Key hợp lệ?) then (Có)
-  :Kiểm tra trùng lặp transaction theo id;
-  if (Đã tồn tại?) then (Có)
-    :Ném BadRequestException('Transaction already exists');
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     stop
   endif
-  :Tạo paymentTransaction từ body (parse transactionDate, in/out amount);
-  :extractPaymentId từ PREFIX_PAYMENT_CODE trong code/content;
-  if (Không tìm thấy paymentId?) then (Có)
-    :Ném BadRequestException('Cannot get payment id from content');
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
     stop
   endif
-  :validateAndFindPayment(paymentId) → lấy orders;
+  :English content normalized from the original source text;
   :validatePaymentAmount(orders, totalPrice, transferAmount);
   :updatePaymentAndOrdersOnSuccess(paymentId, orders);
-  :Emit WebSocket đến payment room;
-  :Trả về 200 { message };
-else (Không)
-  :Ném Unauthorized (API Key invalid);
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

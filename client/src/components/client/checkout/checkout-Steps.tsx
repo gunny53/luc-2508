@@ -30,9 +30,9 @@ export function CheckoutSteps({
   const [canNavigateToPayment, setCanNavigateToPayment] = useState(false)
 
   const steps: StepItem[] = [
-    { id: 'cart', label: 'Giỏ hàng', href: '/cart', icon: ShoppingCart },
-    { id: 'information', label: 'Thông tin', icon: Info },
-    { id: 'payment', label: 'Thanh toán', icon: Banknote },
+    { id: 'cart', label: 'English content normalized from the original source text.', href: '/cart', icon: ShoppingCart },
+    { id: 'information', label: 'English content normalized from the original source text.', icon: Info },
+    { id: 'payment', label: 'English content normalized from the original source text.', icon: Banknote },
   ]
 
   useEffect(() => {

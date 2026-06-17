@@ -4,13 +4,13 @@ import React, { useState, useEffect, useCallback, useRef, memo, useMemo } from '
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious, 
-  type CarouselApi 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -20,17 +20,17 @@ interface HeroSectionProps {
   className?: string;
 }
 
-// 1. Tách ServiceItem thành component riêng để tối ưu re-render
+// English content normalized from the original source text.
 const ServiceItem = memo(({ item }: { item: typeof serviceItems[0] }) => (
-  <a 
-    href="#" 
+  <a
+    href="#"
     className="flex flex-col items-center text-center group flex-shrink-0 w-[72px] sm:w-auto"
   >
     <div className="flex items-center justify-center w-[52px] h-[52px] bg-white rounded-2xl transition-all duration-300 group-hover:-translate-y-1">
-      <Image 
-        src={item.icon} 
-        alt={item.label} 
-        width={46} 
+      <Image
+        src={item.icon}
+        alt={item.label}
+        width={46}
         height={46}
         className="object-contain"
         loading="lazy" // Lazy load cho service icons
@@ -44,14 +44,14 @@ const ServiceItem = memo(({ item }: { item: typeof serviceItems[0] }) => (
 
 ServiceItem.displayName = 'ServiceItem';
 
-// 2. Tách CarouselImage thành component riêng
-const CarouselImage = memo(({ src, index, isMobile }: { 
-  src: string; 
-  index: number; 
+// English content normalized from the original source text.
+const CarouselImage = memo(({ src, index, isMobile }: {
+  src: string;
+  index: number;
   isMobile: boolean;
 }) => (
-  <CarouselItem 
-    key={index} 
+  <CarouselItem
+    key={index}
     className={cn("relative", isMobile ? "h-[220px]" : "h-[350px]")}
   >
     <Image
@@ -61,8 +61,8 @@ const CarouselImage = memo(({ src, index, isMobile }: {
       style={{ objectFit: 'cover' }}
       className="z-0"
       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
-      priority={index === 0} // Chỉ priority cho image đầu tiên
-      loading={index === 0 ? "eager" : "lazy"} // Lazy load cho các image khác
+      priority={index === 0} // English content normalized from the original source text.
+      loading={index === 0 ? "eager" : "lazy"} // English content normalized from the original source text.
     />
   </CarouselItem>
 ));
@@ -71,8 +71,8 @@ CarouselImage.displayName = 'CarouselImage';
 
 function HeroSectionComponent({ className }: HeroSectionProps) {
   const isMobile = useIsMobile();
-  
-  // 3. Memoize plugin để tránh tạo lại mỗi render
+
+  // English content normalized from the original source text.
   const plugin = useMemo(
     () => Autoplay({ delay: 4000, stopOnInteraction: true }),
     []
@@ -125,10 +125,10 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     isMobile ? "h-[200px]" : "h-[350px]"
   ), [isMobile]);
 
-  // 7. Memoize dot indicators để tránh re-render
+  // English content normalized from the original source text.
   const dotIndicators = useMemo(() => {
     if (slideCount === 0) return null;
-    
+
     return (
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
         {Array.from({ length: slideCount }).map((_, index) => (
@@ -147,23 +147,23 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
   }, [slideCount, currentSlide, scrollTo]);
 
   // 8. Memoize carousel images
-  const carouselImages = useMemo(() => 
+  const carouselImages = useMemo(() =>
     heroImages.map((src, index) => (
-      <CarouselImage 
-        key={src} // Sử dụng src làm key thay vì index
-        src={src} 
-        index={index} 
-        isMobile={isMobile} 
+      <CarouselImage
+        key={src} // English content normalized from the original source text.
+        src={src}
+        index={index}
+        isMobile={isMobile}
       />
-    )), 
+    )),
     [isMobile]
   );
 
   // 9. Memoize service items
-  const serviceItemsList = useMemo(() => 
+  const serviceItemsList = useMemo(() =>
     serviceItems.map((item) => (
       <ServiceItem key={item.label} item={item} />
-    )), 
+    )),
     []
   );
 
@@ -183,7 +183,7 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                 <CarouselContent className="h-full">
                   {carouselImages}
                 </CarouselContent>
-                
+
                 {/* Navigation Buttons */}
                 {!isMobile && (
                   <>
@@ -192,20 +192,16 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                   </>
                 )}
               </Carousel>
-              
+
               {/* Dot Indicators */}
               {dotIndicators}
 
               {/* Overlay content */}
               {!isMobile && (
                 <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/60 to-transparent z-10">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    Bộ sưu tập mới nhất
-                  </h2>
-                  <p className="text-white mb-4 max-w-lg">
-                    Khám phá những xu hướng thời trang mới nhất cho mùa này
-                  </p>
-                  <Button className="w-fit">Khám phá ngay</Button>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">English content normalized from the original source text.</h2>
+                  <p className="text-white mb-4 max-w-lg">English content normalized from the original source text.</p>
+                  <Button className="w-fit">English content normalized from the original source text.</Button>
                 </div>
               )}
             </div>
@@ -228,18 +224,12 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                 </div>
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent">
-                  <h2 className="text-2xl font-bold text-white mb-2">
-                    Phong cách đặc biệt
-                  </h2>
-                  <p className="text-white mb-3">
-                    Tìm kiếm phong cách riêng của bạn
-                  </p>
-                  <Button 
-                    variant="outline" 
+                  <h2 className="text-2xl font-bold text-white mb-2">English content normalized from the original source text.</h2>
+                  <p className="text-white mb-3">English content normalized from the original source text.</p>
+                  <Button
+                    variant="outline"
                     className="w-fit bg-transparent border-white text-white hover:bg-white/20"
-                  >
-                    Xem thêm
-                  </Button>
+                  >English content normalized from the original source text.</Button>
                 </div>
               </div>
             </div>

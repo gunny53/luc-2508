@@ -6,20 +6,20 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: PUT /brand-translations/:brandTranslationId
+English content normalized from the original source text.
 
 start
-:Nhận id + body(partial) + user;
+:English content normalized from the original source text;
 :brandTranslation.update({ where: id & deletedAt=null, data: {..., updatedById} });
-if (Unique?) then (Vi phạm)
-  :Ném BrandTranslationAlreadyExistsException (422);
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 else (OK)
-  if (NotFound?) then (Có)
-    :Ném NotFoundRecordException (404);
-  else (Không)
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+  else (No)
     :Build message i18n;
-    :Trả về 200 { message, data };
+    :English content normalized from the original source text;
   endif
 endif
 stop

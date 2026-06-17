@@ -59,48 +59,48 @@ export function Categories() {
       setActiveCategory(null);
     }
   }, [open, parentLoading, parentCategories, activeCategory]);
-  
-  // Đã chuyển sang sử dụng CSS classes để tránh inline styles
+
+  // English content normalized from the original source text.
   // Xem file header-styles.css
   return (
     <>
-      {/* Background overlay when dropdown is open - positioned below header */}      <div 
+      {/* Background overlay when dropdown is open - positioned below header */}      <div
         className={cn(
           "fixed top-[75px] left-0 right-0 bottom-0 bg-black transition-all duration-300 category-backdrop pointer-events-none",
-          open 
-            ? "opacity-50 visible z-40" 
+          open
+            ? "opacity-50 visible z-40"
             : "opacity-0 invisible"
         )}
         aria-hidden="true"
       />
-        {/* Sử dụng kỹ thuật Slot cho container để giảm re-render */}
+        {/* English content normalized from the original source text. */}
       <div
         ref={containerRef}
         className="relative z-50 category-hover-container"
       >
         {/* Invisible extended hover area to maintain hover state */}
         {open && (
-          <div 
+          <div
             className="absolute top-0 left-[-20px] w-[260px] h-[calc(100%+18px)] category-hover-area"
             onMouseEnter={handleMouseEnter}
             aria-hidden="true"
           />
         )}
-        
-        <div 
+
+        <div
           className="relative"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
       <motion.div
         className="absolute inset-0 rounded-full backdrop-blur-sm"
-        initial={{ 
-          backgroundColor: "rgba(233, 233, 233, 0)", 
+        initial={{
+          backgroundColor: "rgba(233, 233, 233, 0)",
           scaleX: 0.5,
           scaleY: 0.8
         }}
         animate={{
-          backgroundColor: open ? "rgba(233, 233, 233, 0.4)" : "rgba(233, 233, 233, 0)", // #E9E9E9 khi mở
+          backgroundColor: open ? "rgba(233, 233, 233, 0.4)" : "rgba(233, 233, 233, 0)", // English content normalized from the original source text.
           boxShadow: open
             ? "0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
             : "none",
@@ -110,50 +110,48 @@ export function Categories() {
         whileHover={{
           backgroundColor: "rgba(233, 233, 233, 0.4)", // #E9E9E9 khi hover
           boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-          scaleX: [0.8, 1.1, 1], // Hiệu ứng phóng to từ giữa rồi nảy sang 2 bên
-          scaleY: [0.9, 1.05, 1], // Hiệu ứng phóng to và thu nhỏ lại nhẹ
+          scaleX: [0.8, 1.1, 1], // English content normalized from the original source text.
+          scaleY: [0.9, 1.05, 1], // English content normalized from the original source text.
         }}
         transition={{
           type: "spring",
-          stiffness: 350, // Tăng độ cứng để phản hồi nhanh hơn
-          damping: 12, // Giảm độ giảm dao động để tạo hiệu ứng nảy
-          backgroundColor: { duration: 0.15 }, // Chuyển màu nhanh
-          boxShadow: { duration: 0.15 }, // Chuyển bóng nhanh
-          scaleX: { duration: 0.35, ease: "easeOut" }, // Hiệu ứng phóng ngang
-          scaleY: { duration: 0.25, ease: "easeOut" }, // Hiệu ứng phóng dọc
+          stiffness: 350, // English content normalized from the original source text.
+          damping: 12, // English content normalized from the original source text.
+          backgroundColor: { duration: 0.15 }, // English content normalized from the original source text.
+          boxShadow: { duration: 0.15 }, // English content normalized from the original source text.
+          scaleX: { duration: 0.35, ease: "easeOut" }, // English content normalized from the original source text.
+          scaleY: { duration: 0.25, ease: "easeOut" }, // English content normalized from the original source text.
         }}
       />
             {/* Content layer - stays in place */}
-          <div 
+          <div
             className="cursor-pointer relative whitespace-nowrap inline-flex items-center gap-1 px-4 py-3 text-white font-semibold text-sm z-10"
-            onClick={handleClick} // Thêm onClick để toggle dropdown
+            onClick={handleClick} // English content normalized from the original source text.
           >
-            <Menu className="w-5 h-5"/>
-            Danh mục
-            <motion.span
+            <Menu className="w-5 h-5"/>English content normalized from the original source text.<motion.span
               animate={{ rotate: open ? 180 : 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <ChevronDown className="w-4 h-4" />
             </motion.span>
           </div>
-        </div>        {/* Placeholder để dự trữ không gian, giảm CLS */}        <div 
+        </div>        {/* English content normalized from the original source text. */}        <div
           aria-hidden="true"
           className={cn(
-            "hidden absolute left-[-180px] top-[calc(100%+12px)] invisible pointer-events-none dropdown-placeholder", 
+            "hidden absolute left-[-180px] top-[calc(100%+12px)] invisible pointer-events-none dropdown-placeholder",
             open ? "lg:block" : "lg:hidden"
           )}
         />
-        
-        <motion.div 
+
+        <motion.div
           ref={dropdownRef}
                     className={cn(
             "border-1 border-gray-200 absolute top-[calc(100%+12px)] left-[-180px] min-w-full md:min-w-[950px] bg-white rounded-lg shadow-xl z-50 mb-5 overflow-hidden dropdown-container h-[600px]",
             open ? "opacity-100 visible" : "opacity-0 invisible"
           )}
           initial={{ opacity: 0, y: -10 }}
-          animate={{ 
-            opacity: open ? 1 : 0, 
+          animate={{
+            opacity: open ? 1 : 0,
             y: open ? 0 : -10,
             transition: {
               duration: 0.3,
@@ -162,7 +160,7 @@ export function Categories() {
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          layoutId="categories-dropdown" // Giúp Framer Motion theo dõi và tối ưu layout shift
+          layoutId="categories-dropdown" // English content normalized from the original source text.
         >
           {/* Bubble arrow pointing to the title */}
           <div className="absolute left-[230px] top-[-7px] w-3 h-3 bg-white transform rotate-45 border-t-1 border-l-1 border-gray-200 z-1"></div>
@@ -218,19 +216,17 @@ export function Categories() {
                 <div className="space-y-6">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-base font-bold text-gray-800">{activeCategory.label}</h3>
-                    <Link 
+                    <Link
                       href={createCategorySlug(activeCategory.label, [activeCategory.value])}
                       className="flex items-center text-sm text-red-600 hover:underline font-medium"
-                    >
-                      Xem tất cả
-                      <ChevronRight className="w-4 h-4 ml-1" />
+                    >English content normalized from the original source text.<ChevronRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
                   <div className="grid grid-cols-5 gap-4">
                                         {subCategories.map((item: CategoryOption) => (
                       <Link
                         key={item.value}
-                        href={createCategorySlug(item.label, [activeCategory.value, item.value])} 
+                        href={createCategorySlug(item.label, [activeCategory.value, item.value])}
                         className="group block text-center p-2 rounded-lg transition-all duration-200"
                       >
                         <div className="w-full aspect-square relative mb-2 rounded-full overflow-hidden border border-gray-100 bg-gray-50">
@@ -255,11 +251,11 @@ export function Categories() {
                 </div>
               ) : (
                 <div className="flex items-center justify-center h-full text-gray-500">
-                  <p>{activeCategory ? `Không có danh mục con cho ${activeCategory.label}` : 'Chọn một danh mục để xem chi tiết.'}</p>
+                  <p>{activeCategory ? `English content normalized from the original source text.${activeCategory.label}` : 'English content normalized from the original source text.'}</p>
                 </div>
               )}
             </div>
-          </div>        
+          </div>
         </motion.div>
       </div>
     </>

@@ -25,7 +25,7 @@ export class BrandTranslationService {
     }
     return {
       message: this.i18n.t('brand.brandTranslation.success.GET_DETAIL_SUCCESS'),
-      data: brand.data // Lấy .data thay vì trả nguyên object
+      data: brand.data // English content normalized from the original source text.
     }
   }
 

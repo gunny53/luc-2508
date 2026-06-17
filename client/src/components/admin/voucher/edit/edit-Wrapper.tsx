@@ -15,7 +15,7 @@ const VoucherEditDynamic = dynamic(
 
 export default function VoucherEditWrapper({ voucher, userData, onEditSuccess }: VoucherEditWrapperProps) {
   return (
-    <VoucherEditDynamic 
+    <VoucherEditDynamic
       voucher={voucher}
       userData={userData}
       onEditSuccess={onEditSuccess}

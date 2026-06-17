@@ -17,9 +17,7 @@ export class SearchSyncProducer {
 
   constructor(@InjectQueue(SEARCH_SYNC_QUEUE_NAME) private searchSyncQueue: Queue) {}
 
-  /**
-   * Enqueue job đồng bộ một sản phẩm
-   */
+  /* English content normalized from the original source text. */
   async enqueueSyncProduct(jobData: SyncProductJobType) {
     return this.searchSyncQueue.add(SYNC_PRODUCT_JOB, jobData, {
       jobId: generateSearchSyncJobId('product', jobData.productId),
@@ -27,9 +25,7 @@ export class SearchSyncProducer {
     })
   }
 
-  /**
-   * Enqueue job đồng bộ nhiều sản phẩm
-   */
+  /* English content normalized from the original source text. */
   async enqueueSyncProductsBatch(jobData: SyncProductsBatchJobType) {
     return this.searchSyncQueue.add(SYNC_PRODUCTS_BATCH_JOB, jobData, {
       jobId: generateSearchSyncJobId('batch', Date.now().toString()),
@@ -37,9 +33,7 @@ export class SearchSyncProducer {
     })
   }
 
-  /**
-   * Enqueue job xóa sản phẩm khỏi search index
-   */
+  /* English content normalized from the original source text. */
   async enqueueDeleteProduct(productId: string) {
     return this.searchSyncQueue.add(
       DELETE_PRODUCT_JOB,

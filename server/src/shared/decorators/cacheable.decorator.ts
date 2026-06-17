@@ -11,9 +11,7 @@ export interface CacheableOptions {
    */
   ttl?: number
 
-  /**
-   * Jitter TTL (giây) để tránh cache stampede. TTL cuối = ttl + random(0..ttlJitter)
-   */
+  /* English content normalized from the original source text. */
   ttlJitter?: number
 
   /**
@@ -31,10 +29,7 @@ export interface CacheableOptions {
    */
   serialize?: boolean
 
-  /**
-   * Stale-While-Revalidate window (giây). Nếu thiết lập, decorator sẽ lưu kèm
-   * expiresAt và staleUntil để có thể trả dữ liệu cũ và tái tạo nền.
-   */
+  /* English content normalized from the original source text. */
   staleTtl?: number
 
   /**
@@ -50,22 +45,7 @@ export interface CacheableOptions {
 
 export const REDIS_SERVICE_TOKEN = 'REDIS_SERVICE'
 
-/**
- * Decorator để cache kết quả của method với Redis
- *
- * @example
- * ```typescript
- * @Cacheable({
- *   key: 'user:profile',
- *   ttl: 600,
- *   scope: 'module',
- *   moduleName: 'UserModule'
- * })
- * async getUserProfile(userId: string) {
- *   return await this.userRepository.findOne(userId)
- * }
- * ```
- */
+/* English content normalized from the original source text. */
 export function Cacheable(options: CacheableOptions) {
   const logger = new Logger('CacheableDecorator')
   const inProgress = new Map<string, Promise<any>>()
@@ -89,7 +69,7 @@ export function Cacheable(options: CacheableOptions) {
         const cachedResult = await redisService.get(cacheKey)
         if (cachedResult !== null) {
           logger.debug(`Cache hit for key: ${cacheKey}`)
-          // Hỗ trợ SWR nếu có staleTtl: dữ liệu cache được lưu dạng wrapper { value, expiresAt, staleUntil }
+          // English content normalized from the original source text.
           if (
             options.staleTtl &&
             typeof cachedResult === 'object' &&
@@ -104,7 +84,7 @@ export function Cacheable(options: CacheableOptions) {
             }
             if (now >= expiresAt && now < staleUntil) {
               if (!inProgress.has(cacheKey)) {
-                // Soft lock phân tán: nếu lock đã tồn tại, không rebuild nền
+                // English content normalized from the original source text.
                 const lockKey = `rebuild:${cacheKey}`
                 const gotLock = await redisService.tryAcquireLock(lockKey, 10)
                 if (!gotLock) {
@@ -132,7 +112,7 @@ export function Cacheable(options: CacheableOptions) {
               }
               return cachedResult.value
             }
-            // Hết luôn SWR window → rebuild đồng bộ
+            // English content normalized from the original source text.
           } else {
             return options.serialize !== false ? cachedResult : JSON.parse(cachedResult)
           }
@@ -177,9 +157,7 @@ export function Cacheable(options: CacheableOptions) {
   }
 }
 
-/**
- * Build cache key từ options và method arguments
- */
+/* English content normalized from the original source text. */
 function buildCacheKey(options: CacheableOptions, args: any[]): string {
   let baseKey = options.key
 
@@ -210,10 +188,7 @@ function buildCacheKey(options: CacheableOptions, args: any[]): string {
   return baseKey
 }
 
-/**
- * Cache invalidation decorator
- * Xóa cache keys theo pattern khi method được execute
- */
+/* English content normalized from the original source text. */
 export function CacheEvict(pattern: string | string[]) {
   const logger = new Logger('CacheEvictDecorator')
 
@@ -248,10 +223,7 @@ export function CacheEvict(pattern: string | string[]) {
   }
 }
 
-/**
- * Cache put decorator
- * Luôn execute method và cache kết quả (update cache)
- */
+/* English content normalized from the original source text. */
 export function CachePut(options: CacheableOptions) {
   const logger = new Logger('CachePutDecorator')
 

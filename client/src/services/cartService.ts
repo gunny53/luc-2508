@@ -1,21 +1,15 @@
 import { publicAxios, privateAxios } from "@/lib/api";
 import { API_ENDPOINTS } from "@/constants/api";
-import { 
+import {
   CartResponse,
   CartItemRequest,
   UpdateCartItemRequest,
   DeleteCartRequest
 } from "@/types/cart.interface";
 
-/**
- * Service xử lý các thao tác với giỏ hàng
- */
+/* English content normalized from the original source text. */
 export const cartService = {
-  /**
-   * Lấy thông tin giỏ hàng của người dùng hiện tại
-   * @param params Query parameters (có thể bao gồm limit, page, etc.)
-   * @returns Promise với thông tin giỏ hàng
-   */
+  /* English content normalized from the original source text. */
   getCart: async (params?: { limit?: number; page?: number; [key: string]: any }): Promise<CartResponse> => {
     try {
       const response = await privateAxios.get(API_ENDPOINTS.CART.GET_CART, { params });
@@ -26,11 +20,7 @@ export const cartService = {
     }
   },
 
-  /**
-   * Thêm sản phẩm vào giỏ hàng
-   * @param data Thông tin sản phẩm cần thêm (skuId và quantity)
-   * @returns Promise với thông tin giỏ hàng đã cập nhật
-   */
+  /* English content normalized from the original source text. */
   addToCart: async (data: CartItemRequest): Promise<CartResponse> => {
     try {
       const response = await privateAxios.post(API_ENDPOINTS.CART.ADD_TO_CART, data);
@@ -41,12 +31,7 @@ export const cartService = {
     }
   },
 
-  /**
-   * Cập nhật một sản phẩm trong giỏ hàng
-   * @param itemId ID của item cần cập nhật
-   * @param data Thông tin cần cập nhật (số lượng hoặc trạng thái chọn)
-   * @returns Promise với thông tin giỏ hàng đã cập nhật
-   */
+  /* English content normalized from the original source text. */
   updateCartItem: async (itemId: string, data: UpdateCartItemRequest): Promise<CartResponse> => {
     try {
       const url = API_ENDPOINTS.CART.UPDATE_CART_ITEM.replace(":id", itemId);
@@ -58,11 +43,7 @@ export const cartService = {
     }
   },
 
-  /**
-   * Xóa một hoặc nhiều sản phẩm khỏi giỏ hàng
-   * @param data Danh sách ID của các item cần xóa
-   * @returns Promise với thông tin giỏ hàng đã cập nhật
-   */
+  /* English content normalized from the original source text. */
   deleteCartItems: async (data: DeleteCartRequest): Promise<CartResponse> => {
     try {
       const response = await privateAxios.post(API_ENDPOINTS.CART.DELETE_CART, data);
@@ -72,12 +53,8 @@ export const cartService = {
       throw error;
     }
   },
-  
-  /**
-   * Chọn tất cả các sản phẩm trong giỏ hàng
-   * @param isSelected Trạng thái chọn (true/false)
-   * @returns Promise với thông tin giỏ hàng đã cập nhật
-   */
+
+  /* English content normalized from the original source text. */
   selectAllItems: async (isSelected: boolean): Promise<CartResponse> => {
     try {
       const response = await privateAxios.patch(API_ENDPOINTS.CART.GET_CART, { isSelected });

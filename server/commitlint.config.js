@@ -16,7 +16,7 @@ module.exports = {
     'body-leading-blank': [1, 'always'],
     'footer-leading-blank': [1, 'always'],
     'header-max-length': [2, 'always', 100]
-    // Optional: enforce references (nếu bạn liên kết commit với Jira/GitHub Issues)
+    // English content normalized from the original source text.
     // 'references-empty': [2, 'never'],
   }
 }

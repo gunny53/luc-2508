@@ -18,9 +18,7 @@ import { AccessTokenPayload } from 'src/shared/types/jwt.type'
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
-  /**
-   * 📂 Category tree với hierarchical caching - categories rất ít thay đổi
-   */
+  /* English content normalized from the original source text. */
   @Get()
   @IsPublic()
   @ZodSerializerDto(GetAllCategoriesResDTO)
@@ -31,9 +29,7 @@ export class CategoryController {
     return this.categoryService.findAll(query.parentCategoryId)
   }
 
-  /**
-   * 🎯 Category detail với stable caching - category info rất ổn định
-   */
+  /* English content normalized from the original source text. */
   @Get(':categoryId')
   @IsPublic()
   @ZodSerializerDto(GetCategoryDetailResDTO)

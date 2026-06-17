@@ -15,7 +15,7 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
   const [currentStep, setCurrentStep] = useState<'select' | 'payment'>('select');
   const [paymentMethod, setPaymentMethod] = useState<string>('');
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
-  
+
   const {
     isLoading,
     order,
@@ -32,7 +32,7 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
     if (orderId) {
       loadOrderForRetry(orderId);
     }
-    
+
     return () => {
       resetRetryState();
     };
@@ -43,9 +43,9 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
     setSelectedMethod(method);
     setPaymentMethod(method);
     updatePaymentMethod(method);
-    
+
     const result = await handleRetryPayment(orderId, method);
-    
+
     if (result?.success) {
       if (method === 'vnpay' && result.paymentUrl) {
         // Redirect to VNPay
@@ -79,8 +79,8 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
               <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Đang tải thông tin</h2>
-            <p className="text-gray-600 text-center">Vui lòng đợi trong giây lát...</p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">English content normalized from the original source text.</h2>
+            <p className="text-gray-600 text-center">English content normalized from the original source text.</p>
           </div>
         </div>
       </div>
@@ -96,18 +96,14 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
               <AlertCircle className="w-8 h-8 text-red-600" />
             </div>
-            <h2 className="text-xl font-semibold text-red-600 mb-2">Không tìm thấy đơn hàng</h2>
-            <p className="text-gray-600">
-              Đơn hàng không tồn tại hoặc không thể thanh toán lại
-            </p>
+            <h2 className="text-xl font-semibold text-red-600 mb-2">English content normalized from the original source text.</h2>
+            <p className="text-gray-600">English content normalized from the original source text.</p>
           </div>
           <button
             onClick={handleGoBack}
             className="w-full px-4 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Quay lại danh sách đơn hàng
-          </button>
+            <ArrowLeft className="w-4 h-4" />English content normalized from the original source text.</button>
         </div>
       </div>
     );
@@ -124,13 +120,11 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
               onClick={handleBackToSelect}
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 shadow-sm mb-6"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Chọn lại phương thức
-            </button>
-            
+              <ArrowLeft className="w-4 h-4" />English content normalized from the original source text.</button>
+
             <div className="text-center">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Thanh toán lại đơn hàng</h1>
-              <p className="text-gray-600 text-lg">Đơn hàng #{order.paymentId}</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">English content normalized from the original source text.</h1>
+              <p className="text-gray-600 text-lg">English content normalized from the original source text.{order.paymentId}</p>
             </div>
           </div>
 
@@ -161,16 +155,14 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
             onClick={handleGoBack}
             className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 shadow-sm mb-6"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Quay lại chi tiết
-          </button>
-          
+            <ArrowLeft className="w-4 h-4" />English content normalized from the original source text.</button>
+
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
               <CreditCard className="w-8 h-8 text-blue-600" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Thanh toán lại đơn hàng</h1>
-            <p className="text-gray-600 text-lg">Chọn phương thức thanh toán phù hợp</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">English content normalized from the original source text.</h1>
+            <p className="text-gray-600 text-lg">English content normalized from the original source text.</p>
           </div>
         </div>
 
@@ -178,14 +170,14 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 mb-8 overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-white">Thông tin đơn hàng</h2>
+              <h2 className="text-xl font-semibold text-white">English content normalized from the original source text.</h2>
               <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
                 <Clock className="w-4 h-4 text-white" />
-                <span className="text-white text-sm font-medium">Chờ thanh toán</span>
+                <span className="text-white text-sm font-medium">English content normalized from the original source text.</span>
               </div>
             </div>
           </div>
-          
+
           <div className="p-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between py-3 border-b border-gray-100">
@@ -193,29 +185,29 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
                   <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
                     <span className="text-blue-600 font-semibold text-sm">#</span>
                   </div>
-                  <span className="text-gray-600 font-medium">Mã đơn hàng</span>
+                  <span className="text-gray-600 font-medium">English content normalized from the original source text.</span>
                 </div>
                 <span className="font-semibold text-gray-900">#{order.paymentId}</span>
               </div>
-              
+
               <div className="flex items-center justify-between py-3 border-b border-gray-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
                     <span className="text-green-600 font-semibold text-lg">₫</span>
                   </div>
-                  <span className="text-gray-600 font-medium">Tổng tiền</span>
+                  <span className="text-gray-600 font-medium">English content normalized from the original source text.</span>
                 </div>
                 <span className="font-bold text-2xl text-red-600">
-                  {order.totalPayment.toLocaleString()}đ
+                  {order.totalPayment.toLocaleString()}English content normalized from the original source text.
                 </span>
               </div>
-              
+
               <div className="flex items-center justify-between py-3">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
                     <User className="w-5 h-5 text-purple-600" />
                   </div>
-                  <span className="text-gray-600 font-medium">Người nhận</span>
+                  <span className="text-gray-600 font-medium">English content normalized from the original source text.</span>
                 </div>
                 <span className="font-semibold text-gray-900">{order.receiver?.name}</span>
               </div>
@@ -226,16 +218,16 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
         {/* Payment Methods */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
           <div className="px-6 py-5 border-b border-gray-100">
-            <h2 className="text-xl font-semibold text-gray-900 mb-1">Chọn phương thức thanh toán</h2>
-            <p className="text-gray-600">Vui lòng chọn một phương thức thanh toán để tiếp tục</p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-1">English content normalized from the original source text.</h2>
+            <p className="text-gray-600">English content normalized from the original source text.</p>
           </div>
-          
+
           <div className="p-6 space-y-4">
             {/* Sepay QR Payment */}
             <button
               className={`w-full p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-md ${
-                selectedMethod === 'sepay' 
-                  ? 'border-red-500 bg-red-50 shadow-lg opacity-50' 
+                selectedMethod === 'sepay'
+                  ? 'border-red-500 bg-red-50 shadow-lg opacity-50'
                   : 'border-gray-200 bg-white hover:border-red-300'
               }`}
               onClick={() => handlePaymentMethodSelect('sepay')}
@@ -252,19 +244,17 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
                   )}
                 </div>
                 <div className="text-left flex-1">
-                  <div className="font-bold text-lg text-gray-900 mb-1">Chuyển khoản QR</div>
-                  <div className="text-gray-600 mb-2">
-                    Quét mã QR để thanh toán qua ngân hàng
-                  </div>
+                  <div className="font-bold text-lg text-gray-900 mb-1">English content normalized from the original source text.</div>
+                  <div className="text-gray-600 mb-2">English content normalized from the original source text.</div>
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-green-600 font-medium">Bảo mật cao</span>
+                    <span className="text-sm text-green-600 font-medium">English content normalized from the original source text.</span>
                   </div>
                 </div>
               </div>
               {selectedMethod === 'sepay' && (
                 <div className="mt-4 flex items-center justify-center">
-                  <span className="text-red-600 font-medium">Đang xử lý...</span>
+                  <span className="text-red-600 font-medium">English content normalized from the original source text.</span>
                 </div>
               )}
             </button>
@@ -272,8 +262,8 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
             {/* VNPay Payment */}
             <button
               className={`w-full p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-md ${
-                selectedMethod === 'vnpay' 
-                  ? 'border-blue-500 bg-blue-50 shadow-lg opacity-50' 
+                selectedMethod === 'vnpay'
+                  ? 'border-blue-500 bg-blue-50 shadow-lg opacity-50'
                   : 'border-gray-200 bg-white hover:border-blue-300'
               }`}
               onClick={() => handlePaymentMethodSelect('vnpay')}
@@ -291,18 +281,16 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
                 </div>
                 <div className="text-left flex-1">
                   <div className="font-bold text-lg text-gray-900 mb-1">VNPay</div>
-                  <div className="text-gray-600 mb-2">
-                    Thanh toán qua thẻ ATM, Visa, MasterCard
-                  </div>
+                  <div className="text-gray-600 mb-2">English content normalized from the original source text.</div>
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-green-600 font-medium">Được bảo vệ bởi VNPay</span>
+                    <span className="text-sm text-green-600 font-medium">English content normalized from the original source text.</span>
                   </div>
                 </div>
               </div>
               {selectedMethod === 'vnpay' && (
                 <div className="mt-4 flex items-center justify-center">
-                  <span className="text-blue-600 font-medium">Đang chuyển hướng...</span>
+                  <span className="text-blue-600 font-medium">English content normalized from the original source text.</span>
                 </div>
               )}
             </button>
@@ -314,11 +302,8 @@ export default function RetryPaymentPage({ orderId }: RetryPaymentPageProps) {
           <div className="flex items-start gap-3">
             <ShieldCheck className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
             <div>
-              <h3 className="font-semibold text-green-900 mb-1">Thanh toán an toàn</h3>
-              <p className="text-sm text-green-700">
-                Thông tin thanh toán của bạn được bảo vệ bằng công nghệ mã hóa SSL 256-bit. 
-                Chúng tôi không lưu trữ thông tin thẻ của bạn.
-              </p>
+              <h3 className="font-semibold text-green-900 mb-1">English content normalized from the original source text.</h3>
+              <p className="text-sm text-green-700">English content normalized from the original source text.</p>
             </div>
           </div>
         </div>

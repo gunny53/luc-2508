@@ -40,7 +40,7 @@ export default function SearchMobileIndex({
           <ShopSuggestion />
           {keyword && (
             <div className="text-sm text-gray-500">
-              Kết quả tìm kiếm cho từ khoá '{keyword}'
+              English content normalized from the original source text. '{keyword}'
             </div>
           )}
           <SearchSortBar />

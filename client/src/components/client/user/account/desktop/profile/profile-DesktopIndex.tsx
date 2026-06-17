@@ -55,7 +55,7 @@
 
 //   const firstName = user?.firstName || "";
 //   const lastName = user?.lastName || "";
-//   const name = user?.name || "Khách";
+// English content normalized from the original source text.
 //   const phoneNumber = user?.phoneNumber || t("user.account.profile.noPhone");
 //   const avatar = user?.avatar || "";
 //   const avatarText = name[0]?.toUpperCase() || "U";

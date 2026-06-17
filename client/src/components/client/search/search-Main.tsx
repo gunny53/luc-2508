@@ -4,7 +4,7 @@ import { useCheckDevice } from "@/hooks/useCheckDevices";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// Lazy load các component để tối ưu performance
+// English content normalized from the original source text.
 const SearchDesktopIndex = dynamic(() => import("@/components/client/search/desktop/search-Index"), {
   loading: () => <Skeleton className="w-full h-full" />,
   ssr: false,
@@ -26,7 +26,7 @@ export function SearchContent({ categoryIds = [], currentCategoryId }: SearchCon
   return (
     <div className="w-full h-full">
       {isMobileView ? (
-        <SearchMobileIndex categoryIds={categoryIds} currentCategoryId={currentCategoryId} /> 
+        <SearchMobileIndex categoryIds={categoryIds} currentCategoryId={currentCategoryId} />
       ) : (
         <SearchDesktopIndex categoryIds={categoryIds} currentCategoryId={currentCategoryId} />
       )}

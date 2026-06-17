@@ -54,10 +54,10 @@
 
 //   const handleLimitChange = (newLimit: number) => {
 //     setLimit(newLimit);
-//     getAllAuditLogs({ metadata: { page: 1, limit: newLimit } }); // Reset về trang 1 khi thay đổi limit
+// English content normalized from the original source text.
 //   };
 
-//   // Xử lý click vào row để mở modal
+// English content normalized from the original source text.
 //   const handleRowClick = (row: any) => {
 //     setSelectedLog(row.original);
 //     setModalOpen(true);
@@ -92,7 +92,7 @@
 //       {totalPages > 0 && (
 //         <Pagination
 //           limit={limit}
-//           page={page} // Đảm bảo page từ API
+// English content normalized from the original source text.
 //           totalPages={totalPages}
 //           totalRecords={totalItems}
 //           onPageChange={handlePageChange}

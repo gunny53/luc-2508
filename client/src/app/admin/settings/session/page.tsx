@@ -7,4 +7,4 @@ export default function PasswordSecuritySessionPage() {
             <PasswordSecuritySessionWrapper />
         </div>
     )
-} 
+}

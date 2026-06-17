@@ -4,7 +4,7 @@
 // export const mockCategoryData: CategoryTableData[] = [
 //   {
 //     id: "1",
-//     name: "Thời trang",
+// English content normalized from the original source text.
 //     isActive: true,
 //     createdAt: "2025-07-01T10:00:00Z",
 //     updatedAt: "2025-07-01T10:00:00Z",
@@ -12,7 +12,7 @@
 //     children: [
 //       {
 //         id: "2",
-//         name: "Áo thun",
+// English content normalized from the original source text.
 //         isActive: true,
 //         createdAt: "2025-07-01T10:10:00Z",
 //         updatedAt: "2025-07-01T10:10:00Z",
@@ -21,7 +21,7 @@
 //       },
 //       {
 //         id: "3",
-//         name: "Quần jean",
+// English content normalized from the original source text.
 //         isActive: false,
 //         createdAt: "2025-07-01T10:20:00Z",
 //         updatedAt: "2025-07-01T10:20:00Z",
@@ -32,7 +32,7 @@
 //   },
 //   {
 //     id: "5",
-//     name: "Giày dép",
+// English content normalized from the original source text.
 //     isActive: true,
 //     createdAt: "2025-07-01T11:00:00Z",
 //     updatedAt: "2025-07-01T11:00:00Z",

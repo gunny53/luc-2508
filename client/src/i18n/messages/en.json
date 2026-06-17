@@ -1307,7 +1307,7 @@
     "settings": {
       "title": "Settings",
       "subtitle": "Your account is protected",
-      "description": "Shopsifu protects your personal information and keeps it private, safe and secure.",
+      "description": "ECSite protects your personal information and keeps it private, safe and secure.",
 
       "items": {
         "Account security": "Account Security",
@@ -1348,7 +1348,7 @@
     "account": {
       "profile": {
         "protected": "Your account is protected",
-        "protectionDescription": "Your Shopsifu account is protected by advanced security. Keeping this information up-to-date safeguards your account even more.",
+        "protectionDescription": "Your ECSite account is protected by advanced security. Keeping this information up-to-date safeguards your account even more.",
 
         "profile": "Profile",
         "policy": "Policies",
@@ -1445,11 +1445,11 @@
         "secure": "Secure payment",
         "convenient": "Convenient payment",
         "addNewCard": "Add a credit or debit card",
-        "cardSecurityTitle": "Shopsifu protects your card information",
-        "compliesPCI": "Shopsifu follows the Payment Card Industry Data Security Standard (PCI DSS) when handling card data",
+        "cardSecurityTitle": "ECSite protects your card information",
+        "compliesPCI": "ECSite follows the Payment Card Industry Data Security Standard (PCI DSS) when handling card data",
         "secureInfo": "Card information is secure and uncompromised",
         "encryptedAgain": "All data is encrypted",
-        "noSellInfo": "Shopsifu never sells your card information",
+        "noSellInfo": "ECSite never sells your card information",
         "secureTrustedTitle": "Secure & trusted",
         "secureTrustedDesc": "Your security is our top priority. To keep you safe, we use a market-leading risk and fraud protection system for every transaction.",
         "needHelp": "Need help with a security issue?",

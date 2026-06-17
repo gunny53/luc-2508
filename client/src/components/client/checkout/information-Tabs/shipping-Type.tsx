@@ -13,13 +13,11 @@ export function ShippingType({ deliveryMethod, handleRadioChange }: ShippingType
   return (
     <Card className='shadow-none'>
       <CardHeader className="pb-3">
-        <CardTitle className="text-base font-semibold">Phương thức vận chuyển</CardTitle>
-        <CardDescription className="text-sm font-light">
-          Chọn phương thức vận chuyển phù hợp với bạn
-        </CardDescription>
+        <CardTitle className="text-base font-semibold">English content normalized from the original source text.</CardTitle>
+        <CardDescription className="text-sm font-light">English content normalized from the original source text.</CardDescription>
       </CardHeader>
       <CardContent>
-        <RadioGroup 
+        <RadioGroup
           value={deliveryMethod}
           onValueChange={handleRadioChange}
           className="space-y-3"
@@ -29,8 +27,8 @@ export function ShippingType({ deliveryMethod, handleRadioChange }: ShippingType
             <div className="flex-1">
               <Label htmlFor="delivery-standard" className="flex justify-between cursor-pointer">
                 <div>
-                  <div className="text-sm font-medium">Giao hàng tiêu chuẩn</div>
-                  <div className="text-xs text-gray-500">Nhận hàng trong 3-5 ngày</div>
+                  <div className="text-sm font-medium">English content normalized from the original source text.</div>
+                  <div className="text-xs text-gray-500">English content normalized from the original source text.</div>
                 </div>
                 <div className="text-sm font-medium">30.000₫</div>
               </Label>
@@ -41,8 +39,8 @@ export function ShippingType({ deliveryMethod, handleRadioChange }: ShippingType
             <div className="flex-1">
               <Label htmlFor="delivery-express" className="flex justify-between cursor-pointer">
                 <div>
-                  <div className="text-sm font-medium">Giao hàng nhanh</div>
-                  <div className="text-xs text-gray-500">Nhận hàng trong 1-2 ngày</div>
+                  <div className="text-sm font-medium">English content normalized from the original source text.</div>
+                  <div className="text-xs text-gray-500">English content normalized from the original source text.</div>
                 </div>
                 <div className="text-sm font-medium">50.000₫</div>
               </Label>

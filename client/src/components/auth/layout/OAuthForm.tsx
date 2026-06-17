@@ -24,8 +24,8 @@ export function OAuthForm({ className, type = 'signin' }: OAuthFormProps) {
       window.location.replace(url);
     } catch (error) {
       console.error('Google auth error:', error)
-      setError('Có lỗi xảy ra khi đăng nhập bằng Google')
-      toast.error('Có lỗi xảy ra khi đăng nhập bằng Google')
+      setError('English content normalized from the original source text.')
+      toast.error('English content normalized from the original source text.')
     }
   }
 

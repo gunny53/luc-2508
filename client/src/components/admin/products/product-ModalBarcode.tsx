@@ -25,7 +25,7 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
 
   if (!product) return null;
 
-  // Tạo barcode ngắn từ ID sản phẩm
+  // English content normalized from the original source text.
   const barcodeValue = product.id.toString().padStart(6, '0');
 
   const handleDownload = () => {
@@ -36,23 +36,23 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
         const ctx = canvas.getContext('2d');
         const serializer = new XMLSerializer();
         const svgString = serializer.serializeToString(svg);
-        
+
         const img = new Image();
         const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
         const url = URL.createObjectURL(svgBlob);
-        
+
         img.onload = () => {
           canvas.width = img.width;
           canvas.height = img.height;
           ctx?.drawImage(img, 0, 0);
           URL.revokeObjectURL(url);
-          
+
           const link = document.createElement('a');
           link.download = `barcode-${product.id}.png`;
           link.href = canvas.toDataURL();
           link.click();
         };
-        
+
         img.src = url;
       }
     }
@@ -65,32 +65,7 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
       printWindow.document.write(`
         <html>
           <head>
-            <title>Barcode - ${product.name}</title>
-            <style>
-              body { 
-                font-family: Arial, sans-serif; 
-                display: flex; 
-                justify-content: center; 
-                align-items: center; 
-                min-height: 100vh; 
-                margin: 0;
-                background: white;
-              }
-              .barcode-container { 
-                text-align: center; 
-                padding: 20px;
-                border: 1px solid #ddd;
-              }
-              .product-info { 
-                margin-top: 15px; 
-                font-size: 14px; 
-              }
-            </style>
-          </head>
-          <body>
-            <div class="barcode-container">
-              <h3>Mã vạch sản phẩm</h3>
-              ${barcodeContent}
+            <title>Barcode - ${product.name}English content normalized from the original source text.${barcodeContent}
               <div class="product-info">
                 <strong>${product.name}</strong><br>
                 ID: ${product.id}
@@ -109,56 +84,50 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
   <DialogContent className="w-auto max-w-[90vw] sm:max-w-lg max-h-[90vh] overflow-hidden">
     <DialogHeader>
       <DialogTitle className="flex items-center gap-2">
-        <QrCode className="h-5 w-5" />
-        Mã vạch sản phẩm
-      </DialogTitle>
+        <QrCode className="h-5 w-5" />English content normalized from the original source text.</DialogTitle>
       <DialogDescription>
-        Mã vạch được tạo từ ID sản phẩm: {product.id}
+        English content normalized from the original source text. {product.id}
       </DialogDescription>
     </DialogHeader>
-    
+
     <div className="flex flex-col items-center space-y-4 py-6 overflow-hidden">
       {/* Barcode container with proper sizing */}
-      <div 
-        className="bg-white p-4 border rounded-lg shadow-sm w-full max-w-full overflow-hidden flex justify-center" 
+      <div
+        className="bg-white p-4 border rounded-lg shadow-sm w-full max-w-full overflow-hidden flex justify-center"
         ref={barcodeRef}
       >
         <div className="max-w-full overflow-hidden flex justify-center">
-          <Barcode 
+          <Barcode
             value={barcodeValue}
-            width={1}                // giảm width để tránh tràn
-            height={60}              // giảm height cho phù hợp
-            fontSize={12}            // giảm font size
+            width={1}                // English content normalized from the original source text.
+            height={60}              // English content normalized from the original source text.
+            fontSize={12}            // English content normalized from the original source text.
             background="white"
             lineColor="black"
-            margin={5}               // thêm margin nhỏ
-            displayValue={true}      // hiển thị giá trị
+            margin={5}               // English content normalized from the original source text.
+            displayValue={true}      // English content normalized from the original source text.
           />
         </div>
       </div>
-      
+
       <div className="text-center text-sm text-gray-600 space-y-1 w-full px-2">
         <div className="font-semibold text-base break-words">{product.name}</div>
         <div className="break-all">ID: {product.id}</div>
-        <div>Giá: {new Intl.NumberFormat('vi-VN', { 
-          style: 'currency', 
-          currency: 'VND' 
+        <div>English content normalized from the original source text. {new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND'
         }).format(product.price || 0)}</div>
       </div>
     </div>
-    
+
     <div className="flex flex-wrap justify-center gap-2 pt-4">
       <Button variant="outline" size="sm" onClick={handleDownload}>
-        <Download className="h-4 w-4 mr-2" />
-        Tải xuống
-      </Button>
+        <Download className="h-4 w-4 mr-2" />English content normalized from the original source text.</Button>
       <Button variant="outline" size="sm" onClick={handlePrint}>
         <Printer className="h-4 w-4 mr-2" />
         In
       </Button>
-      <Button onClick={onClose}>
-        Đóng
-      </Button>
+      <Button onClick={onClose}>English content normalized from the original source text.</Button>
     </div>
   </DialogContent>
 </Dialog>

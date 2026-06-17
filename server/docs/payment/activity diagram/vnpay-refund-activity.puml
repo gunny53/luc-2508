@@ -6,18 +6,18 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /payment/vnpay/refund
+English content normalized from the original source text.
 
 start
-:Nhận refundData { orderId, orderInfo, amount, requestId, transactionNo, ipAddr, createBy };
+:English content normalized from the original source text;
 :Build refundRequest (vnp_RequestId, vnp_TxnRef, ...);
-:Gọi VnpayService.refund(refundRequest);
-if (Thành công?) then (Có)
-  :Map kết quả → dữ liệu trả về;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   :Build message i18n;
-  :Trả về 200 { message, data };
-else (Không)
-  :Ném lỗi theo case: already processed / not found / service unavailable;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

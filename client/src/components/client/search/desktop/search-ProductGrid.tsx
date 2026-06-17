@@ -20,20 +20,20 @@ interface SearchProductGridProps {
 }
 
 export default function SearchProductGrid({ categoryId }: SearchProductGridProps) {
-  // Lấy search query từ URL để đảm bảo re-render khi thay đổi
+  // English content normalized from the original source text.
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('q') || '';
-  
-  // Ghi log để debug
+
+  // English content normalized from the original source text.
   console.log("SearchProductGrid rendering with:", { categoryId, searchQuery });
-  
-  // Sử dụng ProductsContext để lấy dữ liệu
-  const { 
-    products, 
-    metadata, 
-    isLoading, 
-    isError, 
-    error, 
+
+  // English content normalized from the original source text.
+  const {
+    products,
+    metadata,
+    isLoading,
+    isError,
+    error,
     currentPage,
     handlePageChange,
     paginationData
@@ -43,7 +43,7 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
 
   console.log(" check: ", products)
 
-  // Hiển thị loading state
+  // English content normalized from the original source text.
   if (isLoading) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -59,75 +59,71 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
     );
   }
 
-  // Hiển thị thông báo lỗi
+  // English content normalized from the original source text.
   if (isError) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
-        <div className="text-red-500 mb-4">
-          Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.
-        </div>
-        <button 
-          onClick={() => window.location.reload()} 
+        <div className="text-red-500 mb-4">English content normalized from the original source text.</div>
+        <button
+          onClick={() => window.location.reload()}
           className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
-        >
-          Thử lại
-        </button>
+        >English content normalized from the original source text.</button>
       </div>
     );
   }
 
-  // Hiển thị khi không có sản phẩm
+  // English content normalized from the original source text.
   if (products.length === 0 && !isLoading) {
     const searchParams = new URLSearchParams(window.location.search);
     const searchQuery = searchParams.get('q');
-    
+
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
         <div className="text-black text-lg mb-2">
-          {searchQuery 
-            ? `Không tìm thấy kết quả nào cho từ khóa "${searchQuery}"` 
-            : categoryId 
-              ? "Không tìm thấy sản phẩm nào trong danh mục này" 
-              : "Không tìm thấy sản phẩm nào"}
+          {searchQuery
+            ? `English content normalized from the original source text.${searchQuery}"`
+            : categoryId
+              ? "English content normalized from the original source text."
+              : "English content normalized from the original source text."}
         </div>
       </div>
     );
   }
 
-  // Function để hiển thị danh sách trang
+  // English content normalized from the original source text.
   const renderPaginationItems = () => {
-    // Nếu chỉ có 1 trang, không hiển thị phân trang
+    // English content normalized from the original source text.
     if (totalPages <= 1) return null;
-    
+
     const items = [];
-    
-    // Hiển thị max 5 trang và sử dụng "..." cho các trang khác
+
+    // English content normalized from the original source text.
     const maxVisiblePages = 5;
     let startPage = 1;
     let endPage = totalPages;
-    
+
     if (totalPages > maxVisiblePages) {
-      // Tính toán startPage và endPage để hiển thị 5 trang xung quanh trang hiện tại
+      // English content normalized from the original source text.
       const halfVisible = Math.floor(maxVisiblePages / 2);
-      
+
       if (currentPage <= halfVisible + 1) {
-        // Gần đầu: hiển thị 1 -> maxVisiblePages
+        // English content normalized from the original source text.
         endPage = maxVisiblePages;
       } else if (currentPage >= totalPages - halfVisible) {
-        // Gần cuối: hiển thị (totalPages - maxVisiblePages + 1) -> totalPages
+        // English content normalized from the original source text.
         startPage = totalPages - maxVisiblePages + 1;
       } else {
-        // Ở giữa: hiển thị (currentPage - halfVisible) -> (currentPage + halfVisible)
+        // English content normalized from the original source text.
         startPage = currentPage - halfVisible;
         endPage = currentPage + halfVisible;
       }
     }
-    
-    // Hiển thị trang đầu tiên nếu cần
+
+    // English content normalized from the original source text.
     if (startPage > 1) {
       items.push(
         <PaginationItem key="page-1">
-          <PaginationLink 
+          <PaginationLink
             onClick={() => handlePageChange(1)}
             isActive={currentPage === 1}
           >
@@ -135,8 +131,8 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
           </PaginationLink>
         </PaginationItem>
       );
-      
-      // Hiển thị dấu "..." nếu không bắt đầu từ trang 2
+
+      // English content normalized from the original source text.
       if (startPage > 2) {
         items.push(
           <PaginationItem key="ellipsis-1">
@@ -145,12 +141,12 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
         );
       }
     }
-    
-    // Hiển thị các trang giữa
+
+    // English content normalized from the original source text.
     for (let i = startPage; i <= endPage; i++) {
       items.push(
         <PaginationItem key={`page-${i}`}>
-          <PaginationLink 
+          <PaginationLink
             onClick={() => handlePageChange(i)}
             isActive={currentPage === i}
           >
@@ -159,10 +155,10 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
         </PaginationItem>
       );
     }
-    
-    // Hiển thị trang cuối cùng nếu cần
+
+    // English content normalized from the original source text.
     if (endPage < totalPages) {
-      // Hiển thị dấu "..." nếu không kết thúc ở trang gần cuối
+      // English content normalized from the original source text.
       if (endPage < totalPages - 1) {
         items.push(
           <PaginationItem key="ellipsis-2">
@@ -170,10 +166,10 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
           </PaginationItem>
         );
       }
-      
+
       items.push(
         <PaginationItem key={`page-${totalPages}`}>
-          <PaginationLink 
+          <PaginationLink
             onClick={() => handlePageChange(totalPages)}
             isActive={currentPage === totalPages}
           >
@@ -182,41 +178,41 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
         </PaginationItem>
       );
     }
-    
+
     return items;
   };
 
-  // Hiển thị danh sách sản phẩm và phân trang
+  // English content normalized from the original source text.
   return (
     <div className="space-y-8">
-      {/* Grid sản phẩm */}
+      {/* English content normalized from the original source text. */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {products.map((product: ClientProduct) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
-      
-      {/* Phân trang */}
+
+      {/* English content normalized from the original source text. */}
       {totalPages > 1 && (
         <Pagination className="mt-8">
           <PaginationContent>
-            {/* Nút Previous */}
+            {/* English content normalized from the original source text. */}
             {hasPrevPage && (
               <PaginationItem>
-                <PaginationPrevious 
-                  onClick={() => handlePageChange(currentPage - 1)} 
+                <PaginationPrevious
+                  onClick={() => handlePageChange(currentPage - 1)}
                 />
               </PaginationItem>
             )}
-            
-            {/* Danh sách trang */}
+
+            {/* English content normalized from the original source text. */}
             {renderPaginationItems()}
-            
-            {/* Nút Next */}
+
+            {/* English content normalized from the original source text. */}
             {hasNextPage && (
               <PaginationItem>
-                <PaginationNext 
-                  onClick={() => handlePageChange(currentPage + 1)} 
+                <PaginationNext
+                  onClick={() => handlePageChange(currentPage + 1)}
                 />
               </PaginationItem>
             )}

@@ -49,7 +49,7 @@ const iconConfigs: Record<PaymentType, IconConfig> = {
       background: '#ffffff'
     }
   }
-  
+
 } as const;
 
 export interface PaymentIconProps {

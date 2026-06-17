@@ -3,7 +3,7 @@
 // export const mockUsers: User[] = [
 //   {
 //     id: '1',
-//     name: 'Nguyễn Văn A',
+// English content normalized from the original source text.
 //     email: 'a@example.com',
 //     role: 'admin',
 //     status: 'active',
@@ -12,7 +12,7 @@
 //   },
 //   {
 //     id: '2',
-//     name: 'Trần Thị B',
+// English content normalized from the original source text.
 //     email: 'b@example.com',
 //     role: 'user',
 //     status: 'inactive',
@@ -20,7 +20,7 @@
 //   },
 //   {
 //     id: '3',
-//     name: 'Lê Văn C',
+// English content normalized from the original source text.
 //     email: 'c@example.com',
 //     role: 'editor',
 //     status: 'pending',

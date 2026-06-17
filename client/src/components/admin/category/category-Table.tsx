@@ -25,18 +25,18 @@ export function CategoryTable() {
     handleSearch,
     handleSortChange,
     refreshData,
-    
+
     // Modal states
     upsertOpen,
     modalMode,
     categoryToEdit,
     handleOpenUpsertModal,
     handleCloseUpsertModal,
-    
+
     // CRUD functions
     addCategory,
     editCategory,
-    
+
     // Delete state & handlers
     deleteOpen,
     categoryToDelete,
@@ -44,7 +44,7 @@ export function CategoryTable() {
     handleOpenDelete,
     handleConfirmDelete,
     handleCloseDeleteModal,
-    
+
     // Navigation
     currentParentId,
     breadcrumb,
@@ -57,12 +57,12 @@ export function CategoryTable() {
   const handleCreateCategory = () => {
     handleOpenUpsertModal('add');
   };
-  
+
   const columns = CategoryColumns({
     onEdit: (category) => handleOpenUpsertModal('edit', category),
     onDelete: handleOpenDelete,
   });
-  
+
   const table = useDataTable({
     data: categories || [],
     columns,
@@ -94,25 +94,25 @@ export function CategoryTable() {
       {/* Breadcrumb navigation */}
       {(currentParentId !== null || breadcrumb.length > 0) && (
         <div className="flex items-center gap-2 mb-2 bg-muted/30 p-2 rounded-md">
-          <Button 
-            variant="ghost" 
-            size="sm" 
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={handleBackToRoot}
             className="flex items-center gap-1 hover:bg-muted"
           >
             <ChevronLeft className="h-4 w-4" />
             {t("backToRoot")}
           </Button>
-          
+
           {breadcrumb.length > 0 && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span className="px-1">/</span>
               {breadcrumb.map((crumb, index) => (
                 <div key={crumb.id} className="flex items-center">
                   {index > 0 && <ChevronRight className="h-3 w-3 mx-1" />}
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
+                  <Button
+                    variant="ghost"
+                    size="sm"
                     className="px-1 py-0 h-auto text-sm hover:bg-muted"
                     onClick={() => handleBreadcrumbClick(index)}
                   >
@@ -122,7 +122,7 @@ export function CategoryTable() {
               ))}
             </div>
           )}
-          
+
           {currentCategoryTitle && (
             <div className="ml-auto text-sm font-medium">
               {t("currentCategory")}: {currentCategoryTitle}

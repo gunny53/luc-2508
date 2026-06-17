@@ -48,7 +48,7 @@ export class AuthController {
   @Post('login')
   @IsPublic()
   @HttpCode(HttpStatus.OK)
-  // Sử dụng Cookie-based Authentication: không trả user trong body, chỉ trả message
+  // English content normalized from the original source text.
   @ZodSerializerDto(MessageResDTO)
   async login(
     @Body() body: LoginBodyDTO,
@@ -89,9 +89,9 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @ZodSerializerDto(MessageResDTO)
   logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-    // Lấy đúng tên cookie refresh_token
+    // English content normalized from the original source text.
     const refreshToken = req.cookies?.refresh_token
-    // Xóa cookie phía client sử dụng CookieService
+    // English content normalized from the original source text.
     this.cookieService.clearAuthCookies(res)
     return this.authService.logout(refreshToken)
   }
@@ -115,14 +115,14 @@ export class AuthController {
         state,
         res
       })
-      // Redirect về trang chủ hoặc dashboard sau khi đăng nhập thành công
+      // English content normalized from the original source text.
       const redirectUrl = this.configService.get('auth.google.client.redirectUri')
       return res.redirect(redirectUrl)
     } catch (error) {
       const message =
         error instanceof Error
           ? error.message
-          : 'Đã xảy ra lỗi khi đăng nhập bằng Google, vui lòng thử lại bằng cách khác'
+          : 'English content normalized from the original source text.'
       const redirectUrl = this.configService.get('auth.google.client.redirectUri')
       return res.redirect(`${redirectUrl}?errorMessage=${encodeURIComponent(message)}`)
     }
@@ -134,9 +134,9 @@ export class AuthController {
   forgotPassword(@Body() body: ForgotPasswordBodyDTO) {
     return this.authService.forgotPassword(body as any)
   }
-  // Tại sao không dùng GET mà dùng POST? khi mà body gửi lên là {}
-  // Vì POST mang ý nghĩa là tạo ra cái gì đó và POST cũng bảo mật hơn GET
-  // Vì GET có thể được kích hoạt thông qua URL trên trình duyệt, POST thì không
+  // English content normalized from the original source text.
+  // English content normalized from the original source text.
+  // English content normalized from the original source text.
   @Post('2fa/setup')
   @ZodSerializerDto(TwoFactorSetupResDTO)
   setupTwoFactorAuth(@Body() _: EmptyBodyDTO, @ActiveUser('userId') userId: string) {

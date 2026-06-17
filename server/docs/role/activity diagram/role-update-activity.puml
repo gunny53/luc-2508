@@ -6,20 +6,20 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: PUT /roles/:roleId
+English content normalized from the original source text.
 
 start
-:Nhận id + body + user;
+:English content normalized from the original source text;
 :verifyRole(id) (base role protection);
-if (Base role?) then (Có)
-  :Ném 403 ProhibitedActionOnBaseRole;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-:Validate permissionIds (không chứa permissions đã soft delete);
+:English content normalized from the original source text;
 :Update role (fields, permissions.set, updatedById);
-:Xóa cache key `role:${id}`;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, data };
+:English content normalized from the original source text;
 stop
 
 @enduml

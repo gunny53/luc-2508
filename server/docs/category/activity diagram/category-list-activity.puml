@@ -6,15 +6,15 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /categories
+English content normalized from the original source text.
 
 start
-:Nhận parentCategoryId?;
-:Lấy languageId từ I18nContext;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 :Query category.findMany with include translations theo languageId;
-:Tính totalItems;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, data, totalItems };
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /media/static/:filename
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "MediaController" as MC
@@ -15,14 +15,14 @@ C -> MC: GET /media/static/:filename
 activate MC
 
 MC -> RES: res.sendFile(resolve(UPLOAD_DIR, filename), callback)
-RES -> LD: Đọc file từ UPLOAD_DIR
-alt File tồn tại
+RES -> LD: English content normalized from the original source text.
+English content normalized from the original source text.
   LD --> RES: Stream file
   RES --> C: 200 OK (file stream)
-else File không tồn tại
+else (No)
   LD --> RES: error
   RES --> MC: callback(error)
-  MC -> RES: Gửi 404 Not Found (NotFoundException)
+  MC -> RES: English content normalized from the original source text.
   RES --> C: 404 Not Found
 end
 

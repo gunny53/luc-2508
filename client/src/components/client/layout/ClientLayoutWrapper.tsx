@@ -41,10 +41,10 @@ export default function ClientLayoutWrapper({
       {/* Header */}
       {!hideHeader && <HeaderWrapper />}
 
-      {/* DesktopCommit: Chỉ hiện khi không bị ẩn và không phải mobile */}
+      {/* English content normalized from the original source text. */}
       {!hideCommit && deviceType !== "mobile" && <DesktopCommit />}
 
-      {/* Top content nếu có */}
+      {/* English content normalized from the original source text. */}
       {topContent && <div className="w-full">{topContent}</div>}
 
       {/* Main content */}

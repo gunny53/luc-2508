@@ -42,7 +42,7 @@ export default function MobileCartItem({
   );
   const [currentSku, setCurrentSku] = useState<Sku | null>(null);
 
-  // Init biến thể khi mở popover
+  // English content normalized from the original source text.
   useEffect(() => {
     if (isPopoverOpen && productDetails) {
       const initialVariants: SelectedVariants = {};
@@ -62,14 +62,14 @@ export default function MobileCartItem({
     }
   }, [isPopoverOpen, productDetails, item.sku.value]);
 
-  // Update số lượng
+  // English content normalized from the original source text.
   const handleQuantityChange = async (newQty: number) => {
     if (newQty < 1) return;
     setQuantity(newQty);
     await updateCartItem(item.id, { skuId: item.sku.id, quantity: newQty });
   };
 
-  // Chọn biến thể
+  // English content normalized from the original source text.
   const handleVariantSelect = (variantType: string, option: string) => {
     const newSelected = { ...selectedVariants, [variantType]: option };
     setSelectedVariants(newSelected);
@@ -85,7 +85,7 @@ export default function MobileCartItem({
     }
   };
 
-  // Xác nhận cập nhật biến thể
+  // English content normalized from the original source text.
   const handleConfirmUpdate = async () => {
     if (currentSku && currentSku.id !== item.sku.id) {
       await updateCartItem(item.id, { skuId: currentSku.id, quantity }, true);
@@ -144,7 +144,7 @@ export default function MobileCartItem({
                     onClick={() => fetchProductDetails(item.sku.product.id)}
                   >
                     <span className="truncate">
-                      Phân loại: {item.sku.value}
+                      English content normalized from the original source text. {item.sku.value}
                     </span>
                     <ChevronDown className="w-3 h-3 flex-shrink-0" />
                   </button>
@@ -158,15 +158,11 @@ export default function MobileCartItem({
                     {isLoading ? (
                       <div className="flex items-center justify-center py-8">
                         <div className="w-5 h-5 border-2 border-gray-300 border-t-primary rounded-full animate-spin"></div>
-                        <span className="ml-2 text-sm text-gray-500">
-                          Đang tải...
-                        </span>
+                        <span className="ml-2 text-sm text-gray-500">English content normalized from the original source text.</span>
                       </div>
                     ) : productDetails ? (
                       <div className="space-y-4">
-                        <div className="text-sm font-semibold text-gray-900 pb-2 border-b">
-                          Chọn phân loại
-                        </div>
+                        <div className="text-sm font-semibold text-gray-900 pb-2 border-b">English content normalized from the original source text.</div>
 
                         {productDetails.variants.map((v) => (
                           <div key={v.value} className="space-y-2">
@@ -206,9 +202,7 @@ export default function MobileCartItem({
                             size="sm"
                             onClick={() => setIsPopoverOpen(false)}
                             className="rounded-lg border-gray-200"
-                          >
-                            Hủy
-                          </Button>
+                          >English content normalized from the original source text.</Button>
                           <Button
                             size="sm"
                             onClick={handleConfirmUpdate}
@@ -219,14 +213,12 @@ export default function MobileCartItem({
                             }
                             className="rounded-lg"
                           >
-                            {isUpdating ? "Đang cập nhật..." : "Xác nhận"}
+                            {isUpdating ? "English content normalized from the original source text." : "English content normalized from the original source text."}
                           </Button>
                         </div>
                       </div>
                     ) : (
-                      <div className="text-sm text-gray-500 py-4 text-center">
-                        Không thể tải thông tin sản phẩm
-                      </div>
+                      <div className="text-sm text-gray-500 py-4 text-center">English content normalized from the original source text.</div>
                     )}
                   </div>
                 </PopoverContent>

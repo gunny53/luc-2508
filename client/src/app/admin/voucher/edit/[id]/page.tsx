@@ -23,7 +23,7 @@ function EditVoucherContent() {
   useEffect(() => {
     const fetchVoucher = async () => {
       if (!voucherId) {
-        setError('ID voucher không hợp lệ');
+        setError('English content normalized from the original source text.');
         setLoading(false);
         return;
       }
@@ -31,16 +31,16 @@ function EditVoucherContent() {
       try {
         setLoading(true);
         const response = await discountService.getById(voucherId);
-        
+
         if (response.data) {
           setVoucher(response.data);
         } else {
-          setError('Không tìm thấy voucher');
+          setError('English content normalized from the original source text.');
         }
       } catch (err: any) {
         console.error('Error fetching voucher:', err);
-        setError(err?.response?.data?.message || 'Có lỗi xảy ra khi tải thông tin voucher');
-        toast.error('Có lỗi xảy ra khi tải thông tin voucher');
+        setError(err?.response?.data?.message || 'English content normalized from the original source text.');
+        toast.error('English content normalized from the original source text.');
       } finally {
         setLoading(false);
       }
@@ -55,7 +55,7 @@ function EditVoucherContent() {
       <div className="flex items-center justify-center h-screen">
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="h-8 w-8 animate-spin text-red-600" />
-          <p className="text-sm text-gray-600">Đang tải thông tin voucher...</p>
+          <p className="text-sm text-gray-600">English content normalized from the original source text.</p>
         </div>
       </div>
     );
@@ -66,23 +66,19 @@ function EditVoucherContent() {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
-          <h2 className="text-lg font-semibold text-gray-900 mb-2">
-            Không thể tải thông tin voucher
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-2">English content normalized from the original source text.</h2>
           <p className="text-sm text-gray-600 mb-4">{error}</p>
           <button
             onClick={() => router.push('/admin/voucher')}
             className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
-          >
-            Quay lại danh sách
-          </button>
+          >English content normalized from the original source text.</button>
         </div>
       </div>
     );
   }
 
   const handleEditSuccess = () => {
-    toast.success('Cập nhật voucher thành công!');
+    toast.success('English content normalized from the original source text.');
     router.push('/admin/voucher');
   };
 
@@ -91,25 +87,22 @@ function EditVoucherContent() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <button 
+          <button
             onClick={() => router.push('/admin/voucher')}
             className="hover:text-red-600"
-          >
-            Quản lý voucher
-          </button>
+          >English content normalized from the original source text.</button>
           <span>/</span>
-          <span>Chỉnh sửa voucher</span>
+          <span>English content normalized from the original source text.</span>
         </div>
         <h1 className="text-2xl font-bold text-gray-900">
-          Chỉnh sửa voucher: {voucher.name}
+          English content normalized from the original source text. {voucher.name}
         </h1>
-        <p className="text-sm text-gray-600 mt-1">
-          Mã voucher: <span className="font-medium">{voucher.code}</span>
+        <p className="text-sm text-gray-600 mt-1">English content normalized from the original source text.<span className="font-medium">{voucher.code}</span>
         </p>
       </div>
 
       {/* Edit Form */}
-      <VoucherEditWrapper 
+      <VoucherEditWrapper
         voucher={voucher}
         userData={userData}
         onEditSuccess={handleEditSuccess}
@@ -124,7 +117,7 @@ export default function EditVoucherPage() {
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="h-8 w-8 animate-spin text-red-600" />
-          <p className="text-sm text-gray-600">Đang tải...</p>
+          <p className="text-sm text-gray-600">English content normalized from the original source text.</p>
         </div>
       </div>
     }>

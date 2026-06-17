@@ -131,7 +131,7 @@ export function DataTable<TData>({
 }
 
 // Column Definitions with i18n
-// 💡 Tách phần định nghĩa column thành hàm
+// English content normalized from the original source text.
 export const getColumns = (t: (key: string) => string): ColumnDef<Product>[] => [
   {
     id: "select",

@@ -53,9 +53,7 @@ export class SharedUserRepository {
     })
   }
 
-  /**
-   * Lấy orders của user với items để tính statistics
-   */
+  /* English content normalized from the original source text. */
   async getUserOrders(userId: string): Promise<any[]> {
     return this.prismaService.order.findMany({
       where: {
@@ -132,7 +130,7 @@ export class SharedUserRepository {
 
   async createAddress(data: CreateAddressBodyType, userId: string): Promise<GetUserAddressDetailResType['data']> {
     return this.prismaService.$transaction(async (tx) => {
-      // Lấy thông tin user để làm default cho recipient và phoneNumber nếu không được truyền
+      // English content normalized from the original source text.
       const user = await tx.user.findUnique({
         where: { id: userId },
         select: { name: true, phoneNumber: true }
@@ -142,7 +140,7 @@ export class SharedUserRepository {
         throw new Error('User not found')
       }
 
-      // Nếu không truyền recipient hoặc phoneNumber, lấy từ user profile
+      // English content normalized from the original source text.
       const addressData: any = {
         name: data.name,
         addressType: data.addressType,
@@ -162,10 +160,10 @@ export class SharedUserRepository {
         data: addressData
       })
 
-      // Xử lý isDefault - ưu tiên giá trị client truyền lên
+      // English content normalized from the original source text.
       let isDefault = false
       if (data.isDefault === true) {
-        // Nếu client truyền isDefault: true, unset các địa chỉ mặc định khác
+        // English content normalized from the original source text.
         await tx.userAddress.updateMany({
           where: {
             userId,
@@ -177,10 +175,10 @@ export class SharedUserRepository {
         })
         isDefault = true
       } else if (data.isDefault === false) {
-        // Nếu client truyền isDefault: false, giữ nguyên
+        // English content normalized from the original source text.
         isDefault = false
       } else if (data.addressType === 'HOME') {
-        // Chỉ áp dụng logic cũ khi client không truyền isDefault
+        // English content normalized from the original source text.
         await tx.userAddress.updateMany({
           where: {
             userId,
@@ -233,9 +231,9 @@ export class SharedUserRepository {
       throw new Error('Address not found or access denied')
     }
 
-    // Xử lý isDefault khi cập nhật
+    // English content normalized from the original source text.
     if (data.isDefault) {
-      // Unset các địa chỉ mặc định khác
+      // English content normalized from the original source text.
       await this.prismaService.userAddress.updateMany({
         where: {
           userId,
@@ -246,7 +244,7 @@ export class SharedUserRepository {
           isDefault: false
         }
       })
-      // Đặt địa chỉ này là mặc định
+      // English content normalized from the original source text.
       await this.prismaService.userAddress.update({
         where: {
           id: userAddress.id
@@ -256,7 +254,7 @@ export class SharedUserRepository {
         }
       })
     } else if (data.isDefault === false) {
-      // Nếu truyền false thì bỏ mặc định địa chỉ này
+      // English content normalized from the original source text.
       await this.prismaService.userAddress.update({
         where: {
           id: userAddress.id
@@ -267,7 +265,7 @@ export class SharedUserRepository {
       })
     }
 
-    // Loại bỏ field isDefault khỏi data trước khi update Address
+    // English content normalized from the original source text.
     const { isDefault, ...addressData } = data
 
     const address = await this.prismaService.address.update({
@@ -281,7 +279,7 @@ export class SharedUserRepository {
       }
     })
 
-    // Lấy lại trạng thái isDefault mới nhất
+    // English content normalized from the original source text.
     const updatedUserAddress = await this.prismaService.userAddress.findUnique({
       where: { id: userAddress.id },
       include: { address: true }

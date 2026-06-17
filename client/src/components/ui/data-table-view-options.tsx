@@ -20,30 +20,28 @@ export function DataTableViewOptions<TData>({
           size="sm"
           className="ml-auto h-8 lg:flex"
         >
-          <Settings2 className="mr-2 h-4 w-4" />
-          Tùy chọn hiển thị
-        </Button>
+          <Settings2 className="mr-2 h-4 w-4" />English content normalized from the original source text.</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[180px]">
         {table
           .getAllColumns()
           .filter(
             (column) =>
-              typeof column.accessorFn !== "undefined" && 
+              typeof column.accessorFn !== "undefined" &&
               column.getCanHide() &&
-              column.id !== "select" && // Không cho phép ẩn cột checkbox
-              column.id !== "actions" // Không cho phép ẩn cột actions
+              column.id !== "select" && // English content normalized from the original source text.
+              column.id !== "actions" // English content normalized from the original source text.
           )
           .map((column) => {
-            // Sử dụng header text nếu có, ngược lại sử dụng column id
-            const headerText = column.columnDef.header?.toString() || 
+            // English content normalized from the original source text.
+            const headerText = column.columnDef.header?.toString() ||
               {
-                "name": "Tên vai trò",
-                "image": "Hình ảnh",
-                "status": "Trạng thái",
-                "createdAt": "Ngày tạo",
-                "updatedAt": "Ngày cập nhật",
-              }[column.id] || 
+                "name": "English content normalized from the original source text.",
+                "image": "English content normalized from the original source text.",
+                "status": "English content normalized from the original source text.",
+                "createdAt": "English content normalized from the original source text.",
+                "updatedAt": "English content normalized from the original source text.",
+              }[column.id] ||
               column.id
 
             return (

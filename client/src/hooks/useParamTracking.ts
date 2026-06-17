@@ -10,7 +10,7 @@ export function useSearchTracker() {
   const sort = params.get("sort") || "relevance";
   const timestamp = params.get("_t") || "";
 
-  // Key duy nhất cho request
+  // English content normalized from the original source text.
   const dataKey = useMemo(
     () => [searchQuery, sort, timestamp || "default"].join("-"),
     [searchQuery, sort, timestamp]

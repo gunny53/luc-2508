@@ -18,9 +18,7 @@ export class BrandService {
     private readonly redisService: RedisService
   ) {}
 
-  /**
-   * 🎯 Cache brand list với dynamic key theo pagination và language
-   */
+  /* English content normalized from the original source text. */
   @Cacheable({
     key: 'brand:list',
     ttl: 1800, // 30 minutes
@@ -40,9 +38,7 @@ export class BrandService {
     }
   }
 
-  /**
-   * 🎯 Cache brand detail theo ID và language
-   */
+  /* English content normalized from the original source text. */
   @Cacheable({
     key: 'brand:detail',
     ttl: 3600, // 1 hour
@@ -64,9 +60,7 @@ export class BrandService {
     }
   }
 
-  /**
-   * ♻️ Invalidate brand cache khi tạo brand mới
-   */
+  /* English content normalized from the original source text. */
   @CacheEvict(['BrandModule:brand:list:*', 'BrandModule:brand:detail:*'])
   async create({ data, user }: { data: CreateBrandBodyType; user: AccessTokenPayload }) {
     const brand = await this.brandRepo.create({

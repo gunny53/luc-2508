@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import Cookies from 'js-cookie';
-import { 
-  ROUTES, 
-  PROTECTED_ROUTES, 
-  PUBLIC_ROUTES, 
-  ADMIN_ONLY_ROUTES, 
-  SELLER_ALLOWED_ROUTES 
+import {
+  ROUTES,
+  PROTECTED_ROUTES,
+  PUBLIC_ROUTES,
+  ADMIN_ONLY_ROUTES,
+  SELLER_ALLOWED_ROUTES
 } from '@/constants/route';
 import { showToast } from '@/components/ui/toastify';
 import { useUserData } from './useGetData-UserLogin';
@@ -26,17 +26,17 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // Gọi hook useUserData ở cấp cao nhất
+  // English content normalized from the original source text.
   const userData = useUserData();
 
-  // Logic kiểm tra authentication
+  // English content normalized from the original source text.
   const checkAuth = useCallback(() => {
     try {
       const accessToken = Cookies.get('access_token');
       const hasToken = !!accessToken;
       const hasReduxData = !!userData;
 
-      // Điều kiện: có token HOẶC có dữ liệu trong Redux
+      // English content normalized from the original source text.
       const isAuthed = hasToken || hasReduxData;
 
       setIsAuthenticated(isAuthed);
@@ -50,44 +50,44 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
     }
   }, [userData]);
 
-  // Logic kiểm tra route permissions
+  // English content normalized from the original source text.
   const checkRouteAccess = useCallback((pathname: string) => {
-    // Kiểm tra route types
-    const isProtectedRoute = PROTECTED_ROUTES.some(route => 
+    // English content normalized from the original source text.
+    const isProtectedRoute = PROTECTED_ROUTES.some(route =>
       pathname === route || pathname.startsWith(route)
     );
-    
-    const isPublicRoute = PUBLIC_ROUTES.some(route => 
+
+    const isPublicRoute = PUBLIC_ROUTES.some(route =>
       pathname === route || pathname.startsWith(route.replace(':slug', '').replace(':id', ''))
     );
-    
+
     const isAdminRoute = pathname.startsWith('/admin');
 
-    // Kiểm tra quyền truy cập admin routes
+    // English content normalized from the original source text.
     const canAccessAdminRoute = (userRole: string) => {
-      if (!isAdminRoute) return true; // Không phải admin route thì OK
-      
+      if (!isAdminRoute) return true; // English content normalized from the original source text.
+
       // Normalize role name
       const normalizedRole = userRole?.toUpperCase?.() || '';
-      
+
       console.log(`Checking admin route access: User role "${normalizedRole}", Route: "${pathname}"`);
-      
-      // ADMIN có thể truy cập tất cả admin routes
+
+      // English content normalized from the original source text.
       if (normalizedRole === 'ADMIN') {
         console.log('✅ Admin access granted');
         return true;
       }
-      
-      // SELLER chỉ được truy cập routes được phép
+
+      // English content normalized from the original source text.
       if (normalizedRole === 'SELLER') {
-        const canAccess = SELLER_ALLOWED_ROUTES.some(route => 
+        const canAccess = SELLER_ALLOWED_ROUTES.some(route =>
           pathname === route || pathname.startsWith(route)
         );
         console.log(`${canAccess ? '✅' : '❌'} Seller access ${canAccess ? 'granted' : 'denied'}`);
         return canAccess;
       }
-      
-      // CLIENT, CUSTOMER và các role khác không được truy cập admin routes
+
+      // English content normalized from the original source text.
       console.log(`❌ Access denied for role "${normalizedRole}" to admin routes`);
       return false;
     };
@@ -100,12 +100,12 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
     };
   }, []);
 
-  // Lấy redirect URL dựa trên role
+  // English content normalized from the original source text.
   const getHomeRedirectByRole = useCallback((userRole: string) => {
     const normalizedRole = userRole?.toUpperCase?.() || '';
-    
+
     console.log(`Getting home redirect for role: "${normalizedRole}"`);
-    
+
     switch (normalizedRole) {
       case 'ADMIN':
       case 'SELLER':
@@ -123,31 +123,31 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
     checkAuth();
   }, [checkAuth]);
 
-  // Hàm wrapper để bảo vệ API calls
+  // English content normalized from the original source text.
   const withAuth = <T extends (...args: any[]) => Promise<any>>(
     fn: T,
     options: { showError?: boolean } = {}
   ): ((...args: Parameters<T>) => Promise<ReturnType<T>>) => {
     return async (...args: Parameters<T>) => {
-      // Gọi lại checkAuth để có được trạng thái mới nhất
+      // English content normalized from the original source text.
       const isAuthed = checkAuth();
-      
+
       if (!isAuthed) {
         if (options.showError !== false && showToastMessage) {
-          showToast('Vui lòng đăng nhập để tiếp tục', 'error');
+          showToast('English content normalized from the original source text.', 'error');
         }
         throw new Error('UNAUTHORIZED');
       }
-      
+
       try {
         return await fn(...args);
       } catch (error: any) {
-        // Xử lý các lỗi liên quan đến authentication
+        // English content normalized from the original source text.
         if (error?.response?.status === 401) {
           if (options.showError !== false && showToastMessage) {
-            showToast('Phiên đăng nhập đã hết hạn', 'error');
+            showToast('English content normalized from the original source text.', 'error');
           }
-          // TODO: Cần dispatch action để clear Redux state tại đây
+          // English content normalized from the original source text.
           throw new Error('SESSION_EXPIRED');
         }
         throw error;
@@ -155,21 +155,21 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
     };
   };
 
-  // Hàm kiểm tra nhanh trạng thái đăng nhập
+  // English content normalized from the original source text.
   const requireAuth = () => {
     const isAuthed = checkAuth();
     if (!isAuthed && showToastMessage) {
-      showToast('Vui lòng đăng nhập để tiếp tục', 'error');
+      showToast('English content normalized from the original source text.', 'error');
     }
     return isAuthed;
   };
 
-  return { 
-    isAuthenticated, 
-    isLoading, 
+  return {
+    isAuthenticated,
+    isLoading,
     userData,
-    withAuth, 
-    requireAuth, 
+    withAuth,
+    requireAuth,
     checkAuth,
     checkRouteAccess,
     getHomeRedirectByRole

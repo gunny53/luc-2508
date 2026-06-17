@@ -4,7 +4,7 @@
 //   {
 //     shop: {
 //       id: "shop1",
-//       name: "Shop Thời Trang ABC",
+// English content normalized from the original source text.
 //       avatar: "/images/shop1.jpg"
 //     },
 //     cartItems: [
@@ -18,7 +18,7 @@
 //         updatedAt: new Date().toISOString(),
 //         sku: {
 //           id: "sku1",
-//           value: "Đen - XL",
+// English content normalized from the original source text.
 //           price: 299000,
 //           stock: 50,
 //           image: "https://picsum.photos/200/300",
@@ -26,8 +26,8 @@
 //           product: {
 //             id: "prod1",
 //             publishedAt: new Date().toISOString(),
-//             name: "Áo Thun Nam Cotton Cao Cấp",
-//             description: "Áo thun nam cotton 100%, form regular fit",
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 //             basePrice: 299000,
 //             virtualPrice: 399000,
 //             brandId: "brand1",
@@ -50,7 +50,7 @@
 //         updatedAt: new Date().toISOString(),
 //         sku: {
 //           id: "sku2",
-//           value: "Trắng - L",
+// English content normalized from the original source text.
 //           price: 279000,
 //           stock: 30,
 //           image: "https://picsum.photos/200/301",
@@ -58,8 +58,8 @@
 //           product: {
 //             id: "prod2",
 //             publishedAt: new Date().toISOString(),
-//             name: "Áo Polo Nam Premium",
-//             description: "Áo polo nam chất liệu cao cấp, form slim fit",
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 //             basePrice: 279000,
 //             virtualPrice: 359000,
 //             brandId: "brand1",
@@ -77,7 +77,7 @@
 //   {
 //     shop: {
 //       id: "shop2",
-//       name: "Shop Giày XYZ",
+// English content normalized from the original source text.
 //       avatar: "/images/shop2.jpg"
 //     },
 //     cartItems: [
@@ -91,7 +91,7 @@
 //         updatedAt: new Date().toISOString(),
 //         sku: {
 //           id: "sku3",
-//           value: "Đen - 42",
+// English content normalized from the original source text.
 //           price: 899000,
 //           stock: 15,
 //           image: "https://picsum.photos/200/304",
@@ -99,8 +99,8 @@
 //           product: {
 //             id: "prod3",
 //             publishedAt: new Date().toISOString(),
-//             name: "Giày Sneaker Nam Cao Cấp",
-//             description: "Giày sneaker nam phong cách thể thao, đế cao su chống trượt",
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 //             basePrice: 899000,
 //             virtualPrice: 1199000,
 //             brandId: "brand2",
@@ -117,12 +117,12 @@
 //   }
 // ];
 
-// // Mock data cho thông tin đơn hàng
+// English content normalized from the original source text.
 // export const mockOrderSummary = {
-//   subtotal: 1477000, // Tổng tiền hàng
-//   shipping: 30000,   // Phí vận chuyển
-//   discount: 50000,   // Giảm giá
-//   total: 1457000     // Tổng thanh toán
+// English content normalized from the original source text.
+// English content normalized from the original source text.
+// English content normalized from the original source text.
+// English content normalized from the original source text.
 // };
 
 // // Mock data cho vouchers
@@ -132,13 +132,13 @@
 //     code: "SUMMER2024",
 //     discount: 50000,
 //     minSpend: 500000,
-//     description: "Giảm 50K cho đơn hàng từ 500K"
+// English content normalized from the original source text.
 //   },
 //   {
 //     id: "voucher2",
 //     code: "FREESHIP",
 //     discount: 30000,
 //     minSpend: 300000,
-//     description: "Miễn phí vận chuyển cho đơn hàng từ 300K"
+// English content normalized from the original source text.
 //   }
 // ];

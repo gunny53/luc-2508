@@ -13,12 +13,12 @@ interface OverviewStatsTableProps {
 const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }) => {
   const { totalUsers, totalBrands, totalCategories, totalAuditLogs, isLoading, error } = overviewStats;
 
-  // Dữ liệu cho bảng tổng quan
+  // English content normalized from the original source text.
   const overviewData = [
     {
       id: 'users',
       title: 'Users',
-      description: 'Tổng số người dùng',
+      description: 'English content normalized from the original source text.',
       value: totalUsers,
       icon: Users,
       color: 'bg-blue-50 text-blue-600 border-blue-200',
@@ -27,7 +27,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'brands',
       title: 'Brands',
-      description: 'Tổng số thương hiệu',
+      description: 'English content normalized from the original source text.',
       value: totalBrands,
       icon: ShoppingBag,
       color: 'bg-green-50 text-green-600 border-green-200',
@@ -36,7 +36,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'categories',
       title: 'Categories',
-      description: 'Tổng số danh mục',
+      description: 'English content normalized from the original source text.',
       value: totalCategories,
       icon: FolderTree,
       color: 'bg-purple-50 text-purple-600 border-purple-200',
@@ -45,7 +45,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'auditlogs',
       title: 'Audit Logs',
-      description: 'Tổng số logs hệ thống',
+      description: 'English content normalized from the original source text.',
       value: totalAuditLogs,
       icon: FileText,
       color: 'bg-orange-50 text-orange-600 border-orange-200',
@@ -57,8 +57,8 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Tổng quan hệ thống</CardTitle>
-          <CardDescription>Thống kê từ tất cả modules</CardDescription>
+          <CardTitle>English content normalized from the original source text.</CardTitle>
+          <CardDescription>English content normalized from the original source text.</CardDescription>
         </CardHeader>
         <CardContent>
           <Alert variant="destructive">
@@ -73,8 +73,8 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tổng quan hệ thống</CardTitle>
-        <CardDescription>Thống kê từ tất cả modules</CardDescription>
+        <CardTitle>English content normalized from the original source text.</CardTitle>
+        <CardDescription>English content normalized from the original source text.</CardDescription>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -109,26 +109,26 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
             })}
           </div>
         )}
-        
+
         {/* Summary section */}
         {!isLoading && !error && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">Tổng kết</h4>
+            <h4 className="font-medium text-gray-900 mb-2">English content normalized from the original source text.</h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
-                <span className="text-gray-500">Tổng Users:</span>
+                <span className="text-gray-500">English content normalized from the original source text.</span>
                 <span className="ml-2 font-medium">{totalUsers.toLocaleString()}</span>
               </div>
               <div>
-                <span className="text-gray-500">Tổng Brands:</span>
+                <span className="text-gray-500">English content normalized from the original source text.</span>
                 <span className="ml-2 font-medium">{totalBrands.toLocaleString()}</span>
               </div>
               <div>
-                <span className="text-gray-500">Tổng Categories:</span>
+                <span className="text-gray-500">English content normalized from the original source text.</span>
                 <span className="ml-2 font-medium">{totalCategories.toLocaleString()}</span>
               </div>
               <div>
-                <span className="text-gray-500">Tổng Audit Logs:</span>
+                <span className="text-gray-500">English content normalized from the original source text.</span>
                 <span className="ml-2 font-medium">{totalAuditLogs.toLocaleString()}</span>
               </div>
             </div>

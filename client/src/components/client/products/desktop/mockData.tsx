@@ -19,11 +19,11 @@ export const productMock = {
   ],
   variants: [
     {
-      value: "Màu sắc",
-      options: ["Đen", "Trắng", "Xanh", "Đỏ"],
+      value: "English content normalized from the original source text.",
+      options: ["English content normalized from the original source text.", "English content normalized from the original source text.", "Xanh", "English content normalized from the original source text."],
     },
     {
-      value: "Kích thước",
+      value: "English content normalized from the original source text.",
       options: ["S", "M", "L", "XL"],
     },
   ],
@@ -37,7 +37,7 @@ export const productMock = {
   skus: [
     {
       id: 1,
-      value: "Đen-S",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -51,7 +51,7 @@ export const productMock = {
     },
     {
       id: 2,
-      value: "Đen-M",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -65,7 +65,7 @@ export const productMock = {
     },
     {
       id: 3,
-      value: "Đen-L",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -79,7 +79,7 @@ export const productMock = {
     },
     {
       id: 4,
-      value: "Đen-XL",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -93,7 +93,7 @@ export const productMock = {
     },
     {
       id: 5,
-      value: "Trắng-S",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -107,7 +107,7 @@ export const productMock = {
     },
     {
       id: 6,
-      value: "Trắng-M",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -121,7 +121,7 @@ export const productMock = {
     },
     {
       id: 7,
-      value: "Trắng-L",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -135,7 +135,7 @@ export const productMock = {
     },
     {
       id: 8,
-      value: "Trắng-XL",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -205,7 +205,7 @@ export const productMock = {
     },
     {
       id: 13,
-      value: "Đỏ-S",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -219,7 +219,7 @@ export const productMock = {
     },
     {
       id: 14,
-      value: "Đỏ-M",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -233,7 +233,7 @@ export const productMock = {
     },
     {
       id: 15,
-      value: "Đỏ-L",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -247,7 +247,7 @@ export const productMock = {
     },
     {
       id: 16,
-      value: "Đỏ-XL",
+      value: "English content normalized from the original source text.",
       price: 0,
       stock: 100,
       image: "",
@@ -264,8 +264,8 @@ export const productMock = {
     {
       id: 1,
       parentCategoryId: null,
-      name: "Thời Trang Nam",
-      logo: "https://shopsifu.s3.ap-southeast-1.amazonaws.com/images/b4acb401-0d86-447d-8dff-69f1de122dee.png",
+      name: "English content normalized from the original source text.",
+      logo: "https://ecsite.s3.ap-southeast-1.amazonaws.com/images/b4acb401-0d86-447d-8dff-69f1de122dee.png",
       createdById: 1,
       updatedById: null,
       deletedById: null,
@@ -291,7 +291,7 @@ export const productMock = {
     {
       id: 6,
       parentCategoryId: 1,
-      name: "Áo Hoodie, Áo Len & Áo Nỉ",
+      name: "English content normalized from the original source text.",
       logo: null,
       createdById: 1,
       updatedById: null,
@@ -319,7 +319,7 @@ export const productMock = {
   brand: {
     id: 4,
     name: "Teelab",
-    logo: "https://shopsifu.s3.ap-southeast-1.amazonaws.com/images/ae6a025e-b6eb-4f47-a161-ada89f0b760c.png",
+    logo: "https://ecsite.s3.ap-southeast-1.amazonaws.com/images/ae6a025e-b6eb-4f47-a161-ada89f0b760c.png",
     createdById: 1,
     updatedById: null,
     deletedById: null,
@@ -336,7 +336,7 @@ import { Review } from "@/types/review.interface";
 export const reviewsMock: Review[] = [
 {
   id: 'review-1',
-  content: 'Sản phẩm rất tốt, chất vải mát, mặc rất thích. Sẽ ủng hộ shop lần sau. Giao hàng siêu nhanh, đóng gói cẩn thận, shipper thân thiện. Cho shop 10 điểm!',
+  content: 'English content normalized from the original source text.',
   rating: 5,
   orderId: 'order-123',
   productId: 'product-abc',
@@ -362,13 +362,13 @@ export const reviewsMock: Review[] = [
   ],
   user: {
     id: 'user-xyz',
-    name: 'Nguyễn Văn A',
+    name: 'English content normalized from the original source text.',
     avatar: '/assets/demo/user-avatar-1.png',
   },
 },
 {
   id: 'review-2',
-  content: 'Giao hàng nhanh, đóng gói cẩn thận. Tuy nhiên màu sắc hơi khác so với ảnh một chút, nhưng vẫn chấp nhận được.',
+  content: 'English content normalized from the original source text.',
   rating: 4,
   orderId: 'order-124',
   productId: 'product-abc',
@@ -379,13 +379,13 @@ export const reviewsMock: Review[] = [
   medias: [],
   user: {
     id: 'user-qwe',
-    name: 'Trần Thị B',
+    name: 'English content normalized from the original source text.',
     avatar: '/assets/demo/user-avatar-2.png',
   },
 },
 {
   id: 'review-3',
-  content: 'Chất lượng bình thường, không có gì đặc sắc. Với giá này thì cũng tạm ổn.',
+  content: 'English content normalized from the original source text.',
   rating: 3,
   orderId: 'order-125',
   productId: 'product-abc',
@@ -396,13 +396,13 @@ export const reviewsMock: Review[] = [
   medias: [],
   user: {
     id: 'user-asd',
-    name: 'Lê Văn C',
+    name: 'English content normalized from the original source text.',
     // No avatar to test fallback
   },
 },
 {
   id: 'review-4',
-  content: 'Review từ người dùng ẩn danh, không có thông tin user.',
+  content: 'English content normalized from the original source text.',
   rating: 5,
   orderId: 'order-126',
   productId: 'product-abc',
@@ -415,7 +415,7 @@ export const reviewsMock: Review[] = [
 },
 {
   id: 'review-5',
-  content: 'Sản phẩm tệ, không giống mô tả.',
+  content: 'English content normalized from the original source text.',
   rating: 1,
   orderId: 'order-127',
   productId: 'product-abc',
@@ -426,7 +426,7 @@ export const reviewsMock: Review[] = [
   medias: [],
   user: {
     id: 'user-jkl',
-    name: 'Phạm Thị D',
+    name: 'English content normalized from the original source text.',
     avatar: '/assets/demo/user-avatar-3.png',
   },
 },

@@ -2,7 +2,7 @@
 'use client';
 
 import { Header as DesktopHeader } from './desktop/desktop-Index';
-import { MobileHeader } from './moblie/moblie-Index';  // Sửa lại đường dẫn
+import { MobileHeader } from './moblie/moblie-Index';  // English content normalized from the original source text.
 import { DropdownProvider } from './dropdown-context';
 import { useResponsive } from '@/hooks/useResponsive';
 import { motion, AnimatePresence } from 'framer-motion';

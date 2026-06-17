@@ -17,7 +17,7 @@ export const useCartAction = () => {
       setProductDetails(details);
     } catch (err) {
       console.error('Failed to fetch product details:', err);
-      setError('Không thể tải chi tiết sản phẩm.');
+      setError('English content normalized from the original source text.');
     } finally {
       setIsLoading(false);
     }

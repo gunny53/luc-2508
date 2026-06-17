@@ -28,23 +28,23 @@ interface MultiSelectCategoryProps {
 export function MultiSelectCategory({
   selectedCategories = [],
   onSelectionChange,
-  placeholder = "Chọn danh mục...",
+  placeholder = "English content normalized from the original source text.",
   className,
   disabled = false
 }: MultiSelectCategoryProps) {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedParentCategory, setSelectedParentCategory] = useState<string | null>(null);
-  
+
   // Get parent categories (level 1)
   const { categories: parentCategories, loading: loadingParent } = useCbbCategory(null);
-  
+
   // Get child categories based on selected parent
   const { categories: childCategories, loading: loadingChild } = useCbbCategory(selectedParentCategory);
-  
+
   // Combine all categories for filtering
   const allCategories = [...parentCategories, ...childCategories];
-  
+
   // Filter categories based on search term
   const filteredCategories = allCategories.filter(category =>
     category.label.toLowerCase().includes(searchTerm.toLowerCase())
@@ -52,7 +52,7 @@ export function MultiSelectCategory({
 
   const handleSelect = (category: CategoryOption) => {
     const isSelected = selectedCategories.find(item => item.value === category.value);
-    
+
     if (isSelected) {
       // Remove from selection
       const newSelection = selectedCategories.filter(item => item.value !== category.value);
@@ -83,7 +83,7 @@ export function MultiSelectCategory({
   const renderCategoryItem = (category: CategoryOption) => {
     const isSelected = selectedCategories.find(item => item.value === category.value);
     const isParent = !category.parentCategoryId;
-    const hasChildren = parentCategories.find(p => p.value === category.value) && 
+    const hasChildren = parentCategories.find(p => p.value === category.value) &&
                        selectedParentCategory !== category.value;
 
     return (
@@ -172,7 +172,7 @@ export function MultiSelectCategory({
                   ))}
                   {selectedCategories.length > 3 && (
                     <Badge variant="secondary" className="text-xs">
-                      +{selectedCategories.length - 3} khác
+                      +{selectedCategories.length - 3} English content normalized from the original source text.
                     </Badge>
                   )}
                 </>
@@ -186,7 +186,7 @@ export function MultiSelectCategory({
             <div className="flex items-center border-b px-3">
               <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
               <Input
-                placeholder="Tìm kiếm danh mục..."
+                placeholder="English content normalized from the original source text."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -196,7 +196,7 @@ export function MultiSelectCategory({
               {loadingParent ? (
                 <div className="flex items-center justify-center py-6">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span className="ml-2 text-sm text-muted-foreground">Đang tải...</span>
+                  <span className="ml-2 text-sm text-muted-foreground">English content normalized from the original source text.</span>
                 </div>
               ) : (
                 <>
@@ -208,19 +208,19 @@ export function MultiSelectCategory({
                         onClick={clearAll}
                         className="w-full text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
-                        Xóa tất cả ({selectedCategories.length})
+                        English content normalized from the original source text.{selectedCategories.length})
                       </Button>
                     </div>
                   )}
                   <CommandGroup>
                     {filteredCategories.length === 0 ? (
-                      <CommandEmpty>Không tìm thấy danh mục nào.</CommandEmpty>
+                      <CommandEmpty>English content normalized from the original source text.</CommandEmpty>
                     ) : (
                       // Show parent categories first, then their children if expanded
                       <>
                         {parentCategories
-                          .filter(parent => 
-                            searchTerm === "" || 
+                          .filter(parent =>
+                            searchTerm === "" ||
                             parent.label.toLowerCase().includes(searchTerm.toLowerCase())
                           )
                           .map((parentCategory) => (
@@ -231,12 +231,12 @@ export function MultiSelectCategory({
                                   {loadingChild ? (
                                     <div className="flex items-center justify-center py-2 pl-8">
                                       <Loader2 className="h-3 w-3 animate-spin" />
-                                      <span className="ml-2 text-xs text-muted-foreground">Đang tải...</span>
+                                      <span className="ml-2 text-xs text-muted-foreground">English content normalized from the original source text.</span>
                                     </div>
                                   ) : (
                                     childCategories
-                                      .filter(child => 
-                                        searchTerm === "" || 
+                                      .filter(child =>
+                                        searchTerm === "" ||
                                         child.label.toLowerCase().includes(searchTerm.toLowerCase())
                                       )
                                       .map(childCategory => renderCategoryItem(childCategory))
@@ -254,12 +254,12 @@ export function MultiSelectCategory({
           </Command>
         </PopoverContent>
       </Popover>
-      
+
       {/* Display selected categories below */}
       {selectedCategories.length > 0 && (
         <div className="mt-2 space-y-2">
           <div className="text-sm text-muted-foreground">
-            Đã chọn {selectedCategories.length} danh mục:
+            English content normalized from the original source text. {selectedCategories.length} English content normalized from the original source text.
           </div>
           <div className="flex flex-wrap gap-1">
             {selectedCategories.map((category) => (

@@ -49,7 +49,7 @@ export default function ProfileMobileIndex() {
     setTitle(t("user.settings.items.Account security"));
   }, [setTitle, t]);
 
-  const name = user?.name || "Khách";
+  const name = user?.name || "English content normalized from the original source text.";
   const phoneNumber = user?.phoneNumber || t("user.account.profile.noPhone");
   const avatar = user?.avatar || "";
   const avatarText = name ? name[0].toUpperCase() : "U";

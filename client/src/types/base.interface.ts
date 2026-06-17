@@ -18,7 +18,7 @@ export interface BaseResponse {
   message?: string;
   timestamp?: string;
   requestId?: string;
-  data: any; // Sử dụng any thay vì generic type T
+  data: any; // English content normalized from the original source text.
   metadata?: PaginationMetadata;
 }
 
@@ -65,19 +65,13 @@ export interface MediaUploadResponse {
   }[];
 }
 
-/**
- * @interface PresignedFileRequest
- * @description Interface cho request để lấy presigned URL
- */
+/* English content normalized from the original source text. */
 export interface PresignedFileRequest {
   filename: string;
   filesize: number;
 }
 
-/**
- * @interface PresignedUrlData
- * @description Interface cho dữ liệu presigned URL response
- */
+/* English content normalized from the original source text. */
 export interface PresignedUrlData {
   originalFilename: string;
   filename: string;
@@ -85,18 +79,12 @@ export interface PresignedUrlData {
   url: string;
 }
 
-/**
- * @interface PresignedUrlsRequest
- * @description Interface cho request body để lấy nhiều presigned URLs
- */
+/* English content normalized from the original source text. */
 export interface PresignedUrlsRequest {
   files: PresignedFileRequest[];
 }
 
-/**
- * @interface PresignedUrlsResponse
- * @description Interface cho response của presigned URLs API
- */
+/* English content normalized from the original source text. */
 export interface PresignedUrlsResponse extends BaseResponse {
   data: PresignedUrlData[];
 }

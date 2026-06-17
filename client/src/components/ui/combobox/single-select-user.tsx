@@ -27,7 +27,7 @@ interface SingleSelectUserProps {
 export function SingleSelectUser({
   selectedUser,
   onSelectionChange,
-  placeholder = "Chọn người dùng...",
+  placeholder = "English content normalized from the original source text.",
   className,
 }: SingleSelectUserProps) {
   const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ export function SingleSelectUser({
   // Load users from API
   const loadUsers = async (page: number = 1, search: string = '') => {
     if (loading) return;
-    
+
     setLoading(true);
     try {
       const response = await userService.getAll({
@@ -96,7 +96,7 @@ export function SingleSelectUser({
       email: user.email,
       phoneNumber: user.phoneNumber,
     };
-    
+
     onSelectionChange(selectedUserData);
     setOpen(false);
   };
@@ -162,7 +162,7 @@ export function SingleSelectUser({
             <div className="flex items-center border-b px-3">
               <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
               <CommandInput
-                placeholder="Tìm kiếm người dùng..."
+                placeholder="English content normalized from the original source text."
                 value={searchTerm}
                 onValueChange={handleSearch}
                 className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
@@ -172,11 +172,11 @@ export function SingleSelectUser({
               {loading && filteredUsers.length === 0 ? (
                 <div className="flex items-center justify-center py-6 text-sm">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900"></div>
-                  <span className="ml-2">Đang tải...</span>
+                  <span className="ml-2">English content normalized from the original source text.</span>
                 </div>
               ) : (
                 <>
-                  <CommandEmpty>Không tìm thấy người dùng nào.</CommandEmpty>
+                  <CommandEmpty>English content normalized from the original source text.</CommandEmpty>
                   <CommandGroup>
                     {filteredUsers.map((user) => (
                       <CommandItem
@@ -212,7 +212,7 @@ export function SingleSelectUser({
                       </CommandItem>
                     ))}
                   </CommandGroup>
-                  
+
                   {/* Load more button */}
                   {hasMore && !loading && (
                     <div className="p-2 border-t">
@@ -221,17 +221,15 @@ export function SingleSelectUser({
                         size="sm"
                         className="w-full"
                         onClick={loadMore}
-                      >
-                        Tải thêm...
-                      </Button>
+                      >English content normalized from the original source text.</Button>
                     </div>
                   )}
-                  
+
                   {/* Loading more indicator */}
                   {loading && filteredUsers.length > 0 && (
                     <div className="flex items-center justify-center py-2 text-sm border-t">
                       <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
-                      <span className="ml-2">Đang tải thêm...</span>
+                      <span className="ml-2">English content normalized from the original source text.</span>
                     </div>
                   )}
                 </>

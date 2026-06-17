@@ -29,7 +29,7 @@ export function useReset() {
 
       const response = await authService.resetPassword(resetData)
 
-      
+
       showToast(response.message, 'success')
       router.replace(ROUTES.AUTH.SIGNIN)
     } catch (error) {

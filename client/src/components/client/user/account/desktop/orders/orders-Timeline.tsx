@@ -13,7 +13,7 @@ import {
 // Mock OrderStatus enum for demo
 const OrderStatus = {
   PENDING_PAYMENT: "PENDING_PAYMENT",
-  VERIFY_PAYMENT: "VERIFY_PAYMENT", 
+  VERIFY_PAYMENT: "VERIFY_PAYMENT",
   PENDING_PACKAGING: "PENDING_PACKAGING",
   PENDING_PICKUP: "PENDING_PICKUP",
   PICKUPED: "PICKUPED",
@@ -35,7 +35,7 @@ export function OrderTimeline({
   createdAt,
   orderCode,
 }: OrderTimelineProps) {
-  // Hủy đơn -> không hiển thị timeline
+  // English content normalized from the original source text.
   if (status === OrderStatus.CANCELLED) {
     return (
       <div className="flex flex-col items-center justify-center p-10 bg-gradient-to-br from-red-50 to-rose-50 rounded-2xl border border-red-200 shadow-sm">
@@ -44,11 +44,9 @@ export function OrderTimeline({
           <XCircle className="relative w-16 h-16 text-red-500 mb-3 drop-shadow-sm" />
         </div>
         <p className="text-lg font-semibold text-red-600 bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
-          Đơn hàng {orderCode ? `#${orderCode}` : ""} đã bị hủy
+          English content normalized from the original source text. {orderCode ? `#${orderCode}` : ""} English content normalized from the original source text.
         </p>
-        <p className="text-sm text-gray-500 mt-1">
-          Nếu có thắc mắc, vui lòng liên hệ bộ phận hỗ trợ.
-        </p>
+        <p className="text-sm text-gray-500 mt-1">English content normalized from the original source text.</p>
       </div>
     );
   }
@@ -58,26 +56,26 @@ export function OrderTimeline({
     status === OrderStatus.PICKUPED;
 
   // ===== Labels =====
-  let step2Label = "Đã Xác Nhận Thông Tin Thanh Toán";
-  let step3Label = "Đang Chuẩn Bị Hàng";
+  let step2Label = "English content normalized from the original source text.";
+  let step3Label = "English content normalized from the original source text.";
 
   if (status === OrderStatus.PENDING_PACKAGING) {
-    step3Label = "Người Bán Đang Chuẩn Bị Hàng";
+    step3Label = "English content normalized from the original source text.";
   } else if (isPickuped) {
-    step3Label = "ĐVVC Đã Lấy Hàng Thành Công";
+    step3Label = "English content normalized from the original source text.";
   }
 
-  let step4Label = "Đang Vận Chuyển";
+  let step4Label = "English content normalized from the original source text.";
   if (status === OrderStatus.PENDING_DELIVERY)
-    step4Label = "Đơn Hàng Đang Vận Chuyển";
-  if (status === OrderStatus.DELIVERED) step4Label = "Đã Giao Hàng Thành Công";
+    step4Label = "English content normalized from the original source text.";
+  if (status === OrderStatus.DELIVERED) step4Label = "English content normalized from the original source text.";
 
   const steps = [
-    { label: "Đơn Hàng Đã Đặt", icon: FileText, color: "from-blue-500 to-blue-600" },
+    { label: "English content normalized from the original source text.", icon: FileText, color: "from-blue-500 to-blue-600" },
     { label: step2Label, icon: DollarSign, color: "from-emerald-500 to-emerald-600" },
     { label: step3Label, icon: Package, color: "from-amber-500 to-orange-500" },
     { label: step4Label, icon: Truck, color: "from-indigo-500 to-purple-500" },
-    { label: "Đơn Hàng Hoàn Thành", icon: Star, color: "from-pink-500 to-rose-500" },
+    { label: "English content normalized from the original source text.", icon: Star, color: "from-pink-500 to-rose-500" },
   ];
 
   // ===== currentStepIndex =====
@@ -118,7 +116,7 @@ export function OrderTimeline({
           const Icon = step.icon;
           const isActive = index <= currentStepIndex;
           const isCompleted = index < currentStepIndex;
-          
+
           return (
             <div
               key={index}
@@ -128,26 +126,26 @@ export function OrderTimeline({
               {isActive && (
                 <div className={`absolute top-[22px] w-8 h-8 rounded-full bg-gradient-to-r ${step.color} opacity-20 blur-sm animate-pulse`} />
               )}
-              
+
               {/* Background circle */}
               <div
                 className={`absolute top-[22px] w-8 h-8 rounded-full transition-all duration-500 ${
-                  isActive 
-                    ? "bg-white shadow-lg ring-2 ring-white" 
+                  isActive
+                    ? "bg-white shadow-lg ring-2 ring-white"
                     : "bg-gray-100 shadow-sm"
                 }`}
               />
-              
+
               {/* Icon container */}
               <div
                 className={`relative flex items-center justify-center w-12 h-12 rounded-full z-10 transition-all duration-500 transform ${
-                  isActive 
-                    ? `bg-gradient-to-br ${step.color} text-white shadow-lg hover:scale-110 hover:shadow-xl` 
+                  isActive
+                    ? `bg-gradient-to-br ${step.color} text-white shadow-lg hover:scale-110 hover:shadow-xl`
                     : "bg-gray-200 text-gray-400 hover:bg-gray-300"
                 } ${isCompleted ? "ring-2 ring-white shadow-xl" : ""}`}
               >
                 <Icon className={`w-6 h-6 transition-transform duration-300 ${isActive ? "drop-shadow-sm" : ""}`} />
-                
+
                 {/* Success checkmark overlay for completed steps */}
                 {isCompleted && (
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
@@ -157,12 +155,12 @@ export function OrderTimeline({
                   </div>
                 )}
               </div>
-              
+
               {/* Label */}
               <p
                 className={`mt-3 text-sm font-medium leading-snug break-words px-4 max-w-[200px] transition-all duration-300 ${
-                  isActive 
-                    ? `bg-gradient-to-r ${step.color} bg-clip-text text-transparent font-semibold` 
+                  isActive
+                    ? `bg-gradient-to-r ${step.color} bg-clip-text text-transparent font-semibold`
                     : "text-gray-400 group-hover:text-gray-600"
                 }`}
               >
@@ -179,7 +177,7 @@ export function OrderTimeline({
           const Icon = step.icon;
           const isActive = index <= currentStepIndex;
           const isCompleted = index < currentStepIndex;
-          
+
           return (
             <div key={index} className="flex items-start gap-4 relative group">
               {/* Icon container */}
@@ -191,7 +189,7 @@ export function OrderTimeline({
                 }`}
               >
                 <Icon className="w-5 h-5 transition-transform duration-300" />
-                
+
                 {/* Success checkmark for completed steps */}
                 {isCompleted && (
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
@@ -201,26 +199,26 @@ export function OrderTimeline({
                   </div>
                 )}
               </div>
-              
+
               {/* Label */}
               <div className="flex-1">
                 <p
                   className={`text-sm font-medium leading-snug transition-all duration-300 ${
-                    isActive 
-                      ? `bg-gradient-to-r ${step.color} bg-clip-text text-transparent font-semibold` 
+                    isActive
+                      ? `bg-gradient-to-r ${step.color} bg-clip-text text-transparent font-semibold`
                       : "text-gray-500 group-hover:text-gray-700"
                   }`}
                 >
                   {step.label}
                 </p>
               </div>
-              
+
               {/* Connecting line */}
               {index < steps.length - 1 && (
                 <div
                   className={`absolute left-6 top-12 w-[3px] h-full rounded-full transition-all duration-500 ${
-                    index < currentStepIndex 
-                      ? "bg-gradient-to-b from-emerald-400 to-teal-500 shadow-sm" 
+                    index < currentStepIndex
+                      ? "bg-gradient-to-b from-emerald-400 to-teal-500 shadow-sm"
                       : "bg-gray-300"
                   }`}
                 />
@@ -233,18 +231,18 @@ export function OrderTimeline({
   );
 }
 
-// Demo component để test
+// English content normalized from the original source text.
 export default function TimelineDemo() {
   const [currentStatus, setCurrentStatus] = useState(OrderStatus.VERIFY_PAYMENT);
-  
+
   const statusOptions = [
-    { value: OrderStatus.PENDING_PAYMENT, label: "Chờ thanh toán" },
-    { value: OrderStatus.VERIFY_PAYMENT, label: "Xác nhận thanh toán" },
-    { value: OrderStatus.PENDING_PACKAGING, label: "Chuẩn bị hàng" },
-    { value: OrderStatus.PENDING_PICKUP, label: "Chờ lấy hàng" },
-    { value: OrderStatus.PENDING_DELIVERY, label: "Đang giao hàng" },
-    { value: OrderStatus.DELIVERED, label: "Đã giao hàng" },
-    { value: OrderStatus.CANCELLED, label: "Đã hủy" },
+    { value: OrderStatus.PENDING_PAYMENT, label: "English content normalized from the original source text." },
+    { value: OrderStatus.VERIFY_PAYMENT, label: "English content normalized from the original source text." },
+    { value: OrderStatus.PENDING_PACKAGING, label: "English content normalized from the original source text." },
+    { value: OrderStatus.PENDING_PICKUP, label: "English content normalized from the original source text." },
+    { value: OrderStatus.PENDING_DELIVERY, label: "English content normalized from the original source text." },
+    { value: OrderStatus.DELIVERED, label: "English content normalized from the original source text." },
+    { value: OrderStatus.CANCELLED, label: "English content normalized from the original source text." },
   ];
 
   return (
@@ -268,9 +266,9 @@ export default function TimelineDemo() {
             ))}
           </div>
         </div>
-        
+
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <OrderTimeline 
+          <OrderTimeline
             status={currentStatus}
             createdAt="2024-03-15T10:30:00Z"
             finalAmount={299000}

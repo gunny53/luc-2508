@@ -21,7 +21,7 @@ export function MobileHeader() {
       <header
         className="fixed top-0 left-0 right-0 z-[999] w-full bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-lg text-white text-[13px] py-2.5 md:hidden"
         style={{
-          minHeight: "88px", // đảm bảo đủ chỗ cho logo + search
+          minHeight: "88px", // English content normalized from the original source text.
         }}
       >
         <div className="flex flex-col gap-2 overflow-visible">
@@ -39,7 +39,7 @@ export function MobileHeader() {
                 <Link href="/">
                   <Image
                     src="/images/logo/png-jpeg/Logo-Full-White.png"
-                    alt="Shopsifu Logo"
+                    alt="ECSite Logo"
                     fill
                     className="object-contain cursor-pointer"
                   />

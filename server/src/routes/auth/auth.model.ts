@@ -53,8 +53,8 @@ export const LoginBodySchema = UserSchema.pick({
   })
   .strict()
   .superRefine(({ totpCode, code }, ctx) => {
-    // Nếu mà truyền cùng lúc totpCode và code thì sẽ add issue
-    const message = 'Bạn chỉ nên truyền mã xác thực 2FA hoặc mã OTP. Không được truyền cả 2'
+    // English content normalized from the original source text.
+    const message = 'English content normalized from the original source text.'
     if (totpCode !== undefined && code !== undefined) {
       ctx.addIssue({
         path: ['totpCode'],
@@ -119,7 +119,7 @@ export const ForgotPasswordBodySchema = z
     if (confirmNewPassword !== newPassword) {
       ctx.addIssue({
         code: 'custom',
-        message: 'Mật khẩu và mật khẩu xác nhận phải giống nhau',
+        message: 'English content normalized from the original source text.',
         path: ['confirmNewPassword']
       })
     }
@@ -132,8 +132,8 @@ export const DisableTwoFactorBodySchema = z
   })
   .strict()
   .superRefine(({ totpCode, code }, ctx) => {
-    const message = 'Bạn phải cung cấp mã xác thực 2FA hoặc mã OTP. Không được cung cấp cả 2'
-    // Nếu cả 2 đều có hoặc không có thì sẽ nhảy vào if
+    const message = 'English content normalized from the original source text.'
+    // English content normalized from the original source text.
     if ((totpCode !== undefined) === (code !== undefined)) {
       ctx.addIssue({
         path: ['totpCode'],

@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /media/images/upload
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "MediaController" as MC
@@ -20,13 +20,13 @@ C -> MC: POST /media/images/upload (multipart 'files')
 activate MC
 
 MC -> FI: Intercept files (max 100, size limit 5MB)
-FI -> LD: Lưu files vào UPLOAD_DIR (random filename)
+FI -> LD: English content normalized from the original source text.
 LD --> FI: Files saved
 FI --> MC: Files metadata
 
 MC -> PFP: Validate files (MaxFileSize=1MB, FileType=jpg|jpeg|png|webp)
 alt Validation OK
-  PFP --> MC: Files hợp lệ
+  PFP --> MC: English content normalized from the original source text.
   MC -> MS: uploadFile(files)
   activate MS
   loop For each file
@@ -35,7 +35,7 @@ alt Validation OK
     S3DB --> S3: { Location }
     S3 --> MS: { Location }
   end
-  MS -> LD: unlink(file.path) song song cho tất cả files
+  MS -> LD: English content normalized from the original source text.
   LD --> MS: ok
   MS -> IS: t('media.media.success.UPLOAD_SUCCESS')
   IS --> MS: message
@@ -43,7 +43,7 @@ alt Validation OK
   deactivate MS
   MC --> C: 200 OK + JSON
 else Validation Failed
-  PFP -> LD: unlink(file.path) dọn dẹp
+  PFP -> LD: English content normalized from the original source text.
   LD --> PFP: ok
   PFP --> MC: ValidationException (400)
   MC --> C: 400 Bad Request

@@ -30,7 +30,7 @@ const getProductActions = (
 ): ActionItem<ProductColumn>[] => [
   {
     type: "command",
-    label: t("DataTable.view") + " (Trang sản phẩm)",
+    label: t("DataTable.view") + "English content normalized from the original source text.",
     icon: <Eye />,
     onClick: () => onView(product),
   },
@@ -42,7 +42,7 @@ const getProductActions = (
   },
   {
     type: "command",
-    label: "Xem mã vạch",
+    label: "English content normalized from the original source text.",
     icon: <QrCode />,
     onClick: () => onViewBarcode(product),
   },
@@ -100,10 +100,10 @@ export const productsColumns = ({
         cell: ({ row }) => {
             const imageUrl = row.original.image || '/images/image-placeholder.jpg';
             return (
-                <div 
-                    className="cursor-pointer" 
+                <div
+                    className="cursor-pointer"
                     onClick={() => onEdit(row.original)}
-                    title={`Chỉnh sửa sản phẩm: ${row.original.name}`}
+                    title={`English content normalized from the original source text.${row.original.name}`}
                 >
                     <Image
                         src={imageUrl}
@@ -123,9 +123,9 @@ export const productsColumns = ({
         header: () => t("DataTable.name"),
         cell: ({ row }) => {
             return (
-                <span 
+                <span
                     className="font-medium line-clamp-3 w-40 whitespace-normal cursor-pointer hover:underline"
-                    title={`Chỉnh sửa sản phẩm: ${row.original.name}`}
+                    title={`English content normalized from the original source text.${row.original.name}`}
                     onClick={() => onEdit(row.original)}
                 >
                     {row.original.name}

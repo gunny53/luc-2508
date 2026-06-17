@@ -19,7 +19,7 @@ import {
 } from "@/types/order.interface";
 
 export const orderService = {
-  // ✅ Lấy tất cả đơn hàng (filter, sort, search, pagination)
+  // English content normalized from the original source text.
   getAll: async (
     params?: OrderGetAllParams,
     signal?: AbortSignal
@@ -35,7 +35,7 @@ export const orderService = {
     }
   },
 
-  // ✅ Lấy đơn hàng theo status (PENDING_PAYMENT, DELIVERED, ...)
+  // English content normalized from the original source text.
   getByStatus: async (
     status: OrderStatus,
     params?: Omit<OrderGetAllParams, "status">,
@@ -52,7 +52,7 @@ export const orderService = {
     }
   },
 
-  // ✅ Lấy chi tiết đơn hàng
+  // English content normalized from the original source text.
   getById: async (
     orderId: string,
     signal?: AbortSignal
@@ -66,7 +66,7 @@ export const orderService = {
     }
   },
 
-  // ✅ Tạo đơn hàng mới
+  // English content normalized from the original source text.
   create: async (
     data: OrderCreateRequest,
     signal?: AbortSignal
@@ -83,7 +83,7 @@ export const orderService = {
     }
   },
 
-  // ✅ Huỷ đơn hàng
+  // English content normalized from the original source text.
   cancel: async (
     orderId: string,
     signal?: AbortSignal
@@ -97,7 +97,7 @@ export const orderService = {
     }
   },
 
-  // ✅ Tính toán đơn hàng
+  // English content normalized from the original source text.
   calculateOrder: async (
     data: CalculateOrderRequest,
     signal?: AbortSignal
@@ -151,7 +151,7 @@ export const orderService = {
 // MANAGE ORDER SERVICE
 // ==================================================
 export const manageOrderService = {
-  // ✅ Lấy tất cả đơn hàng manage (filter, sort, search, pagination)
+  // English content normalized from the original source text.
   getAll: async (
     params?: ManageOrderGetAllParams,
     signal?: AbortSignal
@@ -167,7 +167,7 @@ export const manageOrderService = {
     }
   },
 
-  // ✅ Lấy chi tiết đơn hàng manage theo ID
+  // English content normalized from the original source text.
   getById: async (
     orderId: string,
     signal?: AbortSignal

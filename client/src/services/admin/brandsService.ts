@@ -2,16 +2,16 @@ import { publicAxios, privateAxios } from '@/lib/api';
 import { API_ENDPOINTS } from '@/constants/api';
 import { AxiosError } from "axios";
 import { PaginationRequest } from '@/types/base.interface';
-import { 
-  Brand, 
-  BrandCreateRequest, 
-  BrandGetAllResponse, 
-  BrandGetByIdResponse, 
-  BrandParams, 
-  BrandUpdateRequest 
+import {
+  Brand,
+  BrandCreateRequest,
+  BrandGetAllResponse,
+  BrandGetByIdResponse,
+  BrandParams,
+  BrandUpdateRequest
 } from '@/types/admin/brands.interface';
 
-// Lấy danh sách brands với phân trang và tìm kiếm
+// English content normalized from the original source text.
 export const getAllBrands = async (params?: BrandParams): Promise<BrandGetAllResponse> => {
   try {
     const response = await privateAxios.get(API_ENDPOINTS.BRANDS.GETALL, {
@@ -21,12 +21,12 @@ export const getAllBrands = async (params?: BrandParams): Promise<BrandGetAllRes
   } catch (error) {
     const axiosError = error as AxiosError;
     throw axiosError.response?.data || {
-      message: 'Có lỗi xảy ra khi lấy danh sách thương hiệu'
+      message: 'English content normalized from the original source text.'
     };
   }
 };
 
-// Lấy thông tin chi tiết brand theo ID
+// English content normalized from the original source text.
 export const getBrandById = async (id: number | string): Promise<BrandGetByIdResponse> => {
   try {
     const url = API_ENDPOINTS.BRANDS.GET_BY_ID.replace(':brandsId', id.toString());
@@ -35,12 +35,12 @@ export const getBrandById = async (id: number | string): Promise<BrandGetByIdRes
   } catch (error) {
     const axiosError = error as AxiosError;
     throw axiosError.response?.data || {
-      message: 'Có lỗi xảy ra khi lấy thông tin thương hiệu'
+      message: 'English content normalized from the original source text.'
     };
   }
 };
 
-// Tạo mới brand
+// English content normalized from the original source text.
 export const createBrand = async (data: BrandCreateRequest): Promise<Brand> => {
   try {
     const response = await privateAxios.post(API_ENDPOINTS.BRANDS.CREATE, data);
@@ -48,12 +48,12 @@ export const createBrand = async (data: BrandCreateRequest): Promise<Brand> => {
   } catch (error) {
     const axiosError = error as AxiosError;
     throw axiosError.response?.data || {
-      message: 'Có lỗi xảy ra khi tạo thương hiệu mới'
+      message: 'English content normalized from the original source text.'
     };
   }
 };
 
-// Cập nhật brand
+// English content normalized from the original source text.
 export const updateBrand = async (id: number | string, data: BrandUpdateRequest): Promise<Brand> => {
   try {
     const url = API_ENDPOINTS.BRANDS.UPDATE.replace(':brandsId', id.toString());
@@ -62,12 +62,12 @@ export const updateBrand = async (id: number | string, data: BrandUpdateRequest)
   } catch (error) {
     const axiosError = error as AxiosError;
     throw axiosError.response?.data || {
-      message: 'Có lỗi xảy ra khi cập nhật thương hiệu'
+      message: 'English content normalized from the original source text.'
     };
   }
 };
 
-// Xóa brand
+// English content normalized from the original source text.
 export const deleteBrand = async (id: number | string): Promise<void> => {
   try {
     const url = API_ENDPOINTS.BRANDS.DELETE.replace(':brandsId', id.toString());
@@ -75,7 +75,7 @@ export const deleteBrand = async (id: number | string): Promise<void> => {
   } catch (error) {
     const axiosError = error as AxiosError;
     throw axiosError.response?.data || {
-      message: 'Có lỗi xảy ra khi xóa thương hiệu'
+      message: 'English content normalized from the original source text.'
     };
   }
 };

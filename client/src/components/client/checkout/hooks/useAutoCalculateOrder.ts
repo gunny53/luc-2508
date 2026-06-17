@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { 
+import {
   selectCalculateOrderRequest,
   selectCalculationResult,
   selectShopOrders,
@@ -15,10 +15,10 @@ export const useAutoCalculateOrder = () => {
   const shopOrders = useSelector(selectShopOrders);
   const appliedPlatformVoucher = useSelector(selectAppliedPlatformVoucher);
   const appliedVouchers = useSelector(selectAppliedVouchers);
-  
+
   const { calculateOrder, loading, error, canCalculate } = useCalculateOrder();
-  
-  // Sử dụng ref để track request hash và tránh gọi API trùng lặp
+
+  // English content normalized from the original source text.
   const lastCalculationHashRef = useRef<string>('');
   const isCalculatingRef = useRef(false);
 
@@ -27,7 +27,7 @@ export const useAutoCalculateOrder = () => {
       return;
     }
 
-    // Tạo hash từ các dữ liệu quan trọng bao gồm cả voucher của từng shop
+    // English content normalized from the original source text.
     const calculationHash = JSON.stringify({
       shopOrders: shopOrders.map(order => ({
         shopId: order.shopId,
@@ -42,11 +42,11 @@ export const useAutoCalculateOrder = () => {
       }, {} as Record<string, string | null>),
     });
 
-    // Chỉ tính toán nếu có thay đổi thực sự
+    // English content normalized from the original source text.
     if (calculationHash !== lastCalculationHashRef.current) {
       lastCalculationHashRef.current = calculationHash;
       isCalculatingRef.current = true;
-      
+
       calculateOrder().finally(() => {
         isCalculatingRef.current = false;
       });
@@ -56,7 +56,7 @@ export const useAutoCalculateOrder = () => {
     calculateOrder,
     shopOrders,
     appliedPlatformVoucher?.code,
-    appliedVouchers, // Thêm appliedVouchers để theo dõi thay đổi voucher shop
+    appliedVouchers, // English content normalized from the original source text.
   ]);
 
   return {

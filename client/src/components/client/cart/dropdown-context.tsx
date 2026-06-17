@@ -2,22 +2,22 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Loại dropdown còn lại
+// English content normalized from the original source text.
 export type DropdownType = 'search' | 'none';
 
-// Định nghĩa context
+// English content normalized from the original source text.
 interface DropdownContextType {
   openDropdown: DropdownType;
   setOpenDropdown: (type: DropdownType) => void;
 }
 
-// Tạo context
+// English content normalized from the original source text.
 const DropdownContext = createContext<DropdownContextType>({
   openDropdown: 'none',
   setOpenDropdown: () => {},
 });
 
-// Provider chỉ quản lý search dropdown
+// English content normalized from the original source text.
 export function DropdownProvider({ children }: { children: React.ReactNode }) {
   const [openDropdown, setOpenDropdown] = useState<DropdownType>('none');
 
@@ -58,7 +58,7 @@ export function DropdownProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Hook dùng để truy cập dropdown context
+// English content normalized from the original source text.
 export function useDropdown() {
   return useContext(DropdownContext);
 }

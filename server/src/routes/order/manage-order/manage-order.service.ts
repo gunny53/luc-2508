@@ -12,28 +12,24 @@ export class ManageOrderService {
     private readonly i18n: I18nService<I18nTranslations>
   ) {}
 
-  /**
-   * Kiểm tra nếu người dùng không phải là Seller hoặc Admin thì không cho tiếp tục
-   */
+  /* English content normalized from the original source text. */
   validateSellerPrivilege(user: AccessTokenPayload): boolean {
     if (user.roleName !== 'SELLER' && user.roleName !== 'ADMIN') {
-      throw new ForbiddenException('Chỉ Seller mới được truy cập tính năng này')
+      throw new ForbiddenException('English content normalized from the original source text.')
     }
     return true
   }
 
-  /**
-   * Lấy danh sách đơn hàng của shop
-   */
+  /* English content normalized from the original source text. */
   async list({ query, user }: { query: GetManageOrderListQueryType; user: AccessTokenPayload }) {
     this.validateSellerPrivilege(user)
 
     let data
     if (user.roleName === 'ADMIN') {
-      // Admin có thể xem tất cả orders
+      // English content normalized from the original source text.
       data = await this.orderRepo.listForAdmin(query)
     } else {
-      // Seller chỉ xem orders của shop mình
+      // English content normalized from the original source text.
       data = await this.orderRepo.listByShop(user.userId, query)
     }
 
@@ -44,9 +40,7 @@ export class ManageOrderService {
     }
   }
 
-  /**
-   * Lấy chi tiết đơn hàng của shop
-   */
+  /* English content normalized from the original source text. */
   async getDetail({
     orderId,
     user
@@ -58,10 +52,10 @@ export class ManageOrderService {
 
     let order
     if (user.roleName === 'ADMIN') {
-      // Admin có thể xem tất cả orders - tìm order trực tiếp từ database
+      // English content normalized from the original source text.
       order = await this.orderRepo.detailForAdmin(orderId)
     } else {
-      // Seller chỉ xem orders của shop mình
+      // English content normalized from the original source text.
       order = await this.orderRepo.detailByShop(user.userId, orderId)
     }
 

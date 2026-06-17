@@ -8,7 +8,7 @@ interface ProductSuggestion {
 export default function ProductSuggestions({ products }: { products: ProductSuggestion[] }) {
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-3">Sản phẩm tương tự</h2>
+      <h2 className="text-lg font-semibold mb-3">English content normalized from the original source text.</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {products.map((item) => (
           <div key={item.id} className="border rounded p-2 bg-white hover:shadow-sm transition">

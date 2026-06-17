@@ -15,15 +15,15 @@ interface SocketContextType {
 
 const SocketContext = createContext<SocketContextType | undefined>(undefined)
 
-export const useShopsifuSocket = () => {
+export const useECSiteSocket = () => {
   const context = useContext(SocketContext)
   if (context === undefined) {
-    throw new Error('useShopsifuSocket must be used within a ShopsifuSocketProvider')
+    throw new Error('useECSiteSocket must be used within a ECSiteSocketProvider')
   }
   return context
 }
 
-export const ShopsifuSocketProvider = ({ children }: { children: ReactNode }) => {
+export const ECSiteSocketProvider = ({ children }: { children: ReactNode }) => {
   const [payments, setPayments] = useState<PaymentData[]>([])
   const [isConnected, setIsConnected] = useState(false)
   const socketRef = useRef<Socket | null>(null)
@@ -33,11 +33,11 @@ export const ShopsifuSocketProvider = ({ children }: { children: ReactNode }) =>
       socketRef.current.disconnect()
     }
 
-    // Kết nối trực tiếp đến namespace payment
-    const newSocket = io('https://api.shopsifu.live/payment', {
+    // English content normalized from the original source text.
+    const newSocket = io('https://api.ecsite.live/payment', {
       path: '/socket.io',
       query: { paymentId },
-      // Cookie sẽ tự động được gửi
+      // English content normalized from the original source text.
       withCredentials: true,
       transports: ['websocket'],
       forceNew: true
@@ -53,13 +53,13 @@ export const ShopsifuSocketProvider = ({ children }: { children: ReactNode }) =>
       setIsConnected(false)
     })
 
-    // Listen event 'payment' như backend emit
+    // English content normalized from the original source text.
     newSocket.on('payment', (data: PaymentData) => {
       console.log('📨 [WebSocket] Received payment event:', data)
       setPayments((prevPayments) => [...prevPayments, data])
     })
 
-    // Listen event 'receive-money' từ PaymentGateway
+    // English content normalized from the original source text.
     newSocket.on('receive-money', (data: PaymentData) => {
       console.log('💰 [WebSocket] Received money event:', data)
       setPayments((prevPayments) => [...prevPayments, data])
@@ -69,7 +69,7 @@ export const ShopsifuSocketProvider = ({ children }: { children: ReactNode }) =>
     newSocket.onAny((eventName, ...args) => {
       console.log(`🔔 [WebSocket] Received event "${eventName}":`, args)
     })
-    
+
     newSocket.on('connect_error', (err) => {
       console.error('❌ Connection error:', err.message)
       setIsConnected(false)
@@ -87,7 +87,7 @@ export const ShopsifuSocketProvider = ({ children }: { children: ReactNode }) =>
     }
   }, [])
 
-  // Thêm method để send message
+  // English content normalized from the original source text.
   const sendMoney = useCallback((amount: string) => {
     if (socketRef.current && isConnected) {
       socketRef.current.emit('send-money', amount)

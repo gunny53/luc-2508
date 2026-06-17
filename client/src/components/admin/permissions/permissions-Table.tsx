@@ -6,7 +6,7 @@ import SearchInput from "@/components/ui/data-table-component/search-input"
 import PermissionsModalUpsert from "./permissions-ModalUpsert"
 import { ConfirmDeleteModal } from "@/components/ui/confirm-delete-modal"
 import { DataTable } from "@/components/ui/data-table-component/data-table"
-import { usePermissions } from "./usePermissions" // Sử dụng hook mới
+import { usePermissions } from "./usePermissions" // English content normalized from the original source text.
 import { useTranslations } from "next-intl"
 import DataTableViewOption from "@/components/ui/data-table-component/data-table-view-option"
 import { useDataTable } from "@/hooks/useDataTable"
@@ -55,7 +55,7 @@ export function PermissionsTable() {
       await handleDelete(permissionToDelete.id);
       handleCloseDeleteModal();
     } catch (error) {
-      console.error("Lỗi khi xóa quyền:", error);
+      console.error("English content normalized from the original source text.", error);
     } finally {
       setDeleteLoading(false);
     }
@@ -69,14 +69,14 @@ export function PermissionsTable() {
         await handleCreate(formData);
       }
     } catch (error) {
-      console.error("Lỗi khi xử lý quyền:", error);
+      console.error("English content normalized from the original source text.", error);
     }
   };
 
   // Log to check if permissions are updated
   console.log("Permissions data:", permissions.length, "items");
   console.log("Current pagination:", pagination);
-  
+
   // Ensure table is recreated when permissions or pagination changes
   const table = useDataTable({
     data: permissions,
@@ -85,15 +85,15 @@ export function PermissionsTable() {
 
   return (
    <div className="w-full space-y-4">
-  {/* Hàng riêng cho nút "Thêm mới" */}
+  {/* English content normalized from the original source text. */}
   <div className="flex justify-end">
     <Button onClick={() => handleOpenModal()} variant="default">
       <PlusIcon className="w-4 h-4 mr-2" />
-      {t("admin.permissions.addAction") || "Thêm mới quyền"}
+      {t("admin.permissions.addAction") || "English content normalized from the original source text."}
     </Button>
   </div>
 
-  {/* Hàng search + data view option */}
+  {/* English content normalized from the original source text. */}
   <div className="flex justify-between flex-wrap gap-2 items-center">
     <SearchInput
       value={pagination?.search || ""}
@@ -104,7 +104,7 @@ export function PermissionsTable() {
     <DataTableViewOption table={table} />
   </div>
 
-  {/* Bảng dữ liệu */}
+  {/* English content normalized from the original source text. */}
   <DataTable
     table={table}
     columns={PermissionsColumns({ onDelete: handleOpenDelete, onEdit: handleOpenModal })}
@@ -124,7 +124,7 @@ export function PermissionsTable() {
     }}
   />
 
-  {/* Modal thêm/sửa quyền */}
+  {/* English content normalized from the original source text. */}
   <PermissionsModalUpsert
     open={isModalOpen}
     onClose={handleCloseModal}
@@ -132,7 +132,7 @@ export function PermissionsTable() {
     permission={selectedPermission}
   />
 
-  {/* Modal xác nhận xóa */}
+  {/* English content normalized from the original source text. */}
   <ConfirmDeleteModal
     open={deleteOpen}
     onClose={handleCloseDeleteModal}

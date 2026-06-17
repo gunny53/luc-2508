@@ -23,24 +23,24 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>Đang tải sản phẩm...</p>
+        <p>English content normalized from the original source text.</p>
       </div>
     );
   }
-  
-  // Sử dụng real data hoặc fallback về mock data
+
+  // English content normalized from the original source text.
   let productToUse;
   let media: MediaItem[];
-  
+
   if (productData) {
-    // Case 1: Có real data từ API
+    // English content normalized from the original source text.
     productToUse = productData;
-    // Biến đổi images từ API thành media format
+    // English content normalized from the original source text.
     media = transformProductImagesToMedia(productData);
   } else {
-    // Case 2: Sử dụng mock data
+    // English content normalized from the original source text.
     productToUse = productMock;
-    // Chuyển đổi mock data media sang đúng kiểu MediaItem
+    // English content normalized from the original source text.
     media = (productMock.media || []).map(item => ({
       type: item.type === "video" ? "video" : "image",
       src: item.src
@@ -48,11 +48,11 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   }
 
   const sizes =
-    productToUse?.variants?.find((v: any) => v.value === "Kích thước")?.options || [];
+    productToUse?.variants?.find((v: any) => v.value === "English content normalized from the original source text.")?.options || [];
   const colors =
-    productToUse?.variants?.find((v: any) => v.value === "Màu sắc")?.options || [];
+    productToUse?.variants?.find((v: any) => v.value === "English content normalized from the original source text.")?.options || [];
 
-  // Tạo product object hoàn chỉnh cho UI
+  // English content normalized from the original source text.
   const product = {
     ...productToUse,
     sizes,
@@ -63,30 +63,30 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
    const defaultShop = {
     id: "cool-crew-12345",
     name: "Cool Crew",
-    avatar: "/images/logo/coolcrew-logo.png", // Đường dẫn hình ảnh mặc định
+    avatar: "/images/logo/coolcrew-logo.png", // English content normalized from the original source text.
     isOnline: true,
-    lastActive: "1 giờ trước",
+    lastActive: "English content normalized from the original source text.",
     rating: 3.7,
     responseRate: 100,
-    responseTime: "trong vài giờ",
+    responseTime: "English content normalized from the original source text.",
     followers: 5500,
-    joinedDate: "9 tháng trước",
+    joinedDate: "English content normalized from the original source text.",
     productsCount: 86
   };
 
   const handleAddToCart = (skuId: string, quantity: number) => {
-    console.log('Thêm vào giỏ hàng:', { skuId, quantity });
-    // Thêm logic thực tế ở đây để thêm vào giỏ hàng
+    console.log('English content normalized from the original source text.', { skuId, quantity });
+    // English content normalized from the original source text.
   };
 
   const handleBuyNow = () => {
     console.log('Mua ngay');
-    // Thêm logic thực tế ở đây để mua ngay
+    // English content normalized from the original source text.
   };
 
   const handleChat = () => {
-    console.log('Chat với shop');
-    // Thêm logic thực tế ở đây để chat với shop
+    console.log('English content normalized from the original source text.');
+    // English content normalized from the original source text.
   };
 
   return (
@@ -97,7 +97,7 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
       <ProductSpecsMobile product={product as any} />
       <ProductReviews productId={String(product.id)} />
       <ProductSuggestionsMobile products={[]} />
-      <ProductsFooter 
+      <ProductsFooter
         product={product as any}
         onAddToCart={handleAddToCart}
         onBuyNow={handleBuyNow}

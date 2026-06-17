@@ -12,7 +12,7 @@ import {
 import { PaginationRequest } from '@/types/base.interface';
 
 export const permissionService = {
-    // Lấy tất cả permissions
+    // English content normalized from the original source text.
     getAll: async (params?: PaginationRequest, signal?: AbortSignal): Promise<PerGetAllResponse> => {
         try {
           const response = await privateAxios.get(API_ENDPOINTS.PERMISSION.GETALL, {
@@ -24,9 +24,9 @@ export const permissionService = {
           throw error
         }
     },
-      
 
-    // Lấy chi tiết permission theo ID
+
+    // English content normalized from the original source text.
     getById: async (id: string, signal?: AbortSignal): Promise<PerGetByIdResponse> => {
         try {
             const url = API_ENDPOINTS.PERMISSION.GETBYID.replace(':id', id);
@@ -37,7 +37,7 @@ export const permissionService = {
         }
     },
 
-    // Tạo permission mới
+    // English content normalized from the original source text.
     create: async (data: PerCreateRequest, signal?: AbortSignal): Promise<PerCreateResponse> => {
         try {
             const response = await privateAxios.post(API_ENDPOINTS.PERMISSION.POST, data, { signal });
@@ -47,7 +47,7 @@ export const permissionService = {
         }
     },
 
-    // Cập nhật permission theo ID
+    // English content normalized from the original source text.
     update: async (id: string, data: PerUpdateRequest, signal?: AbortSignal): Promise<PerUpdateResponse> => {
         try {
             const url = API_ENDPOINTS.PERMISSION.UPDATE.replace(':id', id);
@@ -58,7 +58,7 @@ export const permissionService = {
         }
     },
 
-    // Xoá permission theo ID
+    // English content normalized from the original source text.
     delete: async (id: string, signal?: AbortSignal): Promise<PerDeleteResponse> => {
         try {
             const url = API_ENDPOINTS.PERMISSION.DELETE_BY_ID.replace(':id', id);
@@ -69,7 +69,7 @@ export const permissionService = {
         }
     },
 
-    // Lấy danh sách quyền của một vai trò cụ thể
+    // English content normalized from the original source text.
     // getRolePermissions: async (roleId: string) => {
     //     try {
     //         const url = API_ENDPOINTS.PERMISSION.GET_ROLE_PERMISSIONS.replace(':id', roleId);
@@ -80,7 +80,7 @@ export const permissionService = {
     //     }
     // },
 
-    // Cập nhật quyền cho một vai trò
+    // English content normalized from the original source text.
     // updateRolePermissions: async (roleId: string, permissions: string[]) => {
     //     try {
     //         const url = API_ENDPOINTS.PERMISSION.UPDATE_ROLE_PERMISSIONS.replace(':id', roleId);

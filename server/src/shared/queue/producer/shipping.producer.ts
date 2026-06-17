@@ -152,9 +152,7 @@ export class ShippingProducer {
     }
   }
 
-  /**
-   * Enqueue job hủy đơn hàng GHN
-   */
+  /* English content normalized from the original source text. */
   async enqueueCancelGHNOrder(orderCode: string, orderId: string): Promise<any> {
     this.logger.log(`[SHIPPING_PRODUCER] Enqueue cancel GHN order job: ${orderCode} for order: ${orderId}`)
 
@@ -187,9 +185,7 @@ export class ShippingProducer {
     }
   }
 
-  /**
-   * Enqueue job tạo đơn hàng GHN
-   */
+  /* English content normalized from the original source text. */
   async enqueueCreateGHNOrder(orderId: string): Promise<any> {
     this.logger.log(`[SHIPPING_PRODUCER] Enqueue create GHN order job for order: ${orderId}`)
 

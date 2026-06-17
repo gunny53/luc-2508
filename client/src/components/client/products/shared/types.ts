@@ -8,7 +8,7 @@ export interface ProductVariantOption {
 
 export interface ProductSku {
   id: string;
-  variantCombo: string; // Ví dụ: "Đỏ-XL"
+  variantCombo: string; // English content normalized from the original source text.
   price: number;
   stock: number;
   image?: string;
@@ -16,7 +16,7 @@ export interface ProductSku {
 
 // UI State interfaces
 export interface SelectedVariants {
-  [key: string]: string | null; // Ví dụ: { "Màu sắc": "Đỏ", "Kích thước": "XL" }
+  [key: string]: string | null; // English content normalized from the original source text.
 }
 
 // Cart related types

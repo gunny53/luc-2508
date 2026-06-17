@@ -19,5 +19,5 @@ export interface RevokeSessionsBySessions{
 }
 
 export interface RevokeSeesionsResponse{
-    
+
 }

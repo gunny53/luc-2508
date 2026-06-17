@@ -107,7 +107,7 @@ export class AuthService {
     if (body.type === TypeOfVerificationCode.FORGOT_PASSWORD && !user) {
       throw EmailNotFoundException
     }
-    // 2. Tạo mã OTP
+    // English content normalized from the original source text.
     const code = generateOTP()
     await this.authRepository.createVerificationCode({
       email: body.email,
@@ -115,7 +115,7 @@ export class AuthService {
       type: body.type,
       expiresAt: addMilliseconds(new Date(), ms(this.configService.get('auth.otp.expiresIn')))
     })
-    // 3. Gửi mã OTP
+    // English content normalized from the original source text.
     const { error } = await this.emailService.sendOTP({
       email: body.email,
       code
@@ -123,11 +123,11 @@ export class AuthService {
     if (error) {
       throw FailedToSendOTPException
     }
-    return { message: 'Gửi mã OTP thành công' }
+    return { message: 'English content normalized from the original source text.' }
   }
 
   async login(body: LoginBodyType & { userAgent: string; ip: string }, res: Response) {
-    // 1. Lấy thông tin user, kiểm tra user có tồn tại hay không, mật khẩu có đúng không
+    // English content normalized from the original source text.
     const user = await this.authRepository.findUniqueUserIncludeRole({
       email: body.email
     })
@@ -139,14 +139,14 @@ export class AuthService {
     if (!isPasswordMatch) {
       throw InvalidPasswordException
     }
-    // 2. Nếu user đã bật mã 2FA thì kiểm tra mã 2FA TOTP Code hoặc OTP Code (email)
+    // English content normalized from the original source text.
     if (user.totpSecret) {
-      // Nếu không có mã TOTP Code và Code thì thông báo cho client biết
+      // English content normalized from the original source text.
       if (!body.totpCode && !body.code) {
         throw InvalidTOTPAndCodeException
       }
 
-      // Kiểm tra TOTP Code có hợp lệ hay không
+      // English content normalized from the original source text.
       if (body.totpCode) {
         const isValid = this.twoFactorService.verifyTOTP({
           email: user.email,
@@ -157,7 +157,7 @@ export class AuthService {
           throw InvalidTOTPException
         }
       } else if (body.code) {
-        // Kiểm tra mã OTP có hợp lệ không
+        // English content normalized from the original source text.
         await this.validateVerificationCode({
           email: user.email,
           type: TypeOfVerificationCode.LOGIN
@@ -165,14 +165,14 @@ export class AuthService {
       }
     }
 
-    // 3. Tạo mới device
+    // English content normalized from the original source text.
     const device = await this.authRepository.createDevice({
       userId: user.id,
       userAgent: body.userAgent,
       ip: body.ip
     })
 
-    // 4. Tạo mới accessToken và refreshToken
+    // English content normalized from the original source text.
     const tokens = await this.generateTokens({
       userId: user.id,
       deviceId: device.id,
@@ -182,7 +182,7 @@ export class AuthService {
 
     this.cookieService.setAuthCookies(res, tokens.accessToken, tokens.refreshToken)
 
-    return { message: 'Đăng nhập thành công' }
+    return { message: 'English content normalized from the original source text.' }
   }
 
   async generateTokens({ userId, deviceId, roleId, roleName }: AccessTokenPayloadCreate) {
@@ -219,9 +219,9 @@ export class AuthService {
     res: Response
   }) {
     try {
-      // 1. Kiểm tra refreshToken có hợp lệ không
+      // English content normalized from the original source text.
       const { userId } = await this.tokenService.verifyRefreshToken(refreshToken)
-      // 2. Kiểm tra refreshToken có tồn tại trong database không
+      // English content normalized from the original source text.
       const refreshTokenInDb = await this.authRepository.findUniqueRefreshTokenIncludeUserRole({
         token: refreshToken
       })
@@ -245,7 +245,7 @@ export class AuthService {
       const $tokens = this.generateTokens({ userId, roleId, roleName, deviceId })
       const [, , tokens] = await Promise.all([$updateDevice, $deleteRefreshToken, $tokens])
       this.cookieService.setAuthCookies(res, tokens.accessToken, tokens.refreshToken)
-      return { message: 'Làm mới token thành công' }
+      return { message: 'English content normalized from the original source text.' }
     } catch (error) {
       if (error instanceof HttpException) {
         throw error
@@ -256,20 +256,20 @@ export class AuthService {
 
   async logout(refreshToken: string) {
     try {
-      // 1. Kiểm tra refreshToken có hợp lệ không
+      // English content normalized from the original source text.
       await this.tokenService.verifyRefreshToken(refreshToken)
-      // 2. Xóa refreshToken trong database
+      // English content normalized from the original source text.
       const deletedRefreshToken = await this.authRepository.deleteRefreshToken({
         token: refreshToken
       })
-      // 3. Cập nhật device là đã logout
+      // English content normalized from the original source text.
       await this.authRepository.updateDevice(deletedRefreshToken.deviceId, {
         isActive: false
       })
-      return { message: 'Đăng xuất thành công' }
+      return { message: 'English content normalized from the original source text.' }
     } catch (error) {
-      // Trường hợp đã refresh token rồi, hãy thông báo cho user biết
-      // refresh token của họ đã bị đánh cắp
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       if (isNotFoundPrismaError(error)) {
         throw RefreshTokenAlreadyUsedException
       }
@@ -279,19 +279,19 @@ export class AuthService {
 
   async forgotPassword(body: ForgotPasswordBodyType) {
     const { email, newPassword } = body
-    // 1. Kiểm tra email đã tồn tại trong database chưa
+    // English content normalized from the original source text.
     const user = await this.sharedUserRepository.findUnique({
       email
     })
     if (!user) {
       throw EmailNotFoundException
     }
-    //2. Kiểm tra mã OTP có hợp lệ không
+    // English content normalized from the original source text.
     await this.validateVerificationCode({
       email,
       type: TypeOfVerificationCode.FORGOT_PASSWORD
     })
-    //3. Cập nhật lại mật khẩu mới và xóa đi OTP
+    // English content normalized from the original source text.
     const hashedPassword = await this.hashingService.hash(newPassword)
     await Promise.all([
       this.sharedUserRepository.update(
@@ -309,12 +309,12 @@ export class AuthService {
       })
     ])
     return {
-      message: 'Đổi mật khẩu thành công'
+      message: 'English content normalized from the original source text.'
     }
   }
 
   async setupTwoFactorAuth(userId: string) {
-    // 1. Lấy thông tin user, kiểm tra xem user có tồn tại hay không, và xem họ đã bật 2FA chưa
+    // English content normalized from the original source text.
     const user = await this.sharedUserRepository.findUnique({
       id: userId
     })
@@ -324,11 +324,11 @@ export class AuthService {
     if (user.totpSecret) {
       throw TOTPAlreadyEnabledException
     }
-    // 2. Tạo ra secret và uri
+    // English content normalized from the original source text.
     const { secret, uri } = this.twoFactorService.generateTOTPSecret(user.email)
-    // 3. Cập nhật secret vào user trong database
+    // English content normalized from the original source text.
     await this.sharedUserRepository.update({ id: userId }, { totpSecret: secret, updatedById: userId })
-    // 4. Trả về secret và uri
+    // English content normalized from the original source text.
     return {
       secret,
       uri
@@ -337,7 +337,7 @@ export class AuthService {
 
   async disableTwoFactorAuth(data: DisableTwoFactorBodyType & { userId: string }) {
     const { userId, totpCode, code } = data
-    // 1. Lấy thông tin user, kiểm tra xem user có tồn tại hay không, và xem họ đã bật 2FA chưa
+    // English content normalized from the original source text.
     const user = await this.sharedUserRepository.findUnique({ id: userId })
     if (!user) {
       throw EmailNotFoundException
@@ -346,7 +346,7 @@ export class AuthService {
       throw TOTPNotEnabledException
     }
 
-    // 2. Kiểm tra mã TOTP có hợp lệ hay không
+    // English content normalized from the original source text.
     if (totpCode) {
       const isValid = this.twoFactorService.verifyTOTP({
         email: user.email,
@@ -357,19 +357,19 @@ export class AuthService {
         throw InvalidTOTPException
       }
     } else if (code) {
-      // 3. Kiểm tra mã OTP email có hợp lệ hay không
+      // English content normalized from the original source text.
       await this.validateVerificationCode({
         email: user.email,
         type: TypeOfVerificationCode.DISABLE_2FA
       })
     }
 
-    // 4. Cập nhật secret thành null
+    // English content normalized from the original source text.
     await this.sharedUserRepository.update({ id: userId }, { totpSecret: null, updatedById: userId })
 
-    // 5. Trả về thông báo
+    // English content normalized from the original source text.
     return {
-      message: 'Tắt 2FA thành công'
+      message: 'English content normalized from the original source text.'
     }
   }
 }

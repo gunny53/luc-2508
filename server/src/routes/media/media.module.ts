@@ -33,7 +33,7 @@ export class MediaModule {
         mkdirSync(UPLOAD_DIR, { recursive: true })
       }
     } catch (error) {
-      console.warn(`Không thể tạo thư mục upload: ${UPLOAD_DIR}`, error.message)
+      console.warn(`English content normalized from the original source text.${UPLOAD_DIR}`, error.message)
     }
   }
 }

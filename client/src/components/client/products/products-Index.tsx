@@ -19,8 +19,8 @@ export function ProductPage({ slug, initialData, error: initialError }: ProductP
   const [mounted, setMounted] = useState(false);
   const deviceType = useCheckDevice();
   const { isMobile } = useResponsive();
-  
-  // Sử dụng hook useProduct để quản lý data
+
+  // English content normalized from the original source text.
   const { product, isLoading, error } = useProduct(slug, initialData);
 
   useEffect(() => {
@@ -31,13 +31,13 @@ export function ProductPage({ slug, initialData, error: initialError }: ProductP
 
   if (!mounted || deviceType === "unknown") return null;
 
-  // Xử lý error state
+  // English content normalized from the original source text.
   const productError = error || initialError;
   if (productError) {
     console.error("❌ [ProductPage] Error:", productError);
-    // TODO: Thêm component hiển thị lỗi
+    // English content normalized from the original source text.
   }
-  
+
   return (
     <ClientLayoutWrapper
       hideHeader={isMobile}
@@ -48,14 +48,14 @@ export function ProductPage({ slug, initialData, error: initialError }: ProductP
       maxWidth={1650}
     >
       {deviceType === "mobile" ? (
-        <ProductDetailMobile 
-          slug={slug} 
+        <ProductDetailMobile
+          slug={slug}
           product={product}
           isLoading={isLoading}
         />
       ) : (
-        <ProductDetail 
-          slug={slug} 
+        <ProductDetail
+          slug={slug}
           product={product}
           isLoading={isLoading}
         />

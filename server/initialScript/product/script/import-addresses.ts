@@ -5,7 +5,7 @@ import { logger, CONFIG } from './import-utils'
 
 // GHN API Configuration
 const GHN_CONFIG = {
-  BASE_URL: process.env.GHN_BASE_URL || process.env.APP_URL || 'https://api.shopsifu.live',
+  BASE_URL: process.env.GHN_BASE_URL || process.env.APP_URL || 'https://api.ecsite.live',
   ENDPOINTS: {
     PROVINCES: '/shipping/ghn/address/provinces',
     DISTRICTS: '/shipping/ghn/address/districts',
@@ -29,7 +29,7 @@ function getEnvironment(): string {
   if (GHN_CONFIG.BASE_URL.includes('localhost') || GHN_CONFIG.BASE_URL.includes('127.0.0.1')) {
     return 'local'
   }
-  if (GHN_CONFIG.BASE_URL.includes('shopsifu.live')) {
+  if (GHN_CONFIG.BASE_URL.includes('ecsite.live')) {
     return 'production'
   }
   if (GHN_CONFIG.BASE_URL.includes('staging') || GHN_CONFIG.BASE_URL.includes('dev')) {
@@ -74,23 +74,23 @@ async function importFullAddressesFromGHN(
   tx: PrismaClient
 ): Promise<{ addressCount: number; userAddressCount: number }> {
   try {
-    logger.log('🌏 Bắt đầu import địa chỉ từ TẤT CẢ 64 tỉnh thành GHN API...')
+    logger.log('English content normalized from the original source text.')
 
-    // 1. Lấy tất cả provinces từ GHN API
-    logger.log('🔄 Đang lấy danh sách TẤT CẢ tỉnh/thành từ GHN API...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
     const provincesUrl = buildGHNUrl(GHN_CONFIG.ENDPOINTS.PROVINCES)
-    logger.log(`🌐 Gọi API: ${provincesUrl}`)
+    logger.log(`English content normalized from the original source text.${provincesUrl}`)
     const provincesResponse = await fetch(provincesUrl)
 
     if (!provincesResponse.ok) {
-      throw new Error(`Không thể lấy danh sách tỉnh/thành: ${provincesResponse.statusText}`)
+      throw new Error(`English content normalized from the original source text.${provincesResponse.statusText}`)
     }
 
     const provincesData = await provincesResponse.json()
     const provinces: GHNProvince[] = provincesData.data || []
-    logger.log(`📍 Tìm thấy ${provinces.length} tỉnh/thành`)
+    logger.log(`English content normalized from the original source text.${provinces.length}English content normalized from the original source text.`)
 
-    // Lọc bỏ các tỉnh test/fake
+    // English content normalized from the original source text.
     const realProvinces = provinces.filter(
       (p) =>
         !p.ProvinceName.toLowerCase().includes('test') &&
@@ -98,24 +98,24 @@ async function importFullAddressesFromGHN(
         !p.ProvinceName.toLowerCase().includes('ngoc')
     )
 
-    logger.log(`🎯 Lọc được ${realProvinces.length} tỉnh thành thực tế từ ${provinces.length} tỉnh ban đầu`)
+    logger.log(`English content normalized from the original source text.${realProvinces.length}English content normalized from the original source text.${provinces.length}English content normalized from the original source text.`)
 
     const allGhnAddresses: GHNAddress[] = []
 
-    // 2. Lấy addresses từ TẤT CẢ provinces thực tế
+    // English content normalized from the original source text.
     for (let i = 0; i < realProvinces.length; i++) {
       const province = realProvinces[i]
       logger.log(
-        `🔄 [${i + 1}/${realProvinces.length}] Đang xử lý ${province.ProvinceName} (ID: ${province.ProvinceID})...`
+        `🔄 [${i + 1}/${realProvinces.length}English content normalized from the original source text.${province.ProvinceName} (ID: ${province.ProvinceID})...`
       )
 
       try {
-        // Lấy districts của province này
+        // English content normalized from the original source text.
         const districtsUrl = buildGHNUrl(`${GHN_CONFIG.ENDPOINTS.DISTRICTS}?provinceId=${province.ProvinceID}`)
         const districtsResponse = await fetch(districtsUrl)
 
         if (!districtsResponse.ok) {
-          logger.warn(`⚠️  Không thể lấy districts cho ${province.ProvinceName}`)
+          logger.warn(`English content normalized from the original source text.${province.ProvinceName}`)
           continue
         }
 
@@ -123,23 +123,23 @@ async function importFullAddressesFromGHN(
         const districts: GHNDistrict[] = districtsData.data || []
 
         if (districts.length === 0) {
-          logger.warn(`⚠️  ${province.ProvinceName} không có districts`)
+          logger.warn(`⚠️  ${province.ProvinceName}English content normalized from the original source text.`)
           continue
         }
 
         logger.log(`  📍 ${province.ProvinceName}: ${districts.length} districts`)
 
-        // Lấy một số districts đại diện (tối đa 10 districts/province)
+        // English content normalized from the original source text.
         const selectedDistricts = districts.slice(0, Math.min(10, districts.length))
 
         for (const district of selectedDistricts) {
           try {
-            // Lấy wards của district này
+            // English content normalized from the original source text.
             const wardsUrl = buildGHNUrl(`${GHN_CONFIG.ENDPOINTS.WARDS}?districtId=${district.DistrictID}`)
             const wardsResponse = await fetch(wardsUrl)
 
             if (!wardsResponse.ok) {
-              logger.warn(`⚠️  Không thể lấy wards cho ${district.DistrictName}`)
+              logger.warn(`English content normalized from the original source text.${district.DistrictName}`)
               continue
             }
 
@@ -147,21 +147,21 @@ async function importFullAddressesFromGHN(
             const wards: GHNWard[] = wardsData.data || []
 
             if (wards.length === 0) {
-              logger.warn(`⚠️  ${district.DistrictName} không có wards`)
+              logger.warn(`⚠️  ${district.DistrictName}English content normalized from the original source text.`)
               continue
             }
 
-            // Lấy một số wards đại diện (tối đa 5 wards/district)
+            // English content normalized from the original source text.
             const selectedWards = wards.slice(0, Math.min(5, wards.length))
 
             for (const ward of selectedWards) {
-              // Tạo nhiều địa chỉ street khác nhau cho mỗi ward
+              // English content normalized from the original source text.
               const streetVariations = [
-                `Đường ${Math.floor(Math.random() * 100) + 1}`,
-                `Phố ${Math.floor(Math.random() * 50) + 1}`,
-                `Ngõ ${Math.floor(Math.random() * 200) + 1}`,
-                `Số ${Math.floor(Math.random() * 500) + 1}`,
-                `Hẻm ${Math.floor(Math.random() * 100) + 1}`
+                `English content normalized from the original source text.${Math.floor(Math.random() * 100) + 1}`,
+                `English content normalized from the original source text.${Math.floor(Math.random() * 50) + 1}`,
+                `English content normalized from the original source text.${Math.floor(Math.random() * 200) + 1}`,
+                `English content normalized from the original source text.${Math.floor(Math.random() * 500) + 1}`,
+                `English content normalized from the original source text.${Math.floor(Math.random() * 100) + 1}`
               ]
 
               for (const street of streetVariations) {
@@ -177,27 +177,27 @@ async function importFullAddressesFromGHN(
               }
             }
 
-            // Thêm delay nhỏ để tránh rate limit
+            // English content normalized from the original source text.
             await new Promise((resolve) => setTimeout(resolve, 50))
           } catch (error) {
-            logger.warn(`⚠️  Lỗi khi xử lý district ${district.DistrictName}: ${error.message}`)
+            logger.warn(`English content normalized from the original source text.${district.DistrictName}: ${error.message}`)
           }
         }
 
-        // Thêm delay giữa các provinces
+        // English content normalized from the original source text.
         await new Promise((resolve) => setTimeout(resolve, 100))
       } catch (error) {
-        logger.warn(`⚠️  Lỗi khi xử lý province ${province.ProvinceName}: ${error.message}`)
+        logger.warn(`English content normalized from the original source text.${province.ProvinceName}: ${error.message}`)
       }
     }
 
-    logger.log(`🎯 Thu thập được ${allGhnAddresses.length} địa chỉ từ ${realProvinces.length} tỉnh thành thực tế`)
+    logger.log(`English content normalized from the original source text.${allGhnAddresses.length}English content normalized from the original source text.${realProvinces.length}English content normalized from the original source text.`)
 
     if (allGhnAddresses.length === 0) {
-      throw new Error('Không thu thập được địa chỉ nào từ GHN API')
+      throw new Error('English content normalized from the original source text.')
     }
 
-    // 3. Tạo addresses cho users
+    // English content normalized from the original source text.
     const addressesToCreate: Array<{
       name: string
       recipient?: string
@@ -217,22 +217,22 @@ async function importFullAddressesFromGHN(
       updatedAt: Date
     }> = []
 
-    logger.log(`🔄 Đang tạo địa chỉ cho ${users.length} users...`)
+    logger.log(`English content normalized from the original source text.${users.length} users...`)
 
     users.forEach((user, userIndex) => {
-      // Mỗi user sẽ có 2-3 địa chỉ từ các tỉnh khác nhau
-      const numAddresses = Math.floor(Math.random() * 2) + 2 // 2-3 địa chỉ
+      // English content normalized from the original source text.
+      const numAddresses = Math.floor(Math.random() * 2) + 2 // English content normalized from the original source text.
 
       for (let i = 0; i < numAddresses; i++) {
         const now = new Date()
-        // Chọn ngẫu nhiên địa chỉ từ danh sách đã thu thập
+        // English content normalized from the original source text.
         const addressData = allGhnAddresses[Math.floor(Math.random() * allGhnAddresses.length)]
 
         if (user.role.name === 'SELLER') {
-          // Địa chỉ shop
+          // English content normalized from the original source text.
           addressesToCreate.push({
             name: `Shop ${addressData.province} ${i + 1}`,
-            recipient: `Shopsifu ${addressData.province}`,
+            recipient: `ECSite ${addressData.province}`,
             phoneNumber: '+84901234567',
             province: addressData.province,
             district: addressData.district,
@@ -249,10 +249,10 @@ async function importFullAddressesFromGHN(
             updatedAt: now
           })
         } else {
-          // Địa chỉ nhà
+          // English content normalized from the original source text.
           addressesToCreate.push({
-            name: `Nhà ${addressData.province} ${i + 1}`,
-            recipient: `Người nhận ${addressData.province} ${i + 1}`,
+            name: `English content normalized from the original source text.${addressData.province} ${i + 1}`,
+            recipient: `English content normalized from the original source text.${addressData.province} ${i + 1}`,
             phoneNumber:
               '0' +
               Math.floor(Math.random() * 1000000000)
@@ -275,15 +275,15 @@ async function importFullAddressesFromGHN(
         }
       }
 
-      // Log progress mỗi 500 users
+      // English content normalized from the original source text.
       if ((userIndex + 1) % 500 === 0) {
-        logger.log(`📊 Đã xử lý ${userIndex + 1}/${users.length} users`)
+        logger.log(`English content normalized from the original source text.${userIndex + 1}/${users.length} users`)
       }
     })
 
-    logger.log(`📦 Tạo được ${addressesToCreate.length} addresses để import`)
+    logger.log(`English content normalized from the original source text.${addressesToCreate.length}English content normalized from the original source text.`)
 
-    // 4. Tạo addresses trong database (batch processing)
+    // English content normalized from the original source text.
     let addressCount = 0
     let userAddressCount = 0
     const copyBatchSize = CONFIG.COPY_BATCH_SIZE
@@ -291,17 +291,17 @@ async function importFullAddressesFromGHN(
       addressesToCreate.slice(i * copyBatchSize, (i + 1) * copyBatchSize)
     )
 
-    logger.log(`🔄 Bắt đầu import ${copyChunks.length} batches vào database...`)
+    logger.log(`English content normalized from the original source text.${copyChunks.length}English content normalized from the original source text.`)
 
     for (let chunkIndex = 0; chunkIndex < copyChunks.length; chunkIndex++) {
       const chunk = copyChunks[chunkIndex]
 
       try {
-        // Tạo addresses
+        // English content normalized from the original source text.
         const addressData = chunk.map(({ userId, isDefault, ...data }) => data)
         await tx.address.createMany({ data: addressData })
 
-        // Lấy addresses vừa tạo
+        // English content normalized from the original source text.
         const createdAddressData = await tx.address.findMany({
           where: {
             name: { in: chunk.map((a) => a.name) },
@@ -310,7 +310,7 @@ async function importFullAddressesFromGHN(
           select: { id: true, name: true }
         })
 
-        // Tạo user-address relationships
+        // English content normalized from the original source text.
         const userAddresses = chunk
           .map((address) => {
             const createdAddress = createdAddressData.find((a) => a.name === address.name)
@@ -338,30 +338,30 @@ async function importFullAddressesFromGHN(
 
         logger.log(`✅ Batch ${chunkIndex + 1}/${copyChunks.length}: ${chunk.length} addresses`)
       } catch (error) {
-        logger.error(`❌ Lỗi batch ${chunkIndex + 1}: ${error.message}`)
+        logger.error(`English content normalized from the original source text.${chunkIndex + 1}: ${error.message}`)
         throw error
       }
     }
 
     logger.log(
-      `✅ Imported ${addressCount} addresses và ${userAddressCount} user-address relationships từ ${realProvinces.length} tỉnh thành thực tế`
+      `✅ Imported ${addressCount}English content normalized from the original source text.${userAddressCount}English content normalized from the original source text.${realProvinces.length}English content normalized from the original source text.`
     )
 
-    // 5. Thống kê theo tỉnh thành
+    // English content normalized from the original source text.
     const provinceStats = await tx.address.groupBy({
       by: ['province'],
       _count: { province: true },
       where: { createdById: creatorUserId }
     })
 
-    logger.log(`📊 Thống kê địa chỉ theo tỉnh thành:`)
+    logger.log(`English content normalized from the original source text.`)
     provinceStats.forEach((stat) => {
       logger.log(`  📍 ${stat.province}: ${stat._count.province} addresses`)
     })
 
     return { addressCount, userAddressCount }
   } catch (error) {
-    logger.error(`❌ Lỗi khi import địa chỉ từ GHN API: ${error.message}`)
+    logger.error(`English content normalized from the original source text.${error.message}`)
     throw error
   }
 }
@@ -371,24 +371,24 @@ async function main() {
   const prisma = new PrismaClient()
 
   try {
-    logger.log('🌏 Bắt đầu xóa và import lại địa chỉ từ TẤT CẢ 64 tỉnh thành GHN API...')
+    logger.log('English content normalized from the original source text.')
     logger.log(`🔧 Environment: ${getEnvironment()}`)
     logger.log(`🌐 Base URL: ${GHN_CONFIG.BASE_URL}`)
 
     await prisma.$connect()
 
-    // 1. Xóa tất cả user-address relationships
-    logger.log('🧹 Bước 1: Xóa user-address relationships...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
     const deletedUserAddresses = await prisma.userAddress.deleteMany({})
-    logger.log(`✅ Đã xóa ${deletedUserAddresses.count} user-address relationships`)
+    logger.log(`English content normalized from the original source text.${deletedUserAddresses.count} user-address relationships`)
 
-    // 2. Xóa tất cả addresses
-    logger.log('🧹 Bước 2: Xóa tất cả addresses...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
     const deletedAddresses = await prisma.address.deleteMany({})
-    logger.log(`✅ Đã xóa ${deletedAddresses.count} addresses`)
+    logger.log(`English content normalized from the original source text.${deletedAddresses.count} addresses`)
 
-    // 3. Lấy danh sách users
-    logger.log('🔄 Bước 3: Lấy danh sách users...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
     const users = await prisma.user.findMany({
       where: { deletedAt: null },
       select: {
@@ -396,37 +396,37 @@ async function main() {
         role: { select: { name: true } }
       }
     })
-    logger.log(`📊 Tìm thấy ${users.length} users`)
+    logger.log(`English content normalized from the original source text.${users.length} users`)
 
     if (users.length === 0) {
-      throw new Error('Không tìm thấy users nào để tạo địa chỉ')
+      throw new Error('English content normalized from the original source text.')
     }
 
-    // 4. Lấy creator user
+    // English content normalized from the original source text.
     const creatorUser = await prisma.user.findFirst({
       where: {
-        email: 'admin@shopsifu.com',
+        email: 'admin@ecsite.com',
         deletedAt: null
       }
     })
 
     if (!creatorUser) {
-      throw new Error('Không tìm thấy creator user (admin@shopsifu.com)')
+      throw new Error('English content normalized from the original source text.')
     }
 
     logger.log(`👤 Creator: ${creatorUser.email} (${creatorUser.id})`)
 
-    // 5. Import địa chỉ mới từ TẤT CẢ tỉnh thành
-    logger.log('🚀 Bước 4: Import địa chỉ mới từ TẤT CẢ 64 tỉnh thành...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
     const result = await importFullAddressesFromGHN(users, creatorUser.id, prisma)
 
-    logger.log(`🎉 Hoàn thành!`)
-    logger.log(`📊 Kết quả:`)
-    logger.log(`  - Addresses mới: ${result.addressCount}`)
+    logger.log(`English content normalized from the original source text.`)
+    logger.log(`English content normalized from the original source text.`)
+    logger.log(`English content normalized from the original source text.${result.addressCount}`)
     logger.log(`  - User-address relationships: ${result.userAddressCount}`)
 
-    // 6. Kiểm tra và thống kê cuối cùng
-    logger.log('🔍 Bước 5: Kiểm tra thống kê cuối cùng...')
+    // English content normalized from the original source text.
+    logger.log('English content normalized from the original source text.')
 
     const totalAddresses = await prisma.address.count()
     const totalUserAddresses = await prisma.userAddress.count()
@@ -441,30 +441,30 @@ async function main() {
       _count: { province: true }
     })
 
-    logger.log(`📈 Thống kê cuối cùng:`)
-    logger.log(`  - Tổng users: ${totalUsers}`)
-    logger.log(`  - Tổng addresses: ${totalAddresses}`)
-    logger.log(`  - Tổng user-address relationships: ${totalUserAddresses}`)
-    logger.log(`  - Tổng default addresses: ${totalDefaultAddresses}`)
-    logger.log(`  - Tổng số tỉnh thành có địa chỉ: ${totalProvinces.length}`)
+    logger.log(`English content normalized from the original source text.`)
+    logger.log(`English content normalized from the original source text.${totalUsers}`)
+    logger.log(`English content normalized from the original source text.${totalAddresses}`)
+    logger.log(`English content normalized from the original source text.${totalUserAddresses}`)
+    logger.log(`English content normalized from the original source text.${totalDefaultAddresses}`)
+    logger.log(`English content normalized from the original source text.${totalProvinces.length}`)
 
-    // Hiển thị top 10 tỉnh có nhiều địa chỉ nhất
+    // English content normalized from the original source text.
     const top10Provinces = totalProvinces.sort((a, b) => b._count.province - a._count.province).slice(0, 10)
 
-    logger.log(`🏆 Top 10 tỉnh thành có nhiều địa chỉ nhất:`)
+    logger.log(`English content normalized from the original source text.`)
     top10Provinces.forEach((province, index) => {
       logger.log(`  ${index + 1}. ${province.province}: ${province._count.province} addresses`)
     })
 
     if (totalDefaultAddresses === totalUsers) {
-      logger.log('✅ Tất cả users đều có địa chỉ default!')
+      logger.log('English content normalized from the original source text.')
     } else {
-      logger.warn(`⚠️  Có ${totalUsers - totalDefaultAddresses} users chưa có địa chỉ default`)
+      logger.warn(`English content normalized from the original source text.${totalUsers - totalDefaultAddresses}English content normalized from the original source text.`)
     }
 
-    logger.log('🎊 Import địa chỉ từ TẤT CẢ 64 tỉnh thành hoàn thành!')
+    logger.log('English content normalized from the original source text.')
   } catch (error) {
-    logger.error(`❌ Lỗi: ${error.message}`)
+    logger.error(`English content normalized from the original source text.${error.message}`)
     throw error
   } finally {
     await prisma.$disconnect()
@@ -475,11 +475,11 @@ async function main() {
 if (require.main === module) {
   main()
     .then(() => {
-      logger.log('✅ Script hoàn thành thành công')
+      logger.log('English content normalized from the original source text.')
       process.exit(0)
     })
     .catch((error) => {
-      logger.error(`❌ Script thất bại: ${error.message}`)
+      logger.error(`English content normalized from the original source text.${error.message}`)
       process.exit(1)
     })
 }

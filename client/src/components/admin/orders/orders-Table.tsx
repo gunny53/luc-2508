@@ -19,11 +19,11 @@ import { useOrder } from "./useOrders";
 export function OrdersTable() {
   const t = useTranslations("admin.orders");
   const router = useRouter();
-  
-  // State để quản lý expanded rows
+
+  // English content normalized from the original source text.
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
-  // Sử dụng useServerDataTable để xử lý phân trang
+  // English content normalized from the original source text.
   const {
     data: orders,
     loading,
@@ -54,20 +54,20 @@ export function OrdersTable() {
     router.push(`/admin/order/${orderId}`);
   };
 
-  // Sử dụng handlePrintInvoice từ useOrder hook
+  // English content normalized from the original source text.
   const { handlePrintInvoice } = useOrder();
 
   const handlePrintOrder = (order: ManageOrder) => {
     console.log('handlePrintOrder called with order:', order);
     console.log('Order ID:', order.id);
     console.log('Order Code:', order.orderCode);
-    
+
     if (!order.orderCode) {
-      alert('Đơn hàng chưa có mã vận đơn. Không thể in hóa đơn.');
+      alert('English content normalized from the original source text.');
       return;
     }
-    
-    // Truyền cả orderId và orderCode để đảm bảo function có đủ thông tin
+
+    // English content normalized from the original source text.
     handlePrintInvoice(order.id, order.orderCode);
   };
 
@@ -76,7 +76,7 @@ export function OrdersTable() {
     console.log('Update status for order:', orderId);
   };
 
-  const columns = OrdersColumns({ 
+  const columns = OrdersColumns({
     t,
     onViewDetail: handleViewDetail,
     onPrintInvoice: handlePrintOrder,
@@ -108,13 +108,13 @@ export function OrdersTable() {
 
   const renderExpandedRow = (order: ManageOrder) => (
     <div className="bg-gray-50 border-t p-4">
-      <h4 className="font-semibold mb-3 text-sm">Chi tiết sản phẩm đơn hàng #{order.id}:</h4>
+      <h4 className="font-semibold mb-3 text-sm">English content normalized from the original source text.{order.id}:</h4>
       <div className="space-y-3 max-h-60 overflow-y-auto">
         {order.items.map((item, index) => (
           <div key={index} className="flex items-center gap-3 p-3 bg-white rounded border">
             {item.image ? (
-              <img 
-                src={item.image} 
+              <img
+                src={item.image}
                 alt={item.productName}
                 className="w-12 h-12 object-cover rounded border flex-shrink-0"
               />
@@ -126,7 +126,7 @@ export function OrdersTable() {
             <div className="flex-1 min-w-0">
               <div className="font-medium text-sm">{item.productName}</div>
               <div className="text-gray-500 text-xs">
-                SKU: {item.skuValue || 'N/A'} | Số lượng: {item.quantity}
+                SKU: {item.skuValue || 'N/A'} English content normalized from the original source text. {item.quantity}
               </div>
               <div className="font-semibold text-green-600 text-sm">
                 {new Intl.NumberFormat('vi-VN').format(item.skuPrice * item.quantity)}₫
@@ -142,7 +142,7 @@ export function OrdersTable() {
     <div className="w-full space-y-4">
       {/* Statistics Cards */}
       <OrdersStats orders={orders} />
-      
+
       <DataTable
         table={table}
         columns={columns}

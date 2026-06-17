@@ -6,13 +6,13 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: GET /products (Public)
+English content normalized from the original source text.
 
 start
-:Nhận request với query params;
-:Trích xuất page, limit, name, brandIds, categories, minPrice, maxPrice, orderBy, sortBy;
-:Lấy languageId từ I18nContext;
-:Xây dựng where/orderBy theo filters;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 note right
 • deletedAt IS NULL
 • publishedAt <= now
@@ -22,11 +22,11 @@ note right
 • basePrice gte/lte theo range
 • orderBy theo sortBy
 end note
-:Thực thi count và findMany song song;
-:Đọc productTranslations theo languageId;
-:Chuẩn hóa metadata pagination;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về JSON { message, data, metadata };
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -6,24 +6,24 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: PUT /users/:userId
+English content normalized from the original source text.
 
 start
-:Nhận id + body + user + roleName;
+:English content normalized from the original source text;
 :verifyYourself(user.userId, id);
-if (Self?) then (Có)
-  :Ném 403;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-:Lấy roleIdTarget theo userId;
+:English content normalized from the original source text;
 :verifyRole(roleNameAgent, roleIdTarget);
-if (Forbidden?) then (Có)
-  :Ném 403;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-:Update user với updatedById;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message, data };
+:English content normalized from the original source text;
 stop
 
 @enduml

@@ -62,7 +62,7 @@ export function PasswordSecuritySession() {
       title={
         <Button variant="ghost" className="flex items-center gap-2 p-0 -ml-2 px-2" onClick={() => router.push('/admin/settings/password-and-security')}>
           <ChevronLeft className="w-5 h-5" />
-          <span>Thiết bị đăng nhập</span>
+          <span>English content normalized from the original source text.</span>
         </Button>
       }
       subtitle={`${displayedSessionsCount} sessions on all devices`}>

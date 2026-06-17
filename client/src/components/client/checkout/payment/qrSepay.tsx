@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { Order, OrderStatus } from '@/types/order.interface';
 import { formatCurrency } from '@/utils/formatter';
 import { toast } from 'sonner';
-import { useShopsifuSocket } from '@/providers/ShopsifuSocketProvider';
+import { useECSiteSocket } from '@/providers/ECSiteSocketProvider';
 
 interface QrSepayProps {
   paymentId: string;
@@ -26,20 +26,20 @@ interface QrSepayProps {
 export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onPaymentCancel }: QrSepayProps) {
   const [timeLeft, setTimeLeft] = useState(5 * 60); // 5 minutes in seconds
   const [isExpired, setIsExpired] = useState(false);
-  const { payments, connect, disconnect } = useShopsifuSocket();
+  const { payments, connect, disconnect } = useECSiteSocket();
   const commonInfo = useSelector(selectCommonOrderInfo);
   const router = useRouter();
 
-  // Lấy tổng số tiền từ props (retry) hoặc Redux state (checkout thường)
+  // English content normalized from the original source text.
   const finalTotalAmount = totalAmount || commonInfo.amount;
 
   // Environment variables for Sepay
   const SEPAY_ACCOUNT = process.env.NEXT_PUBLIC_SEPAY_ACCOUNT || '565615056666';
   const SEPAY_BANK = process.env.NEXT_PUBLIC_SEPAY_BANK || 'MbBank';
-  
+
   // Generate QR URL according to Sepay docs
   const qrUrl = `https://qr.sepay.vn/img?acc=${SEPAY_ACCOUNT}&bank=${SEPAY_BANK}&amount=${finalTotalAmount}&des=DH${paymentId}`;
-  
+
   // Connect and disconnect socket based on component lifecycle
   useEffect(() => {
     if (paymentId) {
@@ -62,28 +62,28 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
     if (payments.length === 0) return;
 
     const latestPayment = payments[payments.length - 1];
-    
-    // Debug logging để kiểm tra data
+
+    // English content normalized from the original source text.
     console.log('🔍 [WebSocket] Latest payment received:', latestPayment);
     console.log('🔍 [WebSocket] Current paymentId:', paymentId);
     console.log('🔍 [WebSocket] Current orderId:', orderId);
 
     // Check if the latest payment is a success for the current payment via Sepay
-    // Sepay response có format: { status: "success", gateway: "sepay", paymentId: 105 }
+    // English content normalized from the original source text.
     if (
       latestPayment &&
-      (latestPayment.paymentId?.toString() === paymentId?.toString() || 
+      (latestPayment.paymentId?.toString() === paymentId?.toString() ||
        latestPayment.orderId === orderId) && // fallback check
       latestPayment.status === 'success' &&
       latestPayment.gateway === 'sepay'
     ) {
       console.log('✅ [WebSocket] Payment success matched!');
-      toast.success('Thanh toán thành công!');
+      toast.success('English content normalized from the original source text.');
       console.clear();
       // Redirect to the success page
       router.push(`/checkout/payment-success?orderId=${orderId}&totalAmount=${finalTotalAmount}`);
     } else {
-      // Debug tại sao không match
+      // English content normalized from the original source text.
       console.log('❌ [WebSocket] Payment not matched:');
       console.log('- PaymentId match:', latestPayment?.paymentId?.toString() === paymentId?.toString());
       console.log('- OrderId match:', latestPayment?.orderId === orderId);
@@ -127,34 +127,34 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
 
   const handlePaymentConfirm = async () => {
     if (isExpired) {
-      toast.error('Mã QR đã hết hạn. Vui lòng thử lại.');
+      toast.error('English content normalized from the original source text.');
       return;
     }
-    
-    // Kiểm tra trạng thái đơn hàng khi người dùng xác nhận đã chuyển tiền
+
+    // English content normalized from the original source text.
     try {
       if (!orderId) {
-        toast.error('Không tìm thấy thông tin đơn hàng');
+        toast.error('English content normalized from the original source text.');
         return;
       }
-      
-      toast.loading('Đang kiểm tra thanh toán...');
+
+      toast.loading('English content normalized from the original source text.');
       const Order = await orderService.getById(orderId);
-      
+
       if (Order.data.status === OrderStatus.PICKUPED || OrderStatus.PENDING_PACKAGING || OrderStatus.VERIFY_PAYMENT) {
         toast.dismiss();
-        toast.success('Thanh toán thành công!');
+        toast.success('English content normalized from the original source text.');
         router.push(`/checkout/payment-success?orderId=${orderId}&totalAmount=${finalTotalAmount}`);
       } else {
         toast.dismiss();
-        toast.info('Hệ thống đang xử lý thanh toán của bạn. Vui lòng đợi trong giây lát.');
-        // Vẫn gọi onPaymentConfirm để xử lý luồng hiện tại
+        toast.info('English content normalized from the original source text.');
+        // English content normalized from the original source text.
         //onPaymentConfirm();
       }
     } catch (error) {
       toast.dismiss();
-      console.error('Lỗi khi kiểm tra trạng thái thanh toán:', error);
-      toast.error('Không thể kiểm tra trạng thái thanh toán. Vui lòng thử lại sau.');
+      console.error('English content normalized from the original source text.', error);
+      toast.error('English content normalized from the original source text.');
     }
   };
 
@@ -169,20 +169,16 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
           <div className="flex justify-center mb-4">
             <AlertCircle className="h-16 w-16 text-red-500" />
           </div>
-          <CardTitle className="text-red-600 text-xl font-bold">Mã QR đã hết hạn</CardTitle>
-          <CardDescription className="text-red-500">
-            Thời gian thanh toán đã hết. Vui lòng thử lại.
-          </CardDescription>
+          <CardTitle className="text-red-600 text-xl font-bold">English content normalized from the original source text.</CardTitle>
+          <CardDescription className="text-red-500">English content normalized from the original source text.</CardDescription>
         </CardHeader>
         <CardContent className="pt-6">
-          <Button 
+          <Button
             onClick={handlePaymentCancel}
-            variant="outline" 
+            variant="outline"
             className="w-full border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400"
           >
-            <X className="h-4 w-4 mr-2" />
-            Quay lại
-          </Button>
+            <X className="h-4 w-4 mr-2" />English content normalized from the original source text.</Button>
         </CardContent>
       </Card>
     );
@@ -194,15 +190,13 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
         <div className="flex justify-center mb-4">
           <QrCode className="h-8 w-8 text-red-600" />
         </div>
-        <CardTitle className="text-red-700 text-xl font-bold">Quét mã QR để thanh toán</CardTitle>
-        <CardDescription className="text-gray-600">
-          Sử dụng ứng dụng ngân hàng để quét mã QR
-        </CardDescription>
-        
+        <CardTitle className="text-red-700 text-xl font-bold">English content normalized from the original source text.</CardTitle>
+        <CardDescription className="text-gray-600">English content normalized from the original source text.</CardDescription>
+
         {/* Countdown Timer */}
         <div className={`flex items-center justify-center gap-2 mt-4 p-3 rounded-lg transition-all duration-300 ${
-          timeLeft <= 60 
-            ? 'bg-red-100 border border-red-300' 
+          timeLeft <= 60
+            ? 'bg-red-100 border border-red-300'
             : 'bg-red-50 border border-red-200'
         }`}>
           <Clock className={`h-5 w-5 ${
@@ -215,10 +209,10 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
           </span>
           <span className={`text-sm ${
             timeLeft <= 60 ? 'text-red-600' : 'text-red-500'
-          }`}>còn lại</span>
+          }`}>English content normalized from the original source text.</span>
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-6">
         {/* QR Code */}
         <div className="flex justify-center relative">
@@ -233,12 +227,12 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
               }`}
               unoptimized // Important for external QR API
             />
-            {/* Overlay khi sắp hết hạn */}
+            {/* English content normalized from the original source text. */}
             {timeLeft <= 30 && (
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 rounded-lg">
                 <div className="text-center">
                   <AlertCircle className="h-8 w-8 text-red-500 mx-auto mb-2" />
-                  <p className="text-red-600 font-semibold text-sm">Sắp hết hạn</p>
+                  <p className="text-red-600 font-semibold text-sm">English content normalized from the original source text.</p>
                 </div>
               </div>
             )}
@@ -248,19 +242,19 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
         {/* Payment Information */}
         <div className="space-y-3 p-4 bg-red-50 border border-red-100 rounded-lg">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-700 font-medium">Số tài khoản:</span>
+            <span className="text-gray-700 font-medium">English content normalized from the original source text.</span>
             <span className="font-semibold text-gray-900">{SEPAY_ACCOUNT}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-700 font-medium">Ngân hàng:</span>
+            <span className="text-gray-700 font-medium">English content normalized from the original source text.</span>
             <span className="font-semibold text-gray-900">{SEPAY_BANK}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-700 font-medium">Số tiền:</span>
+            <span className="text-gray-700 font-medium">English content normalized from the original source text.</span>
             <span className="font-bold text-red-600 text-base">{formatCurrency(finalTotalAmount)}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-700 font-medium">Nội dung:</span>
+            <span className="text-gray-700 font-medium">English content normalized from the original source text.</span>
             <span className="font-semibold text-gray-900">DH{paymentId}</span>
           </div>
         </div>
@@ -269,33 +263,28 @@ export function QrSepay({ paymentId, orderId, totalAmount, onPaymentConfirm, onP
         <Alert className="border-red-200 bg-red-50">
           <AlertCircle className="h-4 w-4 text-red-600" />
           <AlertDescription className="text-sm text-red-700">
-            <strong className="text-red-800">Lưu ý:</strong> Vui lòng chuyển khoản đúng số tiền và nội dung để đơn hàng được xử lý nhanh chóng.
-          </AlertDescription>
+            <strong className="text-red-800">English content normalized from the original source text.</strong>English content normalized from the original source text.</AlertDescription>
         </Alert>
 
         {/* Action Buttons */}
         <div className="space-y-3">
-          <Button 
+          <Button
             onClick={handlePaymentConfirm}
             className={`w-full transition-all duration-300 ${
-              timeLeft <= 30 
-                ? 'bg-red-500 hover:bg-red-600 text-white' 
+              timeLeft <= 30
+                ? 'bg-red-500 hover:bg-red-600 text-white'
                 : 'bg-red-600 hover:bg-red-700 text-white'
             }`}
             disabled={isExpired}
           >
-            <CheckCircle2 className="h-4 w-4 mr-2" />
-            Tôi đã chuyển tiền
-          </Button>
-          
-          <Button 
+            <CheckCircle2 className="h-4 w-4 mr-2" />English content normalized from the original source text.</Button>
+
+          <Button
             onClick={handlePaymentCancel}
-            variant="outline" 
+            variant="outline"
             className="w-full border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400"
           >
-            <X className="h-4 w-4 mr-2" />
-            Hủy giao dịch
-          </Button>
+            <X className="h-4 w-4 mr-2" />English content normalized from the original source text.</Button>
         </div>
       </CardContent>
     </Card>

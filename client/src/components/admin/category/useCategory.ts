@@ -15,13 +15,13 @@ type BreadcrumbItem = {
 
 export const useCategory = () => {
   const t = useTranslations();
-  
+
   // Modal states
   const [upsertOpen, setUpsertOpen] = useState(false);
   const [modalMode, setModalMode] = useState<ModalMode>('add');
   const [categoryToEdit, setCategoryToEdit] = useState<Category | null>(null);
 
-  // Delete states  
+  // Delete states
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [categoryToDelete, setCategoryToDelete] = useState<Category | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -31,7 +31,7 @@ export const useCategory = () => {
   const [breadcrumb, setBreadcrumb] = useState<BreadcrumbItem[]>([]);
   const [currentCategoryTitle, setCurrentCategoryTitle] = useState<string>("");
 
-  // Tạo các callbacks cho useServerDataTable
+  // English content normalized from the original source text.
   const getResponseData = useCallback((response: any) => {
     return response.data || [];
   }, []);
@@ -52,11 +52,11 @@ export const useCategory = () => {
     return category;
   }, []);
 
-  // Ref để store currentParentId để có thể access trong fetchData
+  // English content normalized from the original source text.
   const currentParentIdRef = useRef<string | null>(null);
   currentParentIdRef.current = currentParentId;
 
-  // Static fetch function với support cho parentCategoryId
+  // English content normalized from the original source text.
   const fetchData = useCallback(async (params: any) => {
     const requestParams = {
       ...params,
@@ -64,9 +64,9 @@ export const useCategory = () => {
     };
     console.log('🔍 API Request Params:', requestParams);
     return categoryService.getAll(requestParams);
-  }, []); // Stable function không phụ thuộc vào state
+  }, []); // English content normalized from the original source text.
 
-  // Sử dụng hook useServerDataTable để quản lý data và pagination
+  // English content normalized from the original source text.
   const {
     data,
     loading,
@@ -122,7 +122,7 @@ export const useCategory = () => {
       setDeleteOpen(false);
       setCategoryToDelete(null);
     } catch (error) {
-      const errorMessage = (error as any).response?.data?.message || 'Không thể xóa danh mục. Vui lòng thử lại sau.';
+      const errorMessage = (error as any).response?.data?.message || 'English content normalized from the original source text.';
       showToast(errorMessage, "error");
       console.error("Error deleting category:", error);
     } finally {
@@ -133,11 +133,11 @@ export const useCategory = () => {
   // Navigation handlers
   const handleViewSubcategories = useCallback((category: Category) => {
     console.log('🚀 Navigating to subcategories of:', category.name, 'ID:', category.id);
-    
+
     setCurrentParentId(category.id);
     setBreadcrumb(prev => [...prev, { id: category.id, name: category.name }]);
     setCurrentCategoryTitle(category.name);
-    
+
     // Use requestAnimationFrame to ensure state update has been processed
     requestAnimationFrame(() => {
       refreshDataRef.current();
@@ -149,7 +149,7 @@ export const useCategory = () => {
     setCurrentParentId(null);
     setBreadcrumb([]);
     setCurrentCategoryTitle("");
-    
+
     requestAnimationFrame(() => {
       refreshDataRef.current();
     });
@@ -162,13 +162,13 @@ export const useCategory = () => {
     }
     const newBreadcrumb = breadcrumb.slice(0, index);
     const lastCrumb = newBreadcrumb[newBreadcrumb.length - 1];
-    
+
     console.log('🍞 Breadcrumb click to:', lastCrumb.name, 'ID:', lastCrumb.id);
-    
+
     setCurrentParentId(lastCrumb.id);
     setBreadcrumb(newBreadcrumb);
     setCurrentCategoryTitle(lastCrumb.name);
-    
+
     requestAnimationFrame(() => {
       refreshDataRef.current();
     });
@@ -186,7 +186,7 @@ export const useCategory = () => {
       handleCloseUpsertModal();
       return response;
     } catch (error) {
-      const errorMessage = (error as any).response?.data?.message || 'Không thể thêm danh mục. Vui lòng thử lại sau.';
+      const errorMessage = (error as any).response?.data?.message || 'English content normalized from the original source text.';
       showToast(errorMessage, "error");
       console.error("Error creating category:", error);
       return null;
@@ -201,7 +201,7 @@ export const useCategory = () => {
       handleCloseUpsertModal();
       return response;
     } catch (error) {
-      const errorMessage = (error as any).response?.data?.message || 'Không thể cập nhật danh mục. Vui lòng thử lại sau.';
+      const errorMessage = (error as any).response?.data?.message || 'English content normalized from the original source text.';
       showToast(errorMessage, "error");
       console.error("Error updating category:", error);
       return null;

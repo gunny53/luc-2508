@@ -10,12 +10,12 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Define default specifications that all products should have
 const DEFAULT_SPECIFICATIONS = [
-  { id: 'origin', name: 'Xuất xứ', value: '', required: true, icon: '🌍' },
-  { id: 'material', name: 'Chất liệu', value: '', required: true, icon: '🧱' },
-  { id: 'warehouse', name: 'Kho hàng', value: '', required: true, icon: '🏪' },
-  { id: 'stockLocation', name: 'Vị trí kho', value: '', required: true, icon: '📍' },
-  { id: 'shipping', name: 'Gửi từ', value: '', required: true, icon: '📦' },
-  { id: 'warranty', name: 'Bảo hành', value: '', required: false, icon: '🛡️' },
+  { id: 'origin', name: 'English content normalized from the original source text.', value: '', required: true, icon: '🌍' },
+  { id: 'material', name: 'English content normalized from the original source text.', value: '', required: true, icon: '🧱' },
+  { id: 'warehouse', name: 'English content normalized from the original source text.', value: '', required: true, icon: '🏪' },
+  { id: 'stockLocation', name: 'English content normalized from the original source text.', value: '', required: true, icon: '📍' },
+  { id: 'shipping', name: 'English content normalized from the original source text.', value: '', required: true, icon: '📦' },
+  { id: 'warranty', name: 'English content normalized from the original source text.', value: '', required: false, icon: '🛡️' },
 ];
 
 interface Specification {
@@ -39,28 +39,28 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
   const initializeSpecs = () => {
     // Always start with all default specifications
     const mergedSpecs: Specification[] = [];
-    
+
     // First, add all default specifications (required and optional)
     DEFAULT_SPECIFICATIONS.forEach(defaultSpec => {
       // Look for matching spec by name in existing data
-      const matchingSpec = specifications?.find(spec => 
+      const matchingSpec = specifications?.find(spec =>
         spec.name === defaultSpec.name
       );
-      
+
       // Use existing value if found, otherwise use empty string
       mergedSpecs.push({
         ...defaultSpec,
         value: matchingSpec?.value || '',
       });
     });
-    
+
     // Then, add any custom specifications that don't match defaults
     if (specifications && specifications.length > 0) {
       specifications.forEach(spec => {
-        const isDefaultSpec = DEFAULT_SPECIFICATIONS.some(defaultSpec => 
+        const isDefaultSpec = DEFAULT_SPECIFICATIONS.some(defaultSpec =>
           defaultSpec.name === spec.name
         );
-        
+
         if (!isDefaultSpec && spec.name.trim()) {
           // This is a custom spec, add to the list
           mergedSpecs.push({
@@ -72,11 +72,11 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
         }
       });
     }
-    
+
     // Only update if the current specifications are different
     const currentSpecsString = JSON.stringify(specifications);
     const mergedSpecsString = JSON.stringify(mergedSpecs);
-    
+
     if (currentSpecsString !== mergedSpecsString) {
       handleSpecificationsChange(mergedSpecs);
     }
@@ -92,14 +92,14 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
   const updateSpecification = (index: number, field: 'name' | 'value', newValue: string) => {
     const newSpecs = [...specifications];
     newSpecs[index] = { ...newSpecs[index], [field]: newValue };
-    
+
     // Clear error when user starts typing
     if (errors[`spec-${index}-${field}`]) {
       const newErrors = { ...errors };
       delete newErrors[`spec-${index}-${field}`];
       setErrors(newErrors);
     }
-    
+
     handleSpecificationsChange(newSpecs);
   };
 
@@ -114,12 +114,12 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
   // Remove a specification (only allow removing custom ones, not defaults)
   const removeSpecification = (index: number) => {
     const specToRemove = specifications[index];
-    
+
     // Don't allow removing default specifications
     if (DEFAULT_SPECIFICATIONS.some(def => def.name === specToRemove.name)) {
       return;
     }
-    
+
     const newSpecs = specifications.filter((_, i) => i !== index);
     handleSpecificationsChange(newSpecs);
   };
@@ -137,19 +137,19 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
       if (isRequired) {
         // Validate name
         if (!spec.name.trim()) {
-          newErrors[`spec-${index}-name`] = 'Tên thuộc tính không được để trống';
+          newErrors[`spec-${index}-name`] = 'English content normalized from the original source text.';
           isValid = false;
         }
-        
+
         // Validate value
         if (!spec.value.trim()) {
-          newErrors[`spec-${index}-value`] = 'Giá trị không được để trống';
+          newErrors[`spec-${index}-value`] = 'English content normalized from the original source text.';
           isValid = false;
         }
-      } 
+      }
       // For custom fields, if name is filled, value must be filled too
       else if (spec.name.trim() && !spec.value.trim()) {
-        newErrors[`spec-${index}-value`] = 'Giá trị không được để trống khi có tên thuộc tính';
+        newErrors[`spec-${index}-value`] = 'English content normalized from the original source text.';
         isValid = false;
       }
     });
@@ -203,13 +203,11 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Package className="h-5 w-5 text-blue-600" />
-            <CardTitle className="text-lg font-semibold text-gray-900">
-              Thông số kỹ thuật sản phẩm
-            </CardTitle>
+            <CardTitle className="text-lg font-semibold text-gray-900">English content normalized from the original source text.</CardTitle>
           </div>
           <div className="flex items-center space-x-2 text-sm text-gray-500">
             <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
-              {filledSpecs}/{specifications.length} đã điền
+              {filledSpecs}/{specifications.length} English content normalized from the original source text.
             </span>
             <Button
               type="button"
@@ -222,21 +220,19 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
             </Button>
           </div>
         </div>
-        <CardDescription className="text-gray-600">
-          Cung cấp thông tin chi tiết về sản phẩm để khách hàng có thể đưa ra quyết định mua hàng tốt nhất
-        </CardDescription>
+        <CardDescription className="text-gray-600">English content normalized from the original source text.</CardDescription>
       </CardHeader>
-      
+
       {isExpanded && (
         <CardContent className="space-y-4">
           {/* Progress indicator */}
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-700">Tiến độ hoàn thành</span>
+              <span className="text-sm font-medium text-gray-700">English content normalized from the original source text.</span>
               <span className="text-sm text-gray-500">{Math.round((filledSpecs / specifications.length) * 100)}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div 
+              <div
                 className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${(filledSpecs / specifications.length) * 100}%` }}
               />
@@ -247,9 +243,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           {Object.keys(errors).length > 0 && (
             <Alert variant="destructive" className="border-red-200 bg-red-50">
               <AlertCircle className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-700">
-                Vui lòng điền đầy đủ thông tin cho các trường bắt buộc (đánh dấu *)
-              </AlertDescription>
+              <AlertDescription className="text-red-700">English content normalized from the original source text.</AlertDescription>
             </Alert>
           )}
 
@@ -257,15 +251,13 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           <div className="space-y-3">
             <div className="flex items-center space-x-2 mb-3">
               <div className="h-1 w-8 bg-red-500 rounded"></div>
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                Thông tin bắt buộc
-              </h3>
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">English content normalized from the original source text.</h3>
             </div>
-            
+
             {getRequiredSpecifications().map((spec) => {
               const index = specifications.findIndex(s => s === spec);
               const defaultSpec = DEFAULT_SPECIFICATIONS.find(def => def.name === spec.name);
-              
+
               return (
                 <div key={`required-${index}`} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -283,14 +275,13 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                       />
                     </div>
                     <div>
-                      <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">
-                        Giá trị <span className="text-red-500">*</span>
+                      <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">English content normalized from the original source text.<span className="text-red-500">*</span>
                       </Label>
                       <Input
                         id={`spec-value-${index}`}
                         value={spec.value}
                         onChange={(e) => updateSpecification(index, 'value', e.target.value)}
-                        placeholder={`Nhập ${spec.name.toLowerCase()}`}
+                        placeholder={`English content normalized from the original source text.${spec.name.toLowerCase()}`}
                         className={`mt-1 ${hasError(index, 'value') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                       />
                       {hasError(index, 'value') && (
@@ -310,22 +301,20 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           <div className="space-y-3">
             <div className="flex items-center space-x-2 mb-3">
               <div className="h-1 w-8 bg-blue-500 rounded"></div>
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                Thông tin tùy chọn
-              </h3>
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">English content normalized from the original source text.</h3>
             </div>
 
             {getOptionalSpecifications().map((spec) => {
               const index = specifications.findIndex(s => s === spec);
               const isDefault = isDefaultSpecification(spec);
-              
+
               return (
                 <div key={`optional-${index}`} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor={`spec-name-${index}`} className="flex items-center space-x-2 text-sm font-medium text-gray-700">
                         {spec.icon && <span>{spec.icon}</span>}
-                        <span>{isDefault ? spec.name : 'Tên thuộc tính'}</span>
+                        <span>{isDefault ? spec.name : 'English content normalized from the original source text.'}</span>
                       </Label>
                       {isDefault ? (
                         <Input
@@ -339,7 +328,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                           id={`spec-name-${index}`}
                           value={spec.name}
                           onChange={(e) => updateSpecification(index, 'name', e.target.value)}
-                          placeholder="VD: Kích thước, Màu sắc, Trọng lượng..."
+                          placeholder="English content normalized from the original source text."
                           className={`mt-1 ${hasError(index, 'name') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                         />
                       )}
@@ -352,9 +341,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                     </div>
                     <div>
                       <div className="flex items-center justify-between">
-                        <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">
-                          Giá trị
-                        </Label>
+                        <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">English content normalized from the original source text.</Label>
                         {!isDefault && (
                           <Button
                             type="button"
@@ -371,7 +358,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                         id={`spec-value-${index}`}
                         value={spec.value}
                         onChange={(e) => updateSpecification(index, 'value', e.target.value)}
-                        placeholder={`Nhập ${spec.name || 'giá trị'}`}
+                        placeholder={`English content normalized from the original source text.${spec.name || 'English content normalized from the original source text.'}`}
                         className={`mt-1 ${hasError(index, 'value') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                       />
                       {hasError(index, 'value') && (
@@ -386,7 +373,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
               );
             })}
           </div>
-          
+
           {/* Add custom specification button */}
           <div className="pt-4 border-t border-gray-100">
             <Button
@@ -396,7 +383,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
               onClick={addSpecification}
             >
               <PlusCircle className="mr-2 h-5 w-5" />
-              <span className="font-medium">Thêm thuộc tính tùy chỉnh</span>
+              <span className="font-medium">English content normalized from the original source text.</span>
             </Button>
           </div>
 
@@ -405,8 +392,8 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
             <div className="flex items-start space-x-2">
               <Info className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
               <div className="text-xs text-blue-700">
-                <p className="font-medium mb-1">Mẹo:</p>
-                <p>Thông tin chi tiết và chính xác giúp khách hàng tin tưởng và dễ dàng tìm thấy sản phẩm của bạn hơn.</p>
+                <p className="font-medium mb-1">English content normalized from the original source text.</p>
+                <p>English content normalized from the original source text.</p>
               </div>
             </div>
           </div>

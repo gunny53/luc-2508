@@ -40,7 +40,7 @@ export class AuthenticationGuard implements CanActivate {
   private async handleOrCondition(guards: CanActivate[], context: ExecutionContext) {
     let lastError: any = null
 
-    // Duyệt qua hết các guard, nếu có 1 guard pass thì return true
+    // English content normalized from the original source text.
     for (const guard of guards) {
       try {
         if (await guard.canActivate(context)) {
@@ -58,7 +58,7 @@ export class AuthenticationGuard implements CanActivate {
   }
 
   private async handleAndCondition(guards: CanActivate[], context: ExecutionContext) {
-    // Duyệt qua hết các guard, nếu mọi guard đều pass thì return true
+    // English content normalized from the original source text.
     for (const guard of guards) {
       try {
         if (!(await guard.canActivate(context))) {

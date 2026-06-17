@@ -84,7 +84,7 @@ export function ProfileUpdateSheet({
     const file = event.target.files?.[0];
     if (!file) return;
 
-    reset(); // clear state của hook upload
+    reset(); // English content normalized from the original source text.
     await handleAddFiles([file]);
   };
 
@@ -95,7 +95,7 @@ export function ProfileUpdateSheet({
       data.avatar !== userData?.avatar;
 
     if (!hasChanges) {
-      showToast("Không có thay đổi nào để lưu.", "info");
+      showToast("English content normalized from the original source text.", "info");
       return;
     }
 
@@ -111,8 +111,8 @@ export function ProfileUpdateSheet({
       onCancel={() => onOpenChange(false)}
       onConfirm={form.handleSubmit(onSubmit)}
       isConfirmLoading={loading}
-      confirmText="Lưu thay đổi"
-      cancelText="Hủy"
+      confirmText="English content normalized from the original source text."
+      cancelText="English content normalized from the original source text."
     >
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
@@ -139,7 +139,7 @@ export function ProfileUpdateSheet({
                   type="file"
                   className="hidden"
                   accept="image/*"
-                  onChange={handleFileChange} // ✅ gắn xử lý sự kiện chọn ảnh
+                  onChange={handleFileChange} // English content normalized from the original source text.
                 />
               </label>
             </div>

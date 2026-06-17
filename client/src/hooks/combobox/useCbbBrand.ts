@@ -20,7 +20,7 @@ export const useCbbBrand = () => {
         const response = await getAllBrands({ page: 1, limit: 1000 });
         if (response.data) {
           const formattedBrands = response.data.map((brand) => ({
-            value: brand.id, // Giữ nguyên id dạng string từ API
+            value: brand.id, // English content normalized from the original source text.
             label: brand.name,
             image: brand.logo || null
           }));

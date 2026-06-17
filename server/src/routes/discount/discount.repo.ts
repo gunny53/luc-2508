@@ -36,9 +36,7 @@ type AdminListQuery = {
 export class DiscountRepo {
   constructor(private readonly prismaService: PrismaService) {}
 
-  /**
-   * Lấy danh sách discounts khả dụng cho checkout (không phân trang)
-   */
+  /* English content normalized from the original source text. */
   async getAvailableDiscounts({
     limit,
     cartItemIds,
@@ -80,9 +78,7 @@ export class DiscountRepo {
     }
   }
 
-  /**
-   * Lấy danh sách discount cho admin management (có phân trang)
-   */
+  /* English content normalized from the original source text. */
   async list(query: AdminListQuery): Promise<GetManageDiscountsResType> {
     const { limit, page, ...filters } = query
     const skip = (page - 1) * limit
@@ -106,9 +102,7 @@ export class DiscountRepo {
     }
   }
 
-  /**
-   * Tìm discount theo ID
-   */
+  /* English content normalized from the original source text. */
   findById(discountId: string): Promise<DiscountType | null> {
     return this.prismaService.discount.findUnique({
       where: {
@@ -118,9 +112,7 @@ export class DiscountRepo {
     })
   }
 
-  /**
-   * Lấy chi tiết discount cho admin
-   */
+  /* English content normalized from the original source text. */
   async getDetail({
     discountId,
     createdById
@@ -139,9 +131,7 @@ export class DiscountRepo {
       .then((discount) => (discount ? { data: discount } : null))
   }
 
-  /**
-   * Tạo discount mới
-   */
+  /* English content normalized from the original source text. */
   async create({
     createdById,
     data
@@ -163,9 +153,7 @@ export class DiscountRepo {
       .then((discount) => ({ data: discount }))
   }
 
-  /**
-   * Cập nhật discount
-   */
+  /* English content normalized from the original source text. */
   async update({
     id,
     updatedById,
@@ -191,9 +179,7 @@ export class DiscountRepo {
     })
   }
 
-  /**
-   * Xóa discount (soft delete hoặc hard delete)
-   */
+  /* English content normalized from the original source text. */
   async delete(
     {
       id,
@@ -222,9 +208,7 @@ export class DiscountRepo {
     })
   }
 
-  /**
-   * Tìm discount theo code
-   */
+  /* English content normalized from the original source text. */
   findByCode(code: string): Promise<DiscountType | null> {
     return this.prismaService.discount.findUnique({
       where: {
@@ -254,18 +238,18 @@ export class DiscountRepo {
       discountStatus: 'ACTIVE'
     }
 
-    // Filter theo thời gian hiện tại
+    // English content normalized from the original source text.
     const now = new Date()
     where.startDate = { lte: now }
     where.endDate = { gte: now }
 
-    // Tính toán orderTotal và shopId từ cartItemIds
+    // English content normalized from the original source text.
     const { orderTotal, shopId } = await this.calculateOrderInfoFromCartItems(cartItemIds)
 
-    // Filter theo shop discounts hoặc platform discounts
+    // English content normalized from the original source text.
     if (onlyShopDiscounts) {
       where.isPlatform = false
-      // Nếu có shopId, chỉ lấy discounts của shop đó hoặc discounts không có shopId (global shop discounts)
+      // English content normalized from the original source text.
       if (shopId) {
         where.OR = [{ shopId: shopId }, { shopId: null }]
       }
@@ -273,7 +257,7 @@ export class DiscountRepo {
       where.isPlatform = true
     }
 
-    // Filter theo min order value nếu có
+    // English content normalized from the original source text.
     if (orderTotal && orderTotal > 0) {
       where.OR = [{ minOrderValue: 0 }, { minOrderValue: { lte: orderTotal } }]
     }
@@ -420,13 +404,11 @@ export class DiscountRepo {
     }
   }
 
-  /**
-   * Filter available discounts theo logic phức tạp (đã validate đầy đủ)
-   */
+  /* English content normalized from the original source text. */
   private async filterAvailableDiscounts(discounts: DiscountType[], cartItemIds?: string[]): Promise<DiscountType[]> {
     if (!cartItemIds || cartItemIds.length === 0) {
       return discounts.filter((discount) => {
-        // Kiểm tra số lần sử dụng
+        // English content normalized from the original source text.
         if (discount.maxUses > 0 && discount.usesCount >= discount.maxUses) {
           return false
         }
@@ -434,16 +416,16 @@ export class DiscountRepo {
       })
     }
 
-    // Lấy thông tin cart items để validate
+    // English content normalized from the original source text.
     const { productIds, categoryIds, brandIds } = await this.calculateOrderInfoFromCartItems(cartItemIds)
 
     return discounts.filter((discount) => {
-      // Kiểm tra số lần sử dụng
+      // English content normalized from the original source text.
       if (discount.maxUses > 0 && discount.usesCount >= discount.maxUses) {
         return false
       }
 
-      // Kiểm tra discountApplyType SPECIFIC
+      // English content normalized from the original source text.
       if (discount.discountApplyType === 'SPECIFIC') {
         const discountWithRelations = discount as any
 
@@ -466,9 +448,7 @@ export class DiscountRepo {
     })
   }
 
-  /**
-   * Tính toán orderTotal và shopId từ cartItemIds
-   */
+  /* English content normalized from the original source text. */
   private async calculateOrderInfoFromCartItems(
     cartItemIds?: string[]
   ): Promise<{ orderTotal: number; shopId?: string; productIds: string[]; categoryIds: string[]; brandIds: string[] }> {
@@ -503,15 +483,15 @@ export class DiscountRepo {
         return { orderTotal: 0, productIds: [], categoryIds: [], brandIds: [] }
       }
 
-      // Tính toán orderTotal
+      // English content normalized from the original source text.
       const orderTotal = cartItems.reduce((total, item) => {
         return total + item.quantity * item.sku.price
       }, 0)
 
-      // Lấy shopId từ cart item đầu tiên (shop = createdBy của product)
+      // English content normalized from the original source text.
       const shopId = cartItems[0]?.sku?.product?.createdBy?.id
 
-      // Lấy productIds, categoryIds, brandIds
+      // English content normalized from the original source text.
       const productIds = [...new Set(cartItems.map((item) => item.sku.product.id))]
       const categoryIds = [...new Set(cartItems.flatMap((item) => item.sku.product.categories.map((cat) => cat.id)))]
       const brandIds = [...new Set(cartItems.map((item) => item.sku.product.brand?.id).filter(Boolean))]

@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng DELETE /permissions/:permissionId
+English content normalized from the original source text.
 
 actor "Admin" as A
 participant "PermissionController" as PC
@@ -28,12 +28,12 @@ activate PS
 PS -> PR: delete({ id, deletedById: user.userId })
 activate PR
 PR -> DB: permission.update({ where: { id, deletedAt: null }, data: { deletedAt: now, deletedById }, include: roles })
-DB --> PR: deleted permission (kèm roles)
-PR --> PS: deleted permission (kèm roles)
+DB --> PR: English content normalized from the original source text.
+PR --> PS: English content normalized from the original source text.
 deactivate PR
 
 PS -> PS: deleteCachedRole(roles)
-PS -> CM: del(`role:${roleId}`) cho từng role
+PS -> CM: English content normalized from the original source text.
 CM -> RD: Delete cache entries
 RD --> CM: ok
 

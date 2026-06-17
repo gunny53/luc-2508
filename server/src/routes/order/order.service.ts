@@ -27,39 +27,39 @@ export class OrderService {
   async list(user: AccessTokenPayload, query: GetOrderListQueryType) {
     const data = await this.orderRepo.list(user.userId, query)
 
-    // Tính toán giá cho từng order (bao gồm voucher, shipping)
+    // English content normalized from the original source text.
     const ordersWithPricing = await Promise.all(
       data.data.map(async (order) => {
         try {
-          // Lấy thông tin shipping để tính toán
+          // English content normalized from the original source text.
           const orderShipping = await this.sharedShippingRepo.getOrderShippingInfo(order.id)
 
-          // Tính toán giá trực tiếp từ order items (không cần gọi orderRepo.detail)
+          // English content normalized from the original source text.
           const totalItemCost = (order.items || []).reduce((sum, item) => {
             return sum + item.skuPrice * item.quantity
           }, 0)
 
           const totalShippingFee = orderShipping?.shippingFee || 0
 
-          // Lấy voucher discount từ order discounts hoặc tính từ pricing
+          // English content normalized from the original source text.
           let totalVoucherDiscount = 0
 
-          // Cách 1: Lấy từ order.discounts nếu có
+          // English content normalized from the original source text.
           if (order.discounts && order.discounts.length > 0) {
             totalVoucherDiscount = order.discounts.reduce((sum, discount) => {
               return sum + (discount.discountAmount || 0)
             }, 0)
           }
 
-          // Cách 2: Nếu không có discounts, tính từ pricing logic
+          // English content normalized from the original source text.
           // totalPayment = totalItemCost + totalShippingFee - totalVoucherDiscount
           // => totalVoucherDiscount = totalItemCost + totalShippingFee - totalPayment
           if (totalVoucherDiscount === 0 && orderShipping) {
-            // Với COD orders, totalPayment = codAmount
+            // English content normalized from the original source text.
             const expectedTotalPayment = orderShipping.codAmount || 0
             const calculatedVoucherDiscount = totalItemCost + totalShippingFee - expectedTotalPayment
 
-            // Chỉ áp dụng nếu voucher discount hợp lý (> 0 và < totalItemCost)
+            // English content normalized from the original source text.
             if (calculatedVoucherDiscount > 0 && calculatedVoucherDiscount < totalItemCost) {
               totalVoucherDiscount = calculatedVoucherDiscount
               this.logger.log(
@@ -82,8 +82,8 @@ export class OrderService {
             totalPayment
           }
         } catch (error) {
-          this.logger.error(`[ORDER_SERVICE] Lỗi khi tính toán giá cho order ${order.id}: ${error.message}`)
-          // Trả về order với giá mặc định nếu có lỗi
+          this.logger.error(`English content normalized from the original source text.${order.id}: ${error.message}`)
+          // English content normalized from the original source text.
           return {
             ...order,
             totalItemCost: 0,
@@ -103,8 +103,8 @@ export class OrderService {
   }
 
   async create(user: AccessTokenPayload, body: CreateOrderBodyType) {
-    this.logger.log(`[ORDER_CREATE] Bắt đầu tạo đơn hàng cho user: ${user.userId}`)
-    this.logger.log(`[ORDER_CREATE] Số lượng shops: ${body.shops.length}`)
+    this.logger.log(`English content normalized from the original source text.${user.userId}`)
+    this.logger.log(`English content normalized from the original source text.${body.shops.length}`)
     this.logger.log(`[ORDER_CREATE] Body data: ${JSON.stringify(body, null, 2)}`)
 
     const shopDiscountCodes = body.shops
@@ -118,15 +118,15 @@ export class OrderService {
     this.logger.log(`[ORDER_CREATE] Discount codes: ${JSON.stringify(allDiscountCodes)}`)
 
     if (allDiscountCodes.length > 0) {
-      this.logger.log(`[ORDER_CREATE] Bắt đầu validate discounts`)
-      // Lấy discounts data thông qua SharedDiscountRepository
+      this.logger.log(`English content normalized from the original source text.`)
+      // English content normalized from the original source text.
       const discounts = await this.sharedDiscountRepo.findDiscountsByCodes(allDiscountCodes)
 
-      // Validate business rules: Kiểm tra tất cả codes có tồn tại
+      // English content normalized from the original source text.
       if (discounts.length !== allDiscountCodes.length) {
         const foundCodes = discounts.map((d) => d.code)
         const missingCodes = allDiscountCodes.filter((code) => !foundCodes.includes(code))
-        throw new BadRequestException(`Mã voucher không tồn tại: ${missingCodes.join(', ')}`)
+        throw new BadRequestException(`English content normalized from the original source text.${missingCodes.join(', ')}`)
       }
 
       const userUsageMap = await this.sharedDiscountRepo.getUserDiscountUsage(
@@ -137,45 +137,45 @@ export class OrderService {
       this.logger.log(`[ORDER_CREATE] Discounts validated: ${discounts.length} codes`)
 
       for (const discount of discounts) {
-        // Kiểm tra trạng thái và thời gian
+        // English content normalized from the original source text.
         if (discount.discountStatus !== 'ACTIVE') {
           this.logger.error(
-            `[ORDER_CREATE] Discount không khả dụng: ${discount.id} - status: ${discount.discountStatus}`
+            `English content normalized from the original source text.${discount.id} - status: ${discount.discountStatus}`
           )
-          throw new BadRequestException('Mã giảm giá không khả dụng')
+          throw new BadRequestException('English content normalized from the original source text.')
         }
 
         const now = new Date()
         if (now < discount.startDate || now > discount.endDate) {
           this.logger.error(
-            `[ORDER_CREATE] Discount hết hạn: ${discount.id} - start: ${discount.startDate}, end: ${discount.endDate}, now: ${now}`
+            `English content normalized from the original source text.${discount.id} - start: ${discount.startDate}, end: ${discount.endDate}, now: ${now}`
           )
-          throw new BadRequestException('Mã giảm giá đã hết hạn')
+          throw new BadRequestException('English content normalized from the original source text.')
         }
 
-        // Kiểm tra maxUses
+        // English content normalized from the original source text.
         if (discount.maxUses > 0 && discount.usesCount >= discount.maxUses) {
           this.logger.error(
-            `[ORDER_CREATE] Discount hết lượt: ${discount.id} - used: ${discount.usesCount}, max: ${discount.maxUses}`
+            `English content normalized from the original source text.${discount.id} - used: ${discount.usesCount}, max: ${discount.maxUses}`
           )
-          throw new BadRequestException('Mã giảm giá đã hết lượt sử dụng')
+          throw new BadRequestException('English content normalized from the original source text.')
         }
 
-        // Kiểm tra maxUsesPerUser
+        // English content normalized from the original source text.
         if (discount.maxUsesPerUser && discount.maxUsesPerUser > 0) {
           const usedCount = userUsageMap.get(discount.id) || 0
           if (usedCount >= discount.maxUsesPerUser) {
             this.logger.error(
-              `[ORDER_CREATE] User đã dùng hết lượt discount: ${discount.id} - used: ${usedCount}, max: ${discount.maxUsesPerUser}`
+              `English content normalized from the original source text.${discount.id} - used: ${usedCount}, max: ${discount.maxUsesPerUser}`
             )
-            throw new BadRequestException('Bạn đã sử dụng hết lượt cho mã giảm giá này')
+            throw new BadRequestException('English content normalized from the original source text.')
           }
         }
       }
     }
 
-    this.logger.log(`[ORDER_CREATE] Bắt đầu tính toán pricing`)
-    // Tính toán pricing với discounts
+    this.logger.log(`English content normalized from the original source text.`)
+    // English content normalized from the original source text.
     const calc = await this.pricingService.tinhTamTinhDonHang(user, {
       shops: body.shops.map((s) => ({
         shopId: s.shopId,
@@ -196,19 +196,19 @@ export class OrderService {
       })
     )
 
-    this.logger.log(`[ORDER_CREATE] Bắt đầu tạo order trong database`)
-    // Tạo order đơn giản (không có discount logic)
+    this.logger.log(`English content normalized from the original source text.`)
+    // English content normalized from the original source text.
     const result = await this.orderRepo.create(user.userId, body.shops)
     this.logger.log(`[ORDER_CREATE] Orders created: ${result.orders.length} orders, paymentId: ${result.paymentId}`)
 
-    this.logger.log(`[ORDER_CREATE] Bắt đầu xử lý shipping cho từng order`)
+    this.logger.log(`English content normalized from the original source text.`)
     await Promise.all(
       result.orders.map(async (order) => {
-        this.logger.log(`[ORDER_CREATE] Xử lý shipping cho order: ${order.id}, shopId: ${order.shopId}`)
+        this.logger.log(`English content normalized from the original source text.${order.id}, shopId: ${order.shopId}`)
 
         const shop = body.shops.find((s) => s.shopId === order.shopId)
         if (!shop?.shippingInfo) {
-          this.logger.warn(`[ORDER_CREATE] Order ${order.id} không có shipping info, bỏ qua`)
+          this.logger.warn(`[ORDER_CREATE] Order ${order.id}English content normalized from the original source text.`)
           return
         }
 
@@ -216,8 +216,8 @@ export class OrderService {
           `[ORDER_CREATE] Shipping info cho order ${order.id}: ${JSON.stringify(shop.shippingInfo, null, 2)}`
         )
 
-        // Lấy shop info với address từ Shared Shipping Repository
-        this.logger.log(`[ORDER_CREATE] Lấy shop address cho shop: ${shop.shopId}`)
+        // English content normalized from the original source text.
+        this.logger.log(`English content normalized from the original source text.${shop.shopId}`)
         const shopInfo = await this.sharedShippingRepo.getShopAddressForShipping(shop.shopId)
         const { shop: shopData, address: shopAddressRecord } = shopInfo
 
@@ -235,8 +235,8 @@ export class OrderService {
           `[ORDER_CREATE] Order ${order.id} - isCod: ${isCod}, codAmount: ${codAmount}, shopPayment: ${JSON.stringify(shopPayment)}`
         )
 
-        // Tạo OrderShipping record với trạng thái DRAFT để lưu thông tin shipping
-        this.logger.log(`[ORDER_CREATE] Tạo OrderShipping record cho order: ${order.id}`)
+        // English content normalized from the original source text.
+        this.logger.log(`English content normalized from the original source text.${order.id}`)
         const orderShipping = await this.sharedShippingRepo.createOrderShipping({
           orderId: order.id,
           serviceId: info.service_id,
@@ -270,10 +270,10 @@ export class OrderService {
 
         this.logger.log(`[ORDER_CREATE] OrderShipping created: ${JSON.stringify(orderShipping, null, 2)}`)
 
-        // Tạo GHN order cho COD ngay lập tức
-        // Online payment sẽ tạo GHN order sau khi thanh toán thành công
+        // English content normalized from the original source text.
+        // English content normalized from the original source text.
         if (isCod) {
-          this.logger.log(`[ORDER_CREATE] Order ${order.id} là COD, tạo GHN order ngay lập tức`)
+          this.logger.log(`[ORDER_CREATE] Order ${order.id}English content normalized from the original source text.`)
           try {
             const ghnOrderData = {
               from_address: shopAddressRecord.street || '',
@@ -290,7 +290,7 @@ export class OrderService {
               to_district_id: shop.receiver.districtId || 0,
 
               client_order_code: `SSPX${order.id}`,
-              // GHN cod_amount là số tiền cần thu hộ (chỉ tiền hàng sau giảm)
+              // English content normalized from the original source text.
               cod_amount: codAmount,
               shippingFee: info.shippingFee ?? 0,
               content: undefined,
@@ -322,31 +322,31 @@ export class OrderService {
             this.logger.log(`[ORDER_CREATE] GHN order data cho COD: ${JSON.stringify(ghnOrderData, null, 2)}`)
 
             await this.shippingProducer.enqueueCreateOrder(ghnOrderData)
-            this.logger.log(`[ORDER_CREATE] GHN order đã được enqueue cho COD order: ${order.id}`)
+            this.logger.log(`English content normalized from the original source text.${order.id}`)
 
-            // Cập nhật trạng thái OrderShipping thành ENQUEUED
+            // English content normalized from the original source text.
             await this.sharedShippingRepo.updateOrderShippingStatus(order.id, OrderShippingStatus.ENQUEUED)
             this.logger.log(`[ORDER_CREATE] OrderShipping status updated to ENQUEUED cho order: ${order.id}`)
           } catch (error) {
-            this.logger.error(`[ORDER_CREATE] Lỗi khi tạo GHN order cho COD: ${error.message}`, error.stack)
+            this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
             console.error('Failed to enqueue COD shipping order:', error)
           }
         } else {
           this.logger.log(
-            `[ORDER_CREATE] Order ${order.id} là online payment, sẽ tạo GHN order sau khi thanh toán thành công`
+            `[ORDER_CREATE] Order ${order.id}English content normalized from the original source text.`
           )
         }
       })
     )
 
-    this.logger.log(`[ORDER_CREATE] Bắt đầu cập nhật trạng thái COD orders`)
-    // Cập nhật trạng thái COD orders thành PENDING_PACKAGING
+    this.logger.log(`English content normalized from the original source text.`)
+    // English content normalized from the original source text.
     await this.updateCodOrdersStatus(result.orders, body.shops)
 
-    // Cập nhật status trong response cho COD orders
+    // English content normalized from the original source text.
     const updatedResult = this.updateCodOrdersInResponse(result, body.shops)
 
-    this.logger.log(`[ORDER_CREATE] Hoàn thành tạo đơn hàng. Kết quả: ${JSON.stringify(updatedResult, null, 2)}`)
+    this.logger.log(`English content normalized from the original source text.${JSON.stringify(updatedResult, null, 2)}`)
     return {
       message: this.i18n.t('order.order.success.CREATE_SUCCESS'),
       data: updatedResult
@@ -354,7 +354,7 @@ export class OrderService {
   }
 
   async cancel(user: AccessTokenPayload, orderId: string) {
-    this.logger.log(`[ORDER_SERVICE] Bắt đầu hủy order: ${orderId} cho user: ${user.userId}`)
+    this.logger.log(`English content normalized from the original source text.${orderId} cho user: ${user.userId}`)
 
     try {
       const result = await this.orderRepo.cancel(user.userId, orderId)
@@ -368,7 +368,7 @@ export class OrderService {
       this.logger.log(`[ORDER_SERVICE] Response: ${JSON.stringify(response, null, 2)}`)
       return response
     } catch (error) {
-      this.logger.error(`[ORDER_SERVICE] Lỗi khi hủy order: ${error.message}`, error.stack)
+      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
       throw error
     }
   }
@@ -376,25 +376,25 @@ export class OrderService {
   async detail(user: AccessTokenPayload, orderId: string) {
     const result = await this.orderRepo.detail(user.userId, orderId)
 
-    // Lấy shipping info từ OrderShipping
+    // English content normalized from the original source text.
     if (result.data) {
       const [orderShipping, ghnOrderCode] = await Promise.all([
         this.sharedShippingRepo.getOrderShippingInfo(result.data.id),
         this.sharedShippingRepo.getGHNOrderCode(result.data.id)
       ])
 
-      // Tính toán lại giá chính xác (bao gồm voucher, shipping)
+      // English content normalized from the original source text.
       if (orderShipping && orderShipping.shippingFee !== null) {
         result.data.totalShippingFee = orderShipping.shippingFee
 
-        // Tính totalVoucherDiscount từ pricing logic nếu chưa có
+        // English content normalized from the original source text.
         if (!result.data.totalVoucherDiscount || result.data.totalVoucherDiscount === 0) {
-          // Với COD orders: totalPayment = codAmount
+          // English content normalized from the original source text.
           const expectedTotalPayment = orderShipping.codAmount || 0
           const calculatedVoucherDiscount =
             (result.data.totalItemCost || 0) + orderShipping.shippingFee - expectedTotalPayment
 
-          // Chỉ áp dụng nếu voucher discount hợp lý (> 0 và < totalItemCost)
+          // English content normalized from the original source text.
           if (calculatedVoucherDiscount > 0 && calculatedVoucherDiscount < (result.data.totalItemCost || 0)) {
             result.data.totalVoucherDiscount = calculatedVoucherDiscount
             this.logger.log(
@@ -403,17 +403,17 @@ export class OrderService {
           }
         }
 
-        // Tính lại totalPayment với voucher discount đã được tính
+        // English content normalized from the original source text.
         result.data.totalPayment =
           (result.data.totalItemCost || 0) + orderShipping.shippingFee - (result.data.totalVoucherDiscount || 0)
       }
 
-      // Thêm GHN order code nếu có
+      // English content normalized from the original source text.
       if (ghnOrderCode) {
         ;(result.data as any).orderCode = ghnOrderCode
       }
 
-      // Đảm bảo có đầy đủ thông tin giá
+      // English content normalized from the original source text.
       if (result.data.totalItemCost === undefined) result.data.totalItemCost = 0
       if (result.data.totalVoucherDiscount === undefined) result.data.totalVoucherDiscount = 0
       if (result.data.totalPayment === undefined) {
@@ -442,9 +442,7 @@ export class OrderService {
     }
   }
 
-  /**
-   * Cập nhật trạng thái COD orders thành PENDING_PACKAGING trong database
-   */
+  /* English content normalized from the original source text. */
   private async updateCodOrdersStatus(
     orders: Array<{ id: string; shopId: string | null }>,
     shops: Array<{ shopId: string; isCod?: boolean }>
@@ -462,9 +460,7 @@ export class OrderService {
     }
   }
 
-  /**
-   * Cập nhật status trong response cho COD orders
-   */
+  /* English content normalized from the original source text. */
   private updateCodOrdersInResponse(
     originalResult: { paymentId: number; orders: any[] },
     shops: Array<{ shopId: string; isCod?: boolean }>

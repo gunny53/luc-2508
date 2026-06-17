@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 
-// Khai báo kiểu dữ liệu cho props
+// English content normalized from the original source text.
 interface SalesChartProps {
   data: { name: string; totalSales: number }[];
 }
@@ -17,7 +17,7 @@ interface SalesChartProps {
 export function SalesChart({ data }: SalesChartProps) {
   if (!data || data.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">Chưa có dữ liệu thống kê.</p>
+      <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
     );
   }
 
@@ -36,8 +36,8 @@ export function SalesChart({ data }: SalesChartProps) {
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          // Hàm tickFormatter được điều chỉnh để thêm "đ"
-          tickFormatter={(value) => `${value.toLocaleString("vi-VN")}đ`}
+          // English content normalized from the original source text.
+          tickFormatter={(value) => `${value.toLocaleString("vi-VN")}English content normalized from the original source text.`}
         />
         <Tooltip cursor={{ fill: "transparent" }} />
         <Bar dataKey="totalSales" fill="#FE2020" radius={[4, 4, 0, 0]} />

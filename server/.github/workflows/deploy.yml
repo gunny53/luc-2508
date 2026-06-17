@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       manual_rollback:
-        description: 'Commit SHA hoặc tag để rollback'
+        description: 'English content normalized from the original source text.'
         required: false
 
 permissions:
@@ -49,7 +49,7 @@ jobs:
 
             pm2 status > /tmp/pm2_status.txt
 
-            STATUS=$(pm2 jlist | jq -r '.[] | select(.name == "server-shopsifu") | .pm2_env.status')
+            STATUS=$(pm2 jlist | jq -r '.[] | select(.name == "server-ecsite") | .pm2_env.status')
             [ "$STATUS" = "online" ] || exit 2
           EOF
         continue-on-error: true
@@ -58,7 +58,7 @@ jobs:
         if: always()
         id: pm2_status
         run: |
-          PM2_CONSOLE_OUTPUT=$(ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} 'cat /tmp/pm2_status.txt' || echo "Không thể lấy trạng thái PM2.")
+          PM2_CONSOLE_OUTPUT=$(ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} 'cat /tmp/pm2_status.txt' || echo "English content normalized from the original source text.")
           echo "pm2_console_output<<EOF" >> $GITHUB_OUTPUT
           echo "$PM2_CONSOLE_OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -107,26 +107,10 @@ jobs:
             --arg run_id "$RUN_ID" \
             --arg color "$COLOR" \
             --arg started_at "$STARTED_AT_EPOCH" \
-            '{
-              embeds: [{
-                title: "🚀 SERVER - Thông báo triển khai ✨",
-                color: ($color | tonumber),
-                fields: [
-                  { name: "Trạng thái", value: "\($icon) \($status | ascii_upcase)", inline: true },
-                  { name: "Nhánh", value: "`\($branch)`", inline: true },
-                  { name: "Người thực hiện", value: "`\($actor)`", inline: true },
-                  { name: "Commit", value: "[`\($commit_short)`](https://github.com/\($repo)/commit/\($commit_full))", inline: false },
-                  { name: "Nội dung Commit", value: "```\n\($commit_message)\n```", inline: false },
-                  { name: "Thời gian", value: "<t:\($started_at):R>", inline: true }
-                ],
-                description: "**Trạng thái PM2 trên server:**\n```ansi\n\($pm2_status)\n```",
-                url: "https://github.com/\($repo)/actions/runs/\($run_id)",
-                "timestamp": (now | strftime("%Y-%m-%dT%H:%M:%SZ"))
-              }]
-            }')
-          curl -s -H "Content-Type: application/json" -X POST -d "$JSON_PAYLOAD" "$DISCORD_WEBHOOK" || echo "Lỗi gửi thông báo Discord"
+            'English content normalized from the original source text.')
+          curl -s -H "Content-Type: application/json" -X POST -d "$JSON_PAYLOAD" "$DISCORD_WEBHOOK" || echo "English content normalized from the original source text."
 
-  # Các job rollback vẫn được giữ lại để đảm bảo an toàn
+  English content normalized from the original source text.
   rollback-auto:
     name: Automatic Rollback
     needs: deploy

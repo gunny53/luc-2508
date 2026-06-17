@@ -6,14 +6,14 @@ export const VariantSchema = z.object({
 })
 
 export const VariantsSchema = z.array(VariantSchema).superRefine((variants, ctx) => {
-  // Kiểm tra variants và variant option có bị trùng hay không
+  // English content normalized from the original source text.
   for (let i = 0; i < variants.length; i++) {
     const variant = variants[i]
     const isExistingVariant = variants.findIndex((v) => v.value.toLowerCase() === variant.value.toLowerCase()) !== i
     if (isExistingVariant) {
       return ctx.addIssue({
         code: 'custom',
-        message: `Giá trị ${variant.value} đã tồn tại trong danh sách variants. Vui lòng kiểm tra lại.`,
+        message: `English content normalized from the original source text.${variant.value}English content normalized from the original source text.`,
         path: ['variants']
       })
     }
@@ -24,7 +24,7 @@ export const VariantsSchema = z.array(VariantSchema).superRefine((variants, ctx)
     if (isDifferentOption) {
       return ctx.addIssue({
         code: 'custom',
-        message: `Variant ${variant.value} chứa các option trùng tên với nhau. Vui lòng kiểm tra lại.`,
+        message: `Variant ${variant.value}English content normalized from the original source text.`,
         path: ['variants']
       })
     }
@@ -37,14 +37,14 @@ export const SpecificationSchema = z.object({
 })
 
 export const SpecificationsSchema = z.array(SpecificationSchema).superRefine((specs, ctx) => {
-  // Loại bỏ các specifications trùng lặp thay vì báo lỗi
+  // English content normalized from the original source text.
   const uniqueSpecs = specs.filter(
     (spec, index, self) => index === self.findIndex((s) => s.name.toLowerCase() === spec.name.toLowerCase())
   )
 
-  // Nếu có trùng lặp, thay thế bằng danh sách đã loại bỏ trùng lặp
+  // English content normalized from the original source text.
   if (uniqueSpecs.length !== specs.length) {
-    // Thay thế specs bằng uniqueSpecs
+    // English content normalized from the original source text.
     specs.length = 0
     specs.push(...uniqueSpecs)
   }

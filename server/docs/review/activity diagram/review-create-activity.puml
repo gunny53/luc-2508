@@ -6,25 +6,25 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /reviews
+English content normalized from the original source text.
 
 start
-:Nhận body { content, rating, productId, orderId, medias } và user;
+:English content normalized from the original source text;
 :validateOrder(orderId, userId);
-if (Order hợp lệ và DELIVERED?) then (Có)
+if (condition?) then (Yes)
   :BEGIN TRANSACTION;
   :review.create (catch unique -> Conflict);
-  if (Conflict?) then (Có)
+  if (condition?) then (Yes)
     :Rollback;
-    :Ném ConflictException;
+    :English content normalized from the original source text;
     stop
   endif
   :reviewMedia.createManyAndReturn(medias);
   :COMMIT;
   :Build message i18n;
-  :Trả về 201 { message, data };
-else (Không)
-  :Ném BadRequestException;
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

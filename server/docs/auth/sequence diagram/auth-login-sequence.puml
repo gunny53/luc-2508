@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /auth/login
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -85,7 +85,7 @@ AR --> AS: ok
 
 AS -> CS: setAuthCookies(res, accessToken, refreshToken)
 CS --> AS: ok
-AS --> AC: { message: 'Đăng nhập thành công', data: user(ẩn mật khẩu) }
+AS --> AC: English content normalized from the original source text.
 deactivate AS
 
 AC --> C: 200 OK + JSON

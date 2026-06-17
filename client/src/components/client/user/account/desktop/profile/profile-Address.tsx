@@ -41,11 +41,11 @@ export default function AddressBook() {
   const [editingAddress, setEditingAddress] =
     useState<AddressFormValues | null>(null);
   const [addresses, setAddresses] = useState<AddressFormValues[]>([]);
-  const { 
-    getAllAddresses, 
-    createAddress, 
-    updateAddress, 
-    deleteAddress, 
+  const {
+    getAllAddresses,
+    createAddress,
+    updateAddress,
+    deleteAddress,
     getAddressById,
     fetchAndMapAddresses,
     prepareAddressForEdit,
@@ -60,7 +60,7 @@ export default function AddressBook() {
   const [selectedDistrictId, setSelectedDistrictId] = useState<string>('');
   const [selectedWardCode, setSelectedWardCode] = useState<string>('');
 
-  // Hooks để lấy data cho việc mapping names
+  // English content normalized from the original source text.
   const { data: provincesData } = useProvinces();
   const { data: districtsData } = useDistricts(
     { provinceId: parseInt(selectedProvinceId) || 0 },
@@ -99,8 +99,8 @@ export default function AddressBook() {
 
   const handleAdd = () => {
     setEditingAddress(null);
-    
-    // Reset form ngay lập tức
+
+    // English content normalized from the original source text.
     form.reset({
       recipient: "",
       phone: "",
@@ -115,48 +115,48 @@ export default function AddressBook() {
       wardCode: "",
       type: "home",
     });
-    
+
     // Reset address selection
     setSelectedProvinceId('');
     setSelectedDistrictId('');
     setSelectedWardCode('');
-    
-    // Mở UI ngay lập tức
+
+    // English content normalized from the original source text.
     setOpen(true);
   };
 
   const handleEdit = async (addr: AddressFormValues) => {
     setEditingAddress(addr);
-    
-    // Mở UI ngay lập tức
+
+    // English content normalized from the original source text.
     setOpen(true);
-    
-    // Set initial values từ data hiện có trước
+
+    // English content normalized from the original source text.
     setSelectedProvinceId(addr.provinceId?.toString() || '');
     setSelectedDistrictId(addr.districtId?.toString() || '');
     setSelectedWardCode(addr.wardCode || '');
     form.reset(addr);
-    
-    // Load chi tiết và update background (không block UI)
+
+    // English content normalized from the original source text.
     try {
       const { addressData, matchedIds } = await prepareAddressForEdit(addr.id!);
-      
+
       if (addressData) {
-        // Update lại values nếu API trả về data tốt hơn
+        // English content normalized from the original source text.
         setSelectedProvinceId(matchedIds.provinceId || addr.provinceId?.toString() || '');
         setSelectedDistrictId(matchedIds.districtId || addr.districtId?.toString() || '');
         setSelectedWardCode(matchedIds.wardCode || addr.wardCode || '');
-        
-        // Update form với data từ API
+
+        // English content normalized from the original source text.
         form.reset(addressData);
       }
     } catch (error) {
       console.error('Error loading address details:', error);
-      // Giữ nguyên data ban đầu nếu có lỗi
+      // English content normalized from the original source text.
     }
   };
 
-  // Callback để handle address change từ SimpleAddressSelect
+  // English content normalized from the original source text.
   const handleAddressChange = useCallback((provinceId: string, districtId: string, wardCode: string) => {
     setSelectedProvinceId(provinceId);
     setSelectedDistrictId(districtId);
@@ -165,7 +165,7 @@ export default function AddressBook() {
     // Update form values
     const numProvinceId = parseInt(provinceId) || 0;
     const numDistrictId = parseInt(districtId) || 0;
-    
+
     form.setValue('provinceId', numProvinceId);
     form.setValue('districtId', numDistrictId);
     form.setValue('wardCode', wardCode);
@@ -222,9 +222,9 @@ export default function AddressBook() {
   const formContent = (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(handleSave)}>
-        {/* Address Selection với SimpleAddressSelect */}
+        {/* English content normalized from the original source text. */}
         <div className="space-y-2">
-          <label className="text-sm font-medium">Địa chỉ</label>
+          <label className="text-sm font-medium">English content normalized from the original source text.</label>
           <SimpleAddressSelect
             onAddressChange={handleAddressChange}
             initialValues={{
@@ -235,11 +235,11 @@ export default function AddressBook() {
           />
         </div>
 
-        {/* Các trường khác */}
+        {/* English content normalized from the original source text. */}
         {[
-          ["detail", "Địa chỉ chi tiết", "required"],
-          ["label", "Tên gợi nhớ"],
-          ["recipient", "Người nhận", "required"],
+          ["detail", "English content normalized from the original source text.", "required"],
+          ["label", "English content normalized from the original source text."],
+          ["recipient", "English content normalized from the original source text.", "required"],
         ].map(([name, label, required]) => (
           <FormField
             key={String(name)}
@@ -247,7 +247,7 @@ export default function AddressBook() {
             name={name as keyof AddressFormValues}
             rules={
               required
-                ? { required: `${label} không được bỏ trống` }
+                ? { required: `${label}English content normalized from the original source text.` }
                 : undefined
             }
             render={({ field }) => (
@@ -255,7 +255,7 @@ export default function AddressBook() {
                 <FormLabel>{label}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder={`Nhập ${label.toLowerCase()}`}
+                    placeholder={`English content normalized from the original source text.${label.toLowerCase()}`}
                     {...field}
                     value={typeof field.value === "string" ? field.value : ""}
                   />
@@ -269,18 +269,18 @@ export default function AddressBook() {
           control={form.control}
           name="phone"
           rules={{
-            required: "Số điện thoại bắt buộc",
+            required: "English content normalized from the original source text.",
             pattern: {
               value: /^(0|\+84)\d{9}$/,
-              message: "Số điện thoại không hợp lệ",
+              message: "English content normalized from the original source text.",
             },
           }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Số điện thoại</FormLabel>
+              <FormLabel>English content normalized from the original source text.</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Nhập số điện thoại"
+                  placeholder="English content normalized from the original source text."
                   {...field}
                   value={typeof field.value === "string" ? field.value : ""}
                 />
@@ -294,24 +294,20 @@ export default function AddressBook() {
           name="type"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Loại địa chỉ</FormLabel>
+              <FormLabel>English content normalized from the original source text.</FormLabel>
               <div className="flex gap-3 border-b border-gray-200 pb-4">
                 <Button
                   type="button"
                   variant={field.value === "home" ? "default" : "outline"}
                   onClick={() => field.onChange("home")}
                 >
-                  <Home className="h-4 w-4 mr-2" />
-                  Nhà
-                </Button>
+                  <Home className="h-4 w-4 mr-2" />English content normalized from the original source text.</Button>
                 <Button
                   type="button"
                   variant={field.value === "office" ? "default" : "outline"}
                   onClick={() => field.onChange("office")}
                 >
-                  <Building2 className="h-4 w-4 mr-2" />
-                  Văn phòng
-                </Button>
+                  <Building2 className="h-4 w-4 mr-2" />English content normalized from the original source text.</Button>
               </div>
             </FormItem>
           )}
@@ -322,7 +318,7 @@ export default function AddressBook() {
           name="isDefault"
           render={({ field }) => (
             <FormItem className="flex items-center gap-3">
-              <FormLabel className="mb-0">Đặt làm địa chỉ mặc định</FormLabel>
+              <FormLabel className="mb-0">English content normalized from the original source text.</FormLabel>
               <FormControl>
                 <Switch
                   checked={!!field.value}
@@ -333,7 +329,7 @@ export default function AddressBook() {
           )}
         />
 
-        {/* Hidden fields để lưu IDs */}
+        {/* English content normalized from the original source text. */}
         <input type="hidden" {...form.register('provinceId')} />
         <input type="hidden" {...form.register('districtId')} />
         <input type="hidden" {...form.register('wardCode')} />
@@ -347,14 +343,13 @@ export default function AddressBook() {
   return (
     <div className="bg-white rounded-lg p-6 space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="font-semibold text-base text-[#121214]">Sổ địa chỉ</h2>
+        <h2 className="font-semibold text-base text-[#121214]">English content normalized from the original source text.</h2>
         <Button
           variant="ghost"
           className="flex items-center gap-2 text-[#D70019]"
           onClick={handleAdd}
         >
-          <Plus size={18} /> Thêm địa chỉ
-        </Button>
+          <Plus size={18} />English content normalized from the original source text.</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -370,12 +365,10 @@ export default function AddressBook() {
                 ) : (
                   <Building2 size={16} />
                 )}
-                {addr.label || "Địa chỉ"}
+                {addr.label || "English content normalized from the original source text."}
               </div>
               {addr.isDefault && (
-                <Badge variant="outline" className="bg-blue-100 text-[#193767]">
-                  Mặc định
-                </Badge>
+                <Badge variant="outline" className="bg-blue-100 text-[#193767]">English content normalized from the original source text.</Badge>
               )}
             </div>
             <div className="text-sm font-semibold flex flex-wrap gap-1">
@@ -390,15 +383,13 @@ export default function AddressBook() {
                 onClick={() => handleDelete(addr)}
                 className="text-[#1D1D20] hover:underline"
               >
-                {addressLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Xoá"}
+                {addressLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "English content normalized from the original source text."}
               </button>
               <span className="text-gray-300">|</span>
               <button
                 onClick={() => handleEdit(addr)}
                 className="text-[#3B82F6] hover:underline"
-              >
-                Cập nhật
-              </button>
+              >English content normalized from the original source text.</button>
             </div>
           </div>
         ))}
@@ -409,7 +400,7 @@ export default function AddressBook() {
           <DrawerContent className="p-0">
             <DrawerHeader>
               <DrawerTitle>
-                {editingAddress ? "Cập nhật địa chỉ" : "Thêm địa chỉ"}
+                {editingAddress ? "English content normalized from the original source text." : "English content normalized from the original source text."}
               </DrawerTitle>
             </DrawerHeader>
 
@@ -422,7 +413,7 @@ export default function AddressBook() {
                 onClick={form.handleSubmit(handleSave)}
                 disabled={addressLoading}
               >
-                {addressLoading ? "Đang lưu..." : "Lưu"}
+                {addressLoading ? "English content normalized from the original source text." : "English content normalized from the original source text."}
               </Button>
             </DrawerFooter>
           </DrawerContent>
@@ -431,12 +422,12 @@ export default function AddressBook() {
         <SheetRework
           open={open}
           onOpenChange={setOpen}
-          title={editingAddress ? "Cập nhật địa chỉ" : "Thêm địa chỉ"}
-          subtitle="Thay đổi thông tin địa chỉ nhận hàng"
+          title={editingAddress ? "English content normalized from the original source text." : "English content normalized from the original source text."}
+          subtitle="English content normalized from the original source text."
           onCancel={() => setOpen(false)}
           onConfirm={form.handleSubmit(handleSave)}
-          confirmText={addressLoading ? "Đang lưu..." : "Lưu"}
-          cancelText="Hủy"
+          confirmText={addressLoading ? "English content normalized from the original source text." : "English content normalized from the original source text."}
+          cancelText="English content normalized from the original source text."
         >
           {formContent}
         </SheetRework>

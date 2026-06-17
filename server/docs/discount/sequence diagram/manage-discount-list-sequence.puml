@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng GET /manage-discount/discounts
+English content normalized from the original source text.
 
 actor "Seller/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,14 +16,14 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MDC: Forward với user
+AG --> MDC: English content normalized from the original source text.
 activate MDC
 
 MDC -> MDS: list({ query, user })
 activate MDS
 
 MDS -> MDS: validatePrivilege(userIdRequest=user.userId, roleNameRequest=user.roleName, createdById=query.createdById)
-alt Không hợp lệ
+English content normalized from the original source text.
   MDS --> MDC: 403 Forbidden
   MDC --> U: 403 Forbidden
   deactivate MDS

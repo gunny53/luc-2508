@@ -9,25 +9,25 @@ import {
 } from '@/types/review.interface';
 
 export const reviewService = {
-  // Lấy danh sách review theo ID sản phẩm, có phân trang
+  // English content normalized from the original source text.
   getReviewsByProductId: (productId: string, params?: PaginationRequest) => {
     const url = API_ENDPOINTS.REVIEW.GET_BY_ID.replace(':productId', productId);
     return privateAxios.get<GetReviewsResponse>(url, { params });
   },
 
-  // Tạo một review mới
+  // English content normalized from the original source text.
   createReview: (payload: CreateReviewRequest) => {
-    // Giả sử review cần xác thực nên dùng privateAxios
+    // English content normalized from the original source text.
     return privateAxios.post<Review>(API_ENDPOINTS.REVIEW.CREATE, payload);
   },
 
-  // Cập nhật một review đã có
+  // English content normalized from the original source text.
   updateReview: (reviewId: string, payload: UpdateReviewRequest) => {
     const url = API_ENDPOINTS.REVIEW.UPDATE.replace(':reviewId', reviewId);
     return privateAxios.patch<Review>(url, payload);
   },
 
-  // Xóa một review
+  // English content normalized from the original source text.
   deleteReview: (reviewId: string) => {
     const url = API_ENDPOINTS.REVIEW.DELETE.replace(':reviewId', reviewId);
     return privateAxios.delete(url);

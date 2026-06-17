@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
 # Module Development Rules
@@ -55,18 +55,18 @@ Each module should include these standard files:
      import { SearchInput } from "@/components/ui/data-table/search-input"
      import { columns } from "./module-Columns"
      import { useModule } from "./useModule"
-     
+
      export function ModuleTable() {
        const { data, isLoading, pagination, search } = useModule()
-       
+
        return (
          <div className="space-y-4">
            <SearchInput placeholder="Search..." onChange={search.onChange} />
            <DataTable columns={columns} data={data} isLoading={isLoading} />
-           <Pagination 
-             totalPages={pagination.totalPages} 
+           <Pagination
+             totalPages={pagination.totalPages}
              currentPage={pagination.currentPage}
-             onPageChange={pagination.onPageChange} 
+             onPageChange={pagination.onPageChange}
            />
          </div>
        )
@@ -88,7 +88,7 @@ Leverage these shared UI components for consistent implementation:
 
 1. **`data-table.tsx`**
    - Core table component with standard features
-   
+
 2. **`data-table-column-header.tsx`**
    - For sortable column headers
 

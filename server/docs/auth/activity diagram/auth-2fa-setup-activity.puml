@@ -6,21 +6,21 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: POST /auth/2fa/setup
+English content normalized from the original source text.
 
 start
-:Lấy user theo userId;
-if (Không tồn tại?) then (Có)
-  :Ném EmailNotFound (422);
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
-if (Đã bật 2FA?) then (Có)
-  :Ném TOTPAlreadyEnabled (422);
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
 :generateTOTPSecret(email);
-:Cập nhật user.totpSecret;
-:Trả về 200 { secret, uri };
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 stop
 
 @enduml

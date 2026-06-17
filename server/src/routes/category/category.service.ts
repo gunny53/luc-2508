@@ -18,9 +18,7 @@ export class CategoryService {
     private readonly redisService: RedisService
   ) {}
 
-  /**
-   * 🎯 Cache category list theo parent và language
-   */
+  /* English content normalized from the original source text. */
   @Cacheable({
     key: 'category:list',
     ttl: 1800, // 30 minutes
@@ -44,9 +42,7 @@ export class CategoryService {
     }
   }
 
-  /**
-   * 🎯 Cache category detail theo ID và language
-   */
+  /* English content normalized from the original source text. */
   @Cacheable({
     key: 'category:detail',
     ttl: 3600, // 1 hour
@@ -71,9 +67,7 @@ export class CategoryService {
     }
   }
 
-  /**
-   * ♻️ Invalidate category cache khi tạo category mới
-   */
+  /* English content normalized from the original source text. */
   @CacheEvict(['CategoryModule:category:list:*', 'CategoryModule:category:detail:*'])
   async create({ data, user }: { data: CreateCategoryBodyType; user: AccessTokenPayload }) {
     const category = await this.categoryRepo.create({

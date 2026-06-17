@@ -15,7 +15,7 @@ export class SepayRepo {
   ) {}
 
   async receiver(body: WebhookPaymentBodyType): Promise<{ userId: string; paymentId: number }> {
-    // 1. Lưu transaction vào DB
+    // English content normalized from the original source text.
     let amountIn = 0
     let amountOut = 0
     if (body.transferType === 'in') amountIn = body.transferAmount
@@ -44,7 +44,7 @@ export class SepayRepo {
         }
       })
 
-      // 2. Dùng extractPaymentId của shared repo
+      // English content normalized from the original source text.
       const paymentId = this.sharedPaymentRepository.extractPaymentId(
         PREFIX_PAYMENT_CODE,
         ...(body.code ? [body.code] : []),
@@ -52,18 +52,18 @@ export class SepayRepo {
       )
       if (!paymentId) throw new BadRequestException('Cannot get payment id from content')
 
-      // 3. Validate và tìm payment với orders
+      // English content normalized from the original source text.
       const payment = await this.sharedPaymentRepository.validateAndFindPayment(Number(paymentId))
       const userId = payment.orders[0].userId
       const { orders } = payment
 
-      // 4. Validate số tiền
+      // English content normalized from the original source text.
       this.sharedPaymentRepository.validatePaymentAmount(
         this.sharedPaymentRepository.getTotalPrice(orders),
         body.transferAmount
       )
 
-      // 5. Cập nhật trạng thái payment và orders
+      // English content normalized from the original source text.
       await this.sharedPaymentRepository.updatePaymentAndOrdersOnSuccess(Number(paymentId), orders)
 
       return { userId, paymentId: Number(paymentId) }

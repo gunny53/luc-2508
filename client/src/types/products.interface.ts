@@ -65,13 +65,13 @@ export interface ProductsResponse {
  */
 export interface ProductCreateRequest {
     name: string;
-    description: string; // Thêm trường description
+    description: string; // English content normalized from the original source text.
     publishedAt?: string | null;
     basePrice: number;
     virtualPrice: number;
-    brandId: string; // Cập nhật sang string để phù hợp với UUID từ API
-    images: string[]; // Mảng string URLs trực tiếp
-    categories: string[]; // Cập nhật sang string[] để phù hợp với UUID từ API
+    brandId: string; // English content normalized from the original source text.
+    images: string[]; // English content normalized from the original source text.
+    categories: string[]; // English content normalized from the original source text.
     specifications: Array<{
       name: string;
       value: string;

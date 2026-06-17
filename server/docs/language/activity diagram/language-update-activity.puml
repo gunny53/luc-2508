@@ -6,16 +6,16 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: PUT /languages/:languageId
+English content normalized from the original source text.
 
 start
-:Nhận languageId + { name } + user;
+:English content normalized from the original source text;
 :language.update({ where: id & deletedAt=null, data: { name, updatedById } });
-if (Thành công?) then (Có)
+if (condition?) then (Yes)
   :Build message i18n;
-  :Trả về 200 { message, data };
-else (Không)
-  :Ném NotFoundRecordException (404);
+  :English content normalized from the original source text;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

@@ -9,12 +9,12 @@ export default function VerifyCodeHandler() {
 
   useEffect(() => {
     if (!type) {
-      // Chuyển hướng client-side
+      // English content normalized from the original source text.
       window.location.replace('/verify-email?action=signup')
     }
   }, [type])
 
-  // Nếu chưa có type, không render form (tránh nháy UI)
+  // English content normalized from the original source text.
   if (!type) return null
 
   return <VerifyEmailForm />

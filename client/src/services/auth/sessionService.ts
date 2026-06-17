@@ -10,19 +10,19 @@ import { API_ENDPOINTS } from '@/constants/api';
 import { PaginationRequest } from '@/types/base.interface';
 
 export const sessionService = {
-    // Lấy danh sách phiên đăng nhập
+    // English content normalized from the original source text.
     getAll: async (params?: PaginationRequest): Promise<SessionGetALLResponse> => {
         const response = await privateAxios.get<SessionGetALLResponse>(API_ENDPOINTS.SESSIONS.GETALL, { params });
         return response.data;
     },
 
-    // Hủy tất cả phiên đăng nhập ngoại trừ phiên hiện tại
+    // English content normalized from the original source text.
     revokeAll: async (data: SessionRevokeAllRequest): Promise<SessionRevokeAllResponse> => {
         const response = await privateAxios.post<SessionRevokeAllResponse>(API_ENDPOINTS.SESSIONS.REVOKE_ALL, data);
         return response.data;
     },
 
-    // Hủy các phiên đăng nhập cụ thể
+    // English content normalized from the original source text.
     revoke: async (data: SessionRevokeRequest): Promise<SessionRevokeResponse> => {
         const response = await privateAxios.post<SessionRevokeResponse>(API_ENDPOINTS.SESSIONS.REVOKE, data);
         return response.data;

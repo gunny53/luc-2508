@@ -16,7 +16,7 @@ import BrandModalUpsert from "./brand-ModalUpsert"
 
 export function BrandTable() {
   const t = useTranslations("admin.ModuleBrands.Table");
-  
+
   const {
     data: brands,
     loading,
@@ -48,22 +48,22 @@ export function BrandTable() {
 
   const table = useDataTable({
     data: brands,
-    columns: BrandColumns({ 
-      onEdit: (brand) => handleOpenModal(brand), 
-      onDelete: handleOpenDelete 
+    columns: BrandColumns({
+      onEdit: (brand) => handleOpenModal(brand),
+      onDelete: handleOpenDelete
     }),
   });
-  
+
   return (
     <div className="w-full space-y-4">
-      {/* Hàng 1: Nút Thêm mới */}
+      {/* English content normalized from the original source text. */}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenModal()}>
           <PlusIcon className="w-4 h-4 mr-2" />{t("addAction")}
         </Button>
       </div>
 
-      {/* Hàng 2: Search + View Option */}
+      {/* English content normalized from the original source text. */}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -80,9 +80,9 @@ export function BrandTable() {
       <div className="relative">
         <DataTable
           table={table}
-          columns={BrandColumns({ 
-            onEdit: (brand) => handleOpenModal(brand), 
-            onDelete: handleOpenDelete 
+          columns={BrandColumns({
+            onEdit: (brand) => handleOpenModal(brand),
+            onDelete: handleOpenDelete
           })}
           loading={loading}
           notFoundMessage={t('notFound')}
@@ -94,7 +94,7 @@ export function BrandTable() {
         />
       </div>
 
-      {/* Modal xác nhận xóa */}
+      {/* English content normalized from the original source text. */}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
@@ -114,7 +114,7 @@ export function BrandTable() {
         loading={deleteLoading}
       />
 
-      {/* Modal thêm/sửa */}
+      {/* English content normalized from the original source text. */}
       {isModalOpen && (
         <BrandModalUpsert
           open={isModalOpen}

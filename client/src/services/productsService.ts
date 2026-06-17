@@ -11,12 +11,12 @@ import {
 } from "@/types/products.interface";
 
 export const productsService = {
-  // Lấy danh sách sản phẩm
-  getAll: async (params?: PaginationRequest & { 
-    minPrice?: number, 
+  // English content normalized from the original source text.
+  getAll: async (params?: PaginationRequest & {
+    minPrice?: number,
     maxPrice?: number,
     categories?: string,
-    name?: string 
+    name?: string
   }, signal?: AbortSignal): Promise<ProductsResponse> => {
     try {
       const response = await privateAxios.get(API_ENDPOINTS.MANAGE_PRODUCTS.LIST, {
@@ -30,19 +30,19 @@ export const productsService = {
     }
   },
 
-  // Lấy chi tiết sản phẩm theo ID
+  // English content normalized from the original source text.
   getById: async (id: string): Promise<ProductDetail> => {
     try {
       const url = API_ENDPOINTS.MANAGE_PRODUCTS.DETAIL.replace(":id", id);
       const response = await privateAxios.get<ProductDetailResponse>(url);
-      return response.data.data; // Trả về đối tượng ProductDetail từ trong key 'data'
+      return response.data.data; // English content normalized from the original source text.
     } catch (error) {
       console.error(`Error fetching product with id ${id}:`, error);
       throw error;
     }
   },
 
-  // Tạo sản phẩm mới
+  // English content normalized from the original source text.
   create: async (data: ProductCreateRequest): Promise<Product> => {
     try {
       const response = await privateAxios.post(API_ENDPOINTS.MANAGE_PRODUCTS.CREATE, data);
@@ -53,7 +53,7 @@ export const productsService = {
     }
   },
 
-  // Cập nhật sản phẩm theo ID
+  // English content normalized from the original source text.
   update: async (
     id: string,
     data: ProductUpdateRequest
@@ -68,7 +68,7 @@ export const productsService = {
     }
   },
 
-  // Xoá sản phẩm theo ID
+  // English content normalized from the original source text.
   delete: async (id: string): Promise<Product> => {
     try {
       const url = API_ENDPOINTS.MANAGE_PRODUCTS.DELETE.replace(":id", id);

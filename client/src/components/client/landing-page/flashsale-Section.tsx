@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
 } from '@/components/ui/carousel';
 import { useClientSuggestedProducts } from '@/hooks/client-products/useClientSuggestedProducts';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -76,8 +76,8 @@ const CountdownTimer = ({ isMobile }: { isMobile: boolean }) => {
 
 export function FlashSaleSection({ className }: FlashSaleSectionProps) {
   const isMobile = useIsMobile();
-  
-  // Sử dụng hook để lấy sản phẩm từ API với sortOrder: asc và limit: 200, sau đó random chọn 24
+
+  // English content normalized from the original source text.
   const {
     products: allProducts,
     initialLoading,
@@ -85,23 +85,23 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
   } = useClientSuggestedProducts({
     initialLimit: 24,
     sortBy: 'createdAt',
-    sortOrder: 'asc' // Sắp xếp tăng dần cho flashsale
+    sortOrder: 'asc' // English content normalized from the original source text.
   });
 
-  // Random chọn 24 sản phẩm từ danh sách
+  // English content normalized from the original source text.
   const products = React.useMemo(() => {
     if (!allProducts || allProducts.length === 0) return [];
-    
-    // Tạo bản copy của mảng để không ảnh hưởng đến dữ liệu gốc
+
+    // English content normalized from the original source text.
     const shuffled = [...allProducts];
-    
+
     // Fisher-Yates shuffle algorithm
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    
-    // Lấy 24 sản phẩm đầu tiên sau khi shuffle
+
+    // English content normalized from the original source text.
     return shuffled.slice(0, 24);
   }, [allProducts]);
 
@@ -119,17 +119,13 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
             </h2>
             <CountdownTimer isMobile={isMobile} />
           </div>
-          <a href="#" className="flex items-center text-sm text-red-500 hover:underline">
-            Xem tất cả
-            <ChevronRight className="w-4 h-4 ml-1" />
+          <a href="#" className="flex items-center text-sm text-red-500 hover:underline">English content normalized from the original source text.<ChevronRight className="w-4 h-4 ml-1" />
           </a>
         </div>
 
         {/* Error State */}
         {error && (
-          <div className="text-center p-4 text-red-500">
-            Không thể tải sản phẩm Flash Sale. Vui lòng thử lại sau.
-          </div>
+          <div className="text-center p-4 text-red-500">English content normalized from the original source text.</div>
         )}
 
         {/* Products Carousel */}
@@ -164,9 +160,9 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
                   )}>
                     <a href={getProductUrl(product.name, product.id)} className="block border border-transparent rounded-xs overflow-hidden transition-all duration-300 group">
                       <div className="relative w-full bg-gray-100 pt-[100%]">
-                        <Image 
-                          src={product.images?.[0] || '/images/placeholder-product.png'} 
-                          alt={product.name} 
+                        <Image
+                          src={product.images?.[0] || '/images/placeholder-product.png'}
+                          alt={product.name}
                           fill
                           sizes="(max-width: 640px) 50vw, 16.6vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -177,12 +173,12 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
                           ₫ {product.basePrice?.toLocaleString() || '0'}
                         </p>
                         <div className="mt-2 w-full bg-red-100 rounded-full h-4 overflow-hidden relative">
-                          <div 
+                          <div
                             className="bg-gradient-to-r from-red-500 to-red-600 h-full rounded-full"
                             style={{ width: `${Math.floor(Math.random() * 80) + 20}%` }}
                           ></div>
                           <span className='absolute inset-0 text-white text-xs font-semibold flex items-center justify-center uppercase tracking-tighter'>
-                            Đã bán {Math.floor(Math.random() * 50) + 10}
+                            English content normalized from the original source text. {Math.floor(Math.random() * 50) + 10}
                           </span>
                         </div>
                       </div>

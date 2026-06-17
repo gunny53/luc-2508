@@ -16,7 +16,7 @@ const initialState: AuthState = {
 };
 
 const authSlice = createSlice({
-  name: 'authShopsifu',
+  name: 'authECSite',
   initialState,
   reducers: {
     setCredentials: (state, action) => {

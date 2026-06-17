@@ -39,7 +39,7 @@ export class URLHashUtils {
     try {
       // Encrypt the ID
       const encrypted = AES.encrypt(id, this.secretKey).toString();
-      
+
       // Make it URL-safe by base64url encoding
       return this.makeUrlSafe(encrypted);
     } catch (error) {
@@ -60,15 +60,15 @@ export class URLHashUtils {
     try {
       // Convert back from URL-safe format
       const encrypted = this.fromUrlSafe(hash);
-      
+
       // Decrypt the ID
       const bytes = AES.decrypt(encrypted, this.secretKey);
       const decrypted = bytes.toString(enc.Utf8);
-      
+
       if (!decrypted) {
         throw new Error('Failed to decrypt - invalid hash or wrong key');
       }
-      
+
       return decrypted;
     } catch (error) {
       throw new Error(`Decryption failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -87,7 +87,7 @@ export class URLHashUtils {
 
     // Create HMAC-SHA256 hash with secret key
     const hash = HmacSHA256(id, this.secretKey).toString();
-    
+
     // Take first 16 characters and make URL-safe
     return this.makeUrlSafe(hash.substring(0, 16));
   }
@@ -147,12 +147,12 @@ export class URLHashUtils {
     let result = str
       .replace(/-/g, '+')
       .replace(/_/g, '/');
-    
+
     // Add padding if needed
     while (result.length % 4) {
       result += '=';
     }
-    
+
     return result;
   }
 
@@ -226,35 +226,35 @@ if (require.main === module) {
     // Original ID
     const originalId: string = 'user123';
     console.log('Original ID:', originalId);
-    
+
     // Encrypt for URL (reversible)
     const encryptedHash: string = urlHashUtils.encryptId(originalId);
     console.log('Encrypted hash:', encryptedHash);
-    
+
     // Decrypt back to original
     const decryptedId: string = urlHashUtils.decryptId(encryptedHash);
     console.log('Decrypted ID:', decryptedId);
-    
+
     // Simple hash (non-reversible)
     const simpleHash: string = urlHashUtils.hashId(originalId);
     console.log('Simple hash:', simpleHash);
-    
+
     // Custom length hash
     const customHash: string = urlHashUtils.hashIdWithLength(originalId, 12);
     console.log('Custom hash (12 chars):', customHash);
-    
+
     // Verify hash
     const isValid: boolean = urlHashUtils.verifyHash(originalId, simpleHash);
     console.log('Hash verification:', isValid);
-    
+
     // Generate new secret key
     const newKey: string = URLHashUtils.generateSecretKey();
     console.log('Generated key:', newKey);
-    
+
     // Helper functions
     const quickHash: string = URLHashHelpers.quickHash(originalId, SECRET_KEY);
     console.log('Quick hash:', quickHash);
-    
+
   } catch (error) {
     console.error('Error:', error instanceof Error ? error.message : 'Unknown error');
   }

@@ -19,9 +19,7 @@ export class SearchSyncConsumer extends WorkerHost {
     super()
   }
 
-  /**
-   * Xử lý job đồng bộ một sản phẩm
-   */
+  /* English content normalized from the original source text. */
   async process(job: Job<SyncProductJobType, any, string>): Promise<void> {
     try {
       switch (job.name) {

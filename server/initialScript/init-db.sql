@@ -1,9 +1,9 @@
--- Tạo database nếu chưa tồn tại
-SELECT 'CREATE DATABASE shopsifu'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'shopsifu')\gexec
+English content normalized from the original source text.
+SELECT 'CREATE DATABASE ecsite'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'ecsite')\gexec
 
--- Kết nối vào database shopsifu
-\c shopsifu;
+English content normalized from the original source text.
+\c ecsite;
 
--- Tạo extension nếu cần
+English content normalized from the original source text.
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

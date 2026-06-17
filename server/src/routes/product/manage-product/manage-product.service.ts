@@ -22,9 +22,7 @@ export class ManageProductService {
     private readonly redisService: RedisService
   ) {}
 
-  /**
-   * Kiểm tra nếu người dùng không phải là người tạo sản phẩm hoặc admin thì không cho tiếp tục
-   */
+  /* English content normalized from the original source text. */
   validatePrivilege({
     userIdRequest,
     roleNameRequest,
@@ -40,9 +38,7 @@ export class ManageProductService {
     return true
   }
 
-  /**
-   * @description: Xem danh sách sản phẩm của một shop, bắt buộc phải truyền query param là `createdById`
-   */
+  /* English content normalized from the original source text. */
   async list(props: { query: GetManageProductsQueryType; user: AccessTokenPayload }) {
     this.validatePrivilege({
       userIdRequest: props.user.userId,
@@ -90,9 +86,7 @@ export class ManageProductService {
     }
   }
 
-  /**
-   * ⚡ Invalidate product & search cache khi tạo product mới
-   */
+  /* English content normalized from the original source text. */
   @CacheEvict(['products:*', 'ProductModule:product:*', 'SearchModule:search:*'])
   async create({ data, user }: { data: CreateProductBodyType; user: AccessTokenPayload }) {
     const product = await this.productRepo.create({

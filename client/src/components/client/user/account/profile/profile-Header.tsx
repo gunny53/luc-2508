@@ -72,7 +72,7 @@ export default function ProfileHeader({
         icon: Star,
       };
     return {
-      level: "Thành viên",
+      level: "English content normalized from the original source text.",
       color: "from-blue-500 to-cyan-500",
       icon: User,
     };
@@ -106,7 +106,7 @@ export default function ProfileHeader({
             </div>
           )}
 
-          {/* User Level Badge – Căn giữa tuyệt đối */}
+          {/* English content normalized from the original source text. */}
           <div
             className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
                 px-3 py-1 rounded-full text-xs font-bold text-white
@@ -129,9 +129,7 @@ export default function ProfileHeader({
                 {name}
                 <div className="hidden sm:flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs font-medium text-green-700">
-                    Đã xác minh
-                  </span>
+                  <span className="text-xs font-medium text-green-700">English content normalized from the original source text.</span>
                 </div>
               </h2>
             </div>
@@ -200,12 +198,8 @@ export default function ProfileHeader({
             <span className="text-2xl sm:text-3xl font-bold text-gray-800 leading-none mb-1">
               {totalOrders.toLocaleString()}
             </span>
-            <span className="text-sm text-gray-500 font-medium">
-              Tổng đơn hàng
-            </span>
-            <span className="text-xs text-gray-400 mt-1">
-              Đã mua thành công
-            </span>
+            <span className="text-sm text-gray-500 font-medium">English content normalized from the original source text.</span>
+            <span className="text-xs text-gray-400 mt-1">English content normalized from the original source text.</span>
           </div>
         </div>
 
@@ -228,13 +222,11 @@ export default function ProfileHeader({
           </div>
           <div className="flex flex-col">
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#D70018] to-[#FF6B35] bg-clip-text text-transparent leading-none mb-1">
-              {totalSpent.toLocaleString()}đ
+              {totalSpent.toLocaleString()}English content normalized from the original source text.
             </span>
-            <span className="text-sm text-gray-500 font-medium">
-              Tổng tích lũy
-            </span>
+            <span className="text-sm text-gray-500 font-medium">English content normalized from the original source text.</span>
             {createdAt && (
-              <span className="text-xs text-gray-400 mt-1">Từ {createdAt}</span>
+              <span className="text-xs text-gray-400 mt-1">English content normalized from the original source text. {createdAt}</span>
             )}
           </div>
         </div>

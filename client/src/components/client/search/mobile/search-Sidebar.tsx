@@ -1,16 +1,16 @@
 const locations = [
-  "Đồng Nai",
-  "TP. Hồ Chí Minh",
-  "Bình Dương",
-  "Bà Rịa - Vũng Tàu",
+  "English content normalized from the original source text.",
+  "English content normalized from the original source text.",
+  "English content normalized from the original source text.",
+  "English content normalized from the original source text.",
 ];
 const categories = [
-  "Nhà Cửa & Đời Sống",
-  "Phụ Kiện Nữ",
-  "Thời Trang Nữ",
-  "Sắc Đẹp",
+  "English content normalized from the original source text.",
+  "English content normalized from the original source text.",
+  "English content normalized from the original source text.",
+  "English content normalized from the original source text.",
 ];
-const shippingOptions = ["Nhanh", "Tiết Kiệm"];
+const shippingOptions = ["Nhanh", "English content normalized from the original source text."];
 
 interface SearchSidebarProps {
   categoryIds?: string[];
@@ -23,9 +23,9 @@ export default function SearchSidebar({
 }: SearchSidebarProps) {
   return (
     <aside className="w-full lg:w-64 shrink-0 space-y-6 text-sm hidden lg:block">
-      <FilterSection title="Nơi Bán" items={locations} />
-      <FilterSection title="Theo Danh Mục" items={categories} />
-      <FilterSection title="Đơn Vị Vận Chuyển" items={shippingOptions} />
+      <FilterSection title="English content normalized from the original source text." items={locations} />
+      <FilterSection title="English content normalized from the original source text." items={categories} />
+      <FilterSection title="English content normalized from the original source text." items={shippingOptions} />
     </aside>
   );
 }

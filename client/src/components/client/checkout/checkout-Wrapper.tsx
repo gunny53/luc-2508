@@ -13,6 +13,6 @@ const CheckoutWrapper = dynamic(() => import("./checkout-Main").then(mod => mod.
 
 export default function CheckoutMainWrapper({ cartItemIds = [] }: CheckoutMainWrapperProps) {
     console.log('🎯 CheckoutMainWrapper - Received cartItemIds:', cartItemIds);
-    
+
     return <CheckoutWrapper cartItemIds={cartItemIds} />;
 }

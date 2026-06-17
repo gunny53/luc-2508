@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Mô-đun Thương Hiệu - Tổng Quan Luồng Xử Lý
-note top : Hệ thống quản lý thương hiệu với đa ngôn ngữ và phân quyền
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
-actor "Khách hàng" as Client
-actor "Người dùng" as User
+English content normalized from the original source text.
+English content normalized from the original source text.
 participant "BrandController" as BC
 participant "BrandTranslationController" as BTC
 participant "BrandService" as BS
@@ -22,72 +22,72 @@ participant "I18nContext" as IC
 participant "PrismaService" as PS
 database "PostgreSQL" as DB
 
-== API Công Khai (Public Brands) ==
-Client -> BC: GET /brands (danh sách thương hiệu)
+== English Section ==
+Client -> BC: English content normalized from the original source text.
 note right
-Cấu Hình Endpoint:
-• @IsPublic() - Không cần xác thực
-• @ZodSerializerDto(GetBrandsResDTO) - Chuẩn hóa phản hồi
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
-BC -> BS: list() với pagination
+BC -> BS: English content normalized from the original source text.
 
 opt Multi-language Support
     BS -> IC: I18nContext.current()?.lang
-    IC -> BS: trả về ngôn ngữ hiện tại
+    IC -> BS: English content normalized from the original source text.
     note right
     Language Handling:
-    • Lấy language từ I18nContext
-    • ALL_LANGUAGE_CODE = 'all' cho tất cả ngôn ngữ
-    • Filter theo languageId cụ thể
+    • English content normalized from the original source text
+    • English content normalized from the original source text
+    • English content normalized from the original source text
     end note
 end
 
 BS -> BR: list(pagination, languageId)
-BR -> PS: Query với JOIN brandTranslations
+BR -> PS: English content normalized from the original source text.
 note right
 Database Query Logic:
 • COUNT(*) cho pagination metadata
-• findMany với include brandTranslations
+• English content normalized from the original source text
 • WHERE deletedAt IS NULL
 • ORDER BY createdAt DESC
-• Language filter: ALL_LANGUAGE_CODE hoặc specific language
+• English content normalized from the original source text
 end note
-PS -> DB: Thực thi parallel queries
-DB -> PS: Brands với translations + metadata
-PS -> BR: Kết quả có đa ngôn ngữ
-BR -> BS: Kết quả có đa ngôn ngữ
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> BR: English content normalized from the original source text.
+BR -> BS: English content normalized from the original source text.
 BS -> IS: i18n.t('brand.brand.success.GET_SUCCESS')
-IS -> BS: Trả về message đã localize
-BS -> BC: Response + Message đã localize
-BC -> Client: JSON với data + metadata
+IS -> BS: English content normalized from the original source text.
+BS -> BC: English content normalized from the original source text.
+BC -> Client: English content normalized from the original source text.
 
-Client -> BC: GET /brands/:brandId (chi tiết thương hiệu)
+Client -> BC: English content normalized from the original source text.
 note right
-Cấu Hình Endpoint:
-• @IsPublic() - Không cần xác thực
-• @ZodSerializerDto(GetBrandDetailResDTO) - Chuẩn hóa phản hồi
+English content normalized from the original source text.
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 BC -> BS: findById(brandId)
 BS -> IC: I18nContext.current()?.lang
-IC -> BS: trả về ngôn ngữ hiện tại
+IC -> BS: English content normalized from the original source text.
 BS -> BR: findById(id, languageId)
-BR -> PS: findUnique với include brandTranslations
-PS -> DB: Thực thi findUnique query
-DB -> PS: Brand detail với translations
-PS -> BR: Brand detail với translations
-BR -> BS: Brand với đa ngôn ngữ
+BR -> PS: English content normalized from the original source text.
+PS -> DB: English content normalized from the original source text.
+DB -> PS: English content normalized from the original source text.
+PS -> BR: English content normalized from the original source text.
+BR -> BS: English content normalized from the original source text.
 BS -> IS: i18n.t('brand.brand.success.GET_DETAIL_SUCCESS')
-IS -> BS: Trả về message đã localize
-BS -> BC: Response chi tiết
+IS -> BS: English content normalized from the original source text.
+BS -> BC: English content normalized from the original source text.
 BC -> Client: JSON brand detail
 
-== API Quản Lý (Management Brands) ==
+== English Section ==
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> BC: Request CRUD operations
 BC -> BS: Business logic + Auth
 
-alt Thao tác CREATE
+English content normalized from the original source text.
     BS -> BS: validateData(brandData)
     note right
     Data Validation:
@@ -95,36 +95,36 @@ alt Thao tác CREATE
     • Business rules (required fields)
     • Brand uniqueness check
     end note
-    BS -> BR: create() với createdById
-    BR -> PS: INSERT brand với audit fields
-    PS -> DB: INSERT brand với audit fields
-    DB -> PS: Brand mới với translations
-    PS -> BR: Brand đã tạo
-    BR -> BS: Brand đã tạo
+    BS -> BR: English content normalized from the original source text.
+    BR -> PS: English content normalized from the original source text.
+    PS -> DB: English content normalized from the original source text.
+    DB -> PS: English content normalized from the original source text.
+    PS -> BR: English content normalized from the original source text.
+    BR -> BS: English content normalized from the original source text.
     BS -> IS: i18n.t('brand.brand.success.CREATE_SUCCESS')
-    IS -> BS: Trả về message đã localize
+    IS -> BS: English content normalized from the original source text.
     BS -> BC: Success response
     BC -> User: 201 Created + JSON response
 
-else Thao tác UPDATE
-    BS -> BR: findById() trước
-    BR -> PS: Tìm brand theo ID
+else (No)
+    BS -> BR: English content normalized from the original source text.
+    BR -> PS: English content normalized from the original source text.
     PS -> DB: Query brand
     DB -> PS: Brand data
     PS -> BR: Brand info
     BR -> BS: Brand info
-    BS -> BR: update() với updatedById
-    BR -> PS: UPDATE brand với audit
-    PS -> DB: UPDATE brand với audit
+    BS -> BR: English content normalized from the original source text.
+    BR -> PS: English content normalized from the original source text.
+    PS -> DB: English content normalized from the original source text.
     DB -> PS: Brand updated
-    PS -> BR: Brand đã cập nhật
-    BR -> BS: Brand đã cập nhật
+    PS -> BR: English content normalized from the original source text.
+    BR -> BS: English content normalized from the original source text.
     BS -> IS: i18n.t('brand.brand.success.UPDATE_SUCCESS')
-    IS -> BS: Trả về message đã localize
+    IS -> BS: English content normalized from the original source text.
     BS -> BC: Success response
     BC -> User: 200 OK + JSON response
 
-else Thao tác DELETE
+else (No)
     BS -> BR: delete() soft delete
     BR -> PS: UPDATE deletedAt field
     PS -> DB: UPDATE deletedAt field
@@ -132,18 +132,18 @@ else Thao tác DELETE
     PS -> BR: Success response
     BR -> BS: Success response
     BS -> IS: i18n.t('brand.brand.success.DELETE_SUCCESS')
-    IS -> BS: Trả về message đã localize
+    IS -> BS: English content normalized from the original source text.
     BS -> BC: Success response
     BC -> User: 200 OK + JSON response
 end
 
-== API Quản Lý Translation ==
+== English Section ==
 User -> AU: @ActiveUser()
-AU -> User: Trả về user context
+AU -> User: English content normalized from the original source text.
 User -> BTC: Request CRUD translations
 BTC -> BTS: Business logic + Auth
 
-alt Thao tác CREATE Translation
+English content normalized from the original source text.
     BTS -> BTS: validateData(translationData)
     note right
     Translation Validation:
@@ -158,11 +158,11 @@ alt Thao tác CREATE Translation
     PS -> BTR: Translation created
     BTR -> BTS: Translation data
     BTS -> IS: i18n.t('brand.brandTranslation.success.CREATE_SUCCESS')
-    IS -> BTS: Trả về message đã localize
+    IS -> BTS: English content normalized from the original source text.
     BTS -> BTC: Success response
     BTC -> User: 201 Created + JSON response
 
-else Thao tác UPDATE Translation
+else (No)
     BTS -> BTR: update()
     BTR -> PS: UPDATE brandTranslation
     PS -> DB: UPDATE brandTranslation
@@ -170,11 +170,11 @@ else Thao tác UPDATE Translation
     PS -> BTR: Translation updated
     BTR -> BTS: Updated data
     BTS -> IS: i18n.t('brand.brandTranslation.success.UPDATE_SUCCESS')
-    IS -> BTS: Trả về message đã localize
+    IS -> BTS: English content normalized from the original source text.
     BTS -> BTC: Success response
     BTC -> User: 200 OK + JSON response
 
-else Thao tác DELETE Translation
+else (No)
     BTS -> BTR: delete() soft delete
     BTR -> PS: UPDATE deletedAt
     PS -> DB: UPDATE deletedAt
@@ -182,42 +182,42 @@ else Thao tác DELETE Translation
     PS -> BTR: Success
     BTR -> BTS: Success
     BTS -> IS: i18n.t('brand.brandTranslation.success.DELETE_SUCCESS')
-    IS -> BTS: Trả về message đã localize
+    IS -> BTS: English content normalized from the original source text.
     BTS -> BTC: Success response
     BTC -> User: 200 OK + JSON response
 end
 
-== Xử Lý Lỗi & Phân Quyền ==
-alt Lỗi validation dữ liệu
+== English Section ==
+English content normalized from the original source text.
     BS -> BC: ValidationException
     BC -> User: 422 Unprocessable Entity
 
-else Lỗi không tìm thấy
+else (No)
     BS -> BC: NotFoundRecordException
     BC -> Client: 404 Not Found
 
-else Lỗi unique constraint (translation)
+else (No)
     BTS -> BTC: BrandTranslationAlreadyExistsException
     BTC -> User: 422 Unprocessable Entity
 
-else Lỗi foreign key
+else (No)
     BS -> BC: ForeignKeyConstraintException
     BC -> User: 422 Unprocessable Entity
 end
 
-== Trả Kết Quả ==
+== English Section ==
 BS -> IS: i18n.t('brand.brand.success.XXX')
-IS -> BS: Trả về message đã localize
-BS -> BC: Response + Message đã localize
-BC -> User: JSON Response với metadata đầy đủ
+IS -> BS: English content normalized from the original source text.
+BS -> BC: English content normalized from the original source text.
+BC -> User: English content normalized from the original source text.
 
 note bottom
-**Đặc điểm chính của module Brand:**
-• Hỗ trợ đa ngôn ngữ hoàn chỉnh (I18nContext)
-• Soft delete cho cả brand và translation
+* English content normalized from the original source text
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Audit trail (createdById, updatedById, deletedById)
-• Pagination với metadata đầy đủ
-• Public API cho danh sách và chi tiết
+• English content normalized from the original source text
+• English content normalized from the original source text
 • Management API cho CRUD operations
 • Unique constraint cho brand + language combination
 • Translation management sub-module

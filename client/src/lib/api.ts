@@ -3,7 +3,7 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
   InternalAxiosRequestConfig,
-} from 'axios';// đã có
+} from 'axios';// English content normalized from the original source text.
 import Cookies from 'js-cookie'
 import jwt from 'jsonwebtoken';
 import { addHours, differenceInMinutes } from 'date-fns';
@@ -30,14 +30,14 @@ interface DecodedToken {
   sub?: string;
 }
 
-// ==================== PUBLIC AXIOS (Truyền csrf-token vào header) ====================
+// English content normalized from the original source text.
 
 export const publicAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
-  withCredentials: true, // 🔒 Rất quan trọng để cookie đi theo request
+  withCredentials: true, // English content normalized from the original source text.
 })
 
-// Request Interceptor → Gắn x-csrf-token
+// English content normalized from the original source text.
 publicAxios.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     if (typeof window !== 'undefined') {
@@ -47,7 +47,7 @@ publicAxios.interceptors.request.use(
       }
       // Inject Accept-Language from Redux
       const store = getStore();
-      const lang = store.store.getState().langShopsifu?.language || 'vi';
+      const lang = store.store.getState().langECSite?.language || 'vi';
       if (config.headers) {
         config.headers['Accept-Language'] = lang;
       }
@@ -67,11 +67,11 @@ publicAxios.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-// ==================== REFRESH AXIOS (Thêm access token và xử lý lỗi 401) ====================
+// English content normalized from the original source text.
 export const refreshAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   withCredentials: true,
-  headers: { 
+  headers: {
     "Content-Type": "application/json",
     "Accept": "application/json",
    },
@@ -86,7 +86,7 @@ refreshAxios.interceptors.request.use(
       }
       // Inject Accept-Language from Redux
       const store = getStore();
-      const lang = store.store.getState().langShopsifu?.language || 'vi';
+      const lang = store.store.getState().langECSite?.language || 'vi';
       if (config.headers) {
         config.headers['Accept-Language'] = lang;
       }
@@ -95,40 +95,40 @@ refreshAxios.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 )
-// ==================== PRIVATE AXIOS (Thêm access token và xử lý lỗi 401) ====================
+// English content normalized from the original source text.
 
 
-// Hàm kiểm tra thời gian còn lại của token
+// English content normalized from the original source text.
 const getTokenTimeLeft = (expTimestamp: number): number => {
   try {
-    // Chuyển timestamp (giây) thành Date object (UTC)
+    // English content normalized from the original source text.
     const expirationDate = new Date(expTimestamp * 1000);
-    const utcPlus7 = addHours(expirationDate, 7); // Chuyển sang UTC+7
+    const utcPlus7 = addHours(expirationDate, 7); // English content normalized from the original source text.
 
-    // Lấy thời gian hiện tại và chuyển sang UTC+7
+    // English content normalized from the original source text.
     const now = new Date();
     const nowUtcPlus7 = addHours(now, 7);
 
-    // Tính chênh lệch thời gian theo phút
+    // English content normalized from the original source text.
     const timeDiffInMinutes = differenceInMinutes(utcPlus7, nowUtcPlus7);
 
-    console.log(`Thời gian hết hạn (UTC+7): ${utcPlus7.toISOString()}`);
-    console.log(`Thời gian hiện tại (UTC+7): ${nowUtcPlus7.toISOString()}`);
-    console.log(`Chênh lệch thời gian còn lại: ${timeDiffInMinutes} phút`);
+    console.log(`English content normalized from the original source text.${utcPlus7.toISOString()}`);
+    console.log(`English content normalized from the original source text.${nowUtcPlus7.toISOString()}`);
+    console.log(`English content normalized from the original source text.${timeDiffInMinutes}English content normalized from the original source text.`);
 
     return timeDiffInMinutes;
   } catch (error) {
-    console.error('Lỗi khi kiểm tra thời gian hết hạn token:', error);
-    return -1; // Trả về -1 nếu có lỗi
+    console.error('English content normalized from the original source text.', error);
+    return -1; // English content normalized from the original source text.
   }
 };
-// Tạo instance privateAxios
+// English content normalized from the original source text.
 export const privateAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   withCredentials: true,
 });
 
-// Request Interceptor → Chỉ gắn x-csrf-token
+// English content normalized from the original source text.
 privateAxios.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
     if (typeof window !== 'undefined') {
@@ -140,7 +140,7 @@ privateAxios.interceptors.request.use(
       }
       // Inject Accept-Language from Redux
       const store = getStore();
-      const lang = store.store.getState().langShopsifu?.language || 'vi';
+      const lang = store.store.getState().langECSite?.language || 'vi';
       if (config.headers) {
         config.headers['Accept-Language'] = lang;
       }
@@ -181,18 +181,18 @@ const processQueue = (error: any = null) => {
 
 const handleLogout = async () => {
   const { store, persistor } = getStore();
-  
+
   // 1. Clear cookies
   clearAllCookies();
-  
+
   // 2. Purge persisted state
   await persistor.purge();
-  
+
   // 3. Clear profile
   store.dispatch(clearProfile());
-  
+
   // 4. Redirect
-  showToast('Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại', 'info');
+  showToast('English content normalized from the original source text.', 'info');
   setTimeout(() => {
     window.location.href = ROUTES.AUTH.SIGNIN;
   }, 100);
@@ -209,7 +209,7 @@ privateAxios.interceptors.response.use(
       !originalRequest._retry
     ) {
       if (isRefreshing) {
-        // Nếu đang refresh, thêm request vào queue
+        // English content normalized from the original source text.
         try {
           await new Promise((resolve, reject) => {
             failedQueue.push({ resolve, reject });
@@ -224,9 +224,9 @@ privateAxios.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        // Thử refresh token
+        // English content normalized from the original source text.
         const response = await refreshAxios.post(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
-        
+
         if (response.status === 200) {
           processQueue();
           return privateAxios(originalRequest);
@@ -243,20 +243,20 @@ privateAxios.interceptors.response.use(
     if (error.response?.status === 401) {
       await handleLogout();
     }
-    
+
     return Promise.reject(error);
   }
 );
 
 
-// Response Interceptor → Xử lý lỗi 401
+// English content normalized from the original source text.
 // privateAxios.interceptors.response.use(
 //   (response: AxiosResponse) => {
 //     return response;
 //   },
 //   async (error: any) => {
 //     if (axios.isAxiosError(error) && error.response?.status === 401) {
-//       console.error('❌ Lỗi 401 - Unauthorized. Token không hợp lệ hoặc đã hết hạn. Đang đăng xuất...');
+// English content normalized from the original source text.
 //       const { store, persistor } = getStore();
 
 //       // 1. Clear all site cookies
@@ -268,7 +268,7 @@ privateAxios.interceptors.response.use(
 //       // 3. Dispatch action to clear profile from the current redux state
 //       store.dispatch(clearProfile());
 
-//       showToast('Bạn đã hết phiên đăng nhập, vui lòng đăng nhập lại', 'info');
+// English content normalized from the original source text.
 
 //       // 4. Redirect to sign-in page after a short delay to allow state changes to process
 //       setTimeout(() => {
@@ -284,14 +284,14 @@ privateAxios.interceptors.response.use(
 //   const refreshToken = Cookies.get('refresh_token');
 
 
-//   // ✅ Case 1: Không có access token, nhưng có refresh token → thử làm mới
+// English content normalized from the original source text.
 //   if (!accessToken && refreshToken) {
-//     console.log('Không có access token, đang thử làm mới từ refresh token...');
+// English content normalized from the original source text.
 //     try {
 //       await refreshAxios.post(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
-//       console.log('✅ Token đã được làm mới thành công khi khởi tạo.');
+// English content normalized from the original source text.
 //     } catch (error) {
-//       console.error('❌ Không thể làm mới token. Đăng xuất người dùng.', error);
+// English content normalized from the original source text.
 //       await clearClientState();
 //       if (window.location.pathname !== ROUTES.AUTH.SIGNIN) {
 //         window.location.href = ROUTES.AUTH.SIGNIN;
@@ -300,30 +300,30 @@ privateAxios.interceptors.response.use(
 //     return;
 //   }
 
-//   // ✅ Case 2: Không có access lẫn refresh token → chưa đăng nhập
+// English content normalized from the original source text.
 //   if (!accessToken && !refreshToken) {
-//     console.log('Không có token, người dùng chưa đăng nhập. Bỏ qua kiểm tra.');
+// English content normalized from the original source text.
 //     await clearClientState();
 //     return;
 //   }
 
-//   // ✅ Case 3: Có accessToken → decode và kiểm tra hạn
+// English content normalized from the original source text.
 //   try {
 //     const decodedToken = jwt.decode(accessToken!) as DecodedToken;
 
 //     if (!decodedToken?.exp) {
-//       throw new Error('Token không hợp lệ hoặc thiếu trường exp');
+// English content normalized from the original source text.
 //     }
 
 //     const timeLeftInMinutes = getTokenTimeLeft(decodedToken.exp);
 
 //     if (timeLeftInMinutes < 0) {
-//       console.warn('Token đã hết hạn. Thử làm mới...');
+// English content normalized from the original source text.
 //       try {
 //         await refreshAxios.post(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
-//         console.log('✅ Token đã được làm mới do đã hết hạn.');
+// English content normalized from the original source text.
 //       } catch (error) {
-//         console.error('❌ Không thể làm mới token đã hết hạn. Đăng xuất...', error);
+// English content normalized from the original source text.
 //         await clearClientState();
 //         window.location.href = ROUTES.AUTH.SIGNIN;
 //       }
@@ -332,18 +332,18 @@ privateAxios.interceptors.response.use(
 
 //     if (timeLeftInMinutes <= TOKEN_REFRESH_THRESHOLD) {
 //       try {
-//         console.log(`Token sắp hết hạn (còn ${timeLeftInMinutes.toFixed(2)} phút), đang làm mới...`);
+// English content normalized from the original source text.
 //         await refreshAxios.post(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
-//         console.log('✅ Token refreshed thành công');
+// English content normalized from the original source text.
 //       } catch (error) {
-//         console.error('❌ Không thể làm mới token chủ động:', error);
+// English content normalized from the original source text.
 //       }
 //     }else {
-//       console.log(`Token còn ${timeLeftInMinutes.toFixed(2)} phút`);
+// English content normalized from the original source text.
 //     }
 
 //   } catch (error) {
-//     console.error('Lỗi khi giải mã hoặc kiểm tra token. Token có thể bị lỗi:', error);
+// English content normalized from the original source text.
 //     await clearClientState();
 //     window.location.href = ROUTES.AUTH.SIGNIN;
 //   }
@@ -352,15 +352,15 @@ privateAxios.interceptors.response.use(
 // let tokenCheckInterval: NodeJS.Timeout;
 
 // export const startTokenCheck = () => {
-//   console.log('Bắt đầu kiểm tra access_token');
+// English content normalized from the original source text.
 //   if (typeof window !== 'undefined') {
 //     if (tokenCheckInterval) {
 //       clearInterval(tokenCheckInterval);
 //     }
-    
+
 //     // Check immediately on start
 //     checkToken();
-    
+
 //     tokenCheckInterval = setInterval(checkToken, TOKEN_CHECK_INTERVAL);
 //   }
 // };

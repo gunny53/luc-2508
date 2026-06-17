@@ -1,9 +1,9 @@
-# 🛒 Shopsifu - Advanced E-commerce Platform
-*Nền tảng thương mại điện tử tiên tiến*
+# 🛒 ECSite - Advanced E-commerce Platform
+* English content normalized from the original source text
 
 <div align="center">
 
-<img src=".github/images/Img_Logo.png" alt="Shopsifu Logo" width="200" />
+<img src=".github/images/Img_Logo.png" alt="ECSite Logo" width="200" />
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.x-black?style=for-the-badge&logo=next.js)
 ![NestJS](https://img.shields.io/badge/NestJS-10.x-E0234E?style=for-the-badge&logo=nestjs)
@@ -15,23 +15,23 @@
 
 </div>
 
-## 🎓 About This Project | Giới thiệu dự án
+English content normalized from the original source text.
 
-**Shopsifu** is a comprehensive graduation project developed by a dedicated team of 6 members, showcasing modern web development practices and enterprise-level architecture. This platform demonstrates advanced e-commerce functionality with a focus on performance, security, and user experience.
+**ECSite** is a comprehensive graduation project developed by a dedicated team of 6 members, showcasing modern web development practices and enterprise-level architecture. This platform demonstrates advanced e-commerce functionality with a focus on performance, security, and user experience.
 
-**Shopsifu** là một dự án tốt nghiệp toàn diện được phát triển bởi đội ngũ 6 thành viên tài năng, thể hiện các thực hành phát triển web hiện đại và kiến trúc cấp doanh nghiệp. Nền tảng này minh họa chức năng thương mại điện tử tiên tiến với trọng tâm về hiệu suất, bảo mật và trải nghiệm người dùng.
+* English content normalized from the original source text
 
-## 👥 Development Team | Đội ngũ phát triển
+English content normalized from the original source text.
 
-### Core Team Members | Thành viên chính
+English content normalized from the original source text.
 - **ERICSS-FE** - Frontend Lead & Project Owner
-- **TEDDY-BE** - Backend Lead  
+- **TEDDY-BE** - Backend Lead
 - **HA-FE** - Frontend Developer
 - **NUI-BE** - Backend Developer
 
-*Plus 2 additional talented contributors | Cùng 2 thành viên đóng góp tài năng khác*
+* English content normalized from the original source text
 
-## 🏗️ Architecture Overview | Tổng quan kiến trúc
+English content normalized from the original source text.
 
 ### Frontend - Next.js 15 (Client)
 - **Modern React Framework** with App Router architecture
@@ -49,39 +49,39 @@
 - **Database management** with Prisma ORM
 - **Real-time communication** via WebSocket
 
-## 🚀 Key Features | Tính năng chính
+English content normalized from the original source text.
 
-### 🛍️ E-commerce Core | Lõi thương mại điện tử
+English content normalized from the original source text.
 - **Product Management** - Advanced catalog with categories, brands, and variants
 - **Shopping Cart & Checkout** - Seamless purchasing experience with multiple payment options
 - **Order Management** - Complete order lifecycle tracking and management
 - **User Accounts** - Comprehensive user profiles and purchase history
 
-### 👨‍💼 Administrative Dashboard | Bảng điều khiển quản trị
+English content normalized from the original source text.
 - **Multi-role System** - ADMIN, SELLER, CLIENT with granular permissions
 - **Analytics Dashboard** - Real-time business insights and reporting
 - **Content Management** - Dynamic content and media management
 - **System Monitoring** - Performance tracking and audit logs
 
-### 🔐 Security & Performance | Bảo mật & Hiệu năng
+English content normalized from the original source text.
 - **JWT Authentication** with refresh token rotation
 - **Role-based Access Control (RBAC)** with permission management
 - **Two-Factor Authentication (2FA)** for enhanced security
 - **Rate Limiting & CSRF Protection** for API security
 - **Optimized Performance** with caching strategies and CDN integration
 
-### 💳 Payment & Integration | Thanh toán & Tích hợp
+English content normalized from the original source text.
 - **Multiple Payment Gateways** - VNPay, Sepay integration
-- **Shipping Integration** - Giao Hàng Nhanh (GHN) API
+- English content normalized from the original source text
 - **Email Services** - Automated notifications and confirmations
 - **Media Management** - AWS S3 integration for file storage
 
-### 🌐 Internationalization | Đa ngôn ngữ
+English content normalized from the original source text.
 - **Multi-language Support** - Vietnamese & English localization
 - **Dynamic Translation Management** - Admin-configurable language content
 - **Localized User Experience** - Culture-specific formatting and content
 
-## 🛠️ Technology Stack | Công nghệ sử dụng
+English content normalized from the original source text.
 
 ### Frontend Technologies
 ```
@@ -117,7 +117,7 @@ ESLint/Prettier   - Code quality tools
 GitHub Actions    - CI/CD pipelines
 ```
 
-## 🌟 Project Highlights | Điểm nổi bật
+English content normalized from the original source text.
 
 ### 🎨 Modern UI/UX Design
 - **Sleek Interface** with glassmorphism and modern design principles
@@ -137,50 +137,50 @@ GitHub Actions    - CI/CD pipelines
 - **Comprehensive Testing** with unit and integration tests
 - **Git Workflow** with conventional commits and automated versioning
 
-## 📱 Screenshots & Demo | Ảnh chụp màn hình & Demo
+English content normalized from the original source text.
 
-### 🏠 Main Interface | Giao diện chính
+English content normalized from the original source text.
 <div align="center">
-<img src=".github/images/Img_Main.png" alt="Shopsifu Main Interface" width="100%" />
+<img src=".github/images/Img_Main.png" alt="ECSite Main Interface" width="100%" />
 </div>
 
 *Beautiful, responsive e-commerce homepage with modern design elements*
-*Trang chủ thương mại điện tử đẹp mắt, responsive với các yếu tố thiết kế hiện đại*
+* English content normalized from the original source text
 
-### 👨‍💼 Admin Dashboard | Bảng điều khiển quản trị
+English content normalized from the original source text.
 <div align="center">
-<img src=".github/images/Img_Admin.png" alt="Shopsifu Admin Dashboard" width="100%" />
+<img src=".github/images/Img_Admin.png" alt="ECSite Admin Dashboard" width="100%" />
 </div>
 
 *Comprehensive admin panel for managing products, orders, and system analytics*
-*Bảng quản trị toàn diện để quản lý sản phẩm, đơn hàng và phân tích hệ thống*
+* English content normalized from the original source text
 
-## 🚀 Getting Started | Bắt đầu
+English content normalized from the original source text.
 
 This project demonstrates enterprise-level development practices and modern web technologies. For detailed setup instructions, please refer to the individual client and server documentation.
 
-Dự án này minh họa các thực hành phát triển cấp doanh nghiệp và công nghệ web hiện đại. Để biết hướng dẫn thiết lập chi tiết, vui lòng tham khảo tài liệu client và server riêng lẻ.
+English content normalized from the original source text.
 
-## 📞 Connect with the Project Owner | Kết nối với chủ dự án
+English content normalized from the original source text.
 
 ### ERICSS - Frontend Lead & Project Owner
 
 - 💼 **LinkedIn**: [Connect with ERICSS](https://linkedin.com/in/ericss)
 - 📱 **Zalo**: Contact via Zalo
-- 📧 **Facebook**: Follow on Facebook  
+- 📧 **Facebook**: Follow on Facebook
 - 📷 **Instagram**: @ericss_dev
 
 *Feel free to reach out for collaboration opportunities or technical discussions!*
-*Hãy liên hệ để có cơ hội hợp tác hoặc thảo luận kỹ thuật!*
+* English content normalized from the original source text
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by Shopsifu Team**
-*Được xây dựng với ❤️ bởi đội ngũ Shopsifu*
+**Built with ❤️ by ECSite Team**
+* English content normalized from the original source text
 
 ⭐ **Star this repository if you found it helpful!**
-⭐ **Hãy star repository này nếu bạn thấy hữu ích!**
+English content normalized from the original source text.
 
 </div>

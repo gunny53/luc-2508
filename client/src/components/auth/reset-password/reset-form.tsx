@@ -46,7 +46,7 @@ const schema = resetPasswordSchema(t)
         {...props}
       >
         <AnimatedForm>
-          {/* Tiêu đề */}
+          {/* English content normalized from the original source text. */}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.resetPassword.title')}</h1>
@@ -58,7 +58,7 @@ const schema = resetPasswordSchema(t)
 
           {/* Form */}
           <div className="grid gap-6">
-            {/* Mật khẩu mới */}
+            {/* English content normalized from the original source text. */}
             <AnimatedFormItem>
               <FormField
                 control={form.control}
@@ -92,7 +92,7 @@ const schema = resetPasswordSchema(t)
               />
             </AnimatedFormItem>
 
-            {/* Xác nhận mật khẩu */}
+            {/* English content normalized from the original source text. */}
             <AnimatedFormItem>
               <FormField
                 control={form.control}
@@ -126,7 +126,7 @@ const schema = resetPasswordSchema(t)
               />
             </AnimatedFormItem>
 
-            {/* Nút gửi */}
+            {/* English content normalized from the original source text. */}
             <AnimatedButton
               size="sm"
               type="submit"
@@ -137,7 +137,7 @@ const schema = resetPasswordSchema(t)
             </AnimatedButton>
           </div>
 
-          {/* Link trở lại đăng nhập */}
+          {/* English content normalized from the original source text. */}
           <AnimatedFormItem>
             <div className="text-center text-sm">
               {t('auth.resetPassword.Remember password')}{' '}

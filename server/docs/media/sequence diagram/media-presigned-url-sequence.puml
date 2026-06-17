@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /media/images/upload/presigned-url
+English content normalized from the original source text.
 
 actor "Client" as C
 participant "MediaController" as MC

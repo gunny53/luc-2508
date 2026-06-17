@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng POST /payment/receiver (Webhook)
+English content normalized from the original source text.
 
 actor "Sepay Gateway" as SG
 participant "PaymentAPIKeyGuard" as AG

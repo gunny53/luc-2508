@@ -18,21 +18,21 @@ interface VoucherEditIndexProps {
 export function VoucherEditIndex({ voucher, userData, onEditSuccess }: VoucherEditIndexProps) {
   const router = useRouter();
 
-  const { 
-    formData, 
-    updateFormData, 
-    errors, 
-    voucherType, 
+  const {
+    formData,
+    updateFormData,
+    errors,
+    voucherType,
     useCase,
     isEdit,
-    submitVoucher, 
-    resetForm, 
-    isLoading 
-  } = useEditVoucher({ 
+    submitVoucher,
+    resetForm,
+    isLoading
+  } = useEditVoucher({
     voucher,
     userData,
     onEditSuccess: onEditSuccess || (() => {
-      // Redirect về trang danh sách voucher sau khi cập nhật thành công
+      // English content normalized from the original source text.
       router.push('/admin/voucher');
     })
   });
@@ -46,26 +46,26 @@ export function VoucherEditIndex({ voucher, userData, onEditSuccess }: VoucherEd
     <div className="flex flex-col h-full">
       {/* Form Content */}
       <div className="flex-grow space-y-6">
-        <VoucherBasicInfo 
-          formData={formData} 
-          updateFormData={updateFormData} 
-          errors={errors} 
+        <VoucherBasicInfo
+          formData={formData}
+          updateFormData={updateFormData}
+          errors={errors}
           useCase={useCase}
           isEdit={isEdit}
         />
-        <VoucherDiscountSettings 
-          formData={formData} 
-          updateFormData={updateFormData} 
-          errors={errors} 
-          useCase={useCase} 
+        <VoucherDiscountSettings
+          formData={formData}
+          updateFormData={updateFormData}
+          errors={errors}
+          useCase={useCase}
           voucherType={voucherType}
           isEdit={isEdit}
         />
-        <VoucherShowSettings 
-          formData={formData} 
-          updateFormData={updateFormData} 
-          errors={errors} 
-          useCase={useCase} 
+        <VoucherShowSettings
+          formData={formData}
+          updateFormData={updateFormData}
+          errors={errors}
+          useCase={useCase}
           voucherType={voucherType}
           isEdit={isEdit}
         />
@@ -74,17 +74,13 @@ export function VoucherEditIndex({ voucher, userData, onEditSuccess }: VoucherEd
       {/* Sticky Footer */}
       <div className="rounded-sm sticky bottom-0 mt-6 bg-white/95 backdrop-blur-lg border shadow-lg border-gray-200 p-4 z-10">
         <div className="flex justify-end items-center gap-4">
-          <Button variant="outline" size="lg" onClick={handleCancel} disabled={isLoading} className="h-11">
-            Hủy
-          </Button>
+          <Button variant="outline" size="lg" onClick={handleCancel} disabled={isLoading} className="h-11">English content normalized from the original source text.</Button>
           <Button size="lg" onClick={submitVoucher} disabled={isLoading} className="h-11 bg-red-600 hover:bg-red-700">
             {isLoading ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Đang cập nhật...
-              </>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />English content normalized from the original source text.</>
             ) : (
-              'Cập nhật voucher'
+              'English content normalized from the original source text.'
             )}
           </Button>
         </div>

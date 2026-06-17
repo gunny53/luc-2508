@@ -11,8 +11,8 @@ export const useChangeLang = () => {
   const pathname = usePathname();
   const [showLangMenu, setShowLangMenu] = useState(false);
 
-  const currentLanguage = useSelector((state: RootState) => state.langShopsifu.language);
-  const currentLangName = currentLanguage === "vi" ? "Tiếng Việt" : "English";
+  const currentLanguage = useSelector((state: RootState) => state.langECSite.language);
+  const currentLangName = currentLanguage === "vi" ? "English content normalized from the original source text." : "English";
 
   const toggleMenu = () => setShowLangMenu(prev => !prev);
 

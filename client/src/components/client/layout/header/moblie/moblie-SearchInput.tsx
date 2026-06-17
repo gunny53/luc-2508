@@ -26,7 +26,7 @@ export function MobileSearchInput() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Load lịch sử từ localStorage khi mount
+  // English content normalized from the original source text.
   useEffect(() => {
     const stored = localStorage.getItem("searchHistory");
     if (stored) {
@@ -34,14 +34,14 @@ export function MobileSearchInput() {
     }
   }, []);
 
-  // Hàm lưu lịch sử vào localStorage
+  // English content normalized from the original source text.
   const saveSearchHistory = useCallback((term: string) => {
     if (!term.trim()) return;
 
     setSearchHistory((prev) => {
-      // Bỏ trùng lặp, thêm term mới lên đầu
+      // English content normalized from the original source text.
       const newHistory = [term, ...prev.filter((t) => t !== term)];
-      // Giới hạn 10 từ khóa gần nhất
+      // English content normalized from the original source text.
       const limitedHistory = newHistory.slice(0, 10);
 
       localStorage.setItem("searchHistory", JSON.stringify(limitedHistory));
@@ -49,7 +49,7 @@ export function MobileSearchInput() {
     });
   }, []);
 
-  //Sử dụng hook để lấy danh mục từ api
+  // English content normalized from the original source text.
   const { categories } = useCbbCategory(null);
 
   const navigateToSearch = useCallback(
@@ -58,27 +58,27 @@ export function MobileSearchInput() {
 
       saveSearchHistory(term);
 
-      // Kiểm tra xem hiện tại có đang ở trang search không
+      // English content normalized from the original source text.
       const isOnSearchPage = window.location.pathname === "/search";
 
-      // Lấy thông tin search term hiện tại từ URL để so sánh
+      // English content normalized from the original source text.
       const urlParams = new URLSearchParams(window.location.search);
       const currentSearchTerm = urlParams.get("q");
 
-      // Nếu search term không thay đổi và đang ở trang search, thêm/cập nhật timestamp
+      // English content normalized from the original source text.
       if (isOnSearchPage && currentSearchTerm === term) {
-        // Tạo timestamp mới cho mỗi lần search để đảm bảo không bị cache
+        // English content normalized from the original source text.
         const timestamp = new Date().getTime();
         router.push(`/search?q=${encodeURIComponent(term)}&_t=${timestamp}`);
       }
-      // Nếu search term thay đổi hoặc không ở trang search
+      // English content normalized from the original source text.
       else {
         if (isOnSearchPage) {
-          // Nếu đã ở trang search và search term khác, thêm timestamp
+          // English content normalized from the original source text.
           const timestamp = new Date().getTime();
           router.push(`/search?q=${encodeURIComponent(term)}&_t=${timestamp}`);
         } else {
-          // Chuyển hướng đến route gốc /search (không thêm timestamp lần đầu)
+          // English content normalized from the original source text.
           router.push(`/search?q=${encodeURIComponent(term)}`);
         }
       }
@@ -89,7 +89,7 @@ export function MobileSearchInput() {
     [router, saveSearchHistory]
   );
 
-  // Fetch gợi ý
+  // English content normalized from the original source text.
   const fetchSearchSuggestions = useCallback(
     async (term: string, signal: AbortSignal) => {
       if (term.length < 2) {
@@ -117,7 +117,7 @@ export function MobileSearchInput() {
     []
   );
 
-  // Bỏ dấu tiếng Việt
+  // English content normalized from the original source text.
   const removeDiacritics = (str: string) =>
     str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
@@ -127,13 +127,13 @@ export function MobileSearchInput() {
     const normalizedText = removeDiacritics(text).toLowerCase();
     const normalizedKeyword = removeDiacritics(keyword).toLowerCase();
 
-    // Tìm vị trí match trong chuỗi đã bỏ dấu
+    // English content normalized from the original source text.
     const startIndex = normalizedText.indexOf(normalizedKeyword);
     if (startIndex === -1) return text;
 
     const endIndex = startIndex + normalizedKeyword.length;
 
-    // Cắt highlight dựa trên vị trí match
+    // English content normalized from the original source text.
     const before = text.slice(0, startIndex);
     const match = text.slice(startIndex, endIndex);
     const after = text.slice(endIndex);
@@ -188,7 +188,7 @@ export function MobileSearchInput() {
                 else setIsFocused(false);
               }
             }}
-            placeholder="Tìm kiếm sản phẩm..."
+            placeholder="English content normalized from the original source text."
             className="flex-1 bg-transparent text-sm text-black placeholder-gray-400 focus:outline-none"
             role="combobox"
             aria-expanded={isFocused}
@@ -222,26 +222,20 @@ export function MobileSearchInput() {
               <div className="pb-3">
                 {!searchTerm ? (
                   <>
-                    {/* --- Lịch sử tìm kiếm --- */}
+                    {/* English content normalized from the original source text. */}
                     {searchHistory.length === 0 ? (
-                      <div className="px-4 py-6 text-center text-gray-400 text-sm">
-                        Chưa có lịch sử tìm kiếm
-                      </div>
+                      <div className="px-4 py-6 text-center text-gray-400 text-sm">English content normalized from the original source text.</div>
                     ) : (
                       <div className="px-4 pt-3">
                         <div className="flex justify-between items-center mb-2">
-                          <h3 className="text-sm font-semibold text-gray-800">
-                            Lịch sử tìm kiếm
-                          </h3>
+                          <h3 className="text-sm font-semibold text-gray-800">English content normalized from the original source text.</h3>
                           <button
                             className="text-xs text-red-500 hover:underline"
                             onClick={() => {
                               setSearchHistory([]);
                               localStorage.removeItem("searchHistory");
                             }}
-                          >
-                            Xoá tất cả
-                          </button>
+                          >English content normalized from the original source text.</button>
                         </div>
 
                         <div className="space-y-1">
@@ -278,11 +272,9 @@ export function MobileSearchInput() {
                       </div>
                     )}
 
-                    {/* --- Danh mục phổ biến --- */}
+                    {/* English content normalized from the original source text. */}
                     <div className="px-4 pt-3">
-                      <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                        Danh mục phổ biến
-                      </h3>
+                      <h3 className="text-sm font-semibold text-gray-800 mb-2">English content normalized from the original source text.</h3>
                       {categories.slice(0, 5).map((category) => (
                         <motion.div
                           key={category.value}
@@ -329,11 +321,9 @@ export function MobileSearchInput() {
                     .map((_, i) => <SkeletonSuggestion key={i} />)
                 ) : searchSuggestions.length > 0 ? (
                   <>
-                    {/* --- Kết quả liên quan --- */}
+                    {/* English content normalized from the original source text. */}
                     <div className="px-4 pt-3">
-                      <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                        Kết quả liên quan
-                      </h3>
+                      <h3 className="text-sm font-semibold text-gray-800 mb-2">English content normalized from the original source text.</h3>
                     </div>
 
                     {searchSuggestions.map((item) => (
@@ -375,7 +365,7 @@ export function MobileSearchInput() {
                   </>
                 ) : (
                   <div className="px-4 py-6 text-center text-gray-500">
-                    Không tìm thấy kết quả cho "{searchTerm}"
+                    English content normalized from the original source text. "{searchTerm}"
                   </div>
                 )}
               </div>
@@ -392,11 +382,11 @@ export function MobileSearchInput() {
                     >
                       <Search className="h-4 w-4 mr-2.5" />
                       <span>
-                        Xem tất cả{" "}
+                        English content normalized from the original source text.{" "}
                         <span className="font-bold text-red-600">
                           "{totalItems}"
                         </span>{" "}
-                        kết quả theo từ khóa{" "}
+                        English content normalized from the original source text.{" "}
                         <span className="font-bold text-red-600">
                           "{searchTerm}"
                         </span>

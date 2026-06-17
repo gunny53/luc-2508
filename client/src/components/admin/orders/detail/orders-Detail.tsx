@@ -7,13 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { 
-  ArrowLeft, 
-  Package, 
-  User, 
-  Phone, 
-  MapPin, 
-  Calendar, 
+import {
+  ArrowLeft,
+  Package,
+  User,
+  Phone,
+  MapPin,
+  Calendar,
   CreditCard,
   DollarSign,
   ShoppingBag,
@@ -34,11 +34,11 @@ export default function OrderDetail() {
       <div className="flex items-center justify-center min-h-[50vh]">
         <div className="flex flex-col items-center gap-2">
           <Loader2 className="h-7 w-7 animate-spin text-blue-500" />
-          <p className="text-slate-600 text-sm">Đang tải chi tiết đơn hàng...</p>
+          <p className="text-slate-600 text-sm">English content normalized from the original source text.</p>
         </div>
       </div>
     );
-  
+
   if (!orderDetail)
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
@@ -46,8 +46,8 @@ export default function OrderDetail() {
           <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
             <Package className="w-7 h-7 text-red-500" />
           </div>
-          <p className="text-red-600 text-base font-medium">Không tìm thấy đơn hàng</p>
-          <p className="text-slate-500 mt-1 text-sm">Vui lòng kiểm tra lại mã đơn hàng</p>
+          <p className="text-red-600 text-base font-medium">English content normalized from the original source text.</p>
+          <p className="text-slate-500 mt-1 text-sm">English content normalized from the original source text.</p>
         </div>
       </div>
     );
@@ -56,37 +56,37 @@ export default function OrderDetail() {
     PENDING_PAYMENT: {
       color: "text-amber-700",
       bgColor: "bg-amber-50 border-amber-200",
-      label: "Chờ thanh toán",
+      label: "English content normalized from the original source text.",
     },
     PENDING_PACKAGING: {
       color: "text-blue-700",
       bgColor: "bg-blue-50 border-blue-200",
-      label: "Chờ đóng gói",
+      label: "English content normalized from the original source text.",
     },
     PENDING_PICKUP: {
       color: "text-blue-700",
       bgColor: "bg-blue-50 border-blue-200",
-      label: "Chờ lấy hàng",
+      label: "English content normalized from the original source text.",
     },
     PENDING_DELIVERY: {
       color: "text-purple-700",
       bgColor: "bg-purple-50 border-purple-200",
-      label: "Đang giao hàng",
+      label: "English content normalized from the original source text.",
     },
-    DELIVERED: { 
-      color: "text-emerald-700", 
+    DELIVERED: {
+      color: "text-emerald-700",
       bgColor: "bg-emerald-50 border-emerald-200",
-      label: "Đã giao" 
+      label: "English content normalized from the original source text."
     },
-    RETURNED: { 
-      color: "text-slate-700", 
+    RETURNED: {
+      color: "text-slate-700",
       bgColor: "bg-slate-50 border-slate-200",
-      label: "Đã trả hàng" 
+      label: "English content normalized from the original source text."
     },
-    CANCELLED: { 
-      color: "text-red-700", 
+    CANCELLED: {
+      color: "text-red-700",
       bgColor: "bg-red-50 border-red-200",
-      label: "Đã hủy" 
+      label: "English content normalized from the original source text."
     },
   };
 
@@ -96,7 +96,7 @@ export default function OrderDetail() {
     label: orderDetail.status,
   };
 
-  // Sử dụng totalPayment từ API response thay vì tính toán
+  // English content normalized from the original source text.
   const totalAmount = orderDetail.totalPayment || orderDetail.items.reduce(
     (sum, item) => sum + item.skuPrice * item.quantity,
     0
@@ -111,21 +111,21 @@ export default function OrderDetail() {
         <div className="flex items-center gap-4">
           <div>
             <h2 className="text-lg font-semibold text-slate-800">
-              Đơn hàng #{orderDetail.id}
+              English content normalized from the original source text.{orderDetail.id}
             </h2>
             <p className="text-slate-500 text-sm mt-1">
-              Tạo lúc {format(new Date(orderDetail.createdAt), "dd/MM/yyyy 'lúc' HH:mm")}
+              English content normalized from the original source text. {format(new Date(orderDetail.createdAt), "English content normalized from the original source text.")}
             </p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3">
           <Badge
             className={`${status.bgColor} ${status.color} border px-3 py-1.5 rounded-full text-xs font-medium`}
           >
             {status.label}
           </Badge>
-          
+
           {/* Print Invoice Button */}
           {id && (
             <Button
@@ -133,11 +133,9 @@ export default function OrderDetail() {
               onClick={() => handlePrintInvoice(id)}
               className="text-blue-600 border-blue-300 hover:bg-blue-50 h-9 px-4 text-sm"
             >
-              <Printer className="w-3 h-3 mr-2" />
-              In hóa đơn
-            </Button>
+              <Printer className="w-3 h-3 mr-2" />English content normalized from the original source text.</Button>
           )}
-          
+
           {showCancelButton && id && (
             <Button
               variant="outline"
@@ -147,11 +145,9 @@ export default function OrderDetail() {
             >
               {loading ? (
                 <>
-                  <Loader2 className="w-3 h-3 mr-2 animate-spin" />
-                  Đang hủy...
-                </>
+                  <Loader2 className="w-3 h-3 mr-2 animate-spin" />English content normalized from the original source text.</>
               ) : (
-                "Hủy đơn hàng"
+                "English content normalized from the original source text."
               )}
             </Button>
           )}
@@ -168,30 +164,30 @@ export default function OrderDetail() {
               <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Package className="w-4 h-4 text-blue-600" />
               </div>
-              <h2 className="text-base font-medium text-slate-700">Thông tin người nhận</h2>
+              <h2 className="text-base font-medium text-slate-700">English content normalized from the original source text.</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-center gap-3">
                 <User className="w-4 h-4 text-slate-400 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-slate-500">Họ và tên</p>
+                  <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
                   <p className="text-sm font-medium text-slate-800 truncate">{orderDetail.receiver.name}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-slate-400 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-slate-500">Số điện thoại</p>
+                  <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
                   <p className="text-sm font-medium text-slate-800">{orderDetail.receiver.phone}</p>
                 </div>
               </div>
-              
+
               <div className="sm:col-span-2 flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-slate-500">Địa chỉ giao hàng</p>
+                  <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
                   <p className="text-sm font-medium text-slate-800 leading-relaxed">
                     {orderDetail.receiver.address}
                   </p>
@@ -207,10 +203,10 @@ export default function OrderDetail() {
                 <ShoppingBag className="w-4 h-4 text-emerald-600" />
               </div>
               <h2 className="text-base font-medium text-slate-700">
-                Sản phẩm ({orderDetail.items.length} mặt hàng)
+                English content normalized from the original source text.{orderDetail.items.length} English content normalized from the original source text.
               </h2>
             </div>
-            
+
             <div className="space-y-4">
               {orderDetail.items.map((item, index) => (
                 <div
@@ -226,7 +222,7 @@ export default function OrderDetail() {
                         className="rounded-lg object-cover border border-white shadow-sm"
                       />
                     </div>
-                    
+
                     <div className="flex-1 min-w-0 space-y-1.5">
                       <h3 className="font-medium text-slate-800 text-sm leading-tight line-clamp-2">
                         {item.productName}
@@ -259,58 +255,58 @@ export default function OrderDetail() {
                 <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
                   <CreditCard className="w-4 h-4 text-purple-600" />
                 </div>
-                <h2 className="text-base font-medium text-slate-700">Tóm tắt đơn hàng</h2>
+                <h2 className="text-base font-medium text-slate-700">English content normalized from the original source text.</h2>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center justify-between py-2 border-b border-slate-200">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3 h-3 text-slate-400" />
-                    <span className="text-slate-600 text-sm">Ngày đặt</span>
+                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
                   </div>
                   <span className="font-medium text-slate-800 text-sm">
                     {format(new Date(orderDetail.createdAt), "dd/MM/yyyy")}
                   </span>
                 </div>
-                
+
                 <div className="flex items-center justify-between py-2 border-b border-slate-200">
                   <div className="flex items-center gap-2">
                     <CreditCard className="w-3 h-3 text-slate-400" />
-                    <span className="text-slate-600 text-sm">Mã thanh toán</span>
+                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
                   </div>
                   <span className="font-medium text-slate-800 text-xs">
                     #{orderDetail.paymentId}
                   </span>
                 </div>
-                
-                {/* Chi tiết thanh toán */}
+
+                {/* English content normalized from the original source text. */}
                 <div className="space-y-2 pt-2">
                   <div className="flex items-center justify-between py-1.5">
-                    <span className="text-slate-600 text-sm">Tiền hàng</span>
+                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
                     <span className="font-medium text-slate-800 text-sm">
                       {orderDetail.totalItemCost?.toLocaleString() || '0'}₫
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between py-1.5">
-                    <span className="text-slate-600 text-sm">Phí vận chuyển</span>
+                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
                     <span className="font-medium text-slate-800 text-sm">
                       {orderDetail.totalShippingFee?.toLocaleString() || '0'}₫
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between py-1.5">
-                    <span className="text-slate-600 text-sm">Giảm giá voucher</span>
+                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
                     <span className="font-medium text-red-600 text-sm">
                       -{orderDetail.totalVoucherDiscount?.toLocaleString() || '0'}₫
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center justify-between py-4 bg-emerald-50 rounded-lg px-4 mt-4">
                   <div className="flex items-center gap-2">
                     <DollarSign className="w-4 h-4 text-emerald-600" />
-                    <span className="text-emerald-800 font-semibold text-sm">Tổng thanh toán</span>
+                    <span className="text-emerald-800 font-semibold text-sm">English content normalized from the original source text.</span>
                   </div>
                   <span className="font-semibold text-lg text-emerald-600">
                     {totalAmount.toLocaleString()}₫

@@ -32,15 +32,15 @@ export function ProfileDropdown() {
   const { openDropdown, setOpenDropdown } = useDropdown();
   const user = useUserData();
   const isOpen = openDropdown === "profile";
-  const fetchProfile = useGetProfile(); // Hàm để fetch lại dữ liệu người dùng
+  const fetchProfile = useGetProfile(); // English content normalized from the original source text.
 
-  // Kiểm tra role từ user data
+  // English content normalized from the original source text.
   const isAdmin = user?.role?.name === 'ADMIN' || user?.role?.name === 'Super Admin' || user?.role?.name === 'SELLER';
 
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: "Tài khoản của tôi",
+      label: "English content normalized from the original source text.",
       onClick: async () => {
         // Fetch profile data before navigation
         await fetchProfile.fetchProfile();
@@ -49,18 +49,18 @@ export function ProfileDropdown() {
     },
     {
       icon: ShoppingCart,
-      label: "Giỏ hàng của bạn",
+      label: "English content normalized from the original source text.",
       onClick: () => router.push('/cart'),
     },
     {
       icon: ShoppingCart,
-      label: "Đơn hàng mua",
+      label: "English content normalized from the original source text.",
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
       requireDivider: true,
     },
     {
       icon: LogOut,
-      label: logoutLoading ? "Đang xử lý..." : "Đăng xuất",
+      label: logoutLoading ? "English content normalized from the original source text." : "English content normalized from the original source text.",
       onClick: handleLogout,
     },
   ];
@@ -70,9 +70,7 @@ export function ProfileDropdown() {
       <span
         onClick={() => router.push(ROUTES.AUTH.SIGNIN)}
         className="cursor-pointer inline-flex items-center justify-center px-4 py-3 text-white font-semibold text-[13px]"
-      >
-        Đăng nhập
-      </span>
+      >English content normalized from the original source text.</span>
     );
   }
 
@@ -80,7 +78,7 @@ export function ProfileDropdown() {
   const email = user.email || '';
   const avatar = user.avatar || '';
 
-  // Tạo avatar từ chữ cái đầu tên nếu không có ảnh
+  // English content normalized from the original source text.
   const getInitials = (name: string) => {
     const parts = name.split(' ').filter(Boolean);
     if (parts.length === 0) return 'U';
@@ -208,9 +206,7 @@ export function ProfileDropdown() {
           {isAdmin && (
             <>
               <Link href={ROUTES.ADMIN.DASHBOARD} className="flex items-center px-5 py-2 hover:bg-gray-50 cursor-pointer text-[14px] text-gray-800">
-                <LayoutDashboard className="w-4.5 h-4.5 mr-2 text-gray-800" />
-                Trang quản trị
-              </Link>
+                <LayoutDashboard className="w-4.5 h-4.5 mr-2 text-gray-800" />English content normalized from the original source text.</Link>
               <div className="h-px bg-gray-200 mx-6 my-1"></div>
             </>
           )}

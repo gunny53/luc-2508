@@ -39,7 +39,7 @@ export const OrderDateFilter = () => {
                     dateRange.to,
                     "dd/MM/yyyy"
                   )}`
-                : "Chọn khoảng ngày"}
+                : "English content normalized from the original source text."}
             </span>
           </Button>
         </PopoverTrigger>

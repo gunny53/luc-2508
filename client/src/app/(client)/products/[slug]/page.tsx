@@ -4,36 +4,36 @@ import ProductPageWrapper from "@/components/client/products/products-Wrapper";
 import { extractProductId } from '@/components/client/products/shared/productSlug';
 import { Metadata, ResolvingMetadata } from 'next';
 
-// Khai báo caching và revalidation
-export const revalidate = 300; // 5 phút
+// English content normalized from the original source text.
+export const revalidate = 300; // English content normalized from the original source text.
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Generate metadata động dựa trên dữ liệu sản phẩm
+// English content normalized from the original source text.
 export async function generateMetadata(
   { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // Lấy slug từ params
+  // English content normalized from the original source text.
   const { slug } = await params;
-  
+
   try {
-    // Trích xuất ID và fetch data
+    // English content normalized from the original source text.
     const productId = extractProductId(slug);
     const productData = await clientProductsService.getProductDetail(productId);
 
-    // Lấy metadata từ parent
+    // English content normalized from the original source text.
     const previousImages = (await parent).openGraph?.images || []
 
-    // Tạo description từ mô tả sản phẩm hoặc sử dụng mặc định
-    const description = productData.description 
+    // English content normalized from the original source text.
+    const description = productData.description
       ? `${productData.description.slice(0, 150)}...`
-      : `Mua ${productData.name} chính hãng tại Shopsifu`;
+      : `Mua ${productData.name}English content normalized from the original source text.`;
 
     return {
-      title: `${productData.name} | Shopsifu`,
+      title: `${productData.name} | ECSite`,
       description,
       openGraph: {
         title: productData.name,
@@ -57,29 +57,29 @@ export async function generateMetadata(
   } catch (error) {
     console.error('❌ [Metadata] Error generating metadata:', error);
     return {
-      title: 'Sản phẩm | Shopsifu',
-      description: 'Mua sắm online tại Shopsifu',
+      title: 'English content normalized from the original source text.',
+      description: 'English content normalized from the original source text.',
     }
   }
 }
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
-  
+
   try {
-    // Trích xuất ID sản phẩm từ slug (slug format: ten-san-pham-123)
+    // English content normalized from the original source text.
     const productId = extractProductId(slug);
     console.log(`✅ [Server] Extracted product ID from slug: ${productId}`);
-    
-    // Fetch data cơ bản từ server sử dụng ID đã trích xuất
+
+    // English content normalized from the original source text.
     const productData = await clientProductsService.getProductDetail(productId);
     console.log(`✅ [Server] Fetched product: ${productData.name} (ID: ${productData.id})`);
-    
-    // Truyền data đã fetch xuống client component thông qua wrapper
+
+    // English content normalized from the original source text.
     return <ProductPageWrapper slug={slug} initialData={productData} />;
   } catch (error) {
     console.error('❌ [Server] Error fetching product:', error);
-    // Throw error để Next.js error boundary xử lý
+    // English content normalized from the original source text.
     throw error;
   }
 }

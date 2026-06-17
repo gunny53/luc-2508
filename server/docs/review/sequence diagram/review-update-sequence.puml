@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-title Chi Tiết Luồng PUT /reviews/:reviewId
+English content normalized from the original source text.
 
-actor "Người dùng" as U
+English content normalized from the original source text.
 participant "ReviewController" as RC
 participant "ActiveUser" as AU
 participant "ReviewService" as RS

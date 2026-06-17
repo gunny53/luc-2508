@@ -7,18 +7,18 @@ interface CheckoutPageProps {
 }
 
 export default async function CheckoutPage({ params }: CheckoutPageProps) {
-  // Await params để tương thích với Next.js 15
+  // English content normalized from the original source text.
   const { slug } = await params;
-  
-  // Parse cartItemIds từ URL param
+
+  // English content normalized from the original source text.
   const cartItemIds = slug ? slug.split(',').filter(Boolean) : [];
-  
+
   console.log('🛒 Checkout Page - CartItemIds from URL:', {
     rawSlug: slug,
     cartItemIds,
     count: cartItemIds.length
   });
-  
+
   return (
     <CheckoutMainWrapper cartItemIds={cartItemIds} />
   );

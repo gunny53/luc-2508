@@ -2,22 +2,22 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Các loại dropdown có thể mở
+// English content normalized from the original source text.
 export type DropdownType = 'categories' | 'search' | 'cart' | 'user' | 'profile' | 'language' | 'none';
 
-// Định nghĩa context
+// English content normalized from the original source text.
 interface DropdownContextType {
   openDropdown: DropdownType;
   setOpenDropdown: (type: DropdownType) => void;
 }
 
-// Tạo context
+// English content normalized from the original source text.
 const DropdownContext = createContext<DropdownContextType>({
   openDropdown: 'none',
   setOpenDropdown: () => {},
 });
 
-// Provider để quản lý state dropdown
+// English content normalized from the original source text.
 export function DropdownProvider({ children }: { children: React.ReactNode }) {
   const [openDropdown, setOpenDropdown] = useState<DropdownType>('none');
 
@@ -25,7 +25,7 @@ export function DropdownProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const overlayElement = document.querySelector('.body-overlay');
     const shouldShowOverlay = openDropdown !== 'none' && openDropdown !== 'cart';
-    
+
     if (shouldShowOverlay) {
       overlayElement?.classList.add('overlay-active');
     } else {
@@ -37,9 +37,9 @@ export function DropdownProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const isOutsideClick = !(
-        event.target instanceof Element && 
+        event.target instanceof Element &&
         (
-          event.target.closest('.category-hover-container') || 
+          event.target.closest('.category-hover-container') ||
           event.target.closest('.search-container') ||
           event.target.closest('.profile-container') ||
           event.target.closest('.language-container') ||
@@ -65,7 +65,7 @@ export function DropdownProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Hook để sử dụng context
+// English content normalized from the original source text.
 export function useDropdown() {
   return useContext(DropdownContext);
 }

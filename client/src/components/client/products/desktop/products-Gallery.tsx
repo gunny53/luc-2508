@@ -137,7 +137,7 @@ export default function ProductGallery({ media }: Props) {
         <div
           ref={thumbRef}
           className="flex gap-3 overflow-x-auto scroll-smooth px-1 w-full h-24
-          [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden items-center" 
+          [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden items-center"
         >
           {media.map((item, index) =>
             item.type === "video" ? (

@@ -11,7 +11,7 @@ import { useServerDataTable } from "@/hooks/useServerDataTable";
 import { PaginationRequest } from "@/types/base.interface";
 import {ENUM} from "@/configs/common";
 
-// Định nghĩa interface cho pagination để tránh lỗi undefined
+// English content normalized from the original source text.
 interface PaginationData {
   totalItems: number;
   page: number;
@@ -24,8 +24,8 @@ interface PaginationData {
 
 interface UseProductsProps {
   categoryId?: string | null;
-  key?: string; // Key để force re-render khi cần thiết
-  querySearch?: string; // Từ khóa tìm kiếm, nếu có
+  key?: string; // English content normalized from the original source text.
+  querySearch?: string; // English content normalized from the original source text.
 }
 
 interface UseProductsReturn {
@@ -56,24 +56,24 @@ export function useProducts({
   key,
   querySearch,
 }: UseProductsProps): UseProductsReturn {
-  // Ghi log khi hook được gọi lại để debug
+  // English content normalized from the original source text.
   // console.log("useProducts hook called with:", { categoryId, key });
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchQuery = querySearch || searchParams.get("q") || "";
 
-  // Lấy thông tin phân trang từ URL parameters
+  // English content normalized from the original source text.
   const initialPage = Number(searchParams.get("page") || 1);
-  const initialLimit = Number(searchParams.get("limit") || 20); 
+  const initialLimit = Number(searchParams.get("limit") || 20);
 
-  // Sử dụng refs để theo dõi giá trị trước đó
+  // English content normalized from the original source text.
   const prevCategoryIdRef = useRef<string | null | undefined>(categoryId);
   const prevSearchQueryRef = useRef<string>(searchQuery);
   const isFirstRenderRef = useRef<boolean>(true);
   const isUpdatingUrlRef = useRef<boolean>(false);
 
   const [prod, setProd] = useState<ClientProduct[]>([]);
-  // Sử dụng hook useServerDataTable
+  // English content normalized from the original source text.
   const {
     data: products,
     loading: isLoading,
@@ -83,18 +83,18 @@ export function useProducts({
   } = useServerDataTable<ClientProduct | ClientSearchResultItem, ClientProduct>(
     {
       fetchData: async (params: PaginationRequest, signal?: AbortSignal) => {
-        // Thêm các params đặc biệt
+        // English content normalized from the original source text.
         console.log("Fetching products with params:", params);
         const apiParams: any = { ...params };
 
-        // Logic phân biệt giữa category filter và search
+        // English content normalized from the original source text.
         if (searchQuery && searchQuery.trim()) {
-          // CÓ SEARCH QUERY -> Sử dụng Search API
+          // English content normalized from the original source text.
           console.log("Using SEARCH API for query:", searchQuery);
-          
+
           apiParams.q = searchQuery;
-          
-          // LUÔN sử dụng đúng timestamp từ URL để đảm bảo request khớp với URL hiện tại
+
+          // English content normalized from the original source text.
           const urlTimestamp = searchParams.get("_t");
           if (urlTimestamp) {
             apiParams._t = urlTimestamp;
@@ -105,8 +105,8 @@ export function useProducts({
             ...apiParams
           });
 
-          // Chuyển đổi dữ liệu từ search API sang định dạng tương thích với ClientProduct
-          const convertedData = searchResponse.data.map((item) => ({ 
+          // English content normalized from the original source text.
+          const convertedData = searchResponse.data.map((item) => ({
             id: item.productId,
             name: item.productName,
             description: item.productDescription || "",
@@ -146,18 +146,18 @@ export function useProducts({
             metadata: searchResponse.metadata,
           };
         } else {
-          // KHÔNG CÓ SEARCH QUERY -> Sử dụng Products API
+          // English content normalized from the original source text.
           console.log("Using PRODUCTS API");
-          
+
           if (categoryId) {
-            // Có categoryId từ URL slug có -cat.
+            // English content normalized from the original source text.
             apiParams.categories = categoryId;
             console.log("Filtering by categories:", categoryId);
           }
 
-          // Gọi Products API thay vì Search API
+          // English content normalized from the original source text.
           const productsResponse = await clientProductsService.getProducts(apiParams);
-          
+
           console.log("Products API response:", {
             itemCount: productsResponse.data?.length || 0,
             metadata: productsResponse.metadata,
@@ -178,7 +178,7 @@ export function useProducts({
       },
     });
 
-  // Đảm bảo pagination không bao giờ undefined bằng cách tạo object mới với giá trị mặc định
+  // English content normalized from the original source text.
   const pagination: PaginationData = {
     totalItems: paginationRaw?.totalItems || 0,
     page: paginationRaw?.page || initialPage,
@@ -188,24 +188,24 @@ export function useProducts({
     hasPrevious: paginationRaw?.hasPrevious || false,
   };
 
-  // Đặt trang ban đầu khi component mount
+  // English content normalized from the original source text.
   useEffect(() => {
     if (initialPage > 1) {
       internalHandlePageChange(initialPage);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Ghi đè handlePageChange để cập nhật URL
+  // English content normalized from the original source text.
   const handlePageChange = (page: number): void => {
-    if (page === pagination.page) return; // Nếu trang không thay đổi, không làm gì
+    if (page === pagination.page) return; // English content normalized from the original source text.
 
-    // Set flag để biết là đang update URL
+    // English content normalized from the original source text.
     isUpdatingUrlRef.current = true;
 
-    // Gọi logic internal trước
+    // English content normalized from the original source text.
     internalHandlePageChange(page);
 
-    // Cập nhật URL với tham số page mới
+    // English content normalized from the original source text.
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.set("page", page.toString());
 
@@ -216,16 +216,16 @@ export function useProducts({
     router.push(newPath);
   };
 
-  // Sử dụng ref để theo dõi timestamp hiện tại để tránh vòng lặp
+  // English content normalized from the original source text.
   const currentTimestampRef = useRef<string | null>(null);
 
-  // Force refresh data khi URL thay đổi và khi categoryId hoặc searchQuery thay đổi
+  // English content normalized from the original source text.
   useEffect(() => {
-    // Bỏ qua lần render đầu tiên (chỉ để tránh refresh không cần thiết khi mount)
+    // English content normalized from the original source text.
     if (isFirstRenderRef.current) {
       isFirstRenderRef.current = false;
 
-      // Nếu có search query hoặc timestamp từ URL ngay từ đầu, vẫn cần refreshData
+      // English content normalized from the original source text.
       if (searchQuery || searchParams.get("_t")) {
         console.log("Initial data load with search or timestamp:", {
           searchQuery,
@@ -236,14 +236,14 @@ export function useProducts({
       return;
     }
 
-    // Kiểm tra xem categoryId hoặc searchQuery có thay đổi không
+    // English content normalized from the original source text.
     const categoryIdChanged = categoryId !== prevCategoryIdRef.current;
     const searchQueryChanged = searchQuery !== prevSearchQueryRef.current;
 
-    // Kiểm tra timestamp trong URL để force refresh khi cần thiết
+    // English content normalized from the original source text.
     const timestamp = searchParams.get("_t");
 
-    // Chỉ coi là timestamp trigger nếu timestamp thay đổi so với lần trước
+    // English content normalized from the original source text.
     const timestampChanged = timestamp !== currentTimestampRef.current;
     const hasTimestampTrigger = !!timestamp && timestampChanged;
 
@@ -255,12 +255,12 @@ export function useProducts({
       currentTimestamp: currentTimestampRef.current,
     });
 
-    // Cập nhật timestamp ref để tránh vòng lặp
+    // English content normalized from the original source text.
     if (timestamp) {
       currentTimestampRef.current = timestamp;
     }
 
-    // Force refresh data khi URL chứa search query thay đổi hoặc có timestamp trigger
+    // English content normalized from the original source text.
     if (categoryIdChanged || searchQueryChanged || hasTimestampTrigger) {
       console.log("Data refresh triggered:", {
         categoryId,
@@ -269,16 +269,16 @@ export function useProducts({
         timestampChanged,
       });
 
-      // Cập nhật refs trước khi gọi refreshData để tránh vòng lặp
+      // English content normalized from the original source text.
       prevCategoryIdRef.current = categoryId;
       prevSearchQueryRef.current = searchQuery;
 
-      // Gọi hàm refreshData để lấy dữ liệu mới từ API và reset về trang 1
+      // English content normalized from the original source text.
       refreshData();
       internalHandlePageChange(1);
 
-      // Cập nhật URL với page=1 nếu đang không trong quá trình update URL từ các nơi khác
-      // Và không cập nhật URL nếu trigger là từ timestamp (để tránh vòng lặp)
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       if (!isUpdatingUrlRef.current && !hasTimestampTrigger) {
         const newParams = new URLSearchParams(searchParams.toString());
         newParams.set("page", "1");
@@ -300,7 +300,7 @@ export function useProducts({
     refreshData,
   ]);
 
-  // Tạo dữ liệu phân trang để trả về
+  // English content normalized from the original source text.
   const paginationData = useMemo(
     () => ({
       totalPages: pagination.totalPages,

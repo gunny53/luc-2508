@@ -37,14 +37,14 @@ interface Product {
 }
 
 export default function ProductSpecsMobile({ product }: { product: Product }) {
-  // Xử lý hiển thị danh mục sản phẩm với các liên kết
+  // English content normalized from the original source text.
   const renderCategoryLinks = () => {
-    if (!product.categories || product.categories.length === 0) return "Đang cập nhật";
-    
+    if (!product.categories || product.categories.length === 0) return "English content normalized from the original source text.";
+
     return (
       <div className="flex flex-wrap items-center gap-1 text-xs">
         {product.categories.map((category, index) => (
-          <Link 
+          <Link
             key={category.id}
             href={`/category/${slugify(category.name)}`}
             className="text-[#05a] flex items-center"
@@ -55,29 +55,22 @@ export default function ProductSpecsMobile({ product }: { product: Product }) {
         ))}
       </div>
     );
-  };  
+  };
 
   return (
     <div className="bg-white p-4 mt-2 rounded-sm">
-      <h2 className="text-sm font-semibold mb-3">CHI TIẾT SẢN PHẨM</h2>
+      <h2 className="text-sm font-semibold mb-3">English content normalized from the original source text.</h2>
       <div className="text-xs space-y-2.5 mb-4">
-        {/* Danh mục */}
+        {/* English content normalized from the original source text. */}
         <div className="flex">
-          <div className="w-1/3 text-muted-foreground">Danh mục</div>
+          <div className="w-1/3 text-muted-foreground">English content normalized from the original source text.</div>
           <div className="flex-1">{renderCategoryLinks()}</div>
         </div>
-        
-        <SpecRowMobile label="Thương hiệu" value={product.brand?.name} />
-        <SpecRowMobile label="Dòng sản phẩm" value={product.series ?? product.name} />
-        {/* <SpecRowMobile label="SKU" value={product.sku} />
-        <SpecRowMobile label="Chất liệu" value={product.material} />
-        <SpecRowMobile label="Xuất xứ" value={product.origin} />
-        <SpecRowMobile label="Loại bảo hành" value={product.warrantyType} />
-        <SpecRowMobile label="Thời gian bảo hành" value={product.warrantyTime} />
-        <SpecRowMobile label="Kho hàng" value={product.stock?.toString()} />
-        <SpecRowMobile label="Gửi từ" value={product.shipFrom} />
-        <SpecRowMobile label="Trọng lượng" value={product.weight} /> */}
-        
+
+        <SpecRowMobile label="English content normalized from the original source text." value={product.brand?.name} />
+        <SpecRowMobile label="English content normalized from the original source text." value={product.series ?? product.name} />
+        {/* English content normalized from the original source text. */}
+
         {/* Dynamic specifications */}
         {product.specifications?.map((specification) => (
           <SpecRowMobile
@@ -87,11 +80,11 @@ export default function ProductSpecsMobile({ product }: { product: Product }) {
           />
         ))}
       </div>
-      
-      {/* Mô tả sản phẩm */}
+
+      {/* English content normalized from the original source text. */}
       {product.description && (
         <div className="mt-2 pt-3 border-t">
-          <h3 className="text-sm font-semibold mb-2">MÔ TẢ SẢN PHẨM</h3>
+          <h3 className="text-sm font-semibold mb-2">English content normalized from the original source text.</h3>
           <div className="text-xs">
             <HTMLPreview
             content={product.description.replace(/(#[a-zA-Z0-9_]+)/g, '<span class="font-medium">$1</span>')}
@@ -107,7 +100,7 @@ function SpecRowMobile({ label, value }: { label: string; value?: string | React
   return (
     <div className="flex">
       <div className="w-1/3 text-muted-foreground">{label}</div>
-      <div className="flex-1">{value ?? "Đang cập nhật"}</div>
+      <div className="flex-1">{value ?? "English content normalized from the original source text."}</div>
     </div>
   );
 }

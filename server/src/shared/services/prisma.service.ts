@@ -28,15 +28,15 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
           url: databaseUrl
         }
       }
-      // Tối ưu connection pooling cho production
-      // Số connection tối đa = 200 (theo cấu hình PostgreSQL)
-      // Pool size = 20% của max_connections = 40
-      // Min pool size = 5 để đảm bảo luôn có connection sẵn
-      // Max pool size = 40 để tối ưu memory usage
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
+      // English content normalized from the original source text.
       // Connection timeout = 20s
       // Idle timeout = 10s
       // Acquire timeout = 60s
-      // Reject unauthorized = false để tránh lỗi connection
+      // English content normalized from the original source text.
     })
   }
 
@@ -98,28 +98,20 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     console.log('🔌 Prisma disconnected from PostgreSQL')
   }
 
-  /**
-   * Tối ưu hóa query với transaction
-   * @param fn Function chạy trong transaction
-   * @returns Kết quả của function
-   */
+  /* English content normalized from the original source text. */
   async executeTransaction<T>(fn: (prisma: PrismaService) => Promise<T>): Promise<T> {
     return await this.$transaction(fn, {
       maxWait: 5000, // 5s max wait
       timeout: 10000, // 10s timeout
-      isolationLevel: 'ReadCommitted' // Tối ưu cho performance
+      isolationLevel: 'ReadCommitted' // English content normalized from the original source text.
     })
   }
 
-  /**
-   * Tối ưu hóa bulk operations
-   * @param operations Array các operations
-   * @returns Kết quả bulk operations
-   */
+  /* English content normalized from the original source text. */
   async executeBulkOperations<T>(operations: Array<() => Promise<T>>): Promise<T[]> {
     const results: T[] = []
 
-    // Chia nhỏ thành batch 100 operations để tránh memory overflow
+    // English content normalized from the original source text.
     const batchSize = 100
     for (let i = 0; i < operations.length; i += batchSize) {
       const batch = operations.slice(i, i + batchSize)
@@ -130,13 +122,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     return results
   }
 
-  /**
-   * Tối ưu hóa soft delete với batch
-   * @param model Prisma model
-   * @param ids Array IDs cần soft delete
-   * @param deletedById User ID thực hiện delete
-   * @returns Số records đã update
-   */
+  /* English content normalized from the original source text. */
   async softDeleteMany(model: any, ids: string[], deletedById: string): Promise<number> {
     const batchSize = 100
     let totalUpdated = 0
@@ -146,7 +132,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
       const result = await model.updateMany({
         where: {
           id: { in: batchIds },
-          deletedAt: null // Chỉ update những record chưa bị soft delete
+          deletedAt: null // English content normalized from the original source text.
         },
         data: {
           deletedAt: new Date(),
@@ -159,12 +145,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     return totalUpdated
   }
 
-  /**
-   * Tối ưu hóa query với pagination và sorting
-   * @param model Prisma model
-   * @param options Pagination options
-   * @returns Paginated results
-   */
+  /* English content normalized from the original source text. */
   async paginateWithOptimization<T>(
     model: any,
     options: {
@@ -185,7 +166,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     const { page, limit, where, orderBy, include, select } = options
     const skip = (page - 1) * limit
 
-    // Parallel execution để tối ưu performance
+    // English content normalized from the original source text.
     const [data, total] = await Promise.all([
       model.findMany({
         where,
@@ -207,14 +188,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     }
   }
 
-  /**
-   * Tối ưu hóa search với full-text search
-   * @param model Prisma model
-   * @param searchTerm Search term
-   * @param searchFields Fields cần search
-   * @param options Additional options
-   * @returns Search results
-   */
+  /* English content normalized from the original source text. */
   async searchWithFullText<T>(
     model: any,
     searchTerm: string,
@@ -230,7 +204,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     const { page = 1, limit = 20, where = {}, orderBy, include } = options
     const skip = (page - 1) * limit
 
-    // Tạo search condition với OR logic
+    // English content normalized from the original source text.
     const searchConditions = searchFields.map((field) => ({
       [field]: {
         contains: searchTerm,

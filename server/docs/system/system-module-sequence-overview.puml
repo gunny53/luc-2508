@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-title Tổng Quan Hệ Thống E-commerce - Sequence Overview
-note top : Hệ thống E-commerce với authentication, payment processing và order management
+English content normalized from the original source text.
+note top : English content normalized from the original source text.
 
 actor "User" as User
 actor "Admin" as Admin
@@ -39,9 +39,9 @@ AC -> AS: authenticate({email, password})
 AS -> AS: Validate credentials
 note right
 Authentication Logic:
-• Hash password với bcrypt
+• English content normalized from the original source text
 • Validate email format
-• Check user exists và active
+• English content normalized from the original source text
 • Generate JWT tokens
 end note
 
@@ -49,8 +49,8 @@ alt Credentials valid
     AS -> AS: Generate access token
     AS -> AS: Generate refresh token
     AS -> IS: i18n.t('auth.auth.success.LOGIN_SUCCESS')
-    IS -> AS: Trả về message đã localize
-    AS -> AC: Success response với tokens
+    IS -> AS: English content normalized from the original source text.
+    AS -> AC: English content normalized from the original source text.
     AC -> User: Set cookies + redirect to dashboard
 else Credentials invalid
     AS -> AC: AuthenticationException
@@ -62,13 +62,13 @@ User -> AC: GET /auth/google
 AC -> AS: initiateGoogleOAuth()
 AS -> Google: Redirect to Google OAuth
 Google -> User: Google login page
-User -> Google: Login với Google
+User -> Google: English content normalized from the original source text.
 Google -> AC: GET /auth/google/callback + code
 AC -> AS: handleGoogleCallback(code)
 AS -> Google: Exchange code for tokens
 Google -> AS: Google user info
 AS -> US: createOrUpdateUser(googleUser)
-US -> PS: Upsert user với Google data
+US -> PS: English content normalized from the original source text.
 PS -> DB: INSERT/UPDATE user
 DB -> PS: User data
 PS -> US: User created/updated
@@ -80,8 +80,8 @@ AC -> User: Redirect to dashboard
 == Product Browsing Flow ==
 User -> PC: GET /products?page=1&limit=10
 PC -> PS: list(pagination)
-PS -> PS: Apply filters và pagination
-PS -> PS: Query products với Elasticsearch
+PS -> PS: English content normalized from the original source text.
+PS -> PS: English content normalized from the original source text.
 note right
 Product Search Logic:
 • Natural language processing
@@ -90,8 +90,8 @@ Product Search Logic:
 • Multi-language support
 end note
 PS -> IS: i18n.t('product.product.success.GET_SUCCESS')
-IS -> PS: Trả về message đã localize
-PS -> PC: Products với metadata
+IS -> PS: English content normalized from the original source text.
+PS -> PC: English content normalized from the original source text.
 PC -> User: JSON response
 
 == Cart Management Flow ==
@@ -99,9 +99,9 @@ User -> OC: POST /cart + {productId, quantity}
 OC -> OS: addToCart({productId, quantity, userId})
 OS -> OS: Validate product availability
 OS -> OS: Check inventory
-OS -> OS: Calculate price với discounts
+OS -> OS: English content normalized from the original source text.
 OS -> IS: i18n.t('cart.cart.success.ADD_SUCCESS')
-IS -> OS: Trả về message đã localize
+IS -> OS: English content normalized from the original source text.
 OS -> OC: Cart updated
 OC -> User: JSON response
 
@@ -109,13 +109,13 @@ OC -> User: JSON response
 User -> OC: POST /orders + order data
 OC -> OS: createOrder({data, userId})
 OS -> OS: Validate order data
-OS -> OS: Check inventory với Redis lock
+OS -> OS: English content normalized from the original source text.
 note right
 Order Creation Logic:
 • Redis Redlock cho concurrency control
 • Validate SKU availability
-• Calculate totals với discounts
-• Create order với transaction
+• English content normalized from the original source text
+• English content normalized from the original source text
 end note
 OS -> OS: Begin database transaction
 OS -> PS: Create order record
@@ -126,7 +126,7 @@ OS -> OS: Create order items
 OS -> OS: Update inventory
 OS -> OS: Commit transaction
 OS -> IS: i18n.t('order.order.success.CREATE_SUCCESS')
-IS -> OS: Trả về message đã localize
+IS -> OS: English content normalized from the original source text.
 OS -> OC: Order created
 OC -> User: 201 Created + order details
 
@@ -173,8 +173,8 @@ Admin -> UC: GET /users?page=1&limit=10
 UC -> US: list(pagination)
 US -> US: Apply role-based filtering
 US -> IS: i18n.t('user.user.success.GET_SUCCESS')
-IS -> US: Trả về message đã localize
-US -> UC: Users với metadata
+IS -> US: English content normalized from the original source text.
+US -> UC: English content normalized from the original source text.
 UC -> Admin: JSON response
 
 == Review System Flow ==
@@ -182,9 +182,9 @@ User -> OC: POST /reviews + {productId, rating, content}
 OC -> OS: createReview({data, userId})
 OS -> OS: Validate order completion
 OS -> OS: Check review eligibility
-OS -> OS: Create review với media
+OS -> OS: English content normalized from the original source text.
 OS -> IS: i18n.t('review.review.success.CREATE_SUCCESS')
-IS -> OS: Trả về message đã localize
+IS -> OS: English content normalized from the original source text.
 OS -> OC: Review created
 OC -> User: 201 Created + review details
 
@@ -211,12 +211,12 @@ loop Background Jobs
 end
 
 note bottom
-**Đặc điểm chính của System:**
+* English content normalized from the original source text
 • Multi-authentication (Email/Password, Google OAuth)
 • Payment gateway integration (VNPay, Sepay)
-• Real-time notifications với WebSocket
+• English content normalized from the original source text
 • Role-based access control
-• Inventory management với Redis locks
+• English content normalized from the original source text
 • Multi-language support
 • Background job processing
 • Comprehensive error handling

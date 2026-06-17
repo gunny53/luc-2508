@@ -8,96 +8,96 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-title Quản Lý Media - Sơ Đồ Hoạt Động
+English content normalized from the original source text.
 
 start
 
-:Khách hàng yêu cầu thao tác media;
+:English content normalized from the original source text;
 
-if (Loại thao tác?) then (POST /media/images/upload)
-  :Nhận multipart form data với files;
-  :Xác thực số lượng file (tối đa 100 files);
-  if (Số lượng file hợp lệ?) then (có)
-    :Multer xử lý file upload;
-    :Lưu files vào UPLOAD_DIR;
-    :Tạo tên file ngẫu nhiên;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     :ParseFilePipeWithUnlink validation;
-    if (Xác thực file thành công?) then (có)
-      :Xác thực kích thước file (tối đa 1MB);
-      if (Kích thước file hợp lệ?) then (có)
-        :Xác thực loại file (jpg, jpeg, png, webp);
-        if (Loại file hợp lệ?) then (có)
-          :Xử lý files song song với Promise.all;
-          :Upload files lên S3;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      if (condition?) then (Yes)
+        :English content normalized from the original source text;
+        if (condition?) then (Yes)
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
           note right
-          Quá Trình Upload S3:
-          • Tạo S3 key: 'images/' + filename
-          • Upload với content type phù hợp
-          • Xử lý nhiều files đồng thời
-          • Trích xuất S3 Location URL
+          English content normalized from the original source text.
+          • English content normalized from the original source text
+          • English content normalized from the original source text
+          • English content normalized from the original source text
+          • English content normalized from the original source text
           end note
-          :Dọn dẹp files local với Promise.all;
-          :unlink(file.path) cho mỗi file;
-          :Tạo phản hồi với S3 URLs;
-          :Trả về upload thành công;
-        else (không)
-          :Tự động dọn dẹp files;
-          :Trả về lỗi "Loại file không hợp lệ";
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
+        else (No)
+          :English content normalized from the original source text;
+          :English content normalized from the original source text;
         endif
-      else (không)
-        :Tự động dọn dẹp files;
-        :Trả về lỗi "Kích thước file quá lớn";
+      else (No)
+        :English content normalized from the original source text;
+        :English content normalized from the original source text;
       endif
-    else (không)
-      :Tự động dọn dẹp files;
-      :Trả về lỗi xác thực;
+    else (No)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về lỗi "Quá nhiều files";
+  else (No)
+    :English content normalized from the original source text;
   endif
 
 elseif (GET /media/static/:filename)
-  :Trích xuất filename từ params;
-  :Kiểm tra file tồn tại tại UPLOAD_DIR;
-  if (File tồn tại?) then (có)
-    :Phục vụ file với res.sendFile();
-    :Stream nội dung file;
-    :Trả về file stream;
-  else (không)
-    :Trả về 404 Not Found;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
 elseif (POST /media/images/upload/presigned-url)
-  :Trích xuất {filename, filesize} từ body;
-  :Xác thực request body;
-  if (Xác thực thành công?) then (có)
-    :Xác thực filesize (tối đa 1MB);
-    if (Filesize hợp lệ?) then (có)
-      :Tạo tên file ngẫu nhiên;
-      :Tạo presigned URL với S3;
+  :English content normalized from the original source text;
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
+    :English content normalized from the original source text;
+    if (condition?) then (Yes)
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
       note right
-      Tạo Presigned URL:
-      • Tạo tên file ngẫu nhiên duy nhất
-      • Tạo S3 presigned URL
-      • Thiết lập thời gian hết hạn phù hợp
-      • Cho phép upload trực tiếp lên S3
+      English content normalized from the original source text.
+      • English content normalized from the original source text
+      • English content normalized from the original source text
+      • English content normalized from the original source text
+      • English content normalized from the original source text
       end note
-      :Trích xuất base URL từ presigned URL;
-      :Tách tại '?' để lấy base URL;
-      :Trả về presignedUrl và url;
-    else (không)
-      :Trả về lỗi "Filesize quá lớn";
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+      :English content normalized from the original source text;
+    else (No)
+      :English content normalized from the original source text;
     endif
-  else (không)
-    :Trả về lỗi xác thực;
+  else (No)
+    :English content normalized from the original source text;
   endif
 
-else (Thao tác không hợp lệ)
-  :Ném InvalidOperationException;
+else (No)
+  :English content normalized from the original source text;
 endif
 
-:Tạo thông báo thành công đa ngôn ngữ;
-:Trả về JSON response với metadata;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
 
 stop
 

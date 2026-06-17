@@ -99,10 +99,10 @@ export function ChangePasswordModal({
                   if (!user) return;
 
                   const result = await handleChangePassword({
-                    password: data.password, // đổi field name
+                    password: data.password, // English content normalized from the original source text.
                     newPassword: data.newPassword,
-                    confirmNewPassword: data.confirmNewPassword, // đổi field name
-                    // bỏ revokeOtherSessions nếu backend không dùng
+                    confirmNewPassword: data.confirmNewPassword, // English content normalized from the original source text.
+                    // English content normalized from the original source text.
                   });
 
                   if (result) {

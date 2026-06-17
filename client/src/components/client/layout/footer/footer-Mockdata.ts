@@ -22,47 +22,47 @@ export type SocialLink = {
 // Data
 export const footerLinks: FooterSection[] = [
   {
-    title: 'Về chúng tôi',
+    title: 'English content normalized from the original source text.',
     links: [
-      { text: 'Giới thiệu ShopSiFu', href: '/about' },
+      { text: 'English content normalized from the original source text.', href: '/about' },
       { text: 'Blog', href: '/blog' },
-      { text: 'ShopSiFu Careers', href: '/careers' },
-      { text: 'Tuyển dụng', href: '/jobs' },
-      { text: 'Chính sách bảo mật', href: '/privacy' },
-      { text: 'Điều khoản dịch vụ', href: '/terms' }
+      { text: 'ECSite Careers', href: '/careers' },
+      { text: 'English content normalized from the original source text.', href: '/jobs' },
+      { text: 'English content normalized from the original source text.', href: '/privacy' },
+      { text: 'English content normalized from the original source text.', href: '/terms' }
     ]
   },
   {
-    title: 'Hỗ trợ & Dịch vụ',
+    title: 'English content normalized from the original source text.',
     links: [
-      { text: 'Trung tâm hỗ trợ', href: '/support' },
-      { text: 'Giao hàng & Vận chuyển', href: '/shipping' },
-      { text: 'Trả hàng & Hoàn tiền', href: '/returns' },
-      { text: 'Phương thức thanh toán', href: '/payment' },
-      { text: 'Liên hệ', href: '/contact' },
-      { text: 'Báo cáo sản phẩm', href: '/report' }
+      { text: 'English content normalized from the original source text.', href: '/support' },
+      { text: 'English content normalized from the original source text.', href: '/shipping' },
+      { text: 'English content normalized from the original source text.', href: '/returns' },
+      { text: 'English content normalized from the original source text.', href: '/payment' },
+      { text: 'English content normalized from the original source text.', href: '/contact' },
+      { text: 'English content normalized from the original source text.', href: '/report' }
     ]
   },
   {
-    title: 'Thanh toán & Vận chuyển',
+    title: 'English content normalized from the original source text.',
     links: [
-      { text: 'Chính sách vận chuyển', href: '/shipping-policy' },
-      { text: 'Chính sách đổi trả', href: '/return-policy' },
-      { text: 'Chính sách hoàn tiền', href: '/refund-policy' },
-      { text: 'Theo dõi đơn hàng', href: '/track-order' },
-      { text: 'Phí vận chuyển', href: '/shipping-fees' },
-      { text: 'Chính sách khiếu nại', href: '/complaints' }
+      { text: 'English content normalized from the original source text.', href: '/shipping-policy' },
+      { text: 'English content normalized from the original source text.', href: '/return-policy' },
+      { text: 'English content normalized from the original source text.', href: '/refund-policy' },
+      { text: 'English content normalized from the original source text.', href: '/track-order' },
+      { text: 'English content normalized from the original source text.', href: '/shipping-fees' },
+      { text: 'English content normalized from the original source text.', href: '/complaints' }
     ]
   },
   {
-    title: 'Kiếm tiền với ShopSiFu',
+    title: 'English content normalized from the original source text.',
     links: [
-      { text: 'Trở thành người bán', href: '/seller' },
+      { text: 'English content normalized from the original source text.', href: '/seller' },
       { text: 'Affiliate Program', href: '/affiliate' },
-      { text: 'Chiết khấu & Ưu đãi', href: '/promotions' },
-      { text: 'Chương trình giới thiệu', href: '/referral' },
-      { text: 'Đối tác vận chuyển', href: '/logistics' },
-      { text: 'Đại lý bán hàng', href: '/wholesale' }
+      { text: 'English content normalized from the original source text.', href: '/promotions' },
+      { text: 'English content normalized from the original source text.', href: '/referral' },
+      { text: 'English content normalized from the original source text.', href: '/logistics' },
+      { text: 'English content normalized from the original source text.', href: '/wholesale' }
     ]
   }
 ];
@@ -79,5 +79,5 @@ export const socialLinks: SocialLink[] = [
     { type: 'facebook', href: '#', colorClass: 'hover:border-[#1877F2]/30', textColor: 'text-[#1877F2]' },
     { type: 'instagram', href: '#', colorClass: 'hover:border-[#E4405F]/30', textColor: 'text-[#E4405F]' },
     { type: 'youtube', href: '#', colorClass: 'hover:border-[#FF0000]/30', textColor: 'text-[#FF0000]' },
-    { type: 'mail', href: 'mailto:support@shopsifu.com', colorClass: 'hover:border-[#EA4335]/30', textColor: 'text-[#EA4335]' }
+    { type: 'mail', href: 'mailto:support@ecsite.com', colorClass: 'hover:border-[#EA4335]/30', textColor: 'text-[#EA4335]' }
 ];

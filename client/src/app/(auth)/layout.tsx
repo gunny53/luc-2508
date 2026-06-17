@@ -9,7 +9,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <AuthHeader />
       <main className="relative min-h-screen flex items-center justify-center pt-20 px-4 md:px-8 lg:px-12 overflow-hidden bg-white">
         <AnimatedBackground />
-        {/* Container chính */}
+        {/* English content normalized from the original source text. */}
         <div className="relative z-10 w-full max-w-[1400px]">
           <div className="grid lg:grid-cols-2">
             {/* Left: Form */}
@@ -23,7 +23,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               <footer className="text-center py-4 text-sm text-muted-foreground">
                 &copy; All rights reserved 2025. Made by{" "}
                 <span className="hover:text-red-500 transition-colors duration-300 cursor-pointer">
-                  Shopsifu
+                  ECSite
                 </span>
               </footer>
             </div>
@@ -34,10 +34,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               <div className="flex flex-col items-center justify-center w-full py-8">
                 {/* Titles */}
                 <div className="text-center mb-6 w-full px-6 max-w-[380px] mx-auto">
-                  <h2 className="text-4xl font-bold text-primary">Mua sắm dễ dàng</h2>
-                  <p className="text-muted-foreground text-md mt-1">
-                    Giao hàng toàn quốc, thanh toán linh hoạt và cam kết hoàn tiền nếu không hài lòng.
-                  </p>
+                  <h2 className="text-4xl font-bold text-primary">English content normalized from the original source text.</h2>
+                  <p className="text-muted-foreground text-md mt-1">English content normalized from the original source text.</p>
                 </div>
                 {/* Image */}
                 <div className="w-full px-6">

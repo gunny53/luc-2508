@@ -150,13 +150,13 @@ header {
     min-width: unset;
     max-width: 100%;
   }
-  
+
   /* Mobile search styling */
   .mobile-search-container {
     position: relative;
     z-index: 60;
   }
-  
+
   .mobile-search-overlay {
     position: fixed;
     top: 60px;

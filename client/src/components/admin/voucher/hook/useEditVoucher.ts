@@ -7,9 +7,9 @@ import { discountService } from '@/services/discountService';
 import { VoucherUseCase } from './voucher-config';
 import { VoucherFormState } from './useNewVoucher';
 
-// Helper function để xác định useCase từ voucher data
+// English content normalized from the original source text.
 const determineUseCaseFromVoucher = (voucher: Discount, userRole: string): VoucherUseCase => {
-  // Dựa trên voucher properties để xác định useCase
+  // English content normalized from the original source text.
   const { voucherType, isPlatform, discountApplyType, productIds, categories, brands, shopId } = voucher;
 
   console.log('Determining useCase from voucher:', {
@@ -32,7 +32,7 @@ const determineUseCaseFromVoucher = (voucher: Discount, userRole: string): Vouch
     return VoucherUseCase.CATEGORIES;
   }
 
-  // Case 6: BRAND voucher (ADMIN only) - Check voucherType first  
+  // Case 6: BRAND voucher (ADMIN only) - Check voucherType first
   if (voucherType === 'BRAND' || (brands && brands.length > 0)) {
     return VoucherUseCase.BRAND;
   }
@@ -66,7 +66,7 @@ const determineUseCaseFromVoucher = (voucher: Discount, userRole: string): Vouch
   return VoucherUseCase.SHOP;
 };
 
-// Helper function để convert voucher data thành form data
+// English content normalized from the original source text.
 const convertVoucherToFormData = async (voucher: Discount, useCase: VoucherUseCase): Promise<VoucherFormState> => {
   const baseFormData: VoucherFormState = {
     name: voucher.name || '',
@@ -82,8 +82,8 @@ const convertVoucherToFormData = async (voucher: Discount, useCase: VoucherUseCa
     endDate: voucher.endDate,
     isActive: voucher.discountStatus === 'ACTIVE',
     discountApplyType: voucher.discountApplyType,
-    
-    // UI-specific fields - sẽ được populate sau
+
+    // English content normalized from the original source text.
     showOnProductPage: true,
     selectedProducts: [],
     selectedBrands: [],
@@ -97,8 +97,8 @@ const convertVoucherToFormData = async (voucher: Discount, useCase: VoucherUseCa
   };
 
   // TODO: Populate selected items based on useCase
-  // Hiện tại chỉ return basic data, sẽ thêm logic load products/categories/brands/users sau
-  
+  // English content normalized from the original source text.
+
   return baseFormData;
 };
 
@@ -117,20 +117,20 @@ export interface UseEditVoucherReturn {
   errors: Record<string, string>;
   useCase: VoucherUseCase;
   voucherType: string;
-  isEdit: boolean; // Thêm flag để components biết đây là mode edit
+  isEdit: boolean; // English content normalized from the original source text.
 }
 
 export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVoucherProps): UseEditVoucherReturn {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
-  // Xác định useCase từ voucher data
+
+  // English content normalized from the original source text.
   const useCase = determineUseCaseFromVoucher(voucher, userData?.role?.name || 'SELLER');
   const voucherType = voucher.voucherType;
 
-  // Convert voucher data to form data - sẽ được update sau khi load xong
+  // English content normalized from the original source text.
   const [formData, setFormData] = useState<VoucherFormState>(() => {
-    // Tạo initial form data đồng bộ trước
+    // English content normalized from the original source text.
     const baseFormData: VoucherFormState = {
       name: voucher.name || '',
       code: voucher.code || '',
@@ -145,7 +145,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       endDate: voucher.endDate,
       isActive: voucher.discountStatus === 'ACTIVE',
       discountApplyType: voucher.discountApplyType,
-      
+
       // UI-specific fields
       showOnProductPage: true,
       selectedProducts: [],
@@ -161,7 +161,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     return baseFormData;
   });
 
-  // Load additional data và populate selected items
+  // English content normalized from the original source text.
   useEffect(() => {
     const loadAdditionalData = async () => {
       try {
@@ -175,7 +175,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     loadAdditionalData();
   }, [voucher, useCase]);
 
-  // Log để debug
+  // English content normalized from the original source text.
   useEffect(() => {
     console.log('useEditVoucher initialized:', {
       voucher,
@@ -186,35 +186,35 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     });
   }, [voucher, useCase, voucherType, userData]);
 
-  // Helper function để xử lý API error messages
+  // English content normalized from the original source text.
   const parseErrorMessage = (error: any): string => {
-    const defaultMessage = 'Đã xảy ra lỗi khi cập nhật voucher. Vui lòng thử lại.';
-    
+    const defaultMessage = 'English content normalized from the original source text.';
+
     if (!error?.response?.data?.message) {
       return error?.message || defaultMessage;
     }
 
     const apiMessage = error.response.data.message;
-    
-    // Kiểm tra nếu message là array (validation errors từ backend)
+
+    // English content normalized from the original source text.
     if (Array.isArray(apiMessage)) {
       const validationErrors = apiMessage
         .map(err => err.message || err)
         .filter(Boolean)
         .join('. ');
-      
+
       return validationErrors || defaultMessage;
     }
-    
-    // Nếu message là string thông thường
+
+    // English content normalized from the original source text.
     if (typeof apiMessage === 'string') {
       return apiMessage;
     }
-    
+
     return defaultMessage;
   };
 
-  // Cập nhật form data
+  // English content normalized from the original source text.
   const updateFormData = (field: keyof VoucherFormState, value: any) => {
     setFormData(prev => {
       const newFormData = {
@@ -222,7 +222,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
         [field]: value
       };
 
-      // Khi người dùng chọn áp dụng cho tất cả sản phẩm, xóa danh sách sản phẩm đã chọn
+      // English content normalized from the original source text.
       if (field === 'discountApplyType' && value === 'ALL') {
         newFormData.selectedProducts = [];
       }
@@ -230,7 +230,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       return newFormData;
     });
 
-    // Clear error khi user nhập lại
+    // English content normalized from the original source text.
     if (errors[field]) {
       setErrors(prev => {
         const newErrors = { ...prev };
@@ -240,7 +240,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     }
   };
 
-  // Reset form về trạng thái ban đầu
+  // English content normalized from the original source text.
   const resetForm = () => {
     const baseFormData: VoucherFormState = {
       name: voucher.name || '',
@@ -256,7 +256,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       endDate: voucher.endDate,
       isActive: voucher.discountStatus === 'ACTIVE',
       discountApplyType: voucher.discountApplyType,
-      
+
       // UI-specific fields
       showOnProductPage: true,
       selectedProducts: [],
@@ -276,70 +276,70 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
   // Validate form
   const validateForm = (): boolean => {
     if (!formData.name?.trim()) {
-      toast.error('Tên chương trình giảm giá là bắt buộc');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (!formData.code?.trim()) {
-      toast.error('Mã voucher là bắt buộc');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
-    // Validate mã voucher format
+    // English content normalized from the original source text.
     const codePattern = /^[A-Z0-9_-]+$/;
     if (formData.code && !codePattern.test(formData.code)) {
-      toast.error('Mã voucher chỉ được chứa chữ hoa, số, dấu gạch dưới (_) và dấu gạch ngang (-)');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (!formData.startDate) {
-      toast.error('Ngày bắt đầu là bắt buộc');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (!formData.endDate) {
-      toast.error('Ngày kết thúc là bắt buộc');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (formData.startDate && formData.endDate && new Date(formData.startDate) >= new Date(formData.endDate)) {
-      toast.error('Ngày kết thúc phải sau ngày bắt đầu');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (formData.value <= 0) {
-      toast.error('Giá trị giảm giá phải lớn hơn 0');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (formData.discountType === 'PERCENTAGE' && formData.value > 100) {
-      toast.error('Phần trăm giảm giá không được vượt quá 100%');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if ((formData.minOrderValue ?? 0) < 0) {
-      toast.error('Giá trị đơn hàng tối thiểu không được âm');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (formData.maxUses < 1) {
-      toast.error('Số lượt sử dụng tối đa phải ít nhất là 1');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
     if (formData.maxUsesPerUser < 1) {
-      toast.error('Số lượt sử dụng tối đa mỗi người phải ít nhất là 1');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
-    // Validation: maxUsesPerUser không được vượt quá maxUses
+    // English content normalized from the original source text.
     if (formData.maxUsesPerUser > formData.maxUses) {
-      toast.error('Số lượt sử dụng tối đa mỗi người không được vượt quá tổng số lượt sử dụng');
+      toast.error('English content normalized from the original source text.');
       return false;
     }
 
-    // Các validation khác tương tự như useNewVoucher...
-    
+    // English content normalized from the original source text.
+
     return true;
   };
 
@@ -349,18 +349,18 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       return;
     }
 
-    // Kiểm tra có userData không
+    // English content normalized from the original source text.
     if (!userData) {
-      toast.error('Không tìm thấy thông tin người dùng');
+      toast.error('English content normalized from the original source text.');
       return;
     }
 
     setIsLoading(true);
     try {
-      // Chuẩn bị data để update
+      // English content normalized from the original source text.
       const updateData: Partial<UpdateDiscountRequest> = {
         name: formData.name,
-        code: formData.code, // Thêm mã voucher vào request body
+        code: formData.code, // English content normalized from the original source text.
         description: formData.description,
         value: formData.value,
         minOrderValue: formData.minOrderValue,
@@ -372,11 +372,11 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
         discountApplyType: formData.discountApplyType,
         discountStatus: formData.isActive ? DiscountStatus.ACTIVE : DiscountStatus.INACTIVE,
         displayType: formData.displayType as DisplayType,
-        voucherType: voucher.voucherType, // Giữ nguyên voucherType từ response
-        shopId: voucher.shopId, // Giữ nguyên shopId từ response (nếu có)
+        voucherType: voucher.voucherType, // English content normalized from the original source text.
+        shopId: voucher.shopId, // English content normalized from the original source text.
       };
 
-      // Thêm fields specific cho từng useCase
+      // English content normalized from the original source text.
       switch (useCase) {
         case VoucherUseCase.PRODUCT:
         case VoucherUseCase.PRODUCT_ADMIN:
@@ -404,10 +404,10 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       console.log('Updating voucher with data:', updateData);
 
       await discountService.update(voucher.id, updateData);
-      
-      toast.success('Cập nhật voucher thành công!');
+
+      toast.success('English content normalized from the original source text.');
       onEditSuccess?.();
-      
+
     } catch (error: any) {
       console.error('Error updating voucher:', error);
       const errorMessage = parseErrorMessage(error);
@@ -416,7 +416,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       setIsLoading(false);
     }
   };
-  
+
   return {
     formData,
     updateFormData,
@@ -426,6 +426,6 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     errors,
     useCase,
     voucherType: voucherType.toString(),
-    isEdit: true, // Đây là mode edit
+    isEdit: true, // English content normalized from the original source text.
   };
 }

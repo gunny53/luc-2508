@@ -15,7 +15,7 @@ export default function MobileBottomNav() {
         {sidebarItems
           .filter(
             (item) =>
-              !item.target && // bỏ chính sách (target="_blank") khỏi nav
+              !item.target && // English content normalized from the original source text.
               item.href !== "/policy"
           )
           .map((item) => {

@@ -6,19 +6,19 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: DELETE /roles/:roleId
+English content normalized from the original source text.
 
 start
-:Nhận id + user;
+:English content normalized from the original source text;
 :verifyRole(id) (base role protection);
-if (Base role?) then (Có)
-  :Ném 403;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
   stop
 endif
 :Soft delete role (deletedAt, deletedById);
-:Xóa cache key `role:${id}`;
+:English content normalized from the original source text;
 :Build message i18n;
-:Trả về 200 { message };
+:English content normalized from the original source text;
 stop
 
 @enduml

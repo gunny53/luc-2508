@@ -31,14 +31,14 @@ import { useTranslations } from 'next-intl'
 export function Verify2FAForm({ className, ...props }: React.ComponentPropsWithoutRef<'form'>) {
   const router = useRouter()
   const t = useTranslations()
-  const { 
-    loading, 
-    handleVerifyCode, 
-    handleResendOTP, 
-    type, 
-    switchToRecovery, 
-    switchToTOTP, 
-    schema 
+  const {
+    loading,
+    handleVerifyCode,
+    handleResendOTP,
+    type,
+    switchToRecovery,
+    switchToTOTP,
+    schema
   } = useVerify2FA()
 
   const form = useForm<z.infer<typeof schema>>({
@@ -51,19 +51,19 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
     form.reset({ otp: '' })
   }, [type])
 
-  // Khi nhập đủ ký tự thì tự động submit
+  // English content normalized from the original source text.
   const handleOTPChange = (value: string) => {
     if (type === 'RECOVERY') {
-      // Chỉ lấy các ký tự nhập vào, bỏ qua dấu gạch ngang
+      // English content normalized from the original source text.
       const cleanValue = value.replace(/-/g, '');
-      // Chỉ lấy 10 ký tự đầu tiên
+      // English content normalized from the original source text.
       const firstPart = cleanValue.slice(0, 5);
       const secondPart = cleanValue.slice(5, 10);
-      // Tạo giá trị cuối cùng với dấu gạch ngang ở giữa
+      // English content normalized from the original source text.
       const processedValue = `${firstPart}-${secondPart}`;
       // console.log('Processed value:', processedValue);
       form.setValue('otp', processedValue, { shouldValidate: true });
-      
+
       if (cleanValue.length === 10) {
         form.handleSubmit(handleVerifyCode)();
       }
@@ -73,8 +73,8 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
         form.handleSubmit(handleVerifyCode)();
       }
     }
-  }  // Không tự động gửi OTP khi component mount
-  // Chỉ gửi khi người dùng chủ động yêu cầu thông qua nút "Resend OTP"
+  }  // English content normalized from the original source text.
+  // English content normalized from the original source text.
 
   const renderTitle = () => {
     switch (type) {
@@ -98,12 +98,12 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
     }
   }
   const renderSwitchMethod = () => {
-    // OTP là phương thức xác thực tách biệt, không có chuyển đổi giữa OTP và TOTP/RECOVERY
+    // English content normalized from the original source text.
     if (type === 'OTP') {
-      return null // Không hiển thị nút chuyển đổi khi đang ở chế độ OTP
+      return null // English content normalized from the original source text.
     }
 
-    // Chỉ cho phép chuyển đổi giữa TOTP và RECOVERY
+    // English content normalized from the original source text.
     return (
       <AnimatedFormItem>
         <div className="text-center text-sm">
@@ -128,7 +128,7 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
         {...props}
       >
         <AnimatedForm>
-          {/* Tiêu đề */}
+          {/* English content normalized from the original source text. */}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">
@@ -149,9 +149,9 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
                 <FormItem className="flex flex-col items-center">
                   <FormLabel>{t('auth.2faVerify.enterVerrifyCode')}</FormLabel>
                   <FormControl>
-                    <InputOTP 
+                    <InputOTP
                       maxLength={type === 'RECOVERY' ? 10 : 6}
-                      {...field} 
+                      {...field}
                       onChange={handleOTPChange}
                       className="gap-2"
                       pattern={type === 'RECOVERY' ? '[A-Za-z0-9]*' : '[0-9]*'}
@@ -186,10 +186,10 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
             />
           </AnimatedFormItem>
 
-          {/* Nút chuyển đổi phương thức xác minh */}
+          {/* English content normalized from the original source text. */}
           {renderSwitchMethod()}
 
-          {/* Link resend (chỉ hiển thị khi type là OTP) */}
+          {/* English content normalized from the original source text. */}
           {type === 'OTP' && (
             <AnimatedFormItem>
               <div className="text-center text-sm">

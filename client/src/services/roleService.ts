@@ -25,7 +25,7 @@ export const roleService = {
     }
   },
 
-  // Lấy chi tiết ROLES theo ID
+  // English content normalized from the original source text.
   getById: async (id: string): Promise<RoleGetByIdResponse> => {
     try {
       const url = API_ENDPOINTS.ROLES.GETBYID.replace(":id", id);
@@ -36,7 +36,7 @@ export const roleService = {
     }
   },
 
-  // Tạo ROLES mới
+  // English content normalized from the original source text.
   create: async (data: RoleCreateRequest): Promise<RoleCreateResponse> => {
     try {
       const response = await privateAxios.post(API_ENDPOINTS.ROLES.POST, data);
@@ -46,7 +46,7 @@ export const roleService = {
     }
   },
 
-  // Thêm quyền cho ROLE
+  // English content normalized from the original source text.
   // assignPermissions: async (
   //   id: string,
   //   data: RoleAssignPermissionRequest
@@ -60,7 +60,7 @@ export const roleService = {
   //   }
   // },
 
-  // Cập nhật ROLES theo ID
+  // English content normalized from the original source text.
   update: async (
     id: string,
     data: RoleUpdateRequest
@@ -74,7 +74,7 @@ export const roleService = {
     }
   },
 
-  // Xoá ROLES theo ID
+  // English content normalized from the original source text.
   delete: async (id: string): Promise<RoleDeleteResponse> => {
     try {
       const url = API_ENDPOINTS.ROLES.DELETE_BY_ID.replace(":id", id);

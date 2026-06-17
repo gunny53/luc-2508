@@ -6,26 +6,26 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-title Hoạt Động: DELETE /manage-product/products/:productId
+English content normalized from the original source text.
 
 start
-:Xác thực AccessToken và tải user context;
-:Nhận productId;
-:Tìm product theo ID;
-if (Product tồn tại?) then (Có)
-  :Kiểm tra quyền: user.userId == createdById hoặc roleName == Admin?;
-  if (Hợp lệ?) then (Có)
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+:English content normalized from the original source text;
+if (condition?) then (Yes)
+  :English content normalized from the original source text;
+  if (condition?) then (Yes)
     :Soft delete product (deletedAt, deletedById);
-    :Soft delete productTranslations liên quan;
-    :Soft delete SKUs liên quan;
+    :English content normalized from the original source text;
+    :English content normalized from the original source text;
     :enqueue addSyncProductJob(productId, 'delete');
     :Build message i18n;
-    :Trả về 200 { message };
-  else (Không)
-    :Ném ForbiddenException;
+    :English content normalized from the original source text;
+  else (No)
+    :English content normalized from the original source text;
   endif
-else (Không)
-  :Ném NotFoundRecordException;
+else (No)
+  :English content normalized from the original source text;
 endif
 stop
 

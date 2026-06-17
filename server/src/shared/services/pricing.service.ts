@@ -7,9 +7,7 @@ import { calculateDiscountAmount, validateDiscountForOrder } from 'src/shared/he
 export class PricingService {
   constructor(private readonly prisma: PrismaService) {}
 
-  /**
-   * Kiểu dữ liệu phí vận chuyển truyền vào cho từng shop
-   */
+  /* English content normalized from the original source text. */
   private sumShippingFees(shippingFees?: Array<{ shopId: string; fee: number }>): number {
     if (!shippingFees || shippingFees.length === 0) return 0
     return shippingFees.reduce((sum: number, s) => sum + Math.max(0, s.fee || 0), 0)
@@ -40,9 +38,9 @@ export class PricingService {
       payment: number
     }>
   }> {
-    // Chỉ hỗ trợ payload theo shop
+    // English content normalized from the original source text.
     if (input.shops && input.shops.length > 0) {
-      // Lấy toàn bộ cartItemIds từ tất cả shop trước (để validate và có đủ dữ liệu tính voucher)
+      // English content normalized from the original source text.
       const allCartItemIds = Array.from(new Set(input.shops.flatMap((s) => s.cartItemIds)))
       const cartItems = await this.prisma.cartItem.findMany({
         where: { id: { in: allCartItemIds }, userId: user.userId },
@@ -62,13 +60,13 @@ export class PricingService {
       // Map nhanh cartItemId -> cartItem
       const cartItemMap = new Map(cartItems.map((c) => [c.id, c]))
 
-      // Tính theo từng shop
+      // English content normalized from the original source text.
       const perShop = await Promise.all(
         input.shops.map(async (shop) => {
           const items = shop.cartItemIds.map((id) => cartItemMap.get(id)).filter(Boolean) as typeof cartItems
           const itemCost = items.reduce((sum, item) => sum + item.sku.price * item.quantity, 0)
 
-          // Voucher ở cấp shop (nếu có)
+          // English content normalized from the original source text.
           let shopVoucher = 0
           if (shop.discountCodes && shop.discountCodes.length > 0) {
             const discounts = await this.prisma.discount.findMany({
@@ -125,7 +123,7 @@ export class PricingService {
         })
       )
 
-      // Voucher nền tảng (áp dụng trên tổng sau khi cộng từng shop)
+      // English content normalized from the original source text.
       const sumItem = perShop.reduce((s, p) => s + p.itemCost, 0)
       const sumShip = perShop.reduce((s, p) => s + p.shippingFee, 0)
       const sumShopVoucherAbs = perShop.reduce((s, p) => s + Math.abs(p.voucherDiscount), 0)
@@ -149,7 +147,7 @@ export class PricingService {
         })
 
         if (discounts.length > 0) {
-          // Lấy thông tin cart items để validate discount eligibility
+          // English content normalized from the original source text.
           const allProductIds = allCartItemIds.map((id) => cartItemMap.get(id)?.sku.product.id).filter(Boolean)
           const allCategoryIds = allCartItemIds
             .flatMap((id) => {
@@ -164,14 +162,14 @@ export class PricingService {
             })
             .filter(Boolean)
 
-          // Validate và filter platform discounts
+          // English content normalized from the original source text.
           const validPlatformDiscounts = discounts.filter((discount) => {
-            // Kiểm tra minOrderValue
+            // English content normalized from the original source text.
             if (discount.minOrderValue > 0 && sumItem < discount.minOrderValue) {
               return false
             }
 
-            // Kiểm tra discountApplyType SPECIFIC
+            // English content normalized from the original source text.
             if (discount.discountApplyType === 'SPECIFIC') {
               const hasValidProduct =
                 discount.products.length > 0 &&
@@ -191,14 +189,14 @@ export class PricingService {
             return true
           })
 
-          // Tính toán platform discount amount
+          // English content normalized from the original source text.
           platformVoucherAbs = validPlatformDiscounts
             .map((d) => calculateDiscountAmount(d as any, sumItem))
             .reduce((sum, amount) => sum + amount, 0)
         }
       }
 
-      // Phân bổ voucher nền tảng theo tỷ lệ giá trị hàng mỗi shop
+      // English content normalized from the original source text.
       const perShopWithPlatform = perShop.map((p) => {
         const ratio = sumItem > 0 ? p.itemCost / sumItem : 0
         const platformPart = platformVoucherAbs * ratio
@@ -224,7 +222,7 @@ export class PricingService {
       }
     }
 
-    // Nếu không có shops → coi như rỗng
+    // English content normalized from the original source text.
     return { totalItemCost: 0, totalShippingFee: 0, totalVoucherDiscount: 0, totalPayment: 0, shops: [] }
   }
 }

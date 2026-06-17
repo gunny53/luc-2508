@@ -29,14 +29,14 @@ export function useVerify2FA() {
 
   const role = userData?.role.name;
   const t = useTranslations()
-  
-  // Khóa lưu trữ trạng thái thiết bị trong session storage
-  // Được cập nhật từ kết quả API sau khi xác thực thành công
+
+  // English content normalized from the original source text.
+  // English content normalized from the original source text.
   const recovery = recoveryCodeSchema(t)
   const otp = otpSchema(t)
 
-  
-  // HÀM XỬ LÝ GỬI LẠI OTP
+
+  // English content normalized from the original source text.
   const handleResendOTP = async () => {
     try {
       setLoading(true)
@@ -50,7 +50,7 @@ export function useVerify2FA() {
       setLoading(false)
     }
   }
-  // HÀM XỬ LÝ XÁC THỰC 2FA TOTP/RECOVERY
+  // English content normalized from the original source text.
   const handleVerify2FA = async (data: { otp: string }) => {
     try {
       setLoading(true);
@@ -66,7 +66,7 @@ export function useVerify2FA() {
         otp.parse(data);
         method = 'TOTP';
       } else {
-        // Trường hợp không mong muốn, nhưng để an toàn
+        // English content normalized from the original source text.
         throw new Error('Invalid 2FA method type.');
       }
 
@@ -79,7 +79,7 @@ export function useVerify2FA() {
         showToast(response.message || t('auth.2faVerify.verificationSuccess'), 'success');
 
 
-        // LUỒNG ĐỔI MẬT KHẨU
+        // English content normalized from the original source text.
         if (isChangePasswordFlow && isRevokeAllFlow && role === 'Admin' || role === 'Super Admin') {
           router.push(ROUTES.ADMIN.DASHBOARD);
           return;
@@ -87,7 +87,7 @@ export function useVerify2FA() {
           router.push(ROUTES.HOME);
         }
 
-        // LUỒNG XÁC THỰC 2FA ĐỂ ĐĂNG NHẬP
+        // English content normalized from the original source text.
         const isDeviceTrusted = response.data.isDeviceTrustedInSession;
         sessionStorage.setItem(TRUST_DEVICE_KEY, String(isDeviceTrusted));
         await fetchProfile();
@@ -111,18 +111,18 @@ export function useVerify2FA() {
     }
   };
 
-  // HÀM XỬ LÝ XÁC THỰC OTP
+  // English content normalized from the original source text.
   const handleVerifyOTP = async (data: { otp:string }) => {
     try {
       setLoading(true);
       otp.parse(data);
-      
+
       const response = await authService.verifyOTP({
         code: data.otp
       }) as VerifyOTPResponse;
 
 
-      // LUỒNG ĐỔI MẬT KHẨU
+      // English content normalized from the original source text.
       if (isChangePasswordFlow && isRevokeAllFlow && role === 'Admin' || role === 'Super Admin') {
         showToast(response.message || t('auth.2faVerify.otpVerificationSuccess'), 'success');
         router.push(ROUTES.ADMIN.DASHBOARD);
@@ -135,7 +135,7 @@ export function useVerify2FA() {
       if (response.status === 201 && response.data) {
         showToast(response.message || t('auth.2faVerify.otpVerificationSuccess'), 'success');
 
-        // LUỒNG XÁC THỰC OTP ĐỂ ĐĂNG NHẬP
+        // English content normalized from the original source text.
         const isDeviceTrusted = response.data.isDeviceTrustedInSession;
         sessionStorage.setItem(TRUST_DEVICE_KEY, String(isDeviceTrusted));
         await fetchProfile();
@@ -158,17 +158,17 @@ export function useVerify2FA() {
       setLoading(false);
     }
   };
-  // HÀM XỬ LÝ CHUYỂN ĐỔI GIỮA TOTP VÀ RECOVERY
+  // English content normalized from the original source text.
   const switchToRecovery = () => {
     router.replace(`?type=RECOVERY`)
   }
-  
+
   const switchToTOTP = () => {
     router.replace(`?type=TOTP`)
   }
-  
-  // OTP là phương thức xác thực tách biệt hoàn toàn
-  // Không có chức năng chuyển đổi giữa OTP và TOTP/RECOVERY  // Chọn handler phù hợp dựa trên type hiện tại
+
+  // English content normalized from the original source text.
+  // English content normalized from the original source text.
   const handleVerifyCode = (data: { otp: string }) => {
     if (type === 'OTP') {
       return handleVerifyOTP(data);
@@ -177,15 +177,15 @@ export function useVerify2FA() {
     }
   };
 
-  return { 
-    loading, 
-    handleVerifyCode, 
+  return {
+    loading,
+    handleVerifyCode,
     handleVerifyOTP,
     handleVerify2FA,
     handleResendOTP,
-    type, 
+    type,
     switchToRecovery,
     switchToTOTP,
-    schema: type === 'RECOVERY' ? recovery : otp 
+    schema: type === 'RECOVERY' ? recovery : otp
   }
 }

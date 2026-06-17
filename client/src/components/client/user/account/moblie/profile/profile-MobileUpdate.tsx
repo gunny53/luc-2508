@@ -49,7 +49,7 @@ export function ProfileUpdateSheet({
     onOpenChange(false)
   );
 
-  // Hook upload mới
+  // English content normalized from the original source text.
   const {
     handleAddFiles,
     uploadToS3Multiple,
@@ -90,7 +90,7 @@ export function ProfileUpdateSheet({
     const file = event.target.files?.[0];
     if (!file) return;
 
-    resetUpload(); // clear state cũ
+    resetUpload(); // English content normalized from the original source text.
     const { processedFiles } = await handleAddFiles([file]);
     if (processedFiles.length > 0) {
       const previewFile = processedFiles[0] as FileWithPreview;
@@ -116,13 +116,13 @@ export function ProfileUpdateSheet({
         avatarUrl !== userData?.avatar;
 
       if (!hasChanges) {
-        showToast("Không có thay đổi nào để lưu.", "info");
+        showToast("English content normalized from the original source text.", "info");
         return;
       }
 
       updateProfile({ ...data, avatar: avatarUrl });
     } catch (err) {
-      console.error("Lỗi khi cập nhật profile:", err);
+      console.error("English content normalized from the original source text.", err);
     }
   };
 

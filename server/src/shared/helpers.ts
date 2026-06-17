@@ -61,10 +61,7 @@ export function calculateDiscountAmount(discount: any, orderTotal: number): numb
   }
   return Math.min(discountAmount, orderTotal)
 }
-/**
- * Lấy ngày hiện tại theo múi giờ GMT+7
- * @returns Ngày theo định dạng yyyyMMddHHmmss
- */
+/* English content normalized from the original source text. */
 export const getDateInGMT7 = (): number => {
   const now = new Date()
   const gmt7Offset = 7 * 60 // GMT+7 in minutes
@@ -91,17 +88,17 @@ export function validateDiscountForOrder(
   brandIds: string[],
   userUsageCount: number = 0
 ): boolean {
-  // Kiểm tra minOrderValue
+  // English content normalized from the original source text.
   if (discount.minOrderValue > 0 && orderTotal < discount.minOrderValue) {
     return false
   }
 
-  // Kiểm tra maxUsesPerUser
+  // English content normalized from the original source text.
   if (discount.maxUsesPerUser > 0 && userUsageCount >= discount.maxUsesPerUser) {
     return false
   }
 
-  // Kiểm tra discountApplyType SPECIFIC
+  // English content normalized from the original source text.
   if (discount.discountApplyType === 'SPECIFIC') {
     const hasValidProduct =
       discount.products.length > 0 && productIds.some((productId) => discount.products.some((p) => p.id === productId))
@@ -148,7 +145,7 @@ export function normalizePhoneForGHN(phone: string | null | undefined): string {
   const e164Vietnam: boolean = trimmed.startsWith('+84')
   const raw: string = e164Vietnam ? `0${trimmed.slice(3)}` : trimmed
   const digitsOnly: string = raw.replace(/\D/g, '')
-  // Yêu cầu: 10 số, đầu số di động VN hợp lệ: 03x, 056/058/059, 07x, 08x, 09x
+  // English content normalized from the original source text.
   const isValidMobileVN: boolean = /^0(3\d|56|58|59|7\d|8\d|9\d)\d{7}$/.test(digitsOnly)
   if (!isValidMobileVN) return ''
   return digitsOnly

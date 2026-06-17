@@ -15,7 +15,7 @@ export const useCheckout = () => {
   const context = useContext(CheckoutContext);
   const router = useRouter();
   const dispatch = useDispatch();
-  
+
   // 1. Get data from Redux
   const shopOrders = useSelector(selectShopOrders);
   const shopProducts = useSelector(selectShopProducts);
@@ -24,7 +24,7 @@ export const useCheckout = () => {
   const commonInfo = useSelector(selectCommonOrderInfo);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   if (context === undefined) {
     throw new Error('useCheckout must be used within a CheckoutProvider');
   }
@@ -55,19 +55,19 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
 
   // Validate receiver info from commonInfo
   if (!commonInfo.receiver?.name || !commonInfo.receiver?.phone || !commonInfo.receiver?.address) {
-    toast.error('Vui lòng điền đầy đủ thông tin người nhận.');
+    toast.error('English content normalized from the original source text.');
     return;
   }
 
   // Validate payment method
   if (!context.state.paymentMethod) {
-    toast.error('Vui lòng chọn phương thức thanh toán.');
+    toast.error('English content normalized from the original source text.');
     return;
   }
 
   // Check if we have orders from Redux
   if (!shopOrders || shopOrders.length === 0) {
-    toast.error('Không có sản phẩm nào để đặt hàng.');
+    toast.error('English content normalized from the original source text.');
     return;
   }    // Get the correct payment gateway ID from the selected payment method
     const getPaymentGatewayId = (paymentMethod: string): string => {
@@ -113,7 +113,7 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
               wardCode: commonInfo.receiver!.wardCode
             },
             cartItemIds: order.cartItemIds,
-            discountCodes: shopDiscountCodes, // Riêng biệt cho từng shop
+            discountCodes: shopDiscountCodes, // English content normalized from the original source text.
             shippingInfo: {
               length: SHIPPING_CONFIG.DEFAULT_PACKAGE.length,
               weight: SHIPPING_CONFIG.DEFAULT_PACKAGE.weight,
@@ -129,7 +129,7 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
         platformDiscountCodes: platformDiscountCodes
       };
 
-      // Console log để kiểm tra data trước khi gọi API
+      // English content normalized from the original source text.
       console.log('📦 Order Payload Data:', {
         paymentMethod: context.state.paymentMethod,
         paymentGateway: selectedPaymentGateway,
@@ -145,10 +145,10 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
 
       // Handle different payment methods
       if (selectedPaymentGateway === 'sepay') {
-        toast.success('Đơn hàng đã được tạo! Vui lòng quét mã QR để thanh toán.');
-        
-        const orderId = orderData.orders && orderData.orders.length > 0 
-          ? orderData.orders[0].id 
+        toast.success('English content normalized from the original source text.');
+
+        const orderId = orderData.orders && orderData.orders.length > 0
+          ? orderData.orders[0].id
           : undefined;
         const result = {
           success: true,
@@ -161,23 +161,23 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
       } else if (selectedPaymentGateway === 'vnpay') {
         try {
           const vnPayResponse = await orderService.createPaymentVnPayUrl({
-            amount: commonInfo.amount, // Lấy amount từ Redux state
+            amount: commonInfo.amount, // English content normalized from the original source text.
             orderInfo: `DH${orderData.paymentId}`,
             orderId: orderData.paymentId.toString(),
             locale: 'vn'
           });
-          
-          toast.success('Đang chuyển hướng đến cổng thanh toán VNPay...');
-          const orderId = orderData.orders && orderData.orders.length > 0 
-            ? orderData.orders[0].id 
+
+          toast.success('English content normalized from the original source text.');
+          const orderId = orderData.orders && orderData.orders.length > 0
+            ? orderData.orders[0].id
             : undefined;
-            
+
           const result = {
             success: true,
             paymentMethod: 'vnpay',
             orderData: {
               ...orderData,
-              finalTotal: commonInfo.amount // Lấy amount từ Redux state
+              finalTotal: commonInfo.amount // English content normalized from the original source text.
             },
             orderId: orderId,
             paymentId: orderData.paymentId,
@@ -186,11 +186,11 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
           return result;
         } catch (vnPayError: any) {
           console.error('Failed to generate VNPay URL:', vnPayError);
-          toast.error('Không thể tạo URL thanh toán VNPay. Vui lòng thử lại.');
-          const orderId = orderData.orders && orderData.orders.length > 0 
-            ? orderData.orders[0].id 
+          toast.error('English content normalized from the original source text.');
+          const orderId = orderData.orders && orderData.orders.length > 0
+            ? orderData.orders[0].id
             : undefined;
-            
+
           return {
             success: false,
             paymentMethod: 'vnpay',
@@ -200,16 +200,16 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
           };
         }
       } else if (selectedPaymentGateway === 'COD' || isCodPayment) {
-        // Thanh toán khi nhận hàng (COD)
-        toast.success('Đặt hàng thành công! Bạn sẽ thanh toán khi nhận hàng.');
-        
-        // Clear checkout state sau khi đặt hàng thành công
+        // English content normalized from the original source text.
+        toast.success('English content normalized from the original source text.');
+
+        // English content normalized from the original source text.
         dispatch(clearCheckoutState());
-        
-        const orderId = orderData.orders && orderData.orders.length > 0 
-          ? orderData.orders[0].id 
+
+        const orderId = orderData.orders && orderData.orders.length > 0
+          ? orderData.orders[0].id
           : undefined;
-          
+
         const result = {
           success: true,
           paymentMethod: 'COD',
@@ -217,17 +217,17 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
           orderId: orderId,
           paymentId: orderData.paymentId
         };
-        
+
         console.log('✅ COD Payment Result:', result);
         return result;
       } else {
-        // Các phương thức thanh toán khác
-        toast.success('Đặt hàng thành công!');
+        // English content normalized from the original source text.
+        toast.success('English content normalized from the original source text.');
         router.push(`/checkout/success?orderId=${orderData.orders[0].id}`); // Navigate to success page with the first order's ID if available
-        const orderId = orderData.orders && orderData.orders.length > 0 
-          ? orderData.orders[0].id 
+        const orderId = orderData.orders && orderData.orders.length > 0
+          ? orderData.orders[0].id
           : undefined;
-          
+
         const result = {
           success: true,
           paymentMethod: selectedPaymentGateway,
@@ -235,17 +235,17 @@ const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResu
           orderId: orderId,
           paymentId: orderData.paymentId
         };
-        
+
         console.log('✅ Other Payment Result:', result);
         return result;
       }
 
     } catch (error: any) {
       console.error('Failed to create order:', error);
-      toast.error(error.response?.data?.message || 'Đã có lỗi xảy ra khi đặt hàng.');
+      toast.error(error.response?.data?.message || 'English content normalized from the original source text.');
       return {
         success: false,
-        error: error.response?.data?.message || 'Đã có lỗi xảy ra khi đặt hàng.'
+        error: error.response?.data?.message || 'English content normalized from the original source text.'
       };
     } finally {
       setIsSubmitting(false);

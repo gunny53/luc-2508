@@ -28,14 +28,14 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
     }`}
     onClick={() => onSelect(voucher)}
   >
-    {/* Icon bên trái */}
+    {/* English content normalized from the original source text. */}
     <div className="w-12 h-12 mr-4 flex-shrink-0">
       <div className="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
         <Ticket className="w-6 h-6 text-gray-500" />
       </div>
     </div>
-  
-    {/* Nội dung voucher */}
+
+    {/* English content normalized from the original source text. */}
     <div className="flex-grow space-y-1">
       <div className="flex items-center justify-between">
         <h4 className="font-semibold text-sm text-gray-800">{voucher.name}</h4>
@@ -43,17 +43,17 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
           {voucher.code}
         </span>
       </div>
-  
+
       {voucher.description && (
         <p className="text-xs text-gray-600">{voucher.description}</p>
       )}
-  
+
       {/* Discount Value Display */}
       <div className="mb-2">
         <span className="inline-block px-2 py-1 bg-red-100 text-red-600 text-xs font-semibold rounded">
-          {voucher.discountType === 'PERCENTAGE' 
-            ? `Giảm ${voucher.value}%${voucher.maxDiscountValue ? ` (tối đa ${voucher.maxDiscountValue.toLocaleString('vi-VN')}₫)` : ''}` 
-            : `Giảm ${voucher.value.toLocaleString('vi-VN')}₫`
+          {voucher.discountType === 'PERCENTAGE'
+            ? `English content normalized from the original source text.${voucher.value}%${voucher.maxDiscountValue ? ` English content normalized from the original source text.{voucher.maxDiscountValue.toLocaleString('vi-VN')}₫)` : ''}`
+            : `English content normalized from the original source text.${voucher.value.toLocaleString('vi-VN')}₫`
           }
         </span>
       </div>
@@ -67,7 +67,7 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
         </span>
         {voucher.minOrderValue && (
           <span className="text-gray-500">
-            Đơn tối thiểu:{" "}
+            English content normalized from the original source text.{" "}
             <span className="font-medium text-gray-700">
               {voucher.minOrderValue.toLocaleString("vi-VN")}₫
             </span>
@@ -76,7 +76,7 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
       </div>
     </div>
   </div>
-  
+
   );
 };
 
@@ -89,11 +89,11 @@ interface VoucherModalProps {
   cartItemIds: string[];
 }
 
-const VoucherModal = ({ 
-  isOpen, 
-  onClose, 
-  onApplyVoucher, 
-  shopId, 
+const VoucherModal = ({
+  isOpen,
+  onClose,
+  onApplyVoucher,
+  shopId,
   shopName,
   cartItemIds
 }: VoucherModalProps) => {
@@ -111,7 +111,7 @@ const VoucherModal = ({
         setError(null);
         try {
           if (cartItemIds.length === 0) {
-            setError("Không có sản phẩm nào trong giỏ hàng để áp dụng voucher.");
+            setError("English content normalized from the original source text.");
             setVouchers([]);
             return;
           }
@@ -123,7 +123,7 @@ const VoucherModal = ({
           const response = await discountService.getGuestDiscountList(params);
           setVouchers(response.data || []);
         } catch (err) {
-          setError("Không thể tải danh sách voucher. Vui lòng thử lại.");
+          setError("English content normalized from the original source text.");
           console.error(err);
         } finally {
           setLoading(false);
@@ -140,7 +140,7 @@ const VoucherModal = ({
 
   const handleValidateVoucher = async (code: string) => {
     if (!code) {
-      toast.info("Vui lòng nhập hoặc chọn một mã voucher.");
+      toast.info("English content normalized from the original source text.");
       return;
     }
 
@@ -156,13 +156,13 @@ const VoucherModal = ({
         };
         // Pass both shopId and voucher information back to the parent
         onApplyVoucher(shopId, appliedVoucher);
-        toast.success(`Áp dụng voucher '${appliedVoucher.code}' thành công!`);
+        toast.success(`English content normalized from the original source text.${appliedVoucher.code}English content normalized from the original source text.`);
         onClose();
       } else {
-        toast.error("Mã voucher không hợp lệ hoặc không đủ điều kiện áp dụng.");
+        toast.error("English content normalized from the original source text.");
       }
     } catch (err) {
-      toast.error("Đã có lỗi xảy ra khi xác thực voucher.");
+      toast.error("English content normalized from the original source text.");
       console.error(err);
     } finally {
       setIsValidating(false);
@@ -179,7 +179,7 @@ const VoucherModal = ({
       return (
         <div className="text-center py-10 flex flex-col items-center justify-center h-full">
           <Loader2 className="w-8 h-8 animate-spin text-blue-500 mb-2" />
-          <p className="text-gray-500">Đang tải voucher...</p>
+          <p className="text-gray-500">English content normalized from the original source text.</p>
         </div>
       );
     }
@@ -197,16 +197,16 @@ const VoucherModal = ({
       return (
         <div className="text-center py-10 flex flex-col items-center justify-center h-full">
           <Ticket className="w-8 h-8 text-gray-400 mb-2" />
-          <p className="text-gray-500">Không có voucher nào phù hợp.</p>
+          <p className="text-gray-500">English content normalized from the original source text.</p>
         </div>
       );
     }
 
     return vouchers.map(voucher => (
-      <VoucherCard 
+      <VoucherCard
         key={voucher.id}
         voucher={voucher}
-        onSelect={handleSelectAndSetCode} 
+        onSelect={handleSelectAndSetCode}
         isSelected={selectedVoucher?.id === voucher.id}
       />
     ));
@@ -218,7 +218,7 @@ const VoucherModal = ({
     <DialogHeader className="px-6 pt-6 pb-2 border-b">
       <DialogTitle className="flex items-center gap-2 text-lg font-semibold">
         <Ticket className="w-5 h-5 text-red-500" />
-        <span>Mã giảm giá của {shopName}</span>
+        <span>English content normalized from the original source text. {shopName}</span>
       </DialogTitle>
     </DialogHeader>
 
@@ -226,14 +226,14 @@ const VoucherModal = ({
       <div className="relative flex-1">
         <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
         <Input
-          placeholder="Nhập mã voucher"
+          placeholder="English content normalized from the original source text."
           value={voucherCode}
           onChange={(e) => setVoucherCode(e.target.value)}
           className="pl-9"
         />
       </div>
       <Button size="sm" onClick={() => handleValidateVoucher(voucherCode)} className="min-w-[80px]" disabled={isValidating}>
-        {isValidating ? <Loader2 className="w-4 h-4 animate-spin" /> : "Áp dụng"}
+        {isValidating ? <Loader2 className="w-4 h-4 animate-spin" /> : "English content normalized from the original source text."}
       </Button>
     </div>
 
@@ -246,15 +246,13 @@ const VoucherModal = ({
         variant="outline"
         onClick={onClose}
         className="w-full sm:w-auto"
-      >
-        Hủy
-      </Button>
+      >English content normalized from the original source text.</Button>
       <Button
         onClick={() => handleValidateVoucher(selectedVoucher!.code)}
         className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white"
         disabled={!selectedVoucher || isValidating}
       >
-        {isValidating ? <Loader2 className="w-4 h-4 animate-spin" /> : "Xác nhận"}
+        {isValidating ? <Loader2 className="w-4 h-4 animate-spin" /> : "English content normalized from the original source text."}
       </Button>
     </DialogFooter>
   </DialogContent>
@@ -272,14 +270,12 @@ export function VoucherButton({ shopName, onApplyVoucher, shopId, cartItemIds }:
       <div className="flex items-center justify-between px-4 py-3 text-base">
         <div className="flex items-center gap-4 text-gray-500 text-sm">
           <Ticket className="w-5 h-5 text-red-500" />
-          <span className="text-black">Mã giảm giá của {shopName}</span>
+          <span className="text-black">English content normalized from the original source text. {shopName}</span>
         </div>
-        <button 
+        <button
           onClick={() => setIsModalOpen(true)}
           className="text-blue-600 hover:underline text-base"
-        >
-          Xem thêm voucher
-        </button>
+        >English content normalized from the original source text.</button>
       </div>
 
       <VoucherModal

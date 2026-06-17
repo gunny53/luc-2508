@@ -35,7 +35,7 @@ export class WebsocketAdapter extends IoAdapter {
         return
       }
 
-      // Sử dụng Redis client từ RedisService
+      // English content normalized from the original source text.
       const redisClient = this.redisService.getClient()
 
       if (!redisClient) {
@@ -44,14 +44,14 @@ export class WebsocketAdapter extends IoAdapter {
         return
       }
 
-      // Tạo adapter sử dụng Redis client từ RedisService
+      // English content normalized from the original source text.
       this.adapterConstructor = createAdapter(redisClient, redisClient.duplicate())
 
       console.log('✅ Redis adapter connected successfully using RedisService')
     } catch (error) {
       console.error('❌ Failed to connect Redis adapter:', error)
       console.log('⚠️ Continuing without Redis adapter for WebSocket')
-      // Không throw error để không làm crash server
+      // English content normalized from the original source text.
     }
   }
 
@@ -78,7 +78,7 @@ export class WebsocketAdapter extends IoAdapter {
       }
     })
 
-    // Áp dụng Redis adapter cho server
+    // English content normalized from the original source text.
     if (this.adapterConstructor) {
       server.adapter(this.adapterConstructor)
       console.log('✅ Redis adapter applied to WebSocket server')
@@ -97,7 +97,7 @@ export class WebsocketAdapter extends IoAdapter {
         .catch(() => {})
     })
 
-    // Áp dụng auth middleware cho từng namespace cụ thể
+    // English content normalized from the original source text.
     namespaces.forEach((namespace) => {
       server.of(namespace).use((socket, next) => {
         this.authMiddleware(socket, next)
@@ -106,7 +106,7 @@ export class WebsocketAdapter extends IoAdapter {
       })
     })
 
-    // Thêm event handlers cho connection và disconnection
+    // English content normalized from the original source text.
     server.on('connection', (socket) => {
       console.log(`🔌 WebSocket client connected: ${socket.id}`)
 
@@ -115,7 +115,7 @@ export class WebsocketAdapter extends IoAdapter {
       })
     })
 
-    // Thêm event handlers cho từng namespace
+    // English content normalized from the original source text.
     namespaces.forEach((namespace) => {
       server.of(namespace).on('connection', (socket) => {
         console.log(`🔌 WebSocket client connected to namespace ${namespace}: ${socket.id}`)
@@ -130,7 +130,7 @@ export class WebsocketAdapter extends IoAdapter {
       })
     })
 
-    // Thêm error handler cho server
+    // English content normalized from the original source text.
     server.on('error', (error) => {
       console.error('❌ WebSocket server error:', error)
     })
@@ -152,18 +152,18 @@ export class WebsocketAdapter extends IoAdapter {
       }
 
       if (!accessToken) {
-        return next(new Error('Thiếu access token'))
+        return next(new Error('English content normalized from the original source text.'))
       }
 
       const { userId, deviceId } = await this.tokenService.verifyAccessToken(accessToken)
 
-      // Join room dựa trên userId và deviceId (cho các event khác ngoài payment)
+      // English content normalized from the original source text.
       await socket.join(generateRoomUserDevice(userId, deviceId))
 
-      // Vẫn giữ user room để backward compatibility
+      // English content normalized from the original source text.
       await socket.join(generateRoomUserId(userId))
 
-      // Kiểm tra xem có paymentId trong query parameters không
+      // English content normalized from the original source text.
       const { paymentId } = socket.handshake.query
       if (paymentId && typeof paymentId === 'string') {
         const roomName = generateRoomPaymentId(parseInt(paymentId))

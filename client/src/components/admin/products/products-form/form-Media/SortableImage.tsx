@@ -59,7 +59,7 @@ export const SortableImage: React.FC<SortableImageProps> = ({
       <div {...attributes} {...listeners} className="h-full w-full">
         <Image
           src={src}
-          alt={`Ảnh sản phẩm ${index}`}
+          alt={`English content normalized from the original source text.${index}`}
           className="object-contain w-full h-full"
           width={isMainImage ? 500 : 250}
           height={isMainImage ? 500 : 250}
@@ -82,7 +82,7 @@ export const SortableImage: React.FC<SortableImageProps> = ({
               checked={isSelected}
               onCheckedChange={() => handleToggleSelect(id)}
               className="absolute top-2 left-2 bg-white/80 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
-              aria-label={`Chọn ảnh ${index}`}
+              aria-label={`English content normalized from the original source text.${index}`}
             />
           )}
         </>

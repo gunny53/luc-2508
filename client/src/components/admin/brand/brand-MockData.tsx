@@ -5,10 +5,10 @@
 //     id: 1,
 //     code: "APPLE",
 //     name: "Apple",
-//     description: "Công ty công nghệ đa quốc gia của Mỹ, chuyên thiết kế và phát triển thiết bị điện tử tiêu dùng.",
+// English content normalized from the original source text.
 //     logo: "https://logos-world.net/wp-content/uploads/2020/04/Apple-Logo.png",
 //     website: "https://www.apple.com",
-//     country: "Hoa Kỳ",
+// English content normalized from the original source text.
 //     status: "active",
 //     createdAt: "2024-01-15T08:00:00Z",
 //     updatedAt: "2024-12-01T10:30:00Z"
@@ -17,10 +17,10 @@
 //     id: 2,
 //     code: "SAMSUNG",
 //     name: "Samsung",
-//     description: "Tập đoàn đa quốc gia Hàn Quốc, là một trong những nhà sản xuất điện tử lớn nhất thế giới.",
+// English content normalized from the original source text.
 //     logo: "https://logos-world.net/wp-content/uploads/2020/04/Samsung-Logo.png",
 //     website: "https://www.samsung.com",
-//     country: "Hàn Quốc",
+// English content normalized from the original source text.
 //     status: "active",
 //     createdAt: "2024-01-20T09:15:00Z",
 //     updatedAt: "2024-11-28T14:20:00Z"
@@ -50,7 +50,7 @@
 
 // export const searchBrands = (query: string): Brand[] => {
 //   const lowercaseQuery = query.toLowerCase()
-//   return mockBrandData.filter(brand => 
+//   return mockBrandData.filter(brand =>
 //     brand.name.toLowerCase().includes(lowercaseQuery) ||
 //     brand.code.toLowerCase().includes(lowercaseQuery) ||
 //     brand.description?.toLowerCase().includes(lowercaseQuery) ||

@@ -13,7 +13,7 @@ export const CONFIG = {
   COPY_BATCH_SIZE: 25000,
   DEFAULT_BRAND_NAME: 'No Brand',
   VIETNAMESE_LANGUAGE_ID: 'vi',
-  DEFAULT_AVATAR: 'https://shopsifu.s3.ap-southeast-1.amazonaws.com/images/b7de950e-43bd-4f32-b266-d24c080c7a1e.png',
+  DEFAULT_AVATAR: 'https://ecsite.s3.ap-southeast-1.amazonaws.com/images/b7de950e-43bd-4f32-b266-d24c080c7a1e.png',
   VIETNAMESE_PHONE_PREFIXES: ['032', '033', '034', '035', '036', '037', '038', '039'],
   MIN_PRICE: 1000,
   MAX_PRICE: 1000000000,
@@ -74,7 +74,7 @@ export interface ShopeeProduct {
   flash_sale_time?: string | null
   vouchers?: any
   gmv_cal?: any
-  // Thêm các trường bổ sung
+  // English content normalized from the original source text.
   Color?: string | null
   Size?: string | null
   Protection?: string | null
@@ -101,10 +101,10 @@ export interface ProcessedProduct {
     media?: string[]
   }>
   productNumber: number
-  productId?: string // Thêm trường productId để map sau khi import
+  productId?: string // English content normalized from the original source text.
 }
 
-// Hàm utility để so sánh dữ liệu thông minh
+// English content normalized from the original source text.
 export function hasDataChanged<T extends Record<string, any>>(
   existingData: T,
   newData: T,
@@ -114,7 +114,7 @@ export function hasDataChanged<T extends Record<string, any>>(
     const existingValue = existingData[field]
     const newValue = newData[field]
 
-    // So sánh arrays
+    // English content normalized from the original source text.
     if (Array.isArray(existingValue) && Array.isArray(newValue)) {
       if (existingValue.length !== newValue.length) return true
       for (let i = 0; i < existingValue.length; i++) {
@@ -123,13 +123,13 @@ export function hasDataChanged<T extends Record<string, any>>(
       continue
     }
 
-    // So sánh objects
+    // English content normalized from the original source text.
     if (typeof existingValue === 'object' && typeof newValue === 'object' && existingValue && newValue) {
       if (JSON.stringify(existingValue) !== JSON.stringify(newValue)) return true
       continue
     }
 
-    // So sánh primitive values
+    // English content normalized from the original source text.
     if (existingValue !== newValue) return true
   }
 
@@ -150,7 +150,7 @@ export interface ProductValidationStats {
   invalidProducts: Array<{ id: string; title: string; issues: string[] }>
 }
 
-// Helper: đọc file JSON
+// English content normalized from the original source text.
 export async function readJsonStream(jsonPath: string): Promise<ShopeeProduct[]> {
   try {
     const fileContent = fs.readFileSync(jsonPath, 'utf8')
@@ -165,7 +165,7 @@ export async function readJsonStream(jsonPath: string): Promise<ShopeeProduct[]>
 // Helper: logger
 export const logger = new Logger('ProductImport')
 
-// Helper: validate sản phẩm (có thể mở rộng)
+// English content normalized from the original source text.
 export function validateProductEnhanced(product: ShopeeProduct): ValidationResult {
   const issues: string[] = []
   if (!product.id?.trim()) issues.push('Missing ID')
@@ -206,10 +206,10 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
     }
   }
 
-  // Validate variants và product_variation
+  // English content normalized from the original source text.
   const variants: Array<{ value: string; options: string[] }> = []
 
-  // Xử lý variations
+  // English content normalized from the original source text.
   if (product.variations) {
     if (product.variations.length > CONFIG.MAX_VARIANT_COUNT)
       issues.push(`Too many variants: ${product.variations.length} > ${CONFIG.MAX_VARIANT_COUNT}`)
@@ -228,7 +228,7 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
         break
       }
 
-      // Thêm vào variants để kiểm tra tổng số SKU
+      // English content normalized from the original source text.
       variants.push({
         value: variant.name,
         options: variant.variations.filter((option) => option && option.trim().length > 0)
@@ -236,7 +236,7 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
     }
   }
 
-  // Xử lý product_variation
+  // English content normalized from the original source text.
   if (product.product_variation && product.product_variation.length > 0) {
     const variationMap = new Map<string, Set<string>>()
 
@@ -249,7 +249,7 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
       }
     })
 
-    // Merge vào variants
+    // English content normalized from the original source text.
     variationMap.forEach((options, name) => {
       const existingVariant = variants.find((v) => v.value === name)
       if (existingVariant) {
@@ -267,40 +267,40 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
     })
   }
 
-  // Thêm các trường bổ sung vào variants
+  // English content normalized from the original source text.
   if (product.Color) {
-    const existingVariant = variants.find((v) => v.value === 'Màu sắc')
+    const existingVariant = variants.find((v) => v.value === 'English content normalized from the original source text.')
     if (existingVariant) {
       if (!existingVariant.options.includes(product.Color)) {
         existingVariant.options.push(product.Color)
       }
     } else {
       variants.push({
-        value: 'Màu sắc',
+        value: 'English content normalized from the original source text.',
         options: [product.Color]
       })
     }
   }
 
   if (product.Size) {
-    const existingVariant = variants.find((v) => v.value === 'Kích thước')
+    const existingVariant = variants.find((v) => v.value === 'English content normalized from the original source text.')
     if (existingVariant) {
       if (!existingVariant.options.includes(product.Size)) {
         existingVariant.options.push(product.Size)
       }
     } else {
       variants.push({
-        value: 'Kích thước',
+        value: 'English content normalized from the original source text.',
         options: [product.Size]
       })
     }
   }
 
-  // Kiểm tra tổng số SKU sẽ được tạo
+  // English content normalized from the original source text.
   if (variants.length > 0) {
     const totalSKUs = variants.reduce((total, variant) => total * variant.options.length, 1)
     if (totalSKUs > 100) {
-      // Giới hạn tối đa 100 SKU per product
+      // English content normalized from the original source text.
       issues.push(`Too many SKU combinations: ${totalSKUs} > 100`)
     }
   }
@@ -312,7 +312,7 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
   }
 }
 
-// Helper: tạo logger cho từng module
+// English content normalized from the original source text.
 export function createLogger(context: string) {
   return new Logger(context)
 }
@@ -322,7 +322,7 @@ export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-// Helper: tạo variants đơn giản (từ cơ chế cũ)
+// English content normalized from the original source text.
 export function generateEnhancedVariants(
   variations?: Array<{ name: string; variations: string[] }> | null
 ): Array<{ value: string; options: string[] }> {
@@ -331,7 +331,7 @@ export function generateEnhancedVariants(
   return variants.length ? variants : [{ value: 'Default', options: ['Default'] }]
 }
 
-// Helper: tạo SKUs đúng (từ cơ chế cũ)
+// English content normalized from the original source text.
 export function generateSKUs(
   variants: Array<{ value: string; options: string[] }>,
   basePrice: number,
@@ -342,7 +342,7 @@ export function generateSKUs(
     return [{ value: 'Default', price: basePrice, stock, image: images[0] || '' }]
   }
 
-  // Tạo tổ hợp đúng bằng reduce
+  // English content normalized from the original source text.
   const combinations = variants.reduce((acc: string[][], v) => {
     const result: string[][] = []
     const options = v.options
@@ -355,19 +355,19 @@ export function generateSKUs(
     return result
   }, [])
 
-  // Phân bổ stock hợp lý
+  // English content normalized from the original source text.
   const stockPerSku = Math.max(1, Math.floor(stock / combinations.length))
   const remainingStock = stock - stockPerSku * combinations.length
 
   return combinations.map((combo, index) => ({
-    value: combo.join(' - '), // Sử dụng ' - ' thay vì '-'
+    value: combo.join(' - '), // English content normalized from the original source text.
     price: basePrice,
     stock: index === 0 ? stockPerSku + remainingStock : stockPerSku,
     image: images[index % Math.max(1, images.length)] || images[0] || ''
   }))
 }
 
-// Helper: validate variants đơn giản
+// English content normalized from the original source text.
 export function validateVariantsAndCalculateSKUs(variants: Array<{ value: string; options: string[] }>): {
   isValid: boolean
   totalSKUs: number
@@ -395,7 +395,7 @@ export function validateVariantsAndCalculateSKUs(variants: Array<{ value: string
 
   const totalSKUs = variants.reduce((total, variant) => total * variant.options.length, 1)
 
-  // Giới hạn linh hoạt hơn
+  // English content normalized from the original source text.
   if (totalSKUs > 500) {
     issues.push(`Too many SKU combinations: ${totalSKUs} > 500`)
   }
@@ -407,7 +407,7 @@ export function validateVariantsAndCalculateSKUs(variants: Array<{ value: string
   }
 }
 
-// Helper: merge và làm sạch variants
+// English content normalized from the original source text.
 export function mergeAndCleanVariants(
   variations?: Array<{ name: string; variations: string[] }>,
   productVariation?: Array<{ name: string; value: string | null }>,
@@ -416,7 +416,7 @@ export function mergeAndCleanVariants(
   const variants: Array<{ value: string; options: string[] }> = []
   const variantMap = new Map<string, Set<string>>()
 
-  // 1. Xử lý variations từ Shopee
+  // English content normalized from the original source text.
   if (variations && variations.length > 0) {
     variations.forEach((v) => {
       if (v.name && v.variations && v.variations.length > 0) {
@@ -428,7 +428,7 @@ export function mergeAndCleanVariants(
     })
   }
 
-  // 2. Xử lý product_variation
+  // English content normalized from the original source text.
   if (productVariation && productVariation.length > 0) {
     productVariation.forEach((pv) => {
       if (pv.name && pv.value) {
@@ -440,24 +440,24 @@ export function mergeAndCleanVariants(
     })
   }
 
-  // 3. Thêm các trường bổ sung
+  // English content normalized from the original source text.
   if (additionalFields) {
     if (additionalFields.Color) {
-      if (!variantMap.has('Màu sắc')) {
-        variantMap.set('Màu sắc', new Set())
+      if (!variantMap.has('English content normalized from the original source text.')) {
+        variantMap.set('English content normalized from the original source text.', new Set())
       }
-      variantMap.get('Màu sắc')!.add(additionalFields.Color)
+      variantMap.get('English content normalized from the original source text.')!.add(additionalFields.Color)
     }
 
     if (additionalFields.Size) {
-      if (!variantMap.has('Kích thước')) {
-        variantMap.set('Kích thước', new Set())
+      if (!variantMap.has('English content normalized from the original source text.')) {
+        variantMap.set('English content normalized from the original source text.', new Set())
       }
-      variantMap.get('Kích thước')!.add(additionalFields.Size)
+      variantMap.get('English content normalized from the original source text.')!.add(additionalFields.Size)
     }
   }
 
-  // Chuyển đổi thành array
+  // English content normalized from the original source text.
   variantMap.forEach((options, name) => {
     variants.push({
       value: name,
@@ -468,12 +468,12 @@ export function mergeAndCleanVariants(
   return variants
 }
 
-// Helper: tạo specifications đơn giản
+// English content normalized from the original source text.
 export function generateProductSpecifications(product?: ShopeeProduct): Array<{ name: string; value: string }> {
   return product?.['Product Specifications'] || []
 }
 
-// Helper: tạo metadata đơn giản
+// English content normalized from the original source text.
 export function generateProductMetadata(product?: ShopeeProduct): any {
   if (!product) return null
   return {

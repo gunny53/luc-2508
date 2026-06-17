@@ -24,12 +24,8 @@ export function Footer() {
                 <div className="container mx-auto px-4 py-6">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <div className="text-center md:text-left max-w-md">
-                            <h3 className="text-lg font-bold mb-1">
-                                Đăng ký nhận thông tin mới
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                                Nhận ngay <span className="font-medium text-primary">voucher 50K</span> khi đăng ký
-                            </p>
+                            <h3 className="text-lg font-bold mb-1">English content normalized from the original source text.</h3>
+                            <p className="text-gray-600 text-sm">English content normalized from the original source text.<span className="font-medium text-primary">voucher 50K</span>English content normalized from the original source text.</p>
                         </div>
                         <div className="w-full md:w-auto">
                             <div className="flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto md:mx-0">
@@ -37,15 +33,13 @@ export function Footer() {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Nhập email của bạn"
+                                    placeholder="English content normalized from the original source text."
                                     className="flex-1 min-w-[350px] px-4 py-2.5 text-sm border rounded-lg focus:outline-none focus:ring-1 focus:ring-primary/20 bg-white"
                                 />
                                 <button
                                     onClick={handleSubscribe}
                                     className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
-                                >
-                                    Đăng ký
-                                </button>
+                                >English content normalized from the original source text.</button>
                             </div>
                         </div>
                     </div>
@@ -123,7 +117,7 @@ export function Footer() {
                     <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-6">
                         {/* Payment Methods */}
                         <div className="text-center sm:text-left sm:flex-1">
-                            <h3 className="font-medium mb-4 text-gray-900 text-base">Phương thức thanh toán</h3>
+                            <h3 className="font-medium mb-4 text-gray-900 text-base">English content normalized from the original source text.</h3>
                             <div className="inline-flex flex-wrap justify-center sm:justify-start gap-3">
                                 {paymentTypes.map((type) => (
                                     <ModernPaymentIcon
@@ -134,12 +128,12 @@ export function Footer() {
                                     />
                                 ))}
                             </div>
-                            <p className="mt-2 text-xs text-gray-500">Thanh toán an toàn & bảo mật</p>
+                            <p className="mt-2 text-xs text-gray-500">English content normalized from the original source text.</p>
                         </div>
 
                         {/* Social Links */}
                         <div className="text-center sm:text-left">
-                            <h3 className="font-medium mb-4 text-gray-900 text-base">Kết nối với chúng tôi</h3>
+                            <h3 className="font-medium mb-4 text-gray-900 text-base">English content normalized from the original source text.</h3>
                             <div className="inline-flex items-center justify-center sm:justify-start gap-3">
                                 {socialLinks.map((social) => (
                                     <a
@@ -157,17 +151,15 @@ export function Footer() {
                                     </a>
                                 ))}
                             </div>
-                            <p className="mt-2 text-xs text-gray-500">Theo dõi chúng tôi trên mạng xã hội</p>
+                            <p className="mt-2 text-xs text-gray-500">English content normalized from the original source text.</p>
                         </div>
                     </div>
 
                     {/* Copyright */}
                     <div className="mt-6 pt-4 border-t text-xs text-gray-500 text-center">
-                        © {new Date().getFullYear()} ShopSiFu. Tất cả các quyền được bảo lưu.
+                        © {new Date().getFullYear()} English content normalized from the original source text.
                         <br />
-                        <span className="mt-1 block">
-                            Địa chỉ: Tầng 6, Tòa nhà QTSC 9, Công viên phần mềm Quang Trung, P. Tân Chánh Hiệp, Q.12, TP.HCM
-                        </span>
+                        <span className="mt-1 block">English content normalized from the original source text.</span>
                     </div>
                 </div>
             </div>

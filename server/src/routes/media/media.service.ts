@@ -26,7 +26,7 @@ export class MediaService {
           })
       })
     )
-    // Xóa file sau khi upload lên S3
+    // English content normalized from the original source text.
     await Promise.all(
       files.map((file) => {
         return unlink(file.path)

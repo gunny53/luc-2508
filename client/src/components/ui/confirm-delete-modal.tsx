@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 interface ConfirmDeleteModalProps {
   open: boolean;
   onClose: () => void;
-  onConfirm: () => Promise<void> | void; // callback khi xác nhận
+  onConfirm: () => Promise<void> | void; // English content normalized from the original source text.
   title?: string;
   description?: string | React.ReactNode;
   confirmText?: string;
@@ -26,10 +26,10 @@ export function ConfirmDeleteModal({
   open,
   onClose,
   onConfirm,
-  title = "Xác nhận xóa",
-  description = "Bạn có chắc chắn muốn xóa thông tin này? Hành động này không thể hoàn tác.",
-  confirmText = "Xóa",
-  cancelText = "Hủy",
+  title = "English content normalized from the original source text.",
+  description = "English content normalized from the original source text.",
+  confirmText = "English content normalized from the original source text.",
+  cancelText = "English content normalized from the original source text.",
   loading = false,
 }: ConfirmDeleteModalProps) {
   return (
@@ -51,7 +51,7 @@ export function ConfirmDeleteModal({
               onClick={onConfirm}
               disabled={loading}
             >
-              {loading ? "Đang xóa..." : confirmText}
+              {loading ? "English content normalized from the original source text." : confirmText}
             </Button>
           </AlertDialogAction>
         </AlertDialogFooter>

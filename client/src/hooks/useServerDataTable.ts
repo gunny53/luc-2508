@@ -4,59 +4,38 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { PaginationMetadata, PaginationRequest } from '@/types/base.interface';
 import { showToast } from '@/components/ui/toastify';
 import { parseApiError } from '@/utils/error';
-/**
- * Cấu hình cho hook useServerDataTable
- * @template T Type của dữ liệu thô từ API
- * @template U Type của dữ liệu sau khi map (mặc định là T)
- */
+/* English content normalized from the original source text. */
 interface UseServerDataTableProps<T, U> {
-  /** Hàm gọi API để lấy dữ liệu */
+  /* English content normalized from the original source text. */
   fetchData: (params: PaginationRequest, signal?: AbortSignal) => Promise<any>;
-  /** Hàm để trích xuất data từ response */
-  getResponseData: (response: any) => T[]; 
-  /** Hàm để trích xuất metadata từ response */
+  /* English content normalized from the original source text. */
+  getResponseData: (response: any) => T[];
+  /* English content normalized from the original source text. */
   getResponseMetadata?: (response: any) => PaginationMetadata | undefined;
-  /** Hàm để map dữ liệu thô sang dữ liệu cuối cùng */
+  /* English content normalized from the original source text. */
   mapResponseToData?: (item: any) => U;
-  /** Cấu hình sắp xếp ban đầu */
+  /* English content normalized from the original source text. */
   initialSort?: {
     sortBy?: string;
     sortOrder?: 'asc' | 'desc';
     createdById?: string;
   };
-  /** Giới hạn mặc định số lượng items mỗi trang */
+  /* English content normalized from the original source text. */
   defaultLimit?: number;
-  /** 
-   * Cấu hình để chỉ định tham số nào sẽ được gửi trong request API
-   * Sử dụng khi API không hỗ trợ một số tham số
-   */
+  /* English content normalized from the original source text. */
   requestConfig?: {
-    /** Tự động fetch dữ liệu khi có thay đổi search */
+    /* English content normalized from the original source text. */
     autoFetchSearch?: boolean;
-    /** Có gửi tham số search trong request không */
+    /* English content normalized from the original source text. */
     includeSearch?: boolean;
-    /** Có gửi các tham số sắp xếp (sortBy, sortOrder) không */
+    /* English content normalized from the original source text. */
     includeSort?: boolean;
-    /** Có gửi tham số createdById không */
+    /* English content normalized from the original source text. */
     includeCreatedById?: boolean;
   };
 }
 
-/**
- * Hook để quản lý bảng dữ liệu với phân trang từ server
- * @template T Type của dữ liệu thô từ API
- * @template U Type của dữ liệu sau khi map (mặc định là T)
- * @example
- * // Sử dụng với API không hỗ trợ tìm kiếm và sắp xếp
- * const { data, loading } = useServerDataTable({
- *   fetchData: myApiService.getAll,
- *   getResponseData: (res) => res.data,
- *   requestConfig: {
- *     includeSearch: false,
- *     includeSort: false
- *   }
- * });
- */
+/* English content normalized from the original source text. */
 export function useServerDataTable<T, U = T>({
   fetchData,
   getResponseData,
@@ -71,7 +50,7 @@ export function useServerDataTable<T, U = T>({
     includeCreatedById: true
   },
 }: UseServerDataTableProps<T, U>) {
-  // Khởi tạo metadata với đầy đủ thông tin
+  // English content normalized from the original source text.
   const [pagination, setPagination] = useState<PaginationMetadata>({
     page: 1,
     limit: defaultLimit,
@@ -85,17 +64,17 @@ export function useServerDataTable<T, U = T>({
     hasPrevious: false,
   });
 
-  // Thêm trigger để force refresh dữ liệu
+  // English content normalized from the original source text.
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const [data, setData] = useState<U[]>([]);
   const [loading, setLoading] = useState(false);
   const debouncedSearch = useDebounce(pagination.search, 500);
 
-  // Sử dụng useRef để lưu trữ active request
+  // English content normalized from the original source text.
   const activeRequestRef = useRef<AbortController | null>(null);
-  
-  // Lưu trữ các hàm callback để không tạo lại mỗi lần render
+
+  // English content normalized from the original source text.
 const fetchDataRef = useRef(fetchData);
 const getResponseDataRef = useRef(getResponseData);
 const getResponseMetadataRef = useRef(getResponseMetadata);
@@ -107,19 +86,19 @@ useEffect(() => { getResponseMetadataRef.current = getResponseMetadata; }, [getR
 useEffect(() => { mapResponseToDataRef.current = mapResponseToData; }, [mapResponseToData]);
 
 
-  // Effect để fetch data khi pagination thay đổi
+  // English content normalized from the original source text.
   useEffect(() => {
     const loadData = async () => {
-      // Hủy request trước đó nếu có
+      // English content normalized from the original source text.
       if (activeRequestRef.current) {
         activeRequestRef.current.abort();
       }
-      
-      // Tạo controller mới cho request hiện tại
+
+      // English content normalized from the original source text.
       const controller = new AbortController();
       activeRequestRef.current = controller;
-      
-      // Thiết lập timeout để tự động hủy request nếu quá lâu
+
+      // English content normalized from the original source text.
       const timeoutId = setTimeout(() => {
         if (activeRequestRef.current === controller && !controller.signal.aborted) {
           controller.abort();
@@ -127,32 +106,32 @@ useEffect(() => { mapResponseToDataRef.current = mapResponseToData; }, [mapRespo
           setLoading(false);
         }
       }, 8000);
-      
+
       try {
         setLoading(true);
-        // Tạo object requestParams với các trường cần thiết
+        // English content normalized from the original source text.
         const requestParams: PaginationRequest = {
           page: pagination.page,
           limit: pagination.limit,
         };
-        
-        // Chỉ thêm search nếu được cấu hình và có giá trị
+
+        // English content normalized from the original source text.
         if (requestConfig.includeSearch && debouncedSearch) {
           requestParams.search = debouncedSearch;
         }
-        
-        // Chỉ thêm sortBy và sortOrder nếu được cấu hình
+
+        // English content normalized from the original source text.
         if (requestConfig.includeSort) {
           requestParams.sortBy = pagination.sortBy;
           requestParams.sortOrder = pagination.sortOrder;
         }
-        
-        // Chỉ thêm createdById nếu được cấu hình và có giá trị
+
+        // English content normalized from the original source text.
         if (requestConfig.includeCreatedById && pagination.createdById) {
           requestParams.createdById = pagination.createdById;
         }
-        
-        // Gọi API và lấy response với AbortSignal
+
+        // English content normalized from the original source text.
        const response = await fetchDataRef.current(requestParams, controller.signal);
 
 let responseData: T[] = [];
@@ -162,7 +141,7 @@ const mappedData: U[] = mapResponseToDataRef.current
   ? responseData.map(mapResponseToDataRef.current)
   : (responseData as unknown as U[]);
 
-// Cập nhật data state với mapped data
+// English content normalized from the original source text.
 setData(mappedData);
 
 if (getResponseMetadataRef.current) {
@@ -186,16 +165,16 @@ try {
           }
         }
       } catch (error) {
-        // Xóa timeout trong trường hợp lỗi
+        // English content normalized from the original source text.
         clearTimeout(timeoutId);
-        
-        // Chỉ xử lý lỗi nếu không phải do abort request
+
+        // English content normalized from the original source text.
         // if (!controller.signal.aborted) {
         //   console.error("Error fetching data:", error);
         //   showToast(parseApiError(error), 'error');
         // }
       } finally {
-        // Chỉ reset loading nếu đây là request mới nhất
+        // English content normalized from the original source text.
         if (activeRequestRef.current === controller) {
           setLoading(false);
           activeRequestRef.current = null;
@@ -204,7 +183,7 @@ try {
     };
 
     loadData();
-    
+
     // Cleanup function
     return () => {
       if (activeRequestRef.current) {
@@ -214,15 +193,15 @@ try {
   }, [
     pagination.page,
     pagination.limit,
-    // Chỉ thêm debouncedSearch vào dependency khi includeSearch = true
+    // English content normalized from the original source text.
     ...(requestConfig.includeSearch ? [debouncedSearch] : []),
-    // Chỉ thêm sortBy và sortOrder vào dependency khi includeSort = true
+    // English content normalized from the original source text.
     ...(requestConfig.includeSort ? [pagination.sortBy, pagination.sortOrder] : []),
-    // Chỉ thêm createdById vào dependency khi includeCreatedById = true
+    // English content normalized from the original source text.
     ...(requestConfig.includeCreatedById ? [pagination.createdById] : []),
     ...(requestConfig.includeSearch && (requestConfig.autoFetchSearch ?? true) ? [debouncedSearch] : []),
-    refreshTrigger, // Thêm trigger vào dependency để force re-fetch
-    // Loại bỏ các callback ra khỏi dependency array vì đã dùng useRef để ổn định chúng
+    refreshTrigger, // English content normalized from the original source text.
+    // English content normalized from the original source text.
   ]);
 
   // Handlers
@@ -237,7 +216,7 @@ try {
 const handleSearch = (search: string) => {
   setPagination(prev => ({ ...prev, search, page: 1 }));
   if (requestConfig.includeSearch && (requestConfig.autoFetchSearch === false)) {
-    setRefreshTrigger(prev => prev + 1); // fetch ngay khi user bấm Search
+    setRefreshTrigger(prev => prev + 1); // English content normalized from the original source text.
   }
 };
 
@@ -245,10 +224,10 @@ const handleSearch = (search: string) => {
   const handleSortChange = (sortBy: string, sortOrder: 'asc' | 'desc') => {
     setPagination(prev => ({ ...prev, sortBy, sortOrder }));
   };
-  
-  // Hàm để refresh dữ liệu - thực sự bắt buộc fetch lại dữ liệu mới
+
+  // English content normalized from the original source text.
   const refreshData = () => {
-    // Tăng giá trị refreshTrigger để kích hoạt useEffect và force re-fetch
+    // English content normalized from the original source text.
     setRefreshTrigger(prev => prev + 1);
     console.log("🔄 Refreshing data...");
   };

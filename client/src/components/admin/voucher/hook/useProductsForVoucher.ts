@@ -24,9 +24,9 @@ interface UseProductsForVoucherProps {
   initialSelected?: Product[];
 }
 
-export function useProductsForVoucher({ 
-  onSelectionChange, 
-  initialSelected = [] 
+export function useProductsForVoucher({
+  onSelectionChange,
+  initialSelected = []
 }: UseProductsForVoucherProps = {}): UseProductsForVoucherReturn {
   const userData = useUserData();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -46,8 +46,8 @@ export function useProductsForVoucher({
     fetchData: useCallback((params: PaginationRequest) => {
       if (!userData?.id) {
         console.log('User ID not available for products fetch');
-        return Promise.resolve({ 
-          data: [], 
+        return Promise.resolve({
+          data: [],
           metadata: { totalItems: 0, totalPages: 1, page: 1, limit: 10 },
           statusCode: 200,
           message: 'No user data available'
@@ -55,14 +55,14 @@ export function useProductsForVoucher({
       }
 
       console.log('Fetching products with params:', params);
-      
-      // Thêm createdById vào params
-      const apiParams: any = { 
-        ...params, 
-        createdById: userData.id 
+
+      // English content normalized from the original source text.
+      const apiParams: any = {
+        ...params,
+        createdById: userData.id
       };
 
-      // Thêm search term vào field name nếu có
+      // English content normalized from the original source text.
       if (params.search && params.search.trim()) {
         apiParams.name = params.search.trim();
       }
@@ -86,7 +86,7 @@ export function useProductsForVoucher({
     },
   });
 
-  // Khi có products mới, thêm vào list hiện tại cho infinite scroll
+  // English content normalized from the original source text.
   useEffect(() => {
     console.log('Products useEffect triggered:', {
       productsLength: products?.length,
@@ -96,30 +96,30 @@ export function useProductsForVoucher({
     });
 
     if (products && products.length > 0) {
-      // Sync currentPage với pagination.page
+      // English content normalized from the original source text.
       const actualPage = pagination.page || 1;
-      
+
       if (actualPage === 1) {
-        // Nếu là trang đầu tiên (search mới hoặc refresh), replace toàn bộ
+        // English content normalized from the original source text.
         console.log('Replacing all products (page 1)');
         setAllProducts(products);
       } else {
-        // Nếu là load more, append vào list hiện tại và loại bỏ duplicates
+        // English content normalized from the original source text.
         console.log('Appending new products (page', actualPage, ')');
         setAllProducts(prev => {
-          // Tạo Set của IDs đã có
+          // English content normalized from the original source text.
           const existingIds = new Set(prev.map(p => p.id));
-          // Lọc ra products mới chưa có trong list
+          // English content normalized from the original source text.
           const newProducts = products.filter(p => !existingIds.has(p.id));
           console.log('Filtered new products:', newProducts.length, 'out of', products.length);
           return [...prev, ...newProducts];
         });
       }
 
-      // Kiểm tra xem còn có thể load more không
+      // English content normalized from the original source text.
       setHasMore(products.length === pagination.limit && (pagination.hasNext ?? false));
     } else if ((pagination.page || 1) === 1) {
-      // Nếu không có products và là trang đầu, clear list
+      // English content normalized from the original source text.
       console.log('Clearing products list');
       setAllProducts([]);
       setHasMore(false);
@@ -132,7 +132,7 @@ export function useProductsForVoucher({
       const currentPageFromPagination = pagination.page || 1;
       const nextPage = currentPageFromPagination + 1;
       setCurrentPage(nextPage);
-      
+
       // Trigger page change in useServerDataTable
       setPagination(prev => ({ ...prev, page: nextPage }));
       console.log('Loading more products, page:', nextPage);
@@ -143,10 +143,10 @@ export function useProductsForVoucher({
   const handleSearchChange = useCallback((term: string) => {
     setSearchTerm(term);
     setCurrentPage(1);
-    setAllProducts([]); // Clear products list khi search mới
+    setAllProducts([]); // English content normalized from the original source text.
     setHasMore(true); // Reset hasMore state
-    
-    // Reset pagination về page 1 trong useServerDataTable
+
+    // English content normalized from the original source text.
     setPagination(prev => ({ ...prev, page: 1, search: term }));
   }, [setPagination]);
 
@@ -155,7 +155,7 @@ export function useProductsForVoucher({
     setSelectedProducts(prev => {
       const isSelected = prev.find(p => p.id === product.id);
       let newSelection: Product[];
-      
+
       if (isSelected) {
         newSelection = prev.filter(p => p.id !== product.id);
       } else {

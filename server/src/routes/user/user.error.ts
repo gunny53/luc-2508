@@ -11,7 +11,7 @@ export const CannotUpdateAdminUserException = new ForbiddenException('Error.Cann
 
 export const CannotDeleteAdminUserException = new ForbiddenException('Error.CannotDeleteAdminUser')
 
-// Chỉ Admin mới có thể đặt role là ADMIN
+// English content normalized from the original source text.
 export const CannotSetAdminRoleToUserException = new ForbiddenException('Error.CannotSetAdminRoleToUser')
 
 export const RoleNotFoundException = new UnprocessableEntityException([
@@ -21,5 +21,5 @@ export const RoleNotFoundException = new UnprocessableEntityException([
   }
 ])
 
-// Không thể xóa hoặc cập nhật chính bản thân mình
+// English content normalized from the original source text.
 export const CannotUpdateOrDeleteYourselfException = new ForbiddenException('Error.CannotUpdateOrDeleteYourself')

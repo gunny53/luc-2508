@@ -29,7 +29,7 @@ export function DataTableSearch<TData>({
     const handler = (value: string) => {
       table.getColumn(searchColumn)?.setFilterValue(value)
     }
-    
+
     // Debounce search to avoid too many re-renders
     return (value: string) => {
       setTimeout(() => handler(value), 300)
@@ -46,7 +46,7 @@ export function DataTableSearch<TData>({
     }
   }, [handleSearch])
   return (
-    <form 
+    <form
       onSubmit={(e) => {
         e.preventDefault()
         handleSearch()

@@ -18,7 +18,7 @@ import { Switch } from "@/components/ui/switch";
 interface ProductAsideFormProps {
   brandId: string | null;
   categories: string[];
-  publishedAt?: string | null; 
+  publishedAt?: string | null;
   handleInputChange: (field: keyof ProductCreateRequest, value: any) => void;
   handleSubmit: (options?: { stayOnPage?: boolean }) => Promise<void>;
   handleSaveAndAddNew: () => Promise<void>;
@@ -39,7 +39,7 @@ export function ProductAsideForm({
   // State for publishing date/time
   const [isPublished, setIsPublished] = useState(false);
   const [publishDate, setPublishDate] = useState<Date | undefined>(undefined);
-  
+
   // State for category modal
   const [isCategoryModalOpen, setCategoryModalOpen] = useState(false);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
@@ -77,41 +77,41 @@ export function ProductAsideForm({
       const fetchCategoryData = async () => {
         setIsLoadingCategory(true);
         try {
-          // Fetch tất cả categories một lần
+          // English content normalized from the original source text.
           const response = await categoryService.getAll();
           const allCategories = response.data || response;
-          
-          // Tạo Map để dễ tìm kiếm
+
+          // English content normalized from the original source text.
           const categoryMap = new Map();
           allCategories.forEach(cat => {
             if (cat.id) {
               categoryMap.set(cat.id.toString(), cat);
             }
           });
-          
-          // Array để lưu các path duy nhất
+
+          // English content normalized from the original source text.
           const categoryPaths: string[] = [];
           const processedCategories = new Set<string>();
-          
+
           // Debug log
           console.log('Original categories:', categories);
           console.log('All fetched categories:', allCategories);
-          
-          // Xử lý từng category ID và tránh duplicate
+
+          // English content normalized from the original source text.
           for (const categoryId of categories) {
-            // Bỏ qua nếu đã xử lý category này rồi
+            // English content normalized from the original source text.
             if (processedCategories.has(categoryId)) {
               console.log(`Skipping duplicate category: ${categoryId}`);
               continue;
             }
-            
+
             const category = categoryMap.get(categoryId);
-            
+
             if (category) {
               let displayPath = '';
-              
+
               if (category.parentCategoryId) {
-                // Có parent category
+                // English content normalized from the original source text.
                 const parentCategory = categoryMap.get(category.parentCategoryId.toString());
                 if (parentCategory) {
                   displayPath = `${parentCategory.name} > ${category.name}`;
@@ -119,11 +119,11 @@ export function ProductAsideForm({
                   displayPath = category.name;
                 }
               } else {
-                // Category gốc
+                // English content normalized from the original source text.
                 displayPath = category.name;
               }
-              
-              // Chỉ thêm nếu chưa có path này
+
+              // English content normalized from the original source text.
               if (!categoryPaths.includes(displayPath)) {
                 categoryPaths.push(displayPath);
                 console.log(`Added path: ${displayPath}`);
@@ -132,21 +132,21 @@ export function ProductAsideForm({
               }
               processedCategories.add(categoryId);
             } else {
-              // Fallback: fetch riêng nếu không tìm thấy
+              // English content normalized from the original source text.
               try {
                 const categoryDetail = await categoryService.getById(categoryId.toString());
                 if (categoryDetail?.data) {
                   const categoryData = categoryDetail.data;
                   let displayPath = categoryData.name;
-                  
+
                   if (categoryData.parentCategoryId) {
                     const parentDetail = await categoryService.getById(categoryData.parentCategoryId.toString());
                     if (parentDetail?.data) {
                       displayPath = `${parentDetail.data.name} > ${categoryData.name}`;
                     }
                   }
-                  
-                  // Chỉ thêm nếu chưa có path này
+
+                  // English content normalized from the original source text.
                   if (!categoryPaths.includes(displayPath)) {
                     categoryPaths.push(displayPath);
                   }
@@ -154,28 +154,28 @@ export function ProductAsideForm({
                 }
               } catch (detailError) {
                 console.error(`Failed to fetch category ${categoryId}:`, detailError);
-                if (!categoryPaths.includes('Danh mục không xác định')) {
-                  categoryPaths.push('Danh mục không xác định');
+                if (!categoryPaths.includes('English content normalized from the original source text.')) {
+                  categoryPaths.push('English content normalized from the original source text.');
                 }
                 processedCategories.add(categoryId);
               }
             }
           }
-          
-          // Join các path thành chuỗi cuối cùng
+
+          // English content normalized from the original source text.
           const finalPath = categoryPaths.join(', ');
-          
+
           setSelectedCategoryIds(categories);
           setSelectedCategoryPath(finalPath);
-          
+
         } catch (error) {
           console.error("Failed to fetch category data:", error);
-          setSelectedCategoryPath('Không thể tải thông tin danh mục');
+          setSelectedCategoryPath('English content normalized from the original source text.');
         } finally {
           setIsLoadingCategory(false);
         }
       };
-      
+
       fetchCategoryData();
     }
   }, [categories, selectedCategoryPath]);
@@ -183,16 +183,16 @@ export function ProductAsideForm({
   // Handle publish status change
   const handlePublishToggle = (checked: boolean) => {
     setIsPublished(checked);
-    
+
     if (checked) {
       const dateToUse = publishDate || new Date();
-      
+
       if (!publishDate) {
         console.log('Setting publishedAt to current date/time:', dateToUse.toISOString());
       } else {
         console.log('Keeping existing publish date/time:', dateToUse.toISOString());
       }
-      
+
       setPublishDate(dateToUse);
       handleInputChange('publishedAt', dateToUse.toISOString());
     } else {
@@ -200,7 +200,7 @@ export function ProductAsideForm({
       handleInputChange('publishedAt', null);
     }
   };
-  
+
   // Handle publish date change
   const handlePublishDateChange = (date: Date | undefined) => {
     if (!date) {
@@ -211,14 +211,14 @@ export function ProductAsideForm({
       }
       return;
     }
-    
+
     if (isNaN(date.getTime())) {
       console.error('Invalid date in handlePublishDateChange:', date);
       return;
     }
-    
+
     setPublishDate(date);
-    
+
     if (isPublished) {
       console.log('Updating publishedAt to:', date.toISOString());
       handleInputChange('publishedAt', date.toISOString());
@@ -232,9 +232,9 @@ export function ProductAsideForm({
 
   // Handle category selection from modal
   const handleCategoryConfirm = (categoryIds: string[], selectionPath: string) => {
-    // Sử dụng nguyên ID gốc, không thay đổi hoặc chuyển đổi định dạng
+    // English content normalized from the original source text.
     console.log('Selected category IDs (unchanged):', categoryIds);
-    
+
     setSelectedCategoryIds(categoryIds);
     setSelectedCategoryPath(selectionPath);
     handleInputChange('categories', categoryIds);
@@ -254,37 +254,35 @@ export function ProductAsideForm({
             {isSubmitting ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : null}
-            Lưu và Thêm mới
+            English content normalized from the original source text.
           </Button>
         )}
         {isEditMode && (
           <Button variant="outline" className="flex-1 flex items-center gap-2">
-            <Eye className="h-4 w-4" />
-            Xem sản phẩm
-          </Button>
+            <Eye className="h-4 w-4" />English content normalized from the original source text.</Button>
         )}
-        <Button 
-          onClick={() => handleSubmit()} 
-          disabled={isSubmitting} 
+        <Button
+          onClick={() => handleSubmit()}
+          disabled={isSubmitting}
           className="flex-1 flex items-center gap-2"
         >
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {isEditMode ? 'Cập nhật sản phẩm' : 'Thêm mới'}
+          {isEditMode ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
         </Button>
       </div>
 
       {/* Card 1: Product Status */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Hiển thị</CardTitle>
+          <CardTitle className="text-base">English content normalized from the original source text.</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* Công khai toggle */}
+          {/* English content normalized from the original source text. */}
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label htmlFor="publish-toggle">Công khai</Label>
+              <Label htmlFor="publish-toggle">English content normalized from the original source text.</Label>
               <p className="text-sm text-muted-foreground">
-                {isPublished ? 'Sản phẩm sẽ hiển thị công khai' : 'Sản phẩm ở chế độ nháp'}
+                {isPublished ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
               </p>
             </div>
             <Switch
@@ -293,11 +291,11 @@ export function ProductAsideForm({
               onCheckedChange={handlePublishToggle}
             />
           </div>
-          
-          {/* Ngày công khai (chỉ hiển thị khi bật công khai) */}
+
+          {/* English content normalized from the original source text. */}
           {isPublished && (
             <div className="grid gap-2">
-              <Label htmlFor="publish-date">Ngày công khai</Label>
+              <Label htmlFor="publish-date">English content normalized from the original source text.</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
@@ -312,7 +310,7 @@ export function ProductAsideForm({
                     {publishDate ? (
                       format(publishDate, "PPpp", { locale: vi })
                     ) : (
-                      "Chọn ngày và giờ công khai"
+                      "English content normalized from the original source text."
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -326,7 +324,7 @@ export function ProductAsideForm({
                   <div className="p-3 border-t border-border">
                     <div className="flex justify-between items-center">
                       <div className="grid gap-1">
-                        <p className="text-sm font-medium">Chọn giờ</p>
+                        <p className="text-sm font-medium">English content normalized from the original source text.</p>
                         <div className="flex items-center space-x-2">
                           <select
                             id="publish-hour-select"
@@ -364,33 +362,31 @@ export function ProductAsideForm({
                         </div>
                       </div>
                       <div className="text-right">
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           size="sm"
                           onClick={() => {
                             const now = new Date();
                             console.log('Setting to current time:', now.toISOString());
                             handlePublishDateChange(now);
                           }}
-                        >
-                          Đặt thời gian hiện tại
-                        </Button>
+                        >English content normalized from the original source text.</Button>
                       </div>
                     </div>
                     <div className="mt-3 text-xs text-muted-foreground text-center">
                       {publishDate && (
-                        <p>Sản phẩm sẽ được công khai vào: {format(publishDate, 'PPpp', { locale: vi })}</p>
+                        <p>English content normalized from the original source text. {format(publishDate, 'PPpp', { locale: vi })}</p>
                       )}
-                      Đã chọn: {publishDate ? format(publishDate, "PPpp", { locale: vi }) : "Chưa chọn ngày"}
+                      English content normalized from the original source text. {publishDate ? format(publishDate, "PPpp", { locale: vi }) : "English content normalized from the original source text."}
                     </div>
                   </div>
                 </PopoverContent>
               </Popover>
               <p className="text-xs text-muted-foreground">
                 {publishedAt ? (
-                  <span>Đã công khai lúc: {format(new Date(publishedAt), "PPpp", { locale: vi })}</span>
+                  <span>English content normalized from the original source text. {format(new Date(publishedAt), "PPpp", { locale: vi })}</span>
                 ) : isPublished ? (
-                  <span>Sản phẩm sẽ được công khai ngay khi lưu</span>
+                  <span>English content normalized from the original source text.</span>
                 ) : null}
               </p>
             </div>
@@ -404,37 +400,35 @@ export function ProductAsideForm({
           <div className="grid gap-6">
             {/* Vendor/Brand */}
             <div className="grid gap-3">
-              <Label htmlFor="vendor">Thương hiệu</Label>
+              <Label htmlFor="vendor">English content normalized from the original source text.</Label>
               <BrandCbb value={brandId} onChange={handleBrandChange} />
             </div>
 
             {/* Category */}
             <div className="grid gap-3">
-              <Label htmlFor="category">Danh mục</Label>
-              <Button 
+              <Label htmlFor="category">English content normalized from the original source text.</Label>
+              <Button
                 type="button"
-                variant="outline" 
-                className="w-full justify-between font-normal text-left h-auto min-h-[2.5rem] py-2" 
+                variant="outline"
+                className="w-full justify-between font-normal text-left h-auto min-h-[2.5rem] py-2"
                 onClick={() => setCategoryModalOpen(true)}
                 disabled={isLoadingCategory}
               >
                 <div className="flex-1 text-left overflow-hidden">
                   {isLoadingCategory ? (
                     <span className="flex items-center">
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Đang tải...
-                    </span>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />English content normalized from the original source text.</span>
                   ) : (
                     <div className="space-y-1">
-                      <span 
+                      <span
                         className="block text-sm leading-tight line-clamp-2"
-                        title={selectedCategoryPath || 'Chọn danh mục'}
+                        title={selectedCategoryPath || 'English content normalized from the original source text.'}
                       >
-                        {selectedCategoryPath || 'Chọn danh mục'}
+                        {selectedCategoryPath || 'English content normalized from the original source text.'}
                       </span>
                       {selectedCategoryPath && selectedCategoryIds.length > 0 && (
                         <span className="text-xs text-muted-foreground">
-                          {selectedCategoryIds.length} danh mục
+                          {selectedCategoryIds.length} English content normalized from the original source text.
                         </span>
                       )}
                     </div>
@@ -448,7 +442,7 @@ export function ProductAsideForm({
       </Card>
 
       {/* Category Modal */}
-      <CategoryModal 
+      <CategoryModal
         open={isCategoryModalOpen}
         onOpenChange={setCategoryModalOpen}
         onConfirm={handleCategoryConfirm}

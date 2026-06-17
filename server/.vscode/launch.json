@@ -4,7 +4,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Shopsifu Debug",
+      "name": "ECSite Debug",
       "args": [
         "${workspaceFolder}/src/main.ts"
       ],
