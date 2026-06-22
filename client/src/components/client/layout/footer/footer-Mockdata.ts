@@ -1,23 +1,23 @@
-import { PaymentType, PAYMENT_TYPES } from '@/types/payment.interface';
-import { SocialType } from '@/components/ui/social-icons/SocialIcon';
+import { PaymentType, PAYMENT_TYPES } from '@/types/payment.interface'
+import { SocialType } from '@/components/ui/social-icons/social-icon'
 
 // Types
 export type FooterLink = {
-  text: string;
-  href: string;
-};
+  text: string
+  href: string
+}
 
 export type FooterSection = {
-  title: string;
-  links: FooterLink[];
-};
+  title: string
+  links: FooterLink[]
+}
 
 export type SocialLink = {
-  type: SocialType;
-  href: string;
-  colorClass: string;
-  textColor: string;
-};
+  type: SocialType
+  href: string
+  colorClass: string
+  textColor: string
+}
 
 // Data
 export const footerLinks: FooterSection[] = [
@@ -65,19 +65,24 @@ export const footerLinks: FooterSection[] = [
       { text: 'English content normalized from the original source text.', href: '/wholesale' }
     ]
   }
-];
+]
 
 export const paymentTypes: PaymentType[] = [
-    PAYMENT_TYPES.VISA,
-    PAYMENT_TYPES.MASTERCARD,
-    PAYMENT_TYPES.JCB,
-    PAYMENT_TYPES.UNIONPAY,
-    PAYMENT_TYPES.MOMO,
-];
+  PAYMENT_TYPES.VISA,
+  PAYMENT_TYPES.MASTERCARD,
+  PAYMENT_TYPES.JCB,
+  PAYMENT_TYPES.UNIONPAY,
+  PAYMENT_TYPES.MOMO
+]
 
 export const socialLinks: SocialLink[] = [
-    { type: 'facebook', href: '#', colorClass: 'hover:border-[#1877F2]/30', textColor: 'text-[#1877F2]' },
-    { type: 'instagram', href: '#', colorClass: 'hover:border-[#E4405F]/30', textColor: 'text-[#E4405F]' },
-    { type: 'youtube', href: '#', colorClass: 'hover:border-[#FF0000]/30', textColor: 'text-[#FF0000]' },
-    { type: 'mail', href: 'mailto:support@ecsite.com', colorClass: 'hover:border-[#EA4335]/30', textColor: 'text-[#EA4335]' }
-];
+  { type: 'facebook', href: '#', colorClass: 'hover:border-[#1877F2]/30', textColor: 'text-[#1877F2]' },
+  { type: 'instagram', href: '#', colorClass: 'hover:border-[#E4405F]/30', textColor: 'text-[#E4405F]' },
+  { type: 'youtube', href: '#', colorClass: 'hover:border-[#FF0000]/30', textColor: 'text-[#FF0000]' },
+  {
+    type: 'mail',
+    href: 'mailto:support@ecsite.com',
+    colorClass: 'hover:border-[#EA4335]/30',
+    textColor: 'text-[#EA4335]'
+  }
+]

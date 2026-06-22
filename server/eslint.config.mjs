@@ -19,12 +19,12 @@ export default [
       'docs/*',
       'node_modules/*',
       '**/**/*.json',
-      'src/shared/languages/generated/i18n.generated.ts'
+      'apps/api/src/shared/languages/generated/i18n.generated.ts'
     ]
   },
   {
     name: 'ts/default',
-    files: ['src/**/*.ts'],
+    files: ['apps/**/*.ts', 'libs/**/*.ts', 'initial-script/**/*.ts'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',

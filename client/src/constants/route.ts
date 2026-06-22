@@ -6,26 +6,26 @@ export const ROUTES = {
     VERIFY_CODE: '/verify-code',
     RESET_PASSWORD: '/reset-password',
     VERIFY_2FA: '/verify-2fa',
-    VERIFY_EMAIL: '/verify-email',
+    VERIFY_EMAIL: '/verify-email'
   },
-  CLIENT:{
+  CLIENT: {
     SEARCH: '/:slug',
     CART: '/cart',
-    CHECKOUT:{
+    CHECKOUT: {
       BASE: '/checkout/:slug',
       SUCCESS: '/checkout/payment-success',
-      RETRY: '/checkout/retry/:orderId',
+      RETRY: '/checkout/retry/:orderId'
     },
     POLICY: '/policy',
     SHOP: '/shop/:slug',
-    USER:{
+    USER: {
       BASE: '/user',
       DASHBOARD: '/user/dashboard',
       LANGUAGE: '/user/language',
       ORDERS: '/user/orders',
-      PROFILE: '/user/profile',
+      PROFILE: '/user/profile'
     },
-    PRODUCT_DETAIL: '/products/:slug',
+    PRODUCT_DETAIL: '/products/:slug'
   },
   ADMIN: {
     DASHBOARD: '/admin',
@@ -36,36 +36,33 @@ export const ROUTES = {
     LANGUAGE: '/admin/languages',
     ORDER: '/admin/order',
     PERMISSIONS: '/admin/permissions',
-    PRODUCT:{
+    PRODUCT: {
       LIST: '/admin/products',
       NEW: '/admin/products/new',
-      EDIT: '/admin/products/:id',
+      EDIT: '/admin/products/:id'
     },
     ROLES: '/admin/roles',
-    SETTINGS:{
+    SETTINGS: {
       BASE: '/admin/settings',
       PASSWORD_SECURITY: '/admin/settings/password-and-security',
       PROFILE: '/admin/settings/profile',
-      SEESION: '/admin/settings/session',
+      SEESION: '/admin/settings/session'
     },
     USERS: '/admin/users',
-    VOUCHER:{
+    VOUCHER: {
       LIST: '/admin/voucher',
       EDIT: '/admin/voucher/edit/:id',
-      NEW: '/admin/voucher/new',
+      NEW: '/admin/voucher/new'
     }
   },
   PRODUCT: {
     DETAIL: '/products/:slug',
     LIST: '/products'
   }
-} as const;
-
+} as const
 
 // ==================================================
 // ROUTE CONFIGURATION
-
-// English content normalized from the original source text.
 export const ADMIN_ONLY_ROUTES = [
   '/admin/audit-logs',
   '/admin/device',
@@ -74,9 +71,7 @@ export const ADMIN_ONLY_ROUTES = [
   '/admin/roles',
   '/admin/settings',
   '/admin/users'
-] as const;
-
-// English content normalized from the original source text.
+] as const
 export const SELLER_ALLOWED_ROUTES = [
   '/admin', // Dashboard
   '/admin/brand',
@@ -84,35 +79,11 @@ export const SELLER_ALLOWED_ROUTES = [
   '/admin/order',
   '/admin/products',
   '/admin/voucher'
-] as const;
-
-// English content normalized from the original source text.
-export const ALL_ADMIN_ROUTES = [
-  ...ADMIN_ONLY_ROUTES,
-  ...SELLER_ALLOWED_ROUTES
-] as const;
-
-// English content normalized from the original source text.
-export const AUTH_REQUIRED_ROUTES = [
-  '/cart',
-  '/checkout',
-  '/user'
-] as const;
-
-// English content normalized from the original source text.
-export const PROTECTED_ROUTES = [
-  ...AUTH_REQUIRED_ROUTES,
-  '/admin' // English content normalized from the original source text.
-] as const;
-
-// English content normalized from the original source text.
-export const CLIENT_ONLY_ROUTES = [
-  '/cart',
-  '/checkout',
-  '/user'
-] as const;
-
-// English content normalized from the original source text.
+] as const
+export const ALL_ADMIN_ROUTES = [...ADMIN_ONLY_ROUTES, ...SELLER_ALLOWED_ROUTES] as const
+export const AUTH_REQUIRED_ROUTES = ['/cart', '/checkout', '/user'] as const
+export const PROTECTED_ROUTES = [...AUTH_REQUIRED_ROUTES, '/admin'] as const
+export const CLIENT_ONLY_ROUTES = ['/cart', '/checkout', '/user'] as const
 export const PUBLIC_ROUTES = [
   '/',
   '/sign-in',
@@ -126,4 +97,4 @@ export const PUBLIC_ROUTES = [
   '/policy',
   '/shop',
   '/forgot-password'
-] as const;
+] as const

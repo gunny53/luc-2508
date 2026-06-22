@@ -1,55 +1,52 @@
-import type { Metadata } from "next";
-import { Inter } from 'next/font/google';
-import "./globals.css";
-import StoreProvider from "@/store/StoreProvider"
-import { Toast } from "@/components/ui/toastify"
-import { TrustDeviceModal } from "@/components/auth/layout/trustDevice-Modal";
-import { Toaster } from '@/components/ui/sonner';
-import { getLocale } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
-import { CartProvider } from '@/providers/CartContext';
-import { AuthGuard } from "@/components/auth/AuthGuard";
-import ReactQueryProvider from "@/providers/ReactQueryProvider";
-import ChunkErrorHandler from "@/components/client/landing-page/ChunkgErrorHandler";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import StoreProvider from '@/store/store-provider'
+import { Toast } from '@/components/ui/toastify'
+import { TrustDeviceModal } from '@/components/auth/layout/trust-device-modal'
+import { Toaster } from '@/components/ui/sonner'
+import { getLocale } from 'next-intl/server'
+import { NextIntlClientProvider } from 'next-intl'
+import { CartProvider } from '@/providers/cart-context'
+import { AuthGuard } from '@/components/auth/auth-guard'
+import ReactQueryProvider from '@/providers/react-query-provider'
+import ChunkErrorHandler from '@/components/client/landing-page/chunkg-error-handler'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
-});
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
-  title: "ECSite",
-  description: "English content normalized from the original source text.",
-};
-
+  title: 'ECSite',
+  description: 'English content normalized from the original source text.'
+}
 
 export default async function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  const locale = await getLocale();
+  const locale = await getLocale()
   return (
     <html lang={locale}>
       <body className={`${inter.variable} antialiased`}>
         <NextIntlClientProvider>
           <ReactQueryProvider>
             <StoreProvider>
-                <AuthGuard>
-                  <Toast/>
-                  <TrustDeviceModal />
-                  <CartProvider>
-                    {children}
-                  </CartProvider>
-                </AuthGuard>
-                <Toaster position="bottom-right" />
-                <ChunkErrorHandler />
+              <AuthGuard>
+                <Toast />
+                <TrustDeviceModal />
+                <CartProvider>{children}</CartProvider>
+              </AuthGuard>
+              <Toaster position="bottom-right" />
+              <ChunkErrorHandler />
               {/* </ClientLayout> */}
             </StoreProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>
-  );
+  )
 }

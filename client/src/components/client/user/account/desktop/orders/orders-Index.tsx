@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import { Tabs } from "@/components/ui/tabs";
-import { OrderTabs } from "./orders-Tabs";
-import { OrderDateFilter } from "./orders-DateFilter";
-import { OrderTabContent } from "./orders-TabsContents";
-import { useOrder } from "./useOrder";
-import { OrderStatus } from "@/types/order.interface";
+import { useState, useEffect } from 'react'
+import { Tabs } from '@/components/ui/tabs'
+import { OrderTabs } from './orders-tabs'
+import { OrderDateFilter } from './orders-date-filter'
+import { OrderTabContent } from './orders-tabs-contents'
+import { useOrder } from './use-order'
+import { OrderStatus } from '@/types/order.interface'
 
 export default function OrderHistory() {
-  const { fetchAllOrders, fetchOrdersByStatus } = useOrder();
+  const { fetchAllOrders, fetchOrdersByStatus } = useOrder()
 
-  const [currentTab, setCurrentTab] = useState("all");
+  const [currentTab, setCurrentTab] = useState('all')
   const [counts, setCounts] = useState({
     all: 0,
     pendingPayment: 0,
@@ -20,10 +20,8 @@ export default function OrderHistory() {
     pendingDelivery: 0,
     delivered: 0,
     returned: 0,
-    cancelled: 0,
-  });
-
-  // English content normalized from the original source text.
+    cancelled: 0
+  })
   useEffect(() => {
     const fetchCounts = async () => {
       const [
@@ -34,7 +32,7 @@ export default function OrderHistory() {
         pendingDeliveryRes,
         deliveredRes,
         returnedRes,
-        cancelledRes,
+        cancelledRes
       ] = await Promise.all([
         fetchAllOrders(1, 1),
         fetchOrdersByStatus(OrderStatus.PENDING_PAYMENT, 1, 1),
@@ -43,8 +41,8 @@ export default function OrderHistory() {
         fetchOrdersByStatus(OrderStatus.PENDING_DELIVERY, 1, 1),
         fetchOrdersByStatus(OrderStatus.DELIVERED, 1, 1),
         fetchOrdersByStatus(OrderStatus.RETURNED, 1, 1),
-        fetchOrdersByStatus(OrderStatus.CANCELLED, 1, 1),
-      ]);
+        fetchOrdersByStatus(OrderStatus.CANCELLED, 1, 1)
+      ])
 
       setCounts({
         all: allRes?.metadata?.totalItems ?? 0,
@@ -54,14 +52,14 @@ export default function OrderHistory() {
         pendingDelivery: pendingDeliveryRes?.metadata?.totalItems ?? 0,
         delivered: deliveredRes?.metadata?.totalItems ?? 0,
         returned: returnedRes?.metadata?.totalItems ?? 0,
-        cancelled: cancelledRes?.metadata?.totalItems ?? 0,
-      });
-    };
+        cancelled: cancelledRes?.metadata?.totalItems ?? 0
+      })
+    }
 
-    fetchCounts();
-  }, [fetchAllOrders, fetchOrdersByStatus]);
+    fetchCounts()
+  }, [fetchAllOrders, fetchOrdersByStatus])
 
-  console.log("Counts:", counts);
+  console.log('Counts:', counts)
 
   return (
     <Tabs
@@ -72,11 +70,11 @@ export default function OrderHistory() {
       {/* Tabs list */}
       <OrderTabs counts={counts} />
 
-      {/* English content normalized from the original source text. */}
+      {}
       <OrderDateFilter />
 
-      {/* English content normalized from the original source text. */}
+      {}
       <OrderTabContent currentTab={currentTab} onTabChange={setCurrentTab} />
     </Tabs>
-  );
+  )
 }

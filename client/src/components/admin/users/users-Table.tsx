@@ -2,18 +2,18 @@
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table-component/data-table'
-import { userColumns } from './users-Columns'
+import { userColumns } from './users-columns'
 import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal'
-import UsersModalUpsert from './users-ModalUpsert'
-import { useUsers } from './useUsers'
+import UsersModalUpsert from './users-modal-upsert'
+import { useUsers } from './use-users'
 import SearchInput from '@/components/ui/data-table-component/search-input'
 import { PlusIcon } from 'lucide-react'
 import { User, UserCreateRequest } from '@/types/admin/user.interface'
-import { useDataTable } from '@/hooks/useDataTable'
+import { useDataTable } from '@/hooks/use-data-table'
 import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option'
 
 export default function UserTable() {
-  const t = useTranslations("admin.ModuleUsers.Table");
+  const t = useTranslations('admin.ModuleUsers.Table')
 
   const {
     data,
@@ -35,37 +35,38 @@ export default function UserTable() {
     handleCloseUpsertModal,
     addUser,
     editUser,
-    roles,
-  } = useUsers();
+    roles
+  } = useUsers()
 
   const handleSubmit = async (formData: User | UserCreateRequest) => {
     if (modalMode === 'edit') {
-      await editUser(formData as User);
+      await editUser(formData as User)
     } else {
-      await addUser(formData as UserCreateRequest);
+      await addUser(formData as UserCreateRequest)
     }
-  };
+  }
 
   const table = useDataTable({
-      data: data,
-      columns: userColumns({ onEdit: (user) => handleOpenUpsertModal('edit', user), onDelete: handleOpenDelete }),
-    });
+    data: data,
+    columns: userColumns({ onEdit: (user) => handleOpenUpsertModal('edit', user), onDelete: handleOpenDelete })
+  })
   return (
     <div className="w-full space-y-4">
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenUpsertModal('add')}>
-          <PlusIcon className="w-4 h-4 mr-2" />{t("addAction")}
+          <PlusIcon className="w-4 h-4 mr-2" />
+          {t('addAction')}
         </Button>
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
-            value={pagination.search || ""}
+            value={pagination.search || ''}
             onValueChange={(value) => handleSearch(value)}
-            placeholder={t("searchPlaceholder")}
+            placeholder={t('searchPlaceholder')}
             className="w-full md:max-w-sm"
           />
         </div>
@@ -82,23 +83,23 @@ export default function UserTable() {
           pagination={{
             metadata: pagination,
             onPageChange: handlePageChange,
-            onLimitChange: handleLimitChange,
+            onLimitChange: handleLimitChange
           }}
         />
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
-          if (!deleteLoading) handleCloseDeleteModal();
+          if (!deleteLoading) handleCloseDeleteModal()
         }}
         onConfirm={handleConfirmDelete}
         title={t('deleteConfirm.title')}
         description={
           userToDelete
             ? t('deleteConfirm.description', {
-                name: userToDelete?.name || '',
+                name: userToDelete?.name || ''
               })
             : ''
         }

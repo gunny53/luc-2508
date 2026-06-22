@@ -41,15 +41,8 @@ This document explains the refactoring done to the languages module to align wit
 
 ```tsx
 // In a component
-const {
-  languages,
-  pagination,
-  loading,
-  handleSearch,
-  handlePageChange,
-  handleLimitChange,
-  refreshData
-} = useLanguages();
+const { languages, pagination, loading, handleSearch, handlePageChange, handleLimitChange, refreshData } =
+  useLanguages()
 ```
 
 ## Next Steps

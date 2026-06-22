@@ -1,186 +1,140 @@
-# 🛒 ECSite - Advanced E-commerce Platform
-* English content normalized from the original source text
+# LUC 2508
 
-<div align="center">
+This repository contains a Next.js client and a NestJS API server managed with Yarn workspaces.
 
-<img src=".github/images/Img_Logo.png" alt="ECSite Logo" width="200" />
+## Requirements
 
-![Next.js](https://img.shields.io/badge/Next.js-15.x-black?style=for-the-badge&logo=next.js)
-![NestJS](https://img.shields.io/badge/NestJS-10.x-E0234E?style=for-the-badge&logo=nestjs)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis)
+- Node.js 22.x
+- Yarn 1.22.x
+- Docker Desktop for the local infrastructure from `server/docker-compose.yml`
+- PostgreSQL, Redis, Elasticsearch, and S3-compatible credentials for full API runtime
 
-*A sophisticated full-stack e-commerce solution built with modern technologies*
+## Project Structure
 
-</div>
-
-English content normalized from the original source text.
-
-**ECSite** is a comprehensive graduation project developed by a dedicated team of 6 members, showcasing modern web development practices and enterprise-level architecture. This platform demonstrates advanced e-commerce functionality with a focus on performance, security, and user experience.
-
-* English content normalized from the original source text
-
-English content normalized from the original source text.
-
-English content normalized from the original source text.
-- **ERICSS-FE** - Frontend Lead & Project Owner
-- **TEDDY-BE** - Backend Lead
-- **HA-FE** - Frontend Developer
-- **NUI-BE** - Backend Developer
-
-* English content normalized from the original source text
-
-English content normalized from the original source text.
-
-### Frontend - Next.js 15 (Client)
-- **Modern React Framework** with App Router architecture
-- **Server-Side Rendering (SSR)** for optimal SEO and performance
-- **Component-driven development** with TypeScript
-- **Responsive design** optimized for all devices
-- **State management** with Redux Toolkit & React Query
-- **Real-time features** with WebSocket integration
-
-### Backend - NestJS 10 (Server)
-- **Enterprise-grade Node.js framework** with TypeScript
-- **Microservices-ready architecture** with modular design
-- **Advanced authentication & authorization** system
-- **RESTful API** with comprehensive documentation
-- **Database management** with Prisma ORM
-- **Real-time communication** via WebSocket
-
-English content normalized from the original source text.
-
-English content normalized from the original source text.
-- **Product Management** - Advanced catalog with categories, brands, and variants
-- **Shopping Cart & Checkout** - Seamless purchasing experience with multiple payment options
-- **Order Management** - Complete order lifecycle tracking and management
-- **User Accounts** - Comprehensive user profiles and purchase history
-
-English content normalized from the original source text.
-- **Multi-role System** - ADMIN, SELLER, CLIENT with granular permissions
-- **Analytics Dashboard** - Real-time business insights and reporting
-- **Content Management** - Dynamic content and media management
-- **System Monitoring** - Performance tracking and audit logs
-
-English content normalized from the original source text.
-- **JWT Authentication** with refresh token rotation
-- **Role-based Access Control (RBAC)** with permission management
-- **Two-Factor Authentication (2FA)** for enhanced security
-- **Rate Limiting & CSRF Protection** for API security
-- **Optimized Performance** with caching strategies and CDN integration
-
-English content normalized from the original source text.
-- **Multiple Payment Gateways** - VNPay, Sepay integration
-- English content normalized from the original source text
-- **Email Services** - Automated notifications and confirmations
-- **Media Management** - AWS S3 integration for file storage
-
-English content normalized from the original source text.
-- **Multi-language Support** - Vietnamese & English localization
-- **Dynamic Translation Management** - Admin-configurable language content
-- **Localized User Experience** - Culture-specific formatting and content
-
-English content normalized from the original source text.
-
-### Frontend Technologies
-```
-Next.js 15        - React Framework with App Router
-TypeScript        - Type-safe development
-Tailwind CSS      - Utility-first CSS framework
-Radix UI          - Accessible component primitives
-React Hook Form   - Performant form management
-TanStack Query    - Server state management
-Redux Toolkit     - Client state management
-Socket.IO Client  - Real-time communication
+```text
+.
+|-- client                 # Next.js application
+|-- server
+|   |-- apps/api/src       # NestJS monorepo API application
+|   |-- initial-script     # Seed/import scripts
+|   |-- patches            # patch-package patches
+|   `-- prisma             # Prisma schema and migrations
+|-- package.json           # Root Yarn workspace scripts
+`-- yarn.lock              # Single lockfile for all workspaces
 ```
 
-### Backend Technologies
-```
-NestJS 10         - Progressive Node.js framework
-Prisma ORM        - Type-safe database toolkit
-PostgreSQL        - Primary database
-Redis             - Caching and session storage
-JWT               - Authentication tokens
-BullMQ            - Job queue processing
-Socket.IO         - WebSocket server
-AWS S3            - File storage service
+## Fresh Environment Setup
+
+1. Install Yarn if it is not available.
+
+```bash
+npm install --global yarn
 ```
 
-### DevOps & Tools
-```
-Docker            - Containerization
-PM2               - Process management
-Grafana           - Monitoring and analytics
-Prometheus        - Metrics collection
-ESLint/Prettier   - Code quality tools
-GitHub Actions    - CI/CD pipelines
+2. Install all workspace dependencies from the repository root.
+
+```bash
+yarn install
 ```
 
-English content normalized from the original source text.
+3. Apply the local package patches.
 
-### 🎨 Modern UI/UX Design
-- **Sleek Interface** with glassmorphism and modern design principles
-- **Dark/Light Theme** support with system preference detection
-- **Mobile-first Approach** ensuring perfect mobile experience
-- **Accessibility Standards** following WCAG guidelines
+```bash
+yarn patch:packages
+```
 
-### ⚡ Performance Optimizations
-- **Code Splitting** and lazy loading for optimal bundle sizes
-- **Image Optimization** with Next.js Image component
-- **Database Query Optimization** with efficient indexing
-- **Caching Strategies** at multiple layers (Redis, CDN, Browser)
+4. Generate the Prisma client.
 
-### 🔧 Developer Experience
-- **Type Safety** throughout the entire stack
-- **API Documentation** with automated Swagger generation
-- **Comprehensive Testing** with unit and integration tests
-- **Git Workflow** with conventional commits and automated versioning
+```bash
+yarn workspace ecsite generate
+```
 
-English content normalized from the original source text.
+5. Configure environment variables.
 
-English content normalized from the original source text.
-<div align="center">
-<img src=".github/images/Img_Main.png" alt="ECSite Main Interface" width="100%" />
-</div>
+Local development env files are prepared for Docker-backed local runs:
 
-*Beautiful, responsive e-commerce homepage with modern design elements*
-* English content normalized from the original source text
+- `server/.env`
+- `server/.env.docker`
+- `client/.env.local`
 
-English content normalized from the original source text.
-<div align="center">
-<img src=".github/images/Img_Admin.png" alt="ECSite Admin Dashboard" width="100%" />
-</div>
+Use real provider credentials for production-only services such as S3, GHN, VNPAY, and Resend before testing those integrations.
 
-*Comprehensive admin panel for managing products, orders, and system analytics*
-* English content normalized from the original source text
+6. Start the local infrastructure.
 
-English content normalized from the original source text.
+```bash
+cd server
+docker-compose up -d
+cd ..
+```
 
-This project demonstrates enterprise-level development practices and modern web technologies. For detailed setup instructions, please refer to the individual client and server documentation.
+7. Apply database migrations to the local PostgreSQL container.
 
-English content normalized from the original source text.
+```bash
+yarn workspace ecsite migrate:prod
+```
 
-English content normalized from the original source text.
+8. Build both applications.
 
-### ERICSS - Frontend Lead & Project Owner
+```bash
+yarn build
+```
 
-- 💼 **LinkedIn**: [Connect with ERICSS](https://linkedin.com/in/ericss)
-- 📱 **Zalo**: Contact via Zalo
-- 📧 **Facebook**: Follow on Facebook
-- 📷 **Instagram**: @ericss_dev
+## Development Commands
 
-*Feel free to reach out for collaboration opportunities or technical discussions!*
-* English content normalized from the original source text
+Run the client:
 
----
+```bash
+yarn dev:client
+```
 
-<div align="center">
+Run the API:
 
-**Built with ❤️ by ECSite Team**
-* English content normalized from the original source text
+```bash
+yarn dev:server
+```
 
-⭐ **Star this repository if you found it helpful!**
-English content normalized from the original source text.
+Build individually:
 
-</div>
+```bash
+yarn build:client
+yarn build:server
+```
+
+Format all source files:
+
+```bash
+yarn format
+```
+
+Run server database tasks:
+
+```bash
+yarn workspace ecsite migrate
+yarn workspace ecsite seed
+```
+
+## Code Style
+
+- Use Yarn only. Do not commit `package-lock.json`.
+- Use single quotes.
+- Do not use semicolons.
+- Keep comments in English.
+- Use kebab-case for source file and folder names.
+- Prefer TypeScript path aliases for shared imports.
+- The API server uses NestJS monorepo layout with the `api` application under `server/apps/api`.
+
+## Verification
+
+The current setup was verified with:
+
+```bash
+yarn install
+yarn patch:packages
+yarn workspace ecsite generate
+yarn workspace ecsite migrate:prod
+docker-compose up -d
+yarn build:server
+yarn build:client
+```
+
+The compiled API was also smoke-tested with `GET http://localhost:3000/health` against the Docker services.

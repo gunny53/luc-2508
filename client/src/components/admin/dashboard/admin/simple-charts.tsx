@@ -1,13 +1,13 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartData } from '../hooks/useDbAdmin';
+import React from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { ChartData } from '../hooks/use-db-admin'
 
 interface SimpleChartsProps {
-  chartData: ChartData;
+  chartData: ChartData
 }
 
 const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
-  const { usersByRole, usersByStatus, isLoading } = chartData;
+  const { usersByRole, usersByStatus, isLoading } = chartData
 
   if (isLoading) {
     return (
@@ -37,7 +37,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
           </CardContent>
         </Card>
       </div>
-    );
+    )
   }
 
   return (
@@ -50,16 +50,13 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         <CardContent>
           <div className="space-y-3">
             {usersByRole.map((item) => {
-              const total = usersByRole.reduce((sum, role) => sum + role.value, 0);
-              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
+              const total = usersByRole.reduce((sum, role) => sum + role.value, 0)
+              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0'
 
               return (
                 <div key={item.name} className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div
-                      className="w-4 h-4 rounded-full"
-                      style={{ backgroundColor: item.color }}
-                    />
+                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }} />
                     <span className="text-sm font-medium">{item.name}</span>
                   </div>
                   <div className="text-right">
@@ -67,15 +64,15 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                     <div className="text-xs text-gray-500">{percentage}%</div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
           {/* Simple bar chart */}
           <div className="mt-4 space-y-2">
             {usersByRole.map((item) => {
-              const total = usersByRole.reduce((sum, role) => sum + role.value, 0);
-              const percentage = total > 0 ? (item.value / total) * 100 : 0;
+              const total = usersByRole.reduce((sum, role) => sum + role.value, 0)
+              const percentage = total > 0 ? (item.value / total) * 100 : 0
 
               return (
                 <div key={`bar-${item.name}`} className="flex items-center space-x-2">
@@ -91,7 +88,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                   </div>
                   <span className="text-xs w-10 text-right">{percentage.toFixed(0)}%</span>
                 </div>
-              );
+              )
             })}
           </div>
         </CardContent>
@@ -105,16 +102,13 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         <CardContent>
           <div className="space-y-3">
             {usersByStatus.map((item) => {
-              const total = usersByStatus.reduce((sum, status) => sum + status.value, 0);
-              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
+              const total = usersByStatus.reduce((sum, status) => sum + status.value, 0)
+              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0'
 
               return (
                 <div key={item.name} className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div
-                      className="w-4 h-4 rounded-full"
-                      style={{ backgroundColor: item.color }}
-                    />
+                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }} />
                     <span className="text-sm font-medium">{item.name}</span>
                   </div>
                   <div className="text-right">
@@ -122,7 +116,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                     <div className="text-xs text-gray-500">{percentage}%</div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -130,19 +124,12 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
           <div className="mt-6 flex justify-center">
             <div className="relative w-32 h-32">
               <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                <circle
-                  cx="18"
-                  cy="18"
-                  r="16"
-                  fill="none"
-                  className="stroke-gray-200"
-                  strokeWidth="3"
-                />
+                <circle cx="18" cy="18" r="16" fill="none" className="stroke-gray-200" strokeWidth="3" />
                 {usersByStatus.map((item, index) => {
-                  const total = usersByStatus.reduce((sum, status) => sum + status.value, 0);
-                  const percentage = total > 0 ? (item.value / total) * 100 : 0;
-                  const strokeDasharray = `${percentage} ${100 - percentage}`;
-                  const strokeDashoffset = index === 0 ? '0' : '-25';
+                  const total = usersByStatus.reduce((sum, status) => sum + status.value, 0)
+                  const percentage = total > 0 ? (item.value / total) * 100 : 0
+                  const strokeDasharray = `${percentage} ${100 - percentage}`
+                  const strokeDashoffset = index === 0 ? '0' : '-25'
 
                   return (
                     <circle
@@ -157,7 +144,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                       strokeDashoffset={strokeDashoffset}
                       className="transition-all duration-500"
                     />
-                  );
+                  )
                 })}
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
@@ -173,7 +160,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         </CardContent>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default SimpleCharts;
+export default SimpleCharts

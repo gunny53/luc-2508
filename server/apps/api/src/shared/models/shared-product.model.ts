@@ -1,0 +1,69 @@
+import { z } from 'zod'
+
+export const VariantSchema = z.object({
+  value: z.string().trim(),
+  options: z.array(z.string().trim())
+})
+
+export const VariantsSchema = z.array(VariantSchema).superRefine((variants, ctx) => {
+  for (let i = 0; i < variants.length; i++) {
+    const variant = variants[i]
+    const isExistingVariant = variants.findIndex((v) => v.value.toLowerCase() === variant.value.toLowerCase()) !== i
+    if (isExistingVariant) {
+      return ctx.addIssue({
+        code: 'custom',
+        message: `English content normalized from the original source text.${variant.value}English content normalized from the original source text.`,
+        path: ['variants']
+      })
+    }
+    const isDifferentOption = variant.options.some((option, index) => {
+      const isExistingOption = variant.options.findIndex((o) => o.toLowerCase() === option.toLowerCase()) !== index
+      return isExistingOption
+    })
+    if (isDifferentOption) {
+      return ctx.addIssue({
+        code: 'custom',
+        message: `Variant ${variant.value}English content normalized from the original source text.`,
+        path: ['variants']
+      })
+    }
+  }
+})
+
+export const SpecificationSchema = z.object({
+  name: z.string().trim(),
+  value: z.string().trim()
+})
+
+export const SpecificationsSchema = z.array(SpecificationSchema).superRefine((specs, ctx) => {
+  const uniqueSpecs = specs.filter(
+    (spec, index, self) => index === self.findIndex((s) => s.name.toLowerCase() === spec.name.toLowerCase())
+  )
+  if (uniqueSpecs.length !== specs.length) {
+    specs.length = 0
+    specs.push(...uniqueSpecs)
+  }
+})
+
+export const ProductSchema = z.object({
+  id: z.string(),
+  publishedAt: z.coerce.date().nullable(),
+  name: z.string().trim().max(500),
+  description: z.string().default(''),
+  basePrice: z.number().min(0),
+  virtualPrice: z.number().min(0),
+  brandId: z.string(),
+  images: z.array(z.string()),
+  variants: VariantsSchema, // Json field represented as a record
+  specifications: SpecificationsSchema.nullable().default([]),
+  createdById: z.string().nullable(),
+  updatedById: z.string().nullable(),
+  deletedById: z.string().nullable(),
+  deletedAt: z.union([z.string(), z.date()]).nullable(),
+  createdAt: z.union([z.string(), z.date()]),
+  updatedAt: z.union([z.string(), z.date()])
+})
+
+export type ProductType = z.infer<typeof ProductSchema>
+export type VariantsType = z.infer<typeof VariantsSchema>
+export type SpecificationsType = z.infer<typeof SpecificationsSchema>

@@ -1,17 +1,17 @@
- 'use client'
+'use client'
 
 import * as React from 'react'
-import { flexRender, Table as TanstackTable } from '@tanstack/react-table'
+import { ColumnDef, flexRender, Row, Table as TanstackTable } from '@tanstack/react-table'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Loader2 } from 'lucide-react'
 import { DataTablePaginationProps, Pagination } from './pagination'
 
 interface DataTableProps<TData> {
   table: TanstackTable<TData>
-  columns: any[] // or more specific type
+  columns: ColumnDef<TData>[]
   loading?: boolean
   notFoundMessage?: string
-  onRowClick?: (row: any) => void
+  onRowClick?: (row: TData) => void
   Toolbar?: React.ComponentType<{ table: TanstackTable<TData> }>
   pagination?: DataTablePaginationProps
   expandedRows?: Set<string>
@@ -22,12 +22,12 @@ export function DataTable<TData>({
   table,
   columns,
   loading = false,
-  notFoundMessage = 'English content normalized from the original source text.',
+  notFoundMessage = 'No data found.',
   onRowClick,
   Toolbar,
   pagination,
   expandedRows,
-  renderExpandedRow,
+  renderExpandedRow
 }: DataTableProps<TData>) {
   return (
     <div className="w-full space-y-4">
@@ -45,9 +45,7 @@ export function DataTable<TData>({
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
                     <TableHead key={header.id} colSpan={header.colSpan}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   ))}
                 </TableRow>
@@ -63,12 +61,10 @@ export function DataTable<TData>({
                       className={onRowClick ? 'cursor-pointer hover:bg-muted/60' : ''}
                     >
                       {row.getVisibleCells().map((cell) => (
-                        <TableCell key={cell.id}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </TableCell>
+                        <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                       ))}
                     </TableRow>
-                    {expandedRows && renderExpandedRow && expandedRows.has(String((row.original as any).id)) && (
+                    {expandedRows && renderExpandedRow && expandedRows.has(String((row as Row<TData>).id)) && (
                       <TableRow>
                         <TableCell colSpan={columns.length} className="p-0 border-b-0">
                           {renderExpandedRow(row.original)}

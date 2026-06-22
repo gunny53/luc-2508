@@ -9,12 +9,9 @@ export default function Verify2faHandler() {
 
   useEffect(() => {
     if (!type) {
-      // English content normalized from the original source text.
       window.location.replace('/verify-2fa?type=TOTP')
     }
   }, [type])
-
-  // English content normalized from the original source text.
   if (!type) return null
 
   return <Verify2FAForm />

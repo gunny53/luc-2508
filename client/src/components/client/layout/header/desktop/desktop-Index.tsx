@@ -1,32 +1,32 @@
-'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import { SearchInput } from './desktop-SearchInput';
-import { CartDropdown } from './desktop-Cart';
-import { Categories } from './desktop-Categories';
-import { DropdownProvider, useDropdown } from '../dropdown-context';
-import { ProfileDropdown } from './desktop-Profile';
-import { ChangeLangs } from './desktop-ChangeLangs';
-import DesktopCommit from "./desktop-Commit";
-import { useScrollHeader } from '@/hooks/useScrollHeader';
-import { TopBar } from './header-TopBar';
-import '../style.css';
+'use client'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useEffect } from 'react'
+import { SearchInput } from './desktop-search-input'
+import { CartDropdown } from './desktop-cart'
+import { Categories } from './desktop-categories'
+import { DropdownProvider, useDropdown } from '../dropdown-context'
+import { ProfileDropdown } from './desktop-profile'
+import { ChangeLangs } from './desktop-change-langs'
+import DesktopCommit from './desktop-commit'
+import { useScrollHeader } from '@/hooks/use-scroll-header'
+import { TopBar } from './header-top-bar'
+import '../style.css'
 function HeaderLayout() {
-  const showHeader = useScrollHeader();
-  const { openDropdown, setOpenDropdown } = useDropdown();
+  const showHeader = useScrollHeader()
+  const { openDropdown, setOpenDropdown } = useDropdown()
   // Determine if the overlay should be shown. Exclude 'cart' and 'none'.
-  const showOverlay = openDropdown !== 'none' && openDropdown !== 'cart';
+  const showOverlay = openDropdown !== 'none' && openDropdown !== 'cart'
 
   // Close all dropdowns when header is hidden
   useEffect(() => {
     if (!showHeader && openDropdown !== 'none') {
-      setOpenDropdown('none');
+      setOpenDropdown('none')
     }
-  }, [showHeader, openDropdown, setOpenDropdown]);// Remove scroll-locking effect
+  }, [showHeader, openDropdown, setOpenDropdown]) // Remove scroll-locking effect
   useEffect(() => {
-    document.body.style.overflow = ''; // Always ensure scrolling is enabled
-  }, []);
+    document.body.style.overflow = '' // Always ensure scrolling is enabled
+  }, [])
 
   return (
     <>
@@ -78,7 +78,7 @@ function HeaderLayout() {
       {/* <DesktopCommit /> */}
       <div className="body-overlay" />
     </>
-  );
+  )
 }
 export function Header() {
   return (
@@ -88,5 +88,5 @@ export function Header() {
         <HeaderLayout />
       </DropdownProvider>
     </>
-  );
+  )
 }

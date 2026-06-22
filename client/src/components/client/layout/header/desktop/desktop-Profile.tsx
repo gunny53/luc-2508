@@ -1,92 +1,86 @@
-"use client";
-import Link from "next/link";
-import {
-  User,
-  LogOut,
-  ShoppingCart,
-  LucideIcon,
-  LayoutDashboard,
-} from "lucide-react";
-import React, { useRef } from "react";
-import { useLogout } from "@/hooks/useLogout";
-import { useRouter } from "next/navigation";
-import { ROUTES } from "@/constants/route";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { useDropdown } from "../dropdown-context";
-import { useUserData } from "@/hooks/useGetData-UserLogin";
-import Image from "next/image";
-import { useGetProfile } from "@/hooks/useGetProfile";
+'use client'
+import Link from 'next/link'
+import { User, LogOut, ShoppingCart, LucideIcon, LayoutDashboard } from 'lucide-react'
+import React, { useRef } from 'react'
+import { useLogout } from '@/hooks/use-logout'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/constants/route'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
+import { useDropdown } from '../dropdown-context'
+import { useUserData } from '@/hooks/use-get-data-user-login'
+import Image from 'next/image'
+import { useGetProfile } from '@/hooks/use-get-profile'
 
 interface MenuItemProps {
-  icon: LucideIcon;
-  label: string;
-  onClick: () => void;
-  requireDivider?: boolean;
+  icon: LucideIcon
+  label: string
+  onClick: () => void
+  requireDivider?: boolean
 }
 
 export function ProfileDropdown() {
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const { handleLogout, loading: logoutLoading } = useLogout();
-  const router = useRouter();
-  const { openDropdown, setOpenDropdown } = useDropdown();
-  const user = useUserData();
-  const isOpen = openDropdown === "profile";
-  const fetchProfile = useGetProfile(); // English content normalized from the original source text.
-
-  // English content normalized from the original source text.
-  const isAdmin = user?.role?.name === 'ADMIN' || user?.role?.name === 'Super Admin' || user?.role?.name === 'SELLER';
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const { handleLogout, loading: logoutLoading } = useLogout()
+  const router = useRouter()
+  const { openDropdown, setOpenDropdown } = useDropdown()
+  const user = useUserData()
+  const isOpen = openDropdown === 'profile'
+  const fetchProfile = useGetProfile()
+  const isAdmin = user?.role?.name === 'ADMIN' || user?.role?.name === 'Super Admin' || user?.role?.name === 'SELLER'
 
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: "English content normalized from the original source text.",
+      label: 'English content normalized from the original source text.',
       onClick: async () => {
         // Fetch profile data before navigation
-        await fetchProfile.fetchProfile();
-        router.push(ROUTES.CLIENT.USER.BASE);
-      },
+        await fetchProfile.fetchProfile()
+        router.push(ROUTES.CLIENT.USER.BASE)
+      }
     },
     {
       icon: ShoppingCart,
-      label: "English content normalized from the original source text.",
-      onClick: () => router.push('/cart'),
+      label: 'English content normalized from the original source text.',
+      onClick: () => router.push('/cart')
     },
     {
       icon: ShoppingCart,
-      label: "English content normalized from the original source text.",
+      label: 'English content normalized from the original source text.',
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
-      requireDivider: true,
+      requireDivider: true
     },
     {
       icon: LogOut,
-      label: logoutLoading ? "English content normalized from the original source text." : "English content normalized from the original source text.",
-      onClick: handleLogout,
-    },
-  ];
+      label: logoutLoading
+        ? 'English content normalized from the original source text.'
+        : 'English content normalized from the original source text.',
+      onClick: handleLogout
+    }
+  ]
 
   if (!user) {
     return (
       <span
         onClick={() => router.push(ROUTES.AUTH.SIGNIN)}
         className="cursor-pointer inline-flex items-center justify-center px-4 py-3 text-white font-semibold text-[13px]"
-      >English content normalized from the original source text.</span>
-    );
+      >
+        English content normalized from the original source text.
+      </span>
+    )
   }
 
-  const name = user.name || '';
-  const email = user.email || '';
-  const avatar = user.avatar || '';
-
-  // English content normalized from the original source text.
+  const name = user.name || ''
+  const email = user.email || ''
+  const avatar = user.avatar || ''
   const getInitials = (name: string) => {
-    const parts = name.split(' ').filter(Boolean);
-    if (parts.length === 0) return 'U';
-    if (parts.length === 1) return parts[0][0].toUpperCase();
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-  };
+    const parts = name.split(' ').filter(Boolean)
+    if (parts.length === 0) return 'U'
+    if (parts.length === 1) return parts[0][0].toUpperCase()
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+  }
 
-  const avatarText = getInitials(name);
+  const avatarText = getInitials(name)
 
   const AvatarComponent = () => {
     if (avatar) {
@@ -100,57 +94,52 @@ export function ProfileDropdown() {
             className="object-cover"
             onError={(e) => {
               // Fallback to initials if image fails to load
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.parentElement!.innerHTML = avatarText;
+              e.currentTarget.style.display = 'none'
+              e.currentTarget.parentElement!.innerHTML = avatarText
             }}
           />
         </div>
-      );
+      )
     }
-    return <span>{avatarText}</span>;
-  };
+    return <span>{avatarText}</span>
+  }
 
   return (
     <div className="relative group profile-container" ref={dropdownRef}>
       {/* Trigger Button */}
       <div
         className="cursor-pointer relative whitespace-nowrap inline-flex items-center gap-2 px-4 py-3 text-white font-semibold text-sm"
-        onClick={() => setOpenDropdown(isOpen ? "none" : "profile")}
-        onMouseEnter={() => setOpenDropdown("profile")}
+        onClick={() => setOpenDropdown(isOpen ? 'none' : 'profile')}
+        onMouseEnter={() => setOpenDropdown('profile')}
       >
         {/* Backdrop blur effect */}
         <motion.div
           className="absolute inset-0 rounded-full backdrop-blur-sm"
           initial={{
-            backgroundColor: "rgba(233, 233, 233, 0)",
+            backgroundColor: 'rgba(233, 233, 233, 0)',
             scaleX: 0.5,
-            scaleY: 0.8,
+            scaleY: 0.8
           }}
           animate={{
-            backgroundColor: isOpen
-              ? "rgba(233, 233, 233, 0.4)"
-              : "rgba(233, 233, 233, 0)",
-            boxShadow: isOpen
-              ? "0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-              : "none",
+            backgroundColor: isOpen ? 'rgba(233, 233, 233, 0.4)' : 'rgba(233, 233, 233, 0)',
+            boxShadow: isOpen ? '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)' : 'none',
             scaleX: isOpen ? 1 : 0.5,
-            scaleY: isOpen ? 1 : 0.8,
+            scaleY: isOpen ? 1 : 0.8
           }}
           whileHover={{
-            backgroundColor: "rgba(233, 233, 233, 0.4)",
-            boxShadow:
-              "0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+            backgroundColor: 'rgba(233, 233, 233, 0.4)',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
             scaleX: [0.8, 1.1, 1],
-            scaleY: [0.9, 1.05, 1],
+            scaleY: [0.9, 1.05, 1]
           }}
           transition={{
-            type: "spring",
+            type: 'spring',
             stiffness: 350,
             damping: 12,
             backgroundColor: { duration: 0.15 },
             boxShadow: { duration: 0.15 },
-            scaleX: { duration: 0.35, ease: "easeOut" },
-            scaleY: { duration: 0.25, ease: "easeOut" },
+            scaleX: { duration: 0.35, ease: 'easeOut' },
+            scaleY: { duration: 0.25, ease: 'easeOut' }
           }}
         />
 
@@ -167,21 +156,19 @@ export function ProfileDropdown() {
       {/* Dropdown Menu */}
       <motion.div
         className={cn(
-          "absolute top-[calc(100%+3px)] right-0 w-72 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50",
-          isOpen
-            ? "opacity-100 visible"
-            : "opacity-0 invisible pointer-events-none"
+          'absolute top-[calc(100%+3px)] right-0 w-72 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50',
+          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         )}
-        onMouseEnter={() => setOpenDropdown("profile")}
-        onMouseLeave={() => setOpenDropdown("none")}
+        onMouseEnter={() => setOpenDropdown('profile')}
+        onMouseLeave={() => setOpenDropdown('none')}
         initial={{ opacity: 0, y: -10 }}
         animate={{
           opacity: isOpen ? 1 : 0,
           y: isOpen ? 0 : -10,
           transition: {
             duration: 0.2,
-            ease: "easeOut",
-          },
+            ease: 'easeOut'
+          }
         }}
       >
         {/* Bubble arrow pointing to the title */}
@@ -193,9 +180,7 @@ export function ProfileDropdown() {
             <AvatarComponent />
           </div>
           <div className="flex flex-col max-w-[175px]">
-            <div className="font-medium text-[16px] text-gray-900 truncate">
-              {name}
-            </div>
+            <div className="font-medium text-[16px] text-gray-900 truncate">{name}</div>
             <div className="text-[11px] text-gray-500 truncate">{email}</div>
           </div>
         </div>
@@ -205,8 +190,13 @@ export function ProfileDropdown() {
         <div>
           {isAdmin && (
             <>
-              <Link href={ROUTES.ADMIN.DASHBOARD} className="flex items-center px-5 py-2 hover:bg-gray-50 cursor-pointer text-[14px] text-gray-800">
-                <LayoutDashboard className="w-4.5 h-4.5 mr-2 text-gray-800" />English content normalized from the original source text.</Link>
+              <Link
+                href={ROUTES.ADMIN.DASHBOARD}
+                className="flex items-center px-5 py-2 hover:bg-gray-50 cursor-pointer text-[14px] text-gray-800"
+              >
+                <LayoutDashboard className="w-4.5 h-4.5 mr-2 text-gray-800" />
+                English content normalized from the original source text.
+              </Link>
               <div className="h-px bg-gray-200 mx-6 my-1"></div>
             </>
           )}
@@ -219,13 +209,11 @@ export function ProfileDropdown() {
                 <item.icon className="w-4.5 h-4.5 mr-2 text-gray-800" />
                 {item.label}
               </div>
-              {item.requireDivider && (
-                <div className="h-px bg-gray-200 mx-6 my-1"></div>
-              )}
+              {item.requireDivider && <div className="h-px bg-gray-200 mx-6 my-1"></div>}
             </React.Fragment>
           ))}
         </div>
       </motion.div>
     </div>
-  );
+  )
 }

@@ -1,54 +1,52 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { showToast } from "@/components/ui/toastify";
-import { useGetProfile } from "@/hooks/useGetProfile";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from 'react'
+import { showToast } from '@/components/ui/toastify'
+import { useGetProfile } from '@/hooks/use-get-profile'
+import { useRouter } from 'next/navigation'
 
 export default function OauthCallbackPage() {
-  const { fetchProfile, loading } = useGetProfile();
-  const [isProcessing, setIsProcessing] = useState(true);
-  const [authSuccess, setAuthSuccess] = useState(false);
-  const router = useRouter();
+  const { fetchProfile, loading } = useGetProfile()
+  const [isProcessing, setIsProcessing] = useState(true)
+  const [authSuccess, setAuthSuccess] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const handleOAuthCallback = async () => {
       try {
-        const profileData = await fetchProfile();
+        const profileData = await fetchProfile()
 
         if (profileData) {
-          console.log('Profile fetched successfully:', profileData);
-          setAuthSuccess(true);
-
-          // English content normalized from the original source text.
-          const userRole = profileData.role?.name?.toUpperCase();
+          console.log('Profile fetched successfully:', profileData)
+          setAuthSuccess(true)
+          const userRole = profileData.role?.name?.toUpperCase()
           if (userRole === 'ADMIN' || userRole === 'SELLER') {
-            showToast('English content normalized from the original source text.', "success");
+            showToast('English content normalized from the original source text.', 'success')
             setTimeout(() => {
-              window.location.replace("/admin");
-            }, 1000);
+              window.location.replace('/admin')
+            }, 1000)
           } else {
-            showToast('English content normalized from the original source text.', "success");
+            showToast('English content normalized from the original source text.', 'success')
             setTimeout(() => {
-              window.location.replace("/");
-            }, 1000);
+              window.location.replace('/')
+            }, 1000)
           }
         } else {
-          throw new Error('Failed to fetch user profile');
+          throw new Error('Failed to fetch user profile')
         }
       } catch (error) {
-        console.error('OAuth callback error:', error);
-        showToast('English content normalized from the original source text.', "error");
+        console.error('OAuth callback error:', error)
+        showToast('English content normalized from the original source text.', 'error')
         setTimeout(() => {
-          router.push("/sign-in");
-        }, 2000);
+          router.push('/sign-in')
+        }, 2000)
       } finally {
-        setIsProcessing(false);
+        setIsProcessing(false)
       }
-    };
+    }
 
-    handleOAuthCallback();
-  }, [fetchProfile, router]);  // Show error state
+    handleOAuthCallback()
+  }, [fetchProfile, router]) // Show error state
   if (!authSuccess && !isProcessing && !loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -59,10 +57,12 @@ export default function OauthCallbackPage() {
             </svg>
           </div>
           <p className="text-red-600 font-medium">English content normalized from the original source text.</p>
-          <p className="text-muted-foreground text-sm mt-1">English content normalized from the original source text.</p>
+          <p className="text-muted-foreground text-sm mt-1">
+            English content normalized from the original source text.
+          </p>
         </div>
       </div>
-    );
+    )
   }
 
   // Show success state
@@ -76,10 +76,12 @@ export default function OauthCallbackPage() {
             </svg>
           </div>
           <p className="text-green-600 font-medium">English content normalized from the original source text.</p>
-          <p className="text-muted-foreground text-sm mt-1">English content normalized from the original source text.</p>
+          <p className="text-muted-foreground text-sm mt-1">
+            English content normalized from the original source text.
+          </p>
         </div>
       </div>
-    );
+    )
   }
 
   // Show loading state (default)
@@ -90,5 +92,5 @@ export default function OauthCallbackPage() {
         <p className="text-muted-foreground">English content normalized from the original source text.</p>
       </div>
     </div>
-  );
+  )
 }

@@ -1,100 +1,104 @@
-"use client";
+'use client'
 
-import { useNewVoucher } from '../hook/useNewVoucher';
-import { VoucherUseCase } from '../hook/voucher-config';
-import VoucherBasicInfo from './new-BasicInfo';
-import VoucherDiscountSettings from './new-SettingsVoucher';
-import VoucherShowSettings from './new-ShowVoucher';
-import { Button } from '@/components/ui/button';
-import { Loader2 } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
-import { useUserData } from '@/hooks/useGetData-UserLogin';
+import { useNewVoucher } from '../hook/use-new-voucher'
+import { VoucherUseCase } from '../hook/voucher-config'
+import VoucherBasicInfo from './new-basic-info'
+import VoucherDiscountSettings from './new-settings-voucher'
+import VoucherShowSettings from './new-show-voucher'
+import { Button } from '@/components/ui/button'
+import { Loader2 } from 'lucide-react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+import { useUserData } from '@/hooks/use-get-data-user-login'
 
 interface VoucherNewIndexProps {
-  useCase?: VoucherUseCase;
-  onCreateSuccess?: () => void;
+  useCase?: VoucherUseCase
+  onCreateSuccess?: () => void
 }
 
 function getUseCase(param: string | null): VoucherUseCase {
   switch (param) {
     case '1':
-      return VoucherUseCase.SHOP;
+      return VoucherUseCase.SHOP
     case '2':
-      return VoucherUseCase.PRODUCT;
+      return VoucherUseCase.PRODUCT
     case '3':
-      return VoucherUseCase.PRIVATE;
+      return VoucherUseCase.PRIVATE
     case '4':
-      return VoucherUseCase.PLATFORM;
+      return VoucherUseCase.PLATFORM
     case '5':
-      return VoucherUseCase.CATEGORIES;
+      return VoucherUseCase.CATEGORIES
     case '6':
-      return VoucherUseCase.BRAND;
+      return VoucherUseCase.BRAND
     case '7':
-      return VoucherUseCase.SHOP_ADMIN;
+      return VoucherUseCase.SHOP_ADMIN
     case '8':
-      return VoucherUseCase.PRODUCT_ADMIN;
+      return VoucherUseCase.PRODUCT_ADMIN
     case '9':
-      return VoucherUseCase.PRIVATE_ADMIN;
+      return VoucherUseCase.PRIVATE_ADMIN
     default:
-      return VoucherUseCase.SHOP;
+      return VoucherUseCase.SHOP
   }
 }
 
-
 function VoucherNewContent({ useCase: propUseCase, onCreateSuccess: propOnCreateSuccess }: VoucherNewIndexProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const useCaseParam = searchParams.get('usecase');
-  const ownerParam = searchParams.get('owner');
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const useCaseParam = searchParams.get('usecase')
+  const ownerParam = searchParams.get('owner')
+  const userData = useUserData()
+  const useCase = propUseCase || getUseCase(useCaseParam)
+  const owner = ownerParam === 'PLATFORM' || ownerParam === 'SHOP' ? ownerParam : 'SHOP'
 
-  // English content normalized from the original source text.
-  const userData = useUserData();
-
-  // English content normalized from the original source text.
-  const useCase = propUseCase || getUseCase(useCaseParam);
-  const owner = (ownerParam === 'PLATFORM' || ownerParam === 'SHOP') ? ownerParam : 'SHOP';
-
-  const {
-    formData,
-    updateFormData,
-    errors,
-    voucherType,
-    submitVoucher,
-    resetForm,
-    isLoading
-  } = useNewVoucher({
+  const { formData, updateFormData, errors, voucherType, submitVoucher, resetForm, isLoading } = useNewVoucher({
     useCase,
     owner,
-    userData, // English content normalized from the original source text.
-    onCreateSuccess: propOnCreateSuccess || (() => {
-      // English content normalized from the original source text.
-      router.push('/admin/voucher');
-    })
-  });
+    userData,
+    onCreateSuccess:
+      propOnCreateSuccess ||
+      (() => {
+        router.push('/admin/voucher')
+      })
+  })
 
   const handleCancel = () => {
-    resetForm();
-    router.push('/admin/voucher');
-  };
+    resetForm()
+    router.push('/admin/voucher')
+  }
 
   return (
     <div className="flex flex-col h-full">
       {/* Form Content */}
       <div className="flex-grow space-y-6">
         <VoucherBasicInfo formData={formData} updateFormData={updateFormData} errors={errors} useCase={useCase} />
-        <VoucherDiscountSettings formData={formData} updateFormData={updateFormData} errors={errors} useCase={useCase} voucherType={voucherType} />
-        <VoucherShowSettings formData={formData} updateFormData={updateFormData} errors={errors} useCase={useCase} voucherType={voucherType} />
+        <VoucherDiscountSettings
+          formData={formData}
+          updateFormData={updateFormData}
+          errors={errors}
+          useCase={useCase}
+          voucherType={voucherType}
+        />
+        <VoucherShowSettings
+          formData={formData}
+          updateFormData={updateFormData}
+          errors={errors}
+          useCase={useCase}
+          voucherType={voucherType}
+        />
       </div>
 
       {/* Sticky Footer */}
       <div className="rounded-sm sticky bottom-0 mt-6 bg-white/95 backdrop-blur-lg border shadow-lg border-gray-200 p-4 z-10">
         <div className="flex justify-end items-center gap-4">
-          <Button variant="outline" size="lg" onClick={handleCancel} disabled={isLoading} className="h-11">English content normalized from the original source text.</Button>
+          <Button variant="outline" size="lg" onClick={handleCancel} disabled={isLoading} className="h-11">
+            English content normalized from the original source text.
+          </Button>
           <Button size="lg" onClick={submitVoucher} disabled={isLoading} className="h-11 bg-red-600 hover:bg-red-700">
             {isLoading ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />English content normalized from the original source text.</>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                English content normalized from the original source text.
+              </>
             ) : (
               'English content normalized from the original source text.'
             )}
@@ -102,7 +106,7 @@ function VoucherNewContent({ useCase: propUseCase, onCreateSuccess: propOnCreate
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export function VoucherNewIndex({ useCase, onCreateSuccess }: VoucherNewIndexProps = {}) {
@@ -110,7 +114,7 @@ export function VoucherNewIndex({ useCase, onCreateSuccess }: VoucherNewIndexPro
     <Suspense fallback={<div>English content normalized from the original source text.</div>}>
       <VoucherNewContent useCase={useCase} onCreateSuccess={onCreateSuccess} />
     </Suspense>
-  );
+  )
 }
 
-export default VoucherNewIndex;
+export default VoucherNewIndex

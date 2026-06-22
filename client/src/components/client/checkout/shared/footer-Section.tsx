@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import { Tag, ArrowLeft, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Separator } from '@/components/ui/separator'
+import { Tag, ArrowLeft, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   selectShopProducts,
   selectTotalDiscountAmount,
@@ -13,21 +13,21 @@ import {
   removePlatformVoucher,
   setCommonInfo,
   selectCalculationResult,
-  setPlatformDiscountCodes,
-} from '@/store/features/checkout/ordersSilde';
-import { formatCurrency } from '@/utils/formatter';
-import { useEffect, useState } from 'react';
-import { PlatformVoucherModal } from './cart-PlatformVoucher';
-import { AppliedVoucherInfo } from '@/types/order.interface';
-import { useAutoCalculateOrder } from '@/components/client/checkout/hooks/useAutoCalculateOrder';
+  setPlatformDiscountCodes
+} from '@/store/features/checkout/orders-silde'
+import { formatCurrency } from '@/utils/formatter'
+import { useEffect, useState } from 'react'
+import { PlatformVoucherModal } from './cart-platform-voucher'
+import { AppliedVoucherInfo } from '@/types/order.interface'
+import { useAutoCalculateOrder } from '@/components/client/checkout/hooks/use-auto-calculate-order'
 
 interface FooterSectionProps {
-  variant?: 'default' | 'mobile';
-  step?: 'information' | 'payment';
-  onPrevious?: () => void;
-  onNext?: () => void;
-  isSubmitting?: boolean;
-  onTotalChange?: (total: number) => void;
+  variant?: 'default' | 'mobile'
+  step?: 'information' | 'payment'
+  onPrevious?: () => void
+  onNext?: () => void
+  isSubmitting?: boolean
+  onTotalChange?: (total: number) => void
 }
 
 // Helper component for displaying a single price line
@@ -37,7 +37,7 @@ function PriceLine({ label, value, isBold = false }: { label: string; value: str
       <span className="text-gray-600">{label}</span>
       <span className={`${isBold ? 'text-red-600' : 'text-gray-800'}`}>{value}</span>
     </div>
-  );
+  )
 }
 
 export function FooterSection({
@@ -48,54 +48,54 @@ export function FooterSection({
   isSubmitting = false,
   onTotalChange
 }: FooterSectionProps) {
-  const dispatch = useDispatch();
-  const shopProducts = useSelector(selectShopProducts);
-  const totalDiscount = useSelector(selectTotalDiscountAmount);
-  const appliedPlatformVoucher = useSelector(selectAppliedPlatformVoucher);
-  const calculationResult = useSelector(selectCalculationResult);
-  const [isPlatformModalOpen, setPlatformModalOpen] = useState(false);
-
-  // English content normalized from the original source text.
-  const { calculationResult: autoCalculationResult, loading: calculationLoading, error: calculationError } = useAutoCalculateOrder();
-
-  // English content normalized from the original source text.
+  const dispatch = useDispatch()
+  const shopProducts = useSelector(selectShopProducts)
+  const totalDiscount = useSelector(selectTotalDiscountAmount)
+  const appliedPlatformVoucher = useSelector(selectAppliedPlatformVoucher)
+  const calculationResult = useSelector(selectCalculationResult)
+  const [isPlatformModalOpen, setPlatformModalOpen] = useState(false)
+  const {
+    calculationResult: autoCalculationResult,
+    loading: calculationLoading,
+    error: calculationError
+  } = useAutoCalculateOrder()
   // useEffect(() => {
   //   const platformCodes = appliedPlatformVoucher ? [appliedPlatformVoucher.code] : [];
   //   dispatch(setPlatformDiscountCodes(platformCodes));
   // }, [appliedPlatformVoucher, dispatch]);
+  const finalCalculationResult = autoCalculationResult || calculationResult
+  const subtotal =
+    finalCalculationResult?.totalItemCost ||
+    Object.values(shopProducts).reduce((total, shopProducts) => {
+      return (
+        total +
+        shopProducts.reduce((shopTotal, product) => {
+          return shopTotal + product.price * product.quantity
+        }, 0)
+      )
+    }, 0)
 
-  // English content normalized from the original source text.
-  const finalCalculationResult = autoCalculationResult || calculationResult;
-
-  // English content normalized from the original source text.
-  const subtotal = finalCalculationResult?.totalItemCost || Object.values(shopProducts).reduce((total, shopProducts) => {
-    return total + shopProducts.reduce((shopTotal, product) => {
-      return shopTotal + (product.price * product.quantity);
-    }, 0);
-  }, 0);
-
-  const shippingFee = finalCalculationResult?.totalShippingFee || 0;
-  const voucherDiscount = finalCalculationResult?.totalVoucherDiscount || totalDiscount;
-  const totalPayment = finalCalculationResult?.totalPayment || (subtotal + shippingFee - totalDiscount);
+  const shippingFee = finalCalculationResult?.totalShippingFee || 0
+  const voucherDiscount = finalCalculationResult?.totalVoucherDiscount || totalDiscount
+  const totalPayment = finalCalculationResult?.totalPayment || subtotal + shippingFee - totalDiscount
 
   const handleApplyPlatformVoucher = (voucher: AppliedVoucherInfo) => {
     // The actual application logic is likely in the modal, this is for closing
-    setPlatformModalOpen(false);
-  };
-
-  // English content normalized from the original source text.
+    setPlatformModalOpen(false)
+  }
   useEffect(() => {
     if (onTotalChange) {
-      onTotalChange(totalPayment);
+      onTotalChange(totalPayment)
     }
-    // English content normalized from the original source text.
-    dispatch(setCommonInfo({ amount: totalPayment }));
-  }, [totalPayment, onTotalChange, dispatch]);
+    dispatch(setCommonInfo({ amount: totalPayment }))
+  }, [totalPayment, onTotalChange, dispatch])
 
   const getButtonText = () => {
-    if (isSubmitting) return 'English content normalized from the original source text.';
-    return step === 'information' ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.';
-  };
+    if (isSubmitting) return 'English content normalized from the original source text.'
+    return step === 'information'
+      ? 'English content normalized from the original source text.'
+      : 'English content normalized from the original source text.'
+  }
 
   if (variant === 'mobile') {
     return (
@@ -103,9 +103,7 @@ export function FooterSection({
         {/* Mobile Order Summary */}
         <div className="flex items-center justify-between text-sm">
           <span className="text-gray-600">English content normalized from the original source text.</span>
-          <span className="text-lg font-semibold text-primary">
-            {formatCurrency(totalPayment)}
-          </span>
+          <span className="text-lg font-semibold text-primary">{formatCurrency(totalPayment)}</span>
         </div>
 
         {/* Mobile Voucher Input */}
@@ -114,32 +112,25 @@ export function FooterSection({
             placeholder="English content normalized from the original source text."
             className="h-9 text-sm flex-1"
           />
-          <Button
-            variant="secondary"
-            className="h-9 px-4 text-sm font-medium whitespace-nowrap"
-          >English content normalized from the original source text.</Button>
+          <Button variant="secondary" className="h-9 px-4 text-sm font-medium whitespace-nowrap">
+            English content normalized from the original source text.
+          </Button>
         </div>
 
         {/* Mobile Navigation */}
         <div className="flex items-center gap-2">
           {step === 'payment' && (
-            <Button
-              variant="outline"
-              onClick={onPrevious}
-              className="flex-1 h-10 text-sm font-medium"
-            >
-              <ArrowLeft className="h-4 w-4 mr-1.5" />English content normalized from the original source text.</Button>
+            <Button variant="outline" onClick={onPrevious} className="flex-1 h-10 text-sm font-medium">
+              <ArrowLeft className="h-4 w-4 mr-1.5" />
+              English content normalized from the original source text.
+            </Button>
           )}
-          <Button
-            className="flex-1 h-10 text-sm font-medium"
-            onClick={onNext}
-            disabled={isSubmitting}
-          >
+          <Button className="flex-1 h-10 text-sm font-medium" onClick={onNext} disabled={isSubmitting}>
             {getButtonText()}
           </Button>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -160,7 +151,9 @@ export function FooterSection({
             </button>
           </div>
         ) : (
-          <Button variant="link" className="p-0 h-auto text-sm" onClick={() => setPlatformModalOpen(true)}>English content normalized from the original source text.</Button>
+          <Button variant="link" className="p-0 h-auto text-sm" onClick={() => setPlatformModalOpen(true)}>
+            English content normalized from the original source text.
+          </Button>
         )}
       </div>
 
@@ -169,7 +162,9 @@ export function FooterSection({
         {calculationLoading ? (
           <div className="flex items-center justify-center py-4">
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-            <span className="ml-2 text-sm text-gray-600">English content normalized from the original source text.</span>
+            <span className="ml-2 text-sm text-gray-600">
+              English content normalized from the original source text.
+            </span>
           </div>
         ) : calculationError ? (
           <div className="text-center py-4">
@@ -179,7 +174,10 @@ export function FooterSection({
         ) : null}
 
         <div className="space-y-3">
-          <PriceLine label="English content normalized from the original source text." value={formatCurrency(subtotal)} />
+          <PriceLine
+            label="English content normalized from the original source text."
+            value={formatCurrency(subtotal)}
+          />
           <div className="flex justify-between items-center text-sm">
             <span className="text-gray-600">English content normalized from the original source text.</span>
             <span className="text-green-600 font-medium">-{formatCurrency(Math.abs(voucherDiscount))}</span>
@@ -200,7 +198,8 @@ export function FooterSection({
 
         {finalCalculationResult && (
           <div className="text-xs text-gray-500 text-center mt-2">
-            {finalCalculationResult.shops?.length > 0 && `English content normalized from the original source text.${finalCalculationResult.shops.length} shop`}
+            {finalCalculationResult.shops?.length > 0 &&
+              `English content normalized from the original source text.${finalCalculationResult.shops.length} shop`}
           </div>
         )}
       </div>
@@ -217,23 +216,19 @@ export function FooterSection({
       <div className="pt-6 mt-6 border-t">
         <div className="flex items-center gap-3">
           {step === 'payment' && (
-            <Button
-              variant="outline"
-              onClick={onPrevious}
-              className="flex-1 h-10 text-sm font-medium"
-            >
-              <ArrowLeft className="h-4 w-4 mr-1.5" />English content normalized from the original source text.</Button>
+            <Button variant="outline" onClick={onPrevious} className="flex-1 h-10 text-sm font-medium">
+              <ArrowLeft className="h-4 w-4 mr-1.5" />
+              English content normalized from the original source text.
+            </Button>
           )}
-          <Button
-            className="flex-1 h-10 text-sm font-medium"
-            onClick={onNext}
-            disabled={isSubmitting}
-          >
+          <Button className="flex-1 h-10 text-sm font-medium" onClick={onNext} disabled={isSubmitting}>
             {getButtonText()}
           </Button>
         </div>
-        <p className="text-xs text-center mt-3 text-gray-500">English content normalized from the original source text.</p>
+        <p className="text-xs text-center mt-3 text-gray-500">
+          English content normalized from the original source text.
+        </p>
       </div>
     </div>
-  );
+  )
 }

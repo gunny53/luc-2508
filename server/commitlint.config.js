@@ -16,7 +16,6 @@ module.exports = {
     'body-leading-blank': [1, 'always'],
     'footer-leading-blank': [1, 'always'],
     'header-max-length': [2, 'always', 100]
-    // English content normalized from the original source text.
     // 'references-empty': [2, 'never'],
   }
 }

@@ -1,27 +1,27 @@
 // src/components/client/layout/header/mobile/mobile-Index.tsx
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { CgMenuLeft } from "react-icons/cg";
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { CgMenuLeft } from 'react-icons/cg'
 
-import { CartDropdown } from "../desktop/desktop-Cart";
-import { ProfileDropdown } from "./mobile-Profile";
-import { DropdownProvider } from "../dropdown-context";
-import { MobileSearchInput } from "./moblie-SearchInput";
-import "../style.css";
-import { MobileCategories } from "./moblie-Categories";
-import Link from "next/link";
+import { CartDropdown } from '../desktop/desktop-cart'
+import { ProfileDropdown } from './mobile-profile'
+import { DropdownProvider } from '../dropdown-context'
+import { MobileSearchInput } from './moblie-search-input'
+import '../style.css'
+import { MobileCategories } from './moblie-categories'
+import Link from 'next/link'
 
 export function MobileHeader() {
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([])
 
   return (
     <DropdownProvider>
       <header
         className="fixed top-0 left-0 right-0 z-[999] w-full bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-lg text-white text-[13px] py-2.5 md:hidden"
         style={{
-          minHeight: "88px", // English content normalized from the original source text.
+          minHeight: '88px'
         }}
       >
         <div className="flex flex-col gap-2 overflow-visible">
@@ -29,11 +29,7 @@ export function MobileHeader() {
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-2">
               <MobileCategories>
-                <CgMenuLeft
-                  size={28}
-                  strokeWidth={0.1}
-                  className="cursor-pointer hover:opacity-80 transition"
-                />
+                <CgMenuLeft size={28} strokeWidth={0.1} className="cursor-pointer hover:opacity-80 transition" />
               </MobileCategories>
               <div className="relative h-8 w-28">
                 <Link href="/">
@@ -60,5 +56,5 @@ export function MobileHeader() {
         </div>
       </header>
     </DropdownProvider>
-  );
+  )
 }

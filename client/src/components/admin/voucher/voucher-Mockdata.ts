@@ -1,4 +1,11 @@
-import { Discount, DiscountGetAllResponse, DiscountType, DiscountStatus, DiscountApplyType, VoucherType } from '@/types/discount.interface';
+import {
+  Discount,
+  DiscountGetAllResponse,
+  DiscountType,
+  DiscountStatus,
+  DiscountApplyType,
+  VoucherType
+} from '@/types/discount.interface'
 
 const mockDiscounts: Discount[] = [
   {
@@ -22,7 +29,7 @@ const mockDiscounts: Discount[] = [
     discountApplyType: DiscountApplyType.ALL,
     discountStatus: DiscountStatus.ACTIVE,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     id: 'd2',
@@ -44,7 +51,7 @@ const mockDiscounts: Discount[] = [
     discountApplyType: DiscountApplyType.ALL,
     discountStatus: DiscountStatus.ACTIVE,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     id: 'd3',
@@ -67,7 +74,7 @@ const mockDiscounts: Discount[] = [
     discountApplyType: DiscountApplyType.ALL,
     discountStatus: DiscountStatus.EXPIRED,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     id: 'd4',
@@ -89,9 +96,9 @@ const mockDiscounts: Discount[] = [
     discountApplyType: DiscountApplyType.SPECIFIC,
     discountStatus: DiscountStatus.INACTIVE,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-];
+    updatedAt: new Date().toISOString()
+  }
+]
 
 export const mockDiscountResponse: DiscountGetAllResponse = {
   statusCode: 200,
@@ -101,6 +108,6 @@ export const mockDiscountResponse: DiscountGetAllResponse = {
     totalItems: mockDiscounts.length,
     page: 1,
     limit: 10,
-    totalPages: Math.ceil(mockDiscounts.length / 10),
-  },
-};
+    totalPages: Math.ceil(mockDiscounts.length / 10)
+  }
+}

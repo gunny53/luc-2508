@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
-import type { VariantProps } from "class-variance-authority";
-import type { ButtonHTMLAttributes } from "react";
+import type { VariantProps } from 'class-variance-authority'
+import type { ButtonHTMLAttributes } from 'react'
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants> & {
-  asChild?: boolean
-};
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }
 
 interface AnimatedFormProps {
   children: React.ReactNode
@@ -50,20 +51,12 @@ export function AnimatedForm({ children, className }: AnimatedFormProps) {
 }
 
 export function AnimatedFormItem({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div variants={itemVariants}>
-      {children}
-    </motion.div>
-  )
+  return <motion.div variants={itemVariants}>{children}</motion.div>
 }
 
 export function AnimatedButton({ children, className, ...props }: ButtonProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      variants={itemVariants}
-    >
+    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} variants={itemVariants}>
       <Button className={className} {...props}>
         {children}
       </Button>

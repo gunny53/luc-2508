@@ -1,35 +1,29 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import {
-  ChevronRight,
-  ListFilter,
-  MapPin,
-  Truck,
-  Store,
-  X,
-  ChevronDown
-} from "lucide-react";
-import { useSidebar } from '../hooks/useSidebar';
-import { createCategorySlug } from "@/utils/slugify";
-import Link from "next/link";
-
-// English content normalized from the original source text.
-const locations = ['English content normalized from the original source text.', 'English content normalized from the original source text.', 'English content normalized from the original source text.', 'English content normalized from the original source text.'];
-const shippingOptions = ['Nhanh', 'English content normalized from the original source text.'];
-const brands = ['Nike', 'Adidas', 'Uniqlo', 'Zara', 'H&M'];
+import { useState } from 'react'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
+import { ChevronRight, ListFilter, MapPin, Truck, Store, X, ChevronDown } from 'lucide-react'
+import { useSidebar } from '../hooks/use-sidebar'
+import { createCategorySlug } from '@/utils/slugify'
+import Link from 'next/link'
+const locations = [
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.'
+]
+const shippingOptions = ['Nhanh', 'English content normalized from the original source text.']
+const brands = ['Nike', 'Adidas', 'Uniqlo', 'Zara', 'H&M']
 
 interface SearchSidebarProps {
-  categoryIds?: string[];
-  currentCategoryId?: string | null;
+  categoryIds?: string[]
+  currentCategoryId?: string | null
 }
 
 export default function SearchSidebar({ categoryIds = [], currentCategoryId }: SearchSidebarProps) {
-  // English content normalized from the original source text.
   const {
     parentCategory,
     selectedCategory,
@@ -40,17 +34,17 @@ export default function SearchSidebar({ categoryIds = [], currentCategoryId }: S
     handleCategorySelect,
     handleCheckboxChange,
     handleClearAll
-  } = useSidebar({ categoryIds, currentCategoryId });
+  } = useSidebar({ categoryIds, currentCategoryId })
 
   return (
     <aside className="w-64 shrink-0 space-y-6 text-sm">
       <CategorySectionWithParent
         title="English content normalized from the original source text."
         icon={<ListFilter className="h-4 w-4" />}
-        parentCategory={parentCategory?.label || "English content normalized from the original source text."}
-        parentCategoryId={parentCategory?.value || ""}
-        items={subcategories.map(cat => cat.label)}
-        itemIds={subcategories.map(cat => cat.value)}
+        parentCategory={parentCategory?.label || 'English content normalized from the original source text.'}
+        parentCategoryId={parentCategory?.value || ''}
+        items={subcategories.map((cat) => cat.label)}
+        itemIds={subcategories.map((cat) => cat.value)}
         subcategories={subcategories}
         selectedValue={selectedCategory}
         onParentSelect={(id, name) => handleCategorySelect(id, name, true)}
@@ -58,16 +52,16 @@ export default function SearchSidebar({ categoryIds = [], currentCategoryId }: S
         isLoading={loadingSubcategories}
       />
       <Separator className="my-4" />
-      {/* English content normalized from the original source text. */}
+      {}
     </aside>
-  );
+  )
 }
 
 interface CategoryOption {
-  value: string;
-  label: string;
-  icon?: string | null;
-  parentCategoryId?: string | null;
+  value: string
+  label: string
+  icon?: string | null
+  parentCategoryId?: string | null
 }
 
 function CategorySectionWithParent({
@@ -81,24 +75,24 @@ function CategorySectionWithParent({
   selectedValue,
   onParentSelect,
   onChildSelect,
-  isLoading,
+  isLoading
 }: {
-  title: string;
-  icon?: React.ReactNode;
-  parentCategory: string;
-  parentCategoryId: string;
-  items: string[];
-  itemIds: string[];
-  subcategories?: CategoryOption[];
-  selectedValue: string;
-  onParentSelect: (id: string, name: string) => void;
-  onChildSelect: (id: string, name: string) => void;
-  isLoading?: boolean;
+  title: string
+  icon?: React.ReactNode
+  parentCategory: string
+  parentCategoryId: string
+  items: string[]
+  itemIds: string[]
+  subcategories?: CategoryOption[]
+  selectedValue: string
+  onParentSelect: (id: string, name: string) => void
+  onChildSelect: (id: string, name: string) => void
+  isLoading?: boolean
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
 
-  const displayItems = items.length <= 5 ? items : (expanded ? items : items.slice(0, 5));
-  const displayItemIds = items.length <= 5 ? itemIds : (expanded ? itemIds : itemIds.slice(0, 5));
+  const displayItems = items.length <= 5 ? items : expanded ? items : items.slice(0, 5)
+  const displayItemIds = items.length <= 5 ? itemIds : expanded ? itemIds : itemIds.slice(0, 5)
 
   return (
     <div>
@@ -108,10 +102,10 @@ function CategorySectionWithParent({
       </h3>
 
       <div className="space-y-1">
-        {/* English content normalized from the original source text. */}
+        {}
         <div
           className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-200 ${
-            selectedValue === parentCategoryId ? "font-bold text-red-600" : "hover:bg-gray-50 font-medium"
+            selectedValue === parentCategoryId ? 'font-bold text-red-600' : 'hover:bg-gray-50 font-medium'
           }`}
           onClick={() => onParentSelect(parentCategoryId, parentCategory)}
         >
@@ -123,31 +117,27 @@ function CategorySectionWithParent({
           </Link>
         </div>
 
-        {/* English content normalized from the original source text. */}
+        {}
         {isLoading ? (
           <div className="space-y-2">
-            {[1, 2, 3].map(i => (
+            {[1, 2, 3].map((i) => (
               <div key={i} className="animate-pulse h-6 bg-gray-100 rounded"></div>
             ))}
           </div>
         ) : (
           <div className="space-y-1">
             {displayItems.map((item, index) => {
-              const itemId = displayItemIds[index] || "";
-              const category = subcategories?.[index];
-              const parentId = category?.parentCategoryId || parentCategoryId;
-
-              // English content normalized from the original source text.
-              const categoryPath = parentId ? [parentId, itemId] : [itemId];
-              const href = createCategorySlug(item, categoryPath);
+              const itemId = displayItemIds[index] || ''
+              const category = subcategories?.[index]
+              const parentId = category?.parentCategoryId || parentCategoryId
+              const categoryPath = parentId ? [parentId, itemId] : [itemId]
+              const href = createCategorySlug(item, categoryPath)
 
               return (
                 <div
                   key={item}
                   className={`px-3 py-1.5 rounded-md cursor-pointer transition-colors duration-200 ${
-                    selectedValue === itemId
-                      ? "bg-red-50 text-red-600"
-                      : "hover:bg-gray-50"
+                    selectedValue === itemId ? 'bg-red-50 text-red-600' : 'hover:bg-gray-50'
                   }`}
                   onClick={() => onChildSelect(itemId, item)}
                 >
@@ -158,7 +148,7 @@ function CategorySectionWithParent({
                     </div>
                   </Link>
                 </div>
-              );
+              )
             })}
 
             {items.length > 5 && (
@@ -166,15 +156,17 @@ function CategorySectionWithParent({
                 className="text-red-600 hover:text-red-800 text-sm font-medium mt-1 flex items-center"
                 onClick={() => setExpanded(!expanded)}
               >
-                {expanded ? "English content normalized from the original source text." : "English content normalized from the original source text."}
-                <ChevronDown className={`h-3.5 w-3.5 ml-1 transition-transform ${expanded ? "rotate-180" : ""}`} />
+                {expanded
+                  ? 'English content normalized from the original source text.'
+                  : 'English content normalized from the original source text.'}
+                <ChevronDown className={`h-3.5 w-3.5 ml-1 transition-transform ${expanded ? 'rotate-180' : ''}`} />
               </button>
             )}
           </div>
         )}
       </div>
     </div>
-  );
+  )
 }
 
 function CheckboxFilterSection({
@@ -184,11 +176,11 @@ function CheckboxFilterSection({
   selectedItems = [],
   onCheckChange
 }: {
-  title: string;
-  icon?: React.ReactNode;
-  items: string[];
-  selectedItems?: string[];
-  onCheckChange?: (item: string, checked: boolean) => void;
+  title: string
+  icon?: React.ReactNode
+  items: string[]
+  selectedItems?: string[]
+  onCheckChange?: (item: string, checked: boolean) => void
 }) {
   return (
     <div>
@@ -198,7 +190,7 @@ function CheckboxFilterSection({
       </h3>
       <div className="space-y-2">
         {items.map((item) => {
-          const isChecked = selectedItems.includes(item);
+          const isChecked = selectedItems.includes(item)
           return (
             <div
               key={item}
@@ -212,14 +204,14 @@ function CheckboxFilterSection({
               />
               <Label
                 htmlFor={`${title}-${item}`}
-                className={`text-sm cursor-pointer w-full ${isChecked ? "text-red-600" : "font-normal"}`}
+                className={`text-sm cursor-pointer w-full ${isChecked ? 'text-red-600' : 'font-normal'}`}
               >
                 {item}
               </Label>
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

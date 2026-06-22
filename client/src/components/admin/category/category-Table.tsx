@@ -1,21 +1,21 @@
-"use client";
+'use client'
 
-import { CategoryColumns, CategoryTableData } from "./category-Columns";
-import SearchInput from "@/components/ui/data-table-component/search-input";
-import { CategoryModalUpsert } from "./category-ModalUpsert";
-import { Plus } from "lucide-react";
-import { ConfirmDeleteModal } from "@/components/ui/confirm-delete-modal";
-import { DataTable } from "@/components/ui/data-table-component/data-table";
-import { Button } from "@/components/ui/button";
-import { useCategory } from "./useCategory";
-import { useTranslations } from "next-intl";
-import { useDataTable } from "@/hooks/useDataTable";
-import DataTableViewOption from "@/components/ui/data-table-component/data-table-view-option";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { CategoryCreateRequest, CategoryUpdateRequest } from "@/types/admin/category.interface";
+import { CategoryColumns, CategoryTableData } from './category-columns'
+import SearchInput from '@/components/ui/data-table-component/search-input'
+import { CategoryModalUpsert } from './category-modal-upsert'
+import { Plus } from 'lucide-react'
+import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal'
+import { DataTable } from '@/components/ui/data-table-component/data-table'
+import { Button } from '@/components/ui/button'
+import { useCategory } from './use-category'
+import { useTranslations } from 'next-intl'
+import { useDataTable } from '@/hooks/use-data-table'
+import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { CategoryCreateRequest, CategoryUpdateRequest } from '@/types/admin/category.interface'
 
 export function CategoryTable() {
-  const t = useTranslations("admin.ModuleCategory.Table");
+  const t = useTranslations('admin.ModuleCategory.Table')
   const {
     data: categories,
     loading,
@@ -51,22 +51,22 @@ export function CategoryTable() {
     currentCategoryTitle,
     handleViewSubcategories,
     handleBackToRoot,
-    handleBreadcrumbClick,
-  } = useCategory();
+    handleBreadcrumbClick
+  } = useCategory()
 
   const handleCreateCategory = () => {
-    handleOpenUpsertModal('add');
-  };
+    handleOpenUpsertModal('add')
+  }
 
   const columns = CategoryColumns({
     onEdit: (category) => handleOpenUpsertModal('edit', category),
-    onDelete: handleOpenDelete,
-  });
+    onDelete: handleOpenDelete
+  })
 
   const table = useDataTable({
     data: categories || [],
-    columns,
-  });
+    columns
+  })
 
   return (
     <div className="w-full space-y-4">
@@ -74,7 +74,7 @@ export function CategoryTable() {
       <div className="flex justify-end">
         <Button onClick={handleCreateCategory}>
           <Plus className="w-4 h-4 mr-2" />
-          {t("addCategory")}
+          {t('addCategory')}
         </Button>
       </div>
 
@@ -82,9 +82,9 @@ export function CategoryTable() {
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
-            value={pagination?.search || ""}
+            value={pagination?.search || ''}
             onValueChange={handleSearch}
-            placeholder={t("searchPlaceholder")}
+            placeholder={t('searchPlaceholder')}
             className="w-full md:max-w-sm"
           />
         </div>
@@ -101,7 +101,7 @@ export function CategoryTable() {
             className="flex items-center gap-1 hover:bg-muted"
           >
             <ChevronLeft className="h-4 w-4" />
-            {t("backToRoot")}
+            {t('backToRoot')}
           </Button>
 
           {breadcrumb.length > 0 && (
@@ -125,7 +125,7 @@ export function CategoryTable() {
 
           {currentCategoryTitle && (
             <div className="ml-auto text-sm font-medium">
-              {t("currentCategory")}: {currentCategoryTitle}
+              {t('currentCategory')}: {currentCategoryTitle}
             </div>
           )}
         </div>
@@ -137,7 +137,7 @@ export function CategoryTable() {
           table={table}
           columns={columns}
           loading={loading}
-          notFoundMessage={t("notFound")}
+          notFoundMessage={t('notFound')}
           onRowClick={handleViewSubcategories}
           pagination={{
             metadata: pagination || {
@@ -146,10 +146,10 @@ export function CategoryTable() {
               totalPages: 1,
               totalItems: 0,
               hasNext: false,
-              hasPrevious: false,
+              hasPrevious: false
             },
             onPageChange: handlePageChange,
-            onLimitChange: handleLimitChange,
+            onLimitChange: handleLimitChange
           }}
         />
       </div>
@@ -162,11 +162,11 @@ export function CategoryTable() {
         category={categoryToEdit}
         onSubmit={(data) => {
           if (modalMode === 'add') {
-            return addCategory(data as CategoryCreateRequest);
+            return addCategory(data as CategoryCreateRequest)
           } else if (categoryToEdit) {
-            return editCategory(String(categoryToEdit.id), data as CategoryUpdateRequest);
+            return editCategory(String(categoryToEdit.id), data as CategoryUpdateRequest)
           }
-          return Promise.resolve(null);
+          return Promise.resolve(null)
         }}
       />
 
@@ -174,15 +174,14 @@ export function CategoryTable() {
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
-          if (!deleteLoading) handleCloseDeleteModal();
+          if (!deleteLoading) handleCloseDeleteModal()
         }}
         onConfirm={handleConfirmDelete}
         title={t('deleteConfirmTitle')}
         description={
           categoryToDelete ? (
             <>
-              {t('deleteConfirmMessage')}{' '}
-              <b>{categoryToDelete.name}</b>?
+              {t('deleteConfirmMessage')} <b>{categoryToDelete.name}</b>?
             </>
           ) : (
             ''
@@ -193,5 +192,5 @@ export function CategoryTable() {
         loading={deleteLoading}
       />
     </div>
-  );
+  )
 }

@@ -1,19 +1,17 @@
-import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { AlertCircle, Users, ShoppingBag, FolderTree, FileText } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { OverviewStats } from '../hooks/useDbAdmin';
+import React from 'react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Skeleton } from '@/components/ui/skeleton'
+import { AlertCircle, Users, ShoppingBag, FolderTree, FileText } from 'lucide-react'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { OverviewStats } from '../hooks/use-db-admin'
 
 interface OverviewStatsTableProps {
-  overviewStats: OverviewStats;
+  overviewStats: OverviewStats
 }
 
 const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }) => {
-  const { totalUsers, totalBrands, totalCategories, totalAuditLogs, isLoading, error } = overviewStats;
-
-  // English content normalized from the original source text.
+  const { totalUsers, totalBrands, totalCategories, totalAuditLogs, isLoading, error } = overviewStats
   const overviewData = [
     {
       id: 'users',
@@ -22,7 +20,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
       value: totalUsers,
       icon: Users,
       color: 'bg-blue-50 text-blue-600 border-blue-200',
-      badgeColor: 'bg-blue-100 text-blue-700',
+      badgeColor: 'bg-blue-100 text-blue-700'
     },
     {
       id: 'brands',
@@ -31,7 +29,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
       value: totalBrands,
       icon: ShoppingBag,
       color: 'bg-green-50 text-green-600 border-green-200',
-      badgeColor: 'bg-green-100 text-green-700',
+      badgeColor: 'bg-green-100 text-green-700'
     },
     {
       id: 'categories',
@@ -40,7 +38,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
       value: totalCategories,
       icon: FolderTree,
       color: 'bg-purple-50 text-purple-600 border-purple-200',
-      badgeColor: 'bg-purple-100 text-purple-700',
+      badgeColor: 'bg-purple-100 text-purple-700'
     },
     {
       id: 'auditlogs',
@@ -49,9 +47,9 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
       value: totalAuditLogs,
       icon: FileText,
       color: 'bg-orange-50 text-orange-600 border-orange-200',
-      badgeColor: 'bg-orange-100 text-orange-700',
-    },
-  ];
+      badgeColor: 'bg-orange-100 text-orange-700'
+    }
+  ]
 
   if (error) {
     return (
@@ -67,7 +65,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
           </Alert>
         </CardContent>
       </Card>
-    );
+    )
   }
 
   return (
@@ -90,7 +88,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {overviewData.map((item) => {
-              const IconComponent = item.icon;
+              const IconComponent = item.icon
               return (
                 <div
                   key={item.id}
@@ -98,14 +96,12 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
                 >
                   <div className="flex items-center justify-between mb-2">
                     <IconComponent className="h-6 w-6" />
-                    <Badge className={item.badgeColor}>
-                      {item.value.toLocaleString()}
-                    </Badge>
+                    <Badge className={item.badgeColor}>{item.value.toLocaleString()}</Badge>
                   </div>
                   <h3 className="font-semibold text-lg">{item.title}</h3>
                   <p className="text-sm opacity-75">{item.description}</p>
                 </div>
-              );
+              )
             })}
           </div>
         )}
@@ -113,7 +109,9 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
         {/* Summary section */}
         {!isLoading && !error && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">English content normalized from the original source text.</h4>
+            <h4 className="font-medium text-gray-900 mb-2">
+              English content normalized from the original source text.
+            </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
                 <span className="text-gray-500">English content normalized from the original source text.</span>
@@ -136,7 +134,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
         )}
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default OverviewStatsTable;
+export default OverviewStatsTable

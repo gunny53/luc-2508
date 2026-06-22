@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
 import { metadataConfig } from '@/lib/metadata'
 import type { Metadata } from 'next'
-import { useUserData } from '@/hooks/useGetData-UserLogin'
-import DashboardAdmin from '@/components/admin/dashboard/admin/dashboard-Admin'
-import DashboardSeller from '@/components/admin/dashboard/seller/dashboard-Seller'
+import { useUserData } from '@/hooks/use-get-data-user-login'
+import DashboardAdmin from '@/components/admin/dashboard/admin/dashboard-admin'
+import DashboardSeller from '@/components/admin/dashboard/seller/dashboard-seller'
 import { Card } from '@/components/ui/card'
 import { AlertCircle } from 'lucide-react'
 
 // export const metadata: Metadata = metadataConfig['/admin']
 
 export default function AdminDashboard() {
-  const userData = useUserData();
+  const userData = useUserData()
 
   // Loading state
   if (!userData) {
@@ -33,21 +33,18 @@ export default function AdminDashboard() {
           ))}
         </div>
       </div>
-    );
+    )
   }
-
-  // English content normalized from the original source text.
-  const userRole = userData.role?.name;
+  const userRole = userData.role?.name
 
   switch (userRole) {
     case 'ADMIN':
-      return <DashboardAdmin />;
+      return <DashboardAdmin />
 
     case 'SELLER':
-      return <DashboardSeller />;
+      return <DashboardSeller />
 
     default:
-      // English content normalized from the original source text.
       return (
         <div className="space-y-6 p-6 h-screen bg-white">
           <div>
@@ -61,13 +58,14 @@ export default function AdminDashboard() {
               <div>
                 <p className="font-medium text-amber-800">English content normalized from the original source text.</p>
                 <p className="text-sm text-amber-700">
-                  English content normalized from the original source text. {userRole || 'English content normalized from the original source text.'}.
-                  English content normalized from the original source text.
+                  English content normalized from the original source text.{' '}
+                  {userRole || 'English content normalized from the original source text.'}. English content normalized
+                  from the original source text.
                 </p>
               </div>
             </div>
           </Card>
         </div>
-      );
+      )
   }
 }

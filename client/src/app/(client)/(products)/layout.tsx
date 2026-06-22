@@ -1,27 +1,22 @@
-"use client";
+'use client'
 
-import ClientLayoutWrapper from "@/components/client/layout/ClientLayoutWrapper";
-import { useResponsive } from "@/hooks/useResponsive";
+import ClientLayoutWrapper from '@/components/client/layout/client-layout-wrapper'
+import { useResponsive } from '@/hooks/use-responsive'
 
 interface SearchLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-export default function SearchLayout({ children}: SearchLayoutProps) {
-  const { isMobile } = useResponsive();
+export default function SearchLayout({ children }: SearchLayoutProps) {
+  const { isMobile } = useResponsive()
 
   return (
-    <ClientLayoutWrapper
-      hideCommit
-      hideHero
-      hideFooter={isMobile}
-      maxWidth={1450}
-    >
-      <div className={`w-full ${isMobile ? "min-h-screen flex flex-col" : "min-h-screen"}`}>
-        <main className={`flex-1 ${isMobile ? "" : "pb-4"}`}>
+    <ClientLayoutWrapper hideCommit hideHero hideFooter={isMobile} maxWidth={1450}>
+      <div className={`w-full ${isMobile ? 'min-h-screen flex flex-col' : 'min-h-screen'}`}>
+        <main className={`flex-1 ${isMobile ? '' : 'pb-4'}`}>
           <div className="w-full">{children}</div>
         </main>
       </div>
     </ClientLayoutWrapper>
-  );
+  )
 }

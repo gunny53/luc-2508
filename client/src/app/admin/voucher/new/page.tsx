@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import {
   Breadcrumb,
@@ -10,67 +10,67 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import VoucherFormWrapper from "@/components/admin/voucher/new/voucher-form-Wrapper";
-import { VoucherUseCase } from "@/components/admin/voucher/hook/voucher-config";
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb'
+import VoucherFormWrapper from '@/components/admin/voucher/new/voucher-form-wrapper'
+import { VoucherUseCase } from '@/components/admin/voucher/hook/voucher-config'
 
 export default function NewVoucherPage() {
-  const router = useRouter();
-  const t = useTranslations("admin.ModuleVouchers");
-  const searchParams = useSearchParams();
-  const useCaseParam = searchParams.get('usecase') || '1';
+  const router = useRouter()
+  const t = useTranslations('admin.ModuleVouchers')
+  const searchParams = useSearchParams()
+  const useCaseParam = searchParams.get('usecase') || '1'
 
   // Convert string to VoucherUseCase enum
   const getUseCase = (param: string): VoucherUseCase => {
     switch (param) {
       case '1':
-        return VoucherUseCase.SHOP;
+        return VoucherUseCase.SHOP
       case '2':
-        return VoucherUseCase.PRODUCT;
+        return VoucherUseCase.PRODUCT
       case '3':
-        return VoucherUseCase.PRIVATE;
+        return VoucherUseCase.PRIVATE
       case '4':
-        return VoucherUseCase.PLATFORM;
+        return VoucherUseCase.PLATFORM
       case '5':
-        return VoucherUseCase.CATEGORIES;
+        return VoucherUseCase.CATEGORIES
       case '6':
-        return VoucherUseCase.BRAND;
+        return VoucherUseCase.BRAND
       case '7':
-        return VoucherUseCase.SHOP_ADMIN;
+        return VoucherUseCase.SHOP_ADMIN
       case '8':
-        return VoucherUseCase.PRODUCT_ADMIN;
+        return VoucherUseCase.PRODUCT_ADMIN
       case '9':
-        return VoucherUseCase.PRIVATE_ADMIN;
+        return VoucherUseCase.PRIVATE_ADMIN
       default:
-        return VoucherUseCase.SHOP;
+        return VoucherUseCase.SHOP
     }
-  };
+  }
 
-  const useCase = getUseCase(useCaseParam);
+  const useCase = getUseCase(useCaseParam)
 
   const getTitle = () => {
     switch (useCase) {
       case VoucherUseCase.PRODUCT:
-        return t('title_product');
+        return t('title_product')
       case VoucherUseCase.PRIVATE:
-        return t('title_private');
+        return t('title_private')
       case VoucherUseCase.PLATFORM:
-        return 'English content normalized from the original source text.';
+        return 'English content normalized from the original source text.'
       case VoucherUseCase.CATEGORIES:
-        return 'English content normalized from the original source text.';
+        return 'English content normalized from the original source text.'
       case VoucherUseCase.BRAND:
-        return 'English content normalized from the original source text.';
+        return 'English content normalized from the original source text.'
       case VoucherUseCase.SHOP_ADMIN:
-        return 'English content normalized from the original source text.';
+        return 'English content normalized from the original source text.'
       case VoucherUseCase.PRODUCT_ADMIN:
-        return 'English content normalized from the original source text.';
+        return 'English content normalized from the original source text.'
       case VoucherUseCase.PRIVATE_ADMIN:
-        return 'English content normalized from the original source text.';
+        return 'English content normalized from the original source text.'
       default:
-        return t('title_shop');
+        return t('title_shop')
     }
-  };
+  }
 
   return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
@@ -80,20 +80,18 @@ export default function NewVoucherPage() {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/admin/voucher">{t("breadcrumb.vouchers")}</Link>
+                  <Link href="/admin/voucher">{t('breadcrumb.vouchers')}</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>{t("breadcrumb.newPage")}</BreadcrumbPage>
+                <BreadcrumbPage>{t('breadcrumb.newPage')}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
         <div>
-          <h1 className="text-3xl font-semibold">
-            {getTitle()}
-          </h1>
+          <h1 className="text-3xl font-semibold">{getTitle()}</h1>
         </div>
       </div>
 
@@ -101,10 +99,10 @@ export default function NewVoucherPage() {
         <VoucherFormWrapper
           useCase={useCase}
           onCreateSuccess={() => {
-            router.push(`/admin/voucher`);
+            router.push(`/admin/voucher`)
           }}
         />
       </div>
     </main>
-  );
+  )
 }

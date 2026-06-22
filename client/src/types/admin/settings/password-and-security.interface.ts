@@ -1,23 +1,11 @@
-
 // GETALL SEEESION
-export interface GetAllSessionsResponse{
-
-}
-
+export interface GetAllSessionsResponse {}
 
 // REVOKE SEESION BY 3 REQUEST
-export interface RevokeSessionsByDevice{
+export interface RevokeSessionsByDevice {}
 
-}
+export interface RevokeAll {}
 
-export interface RevokeAll{
+export interface RevokeSessionsBySessions {}
 
-}
-
-export interface RevokeSessionsBySessions{
-
-}
-
-export interface RevokeSeesionsResponse{
-
-}
+export interface RevokeSeesionsResponse {}

@@ -1,0 +1,25 @@
+{
+  "name": "luc-2508",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev:client": "yarn workspace ecommerce-nextjs-app dev",
+    "dev:server": "yarn workspace ecsite dev",
+    "build:client": "yarn workspace ecommerce-nextjs-app build",
+    "build:server": "yarn workspace ecsite build",
+    "build": "yarn build:server && yarn build:client",
+    "lint:client": "yarn workspace ecommerce-nextjs-app lint",
+    "lint:server": "yarn workspace ecsite lint",
+    "lint": "yarn lint:server && yarn lint:client",
+    "patch:packages": "patch-package --patch-dir server/patches",
+    "format": "prettier --write \"client/**/*.{ts,tsx,js,mjs,json,css,md}\" \"server/**/*.{ts,tsx,js,mjs,json,css,md}\" \"*.md\""
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.0",
+    "prettier": "^3.6.2"
+  }
+}

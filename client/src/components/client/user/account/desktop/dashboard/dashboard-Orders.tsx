@@ -1,86 +1,80 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { orderService } from "@/services/orderService";
-import { format } from "date-fns";
-import { vi } from "date-fns/locale";
-import { useRouter } from "next/navigation";
-import { Order, OrderItem, OrderStatus } from "@/types/order.interface";
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { orderService } from '@/services/order-service'
+import { format } from 'date-fns'
+import { vi } from 'date-fns/locale'
+import { useRouter } from 'next/navigation'
+import { Order, OrderItem, OrderStatus } from '@/types/order.interface'
 
 export default function DashboardOrders() {
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+  const [orders, setOrders] = useState<Order[]>([])
+  const [loading, setLoading] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController()
     orderService
       .getAll({ page: 1, limit: 8 }, controller.signal)
       .then((res) => setOrders(res.data))
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(false))
 
-    return () => controller.abort();
-  }, []);
+    return () => controller.abort()
+  }, [])
 
   interface StatusInfo {
-    label: string;
-    className: string;
+    label: string
+    className: string
   }
 
   const statusLabel: Record<OrderStatus, StatusInfo> = {
     PENDING_PAYMENT: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-amber-50 to-yellow-100 text-amber-700 border border-amber-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-amber-50 to-yellow-100 text-amber-700 border border-amber-200'
     },
     PENDING_PACKAGING: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 border border-orange-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 border border-orange-200'
     },
     PICKUPED: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-sky-50 to-blue-100 text-sky-700 border border-sky-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-sky-50 to-blue-100 text-sky-700 border border-sky-200'
     },
     PENDING_DELIVERY: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-violet-50 to-purple-100 text-violet-700 border border-violet-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-violet-50 to-purple-100 text-violet-700 border border-violet-200'
     },
     DELIVERED: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-emerald-50 to-green-100 text-emerald-700 border border-emerald-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-emerald-50 to-green-100 text-emerald-700 border border-emerald-200'
     },
     RETURNED: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-slate-50 to-gray-100 text-slate-700 border border-slate-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-slate-50 to-gray-100 text-slate-700 border border-slate-200'
     },
     CANCELLED: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-red-50 to-rose-100 text-red-700 border border-red-200",
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-red-50 to-rose-100 text-red-700 border border-red-200'
     },
     VERIFY_PAYMENT: {
-      label: "English content normalized from the original source text.",
-      className:
-        "bg-gradient-to-r from-emerald-50 to-green-100 text-emerald-700 border border-emerald-200",
-    },
-  };
+      label: 'English content normalized from the original source text.',
+      className: 'bg-gradient-to-r from-emerald-50 to-green-100 text-emerald-700 border border-emerald-200'
+    }
+  }
 
   if (loading) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D70018]"></div>
-          <span className="ml-3 text-gray-600 font-medium">English content normalized from the original source text.</span>
+          <span className="ml-3 text-gray-600 font-medium">
+            English content normalized from the original source text.
+          </span>
         </div>
       </div>
-    );
+    )
   }
 
   if (!orders.length) {
@@ -97,39 +91,42 @@ export default function DashboardOrders() {
               className="mx-auto relative z-10"
             />
           </div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">English content normalized from the original source text.</h3>
-          <p className="text-gray-600 mb-6 text-sm max-w-sm">English content normalized from the original source text.</p>
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            English content normalized from the original source text.
+          </h3>
+          <p className="text-gray-600 mb-6 text-sm max-w-sm">
+            English content normalized from the original source text.
+          </p>
           <Link
             href="/"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#D70018] to-[#FF6B35] text-white font-medium rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-200"
           >
-            <svg
-              className="w-4 h-4 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
               />
-            </svg>English content normalized from the original source text.</Link>
+            </svg>
+            English content normalized from the original source text.
+          </Link>
         </div>
       </div>
-    );
+    )
   }
 
   const handleViewDetail = (orderId: string, productId: string) => {
-    router.push(`/user/orders/${orderId}?productId=${productId}`);
-  };
+    router.push(`/user/orders/${orderId}?productId=${productId}`)
+  }
 
   return (
     <div className="bg-white rounded-xl border border-gray-100 p-3 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-200 w-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-3">
-        <h2 className="text-lg sm:text-xl font-bold text-gray-800">English content normalized from the original source text.</h2>
+        <h2 className="text-lg sm:text-xl font-bold text-gray-800">
+          English content normalized from the original source text.
+        </h2>
         <Link
           href="/user/orders"
           className="inline-flex items-center text-[#D70018] font-semibold hover:text-[#B8001A] transition-colors duration-200 group self-start sm:self-auto"
@@ -141,12 +138,7 @@ export default function DashboardOrders() {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </Link>
       </div>
@@ -155,7 +147,7 @@ export default function DashboardOrders() {
       <div className="space-y-3 sm:space-y-4">
         {orders.map((order) =>
           order.items.map((item: OrderItem) => {
-            const totalAmount = item.skuPrice * item.quantity;
+            const totalAmount = item.skuPrice * item.quantity
 
             return (
               <div
@@ -169,21 +161,20 @@ export default function DashboardOrders() {
                   <div className="flex items-start justify-between mb-3 gap-2">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs text-gray-500">English content normalized from the original source text.</span>
-                        <span className="text-xs font-bold px-2 py-0.5 rounded">
-                          #{order.id}
+                        <span className="text-xs text-gray-500">
+                          English content normalized from the original source text.
                         </span>
+                        <span className="text-xs font-bold px-2 py-0.5 rounded">#{order.id}</span>
                       </div>
                       <div className="text-xs text-gray-500">
-                        {format(new Date(order.createdAt), "dd/MM/yyyy", {
-                          locale: vi,
+                        {format(new Date(order.createdAt), 'dd/MM/yyyy', {
+                          locale: vi
                         })}
                       </div>
                     </div>
                     <span
                       className={`text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap ${
-                        statusLabel[order.status]?.className ||
-                        "bg-gray-100 text-gray-600 border border-gray-200"
+                        statusLabel[order.status]?.className || 'bg-gray-100 text-gray-600 border border-gray-200'
                       }`}
                     >
                       {statusLabel[order.status]?.label || order.status}
@@ -194,8 +185,8 @@ export default function DashboardOrders() {
                   <div className="flex gap-3">
                     <div className="flex-shrink-0">
                       <Image
-                        src={item.image || "/static/no-image.png"}
-                        alt={item.productName || "English content normalized from the original source text."}
+                        src={item.image || '/static/no-image.png'}
+                        alt={item.productName || 'English content normalized from the original source text.'}
                         width={60}
                         height={60}
                         className="rounded-lg object-cover w-[60px] h-[60px] border border-gray-100"
@@ -217,9 +208,7 @@ export default function DashboardOrders() {
                         <div className="text-sm font-bold text-[#D70018]">
                           {totalAmount.toLocaleString()}English content normalized from the original source text.
                         </div>
-                        <div className="text-xs text-gray-500">
-                          SL: {item.quantity}
-                        </div>
+                        <div className="text-xs text-gray-500">SL: {item.quantity}</div>
                       </div>
                     </div>
                   </div>
@@ -231,22 +220,16 @@ export default function DashboardOrders() {
                   <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center gap-4">
                       <div className="text-sm text-gray-600">
-                        English content normalized from the original source text.{" "}
-                        <span className="font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded-md">
-                          #{order.id}
-                        </span>
+                        English content normalized from the original source text.{' '}
+                        <span className="font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded-md">#{order.id}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <svg
-                          className="w-4 h-4 text-gray-500"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
+                        <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
                         </svg>
                         <span className="text-sm text-gray-600">
-                          {format(new Date(order.createdAt), "dd/MM/yyyy", {
-                            locale: vi,
+                          {format(new Date(order.createdAt), 'dd/MM/yyyy', {
+                            locale: vi
                           })}
                         </span>
                       </div>
@@ -254,8 +237,7 @@ export default function DashboardOrders() {
 
                     <span
                       className={`text-xs font-semibold px-3 py-2 rounded-full whitespace-nowrap ${
-                        statusLabel[order.status]?.className ||
-                        "bg-gray-100 text-gray-600 border border-gray-200"
+                        statusLabel[order.status]?.className || 'bg-gray-100 text-gray-600 border border-gray-200'
                       }`}
                     >
                       {statusLabel[order.status]?.label || order.status}
@@ -267,8 +249,8 @@ export default function DashboardOrders() {
                     <div className="flex gap-3 items-center flex-1 min-w-0">
                       <div className="relative group-hover:scale-105 transition-transform duration-200 flex-shrink-0">
                         <Image
-                          src={item.image || "/static/no-image.png"}
-                          alt={item.productName || "English content normalized from the original source text."}
+                          src={item.image || '/static/no-image.png'}
+                          alt={item.productName || 'English content normalized from the original source text.'}
                           width={60}
                           height={60}
                           className="rounded-lg object-cover w-[60px] h-[60px] shadow-sm border border-gray-100"
@@ -282,7 +264,9 @@ export default function DashboardOrders() {
                         </h4>
                         {item.skuValue && (
                           <p className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-md inline-block">
-                            <span className="font-medium">English content normalized from the original source text.</span>{" "}
+                            <span className="font-medium">
+                              English content normalized from the original source text.
+                            </span>{' '}
                             {item.skuValue}
                           </p>
                         )}
@@ -291,13 +275,17 @@ export default function DashboardOrders() {
 
                     <div className="flex flex-col items-end gap-2 flex-shrink-0">
                       <div className="text-right">
-                        <p className="text-xs text-gray-500 mb-1">English content normalized from the original source text.</p>
+                        <p className="text-xs text-gray-500 mb-1">
+                          English content normalized from the original source text.
+                        </p>
                         <p className="text-base font-bold text-[#D70018]">
                           {totalAmount.toLocaleString()}English content normalized from the original source text.
                         </p>
                       </div>
                       <div className="inline-flex items-center text-sm text-[#D70018] font-semibold hover:text-[#B8001A] transition-colors duration-200 group/link">
-                        <span className="hidden sm:inline">English content normalized from the original source text.</span>
+                        <span className="hidden sm:inline">
+                          English content normalized from the original source text.
+                        </span>
                         <span className="sm:hidden">English content normalized from the original source text.</span>
                         <svg
                           className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-200"
@@ -317,10 +305,10 @@ export default function DashboardOrders() {
                   </div>
                 </div>
               </div>
-            );
+            )
           })
         )}
       </div>
     </div>
-  );
+  )
 }

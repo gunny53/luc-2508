@@ -14,26 +14,26 @@ English content normalized from the original source text.
 
 ```typescript
 // src/utils/api-adapters.ts
-import { BaseResponse, PaginationMetadata } from "@/types/base.interface";
+import { BaseResponse, PaginationMetadata } from '@/types/base.interface'
 
-export function createDataTableAdapter<T, P = any>(
-  fetchFunction: (params?: P) => Promise<BaseResponse<T[]>>
-) {
+export function createDataTableAdapter<T, P = any>(fetchFunction: (params?: P) => Promise<BaseResponse<T[]>>) {
   return async (params?: P) => {
-    const response = await fetchFunction(params);
+    const response = await fetchFunction(params)
 
     return {
       data: response.data || [],
-      metadata: response.metadata || {
-        page: 1,
-        limit: 10,
-        totalPages: 1,
-        totalItems: 0,
-        hasNext: false,
-        hasPrevious: false
-      } as PaginationMetadata
-    };
-  };
+      metadata:
+        response.metadata ||
+        ({
+          page: 1,
+          limit: 10,
+          totalPages: 1,
+          totalItems: 0,
+          hasNext: false,
+          hasPrevious: false
+        } as PaginationMetadata)
+    }
+  }
 }
 ```
 
@@ -44,8 +44,8 @@ English content normalized from the original source text.
 ```typescript
 // src/components/admin/permissions/usePermissions-with-hook.ts
 import { useState, useCallback } from "react";
-import { Permission } from "./permissions-Columns";
-import { permissionService } from "@/services/permissionService";
+import { Permission } from "./permissions-columns";
+import { permissionService } from "@/services/permission-service";
 import { showToast } from "@/components/ui/toastify";
 import { parseApiError } from "@/utils/error";
 import {
@@ -53,7 +53,7 @@ import {
   PerUpdateRequest,
   PermissionDetail,
 } from "@/types/auth/permission.interface";
-import { useServerDataTable } from "@/hooks/useServerDataTable";
+import { useServerDataTable } from "@/hooks/use-server-data-table";
 import { createDataTableAdapter } from "@/utils/api-adapters";
 
 export function usePermissions() {
@@ -171,15 +171,15 @@ English content normalized from the original source text.
 'use client'
 
 import { useState } from "react"
-import { PermissionsColumns, Permission } from "./permissions-Columns"
+import { PermissionsColumns, Permission } from "./permissions-columns"
 import SearchInput from "@/components/ui/data-table-component/search-input"
-import PermissionsModalUpsert from "./permissions-ModalUpsert-new"
+import PermissionsModalUpsert from "./permissions-modal-upsert-new"
 import { ConfirmDeleteModal } from "@/components/ui/confirm-delete-modal"
 import { DataTable } from "@/components/ui/data-table-component/data-table"
-import { usePermissions } from "./usePermissions-with-hook"
+import { usePermissions } from "./use-permissions-with-hook"
 import { useTranslations } from "next-intl"
 import DataTableViewOption from "@/components/ui/data-table-component/data-table-view-option"
-import { useDataTable } from "@/hooks/useDataTable"
+import { useDataTable } from "@/hooks/use-data-table"
 
 export function PermissionsTable() {
   const t = useTranslations()
@@ -307,9 +307,9 @@ English content normalized from the original source text.
 
 ```typescript
 // useUsers.ts
-import { userService } from '@/services/userService';
+import { userService } from '@/services/user-service';
 import { createDataTableAdapter } from '@/utils/api-adapters';
-import { useServerDataTable } from '@/hooks/useServerDataTable';
+import { useServerDataTable } from '@/hooks/use-server-data-table';
 // ...
 
 export function useUsers() {

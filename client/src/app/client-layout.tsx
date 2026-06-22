@@ -1,24 +1,20 @@
 'use client'
 
-import { useEffect } from 'react';
-import { authService } from '@/services/auth/authService';
+import { useEffect } from 'react'
+import { authService } from '@/services/auth/auth-service'
 
-export default function ClientLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const getCsrfToken = async () => {
       try {
-        await authService.getCsrfToken();
+        await authService.getCsrfToken()
       } catch (error) {
-        console.error('Failed to get CSRF token:', error);
+        console.error('Failed to get CSRF token:', error)
       }
-    };
+    }
 
-    getCsrfToken();
-  }, []);
+    getCsrfToken()
+  }, [])
 
-  return <>{children}</>;
+  return <>{children}</>
 }

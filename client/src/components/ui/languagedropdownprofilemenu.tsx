@@ -1,11 +1,11 @@
-"use client";
-import { Globe, ChevronDown } from "lucide-react";
-import { useChangeLang } from "@/hooks/useChangeLang";
-import {  useTranslations } from "next-intl";
+'use client'
+import { Globe, ChevronDown } from 'lucide-react'
+import { useChangeLang } from '@/hooks/use-change-lang'
+import { useTranslations } from 'next-intl'
 
 const LanguageDropdown = () => {
-  const { showLangMenu, toggleMenu, changeLanguage, currentLangName } = useChangeLang();
-  const  t  = useTranslations();
+  const { showLangMenu, toggleMenu, changeLanguage, currentLangName } = useChangeLang()
+  const t = useTranslations()
 
   return (
     <div className="relative w-full">
@@ -24,7 +24,7 @@ const LanguageDropdown = () => {
         <div className="absolute left-0 mt-2 w-full bg-white border border-gray-200 shadow-lg z-50 overflow-hidden">
           <button
             className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-            onClick={() => changeLanguage("vi")}
+            onClick={() => changeLanguage('vi')}
           >
             <span className="text-base">🇻🇳</span>
             <span>{t('language.vi')}</span>
@@ -34,7 +34,7 @@ const LanguageDropdown = () => {
 
           <button
             className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-            onClick={() => changeLanguage("en")}
+            onClick={() => changeLanguage('en')}
           >
             <span className="text-base">🇺🇸</span>
             <span>{t('language.en')}</span>
@@ -42,7 +42,7 @@ const LanguageDropdown = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default LanguageDropdown;
+export default LanguageDropdown

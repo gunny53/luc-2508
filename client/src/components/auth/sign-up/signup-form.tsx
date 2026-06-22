@@ -4,23 +4,12 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage
-} from '@/components/ui/form'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { RegisterSchema } from '../schema/index'
-import { useSignup } from './useSignup'
-import {
-  AnimatedForm,
-  AnimatedFormItem,
-  AnimatedButton
-} from '@/components/ui/animated-form'
-import { OAuthForm } from '../layout/OAuthForm'
+import { useSignup } from './use-signup'
+import { AnimatedForm, AnimatedFormItem, AnimatedButton } from '@/components/ui/animated-form'
+import { OAuthForm } from '../layout/o-auth-form'
 import { useTranslations } from 'next-intl'
 import { RegisterRequest } from '@/types/auth/auth.interface'
 import { useState } from 'react'
@@ -45,24 +34,19 @@ export function SignupForm({ email, className }: SignupFormProps) {
       username: '',
       password: '',
       confirmPassword: '',
-      phoneNumber: '',
+      phoneNumber: ''
     }
   })
 
   return (
     <>
       <Form {...registerForm}>
-        <form
-          onSubmit={registerForm.handleSubmit(handleSignup)}
-          className={cn('flex flex-col gap-6', className)}
-        >
+        <form onSubmit={registerForm.handleSubmit(handleSignup)} className={cn('flex flex-col gap-6', className)}>
           <AnimatedForm>
             <AnimatedFormItem>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-4xl font-bold">{t('auth.register.title')}</h1>
-                <p className="text-balance text-md text-muted-foreground">
-                  {t('auth.register.subtitle')}
-                </p>
+                <p className="text-balance text-md text-muted-foreground">{t('auth.register.subtitle')}</p>
               </div>
             </AnimatedFormItem>
 
@@ -76,9 +60,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormItem>
                         <FormLabel>{t('auth.common.firstname')}</FormLabel>
                         <FormControl>
-                          <Input
-                            {...field}
-                            placeholder="English content normalized from the original source text."/>
+                          <Input {...field} placeholder="English content normalized from the original source text." />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -91,9 +73,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormItem>
                         <FormLabel>{t('auth.common.lastname')}</FormLabel>
                         <FormControl>
-                          <Input
-                            {...field}
-                            placeholder="English content normalized from the original source text."/>
+                          <Input {...field} placeholder="English content normalized from the original source text." />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -110,9 +90,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                     <FormItem>
                       <FormLabel>{t('auth.common.username')}</FormLabel>
                       <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="nguyen_van_a"/>
+                        <Input {...field} placeholder="nguyen_van_a" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -144,11 +122,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormLabel>{t('auth.register.password')}</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Input
-                            {...field}
-                            type={showPassword ? 'text' : 'password'}
-                            placeholder="******"
-                          />
+                          <Input {...field} type={showPassword ? 'text' : 'password'} placeholder="******" />
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
@@ -177,11 +151,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormLabel>{t('auth.register.confirm password')}</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Input
-                            {...field}
-                            type={showConfirmPassword ? 'text' : 'password'}
-                            placeholder="******"
-                          />
+                          <Input {...field} type={showConfirmPassword ? 'text' : 'password'} placeholder="******" />
                           <button
                             type="button"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -222,10 +192,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
         <AnimatedFormItem>
           <div className="text-center text-sm">
             {t('auth.register.haveaccount')}{' '}
-            <Link
-              href="/sign-in"
-              className="underline underline-offset-4 text-primary hover:text-primary/90"
-            >
+            <Link href="/sign-in" className="underline underline-offset-4 text-primary hover:text-primary/90">
               {t('auth.register.login')}
             </Link>
           </div>

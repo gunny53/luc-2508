@@ -1,29 +1,18 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import {
-  User,
-  Mail,
-  Phone,
-  Calendar,
-  ShoppingCart,
-  Eye,
-  EyeOff,
-  Receipt,
-  Crown,
-  Star,
-} from "lucide-react";
+import { useState } from 'react'
+import { User, Mail, Phone, Calendar, ShoppingCart, Eye, EyeOff, Receipt, Crown, Star } from 'lucide-react'
 
 interface ProfileHeaderProps {
-  name: string;
-  email: string;
-  phone: string;
-  birthday?: string;
-  avatar?: string;
-  totalOrders?: number;
-  totalSpent?: number;
-  memberSince?: string;
-  createdAt?: string;
+  name: string
+  email: string
+  phone: string
+  birthday?: string
+  avatar?: string
+  totalOrders?: number
+  totalSpent?: number
+  memberSince?: string
+  createdAt?: string
 }
 
 export default function ProfileHeader({
@@ -35,51 +24,51 @@ export default function ProfileHeader({
   createdAt,
   totalOrders = 0,
   totalSpent = 0,
-  memberSince,
+  memberSince
 }: ProfileHeaderProps) {
-  const [showPhone, setShowPhone] = useState(false);
+  const [showPhone, setShowPhone] = useState(false)
 
   const maskPhone = (phone: string) => {
-    if (!phone || phone.length < 7) return phone;
-    return phone.slice(0, 3) + "*".repeat(5) + phone.slice(-2);
-  };
+    if (!phone || phone.length < 7) return phone
+    return phone.slice(0, 3) + '*'.repeat(5) + phone.slice(-2)
+  }
 
   const formattedMemberSince = memberSince
-    ? new Date(memberSince).toLocaleDateString("vi-VN", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
+    ? new Date(memberSince).toLocaleDateString('vi-VN', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
       })
-    : "";
+    : ''
 
   const getUserLevel = (totalSpent: number) => {
     if (totalSpent >= 10000000)
       return {
-        level: "VIP Diamond",
-        color: "from-purple-500 to-pink-500",
-        icon: Crown,
-      };
+        level: 'VIP Diamond',
+        color: 'from-purple-500 to-pink-500',
+        icon: Crown
+      }
     if (totalSpent >= 5000000)
       return {
-        level: "VIP Gold",
-        color: "from-yellow-500 to-orange-500",
-        icon: Star,
-      };
+        level: 'VIP Gold',
+        color: 'from-yellow-500 to-orange-500',
+        icon: Star
+      }
     if (totalSpent >= 2000000)
       return {
-        level: "VIP Silver",
-        color: "from-gray-400 to-gray-600",
-        icon: Star,
-      };
+        level: 'VIP Silver',
+        color: 'from-gray-400 to-gray-600',
+        icon: Star
+      }
     return {
-      level: "English content normalized from the original source text.",
-      color: "from-blue-500 to-cyan-500",
-      icon: User,
-    };
-  };
+      level: 'English content normalized from the original source text.',
+      color: 'from-blue-500 to-cyan-500',
+      icon: User
+    }
+  }
 
-  const userLevel = getUserLevel(totalSpent);
-  const LevelIcon = userLevel.icon;
+  const userLevel = getUserLevel(totalSpent)
+  const LevelIcon = userLevel.icon
 
   return (
     <div className="bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col lg:flex-row min-h-[200px] overflow-hidden items-center border border-gray-100 relative">
@@ -102,11 +91,11 @@ export default function ProfileHeader({
             />
           ) : (
             <div className="w-full h-full rounded-full bg-gradient-to-br from-[#D70018] to-[#FF6B35] flex items-center justify-center text-white font-bold text-2xl sm:text-3xl shadow-lg border-4 border-white">
-              {name?.[0]?.toUpperCase() || "U"}
+              {name?.[0]?.toUpperCase() || 'U'}
             </div>
           )}
 
-          {/* English content normalized from the original source text. */}
+          {}
           <div
             className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
                 px-3 py-1 rounded-full text-xs font-bold text-white
@@ -129,7 +118,9 @@ export default function ProfileHeader({
                 {name}
                 <div className="hidden sm:flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs font-medium text-green-700">English content normalized from the original source text.</span>
+                  <span className="text-xs font-medium text-green-700">
+                    English content normalized from the original source text.
+                  </span>
                 </div>
               </h2>
             </div>
@@ -147,18 +138,12 @@ export default function ProfileHeader({
               <div className="p-2 rounded-lg bg-red-50 group-hover:bg-red-100 transition-colors">
                 <Phone className="w-4 h-4 text-red-500" />
               </div>
-              <span className="text-sm text-gray-600">
-                {showPhone ? phone : maskPhone(phone)}
-              </span>
+              <span className="text-sm text-gray-600">{showPhone ? phone : maskPhone(phone)}</span>
               <button
                 onClick={() => setShowPhone(!showPhone)}
                 className="ml-1 p-1 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all duration-200"
               >
-                {showPhone ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
+                {showPhone ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
 
@@ -189,17 +174,19 @@ export default function ProfileHeader({
               <ShoppingCart className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
             </div>
             <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
-              <span className="text-xs font-bold text-white">
-                {totalOrders > 99 ? "99+" : totalOrders}
-              </span>
+              <span className="text-xs font-bold text-white">{totalOrders > 99 ? '99+' : totalOrders}</span>
             </div>
           </div>
           <div className="flex flex-col">
             <span className="text-2xl sm:text-3xl font-bold text-gray-800 leading-none mb-1">
               {totalOrders.toLocaleString()}
             </span>
-            <span className="text-sm text-gray-500 font-medium">English content normalized from the original source text.</span>
-            <span className="text-xs text-gray-400 mt-1">English content normalized from the original source text.</span>
+            <span className="text-sm text-gray-500 font-medium">
+              English content normalized from the original source text.
+            </span>
+            <span className="text-xs text-gray-400 mt-1">
+              English content normalized from the original source text.
+            </span>
           </div>
         </div>
 
@@ -224,13 +211,17 @@ export default function ProfileHeader({
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#D70018] to-[#FF6B35] bg-clip-text text-transparent leading-none mb-1">
               {totalSpent.toLocaleString()}English content normalized from the original source text.
             </span>
-            <span className="text-sm text-gray-500 font-medium">English content normalized from the original source text.</span>
+            <span className="text-sm text-gray-500 font-medium">
+              English content normalized from the original source text.
+            </span>
             {createdAt && (
-              <span className="text-xs text-gray-400 mt-1">English content normalized from the original source text. {createdAt}</span>
+              <span className="text-xs text-gray-400 mt-1">
+                English content normalized from the original source text. {createdAt}
+              </span>
             )}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

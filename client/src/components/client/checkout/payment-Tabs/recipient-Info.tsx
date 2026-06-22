@@ -1,51 +1,46 @@
-'use client';
+'use client'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { User, Phone, Mail, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useUserData } from '@/hooks/useGetData-UserLogin';
-import { useSelector } from 'react-redux';
-import { selectShippingInfo } from '@/store/features/checkout/ordersSilde';
-import { useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { User, Phone, Mail, MapPin } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useUserData } from '@/hooks/use-get-data-user-login'
+import { useSelector } from 'react-redux'
+import { selectShippingInfo } from '@/store/features/checkout/orders-silde'
+import { useEffect } from 'react'
 
 interface RecipientInfoProps {
   shippingAddress: {
-    addressDetail?: string;
-    ward?: string;
-    district?: string;
-    province?: string;
-    address?: string;
-    receiverName: string;
-    receiverPhone: string;
-  };
-  onEdit?: () => void;
+    addressDetail?: string
+    ward?: string
+    district?: string
+    province?: string
+    address?: string
+    receiverName: string
+    receiverPhone: string
+  }
+  onEdit?: () => void
 }
 
 export function RecipientInfo({ shippingAddress, onEdit }: RecipientInfoProps) {
-  // English content normalized from the original source text.
-  const userData = useUserData();
-  const shippingInfo = useSelector(selectShippingInfo);
-
-  // English content normalized from the original source text.
+  const userData = useUserData()
+  const shippingInfo = useSelector(selectShippingInfo)
   useEffect(() => {
-    console.log('[RecipientInfo] Received shippingAddress:', shippingAddress);
-    console.log('[RecipientInfo] Redux shippingInfo:', shippingInfo);
-  }, [shippingAddress, shippingInfo]);
-
-  // English content normalized from the original source text.
+    console.log('[RecipientInfo] Received shippingAddress:', shippingAddress)
+    console.log('[RecipientInfo] Redux shippingInfo:', shippingInfo)
+  }, [shippingAddress, shippingInfo])
   const customerInfo = {
     name: userData?.name || userData?.firstName + ' ' + userData?.lastName || '',
     phone: userData?.phoneNumber || '',
     email: userData?.email || ''
-  };
+  }
 
   // Function to parse location value from "code|name" format
   const parseLocationName = (value?: string): string => {
-    if (!value) return '';
-    console.log('[RecipientInfo] Parsing location value:', value);
-    const parts = value.split('|');
-    return parts.length > 1 ? parts[1] : value; // Return name if available, otherwise return the original value
-  };
+    if (!value) return ''
+    console.log('[RecipientInfo] Parsing location value:', value)
+    const parts = value.split('|')
+    return parts.length > 1 ? parts[1] : value // Return name if available, otherwise return the original value
+  }
 
   const getFullAddress = () => {
     // Log what we're working with
@@ -56,21 +51,19 @@ export function RecipientInfo({ shippingAddress, onEdit }: RecipientInfoProps) {
       district: shippingAddress.district,
       province: shippingAddress.province,
       shippingInfo
-    });
-
-    // English content normalized from the original source text.
+    })
     if (shippingInfo && shippingAddress.addressDetail) {
       const parts = [
         shippingAddress.addressDetail,
         shippingInfo.wardName || parseLocationName(shippingAddress.ward),
         shippingInfo.districtName || parseLocationName(shippingAddress.district),
         shippingInfo.provinceName || parseLocationName(shippingAddress.province)
-      ].filter(Boolean);
+      ].filter(Boolean)
 
-      console.log('[RecipientInfo] Address parts from Redux:', parts);
+      console.log('[RecipientInfo] Address parts from Redux:', parts)
 
       if (parts.length > 0) {
-        return parts.join(', ');
+        return parts.join(', ')
       }
     }
 
@@ -81,36 +74,35 @@ export function RecipientInfo({ shippingAddress, onEdit }: RecipientInfoProps) {
         parseLocationName(shippingAddress.ward),
         parseLocationName(shippingAddress.district),
         parseLocationName(shippingAddress.province)
-      ].filter(Boolean);
+      ].filter(Boolean)
 
-      console.log('[RecipientInfo] Address parts fallback:', parts);
+      console.log('[RecipientInfo] Address parts fallback:', parts)
 
       if (parts.length > 0) {
-        return parts.join(', ');
+        return parts.join(', ')
       }
     }
 
     // Fallback to the full address if provided
     if (shippingAddress.address && shippingAddress.address.trim() !== '') {
-      return shippingAddress.address;
+      return shippingAddress.address
     }
 
     // Last resort
-    return 'English content normalized from the original source text.';
-  };
+    return 'English content normalized from the original source text.'
+  }
 
   return (
-    <Card className='shadow-none'>
+    <Card className="shadow-none">
       <CardHeader className="pb-3">
         <div className="flex justify-between items-center">
-          <CardTitle className="text-base font-medium">English content normalized from the original source text.</CardTitle>
+          <CardTitle className="text-base font-medium">
+            English content normalized from the original source text.
+          </CardTitle>
           {onEdit && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-7 px-3 text-xs font-normal"
-              onClick={onEdit}
-            >English content normalized from the original source text.</Button>
+            <Button variant="outline" size="sm" className="h-7 px-3 text-xs font-normal" onClick={onEdit}>
+              English content normalized from the original source text.
+            </Button>
           )}
         </div>
       </CardHeader>
@@ -197,12 +189,14 @@ export function RecipientInfo({ shippingAddress, onEdit }: RecipientInfoProps) {
               <div>
                 <span className="font-medium">{shippingAddress.receiverName}</span>
                 <span className="text-gray-400 mx-2">|</span>
-                <span className="font-medium">{shippingAddress.receiverPhone || 'English content normalized from the original source text.'}</span>
+                <span className="font-medium">
+                  {shippingAddress.receiverPhone || 'English content normalized from the original source text.'}
+                </span>
               </div>
             </div>
           </div>
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }

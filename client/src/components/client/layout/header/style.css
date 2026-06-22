@@ -1,4 +1,3 @@
-
 /* Enhance dropdown menu appearance */
 header {
   position: sticky;
@@ -23,7 +22,9 @@ header {
 .search-dropdown {
   width: 100%;
   min-width: 650px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 11px;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.1) 0px 4px 11px;
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -36,7 +37,9 @@ header {
 .category-dropdown-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 .category-dropdown-exit {
   opacity: 1;
@@ -104,8 +107,8 @@ header {
   will-change: transform, opacity;
 }
 
-.modal-input:hover{
-    background-color: rgba(240, 240, 240, 0.8);
+.modal-input:hover {
+  background-color: rgba(240, 240, 240, 0.8);
 }
 
 /* Lock scroll when header is hovered */
@@ -113,13 +116,13 @@ header {
   overflow: auto;
 }
 /* Backdrop blur effect for category dropdown */
-.category-backdrop, .search-backdrop {
+.category-backdrop,
+.search-backdrop {
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   position: fixed;
   pointer-events: auto;
 }
-
 
 /* Body overlay styles */
 .body-overlay {

@@ -1,29 +1,29 @@
-"use client";
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Eye, ChevronsUpDown, Loader2, Calendar as CalendarIcon } from "lucide-react";
-import { BrandCbb } from "@/components/ui/combobox/BrandCbb";
-import { CategoryModal } from "./form-ModalCategory";
-import { ProductCreateRequest } from "@/types/products.interface";
-import { categoryService } from "@/services/admin/categoryService";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { vi } from "date-fns/locale";
-import { Calendar } from "@/components/ui/calendar";
-import { Switch } from "@/components/ui/switch";
+'use client'
+import { useState, useEffect } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Eye, ChevronsUpDown, Loader2, Calendar as CalendarIcon } from 'lucide-react'
+import { BrandCbb } from '@/components/ui/combobox/brand-cbb'
+import { CategoryModal } from './form-modal-category'
+import { ProductCreateRequest } from '@/types/products.interface'
+import { categoryService } from '@/services/admin/category-service'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
+import { format } from 'date-fns'
+import { vi } from 'date-fns/locale'
+import { Calendar } from '@/components/ui/calendar'
+import { Switch } from '@/components/ui/switch'
 
 interface ProductAsideFormProps {
-  brandId: string | null;
-  categories: string[];
-  publishedAt?: string | null;
-  handleInputChange: (field: keyof ProductCreateRequest, value: any) => void;
-  handleSubmit: (options?: { stayOnPage?: boolean }) => Promise<void>;
-  handleSaveAndAddNew: () => Promise<void>;
-  isSubmitting: boolean;
-  isEditMode: boolean;
+  brandId: string | null
+  categories: string[]
+  publishedAt?: string | null
+  handleInputChange: (field: keyof ProductCreateRequest, value: any) => void
+  handleSubmit: (options?: { stayOnPage?: boolean }) => Promise<void>
+  handleSaveAndAddNew: () => Promise<void>
+  isSubmitting: boolean
+  isEditMode: boolean
 }
 
 export function ProductAsideForm({
@@ -34,240 +34,214 @@ export function ProductAsideForm({
   handleSaveAndAddNew,
   isSubmitting,
   isEditMode,
-  publishedAt,
+  publishedAt
 }: ProductAsideFormProps) {
   // State for publishing date/time
-  const [isPublished, setIsPublished] = useState(false);
-  const [publishDate, setPublishDate] = useState<Date | undefined>(undefined);
+  const [isPublished, setIsPublished] = useState(false)
+  const [publishDate, setPublishDate] = useState<Date | undefined>(undefined)
 
   // State for category modal
-  const [isCategoryModalOpen, setCategoryModalOpen] = useState(false);
-  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
-  const [selectedCategoryPath, setSelectedCategoryPath] = useState<string>('');
-  const [isLoadingCategory, setIsLoadingCategory] = useState<boolean>(false);
+  const [isCategoryModalOpen, setCategoryModalOpen] = useState(false)
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([])
+  const [selectedCategoryPath, setSelectedCategoryPath] = useState<string>('')
+  const [isLoadingCategory, setIsLoadingCategory] = useState<boolean>(false)
 
   // Update states when publishedAt changes (from API)
   useEffect(() => {
     if (publishedAt) {
       try {
-        const date = new Date(publishedAt);
+        const date = new Date(publishedAt)
         if (!isNaN(date.getTime())) {
-          setIsPublished(true);
-          setPublishDate(date);
-          console.log('Publish date parsed:', date.toLocaleString());
+          setIsPublished(true)
+          setPublishDate(date)
+          console.log('Publish date parsed:', date.toLocaleString())
         } else {
-          console.error('Invalid date from server:', publishedAt);
-          setIsPublished(false);
-          setPublishDate(undefined);
+          console.error('Invalid date from server:', publishedAt)
+          setIsPublished(false)
+          setPublishDate(undefined)
         }
       } catch (error) {
-        console.error('Error parsing publishedAt date:', error);
-        setIsPublished(false);
-        setPublishDate(undefined);
+        console.error('Error parsing publishedAt date:', error)
+        setIsPublished(false)
+        setPublishDate(undefined)
       }
     } else {
-      setIsPublished(false);
-      setPublishDate(undefined);
+      setIsPublished(false)
+      setPublishDate(undefined)
     }
-  }, [publishedAt]);
+  }, [publishedAt])
 
   // Simplified category processing
   useEffect(() => {
     if (categories && categories.length > 0 && selectedCategoryPath === '') {
       const fetchCategoryData = async () => {
-        setIsLoadingCategory(true);
+        setIsLoadingCategory(true)
         try {
-          // English content normalized from the original source text.
-          const response = await categoryService.getAll();
-          const allCategories = response.data || response;
-
-          // English content normalized from the original source text.
-          const categoryMap = new Map();
-          allCategories.forEach(cat => {
+          const response = await categoryService.getAll()
+          const allCategories = response.data || response
+          const categoryMap = new Map()
+          allCategories.forEach((cat) => {
             if (cat.id) {
-              categoryMap.set(cat.id.toString(), cat);
+              categoryMap.set(cat.id.toString(), cat)
             }
-          });
-
-          // English content normalized from the original source text.
-          const categoryPaths: string[] = [];
-          const processedCategories = new Set<string>();
+          })
+          const categoryPaths: string[] = []
+          const processedCategories = new Set<string>()
 
           // Debug log
-          console.log('Original categories:', categories);
-          console.log('All fetched categories:', allCategories);
-
-          // English content normalized from the original source text.
+          console.log('Original categories:', categories)
+          console.log('All fetched categories:', allCategories)
           for (const categoryId of categories) {
-            // English content normalized from the original source text.
             if (processedCategories.has(categoryId)) {
-              console.log(`Skipping duplicate category: ${categoryId}`);
-              continue;
+              console.log(`Skipping duplicate category: ${categoryId}`)
+              continue
             }
 
-            const category = categoryMap.get(categoryId);
+            const category = categoryMap.get(categoryId)
 
             if (category) {
-              let displayPath = '';
+              let displayPath = ''
 
               if (category.parentCategoryId) {
-                // English content normalized from the original source text.
-                const parentCategory = categoryMap.get(category.parentCategoryId.toString());
+                const parentCategory = categoryMap.get(category.parentCategoryId.toString())
                 if (parentCategory) {
-                  displayPath = `${parentCategory.name} > ${category.name}`;
+                  displayPath = `${parentCategory.name} > ${category.name}`
                 } else {
-                  displayPath = category.name;
+                  displayPath = category.name
                 }
               } else {
-                // English content normalized from the original source text.
-                displayPath = category.name;
+                displayPath = category.name
               }
-
-              // English content normalized from the original source text.
               if (!categoryPaths.includes(displayPath)) {
-                categoryPaths.push(displayPath);
-                console.log(`Added path: ${displayPath}`);
+                categoryPaths.push(displayPath)
+                console.log(`Added path: ${displayPath}`)
               } else {
-                console.log(`Duplicate path detected: ${displayPath}`);
+                console.log(`Duplicate path detected: ${displayPath}`)
               }
-              processedCategories.add(categoryId);
+              processedCategories.add(categoryId)
             } else {
-              // English content normalized from the original source text.
               try {
-                const categoryDetail = await categoryService.getById(categoryId.toString());
+                const categoryDetail = await categoryService.getById(categoryId.toString())
                 if (categoryDetail?.data) {
-                  const categoryData = categoryDetail.data;
-                  let displayPath = categoryData.name;
+                  const categoryData = categoryDetail.data
+                  let displayPath = categoryData.name
 
                   if (categoryData.parentCategoryId) {
-                    const parentDetail = await categoryService.getById(categoryData.parentCategoryId.toString());
+                    const parentDetail = await categoryService.getById(categoryData.parentCategoryId.toString())
                     if (parentDetail?.data) {
-                      displayPath = `${parentDetail.data.name} > ${categoryData.name}`;
+                      displayPath = `${parentDetail.data.name} > ${categoryData.name}`
                     }
                   }
-
-                  // English content normalized from the original source text.
                   if (!categoryPaths.includes(displayPath)) {
-                    categoryPaths.push(displayPath);
+                    categoryPaths.push(displayPath)
                   }
-                  processedCategories.add(categoryId);
+                  processedCategories.add(categoryId)
                 }
               } catch (detailError) {
-                console.error(`Failed to fetch category ${categoryId}:`, detailError);
+                console.error(`Failed to fetch category ${categoryId}:`, detailError)
                 if (!categoryPaths.includes('English content normalized from the original source text.')) {
-                  categoryPaths.push('English content normalized from the original source text.');
+                  categoryPaths.push('English content normalized from the original source text.')
                 }
-                processedCategories.add(categoryId);
+                processedCategories.add(categoryId)
               }
             }
           }
+          const finalPath = categoryPaths.join(', ')
 
-          // English content normalized from the original source text.
-          const finalPath = categoryPaths.join(', ');
-
-          setSelectedCategoryIds(categories);
-          setSelectedCategoryPath(finalPath);
-
+          setSelectedCategoryIds(categories)
+          setSelectedCategoryPath(finalPath)
         } catch (error) {
-          console.error("Failed to fetch category data:", error);
-          setSelectedCategoryPath('English content normalized from the original source text.');
+          console.error('Failed to fetch category data:', error)
+          setSelectedCategoryPath('English content normalized from the original source text.')
         } finally {
-          setIsLoadingCategory(false);
+          setIsLoadingCategory(false)
         }
-      };
+      }
 
-      fetchCategoryData();
+      fetchCategoryData()
     }
-  }, [categories, selectedCategoryPath]);
+  }, [categories, selectedCategoryPath])
 
   // Handle publish status change
   const handlePublishToggle = (checked: boolean) => {
-    setIsPublished(checked);
+    setIsPublished(checked)
 
     if (checked) {
-      const dateToUse = publishDate || new Date();
+      const dateToUse = publishDate || new Date()
 
       if (!publishDate) {
-        console.log('Setting publishedAt to current date/time:', dateToUse.toISOString());
+        console.log('Setting publishedAt to current date/time:', dateToUse.toISOString())
       } else {
-        console.log('Keeping existing publish date/time:', dateToUse.toISOString());
+        console.log('Keeping existing publish date/time:', dateToUse.toISOString())
       }
 
-      setPublishDate(dateToUse);
-      handleInputChange('publishedAt', dateToUse.toISOString());
+      setPublishDate(dateToUse)
+      handleInputChange('publishedAt', dateToUse.toISOString())
     } else {
-      console.log('Clearing publishedAt due to publish toggle off');
-      handleInputChange('publishedAt', null);
+      console.log('Clearing publishedAt due to publish toggle off')
+      handleInputChange('publishedAt', null)
     }
-  };
+  }
 
   // Handle publish date change
   const handlePublishDateChange = (date: Date | undefined) => {
     if (!date) {
-      setPublishDate(undefined);
+      setPublishDate(undefined)
       if (isPublished) {
-        console.log('Clearing publishedAt due to date being cleared');
-        handleInputChange('publishedAt', null);
+        console.log('Clearing publishedAt due to date being cleared')
+        handleInputChange('publishedAt', null)
       }
-      return;
+      return
     }
 
     if (isNaN(date.getTime())) {
-      console.error('Invalid date in handlePublishDateChange:', date);
-      return;
+      console.error('Invalid date in handlePublishDateChange:', date)
+      return
     }
 
-    setPublishDate(date);
+    setPublishDate(date)
 
     if (isPublished) {
-      console.log('Updating publishedAt to:', date.toISOString());
-      handleInputChange('publishedAt', date.toISOString());
+      console.log('Updating publishedAt to:', date.toISOString())
+      handleInputChange('publishedAt', date.toISOString())
     }
-  };
+  }
 
   // Handle brand change
   const handleBrandChange = (id: string | null) => {
-    handleInputChange('brandId', id);
-  };
+    handleInputChange('brandId', id)
+  }
 
   // Handle category selection from modal
   const handleCategoryConfirm = (categoryIds: string[], selectionPath: string) => {
-    // English content normalized from the original source text.
-    console.log('Selected category IDs (unchanged):', categoryIds);
+    console.log('Selected category IDs (unchanged):', categoryIds)
 
-    setSelectedCategoryIds(categoryIds);
-    setSelectedCategoryPath(selectionPath);
-    handleInputChange('categories', categoryIds);
-  };
+    setSelectedCategoryIds(categoryIds)
+    setSelectedCategoryPath(selectionPath)
+    handleInputChange('categories', categoryIds)
+  }
 
   return (
     <div className="sticky top-4 grid auto-rows-max items-start gap-4 md:gap-8">
       {/* Action Buttons */}
       <div className="flex flex-col gap-2">
         {!isEditMode && (
-          <Button
-            type="button"
-            onClick={handleSaveAndAddNew}
-            disabled={isSubmitting}
-            variant="secondary"
-          >
-            {isSubmitting ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : null}
+          <Button type="button" onClick={handleSaveAndAddNew} disabled={isSubmitting} variant="secondary">
+            {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             English content normalized from the original source text.
           </Button>
         )}
         {isEditMode && (
           <Button variant="outline" className="flex-1 flex items-center gap-2">
-            <Eye className="h-4 w-4" />English content normalized from the original source text.</Button>
+            <Eye className="h-4 w-4" />
+            English content normalized from the original source text.
+          </Button>
         )}
-        <Button
-          onClick={() => handleSubmit()}
-          disabled={isSubmitting}
-          className="flex-1 flex items-center gap-2"
-        >
+        <Button onClick={() => handleSubmit()} disabled={isSubmitting} className="flex-1 flex items-center gap-2">
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {isEditMode ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
+          {isEditMode
+            ? 'English content normalized from the original source text.'
+            : 'English content normalized from the original source text.'}
         </Button>
       </div>
 
@@ -277,22 +251,20 @@ export function ProductAsideForm({
           <CardTitle className="text-base">English content normalized from the original source text.</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* English content normalized from the original source text. */}
+          {}
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label htmlFor="publish-toggle">English content normalized from the original source text.</Label>
               <p className="text-sm text-muted-foreground">
-                {isPublished ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
+                {isPublished
+                  ? 'English content normalized from the original source text.'
+                  : 'English content normalized from the original source text.'}
               </p>
             </div>
-            <Switch
-              id="publish-toggle"
-              checked={isPublished}
-              onCheckedChange={handlePublishToggle}
-            />
+            <Switch id="publish-toggle" checked={isPublished} onCheckedChange={handlePublishToggle} />
           </div>
 
-          {/* English content normalized from the original source text. */}
+          {}
           {isPublished && (
             <div className="grid gap-2">
               <Label htmlFor="publish-date">English content normalized from the original source text.</Label>
@@ -302,25 +274,18 @@ export function ProductAsideForm({
                     id="publish-date"
                     variant="outline"
                     className={cn(
-                      "w-full justify-start text-left font-normal",
-                      !publishDate && "text-muted-foreground"
+                      'w-full justify-start text-left font-normal',
+                      !publishDate && 'text-muted-foreground'
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
-                    {publishDate ? (
-                      format(publishDate, "PPpp", { locale: vi })
-                    ) : (
-                      "English content normalized from the original source text."
-                    )}
+                    {publishDate
+                      ? format(publishDate, 'PPpp', { locale: vi })
+                      : 'English content normalized from the original source text.'}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={publishDate}
-                    onSelect={handlePublishDateChange}
-                    initialFocus
-                  />
+                  <Calendar mode="single" selected={publishDate} onSelect={handlePublishDateChange} initialFocus />
                   <div className="p-3 border-t border-border">
                     <div className="flex justify-between items-center">
                       <div className="grid gap-1">
@@ -332,14 +297,16 @@ export function ProductAsideForm({
                             className="w-16 rounded-md border border-input bg-background px-2 py-1 text-sm"
                             value={publishDate ? new Date(publishDate).getHours() : 0}
                             onChange={(e) => {
-                              if (!publishDate) return;
-                              const newDate = new Date(publishDate);
-                              newDate.setHours(parseInt(e.target.value));
-                              handlePublishDateChange(newDate);
+                              if (!publishDate) return
+                              const newDate = new Date(publishDate)
+                              newDate.setHours(parseInt(e.target.value))
+                              handlePublishDateChange(newDate)
                             }}
                           >
                             {Array.from({ length: 24 }, (_, i) => (
-                              <option key={i} value={i}>{i.toString().padStart(2, '0')}</option>
+                              <option key={i} value={i}>
+                                {i.toString().padStart(2, '0')}
+                              </option>
                             ))}
                           </select>
                           <span aria-hidden="true">:</span>
@@ -349,14 +316,16 @@ export function ProductAsideForm({
                             className="w-16 rounded-md border border-input bg-background px-2 py-1 text-sm"
                             value={publishDate ? new Date(publishDate).getMinutes() : 0}
                             onChange={(e) => {
-                              if (!publishDate) return;
-                              const newDate = new Date(publishDate);
-                              newDate.setMinutes(parseInt(e.target.value));
-                              handlePublishDateChange(newDate);
+                              if (!publishDate) return
+                              const newDate = new Date(publishDate)
+                              newDate.setMinutes(parseInt(e.target.value))
+                              handlePublishDateChange(newDate)
                             }}
                           >
                             {Array.from({ length: 60 }, (_, i) => (
-                              <option key={i} value={i}>{i.toString().padStart(2, '0')}</option>
+                              <option key={i} value={i}>
+                                {i.toString().padStart(2, '0')}
+                              </option>
                             ))}
                           </select>
                         </div>
@@ -366,25 +335,36 @@ export function ProductAsideForm({
                           variant="outline"
                           size="sm"
                           onClick={() => {
-                            const now = new Date();
-                            console.log('Setting to current time:', now.toISOString());
-                            handlePublishDateChange(now);
+                            const now = new Date()
+                            console.log('Setting to current time:', now.toISOString())
+                            handlePublishDateChange(now)
                           }}
-                        >English content normalized from the original source text.</Button>
+                        >
+                          English content normalized from the original source text.
+                        </Button>
                       </div>
                     </div>
                     <div className="mt-3 text-xs text-muted-foreground text-center">
                       {publishDate && (
-                        <p>English content normalized from the original source text. {format(publishDate, 'PPpp', { locale: vi })}</p>
+                        <p>
+                          English content normalized from the original source text.{' '}
+                          {format(publishDate, 'PPpp', { locale: vi })}
+                        </p>
                       )}
-                      English content normalized from the original source text. {publishDate ? format(publishDate, "PPpp", { locale: vi }) : "English content normalized from the original source text."}
+                      English content normalized from the original source text.{' '}
+                      {publishDate
+                        ? format(publishDate, 'PPpp', { locale: vi })
+                        : 'English content normalized from the original source text.'}
                     </div>
                   </div>
                 </PopoverContent>
               </Popover>
               <p className="text-xs text-muted-foreground">
                 {publishedAt ? (
-                  <span>English content normalized from the original source text. {format(new Date(publishedAt), "PPpp", { locale: vi })}</span>
+                  <span>
+                    English content normalized from the original source text.{' '}
+                    {format(new Date(publishedAt), 'PPpp', { locale: vi })}
+                  </span>
                 ) : isPublished ? (
                   <span>English content normalized from the original source text.</span>
                 ) : null}
@@ -417,7 +397,9 @@ export function ProductAsideForm({
                 <div className="flex-1 text-left overflow-hidden">
                   {isLoadingCategory ? (
                     <span className="flex items-center">
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />English content normalized from the original source text.</span>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      English content normalized from the original source text.
+                    </span>
                   ) : (
                     <div className="space-y-1">
                       <span
@@ -449,5 +431,5 @@ export function ProductAsideForm({
         initialSelectedIds={selectedCategoryIds}
       />
     </div>
-  );
+  )
 }

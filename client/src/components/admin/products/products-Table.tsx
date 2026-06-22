@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { useProducts, ProductColumn } from './useProducts';
-import { productsColumns } from './products-Columns';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { getProductUrl } from '@/utils/slugify';
-import { PlusCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { DataTable } from '@/components/ui/data-table-component/data-table';
-import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal';
-import SearchInput from '@/components/ui/data-table-component/search-input';
-import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option';
-import { ProductsFilter } from './products-Filter';
-import { ProductsExportData } from './products-ExportData';
-import ProductModalBarcode from './product-ModalBarcode';
-import type { Table as TanstackTable } from '@tanstack/react-table';
-import { useDataTable } from '@/hooks/useDataTable';
+import React, { useState } from 'react'
+import { useProducts, ProductColumn } from './use-products'
+import { productsColumns } from './products-columns'
+import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { getProductUrl } from '@/utils/slugify'
+import { PlusCircle } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { DataTable } from '@/components/ui/data-table-component/data-table'
+import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal'
+import SearchInput from '@/components/ui/data-table-component/search-input'
+import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option'
+import { ProductsFilter } from './products-filter'
+import { ProductsExportData } from './products-export-data'
+import ProductModalBarcode from './product-modal-barcode'
+import type { Table as TanstackTable } from '@tanstack/react-table'
+import { useDataTable } from '@/hooks/use-data-table'
 
 export function ProductsTable() {
-  const t = useTranslations('admin.ModuleProduct');
-  const router = useRouter();
+  const t = useTranslations('admin.ModuleProduct')
+  const router = useRouter()
 
   // State cho modal barcode
-  const [barcodeModalOpen, setBarcodeModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<ProductColumn | null>(null);
+  const [barcodeModalOpen, setBarcodeModalOpen] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<ProductColumn | null>(null)
 
   const {
     data,
@@ -43,33 +43,31 @@ export function ProductsTable() {
     priceFilter,
     handleCategoryFilterChange,
     categoryFilter,
-    searchQuery,
-  } = useProducts();
+    searchQuery
+  } = useProducts()
 
   const onEdit = (product: ProductColumn) => {
-    router.push(`/admin/products/${product.id}`);
-  };
+    router.push(`/admin/products/${product.id}`)
+  }
 
   const onView = (product: ProductColumn) => {
     // Use window.open to open the client product page in a new tab
-    const productUrl = getProductUrl(product.name, product.id);
-    window.open(productUrl, '_blank');
-  };
+    const productUrl = getProductUrl(product.name, product.id)
+    window.open(productUrl, '_blank')
+  }
 
   const onViewBarcode = (product: ProductColumn) => {
-    setSelectedProduct(product);
-    setBarcodeModalOpen(true);
-  };
+    setSelectedProduct(product)
+    setBarcodeModalOpen(true)
+  }
 
   const handleCloseBarcodeModal = () => {
-    setBarcodeModalOpen(false);
-    setSelectedProduct(null);
-  };
+    setBarcodeModalOpen(false)
+    setSelectedProduct(null)
+  }
 
-  const columns = productsColumns({ onEdit, onDelete: handleOpenDelete, onView, onViewBarcode });
-  const table = useDataTable({ data, columns });
-
-  // English content normalized from the original source text.
+  const columns = productsColumns({ onEdit, onDelete: handleOpenDelete, onView, onViewBarcode })
+  const table = useDataTable({ data, columns })
   const SearchAndFilterSection = React.memo(() => (
     <div className="flex items-center space-x-2">
       <SearchInput
@@ -86,20 +84,21 @@ export function ProductsTable() {
         currentCategoryFilter={categoryFilter}
       />
     </div>
-  ));
-
-  // English content normalized from the original source text.
-  const ProductsTableToolbar = React.useCallback(({ table }: { table: TanstackTable<ProductColumn> }) => (
-    <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2">
-        <SearchAndFilterSection />
+  ))
+  const ProductsTableToolbar = React.useCallback(
+    ({ table }: { table: TanstackTable<ProductColumn> }) => (
+      <div className="flex items-center justify-between">
+        <div className="flex flex-1 items-center space-x-2">
+          <SearchAndFilterSection />
+        </div>
+        <div className="flex items-center gap-2">
+          <ProductsExportData data={data} table={table} />
+          <DataTableViewOption table={table} />
+        </div>
       </div>
-      <div className="flex items-center gap-2">
-        <ProductsExportData data={data} table={table} />
-        <DataTableViewOption table={table} />
-      </div>
-    </div>
-  ), [data]);
+    ),
+    [data]
+  )
 
   return (
     <div className="w-full space-y-4">
@@ -111,18 +110,18 @@ export function ProductsTable() {
           </Button>
         </Link>
       </div>
-        <DataTable
-          table={table}
-          columns={columns}
-          loading={loading}
-          notFoundMessage={t('DataTable.notFound')}
-          Toolbar={ProductsTableToolbar}
-          pagination={{
-            metadata: pagination,
-            onPageChange: handlePageChange,
-            onLimitChange: handleLimitChange,
-          }}
-        />
+      <DataTable
+        table={table}
+        columns={columns}
+        loading={loading}
+        notFoundMessage={t('DataTable.notFound')}
+        Toolbar={ProductsTableToolbar}
+        pagination={{
+          metadata: pagination,
+          onPageChange: handlePageChange,
+          onLimitChange: handleLimitChange
+        }}
+      />
 
       <ConfirmDeleteModal
         open={deleteOpen}
@@ -133,11 +132,7 @@ export function ProductsTable() {
         description={t('DeleteModal.description')}
       />
 
-      <ProductModalBarcode
-        product={selectedProduct}
-        isOpen={barcodeModalOpen}
-        onClose={handleCloseBarcodeModal}
-      />
+      <ProductModalBarcode product={selectedProduct} isOpen={barcodeModalOpen} onClose={handleCloseBarcodeModal} />
     </div>
-  );
+  )
 }

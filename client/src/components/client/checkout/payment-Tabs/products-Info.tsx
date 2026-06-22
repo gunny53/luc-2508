@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/store/store'
 import {
   selectShopProducts,
   applyVoucher,
@@ -13,17 +13,16 @@ import {
   updateShippingForShop,
   updateShippingFeeForShop,
   selectCalculationResult
-} from '@/store/features/checkout/ordersSilde';
-import { ProductInfo, AppliedVoucherInfo } from '@/types/order.interface';
-import { ShippingMethod } from '@/types/shipping.interface';
-import Image from 'next/image';
-import { PiStorefrontLight } from "react-icons/pi";
-import { VoucherButton } from "@/components/client/checkout/shared/cart-ModalVoucher";
-import { ShippingModal } from "@/components/client/checkout/shared/cart-ModalShipping";
-import { useShipping } from "@/components/client/checkout/hooks/useShipping";
-import { useCalculateOrder } from "@/components/client/checkout/hooks/useCalculateOrder";
-import { Truck, Clock, X } from 'lucide-react';
-
+} from '@/store/features/checkout/orders-silde'
+import { ProductInfo, AppliedVoucherInfo } from '@/types/order.interface'
+import { ShippingMethod } from '@/types/shipping.interface'
+import Image from 'next/image'
+import { PiStorefrontLight } from 'react-icons/pi'
+import { VoucherButton } from '@/components/client/checkout/shared/cart-modal-voucher'
+import { ShippingModal } from '@/components/client/checkout/shared/cart-modal-shipping'
+import { useShipping } from '@/components/client/checkout/hooks/use-shipping'
+import { useCalculateOrder } from '@/components/client/checkout/hooks/use-calculate-order'
+import { Truck, Clock, X } from 'lucide-react'
 
 // Header component for the product list - desktop only
 function ProductHeader() {
@@ -34,7 +33,7 @@ function ProductHeader() {
       <div className="col-span-2 text-center">English content normalized from the original source text.</div>
       <div className="col-span-2 text-center">English content normalized from the original source text.</div>
     </div>
-  );
+  )
 }
 
 // Component to display a single product
@@ -44,17 +43,10 @@ function ProductItem({ item }: { item: ProductInfo }) {
       {/* Mobile & Desktop: Product Info */}
       <div className="lg:col-span-6 flex items-start space-x-3 lg:space-x-4">
         <div className="relative w-16 h-16 lg:w-20 lg:h-20 flex-shrink-0">
-          <Image
-            src={item.image || '/placeholder.png'}
-            alt={item.name}
-            fill
-            className="object-cover rounded-md"
-          />
+          <Image src={item.image || '/placeholder.png'} alt={item.name} fill className="object-cover rounded-md" />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-gray-900 font-medium text-sm lg:text-base line-clamp-2">
-            {item.name}
-          </h3>
+          <h3 className="text-gray-900 font-medium text-sm lg:text-base line-clamp-2">{item.name}</h3>
           <p className="text-gray-500 mt-1 text-xs lg:text-sm">
             English content normalized from the original source text. {item.variation}
           </p>
@@ -63,73 +55,65 @@ function ProductItem({ item }: { item: ProductInfo }) {
             <div className="text-gray-500 text-xs">
               ₫{item.price.toLocaleString()} x {item.quantity}
             </div>
-            <div className="text-primary font-medium">
-              ₫{item.subtotal.toLocaleString()}
-            </div>
+            <div className="text-primary font-medium">₫{item.subtotal.toLocaleString()}</div>
           </div>
         </div>
       </div>
 
       {/* Desktop Only: Price, Quantity, Total */}
       <div className="hidden lg:flex lg:col-span-2 items-center justify-center">
-        <div className="text-gray-700 font-medium">
-          ₫{item.price.toLocaleString()}
-        </div>
+        <div className="text-gray-700 font-medium">₫{item.price.toLocaleString()}</div>
       </div>
       <div className="hidden lg:flex lg:col-span-2 items-center justify-center">
         <div className="text-gray-700">{item.quantity}</div>
       </div>
       <div className="hidden lg:flex lg:col-span-2 items-center justify-center">
-        <div className="text-primary font-medium text-base">
-          ₫{item.subtotal.toLocaleString()}
-        </div>
+        <div className="text-primary font-medium text-base">₫{item.subtotal.toLocaleString()}</div>
       </div>
     </div>
-  );
+  )
 }
 
 // Component to display a shop and its products
 function ShopSection({ shopId, products }: { shopId: string; products: ProductInfo[] }) {
-  const dispatch = useDispatch();
-  const appliedVouchers = useSelector(selectAppliedVouchers);
-  const appliedVoucher = appliedVouchers[shopId];
-  const shippingInfo = useSelector(selectShippingInfo);
-  const shopOrders = useSelector(selectShopOrders);
+  const dispatch = useDispatch()
+  const appliedVouchers = useSelector(selectAppliedVouchers)
+  const appliedVoucher = appliedVouchers[shopId]
+  const shippingInfo = useSelector(selectShippingInfo)
+  const shopOrders = useSelector(selectShopOrders)
 
-  const currentShopOrder = shopOrders.find(order => order.shopId === shopId);
-  const selectedShippingMethod = currentShopOrder?.selectedShippingMethod;
+  const currentShopOrder = shopOrders.find((order) => order.shopId === shopId)
+  const selectedShippingMethod = currentShopOrder?.selectedShippingMethod
 
-  const [isShippingModalOpen, setIsShippingModalOpen] = useState(false);
+  const [isShippingModalOpen, setIsShippingModalOpen] = useState(false)
 
-  const { shippingMethods, loading: shippingLoading, error: shippingError } = useShipping(shopId);
+  const { shippingMethods, loading: shippingLoading, error: shippingError } = useShipping(shopId)
 
-  const shopName = products.length > 0 ? products[0].shopName : 'Shop';
-  const shopTotal = products.reduce((sum, item) => sum + item.subtotal, 0);
-  const finalTotal = shopTotal - (appliedVoucher?.discountAmount || 0) + (selectedShippingMethod?.price || 0);
-  const cartItemIds = products.map(p => p.id);
+  const shopName = products.length > 0 ? products[0].shopName : 'Shop'
+  const shopTotal = products.reduce((sum, item) => sum + item.subtotal, 0)
+  const finalTotal = shopTotal - (appliedVoucher?.discountAmount || 0) + (selectedShippingMethod?.price || 0)
+  const cartItemIds = products.map((p) => p.id)
 
   useEffect(() => {
     if (shippingMethods.length > 0 && !selectedShippingMethod) {
-      const defaultMethod = shippingMethods[0];
-      dispatch(updateShippingForShop({ shopId, shippingMethod: defaultMethod }));
-      // English content normalized from the original source text.
-      dispatch(updateShippingFeeForShop({ shopId, shippingFee: defaultMethod.price }));
+      const defaultMethod = shippingMethods[0]
+      dispatch(updateShippingForShop({ shopId, shippingMethod: defaultMethod }))
+      dispatch(updateShippingFeeForShop({ shopId, shippingFee: defaultMethod.price }))
     }
-  }, [dispatch, shopId, shippingMethods, selectedShippingMethod]);
+  }, [dispatch, shopId, shippingMethods, selectedShippingMethod])
 
   const handleApplyVoucher = (shopId: string, voucherInfo: AppliedVoucherInfo) => {
-    dispatch(applyVoucher({ shopId, voucherInfo }));
-  };
+    dispatch(applyVoucher({ shopId, voucherInfo }))
+  }
 
   const handleSelectShippingMethod = (method: ShippingMethod) => {
-    dispatch(updateShippingForShop({ shopId, shippingMethod: method }));
-    // English content normalized from the original source text.
-    dispatch(updateShippingFeeForShop({ shopId, shippingFee: method.price }));
-  };
+    dispatch(updateShippingForShop({ shopId, shippingMethod: method }))
+    dispatch(updateShippingFeeForShop({ shopId, shippingFee: method.price }))
+  }
 
   const handleRemoveVoucher = (shopId: string) => {
-    dispatch(removeVoucher({ shopId }));
-  };
+    dispatch(removeVoucher({ shopId }))
+  }
 
   return (
     <div className="bg-white rounded-lg border overflow-hidden">
@@ -165,7 +149,9 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
             {shippingLoading ? (
               <div className="flex items-center justify-center py-4">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                <span className="ml-2 text-sm text-gray-600">English content normalized from the original source text.</span>
+                <span className="ml-2 text-sm text-gray-600">
+                  English content normalized from the original source text.
+                </span>
               </div>
             ) : shippingError ? (
               <div className="text-center py-4">
@@ -178,19 +164,22 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                 <p className="text-xs text-gray-500">
                   {!shippingInfo?.districtId || !shippingInfo?.wardCode
                     ? 'English content normalized from the original source text.'
-                    : 'English content normalized from the original source text.'
-                  }
+                    : 'English content normalized from the original source text.'}
                 </p>
               </div>
             ) : (
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-sm text-black">English content normalized from the original source text.</span>
                     <span className="text-sm text-black">
-                      {selectedShippingMethod.name === 'English content normalized from the original source text.' ? 'English content normalized from the original source text.' :
-                       selectedShippingMethod.name === 'English content normalized from the original source text.' ? 'English content normalized from the original source text.' :
-                       selectedShippingMethod.name}
+                      English content normalized from the original source text.
+                    </span>
+                    <span className="text-sm text-black">
+                      {selectedShippingMethod.name === 'English content normalized from the original source text.'
+                        ? 'English content normalized from the original source text.'
+                        : selectedShippingMethod.name === 'English content normalized from the original source text.'
+                          ? 'English content normalized from the original source text.'
+                          : selectedShippingMethod.name}
                     </span>
                   </div>
                   <div className="space-y-1">
@@ -208,7 +197,9 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                   <button
                     onClick={() => setIsShippingModalOpen(true)}
                     className="text-sm text-blue-600 hover:text-blue-700 font-medium underline"
-                  >English content normalized from the original source text.</button>
+                  >
+                    English content normalized from the original source text.
+                  </button>
                 </div>
               </div>
             )}
@@ -240,9 +231,7 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
           {/* Total */}
           <div className="flex items-center justify-end gap-3 pt-2 px-6 border-t border-dashed">
             <span className="text-sm text-gray-600">English content normalized from the original source text.</span>
-            <span className="text-xl font-bold text-primary">
-              ₫{finalTotal.toLocaleString()}
-            </span>
+            <span className="text-xl font-bold text-primary">₫{finalTotal.toLocaleString()}</span>
           </div>
         </div>
       </div>
@@ -259,14 +248,14 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
         error={shippingError}
       />
     </div>
-  );
+  )
 }
 
 export function ProductsInfo() {
-  const shopProducts = useSelector<RootState, Record<string, ProductInfo[]>>(selectShopProducts);
+  const shopProducts = useSelector<RootState, Record<string, ProductInfo[]>>(selectShopProducts)
 
   if (Object.keys(shopProducts).length === 0) {
-    return <p>English content normalized from the original source text.</p>;
+    return <p>English content normalized from the original source text.</p>
   }
 
   return (
@@ -277,5 +266,5 @@ export function ProductsInfo() {
         ))}
       </div>
     </>
-  );
+  )
 }

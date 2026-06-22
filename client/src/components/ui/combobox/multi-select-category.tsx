@@ -1,90 +1,84 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import { Check, ChevronsUpDown, X, Search, Loader2, Grid3X3, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useCbbCategory } from '@/hooks/combobox/useCbbCategory';
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Command, CommandEmpty, CommandGroup, CommandItem, CommandList } from '@/components/ui/command'
+import { Check, ChevronsUpDown, X, Search, Loader2, Grid3X3, ChevronRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { useCbbCategory } from '@/hooks/combobox/use-cbb-category'
 
 interface CategoryOption {
-  value: string;
-  label: string;
-  icon?: string | null;
-  parentCategoryId?: string | null;
+  value: string
+  label: string
+  icon?: string | null
+  parentCategoryId?: string | null
 }
 
 interface MultiSelectCategoryProps {
-  selectedCategories: CategoryOption[];
-  onSelectionChange: (categories: CategoryOption[]) => void;
-  placeholder?: string;
-  className?: string;
-  disabled?: boolean;
+  selectedCategories: CategoryOption[]
+  onSelectionChange: (categories: CategoryOption[]) => void
+  placeholder?: string
+  className?: string
+  disabled?: boolean
 }
 
 export function MultiSelectCategory({
   selectedCategories = [],
   onSelectionChange,
-  placeholder = "English content normalized from the original source text.",
+  placeholder = 'Select categories',
   className,
   disabled = false
 }: MultiSelectCategoryProps) {
-  const [open, setOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedParentCategory, setSelectedParentCategory] = useState<string | null>(null);
+  const [open, setOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedParentCategory, setSelectedParentCategory] = useState<string | null>(null)
 
-  // Get parent categories (level 1)
-  const { categories: parentCategories, loading: loadingParent } = useCbbCategory(null);
+  const { categories: parentCategories, loading: loadingParent } = useCbbCategory(null)
 
-  // Get child categories based on selected parent
-  const { categories: childCategories, loading: loadingChild } = useCbbCategory(selectedParentCategory);
+  const { categories: childCategories, loading: loadingChild } = useCbbCategory(selectedParentCategory)
 
-  // Combine all categories for filtering
-  const allCategories = [...parentCategories, ...childCategories];
+  const allCategories = [...parentCategories, ...childCategories]
 
-  // Filter categories based on search term
-  const filteredCategories = allCategories.filter(category =>
+  const filteredCategories = allCategories.filter((category) =>
     category.label.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
 
   const handleSelect = (category: CategoryOption) => {
-    const isSelected = selectedCategories.find(item => item.value === category.value);
+    const isSelected = selectedCategories.find((item) => item.value === category.value)
 
     if (isSelected) {
-      // Remove from selection
-      const newSelection = selectedCategories.filter(item => item.value !== category.value);
-      onSelectionChange(newSelection);
+      const newSelection = selectedCategories.filter((item) => item.value !== category.value)
+      onSelectionChange(newSelection)
     } else {
-      // Add to selection
-      onSelectionChange([...selectedCategories, category]);
+      onSelectionChange([...selectedCategories, category])
     }
-  };
+  }
 
   const handleRemove = (categoryValue: string) => {
-    const newSelection = selectedCategories.filter(item => item.value !== categoryValue);
-    onSelectionChange(newSelection);
-  };
+    const newSelection = selectedCategories.filter((item) => item.value !== categoryValue)
+    onSelectionChange(newSelection)
+  }
 
   const clearAll = () => {
-    onSelectionChange([]);
-  };
+    onSelectionChange([])
+  }
 
   const handleParentCategoryClick = (parentId: string) => {
     if (selectedParentCategory === parentId) {
-      setSelectedParentCategory(null); // Collapse if already selected
+      setSelectedParentCategory(null)
     } else {
-      setSelectedParentCategory(parentId); // Expand new parent
+      setSelectedParentCategory(parentId)
     }
-  };
+  }
 
   const renderCategoryItem = (category: CategoryOption) => {
-    const isSelected = selectedCategories.find(item => item.value === category.value);
-    const isParent = !category.parentCategoryId;
-    const hasChildren = parentCategories.find(p => p.value === category.value) &&
-                       selectedParentCategory !== category.value;
+    const isSelected = selectedCategories.find((item) => item.value === category.value)
+    const isParent = !category.parentCategoryId
+    const hasChildren =
+      parentCategories.find((p) => p.value === category.value) && selectedParentCategory !== category.value
 
     return (
       <CommandItem
@@ -92,47 +86,38 @@ export function MultiSelectCategory({
         value={category.value}
         onSelect={() => {
           if (isParent && hasChildren) {
-            handleParentCategoryClick(category.value);
+            handleParentCategoryClick(category.value)
           } else {
-            handleSelect(category);
+            handleSelect(category)
           }
         }}
-        className={cn(
-          "flex items-center gap-2 cursor-pointer",
-          !isParent && "pl-6" // Indent child categories
-        )}
+        className={cn('flex items-center gap-2 cursor-pointer', !isParent && 'pl-6')}
       >
-        <div className={cn(
-          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-          isSelected
-            ? "bg-primary text-primary-foreground"
-            : "opacity-50 [&_svg]:invisible"
-        )}>
+        <div
+          className={cn(
+            'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
+            isSelected ? 'bg-primary text-primary-foreground' : 'opacity-50 [&_svg]:invisible'
+          )}
+        >
           <Check className="h-3 w-3" />
         </div>
         <div className="flex items-center gap-2 flex-1">
           {category.icon ? (
-            <img
-              src={category.icon}
-              alt={category.label}
-              className="w-6 h-6 rounded-full object-cover"
-            />
+            <img src={category.icon} alt={category.label} className="w-6 h-6 rounded-full object-cover" />
           ) : (
             <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
               <Grid3X3 className="w-3 h-3 text-gray-500" />
             </div>
           )}
           <span className="flex-1">{category.label}</span>
-          {isParent && hasChildren && (
-            <ChevronRight className="h-4 w-4 text-gray-400" />
-          )}
+          {isParent && hasChildren && <ChevronRight className="h-4 w-4 text-gray-400" />}
         </div>
       </CommandItem>
-    );
-  };
+    )
+  }
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn('w-full', className)}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -148,31 +133,23 @@ export function MultiSelectCategory({
               ) : (
                 <>
                   {selectedCategories.slice(0, 3).map((category) => (
-                    <Badge
-                      key={category.value}
-                      variant="secondary"
-                      className="text-xs flex items-center gap-1"
-                    >
+                    <Badge key={category.value} variant="secondary" className="text-xs flex items-center gap-1">
                       {category.icon && (
-                        <img
-                          src={category.icon}
-                          alt={category.label}
-                          className="w-3 h-3 rounded-full object-cover"
-                        />
+                        <img src={category.icon} alt={category.label} className="w-3 h-3 rounded-full object-cover" />
                       )}
                       {category.label}
                       <X
                         className="h-3 w-3 cursor-pointer"
                         onClick={(e) => {
-                          e.stopPropagation();
-                          handleRemove(category.value);
+                          e.stopPropagation()
+                          handleRemove(category.value)
                         }}
                       />
                     </Badge>
                   ))}
                   {selectedCategories.length > 3 && (
                     <Badge variant="secondary" className="text-xs">
-                      +{selectedCategories.length - 3} English content normalized from the original source text.
+                      +{selectedCategories.length - 3} more
                     </Badge>
                   )}
                 </>
@@ -186,7 +163,7 @@ export function MultiSelectCategory({
             <div className="flex items-center border-b px-3">
               <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
               <Input
-                placeholder="English content normalized from the original source text."
+                placeholder="Search categories..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -196,7 +173,7 @@ export function MultiSelectCategory({
               {loadingParent ? (
                 <div className="flex items-center justify-center py-6">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span className="ml-2 text-sm text-muted-foreground">English content normalized from the original source text.</span>
+                  <span className="ml-2 text-sm text-muted-foreground">Loading categories...</span>
                 </div>
               ) : (
                 <>
@@ -208,20 +185,19 @@ export function MultiSelectCategory({
                         onClick={clearAll}
                         className="w-full text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
-                        English content normalized from the original source text.{selectedCategories.length})
+                        Clear selected categories ({selectedCategories.length})
                       </Button>
                     </div>
                   )}
                   <CommandGroup>
                     {filteredCategories.length === 0 ? (
-                      <CommandEmpty>English content normalized from the original source text.</CommandEmpty>
+                      <CommandEmpty>No categories found.</CommandEmpty>
                     ) : (
-                      // Show parent categories first, then their children if expanded
                       <>
                         {parentCategories
-                          .filter(parent =>
-                            searchTerm === "" ||
-                            parent.label.toLowerCase().includes(searchTerm.toLowerCase())
+                          .filter(
+                            (parent) =>
+                              searchTerm === '' || parent.label.toLowerCase().includes(searchTerm.toLowerCase())
                           )
                           .map((parentCategory) => (
                             <div key={parentCategory.value}>
@@ -231,15 +207,16 @@ export function MultiSelectCategory({
                                   {loadingChild ? (
                                     <div className="flex items-center justify-center py-2 pl-8">
                                       <Loader2 className="h-3 w-3 animate-spin" />
-                                      <span className="ml-2 text-xs text-muted-foreground">English content normalized from the original source text.</span>
+                                      <span className="ml-2 text-xs text-muted-foreground">Loading categories...</span>
                                     </div>
                                   ) : (
                                     childCategories
-                                      .filter(child =>
-                                        searchTerm === "" ||
-                                        child.label.toLowerCase().includes(searchTerm.toLowerCase())
+                                      .filter(
+                                        (child) =>
+                                          searchTerm === '' ||
+                                          child.label.toLowerCase().includes(searchTerm.toLowerCase())
                                       )
-                                      .map(childCategory => renderCategoryItem(childCategory))
+                                      .map((childCategory) => renderCategoryItem(childCategory))
                                   )}
                                 </>
                               )}
@@ -255,36 +232,22 @@ export function MultiSelectCategory({
         </PopoverContent>
       </Popover>
 
-      {/* Display selected categories below */}
       {selectedCategories.length > 0 && (
         <div className="mt-2 space-y-2">
-          <div className="text-sm text-muted-foreground">
-            English content normalized from the original source text. {selectedCategories.length} English content normalized from the original source text.
-          </div>
+          <div className="text-sm text-muted-foreground">{selectedCategories.length} selected categories.</div>
           <div className="flex flex-wrap gap-1">
             {selectedCategories.map((category) => (
-              <Badge
-                key={category.value}
-                variant="outline"
-                className="text-xs flex items-center gap-1"
-              >
+              <Badge key={category.value} variant="outline" className="text-xs flex items-center gap-1">
                 {category.icon && (
-                  <img
-                    src={category.icon}
-                    alt={category.label}
-                    className="w-3 h-3 rounded-full object-cover"
-                  />
+                  <img src={category.icon} alt={category.label} className="w-3 h-3 rounded-full object-cover" />
                 )}
                 {category.label}
-                <X
-                  className="h-3 w-3 cursor-pointer hover:text-red-500"
-                  onClick={() => handleRemove(category.value)}
-                />
+                <X className="h-3 w-3 cursor-pointer hover:text-red-500" onClick={() => handleRemove(category.value)} />
               </Badge>
             ))}
           </div>
         </div>
       )}
     </div>
-  );
+  )
 }

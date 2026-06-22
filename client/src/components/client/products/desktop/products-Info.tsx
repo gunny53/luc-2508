@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
   ShoppingCart,
   Minus,
@@ -13,11 +13,11 @@ import {
   Star as StarOutline,
   Flag,
   Truck,
-  RefreshCcw,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useCart } from '@/providers/CartContext';
-import { useAuthGuard } from '@/hooks/useAuthGuard';
+  RefreshCcw
+} from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { useCart } from '@/providers/cart-context'
+import { useAuthGuard } from '@/hooks/use-auth-guard'
 import {
   Sku,
   VariantGroup,
@@ -28,230 +28,181 @@ import {
   areAllVariantsSelected,
   findSelectedSkuPrice,
   handleAddToCart
-} from "@/utils/productUtils";
-import { useRouter } from "next/navigation";
+} from '@/utils/product-utils'
+import { useRouter } from 'next/navigation'
 
 interface Product {
-  name: string;
-  basePrice: number;
-  virtualPrice: number;
-  skus: Sku[];
-  variants: VariantGroup[];
-  media: { type: "image" | "video"; src: string }[];
-  categories: { id: number; name: string }[];
-  brand?: { id: number; name: string };
-  origin?: string;
-  material?: string;
+  name: string
+  basePrice: number
+  virtualPrice: number
+  skus: Sku[]
+  variants: VariantGroup[]
+  media: { type: 'image' | 'video'; src: string }[]
+  categories: { id: number; name: string }[]
+  brand?: { id: number; name: string }
+  origin?: string
+  material?: string
   flashSale?: {
-    price: number;
-    endTime: string;
-  };
-  vouchers?: { code: string; desc: string }[];
-  rating?: number;
-  reviewCount?: number;
-  sold?: number;
+    price: number
+    endTime: string
+  }
+  vouchers?: { code: string; desc: string }[]
+  rating?: number
+  reviewCount?: number
+  sold?: number
 }
 
 export default function ProductInfo({ product }: { product: Product }) {
-  const [quantity, setQuantity] = useState(1);
-  const [selectedVariants, setSelectedVariants] = useState<Record<string, string | null>>({});
-  const [currentSku, setCurrentSku] = useState<Sku | null>(null);
-  const [isAddingToCart, setIsAddingToCart] = useState(false);
-  const [isBuyingNow, setIsBuyingNow] = useState(false);
-  const router = useRouter();
-  // English content normalized from the original source text.
-  const { addToCart } = useCart();
-  const { checkAuth } = useAuthGuard();
-
-  // English content normalized from the original source text.
-  const variantGroups = product.variants || [];
-
-  // English content normalized from the original source text.
+  const [quantity, setQuantity] = useState(1)
+  const [selectedVariants, setSelectedVariants] = useState<Record<string, string | null>>({})
+  const [currentSku, setCurrentSku] = useState<Sku | null>(null)
+  const [isAddingToCart, setIsAddingToCart] = useState(false)
+  const [isBuyingNow, setIsBuyingNow] = useState(false)
+  const router = useRouter()
+  const { addToCart } = useCart()
+  const { checkAuth } = useAuthGuard()
+  const variantGroups = product.variants || []
   useEffect(() => {
-    const initialVariants: SelectedVariants = {};
-    variantGroups.forEach(group => {
-      // English content normalized from the original source text.
-      if (group.value === "Default" && group.options.includes("Default")) {
-        initialVariants[group.value] = "Default";
+    const initialVariants: SelectedVariants = {}
+    variantGroups.forEach((group) => {
+      if (group.value === 'Default' && group.options.includes('Default')) {
+        initialVariants[group.value] = 'Default'
       } else {
-        initialVariants[group.value] = null;
+        initialVariants[group.value] = null
       }
-    });
-    setSelectedVariants(initialVariants);
-  }, [variantGroups]);
-
-  // English content normalized from the original source text.
+    })
+    setSelectedVariants(initialVariants)
+  }, [variantGroups])
   const handleVariantSelect = (variantType: string, option: string) => {
-    setSelectedVariants(prev => {
-      // English content normalized from the original source text.
+    setSelectedVariants((prev) => {
       if (prev[variantType] === option) {
-        return { ...prev, [variantType]: null };
+        return { ...prev, [variantType]: null }
       }
-      // English content normalized from the original source text.
-      return { ...prev, [variantType]: option };
-    });
-  };
-
-  // English content normalized from the original source text.
+      return { ...prev, [variantType]: option }
+    })
+  }
   useEffect(() => {
-    // English content normalized from the original source text.
-    const matchingSku = findMatchingSku(selectedVariants, product.skus, variantGroups as VariantGroup[]);
+    const matchingSku = findMatchingSku(selectedVariants, product.skus, variantGroups as VariantGroup[])
 
     if (matchingSku) {
-      console.log('English content normalized from the original source text.', matchingSku);
+      console.log('English content normalized from the original source text.', matchingSku)
     } else if (areAllVariantsSelected(selectedVariants)) {
-      console.log('English content normalized from the original source text.');
+      console.log('English content normalized from the original source text.')
     }
 
-    setCurrentSku(matchingSku);
-  }, [selectedVariants, product.skus, variantGroups]);
+    setCurrentSku(matchingSku)
+  }, [selectedVariants, product.skus, variantGroups])
+  const totalStock = getCurrentStock(selectedVariants, product.skus, variantGroups as VariantGroup[])
+  const discountPercent = Math.round(((product.basePrice - product.virtualPrice) / product.basePrice) * 100)
 
-  // English content normalized from the original source text.
-  const totalStock = getCurrentStock(selectedVariants, product.skus, variantGroups as VariantGroup[]);
+  const category = product.categories[0]?.name ?? ''
+  const brand = product.brand?.name ?? ''
+  const origin = product.origin ?? 'English content normalized from the original source text.'
+  const material = product.material ?? 'English content normalized from the original source text.'
 
-  // English content normalized from the original source text.
-  const discountPercent = Math.round(
-    ((product.basePrice - product.virtualPrice) / product.basePrice) * 100
-  );
+  const isFlashSale = !!product.flashSale
+  const flashSalePrice = product.flashSale?.price ?? 0
+  const flashSaleEnd = product.flashSale?.endTime ? new Date(product.flashSale.endTime) : null
 
-  const category = product.categories[0]?.name ?? "";
-  const brand = product.brand?.name ?? "";
-  const origin = product.origin ?? "English content normalized from the original source text.";
-  const material = product.material ?? "English content normalized from the original source text.";
-
-  const isFlashSale = !!product.flashSale;
-  const flashSalePrice = product.flashSale?.price ?? 0;
-  const flashSaleEnd = product.flashSale?.endTime
-    ? new Date(product.flashSale.endTime)
-    : null;
-
-  const vouchers = product.vouchers ?? [];
-
-  // English content normalized from the original source text.
-  const isVariantSelected = areAllVariantsSelected(selectedVariants);
-
-  // English content normalized from the original source text.
+  const vouchers = product.vouchers ?? []
+  const isVariantSelected = areAllVariantsSelected(selectedVariants)
   useEffect(() => {
-    console.log('=== PRODUCT DEBUG INFO ===');
-    console.log('Product SKUs:', product.skus);
-    console.log('Variant Groups:', variantGroups);
-    console.log('Selected Variants:', selectedVariants);
-    console.log('Current SKU:', currentSku);
-    console.log('Is Variant Selected:', isVariantSelected);
-    console.log('Current Stock:', currentSku?.stock || 0);
-    console.log('Can Add to Cart:', isVariantSelected && currentSku && currentSku.stock > 0);
-    console.log('=========================');
-  }, [selectedVariants, currentSku, isVariantSelected, product.skus, variantGroups]);
-
-  // English content normalized from the original source text.
+    console.log('=== PRODUCT DEBUG INFO ===')
+    console.log('Product SKUs:', product.skus)
+    console.log('Variant Groups:', variantGroups)
+    console.log('Selected Variants:', selectedVariants)
+    console.log('Current SKU:', currentSku)
+    console.log('Is Variant Selected:', isVariantSelected)
+    console.log('Current Stock:', currentSku?.stock || 0)
+    console.log('Can Add to Cart:', isVariantSelected && currentSku && currentSku.stock > 0)
+    console.log('=========================')
+  }, [selectedVariants, currentSku, isVariantSelected, product.skus, variantGroups])
   const handleQuantityInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val = parseInt(e.target.value.replace(/\D/g, ""), 10);
-    if (isNaN(val)) val = 1;
-    if (val < 1) val = 1;
+    let val = parseInt(e.target.value.replace(/\D/g, ''), 10)
+    if (isNaN(val)) val = 1
+    if (val < 1) val = 1
 
-    const maxStock = currentSku ? currentSku.stock : totalStock;
-    if (val > maxStock) val = maxStock;
+    const maxStock = currentSku ? currentSku.stock : totalStock
+    if (val > maxStock) val = maxStock
 
-    setQuantity(val);
-  };
+    setQuantity(val)
+  }
 
-  const rating = product.rating ?? 0;
-  const reviewCount = product.reviewCount ?? 0;
-  const sold = product.sold ?? 0;
-
-  // English content normalized from the original source text.
+  const rating = product.rating ?? 0
+  const reviewCount = product.reviewCount ?? 0
+  const sold = product.sold ?? 0
   const handleAddToCartClick = async () => {
     if (checkAuth()) {
-      if (!isVariantSelected || !currentSku || currentSku.stock === 0) return;
+      if (!isVariantSelected || !currentSku || currentSku.stock === 0) return
 
-      setIsAddingToCart(true);
+      setIsAddingToCart(true)
       try {
-        // English content normalized from the original source text.
-        await handleAddToCart(
-          selectedVariants,
-          product.skus,
-          variantGroups as VariantGroup[],
-          quantity,
-          addToCart
-        );
+        await handleAddToCart(selectedVariants, product.skus, variantGroups as VariantGroup[], quantity, addToCart)
       } finally {
-        setIsAddingToCart(false);
+        setIsAddingToCart(false)
       }
+    } else {
+      router.push('/sign-in')
     }
-    else{
-      router.push('/sign-in');
-    }
-  };
-
-  // English content normalized from the original source text.
+  }
   const handleBuyNowClick = async () => {
     if (checkAuth()) {
-      if (!isVariantSelected || !currentSku || currentSku.stock === 0) return;
+      if (!isVariantSelected || !currentSku || currentSku.stock === 0) return
 
-      setIsBuyingNow(true);
+      setIsBuyingNow(true)
       try {
-        // English content normalized from the original source text.
         const cartItemId = await handleAddToCart(
           selectedVariants,
           product.skus,
           variantGroups as VariantGroup[],
           quantity,
           addToCart
-        );
+        )
 
         if (cartItemId && typeof cartItemId === 'string') {
-          console.log('Added to cart with ID:', cartItemId);
-          // English content normalized from the original source text.
-          router.push(`/cart?selectItem=${cartItemId}`);
+          console.log('Added to cart with ID:', cartItemId)
+          router.push(`/cart?selectItem=${cartItemId}`)
         } else {
-          console.warn('English content normalized from the original source text.');
-          // English content normalized from the original source text.
-          router.push('/cart');
+          console.warn('English content normalized from the original source text.')
+          router.push('/cart')
         }
       } catch (error) {
-        console.error('Error in buy now process:', error);
-        // English content normalized from the original source text.
-        router.push('/cart');
+        console.error('Error in buy now process:', error)
+        router.push('/cart')
       } finally {
-        setIsBuyingNow(false);
+        setIsBuyingNow(false)
       }
+    } else {
+      router.push('/sign-in')
     }
-    else{
-      router.push('/sign-in');
-    }
-  };
+  }
 
   const renderStars = (rating: number) => {
-    const full = Math.floor(rating);
-    const half = rating % 1 >= 0.5 ? 1 : 0;
-    const empty = 5 - full - half;
+    const full = Math.floor(rating)
+    const half = rating % 1 >= 0.5 ? 1 : 0
+    const empty = 5 - full - half
     return (
       <span className="flex items-center gap-0.5 ml-1">
         {Array(full)
           .fill(0)
           .map((_, i) => (
-            <Star
-              key={"full" + i}
-              className="w-4 h-4 text-yellow-400 fill-yellow-400"
-            />
+            <Star key={'full' + i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
           ))}
-        {half === 1 && (
-          <StarHalf className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-        )}
+        {half === 1 && <StarHalf className="w-4 h-4 text-yellow-400 fill-yellow-400" />}
         {Array(empty)
           .fill(0)
           .map((_, i) => (
-            <StarOutline key={"empty" + i} className="w-4 h-4 text-gray-300" />
+            <StarOutline key={'empty' + i} className="w-4 h-4 text-gray-300" />
           ))}
       </span>
-    );
-  };
+    )
+  }
 
   return (
     <div className="w-full flex flex-col gap-4 text-[15px] leading-relaxed">
-      {/* English content normalized from the original source text. */}
+      {}
       <h1 className="text-2xl font-medium text-gray-900">{product.name}</h1>
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex items-center gap-4 text-sm mt-1">
         <span className="flex items-center gap-1">
           <Truck className="w-4 h-4 text-green-600" />
@@ -263,135 +214,125 @@ export default function ProductInfo({ product }: { product: Product }) {
         </span>
       </div>
 
-      {/* English content normalized from the original source text. */}
-     <div className="flex items-center w-full text-sm text-muted-foreground mb-1">
-      <div className="flex items-center gap-1">
-        <span className="font-medium text-black">{rating.toFixed(1)}</span>
-        {renderStars(rating)}
+      {}
+      <div className="flex items-center w-full text-sm text-muted-foreground mb-1">
+        <div className="flex items-center gap-1">
+          <span className="font-medium text-black">{rating.toFixed(1)}</span>
+          {renderStars(rating)}
+        </div>
+        <span className="mx-2">|</span>
+        <span>
+          <span className="text-black font-medium">{reviewCount}</span>English content normalized from the original
+          source text.
+        </span>
+        <span className="mx-2">|</span>
+        <span>
+          English content normalized from the original source text.
+          <span className="text-black font-medium">{sold.toLocaleString()}</span>
+        </span>
+        <div className="flex-1" />
+        <Button variant="ghost" size="sm" className="text-grey-500 px-2 py-1 h-auto">
+          <Flag className="w-4 h-4" />
+          English content normalized from the original source text.
+        </Button>
       </div>
-      <span className="mx-2">|</span>
-      <span>
-        <span className="text-black font-medium">{reviewCount}</span>English content normalized from the original source text.</span>
-      <span className="mx-2">|</span>
-      <span>English content normalized from the original source text.<span className="text-black font-medium">{sold.toLocaleString()}</span>
-      </span>
-      <div className="flex-1" />
-      <Button
-        variant="ghost"
-        size="sm"
-        className="text-grey-500 px-2 py-1 h-auto"
-      >
-        <Flag className="w-4 h-4" />English content normalized from the original source text.</Button>
-    </div>
 
-
-      {/* English content normalized from the original source text. */}
+      {}
       {isFlashSale ? (
         <div className="flex items-center gap-3 text-xl font-bold text-red-600">
-          <Badge className="bg-red-600 text-white">FLASH SALE</Badge>₫
-          {flashSalePrice.toLocaleString("vi-VN")}
+          <Badge className="bg-red-600 text-white">FLASH SALE</Badge>₫{flashSalePrice.toLocaleString('vi-VN')}
           <span className="text-sm line-through text-muted-foreground font-normal">
-            ₫{product.virtualPrice.toLocaleString("vi-VN")}
+            ₫{product.virtualPrice.toLocaleString('vi-VN')}
           </span>
           {flashSaleEnd && (
             <span className="text-xs text-orange-500 ml-2">
-              English content normalized from the original source text. {flashSaleEnd.toLocaleTimeString("vi-VN")}
+              English content normalized from the original source text. {flashSaleEnd.toLocaleTimeString('vi-VN')}
             </span>
           )}
         </div>
       ) : (
         <div className="flex items-center gap-3 bg-[#fafafa] px-3 py-4">
-          <span className="text-3xl font-medium text-red-600">
-            ₫{product.basePrice.toLocaleString("vi-VN")}
-          </span>
+          <span className="text-3xl font-medium text-red-600">₫{product.basePrice.toLocaleString('vi-VN')}</span>
           <span className="text-sm line-through text-muted-foreground font-normal">
-            ₫{product.virtualPrice.toLocaleString("vi-VN")}
+            ₫{product.virtualPrice.toLocaleString('vi-VN')}
           </span>
-          <Badge className="bg-yellow-400 text-black">
-            {discountPercent}% OFF
-          </Badge>
+          <Badge className="bg-yellow-400 text-black">{discountPercent}% OFF</Badge>
         </div>
-
       )}
 
       {/* Vouchers */}
       {/* {vouchers.length > 0 && ( */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-2 font-medium text-sm text-muted-foreground">English content normalized from the original source text.</div>
-          <div className="flex gap-2 flex-wrap">
-            {vouchers.map((v) => (
-              <Badge
-                key={v.code}
-                className="bg-orange-100 text-orange-600 border border-orange-400 px-3 py-1 text-sm"
-              >
-                <span className="font-semibold">{v.code}</span>
-                <span className="ml-2 text-xs">{v.desc}</span>
-              </Badge>
-            ))}
-          </div>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2 font-medium text-sm text-muted-foreground">
+          English content normalized from the original source text.
         </div>
+        <div className="flex gap-2 flex-wrap">
+          {vouchers.map((v) => (
+            <Badge key={v.code} className="bg-orange-100 text-orange-600 border border-orange-400 px-3 py-1 text-sm">
+              <span className="font-semibold">{v.code}</span>
+              <span className="ml-2 text-xs">{v.desc}</span>
+            </Badge>
+          ))}
+        </div>
+      </div>
       {/* )} */}
 
       {/* Variants - Dynamic rendering based on API */}
       {variantGroups.map((variantGroup) => (
-      <div key={variantGroup.value} className="flex flex-wrap items-center gap-3">
-        <span className="w-24 text-muted-foreground">{variantGroup.value}:</span>
-        <div className="flex gap-2 flex-wrap">
-          {variantGroup.options.map((option) => {
-            const isSelected = selectedVariants[variantGroup.value] === option;
+        <div key={variantGroup.value} className="flex flex-wrap items-center gap-3">
+          <span className="w-24 text-muted-foreground">{variantGroup.value}:</span>
+          <div className="flex gap-2 flex-wrap">
+            {variantGroup.options.map((option) => {
+              const isSelected = selectedVariants[variantGroup.value] === option
+              const isAvailable = isOptionAvailable(
+                variantGroup.value,
+                option,
+                selectedVariants,
+                product.skus,
+                variantGroups as VariantGroup[]
+              )
 
-            // English content normalized from the original source text.
-            const isAvailable = isOptionAvailable(
-              variantGroup.value,
-              option,
-              selectedVariants,
-              product.skus,
-              variantGroups as VariantGroup[]
-            );
-
-            return (
-              <button
-                key={option}
-                onClick={() => handleVariantSelect(variantGroup.value, option)}
-                className={cn(
-                  "relative px-4 py-2 border rounded-md text-sm transition-all",
-                  "hover:border-primary hover:text-primary",
-                  isSelected
-                    ? "border-primary text-primary"
-                    : "border-input text-foreground",
-                  !isAvailable && "opacity-50 cursor-not-allowed"
-                )}
-                disabled={!isAvailable}
-              >
-                {option}
-                {isSelected && (
-                  <span className="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3 h-3"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                )}
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={option}
+                  onClick={() => handleVariantSelect(variantGroup.value, option)}
+                  className={cn(
+                    'relative px-4 py-2 border rounded-md text-sm transition-all',
+                    'hover:border-primary hover:text-primary',
+                    isSelected ? 'border-primary text-primary' : 'border-input text-foreground',
+                    !isAvailable && 'opacity-50 cursor-not-allowed'
+                  )}
+                  disabled={!isAvailable}
+                >
+                  {option}
+                  {isSelected && (
+                    <span className="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-0.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-3 h-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
         </div>
-      </div>
-))}
+      ))}
 
-
-
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex items-center gap-4">
-        <span className="min-w-[90px] text-muted-foreground">English content normalized from the original source text.</span>
+        <span className="min-w-[90px] text-muted-foreground">
+          English content normalized from the original source text.
+        </span>
         <div className="flex items-center border rounded">
           <Button
             variant="ghost"
@@ -418,14 +359,16 @@ export default function ProductInfo({ product }: { product: Product }) {
             size="icon"
             className="w-8 h-8"
             onClick={() => setQuantity((q) => Math.min(currentSku ? currentSku.stock : totalStock, q + 1))}
-            disabled={!isVariantSelected || quantity >= (currentSku ? currentSku.stock : totalStock) || !currentSku?.stock}
+            disabled={
+              !isVariantSelected || quantity >= (currentSku ? currentSku.stock : totalStock) || !currentSku?.stock
+            }
           >
             <Plus className="w-4 h-4" />
           </Button>
         </div>
         {isVariantSelected && (
           <span className="text-xs text-muted-foreground whitespace-nowrap">
-            English content normalized from the original source text.{" "}
+            English content normalized from the original source text.{' '}
             <span className="font-semibold">
               {currentSku ? currentSku.stock.toLocaleString() : totalStock.toLocaleString()}
             </span>
@@ -433,14 +376,14 @@ export default function ProductInfo({ product }: { product: Product }) {
         )}
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       {isVariantSelected && currentSku && currentSku.stock === 0 && (
         <div className="text-red-500 text-sm">English content normalized from the original source text.</div>
       )}
 
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex gap-3 pt-2 w-full">
-        {/* English content normalized from the original source text. */}
+        {}
         <Button
           className="flex-1 h-12 rounded-xs border border-red-500 text-red-600 bg-red-50 hover:bg-red-100 hover:text-red-700 shadow-sm text-base font-medium flex items-center justify-center gap-2 transition-all duration-200"
           disabled={!isVariantSelected || !currentSku || currentSku.stock === 0 || isAddingToCart}
@@ -451,12 +394,20 @@ export default function ProductInfo({ product }: { product: Product }) {
               <span className="animate-spin mr-2">
                 <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
                 </svg>
-              </span>English content normalized from the original source text.</>
+              </span>
+              English content normalized from the original source text.
+            </>
           ) : (
             <>
-              <ShoppingCart className="w-5 h-5" />English content normalized from the original source text.</>
+              <ShoppingCart className="w-5 h-5" />
+              English content normalized from the original source text.
+            </>
           )}
         </Button>
 
@@ -471,26 +422,28 @@ export default function ProductInfo({ product }: { product: Product }) {
               <span className="animate-spin mr-2">
                 <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
                 </svg>
-              </span>English content normalized from the original source text.</>
+              </span>
+              English content normalized from the original source text.
+            </>
           ) : (
             <>
               Mua Ngay
               <span>
                 ₫
-                {(currentSku
-                  ? currentSku.price
-                  : isFlashSale
-                    ? flashSalePrice
-                    : product.basePrice
-                ).toLocaleString("vi-VN")}
+                {(currentSku ? currentSku.price : isFlashSale ? flashSalePrice : product.basePrice).toLocaleString(
+                  'vi-VN'
+                )}
               </span>
             </>
           )}
         </Button>
       </div>
-
     </div>
-  );
+  )
 }

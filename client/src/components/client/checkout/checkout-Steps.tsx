@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { useState, useEffect } from 'react'
-import { useCheckout } from './hooks/useCheckout'
+import { useCheckout } from './hooks/use-checkout'
 import Link from 'next/link'
 import { ShoppingCart, Banknote, Info } from 'lucide-react'
 
@@ -21,26 +21,23 @@ interface StepItem {
   icon?: React.ElementType
 }
 
-export function CheckoutSteps({
-  activeStep,
-  onStepChange,
-  className,
-}: CheckoutStepsProps) {
+export function CheckoutSteps({ activeStep, onStepChange, className }: CheckoutStepsProps) {
   const { state } = useCheckout()
   const [canNavigateToPayment, setCanNavigateToPayment] = useState(false)
 
   const steps: StepItem[] = [
-    { id: 'cart', label: 'English content normalized from the original source text.', href: '/cart', icon: ShoppingCart },
+    {
+      id: 'cart',
+      label: 'English content normalized from the original source text.',
+      href: '/cart',
+      icon: ShoppingCart
+    },
     { id: 'information', label: 'English content normalized from the original source text.', icon: Info },
-    { id: 'payment', label: 'English content normalized from the original source text.', icon: Banknote },
+    { id: 'payment', label: 'English content normalized from the original source text.', icon: Banknote }
   ]
 
   useEffect(() => {
-    if (
-      state.receiverInfo?.name &&
-      state.receiverInfo?.phone &&
-      state.receiverInfo?.address
-    ) {
+    if (state.receiverInfo?.name && state.receiverInfo?.phone && state.receiverInfo?.address) {
       setCanNavigateToPayment(true)
     } else {
       setCanNavigateToPayment(false)
@@ -65,26 +62,20 @@ export function CheckoutSteps({
           isActive
             ? 'text-primary bg-primary/10 border border-primary font-medium'
             : isDisabled
-            ? 'text-gray-400 cursor-not-allowed'
-            : 'text-gray-700 hover:text-gray-900'
+              ? 'text-gray-400 cursor-not-allowed'
+              : 'text-gray-700 hover:text-gray-900'
         )
 
         return (
           <div key={step.id} className="flex items-center">
-            {index > 0 && (
-              <div className="w-8 lg:w-10 h-[2px] bg-gray-300 mx-2 lg:mx-3"></div>
-            )}
+            {index > 0 && <div className="w-8 lg:w-10 h-[2px] bg-gray-300 mx-2 lg:mx-3"></div>}
             {isCartStep ? (
               <Link href="/cart" className={commonClass}>
                 {step.icon && <step.icon className="h-4 w-4 lg:h-4.5 lg:w-4.5" />}
                 <span className="hidden sm:inline">{step.label}</span>
               </Link>
             ) : (
-              <button
-                onClick={() => handleStepClick(step.id)}
-                disabled={isDisabled}
-                className={commonClass}
-              >
+              <button onClick={() => handleStepClick(step.id)} disabled={isDisabled} className={commonClass}>
                 {step.icon && <step.icon className="h-4 w-4 lg:h-4.5 lg:w-4.5" />}
                 <span className="hidden sm:inline">{step.label}</span>
               </button>

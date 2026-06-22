@@ -1,83 +1,81 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import { ChevronRight } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from '@/components/ui/carousel';
-import { useClientSuggestedProducts } from '@/hooks/client-products/useClientSuggestedProducts';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { getProductUrl } from '@/components/client/products/shared/routes';
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
+import { ChevronRight } from 'lucide-react'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { useClientSuggestedProducts } from '@/hooks/client-products/use-client-suggested-products'
+import { useIsMobile } from '@/hooks/use-mobile'
+import { getProductUrl } from '@/components/client/products/shared/routes'
 
 interface FlashSaleSectionProps {
-  className?: string;
+  className?: string
 }
 
 const CountdownTimer = ({ isMobile }: { isMobile: boolean }) => {
   const [timeLeft, setTimeLeft] = useState({
     hours: 2,
     minutes: 0,
-    seconds: 0,
-  });
+    seconds: 0
+  })
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prevTime => {
+      setTimeLeft((prevTime) => {
         if (prevTime.seconds > 0) {
-          return { ...prevTime, seconds: prevTime.seconds - 1 };
+          return { ...prevTime, seconds: prevTime.seconds - 1 }
         }
         if (prevTime.minutes > 0) {
-          return { ...prevTime, minutes: prevTime.minutes - 1, seconds: 59 };
+          return { ...prevTime, minutes: prevTime.minutes - 1, seconds: 59 }
         }
         if (prevTime.hours > 0) {
-          return { ...prevTime, hours: prevTime.hours - 1, minutes: 59, seconds: 59 };
+          return { ...prevTime, hours: prevTime.hours - 1, minutes: 59, seconds: 59 }
         }
-        clearInterval(timer);
-        return prevTime;
-      });
-    }, 1000);
+        clearInterval(timer)
+        return prevTime
+      })
+    }, 1000)
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearInterval(timer)
+  }, [])
 
-  const formatTime = (time: number) => time.toString().padStart(2, '0');
+  const formatTime = (time: number) => time.toString().padStart(2, '0')
 
   return (
     <div className="flex items-center gap-1.5">
-      <span className={cn(
-        "bg-gray-800 text-white font-bold flex items-center justify-center rounded-sm",
-        isMobile ? "w-6 h-6 text-xs" : "w-7 h-7 text-sm"
-      )}>
+      <span
+        className={cn(
+          'bg-gray-800 text-white font-bold flex items-center justify-center rounded-sm',
+          isMobile ? 'w-6 h-6 text-xs' : 'w-7 h-7 text-sm'
+        )}
+      >
         {formatTime(timeLeft.hours)}
       </span>
       <span className="text-gray-800 font-bold">:</span>
-      <span className={cn(
-        "bg-gray-800 text-white font-bold flex items-center justify-center rounded-sm",
-        isMobile ? "w-6 h-6 text-xs" : "w-7 h-7 text-sm"
-      )}>
+      <span
+        className={cn(
+          'bg-gray-800 text-white font-bold flex items-center justify-center rounded-sm',
+          isMobile ? 'w-6 h-6 text-xs' : 'w-7 h-7 text-sm'
+        )}
+      >
         {formatTime(timeLeft.minutes)}
       </span>
       <span className="text-gray-800 font-bold">:</span>
-      <span className={cn(
-        "bg-gray-800 text-white font-bold flex items-center justify-center rounded-sm",
-        isMobile ? "w-6 h-6 text-xs" : "w-7 h-7 text-sm"
-      )}>
+      <span
+        className={cn(
+          'bg-gray-800 text-white font-bold flex items-center justify-center rounded-sm',
+          isMobile ? 'w-6 h-6 text-xs' : 'w-7 h-7 text-sm'
+        )}
+      >
         {formatTime(timeLeft.seconds)}
       </span>
     </div>
-  );
-};
+  )
+}
 
 export function FlashSaleSection({ className }: FlashSaleSectionProps) {
-  const isMobile = useIsMobile();
-
-  // English content normalized from the original source text.
+  const isMobile = useIsMobile()
   const {
     products: allProducts,
     initialLoading,
@@ -85,41 +83,34 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
   } = useClientSuggestedProducts({
     initialLimit: 24,
     sortBy: 'createdAt',
-    sortOrder: 'asc' // English content normalized from the original source text.
-  });
-
-  // English content normalized from the original source text.
+    sortOrder: 'asc'
+  })
   const products = React.useMemo(() => {
-    if (!allProducts || allProducts.length === 0) return [];
-
-    // English content normalized from the original source text.
-    const shuffled = [...allProducts];
+    if (!allProducts || allProducts.length === 0) return []
+    const shuffled = [...allProducts]
 
     // Fisher-Yates shuffle algorithm
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-
-    // English content normalized from the original source text.
-    return shuffled.slice(0, 24);
-  }, [allProducts]);
+    return shuffled.slice(0, 24)
+  }, [allProducts])
 
   return (
-    <section className={cn("w-full bg-white mt-4 py-4 rounded-sm", className)}>
-       <div className="max-w-[1250px] w-full mx-auto px-4 sm:px-6">
+    <section className={cn('w-full bg-white mt-4 py-4 rounded-sm', className)}>
+      <div className="max-w-[1250px] w-full mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2 sm:gap-4">
-            <h2 className={cn(
-              "font-bold text-red-500 uppercase tracking-wider",
-              isMobile ? "text-base" : "text-xl"
-            )}>
+            <h2 className={cn('font-bold text-red-500 uppercase tracking-wider', isMobile ? 'text-base' : 'text-xl')}>
               Flash Sale
             </h2>
             <CountdownTimer isMobile={isMobile} />
           </div>
-          <a href="#" className="flex items-center text-sm text-red-500 hover:underline">English content normalized from the original source text.<ChevronRight className="w-4 h-4 ml-1" />
+          <a href="#" className="flex items-center text-sm text-red-500 hover:underline">
+            English content normalized from the original source text.
+            <ChevronRight className="w-4 h-4 ml-1" />
           </a>
         </div>
 
@@ -131,19 +122,16 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
         {/* Products Carousel */}
         <Carousel
           opts={{
-            align: "start",
+            align: 'start',
             loop: true,
-            slidesToScroll: isMobile ? 2 : 6,
+            slidesToScroll: isMobile ? 2 : 6
           }}
           className="relative"
         >
           <CarouselContent className="-ml-2.5">
             {initialLoading
               ? Array.from({ length: 12 }).map((_, index) => (
-                  <CarouselItem key={index} className={cn(
-                    "pl-2.5",
-                    isMobile ? "basis-1/2" : "basis-1/6"
-                  )}>
+                  <CarouselItem key={index} className={cn('pl-2.5', isMobile ? 'basis-1/2' : 'basis-1/6')}>
                     <div className="border border-transparent rounded-xs overflow-hidden">
                       <div className="relative w-full bg-gray-100 pt-[100%] animate-pulse"></div>
                       <div className="p-2 text-center">
@@ -154,11 +142,11 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
                   </CarouselItem>
                 ))
               : products.map((product) => (
-                  <CarouselItem key={product.id} className={cn(
-                    "pl-2.5",
-                    isMobile ? "basis-1/2" : "basis-1/6"
-                  )}>
-                    <a href={getProductUrl(product.name, product.id)} className="block border border-transparent rounded-xs overflow-hidden transition-all duration-300 group">
+                  <CarouselItem key={product.id} className={cn('pl-2.5', isMobile ? 'basis-1/2' : 'basis-1/6')}>
+                    <a
+                      href={getProductUrl(product.name, product.id)}
+                      className="block border border-transparent rounded-xs overflow-hidden transition-all duration-300 group"
+                    >
                       <div className="relative w-full bg-gray-100 pt-[100%]">
                         <Image
                           src={product.images?.[0] || '/images/placeholder-product.png'}
@@ -177,20 +165,20 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
                             className="bg-gradient-to-r from-red-500 to-red-600 h-full rounded-full"
                             style={{ width: `${Math.floor(Math.random() * 80) + 20}%` }}
                           ></div>
-                          <span className='absolute inset-0 text-white text-xs font-semibold flex items-center justify-center uppercase tracking-tighter'>
-                            English content normalized from the original source text. {Math.floor(Math.random() * 50) + 10}
+                          <span className="absolute inset-0 text-white text-xs font-semibold flex items-center justify-center uppercase tracking-tighter">
+                            English content normalized from the original source text.{' '}
+                            {Math.floor(Math.random() * 50) + 10}
                           </span>
                         </div>
                       </div>
                     </a>
                   </CarouselItem>
-                ))
-            }
+                ))}
           </CarouselContent>
           <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md border border-gray-200 hidden md:flex" />
           <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md border border-gray-200 hidden md:flex" />
         </Carousel>
       </div>
     </section>
-  );
+  )
 }

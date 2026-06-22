@@ -1,38 +1,43 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartData } from '../hooks/useDbAdmin';
+import React from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { ChartData } from '../hooks/use-db-admin'
 
 interface SimpleChartsProps {
-  chartData: ChartData;
+  chartData: ChartData
 }
 
 const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
-  const { usersByRole, usersByStatus, isLoading } = chartData;
+  const { usersByRole, usersByStatus, isLoading } = chartData
 
   // Color mapping cho roles
   const getRoleColorClass = (name: string) => {
     switch (name) {
-      case 'Admin': return 'bg-purple-500';
-      case 'Seller': return 'bg-amber-500';
-      case 'Client': return 'bg-blue-500';
-      default: return 'bg-gray-500';
+      case 'Admin':
+        return 'bg-purple-500'
+      case 'Seller':
+        return 'bg-amber-500'
+      case 'Client':
+        return 'bg-blue-500'
+      default:
+        return 'bg-gray-500'
     }
-  };
+  }
 
   // Color mapping cho status
   const getStatusColorClass = (name: string) => {
     switch (name) {
-      case 'Active': return 'bg-green-500';
-      case 'Inactive': return 'bg-red-500';
-      default: return 'bg-gray-500';
+      case 'Active':
+        return 'bg-green-500'
+      case 'Inactive':
+        return 'bg-red-500'
+      default:
+        return 'bg-gray-500'
     }
-  };
-
-  // English content normalized from the original source text.
+  }
   const getProgressWidth = (value: number, total: number) => {
-    const percentage = total > 0 ? (value / total) * 100 : 0;
-    return { width: `${percentage}%` };
-  };
+    const percentage = total > 0 ? (value / total) * 100 : 0
+    return { width: `${percentage}%` }
+  }
 
   if (isLoading) {
     return (
@@ -62,7 +67,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
           </CardContent>
         </Card>
       </div>
-    );
+    )
   }
 
   return (
@@ -75,8 +80,8 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         <CardContent>
           <div className="space-y-3">
             {usersByRole.map((item) => {
-              const total = usersByRole.reduce((sum, role) => sum + role.value, 0);
-              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
+              const total = usersByRole.reduce((sum, role) => sum + role.value, 0)
+              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0'
 
               return (
                 <div key={item.name} className="flex items-center justify-between">
@@ -89,15 +94,15 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                     <div className="text-xs text-gray-500">{percentage}%</div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
           {/* Simple progress bars */}
           <div className="mt-4 space-y-2">
             {usersByRole.map((item) => {
-              const total = usersByRole.reduce((sum, role) => sum + role.value, 0);
-              const percentage = total > 0 ? (item.value / total) * 100 : 0;
+              const total = usersByRole.reduce((sum, role) => sum + role.value, 0)
+              const percentage = total > 0 ? (item.value / total) * 100 : 0
 
               return (
                 <div key={`bar-${item.name}`} className="flex items-center space-x-2">
@@ -110,7 +115,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                   </div>
                   <span className="text-xs w-10 text-right">{percentage.toFixed(0)}%</span>
                 </div>
-              );
+              )
             })}
           </div>
         </CardContent>
@@ -124,8 +129,8 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         <CardContent>
           <div className="space-y-4">
             {usersByStatus.map((item) => {
-              const total = usersByStatus.reduce((sum, status) => sum + status.value, 0);
-              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
+              const total = usersByStatus.reduce((sum, status) => sum + status.value, 0)
+              const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0'
 
               return (
                 <div key={item.name} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -138,7 +143,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
                     <div className="text-xs text-gray-500">{percentage}%</div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -152,7 +157,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         </CardContent>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default SimpleCharts;
+export default SimpleCharts

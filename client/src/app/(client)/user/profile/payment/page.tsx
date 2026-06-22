@@ -1,9 +1,9 @@
-"use client";
-import PaymentTable from "@/components/client/user/account/desktop/payment/payment-Table"
-import { useTranslations } from 'next-intl';
+'use client'
+import PaymentTable from '@/components/client/user/account/desktop/payment/payment-table'
+import { useTranslations } from 'next-intl'
 
 export default function AuditLogsPage() {
-  const  t  = useTranslations();
+  const t = useTranslations()
   return (
     <div className="space-y-6">
       {/* <div>
@@ -14,5 +14,5 @@ export default function AuditLogsPage() {
       </div> */}
       <PaymentTable />
     </div>
-  );
+  )
 }

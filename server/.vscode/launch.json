@@ -5,9 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "ECSite Debug",
-      "args": [
-        "${workspaceFolder}/src/main.ts"
-      ],
+      "args": ["${workspaceFolder}/src/main.ts"],
       // "runtimeArgs": [
       //   "--nolazy",
       //   "-r",
@@ -15,25 +13,14 @@
       //   "-r",
       //   "tsconfig-paths/register"
       // ],
-      "runtimeArgs": [
-        "--nolazy",
-        "-r",
-        "run",
-        "debug",
-        "--",
-        "--inspect-brk"
-      ],
+      "runtimeArgs": ["--nolazy", "-r", "run", "debug", "--", "--inspect-brk"],
       "autoAttachChildProcesses": true,
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal",
       "restart": true,
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "runtimeExecutable": "npm",
-    },
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeExecutable": "npm"
+    }
   ]
 }

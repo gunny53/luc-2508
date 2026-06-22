@@ -51,7 +51,7 @@ export interface SessionRevokeAllRequest {
 }
 
 export interface SessionRevokeAllResponse extends BaseResponse {
-    verificationType: string;
+  verificationType: string
 }
 
 export interface SessionRevokeRequest {

@@ -1,21 +1,21 @@
 'use client'
 
-import { useState } from "react"
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table-component/data-table'
 import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal'
 import { PlusIcon } from 'lucide-react'
-import { Brand, BrandCreateRequest, BrandUpdateRequest } from "@/types/admin/brands.interface"
-import { useBrand } from "./useBrand"
-import { BrandColumns } from "./brand-Columns"
+import { Brand, BrandCreateRequest, BrandUpdateRequest } from '@/types/admin/brands.interface'
+import { useBrand } from './use-brand'
+import { BrandColumns } from './brand-columns'
 import SearchInput from '@/components/ui/data-table-component/search-input'
-import { useDataTable } from '@/hooks/useDataTable'
+import { useDataTable } from '@/hooks/use-data-table'
 import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option'
-import BrandModalUpsert from "./brand-ModalUpsert"
+import BrandModalUpsert from './brand-modal-upsert'
 
 export function BrandTable() {
-  const t = useTranslations("admin.ModuleBrands.Table");
+  const t = useTranslations('admin.ModuleBrands.Table')
 
   const {
     data: brands,
@@ -35,41 +35,42 @@ export function BrandTable() {
     handleConfirmDelete,
     handleCloseDeleteModal,
     createBrand,
-    updateBrand,
-  } = useBrand();
+    updateBrand
+  } = useBrand()
 
   const handleSubmit = async (values: BrandCreateRequest | BrandUpdateRequest) => {
     if (selectedBrand) {
-      await updateBrand(selectedBrand.id, values as BrandUpdateRequest);
+      await updateBrand(selectedBrand.id, values as BrandUpdateRequest)
     } else {
-      await createBrand(values as BrandCreateRequest);
+      await createBrand(values as BrandCreateRequest)
     }
-  };
+  }
 
   const table = useDataTable({
     data: brands,
     columns: BrandColumns({
       onEdit: (brand) => handleOpenModal(brand),
       onDelete: handleOpenDelete
-    }),
-  });
+    })
+  })
 
   return (
     <div className="w-full space-y-4">
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenModal()}>
-          <PlusIcon className="w-4 h-4 mr-2" />{t("addAction")}
+          <PlusIcon className="w-4 h-4 mr-2" />
+          {t('addAction')}
         </Button>
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
-            value={pagination.search || ""}
+            value={pagination.search || ''}
             onValueChange={(value) => handleSearch(value)}
-            placeholder={t("searchPlaceholder")}
+            placeholder={t('searchPlaceholder')}
             className="w-full md:max-w-sm"
           />
         </div>
@@ -89,23 +90,23 @@ export function BrandTable() {
           pagination={{
             metadata: pagination,
             onPageChange: handlePageChange,
-            onLimitChange: handleLimitChange,
+            onLimitChange: handleLimitChange
           }}
         />
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
-          if (!deleteLoading) handleCloseDeleteModal();
+          if (!deleteLoading) handleCloseDeleteModal()
         }}
         onConfirm={handleConfirmDelete}
         title={t('deleteConfirm.title')}
         description={
           brandToDelete
             ? t('deleteConfirm.description', {
-                name: brandToDelete?.name || '',
+                name: brandToDelete?.name || ''
               })
             : ''
         }
@@ -114,12 +115,12 @@ export function BrandTable() {
         loading={deleteLoading}
       />
 
-      {/* English content normalized from the original source text. */}
+      {}
       {isModalOpen && (
         <BrandModalUpsert
           open={isModalOpen}
           onClose={handleCloseModal}
-          mode={selectedBrand ? "edit" : "add"}
+          mode={selectedBrand ? 'edit' : 'add'}
           brand={selectedBrand}
           onSubmit={handleSubmit}
         />
@@ -128,4 +129,4 @@ export function BrandTable() {
   )
 }
 
-export default BrandTable;
+export default BrandTable

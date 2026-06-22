@@ -1,33 +1,30 @@
 const locations = [
-  "English content normalized from the original source text.",
-  "English content normalized from the original source text.",
-  "English content normalized from the original source text.",
-  "English content normalized from the original source text.",
-];
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.'
+]
 const categories = [
-  "English content normalized from the original source text.",
-  "English content normalized from the original source text.",
-  "English content normalized from the original source text.",
-  "English content normalized from the original source text.",
-];
-const shippingOptions = ["Nhanh", "English content normalized from the original source text."];
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.',
+  'English content normalized from the original source text.'
+]
+const shippingOptions = ['Nhanh', 'English content normalized from the original source text.']
 
 interface SearchSidebarProps {
-  categoryIds?: string[];
-  currentCategoryId?: string | null;
+  categoryIds?: string[]
+  currentCategoryId?: string | null
 }
 
-export default function SearchSidebar({
-  categoryIds = [],
-  currentCategoryId,
-}: SearchSidebarProps) {
+export default function SearchSidebar({ categoryIds = [], currentCategoryId }: SearchSidebarProps) {
   return (
     <aside className="w-full lg:w-64 shrink-0 space-y-6 text-sm hidden lg:block">
       <FilterSection title="English content normalized from the original source text." items={locations} />
       <FilterSection title="English content normalized from the original source text." items={categories} />
       <FilterSection title="English content normalized from the original source text." items={shippingOptions} />
     </aside>
-  );
+  )
 }
 
 function FilterSection({ title, items }: { title: string; items: string[] }) {
@@ -45,5 +42,5 @@ function FilterSection({ title, items }: { title: string; items: string[] }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }

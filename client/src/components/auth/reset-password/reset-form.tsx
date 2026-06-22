@@ -3,33 +3,20 @@ import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage
-} from '@/components/ui/form'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 // import { Button } from '@/components/ui/button'
 import { resetPasswordSchema } from '../schema/index'
 import Link from 'next/link'
-import { useReset } from './useReset'
-import {
-  AnimatedForm,
-  AnimatedFormItem,
-  AnimatedButton
-} from '@/components/ui/animated-form'
+import { useReset } from './use-reset'
+import { AnimatedForm, AnimatedFormItem, AnimatedButton } from '@/components/ui/animated-form'
 import { useTranslations } from 'next-intl'
 import { Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
 
-
-
 export function ResetForm({ className, ...props }: React.ComponentPropsWithoutRef<'form'>) {
   const t = useTranslations('')
-const schema = resetPasswordSchema(t)
+  const schema = resetPasswordSchema(t)
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: { password: '', confirmPassword: '' }
@@ -46,19 +33,17 @@ const schema = resetPasswordSchema(t)
         {...props}
       >
         <AnimatedForm>
-          {/* English content normalized from the original source text. */}
+          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.resetPassword.title')}</h1>
-              <p className="text-balance text-md text-muted-foreground">
-                {t('auth.resetPassword.subtitle')}
-              </p>
+              <p className="text-balance text-md text-muted-foreground">{t('auth.resetPassword.subtitle')}</p>
             </div>
           </AnimatedFormItem>
 
           {/* Form */}
           <div className="grid gap-6">
-            {/* English content normalized from the original source text. */}
+            {}
             <AnimatedFormItem>
               <FormField
                 control={form.control}
@@ -68,11 +53,7 @@ const schema = resetPasswordSchema(t)
                     <FormLabel>{t('auth.resetPassword.new password')}</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Input
-                          {...field}
-                          type={showPassword ? 'text' : 'password'}
-                          placeholder="******"
-                        />
+                        <Input {...field} type={showPassword ? 'text' : 'password'} placeholder="******" />
                         <button
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
@@ -92,7 +73,7 @@ const schema = resetPasswordSchema(t)
               />
             </AnimatedFormItem>
 
-            {/* English content normalized from the original source text. */}
+            {}
             <AnimatedFormItem>
               <FormField
                 control={form.control}
@@ -102,11 +83,7 @@ const schema = resetPasswordSchema(t)
                     <FormLabel>{t('auth.resetPassword.confirmnewPassword')}</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Input
-                          {...field}
-                          type={showConfirmPassword ? 'text' : 'password'}
-                          placeholder="******"
-                        />
+                        <Input {...field} type={showConfirmPassword ? 'text' : 'password'} placeholder="******" />
                         <button
                           type="button"
                           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -126,7 +103,7 @@ const schema = resetPasswordSchema(t)
               />
             </AnimatedFormItem>
 
-            {/* English content normalized from the original source text. */}
+            {}
             <AnimatedButton
               size="sm"
               type="submit"
@@ -137,14 +114,11 @@ const schema = resetPasswordSchema(t)
             </AnimatedButton>
           </div>
 
-          {/* English content normalized from the original source text. */}
+          {}
           <AnimatedFormItem>
             <div className="text-center text-sm">
               {t('auth.resetPassword.Remember password')}{' '}
-              <Link
-                href="/sign-in"
-                className="underline underline-offset-4 text-primary hover:text-primary/90"
-              >
+              <Link href="/sign-in" className="underline underline-offset-4 text-primary hover:text-primary/90">
                 {t('auth.resetPassword.login')}
               </Link>
             </div>

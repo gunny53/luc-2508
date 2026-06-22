@@ -1,15 +1,6 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-
-// English content normalized from the original source text.
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 interface TopSellingProductsProps {
-  products: { name: string; sold: number }[];
+  products: { name: string; sold: number }[]
 }
 
 export function TopSellingProductsTable({ products }: TopSellingProductsProps) {
@@ -30,5 +21,5 @@ export function TopSellingProductsTable({ products }: TopSellingProductsProps) {
         ))}
       </TableBody>
     </Table>
-  );
+  )
 }

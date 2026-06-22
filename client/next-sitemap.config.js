@@ -28,46 +28,46 @@ module.exports = {
   // Transform URLs for better SEO
   transform: async (config, path) => {
     // Set different priorities and change frequencies for different page types
-    let priority = 0.7;
-    let changefreq = 'daily';
+    let priority = 0.7
+    let changefreq = 'daily'
 
     // Homepage - highest priority
     if (path === '/') {
-      priority = 1.0;
-      changefreq = 'daily';
+      priority = 1.0
+      changefreq = 'daily'
     }
     // Product category pages - high priority
     else if (path.includes('-cat.')) {
-      priority = 0.9;
-      changefreq = 'daily';
+      priority = 0.9
+      changefreq = 'daily'
     }
     // Product detail pages - high priority
     else if (path.startsWith('/products/')) {
-      priority = 0.8;
-      changefreq = 'weekly';
+      priority = 0.8
+      changefreq = 'weekly'
     }
     // Shop pages - medium priority
     else if (path.startsWith('/shop/')) {
-      priority = 0.7;
-      changefreq = 'weekly';
+      priority = 0.7
+      changefreq = 'weekly'
     }
     // Policy and static pages - lower priority
     else if (path === '/policy') {
-      priority = 0.5;
-      changefreq = 'monthly';
+      priority = 0.5
+      changefreq = 'monthly'
     }
 
     return {
       loc: path,
       changefreq,
       priority,
-      lastmod: new Date().toISOString(),
-    };
+      lastmod: new Date().toISOString()
+    }
   },
 
   // Additional paths to include in sitemap
   additionalPaths: async (config) => {
-    const result = [];
+    const result = []
 
     // Add common category pages (you should replace these with actual categories from your API)
     const commonCategories = [
@@ -81,18 +81,18 @@ module.exports = {
       'lam-dep-cat.8',
       'the-thao-cat.9',
       'o-to-xe-may-cat.10'
-    ];
+    ]
 
     for (const category of commonCategories) {
       result.push({
         loc: `/${category}`,
         changefreq: 'daily',
         priority: 0.9,
-        lastmod: new Date().toISOString(),
-      });
+        lastmod: new Date().toISOString()
+      })
     }
 
-    return result;
+    return result
   },
 
   // Robots.txt configuration
@@ -112,22 +112,14 @@ module.exports = {
           '/sign-up',
           '/verify-*',
           '/oauth-*'
-        ],
+        ]
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: [
-          '/admin/',
-          '/user/',
-          '/cart',
-          '/checkout/',
-          '/api/'
-        ],
+        disallow: ['/admin/', '/user/', '/cart', '/checkout/', '/api/']
       }
     ],
-    additionalSitemaps: [
-      'https://ecsite.live/sitemap.xml',
-    ],
-  },
-};
+    additionalSitemaps: ['https://ecsite.live/sitemap.xml']
+  }
+}

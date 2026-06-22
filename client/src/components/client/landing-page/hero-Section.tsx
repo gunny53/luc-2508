@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect, useCallback, useRef, memo, useMemo } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import React, { useState, useEffect, useCallback, useRef, memo, useMemo } from 'react'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import {
   Carousel,
   CarouselContent,
@@ -11,21 +11,16 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi
-} from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay";
-import { useIsMobile } from '@/hooks/use-mobile';
-import { heroImages, serviceItems } from './landing-Mockdata';
+} from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
+import { useIsMobile } from '@/hooks/use-mobile'
+import { heroImages, serviceItems } from './landing-mockdata'
 
 interface HeroSectionProps {
-  className?: string;
+  className?: string
 }
-
-// English content normalized from the original source text.
-const ServiceItem = memo(({ item }: { item: typeof serviceItems[0] }) => (
-  <a
-    href="#"
-    className="flex flex-col items-center text-center group flex-shrink-0 w-[72px] sm:w-auto"
-  >
+const ServiceItem = memo(({ item }: { item: (typeof serviceItems)[0] }) => (
+  <a href="#" className="flex flex-col items-center text-center group flex-shrink-0 w-[72px] sm:w-auto">
     <div className="flex items-center justify-center w-[52px] h-[52px] bg-white rounded-2xl transition-all duration-300 group-hover:-translate-y-1">
       <Image
         src={item.icon}
@@ -40,20 +35,11 @@ const ServiceItem = memo(({ item }: { item: typeof serviceItems[0] }) => (
       {item.label}
     </p>
   </a>
-));
+))
 
-ServiceItem.displayName = 'ServiceItem';
-
-// English content normalized from the original source text.
-const CarouselImage = memo(({ src, index, isMobile }: {
-  src: string;
-  index: number;
-  isMobile: boolean;
-}) => (
-  <CarouselItem
-    key={index}
-    className={cn("relative", isMobile ? "h-[220px]" : "h-[350px]")}
-  >
+ServiceItem.displayName = 'ServiceItem'
+const CarouselImage = memo(({ src, index, isMobile }: { src: string; index: number; isMobile: boolean }) => (
+  <CarouselItem key={index} className={cn('relative', isMobile ? 'h-[220px]' : 'h-[350px]')}>
     <Image
       src={src}
       alt={`Hero image ${index + 1}`}
@@ -61,73 +47,80 @@ const CarouselImage = memo(({ src, index, isMobile }: {
       style={{ objectFit: 'cover' }}
       className="z-0"
       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
-      priority={index === 0} // English content normalized from the original source text.
-      loading={index === 0 ? "eager" : "lazy"} // English content normalized from the original source text.
+      priority={index === 0}
+      loading={index === 0 ? 'eager' : 'lazy'}
     />
   </CarouselItem>
-));
+))
 
-CarouselImage.displayName = 'CarouselImage';
+CarouselImage.displayName = 'CarouselImage'
 
 function HeroSectionComponent({ className }: HeroSectionProps) {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile()
+  const plugin = useMemo(() => Autoplay({ delay: 4000, stopOnInteraction: true }), [])
 
-  // English content normalized from the original source text.
-  const plugin = useMemo(
-    () => Autoplay({ delay: 4000, stopOnInteraction: true }),
-    []
-  );
-
-  const [api, setApi] = useState<CarouselApi>();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [slideCount, setSlideCount] = useState(0);
+  const [api, setApi] = useState<CarouselApi>()
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [slideCount, setSlideCount] = useState(0)
 
   // 4. Memoize carousel options
-  const carouselOpts = useMemo(() => ({
-    loop: true,
-  }), []);
+  const carouselOpts = useMemo(
+    () => ({
+      loop: true
+    }),
+    []
+  )
 
   // 5. Optimize useEffect dependencies
   useEffect(() => {
-    if (!api) return;
+    if (!api) return
 
     const updateSlideInfo = () => {
-      setSlideCount(api.scrollSnapList().length);
-      setCurrentSlide(api.selectedScrollSnap());
-    };
+      setSlideCount(api.scrollSnapList().length)
+      setCurrentSlide(api.selectedScrollSnap())
+    }
 
     const onSelect = () => {
-      setCurrentSlide(api.selectedScrollSnap());
-    };
+      setCurrentSlide(api.selectedScrollSnap())
+    }
 
-    updateSlideInfo();
-    api.on("select", onSelect);
-    api.on("reInit", updateSlideInfo);
+    updateSlideInfo()
+    api.on('select', onSelect)
+    api.on('reInit', updateSlideInfo)
 
     return () => {
-      api.off("select", onSelect);
-      api.off("reInit", updateSlideInfo);
-    };
-  }, [api]);
+      api.off('select', onSelect)
+      api.off('reInit', updateSlideInfo)
+    }
+  }, [api])
 
-  const scrollTo = useCallback((index: number) => {
-    api?.scrollTo(index);
-  }, [api]);
+  const scrollTo = useCallback(
+    (index: number) => {
+      api?.scrollTo(index)
+    },
+    [api]
+  )
 
   // 6. Memoize style classes
-  const containerClass = useMemo(() => cn(
-    "relative rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_25px_5px_rgba(0,0,0,0.1)] transition-shadow duration-300 ease-in-out",
-    isMobile ? "h-[220px]" : "h-[350px]"
-  ), [isMobile]);
+  const containerClass = useMemo(
+    () =>
+      cn(
+        'relative rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_25px_5px_rgba(0,0,0,0.1)] transition-shadow duration-300 ease-in-out',
+        isMobile ? 'h-[220px]' : 'h-[350px]'
+      ),
+    [isMobile]
+  )
 
-  const rightColumnClass = useMemo(() => cn(
-    "relative w-full rounded-2xl overflow-hidden border border-transparent hover:border-[#ccc] shadow transition-all duration-300 ease-in-out hover:shadow-[8px_8px_120px_rgba(1,0,0,0.2)]",
-    isMobile ? "h-[200px]" : "h-[350px]"
-  ), [isMobile]);
-
-  // English content normalized from the original source text.
+  const rightColumnClass = useMemo(
+    () =>
+      cn(
+        'relative w-full rounded-2xl overflow-hidden border border-transparent hover:border-[#ccc] shadow transition-all duration-300 ease-in-out hover:shadow-[8px_8px_120px_rgba(1,0,0,0.2)]',
+        isMobile ? 'h-[200px]' : 'h-[350px]'
+      ),
+    [isMobile]
+  )
   const dotIndicators = useMemo(() => {
-    if (slideCount === 0) return null;
+    if (slideCount === 0) return null
 
     return (
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
@@ -136,53 +129,34 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
             key={index}
             onClick={() => scrollTo(index)}
             className={cn(
-              "h-2 w-2 rounded-full transition-all duration-300",
-              currentSlide === index ? "bg-white w-4" : "bg-white/50 hover:bg-white/75"
+              'h-2 w-2 rounded-full transition-all duration-300',
+              currentSlide === index ? 'bg-white w-4' : 'bg-white/50 hover:bg-white/75'
             )}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
-    );
-  }, [slideCount, currentSlide, scrollTo]);
+    )
+  }, [slideCount, currentSlide, scrollTo])
 
   // 8. Memoize carousel images
-  const carouselImages = useMemo(() =>
-    heroImages.map((src, index) => (
-      <CarouselImage
-        key={src} // English content normalized from the original source text.
-        src={src}
-        index={index}
-        isMobile={isMobile}
-      />
-    )),
+  const carouselImages = useMemo(
+    () => heroImages.map((src, index) => <CarouselImage key={src} src={src} index={index} isMobile={isMobile} />),
     [isMobile]
-  );
+  )
 
   // 9. Memoize service items
-  const serviceItemsList = useMemo(() =>
-    serviceItems.map((item) => (
-      <ServiceItem key={item.label} item={item} />
-    )),
-    []
-  );
+  const serviceItemsList = useMemo(() => serviceItems.map((item) => <ServiceItem key={item.label} item={item} />), [])
 
   return (
-    <section className={cn("w-full bg-white py-6 shadow-sm", className)}>
+    <section className={cn('w-full bg-white py-6 shadow-sm', className)}>
       <div className="container mx-auto px-4 justify-start max-w-[1250px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left column - 8 cols */}
           <div className="lg:col-span-8">
             <div className={containerClass}>
-              <Carousel
-                plugins={[plugin]}
-                opts={carouselOpts}
-                setApi={setApi}
-                className="w-full h-full"
-              >
-                <CarouselContent className="h-full">
-                  {carouselImages}
-                </CarouselContent>
+              <Carousel plugins={[plugin]} opts={carouselOpts} setApi={setApi} className="w-full h-full">
+                <CarouselContent className="h-full">{carouselImages}</CarouselContent>
 
                 {/* Navigation Buttons */}
                 {!isMobile && (
@@ -199,7 +173,9 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
               {/* Overlay content */}
               {!isMobile && (
                 <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/60 to-transparent z-10">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">English content normalized from the original source text.</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    English content normalized from the original source text.
+                  </h2>
                   <p className="text-white mb-4 max-w-lg">English content normalized from the original source text.</p>
                   <Button className="w-fit">English content normalized from the original source text.</Button>
                 </div>
@@ -224,12 +200,13 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                 </div>
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent">
-                  <h2 className="text-2xl font-bold text-white mb-2">English content normalized from the original source text.</h2>
+                  <h2 className="text-2xl font-bold text-white mb-2">
+                    English content normalized from the original source text.
+                  </h2>
                   <p className="text-white mb-3">English content normalized from the original source text.</p>
-                  <Button
-                    variant="outline"
-                    className="w-fit bg-transparent border-white text-white hover:bg-white/20"
-                  >English content normalized from the original source text.</Button>
+                  <Button variant="outline" className="w-fit bg-transparent border-white text-white hover:bg-white/20">
+                    English content normalized from the original source text.
+                  </Button>
                 </div>
               </div>
             </div>
@@ -244,7 +221,7 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export const HeroSection = memo(HeroSectionComponent);
+export const HeroSection = memo(HeroSectionComponent)

@@ -5,23 +5,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage
-} from '@/components/ui/form'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { EmailSchema } from '../schema'
-import {
-  AnimatedForm,
-  AnimatedFormItem,
-  AnimatedButton
-} from '@/components/ui/animated-form'
-import { useVerifyEmail } from './useVerifyEmail'
-import { OAuthForm } from '../layout/OAuthForm'
+import { AnimatedForm, AnimatedFormItem, AnimatedButton } from '@/components/ui/animated-form'
+import { useVerifyEmail } from './use-verify-email'
+import { OAuthForm } from '../layout/o-auth-form'
 import { useTranslations } from 'next-intl'
 
 interface VerifyEmailFormProps {
@@ -37,8 +26,6 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
   const { loading, handleSendOTP } = useVerifyEmail()
   const t = useTranslations('')
   const Schema = EmailSchema(t)
-  // English content normalized from the original source text.
-
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
     defaultValues: { email: '' }
@@ -91,18 +78,13 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
   return (
     <>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className={cn('flex flex-col gap-6', className)}
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className={cn('flex flex-col gap-6', className)}>
           <AnimatedForm>
-            {/* English content normalized from the original source text. */}
+            {}
             <AnimatedFormItem>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-4xl font-bold">{content.title}</h1>
-                <p className="text-balance text-md text-muted-foreground">
-                  {content.subtitle}
-                </p>
+                <p className="text-balance text-md text-muted-foreground">{content.subtitle}</p>
               </div>
             </AnimatedFormItem>
 
@@ -134,9 +116,9 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
               </AnimatedButton>
             </div>
             {/* OAuth Form */}
-            {action === 'signup' && <OAuthForm type="signup"/>}
+            {action === 'signup' && <OAuthForm type="signup" />}
 
-            {/* English content normalized from the original source text. */}
+            {}
             <AnimatedFormItem>
               <div className="text-center text-sm">
                 {content.linkText}{' '}
@@ -151,8 +133,6 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
           </AnimatedForm>
         </form>
       </Form>
-
-
     </>
   )
 }

@@ -1,13 +1,13 @@
 // components/client/landing-page/suggest-Section.tsx
-'use client';
+'use client'
 
-import { useClientSuggestedProducts } from '@/hooks/client-products/useClientSuggestedProducts';
-import ProductItem, { ProductItemSkeleton } from '@/components/ui/product-component/product-Item';
+import { useClientSuggestedProducts } from '@/hooks/client-products/use-client-suggested-products'
+import ProductItem, { ProductItemSkeleton } from '@/components/ui/product-component/product-item'
 
 interface SuggestSectionProps {
-  title?: string;
-  categoryId?: string;
-  initialLimit?: number;
+  title?: string
+  categoryId?: string
+  initialLimit?: number
 }
 
 const SuggestSection = ({
@@ -15,20 +15,12 @@ const SuggestSection = ({
   categoryId,
   initialLimit = 48
 }: SuggestSectionProps) => {
-  const {
-    products,
-    initialLoading,
-    loading,
-    hasMore,
-    loadMore,
-    error
-  } = useClientSuggestedProducts({
+  const { products, initialLoading, loading, hasMore, loadMore, error } = useClientSuggestedProducts({
     initialLimit,
     categoryId,
-    // English content normalized from the original source text.
     sortBy: 'createdAt',
     sortOrder: 'desc'
-  });
+  })
 
   return (
     <div className="bg-gray-100 py-4">
@@ -41,12 +33,8 @@ const SuggestSection = ({
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
           {initialLoading
-            ? Array.from({ length: initialLimit }).map((_, index) => (
-                <ProductItemSkeleton key={index} />
-              ))
-            : products.map((product) => (
-                <ProductItem key={product.id} product={product} isLoading={false} />
-              ))}
+            ? Array.from({ length: initialLimit }).map((_, index) => <ProductItemSkeleton key={index} />)
+            : products.map((product) => <ProductItem key={product.id} product={product} isLoading={false} />)}
         </div>
 
         {!initialLoading && hasMore && (
@@ -56,13 +44,15 @@ const SuggestSection = ({
               onClick={loadMore}
               disabled={loading}
             >
-              {loading ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}
+              {loading
+                ? 'English content normalized from the original source text.'
+                : 'English content normalized from the original source text.'}
             </button>
           </div>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SuggestSection;
+export default SuggestSection

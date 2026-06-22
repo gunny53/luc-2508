@@ -1,14 +1,14 @@
 // "use client";
 
-// import { useCheckDevice } from "@/hooks/useCheckDevices";
+// import { useCheckDevice } from "@/hooks/use-check-devices";
 // import dynamic from "next/dynamic";
 // import { Skeleton } from "@/components/ui/skeleton";
 
-// const ProfilePage = dynamic(() => import("../desktop/profile/profile-Index"), {
+// const ProfilePage = dynamic(() => import("../desktop/profile/profile-index"), {
 //   loading: () => <Skeleton className="w-full h-full" />,
 //   ssr: false,
 // });
-// const ProfileMobile = dynamic(() => import("../moblie/profile/profile-MobileIndex"), {
+// const ProfileMobile = dynamic(() => import("../moblie/profile/profile-mobile-index"), {
 //   loading: () => <Skeleton className="w-full h-full" />,
 //   ssr: false,
 // });
@@ -24,20 +24,20 @@
 //   );
 // }
 
-"use client";
+'use client'
 
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
+import dynamic from 'next/dynamic'
+import { Skeleton } from '@/components/ui/skeleton'
 
-const ProfilePage = dynamic(() => import("../desktop/profile/profile-Index"), {
+const ProfilePage = dynamic(() => import('../desktop/profile/profile-index'), {
   loading: () => <Skeleton className="w-full h-full" />,
-  ssr: false,
-});
+  ssr: false
+})
 
 export function ProfileMain() {
   return (
     <div className="w-full h-full">
       <ProfilePage />
     </div>
-  );
+  )
 }

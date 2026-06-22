@@ -1,147 +1,114 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { CheckoutHeader } from './checkout-Header';
-import { CheckoutSteps } from './checkout-Steps';
-import { InformationTabs } from './information-Tabs/information-Index';
-import { PaymentTabs } from './payment-Tabs/payment-Index';
-import { FooterSection } from './shared/footer-Section';
-import { useCheckout } from './hooks/useCheckout';
-import { CheckoutStep } from './checkout-Steps';
-import { QrSepay } from './payment/qrSepay';
-import { PaymentCod } from './payment/payment-cod';
-import { useRouter } from 'next/navigation';
-import { useECSiteSocket } from '@/providers/ECSiteSocketProvider';
-import { orderService } from '@/services/orderService';
-import { toast } from 'sonner';
-import { OrderStatus } from '@/types/order.interface';
-import Image from 'next/image';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent
-} from '@/components/ui/card';
-import { clearCheckoutState } from '@/store/features/checkout/ordersSilde';
-
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { CheckoutHeader } from './checkout-header'
+import { CheckoutSteps } from './checkout-steps'
+import { InformationTabs } from './information-tabs/information-index'
+import { PaymentTabs } from './payment-tabs/payment-index'
+import { FooterSection } from './shared/footer-section'
+import { useCheckout } from './hooks/use-checkout'
+import { CheckoutStep } from './checkout-steps'
+import { QrSepay } from './payment/qr-sepay'
+import { PaymentCod } from './payment/payment-cod'
+import { useRouter } from 'next/navigation'
+import { useECSiteSocket } from '@/providers/ec-site-socket-provider'
+import { orderService } from '@/services/order-service'
+import { toast } from 'sonner'
+import { OrderStatus } from '@/types/order.interface'
+import Image from 'next/image'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { clearCheckoutState } from '@/store/features/checkout/orders-silde'
 
 interface CheckoutMainProps {
-  cartItemIds?: string[];
+  cartItemIds?: string[]
 }
 
 export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
-  // English content normalized from the original source text.
-  const { state, goToStep, handleCreateOrder, isSubmitting } = useCheckout();
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const { connect, disconnect, payments, isConnected } = useECSiteSocket();
+  const { state, goToStep, handleCreateOrder, isSubmitting } = useCheckout()
+  const router = useRouter()
+  const dispatch = useDispatch()
+  const { connect, disconnect, payments, isConnected } = useECSiteSocket()
 
   // Debug log cartItemIds
   console.log('🛍️ CheckoutMain - Received cartItemIds:', {
     cartItemIds,
     count: cartItemIds.length,
     isValid: cartItemIds.length > 0
-  });
-
-  // English content normalized from the original source text.
-  const [showQrSepay, setShowQrSepay] = useState(false);
-  const [showCodPayment, setShowCodPayment] = useState(false);
-  const [isRedirecting, setIsRedirecting] = useState(false);
-  const [redirectingTo, setRedirectingTo] = useState<string | null>(null);
-  const [totalAmount, setTotalAmount] = useState<number>(0);
-  const [activePaymentId, setActivePaymentId] = useState<number | null>(null);
-  const [activeOrderId, setActiveOrderId] = useState<string | null>(null);
+  })
+  const [showQrSepay, setShowQrSepay] = useState(false)
+  const [showCodPayment, setShowCodPayment] = useState(false)
+  const [isRedirecting, setIsRedirecting] = useState(false)
+  const [redirectingTo, setRedirectingTo] = useState<string | null>(null)
+  const [totalAmount, setTotalAmount] = useState<number>(0)
+  const [activePaymentId, setActivePaymentId] = useState<number | null>(null)
+  const [activeOrderId, setActiveOrderId] = useState<string | null>(null)
   const [orderResult, setOrderResult] = useState<{
-    success: boolean;
-    paymentMethod?: string;
+    success: boolean
+    paymentMethod?: string
     orderData?: {
-      [key: string]: any;
-      orders?: any[];
-      paymentId?: number;
-    };
-    paymentId?: number;
-    orderId?: string;
-    paymentUrl?: string;
-    error?: string;
-  } | null>(null);
-
-  // English content normalized from the original source text.
+      [key: string]: any
+      orders?: any[]
+      paymentId?: number
+    }
+    paymentId?: number
+    orderId?: string
+    paymentUrl?: string
+    error?: string
+  } | null>(null)
   const handleStepChange = (step: CheckoutStep) => {
-    goToStep(step);
-  };
-
-  // English content normalized from the original source text.
+    goToStep(step)
+  }
   const handleNext = async () => {
     if (state.step === 'information') {
-      // English content normalized from the original source text.
-      const form = document.getElementById('checkout-form') as HTMLFormElement;
+      const form = document.getElementById('checkout-form') as HTMLFormElement
       if (form) {
-        // English content normalized from the original source text.
-        form.requestSubmit();
+        form.requestSubmit()
       }
     } else if (state.step === 'payment') {
-      // English content normalized from the original source text.
-      const result = await handleCreateOrder(totalAmount);
-
-      // English content normalized from the original source text.
+      const result = await handleCreateOrder(totalAmount)
       if (result && result.success) {
-        // English content normalized from the original source text.
-        setOrderResult(result);
-
-        // English content normalized from the original source text.
+        setOrderResult(result)
         if (result.paymentMethod === 'sepay') {
-          // English content normalized from the original source text.
-          setShowQrSepay(true);
+          setShowQrSepay(true)
         } else if (result.paymentMethod === 'vnpay' && result.paymentUrl && result.orderId) {
-          // English content normalized from the original source text.
-          setIsRedirecting(true);
-          setRedirectingTo('vnpay');
-
-          // English content normalized from the original source text.
+          setIsRedirecting(true)
+          setRedirectingTo('vnpay')
           if (result.paymentId) {
-            setActivePaymentId(result.paymentId);
-            setActiveOrderId(result.orderId || '');
-            console.log(`[VNPay] Connecting to socket with paymentId: ${result.paymentId}`);
-            connect(result.paymentId.toString()); // Convert to string for connect function
+            setActivePaymentId(result.paymentId)
+            setActiveOrderId(result.orderId || '')
+            console.log(`[VNPay] Connecting to socket with paymentId: ${result.paymentId}`)
+            connect(result.paymentId.toString()) // Convert to string for connect function
           }
-
-          // English content normalized from the original source text.
-          sessionStorage.setItem('lastOrderId', result.orderId || '');
-          sessionStorage.setItem('orderAmount', totalAmount.toString());
-
-          // English content normalized from the original source text.
+          sessionStorage.setItem('lastOrderId', result.orderId || '')
+          sessionStorage.setItem('orderAmount', totalAmount.toString())
           setTimeout(() => {
-            // English content normalized from the original source text.
-            window.location.href = result.paymentUrl as string;
-          }, 1500);
+            window.location.href = result.paymentUrl as string
+          }, 1500)
         } else if (result.paymentMethod === 'COD' && result.orderId) {
-          // English content normalized from the original source text.
-          setShowCodPayment(true);
+          setShowCodPayment(true)
         } else if (result.orderId) {
-          // English content normalized from the original source text.
-          router.push(`/checkout/payment-success?orderId=${result.orderId}&status=success&totalAmount=${totalAmount}`);
+          router.push(`/checkout/payment-success?orderId=${result.orderId}&status=success&totalAmount=${totalAmount}`)
         }
       } else {
-        console.error('❌ Order creation failed:', result);
+        console.error('❌ Order creation failed:', result)
       }
     }
-  };
+  }
 
   const handlePrevious = () => {
     if (state.step === 'payment') {
-      handleStepChange('information');
+      handleStepChange('information')
     }
-  };
+  }
 
   // Socket event listener for VNPay payment status
   useEffect(() => {
-    if (!payments.length || !activeOrderId || !activePaymentId) return;
+    if (!payments.length || !activeOrderId || !activePaymentId) return
 
-    console.log(`[WebSocket] Checking for payment events. Total events: ${payments.length}`);
+    console.log(`[WebSocket] Checking for payment events. Total events: ${payments.length}`)
 
-    const latestPayment = payments[payments.length - 1];
+    const latestPayment = payments[payments.length - 1]
 
     // Check if the latest payment is a success for the current order
     if (
@@ -150,82 +117,75 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
       latestPayment.status === 'success' &&
       latestPayment.gateway === 'vnpay'
     ) {
-      console.log('✅ VNPay payment success event received via WebSocket for order:', activeOrderId);
-      toast.success('English content normalized from the original source text.');
+      console.log('✅ VNPay payment success event received via WebSocket for order:', activeOrderId)
+      toast.success('English content normalized from the original source text.')
 
       // Redirect to success page
-      router.push(`/checkout/payment-success?orderId=${activeOrderId}&totalAmount=${totalAmount}`);
+      router.push(`/checkout/payment-success?orderId=${activeOrderId}&totalAmount=${totalAmount}`)
 
       // Disconnect socket after successful payment
-      disconnect();
+      disconnect()
     }
-  }, [payments, activeOrderId, activePaymentId, router, totalAmount, disconnect]);
+  }, [payments, activeOrderId, activePaymentId, router, totalAmount, disconnect])
 
   // Fallback polling mechanism for VNPay payment status
   useEffect(() => {
-    if (!activeOrderId || !activePaymentId || !isRedirecting || redirectingTo !== 'vnpay') return;
+    if (!activeOrderId || !activePaymentId || !isRedirecting || redirectingTo !== 'vnpay') return
 
-    let intervalId: NodeJS.Timeout;
+    let intervalId: NodeJS.Timeout
 
     const checkVNPayPaymentStatus = async () => {
-      console.log(`[Polling] Checking VNPay payment status for orderId: ${activeOrderId}...`);
+      console.log(`[Polling] Checking VNPay payment status for orderId: ${activeOrderId}...`)
       try {
-        const order = await orderService.getById(activeOrderId);
+        const order = await orderService.getById(activeOrderId)
         if (order && order.data.status === OrderStatus.PICKUPED) {
-          clearInterval(intervalId);
-          toast.success('English content normalized from the original source text.');
-          router.push(`/checkout/payment-success?orderId=${activeOrderId}&totalAmount=${totalAmount}`);
+          clearInterval(intervalId)
+          toast.success('English content normalized from the original source text.')
+          router.push(`/checkout/payment-success?orderId=${activeOrderId}&totalAmount=${totalAmount}`)
 
           // Disconnect socket after successful payment
-          disconnect();
+          disconnect()
         }
       } catch (error) {
-        console.error('English content normalized from the original source text.', error);
+        console.error('English content normalized from the original source text.', error)
       }
-    };
+    }
 
     // Check every 5 seconds
-    intervalId = setInterval(checkVNPayPaymentStatus, 5000);
+    intervalId = setInterval(checkVNPayPaymentStatus, 5000)
 
     // Cleanup
     return () => {
-      clearInterval(intervalId);
-    };
-  }, [activeOrderId, activePaymentId, isRedirecting, redirectingTo, router, totalAmount, disconnect]);
+      clearInterval(intervalId)
+    }
+  }, [activeOrderId, activePaymentId, isRedirecting, redirectingTo, router, totalAmount, disconnect])
 
   // Cleanup effect to disconnect socket when component unmounts
   useEffect(() => {
     return () => {
       if (activePaymentId) {
-        console.log(`[Cleanup] Disconnecting socket for paymentId: ${activePaymentId}`);
-        disconnect();
+        console.log(`[Cleanup] Disconnecting socket for paymentId: ${activePaymentId}`)
+        disconnect()
       }
-    };
-  }, [activePaymentId, disconnect]);
-
-  // English content normalized from the original source text.
+    }
+  }, [activePaymentId, disconnect])
   const handlePaymentConfirm = () => {
     // If we have order ID, redirect to order success page, otherwise go to dashboard
     if (orderResult?.orderId) {
-      router.push(`/checkout/payment-success?orderId=${orderResult.orderId}&totalAmount=${totalAmount}`);
+      router.push(`/checkout/payment-success?orderId=${orderResult.orderId}&totalAmount=${totalAmount}`)
     } else {
-      router.push('/user/dashboard');
+      router.push('/user/dashboard')
     }
-  };
-
-  // English content normalized from the original source text.
+  }
   const handlePaymentCancel = () => {
-    setShowQrSepay(false);
-    setOrderResult(null);
-    // English content normalized from the original source text.
-  };
+    setShowQrSepay(false)
+    setOrderResult(null)
+  }
 
   // Helper function to get footer step type
   const getFooterStep = (step: CheckoutStep): 'information' | 'payment' => {
-    return step === 'cart' ? 'information' : step;
-  };
-
-  // English content normalized from the original source text.
+    return step === 'cart' ? 'information' : step
+  }
   if (showCodPayment && orderResult && orderResult.orderId) {
     return (
       <PaymentCod
@@ -234,10 +194,8 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
         paymentId={orderResult.paymentId}
         orderData={orderResult.orderData}
       />
-    );
+    )
   }
-
-  // English content normalized from the original source text.
   if (showQrSepay && orderResult && orderResult.paymentId && orderResult.orderId) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -248,10 +206,8 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
           onPaymentCancel={handlePaymentCancel}
         />
       </div>
-    );
+    )
   }
-
-  // English content normalized from the original source text.
   if (isRedirecting && redirectingTo === 'vnpay' && orderResult && orderResult.paymentUrl) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -265,14 +221,17 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
                 height={40}
                 className="object-contain"
                 onError={(e) => {
-                  // English content normalized from the original source text.
-                  const target = e.target as HTMLImageElement;
-                  target.src = "/payment-logos/vnpay.png";
+                  const target = e.target as HTMLImageElement
+                  target.src = '/payment-logos/vnpay.png'
                 }}
               />
             </div>
-            <CardTitle className="text-blue-700 text-xl font-bold">English content normalized from the original source text.</CardTitle>
-            <CardDescription className="text-gray-600">English content normalized from the original source text.</CardDescription>
+            <CardTitle className="text-blue-700 text-xl font-bold">
+              English content normalized from the original source text.
+            </CardTitle>
+            <CardDescription className="text-gray-600">
+              English content normalized from the original source text.
+            </CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-6 pt-6">
@@ -288,7 +247,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
           </CardContent>
         </Card>
       </div>
-    );
+    )
   }
 
   return (
@@ -345,20 +304,20 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 // Add cleanup effect to clear checkout state when component unmounts
 export function CheckoutMainWithCleanup({ cartItemIds = [] }: CheckoutMainProps) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // Cleanup function - clear state when leaving checkout page
     return () => {
-      console.log('🧹 Clearing checkout state on page exit');
-      dispatch(clearCheckoutState());
-    };
-  }, [dispatch]);
+      console.log('🧹 Clearing checkout state on page exit')
+      dispatch(clearCheckoutState())
+    }
+  }, [dispatch])
 
-  return <CheckoutMain cartItemIds={cartItemIds} />;
+  return <CheckoutMain cartItemIds={cartItemIds} />
 }

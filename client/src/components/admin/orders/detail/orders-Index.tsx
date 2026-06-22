@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, FileText, Receipt } from "lucide-react";
-import OrderDetail from "./orders-Detail";
-// import OrderBill from "./orders-Bill"; // Temporarily hidden
+import { useState } from 'react'
+import { useParams } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ArrowLeft, FileText, Receipt } from 'lucide-react'
+import OrderDetail from './orders-detail'
+// import OrderBill from "./orders-bill"; // Temporarily hidden
 
 interface OrderIndexProps {
-  onBack?: () => void;
+  onBack?: () => void
 }
 
 export default function OrderIndex({ onBack }: OrderIndexProps) {
-  const { id } = useParams<{ id: string }>();
-  const [activeTab, setActiveTab] = useState("details");
+  const { id } = useParams<{ id: string }>()
+  const [activeTab, setActiveTab] = useState('details')
 
   return (
     <div className="min-h-screen bg-slate-50/30">
@@ -43,9 +43,11 @@ export default function OrderIndex({ onBack }: OrderIndexProps) {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-1 lg:w-[400px]">
             <TabsTrigger value="details" className="flex items-center gap-2">
-              <FileText className="w-4 h-4" />English content normalized from the original source text.</TabsTrigger>
+              <FileText className="w-4 h-4" />
+              English content normalized from the original source text.
+            </TabsTrigger>
             {/* Temporarily hidden Bill tab */}
-            {/* English content normalized from the original source text. */}
+            {}
           </TabsList>
 
           <TabsContent value="details" className="mt-6">
@@ -59,5 +61,5 @@ export default function OrderIndex({ onBack }: OrderIndexProps) {
         </Tabs>
       </div>
     </div>
-  );
+  )
 }

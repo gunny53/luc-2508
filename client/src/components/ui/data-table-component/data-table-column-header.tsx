@@ -10,7 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
 interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
@@ -21,7 +21,7 @@ interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes
 export function DataTableColumnHeader<TData, TValue>({
   column,
   title,
-  className,
+  className
 }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort() && !column.getCanHide()) {
     return <div className={cn(className)}>{title}</div>
@@ -34,10 +34,10 @@ export function DataTableColumnHeader<TData, TValue>({
           <Button
             aria-label={
               column.getIsSorted() === 'desc'
-                ? `English content normalized from the original source text.${title}`
+                ? `Sort ${title} ascending`
                 : column.getIsSorted() === 'asc'
-                  ? `English content normalized from the original source text.${title}`
-                  : `English content normalized from the original source text.${title}`
+                  ? `Sort ${title} descending`
+                  : `Sort ${title}`
             }
             variant="ghost"
             size="sm"
@@ -56,36 +56,22 @@ export function DataTableColumnHeader<TData, TValue>({
         <DropdownMenuContent align="start">
           {column.getCanSort() && (
             <>
-              <DropdownMenuItem
-                aria-label="English content normalized from the original source text."
-                onClick={() => column.toggleSorting(false)}
-              >
-                <ArrowUpIcon
-                  className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
-                  aria-hidden="true"
-                />English content normalized from the original source text.</DropdownMenuItem>
-              <DropdownMenuItem
-                aria-label="English content normalized from the original source text."
-                onClick={() => column.toggleSorting(true)}
-              >
-                <ArrowDownIcon
-                  className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
-                  aria-hidden="true"
-                />English content normalized from the original source text.</DropdownMenuItem>
+              <DropdownMenuItem aria-label={`Sort ${title} ascending`} onClick={() => column.toggleSorting(false)}>
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" aria-hidden="true" />
+                Asc
+              </DropdownMenuItem>
+              <DropdownMenuItem aria-label={`Sort ${title} descending`} onClick={() => column.toggleSorting(true)}>
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" aria-hidden="true" />
+                Desc
+              </DropdownMenuItem>
             </>
           )}
-          {column.getCanSort() && column.getCanHide() && (
-            <DropdownMenuSeparator />
-          )}
+          {column.getCanSort() && column.getCanHide() && <DropdownMenuSeparator />}
           {column.getCanHide() && (
-            <DropdownMenuItem
-              aria-label="English content normalized from the original source text."
-              onClick={() => column.toggleVisibility(false)}
-            >
-              <EyeOffIcon
-                className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
-                aria-hidden="true"
-              />English content normalized from the original source text.</DropdownMenuItem>
+            <DropdownMenuItem aria-label={`Hide ${title}`} onClick={() => column.toggleVisibility(false)}>
+              <EyeOffIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" aria-hidden="true" />
+              Hide
+            </DropdownMenuItem>
           )}
         </DropdownMenuContent>
       </DropdownMenu>

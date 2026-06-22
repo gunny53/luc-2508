@@ -1,12 +1,12 @@
-import { BaseEntity, PaginationMetadata, BaseResponse } from "./base.interface";
+import { BaseEntity, PaginationMetadata, BaseResponse } from './base.interface'
 
 /**
  * @interface Variant
  * @description Represents a product variant attribute, like 'Color' or 'Size'.
  */
 export interface Variant {
-    value: string;
-    options: string[];
+  value: string
+  options: string[]
 }
 
 /**
@@ -14,10 +14,10 @@ export interface Variant {
  * @description Represents a specific stock keeping unit, a unique combination of variants.
  */
 export interface Sku {
-    value: string;
-    price: number;
-    stock: number;
-    image: string;
+  value: string
+  price: number
+  stock: number
+  image: string
 }
 
 /**
@@ -25,28 +25,28 @@ export interface Sku {
  * @description Represents the translation of a product's text fields into a specific language.
  */
 export interface ProductTranslation extends BaseEntity {
-    productId: number;
-    languageCode: string;
-    name: string;
-    description: string;
+  productId: number
+  languageCode: string
+  name: string
+  description: string
 }
 
 /**
  * @interface Product
  * @description Represents the main product entity, extending the base entity.
  */
-export interface Product extends BaseEntity{
-    publishedAt: string | null;
-    name: string;
-    basePrice: number;
-    virtualPrice: number;
-    brandId: number;
-    images: string[];
-    variants: Variant[];
-    skus?: Sku[]; // Optional as it's not in the list response
-    categories?: string[]; // Optional as it's not in the list response
-    productTranslations: ProductTranslation[];
-    message: string;
+export interface Product extends BaseEntity {
+  publishedAt: string | null
+  name: string
+  basePrice: number
+  virtualPrice: number
+  brandId: number
+  images: string[]
+  variants: Variant[]
+  skus?: Sku[] // Optional as it's not in the list response
+  categories?: string[] // Optional as it's not in the list response
+  productTranslations: ProductTranslation[]
+  message: string
 }
 
 /**
@@ -54,9 +54,9 @@ export interface Product extends BaseEntity{
  * @description Represents the API response for a list of products, including pagination metadata.
  */
 export interface ProductsResponse {
-    data: Product[];
-    metadata: PaginationMetadata;
-    message: string;
+  data: Product[]
+  metadata: PaginationMetadata
+  message: string
 }
 
 /**
@@ -64,27 +64,27 @@ export interface ProductsResponse {
  * @description Represents the payload for creating a new product.
  */
 export interface ProductCreateRequest {
-    name: string;
-    description: string; // English content normalized from the original source text.
-    publishedAt?: string | null;
-    basePrice: number;
-    virtualPrice: number;
-    brandId: string; // English content normalized from the original source text.
-    images: string[]; // English content normalized from the original source text.
-    categories: string[]; // English content normalized from the original source text.
-    specifications: Array<{
-      name: string;
-      value: string;
-    }>
-    variants: Variant[];
-    skus: Sku[];
+  name: string
+  description: string
+  publishedAt?: string | null
+  basePrice: number
+  virtualPrice: number
+  brandId: string
+  images: string[]
+  categories: string[]
+  specifications: Array<{
+    name: string
+    value: string
+  }>
+  variants: Variant[]
+  skus: Sku[]
 }
 
 /**
  * @interface ProductUpdateRequest
  * @description Represents the payload for updating an existing product. It's a partial of the create request.
  */
-export type ProductUpdateRequest = Partial<ProductCreateRequest>;
+export type ProductUpdateRequest = Partial<ProductCreateRequest>
 
 // --- Interfaces for Product Detail Response ---
 
@@ -93,11 +93,11 @@ export type ProductUpdateRequest = Partial<ProductCreateRequest>;
  * @description Represents a detailed Sku object from the product detail API endpoint.
  */
 export interface SkuDetail extends BaseEntity {
-  value: string;
-  price: number;
-  stock: number;
-  image: string | null;
-  productId: number;
+  value: string
+  price: number
+  stock: number
+  image: string | null
+  productId: number
 }
 
 /**
@@ -105,9 +105,9 @@ export interface SkuDetail extends BaseEntity {
  * @description Represents a detailed Category object from the product detail API endpoint.
  */
 export interface CategoryDetail extends BaseEntity {
-  name: string;
-  parentCategoryId: number | null;
-  logo: string | null;
+  name: string
+  parentCategoryId: number | null
+  logo: string | null
 }
 
 /**
@@ -115,8 +115,8 @@ export interface CategoryDetail extends BaseEntity {
  * @description Represents a detailed Brand object from the product detail API endpoint.
  */
 export interface BrandDetail extends BaseEntity {
-  name: string;
-  logo: string | null;
+  name: string
+  logo: string | null
 }
 
 /**
@@ -124,22 +124,22 @@ export interface BrandDetail extends BaseEntity {
  * @description Represents the detailed product entity from the API, including nested objects.
  */
 export interface ProductDetail extends BaseEntity {
-  publishedAt: string | null;
-  name: string;
-  description?: string | null;
-  basePrice: number;
-  virtualPrice: number;
-  brandId: number;
-  images: string[];
-  variants: Variant[];
-  skus: SkuDetail[];
-  categories: CategoryDetail[];
+  publishedAt: string | null
+  name: string
+  description?: string | null
+  basePrice: number
+  virtualPrice: number
+  brandId: number
+  images: string[]
+  variants: Variant[]
+  skus: SkuDetail[]
+  categories: CategoryDetail[]
   specifications: Array<{
-    name: string;
-    value: string;
-  }>;
-  brand: BrandDetail;
-  productTranslations: ProductTranslation[];
+    name: string
+    value: string
+  }>
+  brand: BrandDetail
+  productTranslations: ProductTranslation[]
 }
 
 /**
@@ -147,5 +147,5 @@ export interface ProductDetail extends BaseEntity {
  * @description Represents the full API response for a single product detail.
  */
 export interface ProductDetailResponse extends BaseResponse {
-  data: ProductDetail;
+  data: ProductDetail
 }

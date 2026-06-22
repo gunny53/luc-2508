@@ -1,49 +1,37 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import { useParams } from "next/navigation";
-import { useOrder } from "../useOrders";
-import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
-import Image from "next/image";
-import {
-  Download,
-  Printer,
-  Building2,
-  Phone,
-  Mail,
-  MapPin,
-  Calendar,
-  Hash,
-  Loader2,
-  User,
-  Receipt
-} from "lucide-react";
+import { useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
+import { useOrder } from '../use-orders'
+import { Button } from '@/components/ui/button'
+import { format } from 'date-fns'
+import Image from 'next/image'
+import { Download, Printer, Building2, Phone, Mail, MapPin, Calendar, Hash, Loader2, User, Receipt } from 'lucide-react'
 
 export default function OrderBill() {
-  const { id } = useParams<{ id: string }>();
-  const { orderDetail, loading, fetchOrderDetail } = useOrder();
-  const billRef = useRef<HTMLDivElement>(null);
+  const { id } = useParams<{ id: string }>()
+  const { orderDetail, loading, fetchOrderDetail } = useOrder()
+  const billRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (id) fetchOrderDetail(id);
-  }, [id, fetchOrderDetail]);
+    if (id) fetchOrderDetail(id)
+  }, [id, fetchOrderDetail])
 
   const handlePrint = () => {
     if (billRef.current) {
-      const printContent = billRef.current.innerHTML;
-      const originalContent = document.body.innerHTML;
+      const printContent = billRef.current.innerHTML
+      const originalContent = document.body.innerHTML
 
-      document.body.innerHTML = printContent;
-      window.print();
-      document.body.innerHTML = originalContent;
-      window.location.reload();
+      document.body.innerHTML = printContent
+      window.print()
+      document.body.innerHTML = originalContent
+      window.location.reload()
     }
-  };
+  }
 
   const handleDownloadPDF = () => {
-    handlePrint();
-  };
+    handlePrint()
+  }
 
   if (loading) {
     return (
@@ -53,7 +41,7 @@ export default function OrderBill() {
           <p className="text-slate-600 text-sm">English content normalized from the original source text.</p>
         </div>
       </div>
-    );
+    )
   }
 
   if (!orderDetail) {
@@ -67,31 +55,24 @@ export default function OrderBill() {
           <p className="text-slate-500 mt-1 text-xs">English content normalized from the original source text.</p>
         </div>
       </div>
-    );
+    )
   }
 
-  const totalAmount = orderDetail.totalPayment || orderDetail.items.reduce(
-    (sum, item) => sum + item.skuPrice * item.quantity,
-    0
-  );
+  const totalAmount =
+    orderDetail.totalPayment || orderDetail.items.reduce((sum, item) => sum + item.skuPrice * item.quantity, 0)
 
   return (
     <div className="space-y-4">
       {/* Action Buttons */}
       <div className="flex items-center justify-end gap-2 bg-white rounded-lg p-3 shadow-sm border border-slate-200/60 print:hidden">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={handlePrint}
-          className="flex items-center gap-2 text-xs"
-        >
-          <Printer className="w-3 h-3" />English content normalized from the original source text.</Button>
-        <Button
-          size="sm"
-          onClick={handleDownloadPDF}
-          className="flex items-center gap-2 text-xs"
-        >
-          <Download className="w-3 h-3" />English content normalized from the original source text.</Button>
+        <Button variant="outline" size="sm" onClick={handlePrint} className="flex items-center gap-2 text-xs">
+          <Printer className="w-3 h-3" />
+          English content normalized from the original source text.
+        </Button>
+        <Button size="sm" onClick={handleDownloadPDF} className="flex items-center gap-2 text-xs">
+          <Download className="w-3 h-3" />
+          English content normalized from the original source text.
+        </Button>
       </div>
 
       {/* Invoice */}
@@ -109,7 +90,9 @@ export default function OrderBill() {
               </div>
             </div>
             <div className="text-right">
-              <h2 className="text-xl font-bold text-slate-800 mb-1">English content normalized from the original source text.</h2>
+              <h2 className="text-xl font-bold text-slate-800 mb-1">
+                English content normalized from the original source text.
+              </h2>
               <div className="space-y-0.5 text-xs text-slate-500">
                 <div className="flex items-center justify-end gap-1">
                   <Hash className="w-3 h-3" />
@@ -117,7 +100,7 @@ export default function OrderBill() {
                 </div>
                 <div className="flex items-center justify-end gap-1">
                   <Calendar className="w-3 h-3" />
-                  <span>{format(new Date(orderDetail.createdAt), "dd/MM/yyyy")}</span>
+                  <span>{format(new Date(orderDetail.createdAt), 'dd/MM/yyyy')}</span>
                 </div>
               </div>
             </div>
@@ -128,7 +111,9 @@ export default function OrderBill() {
             {/* Company Info */}
             <div className="bg-slate-50/50 rounded-lg p-4">
               <h3 className="font-semibold text-slate-700 mb-3 flex items-center gap-2 text-sm">
-                <Building2 className="w-4 h-4 text-blue-500" />English content normalized from the original source text.</h3>
+                <Building2 className="w-4 h-4 text-blue-500" />
+                English content normalized from the original source text.
+              </h3>
               <div className="space-y-1.5 text-xs text-slate-600">
                 <div className="flex items-start gap-2">
                   <Building2 className="w-3 h-3 flex-shrink-0 mt-0.5 text-slate-400" />
@@ -152,7 +137,9 @@ export default function OrderBill() {
             {/* Customer Info */}
             <div className="bg-blue-50/50 rounded-lg p-4">
               <h3 className="font-semibold text-slate-700 mb-3 flex items-center gap-2 text-sm">
-                <User className="w-4 h-4 text-blue-500" />English content normalized from the original source text.</h3>
+                <User className="w-4 h-4 text-blue-500" />
+                English content normalized from the original source text.
+              </h3>
               <div className="space-y-1.5 text-xs text-slate-600">
                 <div className="flex items-center gap-2">
                   <span className="font-medium w-8">English content normalized from the original source text.</span>
@@ -163,7 +150,9 @@ export default function OrderBill() {
                   <span>{orderDetail.receiver.phone}</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="font-medium w-8 flex-shrink-0">English content normalized from the original source text.</span>
+                  <span className="font-medium w-8 flex-shrink-0">
+                    English content normalized from the original source text.
+                  </span>
                   <span className="leading-tight">{orderDetail.receiver.address}</span>
                 </div>
               </div>
@@ -172,21 +161,32 @@ export default function OrderBill() {
 
           {/* Products Table */}
           <div className="mb-6">
-            <h3 className="font-semibold text-slate-700 mb-3 text-sm">English content normalized from the original source text.</h3>
+            <h3 className="font-semibold text-slate-700 mb-3 text-sm">
+              English content normalized from the original source text.
+            </h3>
             <div className="border border-slate-200 rounded-lg overflow-hidden">
               <table className="w-full">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200">
                     <th className="text-left p-3 font-medium text-slate-600 text-xs w-12">STT</th>
-                    <th className="text-left p-3 font-medium text-slate-600 text-xs">English content normalized from the original source text.</th>
-                    <th className="text-center p-3 font-medium text-slate-600 text-xs w-20">English content normalized from the original source text.</th>
+                    <th className="text-left p-3 font-medium text-slate-600 text-xs">
+                      English content normalized from the original source text.
+                    </th>
+                    <th className="text-center p-3 font-medium text-slate-600 text-xs w-20">
+                      English content normalized from the original source text.
+                    </th>
                     <th className="text-center p-3 font-medium text-slate-600 text-xs w-16">SL</th>
-                    <th className="text-right p-3 font-medium text-slate-600 text-xs w-24">English content normalized from the original source text.</th>
+                    <th className="text-right p-3 font-medium text-slate-600 text-xs w-24">
+                      English content normalized from the original source text.
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {orderDetail.items.map((item, index) => (
-                    <tr key={item.id} className={`border-b border-slate-100 ${index % 2 === 1 ? 'bg-slate-50/30' : ''}`}>
+                    <tr
+                      key={item.id}
+                      className={`border-b border-slate-100 ${index % 2 === 1 ? 'bg-slate-50/30' : ''}`}
+                    >
                       <td className="p-3 text-slate-500 text-xs">{index + 1}</td>
                       <td className="p-3">
                         <div className="flex items-center gap-2.5">
@@ -198,14 +198,14 @@ export default function OrderBill() {
                             className="rounded object-cover flex-shrink-0"
                           />
                           <div className="min-w-0 flex-1">
-                            <p className="font-medium text-slate-800 text-xs leading-tight line-clamp-2">{item.productName}</p>
+                            <p className="font-medium text-slate-800 text-xs leading-tight line-clamp-2">
+                              {item.productName}
+                            </p>
                             <p className="text-xs text-slate-500 mt-0.5">{item.skuValue}</p>
                           </div>
                         </div>
                       </td>
-                      <td className="p-3 text-center text-slate-600 text-xs">
-                        {item.skuPrice.toLocaleString()}₫
-                      </td>
+                      <td className="p-3 text-center text-slate-600 text-xs">{item.skuPrice.toLocaleString()}₫</td>
                       <td className="p-3 text-center text-slate-600 text-xs font-medium">{item.quantity}</td>
                       <td className="p-3 text-right font-semibold text-slate-800 text-xs">
                         {(item.skuPrice * item.quantity).toLocaleString()}₫
@@ -241,7 +241,9 @@ export default function OrderBill() {
                 </div>
                 <div className="border-t border-slate-200 pt-2 mt-3">
                   <div className="flex justify-between items-center py-1">
-                    <span className="text-slate-800 font-semibold text-sm">English content normalized from the original source text.</span>
+                    <span className="text-slate-800 font-semibold text-sm">
+                      English content normalized from the original source text.
+                    </span>
                     <span className="text-blue-600 font-bold text-lg">{totalAmount.toLocaleString()}₫</span>
                   </div>
                 </div>
@@ -252,7 +254,9 @@ export default function OrderBill() {
           {/* Barcode Section */}
           <div className="bg-gradient-to-r from-slate-50 to-blue-50/30 rounded-lg p-4 mb-4">
             <div className="text-center">
-              <p className="text-xs text-slate-600 mb-2 font-medium">English content normalized from the original source text.</p>
+              <p className="text-xs text-slate-600 mb-2 font-medium">
+                English content normalized from the original source text.
+              </p>
               <div className="bg-white p-3 rounded-md inline-block shadow-sm">
                 <div className="flex flex-col items-center">
                   {/* Simple barcode representation */}
@@ -276,13 +280,15 @@ export default function OrderBill() {
 
           {/* Footer */}
           <div className="text-center pt-4 border-t border-slate-200">
-            <p className="text-sm text-slate-700 font-medium">English content normalized from the original source text.</p>
+            <p className="text-sm text-slate-700 font-medium">
+              English content normalized from the original source text.
+            </p>
             <p className="text-xs text-slate-500 mt-1">
-              English content normalized from the original source text. {format(new Date(), "dd/MM/yyyy HH:mm")}
+              English content normalized from the original source text. {format(new Date(), 'dd/MM/yyyy HH:mm')}
             </p>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

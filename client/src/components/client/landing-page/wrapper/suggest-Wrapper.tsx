@@ -1,8 +1,8 @@
-'use client';
-import dynamic from "next/dynamic";
+'use client'
+import dynamic from 'next/dynamic'
 
-const SuggestSectionDynamic = dynamic(() => import("../suggest-Section").then(mod => mod.default), { ssr: false });
+const SuggestSectionDynamic = dynamic(() => import('../suggest-section').then((mod) => mod.default), { ssr: false })
 
 export default function SuggestSectionWrapper() {
-  return <SuggestSectionDynamic />;
+  return <SuggestSectionDynamic />
 }

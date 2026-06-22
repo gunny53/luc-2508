@@ -7,20 +7,17 @@ import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table-component/data-table'
 import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal'
 
-import { RolesColumns, Role } from './roles-Columns'
-import RolesModalUpsert from './roles-ModalUpsert'
+import { RolesColumns, Role } from './roles-columns'
+import RolesModalUpsert from './roles-modal-upsert'
 import { showToast } from '@/components/ui/toastify'
-import { useRoles } from './useRoles'
-import {
-  RoleCreateRequest,
-  RoleUpdateRequest,
-} from "@/types/auth/role.interface"
-import { useDataTable } from '@/hooks/useDataTable'
+import { useRoles } from './use-roles'
+import { RoleCreateRequest, RoleUpdateRequest } from '@/types/auth/role.interface'
+import { useDataTable } from '@/hooks/use-data-table'
 import SearchInput from '@/components/ui/data-table-component/search-input'
 import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option'
 
 export default function RolesTable() {
-  const t = useTranslations("admin.roles")
+  const t = useTranslations('admin.roles')
 
   const {
     data,
@@ -43,7 +40,7 @@ export default function RolesTable() {
     addRole,
     editRole,
     permissionsData,
-    isPermissionsLoading,
+    isPermissionsLoading
   } = useRoles()
 
   const handleSubmit = async (values: {
@@ -58,52 +55,45 @@ export default function RolesTable() {
           name: values.name,
           description: values.description,
           isActive: values.isActive,
-          permissionIds: values.permissionIds,
-        };
-        await editRole(roleToEdit.id, payload);
+          permissionIds: values.permissionIds
+        }
+        await editRole(roleToEdit.id, payload)
       } else {
         const payload: RoleCreateRequest = {
           name: values.name,
           description: values.description,
-          isActive: values.isActive,
-        };
-        await addRole(payload);
+          isActive: values.isActive
+        }
+        await addRole(payload)
       }
     } catch (err) {
-      showToast(
-        modalMode === 'edit'
-          ? t('updateError')
-          : t('createError'),
-        'error'
-      )
+      showToast(modalMode === 'edit' ? t('updateError') : t('createError'), 'error')
     }
   }
 
+  const columns = RolesColumns({
+    onDelete: handleOpenDelete,
+    onEdit: (role) => handleOpenUpsertModal('edit', role)
+  })
 
-
-    const columns = RolesColumns({
-      onDelete: handleOpenDelete,
-      onEdit: (role) => handleOpenUpsertModal('edit', role)
-    });
-
-    const table = useDataTable({ data: data, columns })
+  const table = useDataTable({ data: data, columns })
   return (
     <div className="w-full space-y-4">
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenUpsertModal('add')}>
           <PlusIcon className="w-4 h-4 mr-2" />
-          {t("addAction")}
+          {t('addAction')}
         </Button>
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
-            value={pagination.search || ""}
+            value={pagination.search || ''}
             onValueChange={(value) => handleSearch(value)}
-            placeholder={t("searchPlaceholder")}
+            placeholder={t('searchPlaceholder')}
             className="w-full md:max-w-sm"
           />
         </div>
@@ -120,7 +110,7 @@ export default function RolesTable() {
           pagination={{
             metadata: pagination,
             onPageChange: handlePageChange,
-            onLimitChange: handleLimitChange,
+            onLimitChange: handleLimitChange
           }}
         />
       </div>
@@ -138,23 +128,19 @@ export default function RolesTable() {
         />
       )}
 
-      {/* English content normalized from the original source text. */}
+      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
-          if (!deleteLoading) handleCloseDeleteModal();
+          if (!deleteLoading) handleCloseDeleteModal()
         }}
         onConfirm={handleConfirmDelete}
-        title={t("confirmDeleteTitle")}
-        description={
-          roleToDelete
-            ? t("confirmDeleteDesc", { name: roleToDelete.name })
-            : ""
-        }
-        confirmText={t("modal.delete")}
-        cancelText={t("modal.cancel")}
+        title={t('confirmDeleteTitle')}
+        description={roleToDelete ? t('confirmDeleteDesc', { name: roleToDelete.name }) : ''}
+        confirmText={t('modal.delete')}
+        cancelText={t('modal.cancel')}
         loading={deleteLoading}
       />
     </div>
-  );
+  )
 }

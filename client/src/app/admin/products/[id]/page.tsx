@@ -1,60 +1,64 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { productsService } from "@/services/productsService";
-import ProductFormWrapper from "@/components/admin/products/products-form/products-form-Wrapper";
-import { ProductDetail } from "@/types/products.interface";
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { productsService } from '@/services/products-service'
+import ProductFormWrapper from '@/components/admin/products/products-form/products-form-wrapper'
+import { ProductDetail } from '@/types/products.interface'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb'
 
 export default function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
-  const [product, setProduct] = useState<ProductDetail | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [product, setProduct] = useState<ProductDetail | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // English content normalized from the original source text.
-        const resolvedParams = await params;
-        const data = await productsService.getById(resolvedParams.id);
-        setProduct(data);
+        const resolvedParams = await params
+        const data = await productsService.getById(resolvedParams.id)
+        setProduct(data)
       } catch (error) {
-        console.error("Failed to fetch product:", error);
-        setError("English content normalized from the original source text.");
+        console.error('Failed to fetch product:', error)
+        setError('English content normalized from the original source text.')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchProduct();
-  }, [params]);
+    fetchProduct()
+  }, [params])
+  if (loading)
+    return (
+      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
+        <div className="mx-auto w-full max-w-7xl text-center">
+          English content normalized from the original source text.
+        </div>
+      </main>
+    )
 
-  // English content normalized from the original source text.
-  if (loading) return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
-      <div className="mx-auto w-full max-w-7xl text-center">English content normalized from the original source text.</div>
-    </main>
-  );
+  if (error)
+    return (
+      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
+        <div className="mx-auto w-full max-w-7xl text-center text-red-500">{error}</div>
+      </main>
+    )
 
-  if (error) return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
-      <div className="mx-auto w-full max-w-7xl text-center text-red-500">{error}</div>
-    </main>
-  );
-
-  if (!product) return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
-      <div className="mx-auto w-full max-w-7xl text-center">English content normalized from the original source text.</div>
-    </main>
-  );
+  if (!product)
+    return (
+      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
+        <div className="mx-auto w-full max-w-7xl text-center">
+          English content normalized from the original source text.
+        </div>
+      </main>
+    )
 
   return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
@@ -69,7 +73,9 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>English content normalized from the original source text. {product.name}</BreadcrumbPage>
+                <BreadcrumbPage>
+                  English content normalized from the original source text. {product.name}
+                </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -83,5 +89,5 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         <ProductFormWrapper initialData={product} />
       </div>
     </main>
-  );
+  )
 }

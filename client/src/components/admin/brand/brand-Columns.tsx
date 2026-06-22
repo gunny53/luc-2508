@@ -1,16 +1,14 @@
 'use client'
 
-import { ColumnDef } from "@tanstack/react-table"
-import { Checkbox } from "@/components/ui/checkbox"
-import { DataTableColumnHeader } from "@/components/ui/data-table-component/data-table-column-header"
-import { DataTableRowActions, ActionItem } from "@/components/ui/data-table-component/data-table-row-actions"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Edit, Trash2 } from "lucide-react"
-import { format } from "date-fns"
-import { Brand } from "@/types/admin/brands.interface"
-import { useTranslations } from "next-intl"
-
-// English content normalized from the original source text.
+import { ColumnDef } from '@tanstack/react-table'
+import { Checkbox } from '@/components/ui/checkbox'
+import { DataTableColumnHeader } from '@/components/ui/data-table-component/data-table-column-header'
+import { DataTableRowActions, ActionItem } from '@/components/ui/data-table-component/data-table-row-actions'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Edit, Trash2 } from 'lucide-react'
+import { format } from 'date-fns'
+import { Brand } from '@/types/admin/brands.interface'
+import { useTranslations } from 'next-intl'
 const getBrandActions = (
   brand: Brand,
   onDelete: (brand: Brand) => void,
@@ -18,21 +16,21 @@ const getBrandActions = (
   t: (key: string) => string
 ): ActionItem<Brand>[] => [
   {
-    type: "command",
-    label: t("actions.edit"),
+    type: 'command',
+    label: t('actions.edit'),
     icon: <Edit className="w-4 h-4" />,
     onClick: (brand) => {
-      onEdit(brand);
-    },
+      onEdit(brand)
+    }
   },
-  { type: "separator" },
+  { type: 'separator' },
   {
-    type: "command",
-    label: t("actions.delete"),
+    type: 'command',
+    label: t('actions.delete'),
     icon: <Trash2 className="w-4 h-4" />,
     onClick: (brand) => onDelete(brand),
-    className: "text-red-500 hover:!text-red-500",
-  },
+    className: 'text-red-500 hover:!text-red-500'
+  }
 ]
 
 type BrandColumnsProps = {
@@ -40,21 +38,15 @@ type BrandColumnsProps = {
   onDelete: (brand: Brand) => void
 }
 
-export const BrandColumns = ({
-  onEdit,
-  onDelete
-}: BrandColumnsProps): ColumnDef<Brand>[] => {
-  const t = useTranslations("admin.ModuleBrands.Table");
+export const BrandColumns = ({ onEdit, onDelete }: BrandColumnsProps): ColumnDef<Brand>[] => {
+  const t = useTranslations('admin.ModuleBrands.Table')
 
   return [
     {
-      id: "select",
+      id: 'select',
       header: ({ table }) => (
         <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-          }
+          checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')}
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           aria-label="Select all"
         />
@@ -67,24 +59,18 @@ export const BrandColumns = ({
         />
       ),
       enableSorting: false,
-      enableHiding: false,
+      enableHiding: false
     },
     {
-      accessorKey: "id",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t("id") || "ID"} />
-      ),
-      cell: ({ row }) => (
-        <div className="font-mono text-xs">{row.getValue("id")}</div>
-      ),
+      accessorKey: 'id',
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('id') || 'ID'} />,
+      cell: ({ row }) => <div className="font-mono text-xs">{row.getValue('id')}</div>,
       enableSorting: true,
-      enableHiding: true,
+      enableHiding: true
     },
     {
-      accessorKey: "logo",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t("logo")} />
-      ),
+      accessorKey: 'logo',
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('logo')} />,
       cell: ({ row }) => {
         const brand = row.original
         return (
@@ -99,51 +85,38 @@ export const BrandColumns = ({
         )
       },
       enableSorting: false,
-      enableHiding: true,
+      enableHiding: true
     },
     {
-      accessorKey: "name",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t("name")} />
-      ),
-      cell: ({ row }) => (
-        <div className="font-medium">{row.getValue("name")}</div>
-      ),
+      accessorKey: 'name',
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('name')} />,
+      cell: ({ row }) => <div className="font-medium">{row.getValue('name')}</div>,
       enableSorting: true,
-      enableHiding: true,
+      enableHiding: true
     },
     {
-      accessorKey: "createdAt",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t("createdAt")} />
-      ),
+      accessorKey: 'createdAt',
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('createdAt')} />,
       cell: ({ row }) => {
-        const date = new Date(row.getValue("createdAt"));
-        return <span>{format(date, 'dd/MM/yyyy HH:mm')}</span>;
+        const date = new Date(row.getValue('createdAt'))
+        return <span>{format(date, 'dd/MM/yyyy HH:mm')}</span>
       },
       enableSorting: true,
-      enableHiding: true,
+      enableHiding: true
     },
     {
-      accessorKey: "updatedAt",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t("updatedAt")} />
-      ),
+      accessorKey: 'updatedAt',
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('updatedAt')} />,
       cell: ({ row }) => {
-        const date = new Date(row.getValue("updatedAt"));
-        return <span>{format(date, 'dd/MM/yyyy HH:mm')}</span>;
+        const date = new Date(row.getValue('updatedAt'))
+        return <span>{format(date, 'dd/MM/yyyy HH:mm')}</span>
       },
       enableSorting: true,
-      enableHiding: true,
+      enableHiding: true
     },
     {
-      id: "actions",
-      cell: ({ row }) => (
-        <DataTableRowActions
-          row={row}
-          actions={getBrandActions(row.original, onDelete, onEdit, t)}
-        />
-      ),
-    },
-  ];
+      id: 'actions',
+      cell: ({ row }) => <DataTableRowActions row={row} actions={getBrandActions(row.original, onDelete, onEdit, t)} />
+    }
+  ]
 }

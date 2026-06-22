@@ -3,10 +3,11 @@ English content normalized from the original source text.
 English content normalized from the original source text.
 
 English content normalized from the original source text.
+
 1. **useServerDataTable Hook**: English content normalized from the original source text.
-English content normalized from the original source text.
-3. **Module Hook (usePermissions)**: English content normalized from the original source text.
-4. **DataTable Component**: English content normalized from the original source text.
+   English content normalized from the original source text.
+2. **Module Hook (usePermissions)**: English content normalized from the original source text.
+3. **DataTable Component**: English content normalized from the original source text.
 
 English content normalized from the original source text.
 
@@ -19,6 +20,7 @@ const { permissions, loading, pagination, ... } = usePermissions();
 ```
 
 Hook `usePermissions` English content normalized from the original source text.
+
 - English content normalized from the original source text
 - English content normalized from the original source text
 - English content normalized from the original source text
@@ -35,6 +37,7 @@ Hook `usePermissions` English content normalized from the original source text.
 English content normalized from the original source text.
 
 English content normalized from the original source text.
+
 - English content normalized from the original source text
 - English content normalized from the original source text
 - English content normalized from the original source text
@@ -43,6 +46,7 @@ English content normalized from the original source text.
 ### 4. CRUD Operations
 
 English content normalized from the original source text.
+
 - English content normalized from the original source text
 - English content normalized from the original source text
 - English content normalized from the original source text
@@ -54,22 +58,15 @@ English content normalized from the original source text.
 English content normalized from the original source text.
 
 ```typescript
-const {
-  data,
-  loading,
-  pagination,
-  handlePageChange,
-  handleLimitChange,
-  handleSearch,
-  handleSortChange
-} = useServerDataTable({
-  fetchData: yourApiFunction,
-  getResponseData: (response) => response.data,
-  getResponseMetadata: (response) => response.metadata,
-  mapResponseToData: (item) => transformItem(item),
-  initialSort: { sortBy: 'id', sortOrder: 'asc' },
-  defaultLimit: 10
-});
+const { data, loading, pagination, handlePageChange, handleLimitChange, handleSearch, handleSortChange } =
+  useServerDataTable({
+    fetchData: yourApiFunction,
+    getResponseData: (response) => response.data,
+    getResponseMetadata: (response) => response.metadata,
+    mapResponseToData: (item) => transformItem(item),
+    initialSort: { sortBy: 'id', sortOrder: 'asc' },
+    defaultLimit: 10
+  })
 ```
 
 - English content normalized from the original source text
@@ -86,12 +83,12 @@ English content normalized from the original source text.
 ```typescript
 export function createDataTableAdapter<T>(apiFunction) {
   return async (params) => {
-    const response = await apiFunction(params);
+    const response = await apiFunction(params)
     return {
       data: response.data || [],
       metadata: response.metadata || defaultMetadata
-    };
-  };
+    }
+  }
 }
 ```
 
@@ -138,17 +135,21 @@ export function usePermissions() {
 English content normalized from the original source text.
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text

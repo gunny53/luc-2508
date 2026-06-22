@@ -1,58 +1,56 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertCircle, RefreshCw, Home } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { AlertCircle, RefreshCw, Home } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 interface ErrorProps {
-  error: Error & { digest?: string };
-  reset: () => void;
+  error: Error & { digest?: string }
+  reset: () => void
 }
 
 export default function Error({ error, reset }: ErrorProps) {
-  const [isRetrying, setIsRetrying] = useState(false);
-  const [countdown, setCountdown] = useState(8);
-  const [autoRetryEnabled, setAutoRetryEnabled] = useState(true);
-  const router = useRouter();
-
-  // English content normalized from the original source text.
+  const [isRetrying, setIsRetrying] = useState(false)
+  const [countdown, setCountdown] = useState(8)
+  const [autoRetryEnabled, setAutoRetryEnabled] = useState(true)
+  const router = useRouter()
   useEffect(() => {
-    if (!autoRetryEnabled) return;
+    if (!autoRetryEnabled) return
 
     const interval = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
-          handleRetry();
-          return 8;
+          handleRetry()
+          return 8
         }
-        return prev - 1;
-      });
-    }, 1000);
+        return prev - 1
+      })
+    }, 1000)
 
-    return () => clearInterval(interval);
-  }, [autoRetryEnabled]);
+    return () => clearInterval(interval)
+  }, [autoRetryEnabled])
 
   const handleRetry = async () => {
-    setIsRetrying(true);
+    setIsRetrying(true)
     try {
-      reset();
+      reset()
     } catch (err) {
-      console.error('Retry failed:', err);
+      console.error('Retry failed:', err)
     } finally {
-      setIsRetrying(false);
+      setIsRetrying(false)
     }
-  };
+  }
 
   const handleManualRetry = () => {
-    setAutoRetryEnabled(false);
-    handleRetry();
-  };
+    setAutoRetryEnabled(false)
+    handleRetry()
+  }
 
   const goHome = () => {
-    router.push('/');
-  };
+    router.push('/')
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -61,7 +59,9 @@ export default function Error({ error, reset }: ErrorProps) {
           <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
             <AlertCircle className="w-6 h-6 text-red-600" />
           </div>
-          <CardTitle className="text-xl font-semibold text-gray-900">English content normalized from the original source text.</CardTitle>
+          <CardTitle className="text-xl font-semibold text-gray-900">
+            English content normalized from the original source text.
+          </CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-4">
@@ -77,34 +77,32 @@ export default function Error({ error, reset }: ErrorProps) {
               <div className="flex items-center justify-center space-x-2 text-blue-700">
                 <RefreshCw className="w-4 h-4 animate-spin" />
                 <span className="text-sm">
-                  English content normalized from the original source text. {countdown} English content normalized from the original source text.
+                  English content normalized from the original source text. {countdown} English content normalized from
+                  the original source text.
                 </span>
               </div>
             </div>
           )}
 
           <div className="space-y-3">
-            <Button
-              onClick={handleManualRetry}
-              disabled={isRetrying}
-              className="w-full"
-              variant="default"
-            >
+            <Button onClick={handleManualRetry} disabled={isRetrying} className="w-full" variant="default">
               {isRetrying ? (
                 <>
-                  <RefreshCw className="w-4 h-4 mr-2 animate-spin" />English content normalized from the original source text.</>
+                  <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                  English content normalized from the original source text.
+                </>
               ) : (
                 <>
-                  <RefreshCw className="w-4 h-4 mr-2" />English content normalized from the original source text.</>
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  English content normalized from the original source text.
+                </>
               )}
             </Button>
 
-            <Button
-              onClick={goHome}
-              variant="outline"
-              className="w-full"
-            >
-              <Home className="w-4 h-4 mr-2" />English content normalized from the original source text.</Button>
+            <Button onClick={goHome} variant="outline" className="w-full">
+              <Home className="w-4 h-4 mr-2" />
+              English content normalized from the original source text.
+            </Button>
 
             {autoRetryEnabled && (
               <Button
@@ -112,7 +110,9 @@ export default function Error({ error, reset }: ErrorProps) {
                 variant="ghost"
                 className="w-full text-gray-500"
                 size="sm"
-              >English content normalized from the original source text.</Button>
+              >
+                English content normalized from the original source text.
+              </Button>
             )}
           </div>
 
@@ -124,5 +124,5 @@ export default function Error({ error, reset }: ErrorProps) {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

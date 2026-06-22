@@ -1,20 +1,16 @@
-"use client";
+'use client'
 
-import { useResponsive } from "@/hooks/useResponsive";
-import { Sidebar } from "@/components/client/user/layout/user-Sidebar";
-import { UserMobileHeaderProvider } from "@/providers/UserMobileHeaderContext";
-import ClientLayoutWrapper from "@/components/client/layout/ClientLayoutWrapper";
-import { useUserData } from "@/hooks/useGetData-UserLogin";
-import ProfileHeader from "@/components/client/user/account/profile/profile-Header";
-import MobileBottomNav from "@/components/client/user/account/moblie/mobile-sidebar";
+import { useResponsive } from '@/hooks/use-responsive'
+import { Sidebar } from '@/components/client/user/layout/user-sidebar'
+import { UserMobileHeaderProvider } from '@/providers/user-mobile-header-context'
+import ClientLayoutWrapper from '@/components/client/layout/client-layout-wrapper'
+import { useUserData } from '@/hooks/use-get-data-user-login'
+import ProfileHeader from '@/components/client/user/account/profile/profile-header'
+import MobileBottomNav from '@/components/client/user/account/moblie/mobile-sidebar'
 
-export default function AccountLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const { isMobile } = useResponsive();
-  const userData = useUserData();
+export default function AccountLayout({ children }: { children: React.ReactNode }) {
+  const { isMobile } = useResponsive()
+  const userData = useUserData()
 
   return (
     <UserMobileHeaderProvider>
@@ -38,7 +34,7 @@ export default function AccountLayout({
                   {children}
                 </div>
               </main>
-              <MobileBottomNav/>
+              <MobileBottomNav />
             </div>
           ) : (
             <div className="flex flex-col min-h-[90vh] text-foreground">
@@ -46,11 +42,11 @@ export default function AccountLayout({
               <div className="px-6 pt-6">
                 <div className="w-full lg:max-w-[1280px] xl:max-w-[1440px] mx-auto rounded-xl">
                   <ProfileHeader
-                    name={userData?.name || ""}
-                    email={userData?.email || ""}
-                    phone={userData?.phoneNumber || ""}
+                    name={userData?.name || ''}
+                    email={userData?.email || ''}
+                    phone={userData?.phoneNumber || ''}
                     // birthday={userData?.dob || ""}
-                    avatar={userData?.avatar || ""}
+                    avatar={userData?.avatar || ''}
                     totalOrders={userData?.statistics?.totalOrders || 0}
                     totalSpent={userData?.statistics?.totalSpent || 0}
                     memberSince={userData?.statistics.memberSince}
@@ -64,9 +60,7 @@ export default function AccountLayout({
                   <Sidebar />
                 </aside>
                 <main className="flex-1 overflow-hidden pt-4">
-                  <div className="w-full lg:max-w-[1280px] xl:max-w-[1440px] mx-auto space-y-6">
-                    {children}
-                  </div>
+                  <div className="w-full lg:max-w-[1280px] xl:max-w-[1440px] mx-auto space-y-6">{children}</div>
                 </main>
               </div>
             </div>
@@ -74,5 +68,5 @@ export default function AccountLayout({
         </div>
       </ClientLayoutWrapper>
     </UserMobileHeaderProvider>
-  );
+  )
 }

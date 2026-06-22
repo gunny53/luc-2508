@@ -48,15 +48,15 @@ const {
   handlePageChange,
   handleLimitChange,
   handleSearch,
-  handleSortChange,
+  handleSortChange
 } = useServerDataTable<ApiItemType, UiItemType>({
   fetchData: yourService.getAll,
   getResponseData,
   getResponseMetadata,
   mapResponseToData,
-  initialSort: { sortBy: "id", sortOrder: "asc" },
-  defaultLimit: 10,
-});
+  initialSort: { sortBy: 'id', sortOrder: 'asc' },
+  defaultLimit: 10
+})
 ```
 
 English content normalized from the original source text.
@@ -76,8 +76,9 @@ const handleCreate = async (data) => {
 English content normalized from the original source text.
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 2. **Fetching Data**:
    - English content normalized from the original source text
@@ -86,9 +87,10 @@ English content normalized from the original source text.
    - English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
 
@@ -101,8 +103,8 @@ English content normalized from the original source text.
 English content normalized from the original source text.
 
 1. **AbortController**: English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
+   English content normalized from the original source text.
+   English content normalized from the original source text.
 
 English content normalized from the original source text.
 

@@ -13,11 +13,21 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@api/*": ["apps/api/src/*"],
+      "@shared/*": ["apps/api/src/shared/*"],
+      "@routes/*": ["apps/api/src/routes/*"],
+      "@websockets/*": ["apps/api/src/websockets/*"],
+      "@cronjobs/*": ["apps/api/src/cronjobs/*"]
+    },
     "incremental": true,
     "skipLibCheck": true,
+    "strict": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
+    "useUnknownInCatchVariables": false,
+    "strictPropertyInitialization": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "allowJs": false,
@@ -25,17 +35,8 @@
     "resolveJsonModule": true
   },
   "ts-node": {
-    "require": [
-      "tsconfig-paths/register"
-    ]
+    "require": ["tsconfig-paths/register"]
   },
-  "include": [
-    "src",
-    "test",
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "*coverage"
-  ]
+  "include": ["apps", "libs", "initial-script", "test"],
+  "exclude": ["node_modules", "dist", "*coverage"]
 }

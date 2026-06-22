@@ -1,34 +1,24 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-// English content normalized from the original source text.
-// English content normalized from the original source text.
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 const recentOrders = [
   {
-    id: "#98765",
-    customer: "English content normalized from the original source text.",
-    total: "English content normalized from the original source text.",
-    status: "English content normalized from the original source text.",
+    id: '#98765',
+    customer: 'English content normalized from the original source text.',
+    total: 'English content normalized from the original source text.',
+    status: 'English content normalized from the original source text.'
   },
   {
-    id: "#98764",
-    customer: "English content normalized from the original source text.",
-    total: "English content normalized from the original source text.",
-    status: "English content normalized from the original source text.",
+    id: '#98764',
+    customer: 'English content normalized from the original source text.',
+    total: 'English content normalized from the original source text.',
+    status: 'English content normalized from the original source text.'
   },
   {
-    id: "#98763",
-    customer: "English content normalized from the original source text.",
-    total: "English content normalized from the original source text.",
-    status: "English content normalized from the original source text.",
-  },
-];
+    id: '#98763',
+    customer: 'English content normalized from the original source text.',
+    total: 'English content normalized from the original source text.',
+    status: 'English content normalized from the original source text.'
+  }
+]
 
 export function RecentOrdersTable() {
   return (
@@ -52,5 +42,5 @@ export function RecentOrdersTable() {
         ))}
       </TableBody>
     </Table>
-  );
+  )
 }

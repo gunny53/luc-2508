@@ -1,38 +1,30 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { memo, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { useCbbCategory } from '@/hooks/combobox/useCbbCategory';
-import { BannerSection } from './banner-Section';
-import { createCategorySlug } from '@/utils/slugify';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link'
+import { memo, useMemo } from 'react'
+import { motion } from 'framer-motion'
+import { useCbbCategory } from '@/hooks/combobox/use-cbb-category'
+import { BannerSection } from './banner-section'
+import { createCategorySlug } from '@/utils/slugify'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface CategoryOption {
-  value: string;
-  label: string;
-  icon?: string | null;
-  parentCategoryId?: string | null;
+  value: string
+  label: string
+  icon?: string | null
+  parentCategoryId?: string | null
 }
-
-// English content normalized from the original source text.
 const CategoryItem = memo(({ category }: { category: CategoryOption }) => (
   <CarouselItem key={category.value} className="pl-4 basis-auto">
     <Link
       href={createCategorySlug(category.label, category.value)}
       className="group/item transition-transform duration-300 block"
-      prefetch={false} // English content normalized from the original source text.
+      prefetch={false}
     >
       <motion.div
         className="px-6 py-3 rounded-full border border-gray-300 hover:border-red-500 hover:bg-white hover:shadow-md transition-all duration-300"
-        whileHover={{ scale: 1.02 }} // English content normalized from the original source text.
+        whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         <span className="text-sm font-medium text-gray-600 whitespace-nowrap group-hover/item:text-red-500 transition-colors duration-300 tracking-wide">
@@ -41,11 +33,9 @@ const CategoryItem = memo(({ category }: { category: CategoryOption }) => (
       </motion.div>
     </Link>
   </CarouselItem>
-));
+))
 
-CategoryItem.displayName = 'CategoryItem';
-
-// English content normalized from the original source text.
+CategoryItem.displayName = 'CategoryItem'
 const SkeletonLoader = memo(() => (
   <>
     {Array.from({ length: 8 }).map((_, index) => (
@@ -56,56 +46,55 @@ const SkeletonLoader = memo(() => (
       </CarouselItem>
     ))}
   </>
-));
+))
 
-SkeletonLoader.displayName = 'SkeletonLoader';
-
-// English content normalized from the original source text.
+SkeletonLoader.displayName = 'SkeletonLoader'
 const EmptyState = memo(() => (
   <CarouselItem className="pl-4 basis-auto">
     <div className="px-6 py-3 text-gray-500">English content normalized from the original source text.</div>
   </CarouselItem>
-));
+))
 
-EmptyState.displayName = 'EmptyState';
-
-// English content normalized from the original source text.
+EmptyState.displayName = 'EmptyState'
 const NavigationButtons = memo(() => (
   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
     <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-4 bg-white/80 backdrop-blur-sm shadow-md hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed" />
     <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-4 bg-white/80 backdrop-blur-sm shadow-md hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed" />
   </div>
-));
+))
 
-NavigationButtons.displayName = 'NavigationButtons';
+NavigationButtons.displayName = 'NavigationButtons'
 
 function CategoriesSectionComponent() {
-  // English content normalized from the original source text.
-  const { categories, loading } = useCbbCategory(null);
+  const { categories, loading } = useCbbCategory(null)
 
   // 5. Memoize carousel options
-  const carouselOpts = useMemo(() => ({
-    align: "start" as const,
-    dragFree: true,
-  }), []);
-
-  // English content normalized from the original source text.
+  const carouselOpts = useMemo(
+    () => ({
+      align: 'start' as const,
+      dragFree: true
+    }),
+    []
+  )
   const categoryItems = useMemo(() => {
-    if (loading) return <SkeletonLoader />;
+    if (loading) return <SkeletonLoader />
 
-    if (categories.length === 0) return <EmptyState />;
+    if (categories.length === 0) return <EmptyState />
 
-    return categories.map((category: CategoryOption) => (
-      <CategoryItem key={category.value} category={category} />
-    ));
-  }, [categories, loading]);
+    return categories.map((category: CategoryOption) => <CategoryItem key={category.value} category={category} />)
+  }, [categories, loading])
 
   // 7. Memoize title component
-  const sectionTitle = useMemo(() => (
-    <h2 className="text-lg font-bold text-gray-800 mb-3.5 flex items-center justify-center gap-1.5">
-      <span className="tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-red-500/20">English content normalized from the original source text.</span>
-    </h2>
-  ), []);
+  const sectionTitle = useMemo(
+    () => (
+      <h2 className="text-lg font-bold text-gray-800 mb-3.5 flex items-center justify-center gap-1.5">
+        <span className="tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-red-500/20">
+          English content normalized from the original source text.
+        </span>
+      </h2>
+    ),
+    []
+  )
 
   return (
     <section className="w-full pt-8">
@@ -117,13 +106,8 @@ function CategoriesSectionComponent() {
           {sectionTitle}
 
           <div className="mt-6">
-            <Carousel
-              opts={carouselOpts}
-              className="w-full relative group"
-            >
-              <CarouselContent className="-ml-4">
-                {categoryItems}
-              </CarouselContent>
+            <Carousel opts={carouselOpts} className="w-full relative group">
+              <CarouselContent className="-ml-4">{categoryItems}</CarouselContent>
 
               <NavigationButtons />
             </Carousel>
@@ -131,8 +115,6 @@ function CategoriesSectionComponent() {
         </div>
       </div>
     </section>
-  );
+  )
 }
-
-// English content normalized from the original source text.
-export const CategoriesSection = memo(CategoriesSectionComponent);
+export const CategoriesSection = memo(CategoriesSectionComponent)

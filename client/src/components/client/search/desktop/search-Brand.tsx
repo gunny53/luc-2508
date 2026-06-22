@@ -1,43 +1,25 @@
-'use client';
+'use client'
 
-import { useBrand } from '../useBrand';
-import Image from 'next/image';
-import Link from 'next/link';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from "@/components/ui/carousel";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from "@/components/ui/tooltip";
+import { useBrand } from '../use-brand'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 export default function SearchBrand() {
-  const { data: brands, loading } = useBrand();
-
-  // English content normalized from the original source text.
+  const { data: brands, loading } = useBrand()
   const renderBrandItem = (brand: any, i: number) => {
-    // English content normalized from the original source text.
     if (loading) {
-      return (
-        <div key={`skeleton-${i}`} className="h-[113px] w-full bg-gray-100 animate-pulse" />
-      );
+      return <div key={`skeleton-${i}`} className="h-[113px] w-full bg-gray-100 animate-pulse" />
+    }
+    const typedBrand = brand as {
+      id: string
+      name: string
+      logo?: string
+      brandTranslations?: { name: string }[]
     }
 
-    // English content normalized from the original source text.
-    const typedBrand = brand as {
-      id: string;
-      name: string;
-      logo?: string;
-      brandTranslations?: { name: string }[];
-    };
-
-    const name = typedBrand.brandTranslations?.[0]?.name || typedBrand.name;
+    const name = typedBrand.brandTranslations?.[0]?.name || typedBrand.name
 
     return (
       <TooltipProvider key={typedBrand.id || i}>
@@ -46,12 +28,7 @@ export default function SearchBrand() {
             <div className="h-[113px] w-full flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 bg-white p-2">
               {typedBrand.logo ? (
                 <div className="w-full h-full relative">
-                  <Image
-                    src={typedBrand.logo}
-                    alt={name}
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={typedBrand.logo} alt={name} fill className="object-cover" />
                 </div>
               ) : (
                 <span className="text-sm text-gray-600 font-medium text-center">{name}</span>
@@ -63,36 +40,35 @@ export default function SearchBrand() {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-    );
-  };
-
-  // English content normalized from the original source text.
-  const allItems = loading
-    ? Array.from({ length: 12 }).map((_, i) => i) // English content normalized from the original source text.
-    : brands.slice(0, 12);
+    )
+  }
+  const allItems = loading ? Array.from({ length: 12 }).map((_, i) => i) : brands.slice(0, 12)
 
   return (
     <div className="mb-6 bg-white p-2">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-gray-800 text-lg font-semibold">English content normalized from the original source text.</h2>
-        <Link href="/brands" className="text-sm text-primary hover:underline whitespace-nowrap flex items-center gap-1">English content normalized from the original source text.<span className="text-xs">&#8250;</span>
+        <h2 className="text-gray-800 text-lg font-semibold">
+          English content normalized from the original source text.
+        </h2>
+        <Link href="/brands" className="text-sm text-primary hover:underline whitespace-nowrap flex items-center gap-1">
+          English content normalized from the original source text.<span className="text-xs">&#8250;</span>
         </Link>
       </div>
 
       <Carousel
         opts={{
-          align: "start",
+          align: 'start',
           loop: true,
-          slidesToScroll: 6 // English content normalized from the original source text.
+          slidesToScroll: 6
         }}
         className="w-full"
       >
         <CarouselContent>
-          {/* English content normalized from the original source text. */}
+          {}
           <CarouselItem className="basis-full p-0">
-            {/* English content normalized from the original source text. */}
+            {}
             <div className="border border-gray-200 rounded-lg overflow-hidden bg-white">
-              {/* English content normalized from the original source text. */}
+              {}
               <div className="grid grid-cols-6">
                 {allItems.slice(0, 6).map((item, i) => (
                   <div
@@ -107,7 +83,7 @@ export default function SearchBrand() {
                 ))}
               </div>
 
-              {/* English content normalized from the original source text. */}
+              {}
               <div className="grid grid-cols-6">
                 {allItems.slice(6, 12).map((item, i) => (
                   <div
@@ -129,5 +105,5 @@ export default function SearchBrand() {
         </div>
       </Carousel>
     </div>
-  );
+  )
 }

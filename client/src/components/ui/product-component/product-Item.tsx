@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ClientProduct } from '@/types/client.products.interface';
-import { formatCurrency } from '@/utils/formatter';
-import { ROUTES } from '@/constants/route';
-import { getProductUrl } from '@/components/client/products/shared/routes';
-import { Skeleton } from '@/components/ui/skeleton';
+import Image from 'next/image'
+import Link from 'next/link'
+import { ClientProduct } from '@/types/client.products.interface'
+import { formatCurrency } from '@/utils/formatter'
+import { ROUTES } from '@/constants/route'
+import { getProductUrl } from '@/components/client/products/shared/routes'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ProductItemProps {
-  product?: ClientProduct; // English content normalized from the original source text.
-  isLoading?: boolean;
+  product?: ClientProduct
+  isLoading?: boolean
 }
 
 // Skeleton UI cho ProductItem
@@ -27,29 +27,24 @@ export const ProductItemSkeleton: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
-  // English content normalized from the original source text.
   if (isLoading || !product) {
-    return <ProductItemSkeleton />;
+    return <ProductItemSkeleton />
   }
-
-  // English content normalized from the original source text.
-  const originalPrice = product.virtualPrice;
-  const salePrice = product.basePrice;
-  const hasDiscount = originalPrice > salePrice;
-  const discountPercent = hasDiscount
-    ? Math.round(((originalPrice - salePrice) / originalPrice) * 100)
-    : 0;
+  const originalPrice = product.virtualPrice
+  const salePrice = product.basePrice
+  const hasDiscount = originalPrice > salePrice
+  const discountPercent = hasDiscount ? Math.round(((originalPrice - salePrice) / originalPrice) * 100) : 0
 
   return (
     <Link href={getProductUrl(product.name, product.id)} passHref>
       <div className="group block w-full bg-white border border-gray-200 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-200 ease-in-out cursor-pointer overflow-hidden">
         <div className="relative">
           <Image
-            src={product.images[0] || '/images/placeholder-product.png'} // English content normalized from the original source text.
+            src={product.images[0] || '/images/placeholder-product.png'}
             alt={product.name}
             width={200}
             height={200}
@@ -62,28 +57,22 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
           )}
         </div>
         <div className="p-2 flex flex-col justify-between min-h-[100px]">
-          <h3 className="text-sm text-gray-800 line-clamp-2 mb-1">
-            {product.name}
-          </h3>
+          <h3 className="text-sm text-gray-800 line-clamp-2 mb-1">{product.name}</h3>
           <div className="mt-auto">
             <div className="flex items-center justify-between text-xs text-gray-500">
               <div className="flex items-center gap-1">
-                <span className="text-base font-medium text-red-600">
-                  {formatCurrency(salePrice)}
-                </span>
+                <span className="text-base font-medium text-red-600">{formatCurrency(salePrice)}</span>
                 {hasDiscount && (
-                  <span className="text-xs line-through text-gray-500">
-                    {formatCurrency(originalPrice)}
-                  </span>
+                  <span className="text-xs line-through text-gray-500">{formatCurrency(originalPrice)}</span>
                 )}
               </div>
-              {/* English content normalized from the original source text. */}
+              {}
             </div>
           </div>
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default ProductItem;
+export default ProductItem

@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import { useEditor, EditorContent, type Editor } from "@tiptap/react"
-import StarterKit from "@tiptap/starter-kit"
-import Underline from "@tiptap/extension-underline"
-import Link from "@tiptap/extension-link"
-import Image from "@tiptap/extension-image"
-import TextAlign from "@tiptap/extension-text-align"
-import { useCallback, useState, useRef, useEffect } from "react"
+import { useEditor, EditorContent, type Editor } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import Underline from '@tiptap/extension-underline'
+import Link from '@tiptap/extension-link'
+import Image from '@tiptap/extension-image'
+import TextAlign from '@tiptap/extension-text-align'
+import { useCallback, useState, useRef, useEffect } from 'react'
 import {
   Bold,
   Strikethrough,
@@ -24,9 +24,9 @@ import {
   AlignCenter,
   AlignRight,
   X as CloseIcon,
-  Check,
-} from "lucide-react"
-import { cn } from "@/lib/utils"
+  Check
+} from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 // Custom styles for the editor content
 import './rich-text-editor.css'
@@ -39,14 +39,14 @@ interface RichTextEditorProps {
 
 const Toolbar = ({ editor }: { editor: Editor | null }) => {
   const [linkDialogOpen, setLinkDialogOpen] = useState(false)
-  const [linkUrl, setLinkUrl] = useState("")
+  const [linkUrl, setLinkUrl] = useState('')
 
   const setLink = useCallback(() => {
     if (!editor) return
-    const previousUrl = editor.getAttributes("link").href
+    const previousUrl = editor.getAttributes('link').href
 
     // Modern approach: set state variables instead of using window.prompt
-    setLinkUrl(previousUrl || "")
+    setLinkUrl(previousUrl || '')
     setLinkDialogOpen(true)
 
     // When dialog is confirmed, this will be handled in a separate function
@@ -55,58 +55,61 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
   const confirmLink = useCallback(() => {
     if (!editor) return
 
-    if (linkUrl === "") {
-      editor.chain().focus().extendMarkRange("link").unsetLink().run()
+    if (linkUrl === '') {
+      editor.chain().focus().extendMarkRange('link').unsetLink().run()
     } else {
-      editor.chain().focus().extendMarkRange("link").setLink({ href: linkUrl }).run()
+      editor.chain().focus().extendMarkRange('link').setLink({ href: linkUrl }).run()
     }
 
     setLinkDialogOpen(false)
   }, [editor, linkUrl])
 
   // Create a reference to the file input element
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const addImage = useCallback(() => {
     if (!editor) return
 
     // Open file selector when the button is clicked
     if (fileInputRef.current) {
-      fileInputRef.current.click();
+      fileInputRef.current.click()
     }
-  }, [editor]);
+  }, [editor])
 
   // Handle file selection
-  const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!editor || !event.target.files?.length) return;
+  const handleFileChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (!editor || !event.target.files?.length) return
 
-    const file = event.target.files[0];
-    if (!file.type.startsWith('image/')) {
-      alert('Please select an image file');
-      return;
-    }
-
-    // Read the file as a data URL
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      if (typeof e.target?.result === 'string') {
-        // Insert the image into the editor
-        editor
-          .chain()
-          .focus()
-          .setImage({
-            src: e.target.result,
-            alt: file.name.split('.')[0] || 'Image',
-            title: file.name
-          })
-          .run();
+      const file = event.target.files[0]
+      if (!file.type.startsWith('image/')) {
+        alert('Please select an image file')
+        return
       }
-    };
-    reader.readAsDataURL(file);
 
-    // Clear the file input
-    event.target.value = '';
-  }, [editor]);
+      // Read the file as a data URL
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        if (typeof e.target?.result === 'string') {
+          // Insert the image into the editor
+          editor
+            .chain()
+            .focus()
+            .setImage({
+              src: e.target.result,
+              alt: file.name.split('.')[0] || 'Image',
+              title: file.name
+            })
+            .run()
+        }
+      }
+      reader.readAsDataURL(file)
+
+      // Clear the file input
+      event.target.value = ''
+    },
+    [editor]
+  )
 
   if (!editor) {
     return null
@@ -119,24 +122,21 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
     title,
     children
   }: {
-    onClick: () => void;
-    isActive?: boolean;
-    title: string;
+    onClick: () => void
+    isActive?: boolean
+    title: string
     children: React.ReactNode
   }) => (
     <button
       type="button"
       onClick={onClick}
-      className={cn(
-        "p-1.5 rounded-sm transition-colors hover:bg-gray-200",
-        isActive && "bg-gray-300"
-      )}
+      className={cn('p-1.5 rounded-sm transition-colors hover:bg-gray-200', isActive && 'bg-gray-300')}
       title={title}
       aria-label={title}
     >
       {children}
     </button>
-  );
+  )
 
   return (
     <div className="border border-input bg-transparent rounded-t-md p-1.5 flex items-center gap-1.5 flex-wrap">
@@ -145,42 +145,42 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       <div className="flex items-center gap-1 mr-1 border-r pr-1">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          isActive={editor.isActive("heading", { level: 2 })}
+          isActive={editor.isActive('heading', { level: 2 })}
           title="Heading 2"
         >
           <Heading2 className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          isActive={editor.isActive("heading", { level: 3 })}
+          isActive={editor.isActive('heading', { level: 3 })}
           title="Heading 3"
         >
           <Heading3 className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBold().run()}
-          isActive={editor.isActive("bold")}
+          isActive={editor.isActive('bold')}
           title="Bold"
         >
           <Bold className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          isActive={editor.isActive("italic")}
+          isActive={editor.isActive('italic')}
           title="Italic"
         >
           <Italic className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleUnderline().run()}
-          isActive={editor.isActive("underline")}
+          isActive={editor.isActive('underline')}
           title="Underline"
         >
           <UnderlineIcon className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleStrike().run()}
-          isActive={editor.isActive("strike")}
+          isActive={editor.isActive('strike')}
           title="Strikethrough"
         >
           <Strikethrough className="w-4 h-4" />
@@ -191,28 +191,28 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       <div className="flex items-center gap-1 mr-1 border-r pr-1">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          isActive={editor.isActive("bulletList")}
+          isActive={editor.isActive('bulletList')}
           title="Bullet List"
         >
           <List className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          isActive={editor.isActive("orderedList")}
+          isActive={editor.isActive('orderedList')}
           title="Ordered List"
         >
           <ListOrdered className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          isActive={editor.isActive("blockquote")}
+          isActive={editor.isActive('blockquote')}
           title="Blockquote"
         >
           <Quote className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          isActive={editor.isActive("codeBlock")}
+          isActive={editor.isActive('codeBlock')}
           title="Code Block"
         >
           <Code className="w-4 h-4" />
@@ -222,22 +222,22 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       {/* Alignment */}
       <div className="flex items-center gap-1 mr-1 border-r pr-1">
         <ToolbarButton
-          onClick={() => editor.chain().focus().setTextAlign("left").run()}
-          isActive={editor.isActive({ textAlign: "left" })}
+          onClick={() => editor.chain().focus().setTextAlign('left').run()}
+          isActive={editor.isActive({ textAlign: 'left' })}
           title="Align Left"
         >
           <AlignLeft className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
-          onClick={() => editor.chain().focus().setTextAlign("center").run()}
-          isActive={editor.isActive({ textAlign: "center" })}
+          onClick={() => editor.chain().focus().setTextAlign('center').run()}
+          isActive={editor.isActive({ textAlign: 'center' })}
           title="Align Center"
         >
           <AlignCenter className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
-          onClick={() => editor.chain().focus().setTextAlign("right").run()}
-          isActive={editor.isActive({ textAlign: "right" })}
+          onClick={() => editor.chain().focus().setTextAlign('right').run()}
+          isActive={editor.isActive({ textAlign: 'right' })}
           title="Align Right"
         >
           <AlignRight className="w-4 h-4" />
@@ -246,17 +246,10 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
 
       {/* Media */}
       <div className="flex items-center gap-1">
-        <ToolbarButton
-          onClick={setLink}
-          isActive={editor.isActive("link")}
-          title="Insert Link"
-        >
+        <ToolbarButton onClick={setLink} isActive={editor.isActive('link')} title="Insert Link">
           <LinkIcon className="w-4 h-4" />
         </ToolbarButton>
-        <ToolbarButton
-          onClick={addImage}
-          title="Insert Image"
-        >
+        <ToolbarButton onClick={addImage} title="Insert Image">
           <ImageIcon className="w-4 h-4" />
         </ToolbarButton>
         {/* Hidden file input for image uploads */}
@@ -325,46 +318,46 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
   )
 }
 
-export const RichTextEditor = ({ value, onChange, placeholder = "Type your content here..." }: RichTextEditorProps) => {
+export const RichTextEditor = ({ value, onChange, placeholder = 'Type your content here...' }: RichTextEditorProps) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
         heading: {
-          levels: [1, 2, 3],
+          levels: [1, 2, 3]
         },
         bulletList: {
           keepMarks: true,
-          keepAttributes: true,
+          keepAttributes: true
         },
         orderedList: {
           keepMarks: true,
-          keepAttributes: true,
+          keepAttributes: true
         },
         paragraph: {
           HTMLAttributes: {
-            class: 'my-2',
-          },
+            class: 'my-2'
+          }
         },
         // Configure code block with syntax highlighting
         codeBlock: {
           HTMLAttributes: {
-            class: 'rounded bg-gray-100 p-2 font-mono text-sm',
-          },
+            class: 'rounded bg-gray-100 p-2 font-mono text-sm'
+          }
         },
         // Configure blockquote
         blockquote: {
           HTMLAttributes: {
-            class: 'border-l-4 border-gray-300 pl-4 italic',
-          },
-        },
+            class: 'border-l-4 border-gray-300 pl-4 italic'
+          }
+        }
       }),
       Underline,
       Image.configure({
         allowBase64: true,
         HTMLAttributes: {
           class: 'max-w-full rounded-md',
-          loading: 'lazy',
-        },
+          loading: 'lazy'
+        }
       }),
       Link.configure({
         openOnClick: false,
@@ -373,51 +366,51 @@ export const RichTextEditor = ({ value, onChange, placeholder = "Type your conte
         HTMLAttributes: {
           class: 'text-blue-500 underline cursor-pointer',
           rel: 'noopener noreferrer',
-          target: '_blank',
-        },
+          target: '_blank'
+        }
       }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
-        defaultAlignment: 'left',
-      }),
+        defaultAlignment: 'left'
+      })
     ],
     content: value || '',
     editorProps: {
       attributes: {
         class:
-          "rounded-b-md border min-h-[150px] border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 prose max-w-none",
-      },
+          'rounded-b-md border min-h-[150px] border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 prose max-w-none'
+      }
     },
     onUpdate({ editor }) {
       onChange(editor.getHTML())
-    },
+    }
   })
 
   useEffect(() => {
-  if (editor && value !== editor.getHTML()) {
-    editor.commands.setContent(value || '')
-  }
-}, [editor, value])
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value || '')
+    }
+  }, [editor, value])
   // Add keyboard shortcuts functionality
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!editor) return;
+    if (!editor) return
 
     // Handle Tab key (doesn't work well in editorProps)
     if (e.key === 'Tab') {
-      e.preventDefault();
+      e.preventDefault()
 
       if (editor.isActive('listItem')) {
         if (e.shiftKey) {
-          editor.commands.liftListItem('listItem');
+          editor.commands.liftListItem('listItem')
         } else {
-          editor.commands.sinkListItem('listItem');
+          editor.commands.sinkListItem('listItem')
         }
       } else {
         // Insert 2 spaces instead of a tab character
-        editor.commands.insertContent('  ');
+        editor.commands.insertContent('  ')
       }
     }
-  };
+  }
 
   return (
     <div className="flex flex-col justify-stretch min-h-[250px] relative">
@@ -427,13 +420,10 @@ export const RichTextEditor = ({ value, onChange, placeholder = "Type your conte
         onKeyDown={handleKeyDown}
         data-placeholder={placeholder}
       >
-        <EditorContent
-          editor={editor}
-          className="h-full"
-        />
+        <EditorContent editor={editor} className="h-full" />
         {editor && (
           <div className="text-xs text-gray-500 absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded">
-            {editor.getHTML().length} English content normalized from the original source text.
+            {editor.getHTML().length} characters
           </div>
         )}
       </div>

@@ -1,89 +1,78 @@
-"use client";
+'use client'
 
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight, PlayCircle, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { MediaItem } from "../shared/productTransformers";
+import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
+import { ChevronLeft, ChevronRight, PlayCircle, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { MediaItem } from '../shared/product-transformers'
 
 interface Props {
-  media: MediaItem[];
+  media: MediaItem[]
 }
 
 export default function ProductGallery({ media }: Props) {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const thumbRef = useRef<HTMLDivElement>(null);
-  const modalThumbRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+  const thumbRef = useRef<HTMLDivElement>(null)
+  const modalThumbRef = useRef<HTMLDivElement>(null)
 
-  const [pausedStates, setPausedStates] = useState<boolean[]>(() =>
-    media.map(() => true)
-  );
-  const [endedStates, setEndedStates] = useState<boolean[]>(() =>
-    media.map(() => false)
-  );
+  const [pausedStates, setPausedStates] = useState<boolean[]>(() => media.map(() => true))
+  const [endedStates, setEndedStates] = useState<boolean[]>(() => media.map(() => false))
 
-  const updateVideoState = (
-    index: number,
-    type: "pause" | "play" | "ended"
-  ) => {
-    setPausedStates((prev) =>
-      prev.map((val, i) => (i === index ? type !== "play" : val))
-    );
-    setEndedStates((prev) =>
-      prev.map((val, i) => (i === index ? type === "ended" : val))
-    );
-  };
+  const updateVideoState = (index: number, type: 'pause' | 'play' | 'ended') => {
+    setPausedStates((prev) => prev.map((val, i) => (i === index ? type !== 'play' : val)))
+    setEndedStates((prev) => prev.map((val, i) => (i === index ? type === 'ended' : val)))
+  }
 
-  const currentIndex = hoveredIndex ?? 0;
+  const currentIndex = hoveredIndex ?? 0
 
-  const scrollThumbnails = (direction: "left" | "right") => {
-    if (!thumbRef.current) return;
-    const scrollAmount = (80 + 12) * 4;
+  const scrollThumbnails = (direction: 'left' | 'right') => {
+    if (!thumbRef.current) return
+    const scrollAmount = (80 + 12) * 4
     thumbRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    })
+  }
 
   const scrollModalThumbIntoView = (index: number) => {
-    const container = modalThumbRef.current;
-    if (!container) return;
-    const item = container.children[index] as HTMLElement;
+    const container = modalThumbRef.current
+    if (!container) return
+    const item = container.children[index] as HTMLElement
     if (item) {
-      item.scrollIntoView({ behavior: "smooth", inline: "center" });
+      item.scrollIntoView({ behavior: 'smooth', inline: 'center' })
     }
-  };
+  }
 
   const showPrev = () => {
     if (selectedIndex !== null) {
-      const newIndex = selectedIndex > 0 ? selectedIndex - 1 : media.length - 1;
-      setSelectedIndex(newIndex);
+      const newIndex = selectedIndex > 0 ? selectedIndex - 1 : media.length - 1
+      setSelectedIndex(newIndex)
     }
-  };
+  }
 
   const showNext = () => {
     if (selectedIndex !== null) {
-      const newIndex = selectedIndex < media.length - 1 ? selectedIndex + 1 : 0;
-      setSelectedIndex(newIndex);
+      const newIndex = selectedIndex < media.length - 1 ? selectedIndex + 1 : 0
+      setSelectedIndex(newIndex)
     }
-  };
+  }
 
   useEffect(() => {
     if (selectedIndex !== null) {
-      document.body.style.overflow = "hidden";
-      scrollModalThumbIntoView(selectedIndex);
+      document.body.style.overflow = 'hidden'
+      scrollModalThumbIntoView(selectedIndex)
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ''
     }
     return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selectedIndex]);
+      document.body.style.overflow = ''
+    }
+  }, [selectedIndex])
 
   const renderMainMedia = (item: MediaItem, index: number) => {
-    if (item.type === "video") {
+    if (item.type === 'video') {
       return (
         <div
           className="relative w-full aspect-square rounded-lg overflow-hidden border cursor-pointer"
@@ -92,19 +81,19 @@ export default function ProductGallery({ media }: Props) {
           <video
             key={index}
             ref={(el) => {
-              videoRefs.current[index] = el;
+              videoRefs.current[index] = el
             }}
             src={item.src}
             muted
             autoPlay
             playsInline
             className="w-full h-full object-contain pointer-events-none"
-            onPlay={() => updateVideoState(index, "play")}
-            onPause={() => updateVideoState(index, "pause")}
-            onEnded={() => updateVideoState(index, "ended")}
+            onPlay={() => updateVideoState(index, 'play')}
+            onPause={() => updateVideoState(index, 'pause')}
+            onEnded={() => updateVideoState(index, 'ended')}
           />
         </div>
-      );
+      )
     }
 
     return (
@@ -117,8 +106,8 @@ export default function ProductGallery({ media }: Props) {
         className="w-full aspect-square object-cover rounded-lg border cursor-pointer"
         onClick={() => setSelectedIndex(index)}
       />
-    );
-  };
+    )
+  }
 
   return (
     <div className="w-full md:w-[450px] space-y-3">
@@ -129,7 +118,7 @@ export default function ProductGallery({ media }: Props) {
         <Button
           variant="ghost"
           className="w-10 h-10 bg-white border shadow-sm rounded-full"
-          onClick={() => scrollThumbnails("left")}
+          onClick={() => scrollThumbnails('left')}
         >
           <ChevronLeft className="w-6 h-6" />
         </Button>
@@ -140,7 +129,7 @@ export default function ProductGallery({ media }: Props) {
           [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden items-center"
         >
           {media.map((item, index) =>
-            item.type === "video" ? (
+            item.type === 'video' ? (
               <video
                 key={index}
                 src={item.src}
@@ -151,7 +140,7 @@ export default function ProductGallery({ media }: Props) {
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setSelectedIndex(index)}
                 className={`w-20 h-20 object-cover rounded-lg border cursor-pointer shrink-0 ${
-                  hoveredIndex === index ? "ring-2 ring-primary" : ""
+                  hoveredIndex === index ? 'ring-2 ring-primary' : ''
                 }`}
               />
             ) : (
@@ -165,7 +154,7 @@ export default function ProductGallery({ media }: Props) {
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setSelectedIndex(index)}
                 className={`w-20 h-20 object-cover rounded-lg border cursor-pointer shrink-0 ${
-                  hoveredIndex === index ? "ring-2 ring-primary" : ""
+                  hoveredIndex === index ? 'ring-2 ring-primary' : ''
                 }`}
               />
             )
@@ -175,7 +164,7 @@ export default function ProductGallery({ media }: Props) {
         <Button
           variant="ghost"
           className="w-10 h-10 bg-white border shadow-sm rounded-full"
-          onClick={() => scrollThumbnails("right")}
+          onClick={() => scrollThumbnails('right')}
         >
           <ChevronRight className="w-6 h-6" />
         </Button>
@@ -185,10 +174,7 @@ export default function ProductGallery({ media }: Props) {
       {selectedIndex !== null && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center overflow-hidden">
           <div className="relative z-50 w-full h-full flex items-center justify-center px-4">
-            <div
-              className="absolute inset-0 pointer-events-auto z-0"
-              onClick={() => setSelectedIndex(null)}
-            />
+            <div className="absolute inset-0 pointer-events-auto z-0" onClick={() => setSelectedIndex(null)} />
             <Button
               size="icon"
               variant="ghost"
@@ -219,23 +205,22 @@ export default function ProductGallery({ media }: Props) {
             <div className="flex w-full max-w-6xl h-[90vh] rounded-xl overflow-hidden relative items-center justify-center z-10">
               <div className="flex-1 flex items-center justify-center p-4">
                 <div className="relative w-full max-w-[600px] aspect-square rounded-xl overflow-hidden bg-black">
-                  {media[selectedIndex].type === "video" ? (
+                  {media[selectedIndex].type === 'video' ? (
                     <>
                       <video
                         key={selectedIndex}
                         ref={(el) => {
-                          videoRefs.current[selectedIndex] = el;
+                          videoRefs.current[selectedIndex] = el
                         }}
                         src={media[selectedIndex].src}
                         controls
                         autoPlay
                         className="w-full h-full object-contain"
-                        onPlay={() => updateVideoState(selectedIndex, "play")}
-                        onPause={() => updateVideoState(selectedIndex, "pause")}
-                        onEnded={() => updateVideoState(selectedIndex, "ended")}
+                        onPlay={() => updateVideoState(selectedIndex, 'play')}
+                        onPause={() => updateVideoState(selectedIndex, 'pause')}
+                        onEnded={() => updateVideoState(selectedIndex, 'ended')}
                       />
-                      {(pausedStates[selectedIndex] ||
-                        endedStates[selectedIndex]) && (
+                      {(pausedStates[selectedIndex] || endedStates[selectedIndex]) && (
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                           <div className="bg-black/50 text-white rounded-full p-4">
                             <PlayCircle className="w-12 h-12 text-white" />
@@ -264,17 +249,12 @@ export default function ProductGallery({ media }: Props) {
                   <div
                     key={index}
                     className={`w-20 h-20 rounded-lg bg-black cursor-pointer shrink-0 flex items-center justify-center overflow-hidden ${
-                      index === selectedIndex ? "ring-2 ring-primary" : ""
+                      index === selectedIndex ? 'ring-2 ring-primary' : ''
                     }`}
                     onClick={() => setSelectedIndex(index)}
                   >
-                    {item.type === "video" ? (
-                      <video
-                        src={item.src}
-                        muted
-                        playsInline
-                        className="w-full h-full object-contain"
-                      />
+                    {item.type === 'video' ? (
+                      <video src={item.src} muted playsInline className="w-full h-full object-contain" />
                     ) : (
                       <Image
                         src={item.src}
@@ -292,5 +272,5 @@ export default function ProductGallery({ media }: Props) {
         </div>
       )}
     </div>
-  );
+  )
 }

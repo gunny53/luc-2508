@@ -2,19 +2,8 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {
-  Bell,
-  Search,
-  Settings,
-  User,
-  ChevronDown,
-  Store,
-  Globe,
-  LogOut,
-  Menu,
-  Check,
-} from 'lucide-react'
-import { useResponsive } from '@/hooks/useResponsive'
+import { Bell, Search, Settings, User, ChevronDown, Store, Globe, LogOut, Menu, Check } from 'lucide-react'
+import { useResponsive } from '@/hooks/use-responsive'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -23,25 +12,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-} from "@/components/ui/dropdown-menu"
-import { useLogout } from '@/hooks/useLogout'
+  DropdownMenuSubContent
+} from '@/components/ui/dropdown-menu'
+import { useLogout } from '@/hooks/use-logout'
 import { Button } from '@/components/ui/button'
-import { useChangeLang } from '@/hooks/useChangeLang'
-import { SearchItem } from './SearchItem'
+import { useChangeLang } from '@/hooks/use-change-lang'
+import { SearchItem } from './search-item'
 import { useTranslations } from 'next-intl'
-import { NotificationSheet } from './Notification-Sheet'
+import { NotificationSheet } from './notification-sheet'
 import { useState } from 'react'
 
 interface HeaderProps {
-  onToggleSidebar: () => void;
+  onToggleSidebar: () => void
 }
 
 export function Header({ onToggleSidebar }: HeaderProps) {
   const { isMobile } = useResponsive()
   const { handleLogout, loading: logoutLoading } = useLogout()
   const { changeLanguage, currentLangName, currentSelectedLang } = useChangeLang()
-  const t  = useTranslations()
+  const t = useTranslations()
   const [notificationOpen, setNotificationOpen] = useState(false)
 
   return (
@@ -66,19 +55,21 @@ export function Header({ onToggleSidebar }: HeaderProps) {
         </div>
 
         {/* Search bar */}
-        {!isMobile && (
-          <SearchItem />
-        )}
+        {!isMobile && <SearchItem />}
 
         {/* Right section */}
         <div className="flex items-center space-x-4">
-          <Button className="p-2 rounded-full hover:bg-gray-100 relative bg-[#fff]" onClick={() => setNotificationOpen(true)} aria-label={t('admin.notifications.title')}>
+          <Button
+            className="p-2 rounded-full hover:bg-gray-100 relative bg-[#fff]"
+            onClick={() => setNotificationOpen(true)}
+            aria-label={t('admin.notifications.title')}
+          >
             <Bell className="h-5 w-5 text-gray-600" />
             <span className="absolute top-1 right-1 bg-red-600 rounded-full w-2 h-2"></span>
           </Button>
 
           {/* Dropdown Profile */}
-          {/* English content normalized from the original source text. */}
+          {}
           <NotificationSheet open={notificationOpen} onOpenChange={setNotificationOpen} />
         </div>
       </div>

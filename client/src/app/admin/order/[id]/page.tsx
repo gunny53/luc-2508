@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { useRouter } from "next/navigation";
-import OrderIndex from "@/components/admin/orders/detail/orders-Index";
+import { useRouter } from 'next/navigation'
+import OrderIndex from '@/components/admin/orders/detail/orders-index'
 
 export default function OrderDetailPage() {
-  const router = useRouter();
+  const router = useRouter()
 
-  return <OrderIndex onBack={() => router.push("/admin/order")} />;
+  return <OrderIndex onBack={() => router.push('/admin/order')} />
 }

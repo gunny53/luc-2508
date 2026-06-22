@@ -1,3 +1,1 @@
-export enum ENUM {
-    VINCENTKEY = "VTDWRHJvNqxBgsnPQxXuhkgUUNMrjV"
-}
+export const DEFAULT_REDUX_ENCRYPTION_KEY = 'VTDWRHJvNqxBgsnPQxXuhkgUUNMrjV'

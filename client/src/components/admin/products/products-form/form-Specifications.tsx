@@ -1,65 +1,100 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { PlusCircle, Trash2, Package, AlertCircle, Info } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useState, useEffect } from 'react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { PlusCircle, Trash2, Package, AlertCircle, Info } from 'lucide-react'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 
 // Define default specifications that all products should have
 const DEFAULT_SPECIFICATIONS = [
-  { id: 'origin', name: 'English content normalized from the original source text.', value: '', required: true, icon: '🌍' },
-  { id: 'material', name: 'English content normalized from the original source text.', value: '', required: true, icon: '🧱' },
-  { id: 'warehouse', name: 'English content normalized from the original source text.', value: '', required: true, icon: '🏪' },
-  { id: 'stockLocation', name: 'English content normalized from the original source text.', value: '', required: true, icon: '📍' },
-  { id: 'shipping', name: 'English content normalized from the original source text.', value: '', required: true, icon: '📦' },
-  { id: 'warranty', name: 'English content normalized from the original source text.', value: '', required: false, icon: '🛡️' },
-];
+  {
+    id: 'origin',
+    name: 'English content normalized from the original source text.',
+    value: '',
+    required: true,
+    icon: '🌍'
+  },
+  {
+    id: 'material',
+    name: 'English content normalized from the original source text.',
+    value: '',
+    required: true,
+    icon: '🧱'
+  },
+  {
+    id: 'warehouse',
+    name: 'English content normalized from the original source text.',
+    value: '',
+    required: true,
+    icon: '🏪'
+  },
+  {
+    id: 'stockLocation',
+    name: 'English content normalized from the original source text.',
+    value: '',
+    required: true,
+    icon: '📍'
+  },
+  {
+    id: 'shipping',
+    name: 'English content normalized from the original source text.',
+    value: '',
+    required: true,
+    icon: '📦'
+  },
+  {
+    id: 'warranty',
+    name: 'English content normalized from the original source text.',
+    value: '',
+    required: false,
+    icon: '🛡️'
+  }
+]
 
 interface Specification {
-  name: string;
-  value: string;
-  id?: string;
-  required?: boolean;
-  icon?: string;
+  name: string
+  value: string
+  id?: string
+  required?: boolean
+  icon?: string
 }
 
 interface ProductSpecificationsFormProps {
-  specifications: Specification[];
-  handleSpecificationsChange: (specs: Specification[]) => void;
+  specifications: Specification[]
+  handleSpecificationsChange: (specs: Specification[]) => void
 }
 
-export function ProductSpecificationsForm({ specifications, handleSpecificationsChange }: ProductSpecificationsFormProps) {
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isExpanded, setIsExpanded] = useState(true);
+export function ProductSpecificationsForm({
+  specifications,
+  handleSpecificationsChange
+}: ProductSpecificationsFormProps) {
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isExpanded, setIsExpanded] = useState(true)
 
   // Initialize specifications with defaults if empty
   const initializeSpecs = () => {
     // Always start with all default specifications
-    const mergedSpecs: Specification[] = [];
+    const mergedSpecs: Specification[] = []
 
     // First, add all default specifications (required and optional)
-    DEFAULT_SPECIFICATIONS.forEach(defaultSpec => {
+    DEFAULT_SPECIFICATIONS.forEach((defaultSpec) => {
       // Look for matching spec by name in existing data
-      const matchingSpec = specifications?.find(spec =>
-        spec.name === defaultSpec.name
-      );
+      const matchingSpec = specifications?.find((spec) => spec.name === defaultSpec.name)
 
       // Use existing value if found, otherwise use empty string
       mergedSpecs.push({
         ...defaultSpec,
-        value: matchingSpec?.value || '',
-      });
-    });
+        value: matchingSpec?.value || ''
+      })
+    })
 
     // Then, add any custom specifications that don't match defaults
     if (specifications && specifications.length > 0) {
-      specifications.forEach(spec => {
-        const isDefaultSpec = DEFAULT_SPECIFICATIONS.some(defaultSpec =>
-          defaultSpec.name === spec.name
-        );
+      specifications.forEach((spec) => {
+        const isDefaultSpec = DEFAULT_SPECIFICATIONS.some((defaultSpec) => defaultSpec.name === spec.name)
 
         if (!isDefaultSpec && spec.name.trim()) {
           // This is a custom spec, add to the list
@@ -68,134 +103,131 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
             value: spec.value || '',
             required: false,
             icon: spec.icon || '🔧'
-          });
+          })
         }
-      });
+      })
     }
 
     // Only update if the current specifications are different
-    const currentSpecsString = JSON.stringify(specifications);
-    const mergedSpecsString = JSON.stringify(mergedSpecs);
+    const currentSpecsString = JSON.stringify(specifications)
+    const mergedSpecsString = JSON.stringify(mergedSpecs)
 
     if (currentSpecsString !== mergedSpecsString) {
-      handleSpecificationsChange(mergedSpecs);
+      handleSpecificationsChange(mergedSpecs)
     }
-  };
+  }
 
   // Initialize specs when component mounts
   useEffect(() => {
-    initializeSpecs();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    initializeSpecs()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Update a specific specification
   const updateSpecification = (index: number, field: 'name' | 'value', newValue: string) => {
-    const newSpecs = [...specifications];
-    newSpecs[index] = { ...newSpecs[index], [field]: newValue };
+    const newSpecs = [...specifications]
+    newSpecs[index] = { ...newSpecs[index], [field]: newValue }
 
     // Clear error when user starts typing
     if (errors[`spec-${index}-${field}`]) {
-      const newErrors = { ...errors };
-      delete newErrors[`spec-${index}-${field}`];
-      setErrors(newErrors);
+      const newErrors = { ...errors }
+      delete newErrors[`spec-${index}-${field}`]
+      setErrors(newErrors)
     }
 
-    handleSpecificationsChange(newSpecs);
-  };
+    handleSpecificationsChange(newSpecs)
+  }
 
   // Add a new custom specification
   const addSpecification = () => {
-    handleSpecificationsChange([
-      ...specifications,
-      { name: '', value: '', icon: '🔧' }
-    ]);
-  };
+    handleSpecificationsChange([...specifications, { name: '', value: '', icon: '🔧' }])
+  }
 
   // Remove a specification (only allow removing custom ones, not defaults)
   const removeSpecification = (index: number) => {
-    const specToRemove = specifications[index];
+    const specToRemove = specifications[index]
 
     // Don't allow removing default specifications
-    if (DEFAULT_SPECIFICATIONS.some(def => def.name === specToRemove.name)) {
-      return;
+    if (DEFAULT_SPECIFICATIONS.some((def) => def.name === specToRemove.name)) {
+      return
     }
 
-    const newSpecs = specifications.filter((_, i) => i !== index);
-    handleSpecificationsChange(newSpecs);
-  };
+    const newSpecs = specifications.filter((_, i) => i !== index)
+    handleSpecificationsChange(newSpecs)
+  }
 
   // Validate specifications before form submission
   const validateSpecifications = (): boolean => {
-    const newErrors: Record<string, string> = {};
-    let isValid = true;
+    const newErrors: Record<string, string> = {}
+    let isValid = true
 
     specifications.forEach((spec, index) => {
       // Check if this is a required field (all default fields that are required)
-      const defaultSpec = DEFAULT_SPECIFICATIONS.find(def => def.name === spec.name);
-      const isRequired = defaultSpec?.required || false;
+      const defaultSpec = DEFAULT_SPECIFICATIONS.find((def) => def.name === spec.name)
+      const isRequired = defaultSpec?.required || false
 
       if (isRequired) {
         // Validate name
         if (!spec.name.trim()) {
-          newErrors[`spec-${index}-name`] = 'English content normalized from the original source text.';
-          isValid = false;
+          newErrors[`spec-${index}-name`] = 'English content normalized from the original source text.'
+          isValid = false
         }
 
         // Validate value
         if (!spec.value.trim()) {
-          newErrors[`spec-${index}-value`] = 'English content normalized from the original source text.';
-          isValid = false;
+          newErrors[`spec-${index}-value`] = 'English content normalized from the original source text.'
+          isValid = false
         }
       }
       // For custom fields, if name is filled, value must be filled too
       else if (spec.name.trim() && !spec.value.trim()) {
-        newErrors[`spec-${index}-value`] = 'English content normalized from the original source text.';
-        isValid = false;
+        newErrors[`spec-${index}-value`] = 'English content normalized from the original source text.'
+        isValid = false
       }
-    });
+    })
 
-    setErrors(newErrors);
-    return isValid;
-  };
+    setErrors(newErrors)
+    return isValid
+  }
 
   // Get error message for a field
   const getErrorMessage = (index: number, field: 'name' | 'value'): string => {
-    return errors[`spec-${index}-${field}`] || '';
-  };
+    return errors[`spec-${index}-${field}`] || ''
+  }
 
   // Check if a field has an error
   const hasError = (index: number, field: 'name' | 'value'): boolean => {
-    return !!errors[`spec-${index}-${field}`];
-  };
+    return !!errors[`spec-${index}-${field}`]
+  }
 
   // Check if a specification is a default one
   const isDefaultSpecification = (spec: Specification): boolean => {
-    return DEFAULT_SPECIFICATIONS.some(defaultSpec => defaultSpec.name === spec.name);
-  };
+    return DEFAULT_SPECIFICATIONS.some((defaultSpec) => defaultSpec.name === spec.name)
+  }
 
   // Get required specifications (always show all default required specs)
   const getRequiredSpecifications = () => {
-    return specifications.filter(spec => {
-      const defaultSpec = DEFAULT_SPECIFICATIONS.find(def => def.name === spec.name);
-      return defaultSpec?.required || false;
-    });
-  };
+    return specifications.filter((spec) => {
+      const defaultSpec = DEFAULT_SPECIFICATIONS.find((def) => def.name === spec.name)
+      return defaultSpec?.required || false
+    })
+  }
 
   // Get optional specifications (default optional + custom specs)
   const getOptionalSpecifications = () => {
-    return specifications.filter(spec => {
-      const defaultSpec = DEFAULT_SPECIFICATIONS.find(def => def.name === spec.name);
+    return specifications.filter((spec) => {
+      const defaultSpec = DEFAULT_SPECIFICATIONS.find((def) => def.name === spec.name)
       // Include if it's a default optional spec OR if it's not a default spec at all (custom)
-      return defaultSpec ? !defaultSpec.required : true;
-    });
-  };
+      return defaultSpec ? !defaultSpec.required : true
+    })
+  }
 
   // Count filled specifications
-  const filledSpecs = specifications.filter(spec => spec.value.trim()).length;
-  const requiredSpecs = specifications.filter(spec => {
-    const defaultSpec = DEFAULT_SPECIFICATIONS.find(def => def.name === spec.name);
-    return defaultSpec?.required || false;
-  }).length;
+  const filledSpecs = specifications.filter((spec) => spec.value.trim()).length
+  const requiredSpecs = specifications.filter((spec) => {
+    const defaultSpec = DEFAULT_SPECIFICATIONS.find((def) => def.name === spec.name)
+    return defaultSpec?.required || false
+  }).length
 
   return (
     <Card className="border border-gray-200 hover:border-gray-300 transition-colors">
@@ -203,7 +235,9 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Package className="h-5 w-5 text-blue-600" />
-            <CardTitle className="text-lg font-semibold text-gray-900">English content normalized from the original source text.</CardTitle>
+            <CardTitle className="text-lg font-semibold text-gray-900">
+              English content normalized from the original source text.
+            </CardTitle>
           </div>
           <div className="flex items-center space-x-2 text-sm text-gray-500">
             <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
@@ -220,7 +254,9 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
             </Button>
           </div>
         </div>
-        <CardDescription className="text-gray-600">English content normalized from the original source text.</CardDescription>
+        <CardDescription className="text-gray-600">
+          English content normalized from the original source text.
+        </CardDescription>
       </CardHeader>
 
       {isExpanded && (
@@ -228,7 +264,9 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           {/* Progress indicator */}
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-700">English content normalized from the original source text.</span>
+              <span className="text-sm font-medium text-gray-700">
+                English content normalized from the original source text.
+              </span>
               <span className="text-sm text-gray-500">{Math.round((filledSpecs / specifications.length) * 100)}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -243,7 +281,9 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           {Object.keys(errors).length > 0 && (
             <Alert variant="destructive" className="border-red-200 bg-red-50">
               <AlertCircle className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-700">English content normalized from the original source text.</AlertDescription>
+              <AlertDescription className="text-red-700">
+                English content normalized from the original source text.
+              </AlertDescription>
             </Alert>
           )}
 
@@ -251,18 +291,26 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           <div className="space-y-3">
             <div className="flex items-center space-x-2 mb-3">
               <div className="h-1 w-8 bg-red-500 rounded"></div>
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">English content normalized from the original source text.</h3>
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                English content normalized from the original source text.
+              </h3>
             </div>
 
             {getRequiredSpecifications().map((spec) => {
-              const index = specifications.findIndex(s => s === spec);
-              const defaultSpec = DEFAULT_SPECIFICATIONS.find(def => def.name === spec.name);
+              const index = specifications.findIndex((s) => s === spec)
+              const defaultSpec = DEFAULT_SPECIFICATIONS.find((def) => def.name === spec.name)
 
               return (
-                <div key={`required-${index}`} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <div
+                  key={`required-${index}`}
+                  className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor={`spec-name-${index}`} className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+                      <Label
+                        htmlFor={`spec-name-${index}`}
+                        className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+                      >
                         <span>{defaultSpec?.icon}</span>
                         <span>{spec.name}</span>
                         <span className="text-red-500">*</span>
@@ -275,7 +323,8 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                       />
                     </div>
                     <div>
-                      <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">English content normalized from the original source text.<span className="text-red-500">*</span>
+                      <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">
+                        English content normalized from the original source text.<span className="text-red-500">*</span>
                       </Label>
                       <Input
                         id={`spec-value-${index}`}
@@ -293,7 +342,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -301,20 +350,30 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
           <div className="space-y-3">
             <div className="flex items-center space-x-2 mb-3">
               <div className="h-1 w-8 bg-blue-500 rounded"></div>
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">English content normalized from the original source text.</h3>
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                English content normalized from the original source text.
+              </h3>
             </div>
 
             {getOptionalSpecifications().map((spec) => {
-              const index = specifications.findIndex(s => s === spec);
-              const isDefault = isDefaultSpecification(spec);
+              const index = specifications.findIndex((s) => s === spec)
+              const isDefault = isDefaultSpecification(spec)
 
               return (
-                <div key={`optional-${index}`} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <div
+                  key={`optional-${index}`}
+                  className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor={`spec-name-${index}`} className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+                      <Label
+                        htmlFor={`spec-name-${index}`}
+                        className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+                      >
                         {spec.icon && <span>{spec.icon}</span>}
-                        <span>{isDefault ? spec.name : 'English content normalized from the original source text.'}</span>
+                        <span>
+                          {isDefault ? spec.name : 'English content normalized from the original source text.'}
+                        </span>
                       </Label>
                       {isDefault ? (
                         <Input
@@ -341,7 +400,9 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                     </div>
                     <div>
                       <div className="flex items-center justify-between">
-                        <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">English content normalized from the original source text.</Label>
+                        <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">
+                          English content normalized from the original source text.
+                        </Label>
                         {!isDefault && (
                           <Button
                             type="button"
@@ -370,7 +431,7 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -400,5 +461,5 @@ export function ProductSpecificationsForm({ specifications, handleSpecifications
         </CardContent>
       )}
     </Card>
-  );
+  )
 }

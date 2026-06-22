@@ -1,43 +1,37 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { MessageCircle, ShoppingCart } from "lucide-react";
-import AddCartMobile from "./products-AddCartMobile";
-import { DrawerTrigger } from "@/components/ui/drawer";
+import { useState } from 'react'
+import { MessageCircle, ShoppingCart } from 'lucide-react'
+import AddCartMobile from './products-add-cart-mobile'
+import { DrawerTrigger } from '@/components/ui/drawer'
 
 interface ProductsFooterProps {
-  product?: any;
-  onAddToCart?: (skuId: string, quantity: number) => void;
-  onBuyNow?: () => void;
-  onChat?: () => void;
+  product?: any
+  onAddToCart?: (skuId: string, quantity: number) => void
+  onBuyNow?: () => void
+  onChat?: () => void
 }
 
-export default function ProductsFooter({
-  product,
-  onAddToCart,
-  onBuyNow,
-  onChat
-}: ProductsFooterProps) {
-  const [isAddCartOpen, setIsAddCartOpen] = useState(false);
-  const [isBuyNowMode, setIsBuyNowMode] = useState(false);
+export default function ProductsFooter({ product, onAddToCart, onBuyNow, onChat }: ProductsFooterProps) {
+  const [isAddCartOpen, setIsAddCartOpen] = useState(false)
+  const [isBuyNowMode, setIsBuyNowMode] = useState(false)
 
   const handleAddToCart = (skuId: string, quantity: number) => {
     if (onAddToCart) {
-      onAddToCart(skuId, quantity);
+      onAddToCart(skuId, quantity)
     }
-    // English content normalized from the original source text.
-    setIsAddCartOpen(false);
-  };
+    setIsAddCartOpen(false)
+  }
 
   const handleAddToCartClick = () => {
-    setIsBuyNowMode(false); // Normal add to cart mode
-    setIsAddCartOpen(true);
-  };
+    setIsBuyNowMode(false) // Normal add to cart mode
+    setIsAddCartOpen(true)
+  }
 
   const handleBuyNowClick = () => {
-    setIsBuyNowMode(true); // Buy now mode
-    setIsAddCartOpen(true);
-  };
+    setIsBuyNowMode(true) // Buy now mode
+    setIsAddCartOpen(true)
+  }
 
   return (
     <>
@@ -53,7 +47,7 @@ export default function ProductsFooter({
         {/* Divider */}
         <div className="w-px h-6 bg-gray-300 mx-2" />
 
-        {/* English content normalized from the original source text. */}
+        {}
         <button
           onClick={handleAddToCartClick}
           className="flex-1 h-10 w-24 rounded-none border-none text-red-600 hover:bg-red-50 text-base flex items-center justify-center gap-2 transition-all"
@@ -81,5 +75,5 @@ export default function ProductsFooter({
         />
       )}
     </>
-  );
+  )
 }

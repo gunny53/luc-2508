@@ -1,9 +1,9 @@
-"use client";
-import { PasswordSecuritySession } from '@/components/client/user/account/desktop/security/security-Session';
-import { useTranslations } from 'next-intl';
+'use client'
+import { PasswordSecuritySession } from '@/components/client/user/account/desktop/security/security-session'
+import { useTranslations } from 'next-intl'
 
 export default function ProfilePage() {
-  const  t  = useTranslations();
+  const t = useTranslations()
   return (
     <div>
       <div>
@@ -14,5 +14,5 @@ export default function ProfilePage() {
       </div>
       <PasswordSecuritySession />
     </div>
-  );
+  )
 }

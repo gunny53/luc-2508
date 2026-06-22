@@ -1,18 +1,18 @@
 'use client'
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { DataTable } from '@/components/ui/data-table-component/data-table';
-import { voucherColumns } from './voucher-Columns';
-import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal';
-import { useVouchers } from './hook/useVouchers';
-import SearchInput from '@/components/ui/data-table-component/search-input';
-import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option';
-import VoucherFormCreate from './voucher-FormCreate';
-import { useDataTable } from '@/hooks/useDataTable';
+import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import { DataTable } from '@/components/ui/data-table-component/data-table'
+import { voucherColumns } from './voucher-columns'
+import { ConfirmDeleteModal } from '@/components/ui/confirm-delete-modal'
+import { useVouchers } from './hook/use-vouchers'
+import SearchInput from '@/components/ui/data-table-component/search-input'
+import DataTableViewOption from '@/components/ui/data-table-component/data-table-view-option'
+import VoucherFormCreate from './voucher-form-create'
+import { useDataTable } from '@/hooks/use-data-table'
 
 export default function VoucherTable() {
-  const t = useTranslations("admin.ModuleVouchers.Table");
-  const router = useRouter();
+  const t = useTranslations('admin.ModuleVouchers.Table')
+  const router = useRouter()
   const {
     data,
     loading,
@@ -26,36 +26,36 @@ export default function VoucherTable() {
     handleOpenDelete,
     handleConfirmDelete,
     handleCloseDeleteModal,
-    handleOpenUpsertModal,
-  } = useVouchers();
+    handleOpenUpsertModal
+  } = useVouchers()
 
   // Handle edit voucher - redirect to edit page
   const handleEditVoucher = (voucher: any) => {
-    router.push(`/admin/voucher/edit/${voucher.id}`);
-  };
+    router.push(`/admin/voucher/edit/${voucher.id}`)
+  }
 
   const columns = voucherColumns({
-    onEdit: handleEditVoucher, // English content normalized from the original source text.
+    onEdit: handleEditVoucher,
     onDelete: handleOpenDelete
-  });
+  })
 
   const table = useDataTable({
-      data: data,
-      columns: columns,
-    });
+    data: data,
+    columns: columns
+  })
   return (
     <div className="w-full space-y-4">
-        <div className="bg-background border rounded-lg p-4">
-          <VoucherFormCreate />
-        </div>
+      <div className="bg-background border rounded-lg p-4">
+        <VoucherFormCreate />
+      </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
-            value={pagination.search || ""}
+            value={pagination.search || ''}
             onValueChange={handleSearch}
-            placeholder={t("searchPlaceholder")}
+            placeholder={t('searchPlaceholder')}
             className="w-full md:max-w-sm"
           />
         </div>
@@ -72,23 +72,23 @@ export default function VoucherTable() {
           pagination={{
             metadata: pagination,
             onPageChange: handlePageChange,
-            onLimitChange: handleLimitChange,
+            onLimitChange: handleLimitChange
           }}
         />
       </div>
 
-      {/* English content normalized from the original source text. */}
+      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
-          if (!deleteLoading) handleCloseDeleteModal();
+          if (!deleteLoading) handleCloseDeleteModal()
         }}
         onConfirm={handleConfirmDelete}
         title={t('deleteConfirm.title')}
         description={
           voucherToDelete
             ? t('deleteConfirm.description', {
-                code: voucherToDelete?.code || '',
+                code: voucherToDelete?.code || ''
               })
             : ''
         }

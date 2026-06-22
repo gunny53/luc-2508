@@ -1,93 +1,83 @@
-'use client';
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import { clientProductsService } from '@/services/clientProductsService';
-import { extractProductId } from './shared/productSlug';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { AlertCircle, RefreshCw, Home } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+'use client'
+import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
+import { clientProductsService } from '@/services/client-products-service'
+import { extractProductId } from './shared/product-slug'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { AlertCircle, RefreshCw, Home } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
-const ProductPageDynamic = dynamic(
-  () => import("./products-Index").then(mod => mod.ProductPage),
-  { ssr: false }
-);
+const ProductPageDynamic = dynamic(() => import('./products-index').then((mod) => mod.ProductPage), { ssr: false })
 
 interface ProductWrapperProps {
-  slug: string;
-  initialData?: any;
-  error?: any;
+  slug: string
+  initialData?: any
+  error?: any
 }
 
 export default function ProductPageWrapper({ slug, initialData, error: serverError }: ProductWrapperProps) {
-  const [data, setData] = useState(initialData);
-  const [error, setError] = useState(serverError);
-  const [isRetrying, setIsRetrying] = useState(false);
-  const [countdown, setCountdown] = useState(8);
-  const [autoRetryEnabled, setAutoRetryEnabled] = useState(!!serverError);
-  const router = useRouter();
-
-  // English content normalized from the original source text.
+  const [data, setData] = useState(initialData)
+  const [error, setError] = useState(serverError)
+  const [isRetrying, setIsRetrying] = useState(false)
+  const [countdown, setCountdown] = useState(8)
+  const [autoRetryEnabled, setAutoRetryEnabled] = useState(!!serverError)
+  const router = useRouter()
   useEffect(() => {
     if (initialData) {
       const refreshProductData = async () => {
         try {
-          const productId = extractProductId(slug);
-          const freshData = await clientProductsService.getProductDetail(productId);
-          setData(freshData);
+          const productId = extractProductId(slug)
+          const freshData = await clientProductsService.getProductDetail(productId)
+          setData(freshData)
         } catch (err) {
-          console.error('Error refreshing product data:', err);
-          // English content normalized from the original source text.
+          console.error('Error refreshing product data:', err)
         }
-      };
+      }
 
-      refreshProductData();
+      refreshProductData()
     }
-  }, [slug, initialData]);
-
-  // English content normalized from the original source text.
+  }, [slug, initialData])
   useEffect(() => {
-    if (!error || !autoRetryEnabled) return;
+    if (!error || !autoRetryEnabled) return
 
     const interval = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
-          handleRetry();
-          return 8;
+          handleRetry()
+          return 8
         }
-        return prev - 1;
-      });
-    }, 1000);
+        return prev - 1
+      })
+    }, 1000)
 
-    return () => clearInterval(interval);
-  }, [error, autoRetryEnabled]);
+    return () => clearInterval(interval)
+  }, [error, autoRetryEnabled])
 
   const handleRetry = async () => {
-    setIsRetrying(true);
+    setIsRetrying(true)
     try {
-      const productId = extractProductId(slug);
-      const productData = await clientProductsService.getProductDetail(productId);
-      setData(productData);
-      setError(null);
-      setAutoRetryEnabled(false);
+      const productId = extractProductId(slug)
+      const productData = await clientProductsService.getProductDetail(productId)
+      setData(productData)
+      setError(null)
+      setAutoRetryEnabled(false)
     } catch (err) {
-      console.error('Retry failed:', err);
-      setError(err);
+      console.error('Retry failed:', err)
+      setError(err)
     } finally {
-      setIsRetrying(false);
+      setIsRetrying(false)
     }
-  };
+  }
 
   const handleManualRetry = () => {
-    setAutoRetryEnabled(false);
-    handleRetry();
-  };
+    setAutoRetryEnabled(false)
+    handleRetry()
+  }
 
   const goHome = () => {
-    router.push('/');
-  };
-
-  // English content normalized from the original source text.
+    router.push('/')
+  }
   if (error && !data) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -97,7 +87,9 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
               <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
                 <AlertCircle className="w-6 h-6 text-red-600" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">English content normalized from the original source text.</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                English content normalized from the original source text.
+              </h2>
               <p className="text-gray-600 mb-2">English content normalized from the original source text.</p>
               <p className="text-sm text-gray-500">
                 {error?.message || 'English content normalized from the original source text.'}
@@ -109,34 +101,32 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
                 <div className="flex items-center justify-center space-x-2 text-blue-700">
                   <RefreshCw className="w-4 h-4 animate-spin" />
                   <span className="text-sm">
-                    English content normalized from the original source text. {countdown} English content normalized from the original source text.
+                    English content normalized from the original source text. {countdown} English content normalized
+                    from the original source text.
                   </span>
                 </div>
               </div>
             )}
 
             <div className="space-y-3">
-              <Button
-                onClick={handleManualRetry}
-                disabled={isRetrying}
-                className="w-full"
-                variant="default"
-              >
+              <Button onClick={handleManualRetry} disabled={isRetrying} className="w-full" variant="default">
                 {isRetrying ? (
                   <>
-                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />English content normalized from the original source text.</>
+                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                    English content normalized from the original source text.
+                  </>
                 ) : (
                   <>
-                    <RefreshCw className="w-4 h-4 mr-2" />English content normalized from the original source text.</>
+                    <RefreshCw className="w-4 h-4 mr-2" />
+                    English content normalized from the original source text.
+                  </>
                 )}
               </Button>
 
-              <Button
-                onClick={goHome}
-                variant="outline"
-                className="w-full"
-              >
-                <Home className="w-4 h-4 mr-2" />English content normalized from the original source text.</Button>
+              <Button onClick={goHome} variant="outline" className="w-full">
+                <Home className="w-4 h-4 mr-2" />
+                English content normalized from the original source text.
+              </Button>
 
               {autoRetryEnabled && (
                 <Button
@@ -144,14 +134,16 @@ export default function ProductPageWrapper({ slug, initialData, error: serverErr
                   variant="ghost"
                   className="w-full text-gray-500"
                   size="sm"
-                >English content normalized from the original source text.</Button>
+                >
+                  English content normalized from the original source text.
+                </Button>
               )}
             </div>
           </CardContent>
         </Card>
       </div>
-    );
+    )
   }
 
-  return <ProductPageDynamic slug={slug} initialData={data} error={error} />;
+  return <ProductPageDynamic slug={slug} initialData={data} error={error} />
 }

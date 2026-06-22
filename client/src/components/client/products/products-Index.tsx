@@ -1,41 +1,36 @@
-"use client";
+'use client'
 
-import ClientLayoutWrapper from "@/components/client/layout/ClientLayoutWrapper";
-import ProductDetail from "@/components/client/products/desktop/products-Index";
-import ProductDetailMobile from "@/components/client/products/mobile/products-IndexMobile";
-import { useCheckDevice } from "@/hooks/useCheckDevices";
-import { useResponsive } from "@/hooks/useResponsive";
-import { useEffect, useState } from "react";
-import { useProduct } from "./hooks/useProduct";
-import { ClientProductDetail } from "@/types/client.products.interface";
+import ClientLayoutWrapper from '@/components/client/layout/client-layout-wrapper'
+import ProductDetail from '@/components/client/products/desktop/products-index'
+import ProductDetailMobile from '@/components/client/products/mobile/products-index-mobile'
+import { useCheckDevice } from '@/hooks/use-check-devices'
+import { useResponsive } from '@/hooks/use-responsive'
+import { useEffect, useState } from 'react'
+import { useProduct } from './hooks/use-product'
+import { ClientProductDetail } from '@/types/client.products.interface'
 
 interface ProductPageProps {
-  slug: string;
-  initialData?: ClientProductDetail;
-  error?: any;
+  slug: string
+  initialData?: ClientProductDetail
+  error?: any
 }
 
 export function ProductPage({ slug, initialData, error: initialError }: ProductPageProps) {
-  const [mounted, setMounted] = useState(false);
-  const deviceType = useCheckDevice();
-  const { isMobile } = useResponsive();
-
-  // English content normalized from the original source text.
-  const { product, isLoading, error } = useProduct(slug, initialData);
+  const [mounted, setMounted] = useState(false)
+  const deviceType = useCheckDevice()
+  const { isMobile } = useResponsive()
+  const { product, isLoading, error } = useProduct(slug, initialData)
 
   useEffect(() => {
-    console.log("✅ [Page] slug param:", slug);
-    console.log("✅ [Page] initialData:", initialData ? `Received (${initialData.id})` : "None");
-    setMounted(true);
-  }, [slug, initialData]);
+    console.log('✅ [Page] slug param:', slug)
+    console.log('✅ [Page] initialData:', initialData ? `Received (${initialData.id})` : 'None')
+    setMounted(true)
+  }, [slug, initialData])
 
-  if (!mounted || deviceType === "unknown") return null;
-
-  // English content normalized from the original source text.
-  const productError = error || initialError;
+  if (!mounted || deviceType === 'unknown') return null
+  const productError = error || initialError
   if (productError) {
-    console.error("❌ [ProductPage] Error:", productError);
-    // English content normalized from the original source text.
+    console.error('❌ [ProductPage] Error:', productError)
   }
 
   return (
@@ -47,19 +42,11 @@ export function ProductPage({ slug, initialData, error: initialError }: ProductP
       topContent={isMobile}
       maxWidth={1650}
     >
-      {deviceType === "mobile" ? (
-        <ProductDetailMobile
-          slug={slug}
-          product={product}
-          isLoading={isLoading}
-        />
+      {deviceType === 'mobile' ? (
+        <ProductDetailMobile slug={slug} product={product} isLoading={isLoading} />
       ) : (
-        <ProductDetail
-          slug={slug}
-          product={product}
-          isLoading={isLoading}
-        />
+        <ProductDetail slug={slug} product={product} isLoading={isLoading} />
       )}
     </ClientLayoutWrapper>
-  );
+  )
 }

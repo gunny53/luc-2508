@@ -22,7 +22,8 @@ Disallow: /checkout/
 Disallow: /api/
 
 # Host
-Host: https://ecsite.live
+Host: http://localhost:8000
 
 # Sitemaps
+Sitemap: http://localhost:8000/sitemap.xml
 Sitemap: https://ecsite.live/sitemap.xml

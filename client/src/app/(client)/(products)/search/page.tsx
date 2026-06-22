@@ -1,7 +1,7 @@
 'use client'
 
-import { SearchContent } from "@/components/client/search/search-Main";
+import { SearchContent } from '@/components/client/search/search-main'
 
 export default function CartPage() {
-  return <SearchContent />;
+  return <SearchContent />
 }

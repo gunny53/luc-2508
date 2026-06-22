@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 export default function AddressesTable() {
-  const  t  = useTranslations();
+  const t = useTranslations()
 
   return (
     <div className="min-h-[400px] bg-white p-6 flex flex-col items-center justify-center text-center">
@@ -27,30 +27,24 @@ export default function AddressesTable() {
       </div>
 
       {/* Message */}
-      <p className="text-base font-semibold text-gray-900 mb-2">
-        {t("user.account.address.noAddress")}
-      </p>
+      <p className="text-base font-semibold text-gray-900 mb-2">{t('user.account.address.noAddress')}</p>
 
       {/* Encrypted note */}
       <p className="text-sm text-green-600 mb-6 flex items-center justify-center">
-        <svg
-          className="w-4 h-4 mr-1 text-green-600"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
+        <svg className="w-4 h-4 mr-1 text-green-600" fill="currentColor" viewBox="0 0 20 20">
           <path
             fillRule="evenodd"
             d="M10 2a4 4 0 00-4 4v2H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1V6a4 4 0 00-4-4zm-2 6V6a2 2 0 114 0v2H8z"
             clipRule="evenodd"
           />
         </svg>
-        {t("user.account.address.encryptedNote")}
+        {t('user.account.address.encryptedNote')}
       </p>
 
       {/* Add new address button */}
       <Button className="bg-red-500 hover:bg-red-600 text-white text-base font-semibold px-6 py-3 rounded-full">
-        {t("user.account.address.addNewAddress")}
+        {t('user.account.address.addNewAddress')}
       </Button>
     </div>
-  );
+  )
 }

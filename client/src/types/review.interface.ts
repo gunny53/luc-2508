@@ -1,23 +1,23 @@
-import { BaseResponse, PaginationMetadata } from "./base.interface";
+import { BaseResponse, PaginationMetadata } from './base.interface'
 
 // ====================================
 //              SUB-TYPES
 // ====================================
 
-export type MediaType = 'IMAGE' | 'VIDEO';
+export type MediaType = 'IMAGE' | 'VIDEO'
 
 export interface ReviewMedia {
-  id: string;
-  url: string;
-  type: MediaType;
-  reviewId: string;
-  createdAt: string;
+  id: string
+  url: string
+  type: MediaType
+  reviewId: string
+  createdAt: string
 }
 
 export interface ReviewUser {
-  id: string;
-  name: string;
-  avatar?: string;
+  id: string
+  name: string
+  avatar?: string
 }
 
 // ====================================
@@ -25,17 +25,17 @@ export interface ReviewUser {
 // ====================================
 
 export interface Review extends PaginationMetadata {
-  id: string;
-  content: string;
-  rating: number;
-  orderId: string;
-  productId: string;
-  userId: string;
-  updateCount: number;
-  createdAt: string;
-  updatedAt: string;
-  medias: ReviewMedia[];
-  user: ReviewUser;
+  id: string
+  content: string
+  rating: number
+  orderId: string
+  productId: string
+  userId: string
+  updateCount: number
+  createdAt: string
+  updatedAt: string
+  medias: ReviewMedia[]
+  user: ReviewUser
 }
 
 // ====================================
@@ -43,24 +43,23 @@ export interface Review extends PaginationMetadata {
 // ====================================
 
 export interface CreateReviewMediaPayload {
-  url: string;
-  type: MediaType;
+  url: string
+  type: MediaType
 }
 
 export interface CreateReviewRequest {
-  content: string;
-  rating: number;
-  productId: string;
-  orderId: string;
-  medias?: CreateReviewMediaPayload[];
+  content: string
+  rating: number
+  productId: string
+  orderId: string
+  medias?: CreateReviewMediaPayload[]
 }
 
 export interface UpdateReviewRequest {
-  content?: string;
-  rating?: number;
-  medias?: CreateReviewMediaPayload[]; // Assuming medias can be updated
+  content?: string
+  rating?: number
+  medias?: CreateReviewMediaPayload[] // Assuming medias can be updated
 }
-
 
 // ====================================
 //          API RESPONSES
@@ -68,6 +67,6 @@ export interface UpdateReviewRequest {
 
 export interface GetReviewsResponse extends BaseResponse {
   data: {
-    data: Review;
-  }[];
+    data: Review
+  }[]
 }

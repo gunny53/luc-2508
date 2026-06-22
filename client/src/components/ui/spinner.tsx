@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import { cn } from '@/lib/utils';
-import { Loader2 } from 'lucide-react';
-import React from 'react';
+import { cn } from '@/lib/utils'
+import { Loader2 } from 'lucide-react'
+import React from 'react'
 
 interface SpinnerProps {
-  size?: 'sm' | 'default' | 'lg';
-  className?: string;
+  size?: 'sm' | 'default' | 'lg'
+  className?: string
 }
 
 export function Spinner({ size = 'default', className }: SpinnerProps) {
@@ -17,10 +17,10 @@ export function Spinner({ size = 'default', className }: SpinnerProps) {
         {
           'h-4 w-4': size === 'sm',
           'h-5 w-5': size === 'default',
-          'h-6 w-6': size === 'lg',
+          'h-6 w-6': size === 'lg'
         },
         className
       )}
     />
-  );
+  )
 }

@@ -1,46 +1,36 @@
-import { BaseResponse } from "../base.interface";
-import { UserProfile } from "./profile.interface";
-
-
-
-
+import { BaseResponse } from '../base.interface'
+import { UserProfile } from './profile.interface'
 
 // A generic type for actions within a permission subject
-type PermissionActions = { [action: string]: boolean };
+type PermissionActions = { [action: string]: boolean }
 
 // The structure for all permissions, based on the API response
 export interface Permissions {
-  User?: PermissionActions;
-  Role?: PermissionActions;
-  Permission?: PermissionActions;
-  Profile?: PermissionActions;
-  TwoFactor?: PermissionActions;
-  Password?: PermissionActions;
-  Session?: PermissionActions;
-  all?: PermissionActions;
+  User?: PermissionActions
+  Role?: PermissionActions
+  Permission?: PermissionActions
+  Profile?: PermissionActions
+  TwoFactor?: PermissionActions
+  Password?: PermissionActions
+  Session?: PermissionActions
+  all?: PermissionActions
   // Allow for other potential keys not explicitly defined
-  [key: string]: PermissionActions | undefined;
+  [key: string]: PermissionActions | undefined
 }
-
-// English content normalized from the original source text.
 export interface GetAbilityResponse extends BaseResponse {
-    data: {
-        permissions: Permissions;
-    }
+  data: {
+    permissions: Permissions
+  }
 }
-
 
 export interface oAuthLoginResponse {
-  data:{
+  data: {
     url: string
   }
 }
-// English content normalized from the original source text.
 export interface LogoutRequest {
   refreshToken?: string
 }
-
-// English content normalized from the original source text.
 export interface LoginRequest {
   email: string
   password: string
@@ -48,24 +38,20 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse extends BaseResponse {
-  data:{
+  data: {
     message?: string
     user?: UserProfile
   }
   verificationType?: string
 }
 
-export interface RequestDeviceResponse extends BaseResponse{
-    data:{
-        requiresDeviceVerification: string
-        verificationType: string
-        verificationRedirectUrl: string
-    }
+export interface RequestDeviceResponse extends BaseResponse {
+  data: {
+    requiresDeviceVerification: string
+    verificationType: string
+    verificationRedirectUrl: string
+  }
 }
-
-
-
-// English content normalized from the original source text.
 export interface RegisterRequest {
   firstName: string
   lastName: string
@@ -75,7 +61,7 @@ export interface RegisterRequest {
   phoneNumber: string
 }
 
-export interface RegisterResponse extends BaseResponse{
+export interface RegisterResponse extends BaseResponse {
   id: string
   email: string
   name: string
@@ -85,13 +71,10 @@ export interface RegisterResponse extends BaseResponse{
   updatedAt: string
 }
 
-export interface RegisterSendRequest{
-  email: string;
+export interface RegisterSendRequest {
+  email: string
 }
-
-
-// English content normalized from the original source text.
-export interface ResetPasswordSendRequest{
+export interface ResetPasswordSendRequest {
   email: string
 }
 export interface ResetPasswordRequest {
@@ -100,31 +83,28 @@ export interface ResetPasswordRequest {
   revokeAllSessions?: string
 }
 
-export interface ResetPasswordResponse extends BaseResponse{
+export interface ResetPasswordResponse extends BaseResponse {
   message: string
 }
-
-
-// English content normalized from the original source text.
 export interface VerifyOTPRequest {
   code: string
 }
 
-export interface VerifyOTPResponse extends BaseResponse{
+export interface VerifyOTPResponse extends BaseResponse {
   success: boolean
   data: {
-    id: number;
-    email: string;
-    role: string;
-    status: string;
-    twoFactorEnabled: boolean;
-    googleId: string | null;
-    firstName: string;
-    lastName: string;
-    username: string;
-    phoneNumber: string | null;
-    avatar: string | null;
-    isDeviceTrustedInSession?: boolean;
+    id: number
+    email: string
+    role: string
+    status: string
+    twoFactorEnabled: boolean
+    googleId: string | null
+    firstName: string
+    lastName: string
+    username: string
+    phoneNumber: string | null
+    avatar: string | null
+    isDeviceTrustedInSession?: boolean
   }
 }
 
@@ -133,18 +113,18 @@ export interface Verify2faRequest {
   method: string
 }
 
-export interface Verify2faResponse extends BaseResponse{
+export interface Verify2faResponse extends BaseResponse {
   data: {
-    id: number;
-    roleId: number;
-    email: string;
-    roleName: string;
-    username: string;
-    isDeviceTrustedInSession?: boolean;
+    id: number
+    roleId: number
+    email: string
+    roleName: string
+    username: string
+    isDeviceTrustedInSession?: boolean
   }
 }
 
-export interface ResendOTPRequest{
+export interface ResendOTPRequest {
   code: string
 }
 
@@ -160,13 +140,8 @@ export interface SendOTPResponse {
   createdAt: string
   message: string
 }
-
-
-
-
-// English content normalized from the original source text.
 export interface Setup2faResponse extends BaseResponse {
-  data:{
+  data: {
     secret: string
     qrCode: string
   }
@@ -178,12 +153,10 @@ export interface Confirm2faRequest {
 
 export interface Confirm2faResponse {
   message: string
-  data:{
-    recoveryCodes:[]
+  data: {
+    recoveryCodes: []
   }
-
 }
-
 
 export interface Disable2faRequest {
   code: string

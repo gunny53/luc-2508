@@ -3,27 +3,11 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage
-} from '@/components/ui/form'
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-  InputOTPSeparator
-} from '@/components/ui/input-otp'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
+import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from '@/components/ui/input-otp'
 import { Button } from '@/components/ui/button'
-import { useVerify2FA } from './useVerify2fa'
-import {
-  AnimatedForm,
-  AnimatedFormItem,
-  AnimatedButton
-} from '@/components/ui/animated-form'
+import { useVerify2FA } from './use-verify2fa'
+import { AnimatedForm, AnimatedFormItem, AnimatedButton } from '@/components/ui/animated-form'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
@@ -31,15 +15,7 @@ import { useTranslations } from 'next-intl'
 export function Verify2FAForm({ className, ...props }: React.ComponentPropsWithoutRef<'form'>) {
   const router = useRouter()
   const t = useTranslations()
-  const {
-    loading,
-    handleVerifyCode,
-    handleResendOTP,
-    type,
-    switchToRecovery,
-    switchToTOTP,
-    schema
-  } = useVerify2FA()
+  const { loading, handleVerifyCode, handleResendOTP, type, switchToRecovery, switchToTOTP, schema } = useVerify2FA()
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -50,32 +26,25 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
   useEffect(() => {
     form.reset({ otp: '' })
   }, [type])
-
-  // English content normalized from the original source text.
   const handleOTPChange = (value: string) => {
     if (type === 'RECOVERY') {
-      // English content normalized from the original source text.
-      const cleanValue = value.replace(/-/g, '');
-      // English content normalized from the original source text.
-      const firstPart = cleanValue.slice(0, 5);
-      const secondPart = cleanValue.slice(5, 10);
-      // English content normalized from the original source text.
-      const processedValue = `${firstPart}-${secondPart}`;
+      const cleanValue = value.replace(/-/g, '')
+      const firstPart = cleanValue.slice(0, 5)
+      const secondPart = cleanValue.slice(5, 10)
+      const processedValue = `${firstPart}-${secondPart}`
       // console.log('Processed value:', processedValue);
-      form.setValue('otp', processedValue, { shouldValidate: true });
+      form.setValue('otp', processedValue, { shouldValidate: true })
 
       if (cleanValue.length === 10) {
-        form.handleSubmit(handleVerifyCode)();
+        form.handleSubmit(handleVerifyCode)()
       }
     } else {
-      form.setValue('otp', value, { shouldValidate: true });
+      form.setValue('otp', value, { shouldValidate: true })
       if (value.length === 6) {
-        form.handleSubmit(handleVerifyCode)();
+        form.handleSubmit(handleVerifyCode)()
       }
     }
-  }  // English content normalized from the original source text.
-  // English content normalized from the original source text.
-
+  }
   const renderTitle = () => {
     switch (type) {
       case 'OTP':
@@ -98,12 +67,9 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
     }
   }
   const renderSwitchMethod = () => {
-    // English content normalized from the original source text.
     if (type === 'OTP') {
-      return null // English content normalized from the original source text.
+      return null
     }
-
-    // English content normalized from the original source text.
     return (
       <AnimatedFormItem>
         <div className="text-center text-sm">
@@ -122,21 +88,13 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleVerifyCode)}
-        className={cn('flex flex-col gap-6', className)}
-        {...props}
-      >
+      <form onSubmit={form.handleSubmit(handleVerifyCode)} className={cn('flex flex-col gap-6', className)} {...props}>
         <AnimatedForm>
-          {/* English content normalized from the original source text. */}
+          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
-              <h1 className="text-4xl font-bold">
-                {renderTitle()}
-              </h1>
-              <p className="text-balance text-md text-muted-foreground">
-                {renderDescription()}
-              </p>
+              <h1 className="text-4xl font-bold">{renderTitle()}</h1>
+              <p className="text-balance text-md text-muted-foreground">{renderDescription()}</p>
             </div>
           </AnimatedFormItem>
 
@@ -186,14 +144,15 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
             />
           </AnimatedFormItem>
 
-          {/* English content normalized from the original source text. */}
+          {}
           {renderSwitchMethod()}
 
-          {/* English content normalized from the original source text. */}
+          {}
           {type === 'OTP' && (
             <AnimatedFormItem>
               <div className="text-center text-sm">
-                {t('auth.2faVerify.didnotReceiveCode')}{' '}                <button
+                {t('auth.2faVerify.didnotReceiveCode')}{' '}
+                <button
                   type="button"
                   onClick={handleResendOTP}
                   disabled={loading}

@@ -1,6 +1,6 @@
 // "use client";
 // import { useEffect, useState } from "react";
-// import { mockCategoryData } from './category-MockData';
+// import { mockCategoryData } from './category-mock-data';
 // import { useTranslations } from "next-intl";
 
 // export function CategoryStats() {

@@ -103,8 +103,9 @@ const {
 English content normalized from the original source text.
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 2. **Debounced Search**:
    - English content normalized from the original source text
@@ -125,12 +126,12 @@ const handleCreatePermission = async (data) => {
       path: data.path,
       method: data.method,
       description: data.description
-    });
-    showToast("Permission created successfully", "success");
+    })
+    showToast('Permission created successfully', 'success')
   } catch (error) {
-    showToast("Failed to create permission", "error");
+    showToast('Failed to create permission', 'error')
   }
-};
+}
 ```
 
 English content normalized from the original source text.
@@ -144,23 +145,25 @@ const handleUpdatePermission = async (id, data) => {
       path: data.path,
       method: data.method,
       description: data.description
-    });
-    showToast("Permission updated successfully", "success");
+    })
+    showToast('Permission updated successfully', 'success')
   } catch (error) {
-    showToast("Failed to update permission", "error");
+    showToast('Failed to update permission', 'error')
   }
-};
+}
 ```
 
 ## Best Practices
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 3. **UX**:
    - English content normalized from the original source text
@@ -169,13 +172,16 @@ English content normalized from the original source text.
 English content normalized from the original source text.
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text
 
 English content normalized from the original source text.
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+
+- English content normalized from the original source text
+- English content normalized from the original source text

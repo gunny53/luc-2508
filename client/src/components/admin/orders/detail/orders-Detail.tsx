@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { useEffect } from "react";
-import { useParams } from "next/navigation";
-import { useOrder } from "../useOrders";
-import { Badge } from "@/components/ui/badge";
-import { format } from "date-fns";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { useEffect } from 'react'
+import { useParams } from 'next/navigation'
+import { useOrder } from '../use-orders'
+import { Badge } from '@/components/ui/badge'
+import { format } from 'date-fns'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 import {
   ArrowLeft,
   Package,
@@ -19,15 +19,15 @@ import {
   ShoppingBag,
   Loader2,
   Printer
-} from "lucide-react";
+} from 'lucide-react'
 
 export default function OrderDetail() {
-  const { id } = useParams<{ id: string }>();
-  const { orderDetail, loading, fetchOrderDetail, cancelOrder, handlePrintInvoice } = useOrder();
+  const { id } = useParams<{ id: string }>()
+  const { orderDetail, loading, fetchOrderDetail, cancelOrder, handlePrintInvoice } = useOrder()
 
   useEffect(() => {
-    if (id) fetchOrderDetail(id);
-  }, [id, fetchOrderDetail]);
+    if (id) fetchOrderDetail(id)
+  }, [id, fetchOrderDetail])
 
   if (loading)
     return (
@@ -37,7 +37,7 @@ export default function OrderDetail() {
           <p className="text-slate-600 text-sm">English content normalized from the original source text.</p>
         </div>
       </div>
-    );
+    )
 
   if (!orderDetail)
     return (
@@ -46,63 +46,61 @@ export default function OrderDetail() {
           <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
             <Package className="w-7 h-7 text-red-500" />
           </div>
-          <p className="text-red-600 text-base font-medium">English content normalized from the original source text.</p>
+          <p className="text-red-600 text-base font-medium">
+            English content normalized from the original source text.
+          </p>
           <p className="text-slate-500 mt-1 text-sm">English content normalized from the original source text.</p>
         </div>
       </div>
-    );
+    )
 
   const statusConfig: Record<string, { color: string; label: string; bgColor: string }> = {
     PENDING_PAYMENT: {
-      color: "text-amber-700",
-      bgColor: "bg-amber-50 border-amber-200",
-      label: "English content normalized from the original source text.",
+      color: 'text-amber-700',
+      bgColor: 'bg-amber-50 border-amber-200',
+      label: 'English content normalized from the original source text.'
     },
     PENDING_PACKAGING: {
-      color: "text-blue-700",
-      bgColor: "bg-blue-50 border-blue-200",
-      label: "English content normalized from the original source text.",
+      color: 'text-blue-700',
+      bgColor: 'bg-blue-50 border-blue-200',
+      label: 'English content normalized from the original source text.'
     },
     PENDING_PICKUP: {
-      color: "text-blue-700",
-      bgColor: "bg-blue-50 border-blue-200",
-      label: "English content normalized from the original source text.",
+      color: 'text-blue-700',
+      bgColor: 'bg-blue-50 border-blue-200',
+      label: 'English content normalized from the original source text.'
     },
     PENDING_DELIVERY: {
-      color: "text-purple-700",
-      bgColor: "bg-purple-50 border-purple-200",
-      label: "English content normalized from the original source text.",
+      color: 'text-purple-700',
+      bgColor: 'bg-purple-50 border-purple-200',
+      label: 'English content normalized from the original source text.'
     },
     DELIVERED: {
-      color: "text-emerald-700",
-      bgColor: "bg-emerald-50 border-emerald-200",
-      label: "English content normalized from the original source text."
+      color: 'text-emerald-700',
+      bgColor: 'bg-emerald-50 border-emerald-200',
+      label: 'English content normalized from the original source text.'
     },
     RETURNED: {
-      color: "text-slate-700",
-      bgColor: "bg-slate-50 border-slate-200",
-      label: "English content normalized from the original source text."
+      color: 'text-slate-700',
+      bgColor: 'bg-slate-50 border-slate-200',
+      label: 'English content normalized from the original source text.'
     },
     CANCELLED: {
-      color: "text-red-700",
-      bgColor: "bg-red-50 border-red-200",
-      label: "English content normalized from the original source text."
-    },
-  };
+      color: 'text-red-700',
+      bgColor: 'bg-red-50 border-red-200',
+      label: 'English content normalized from the original source text.'
+    }
+  }
 
   const status = statusConfig[orderDetail.status] || {
-    color: "text-slate-700",
-    bgColor: "bg-slate-50 border-slate-200",
-    label: orderDetail.status,
-  };
+    color: 'text-slate-700',
+    bgColor: 'bg-slate-50 border-slate-200',
+    label: orderDetail.status
+  }
+  const totalAmount =
+    orderDetail.totalPayment || orderDetail.items.reduce((sum, item) => sum + item.skuPrice * item.quantity, 0)
 
-  // English content normalized from the original source text.
-  const totalAmount = orderDetail.totalPayment || orderDetail.items.reduce(
-    (sum, item) => sum + item.skuPrice * item.quantity,
-    0
-  );
-
-  const showCancelButton = orderDetail.status === "PENDING_PAYMENT";
+  const showCancelButton = orderDetail.status === 'PENDING_PAYMENT'
 
   return (
     <div className="space-y-6">
@@ -114,15 +112,14 @@ export default function OrderDetail() {
               English content normalized from the original source text.{orderDetail.id}
             </h2>
             <p className="text-slate-500 text-sm mt-1">
-              English content normalized from the original source text. {format(new Date(orderDetail.createdAt), "English content normalized from the original source text.")}
+              English content normalized from the original source text.{' '}
+              {format(new Date(orderDetail.createdAt), 'English content normalized from the original source text.')}
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Badge
-            className={`${status.bgColor} ${status.color} border px-3 py-1.5 rounded-full text-xs font-medium`}
-          >
+          <Badge className={`${status.bgColor} ${status.color} border px-3 py-1.5 rounded-full text-xs font-medium`}>
             {status.label}
           </Badge>
 
@@ -133,7 +130,9 @@ export default function OrderDetail() {
               onClick={() => handlePrintInvoice(id)}
               className="text-blue-600 border-blue-300 hover:bg-blue-50 h-9 px-4 text-sm"
             >
-              <Printer className="w-3 h-3 mr-2" />English content normalized from the original source text.</Button>
+              <Printer className="w-3 h-3 mr-2" />
+              English content normalized from the original source text.
+            </Button>
           )}
 
           {showCancelButton && id && (
@@ -145,9 +144,11 @@ export default function OrderDetail() {
             >
               {loading ? (
                 <>
-                  <Loader2 className="w-3 h-3 mr-2 animate-spin" />English content normalized from the original source text.</>
+                  <Loader2 className="w-3 h-3 mr-2 animate-spin" />
+                  English content normalized from the original source text.
+                </>
               ) : (
-                "English content normalized from the original source text."
+                'English content normalized from the original source text.'
               )}
             </Button>
           )}
@@ -164,7 +165,9 @@ export default function OrderDetail() {
               <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Package className="w-4 h-4 text-blue-600" />
               </div>
-              <h2 className="text-base font-medium text-slate-700">English content normalized from the original source text.</h2>
+              <h2 className="text-base font-medium text-slate-700">
+                English content normalized from the original source text.
+              </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -188,9 +191,7 @@ export default function OrderDetail() {
                 <MapPin className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
                   <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
-                  <p className="text-sm font-medium text-slate-800 leading-relaxed">
-                    {orderDetail.receiver.address}
-                  </p>
+                  <p className="text-sm font-medium text-slate-800 leading-relaxed">{orderDetail.receiver.address}</p>
                 </div>
               </div>
             </div>
@@ -203,119 +204,127 @@ export default function OrderDetail() {
                 <ShoppingBag className="w-4 h-4 text-emerald-600" />
               </div>
               <h2 className="text-base font-medium text-slate-700">
-                English content normalized from the original source text.{orderDetail.items.length} English content normalized from the original source text.
+                English content normalized from the original source text.{orderDetail.items.length} English content
+                normalized from the original source text.
               </h2>
             </div>
 
             <div className="space-y-4">
               {orderDetail.items.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="flex gap-4 p-4 rounded-lg border border-slate-200 bg-slate-50/30"
-                >
-                    <div className="flex-shrink-0">
-                      <Image
-                        src={item.image}
-                        alt={item.productName}
-                        width={70}
-                        height={70}
-                        className="rounded-lg object-cover border border-white shadow-sm"
-                      />
-                    </div>
+                <div key={item.id} className="flex gap-4 p-4 rounded-lg border border-slate-200 bg-slate-50/30">
+                  <div className="flex-shrink-0">
+                    <Image
+                      src={item.image}
+                      alt={item.productName}
+                      width={70}
+                      height={70}
+                      className="rounded-lg object-cover border border-white shadow-sm"
+                    />
+                  </div>
 
-                    <div className="flex-1 min-w-0 space-y-1.5">
-                      <h3 className="font-medium text-slate-800 text-sm leading-tight line-clamp-2">
-                        {item.productName}
-                      </h3>
-                      <p className="text-slate-600 text-xs">{item.skuValue}</p>
-                      <div className="flex items-center justify-between pt-1">
-                        <p className="text-slate-500 text-xs">
-                          SL: <span className="font-medium text-slate-700">{item.quantity}</span>
+                  <div className="flex-1 min-w-0 space-y-1.5">
+                    <h3 className="font-medium text-slate-800 text-sm leading-tight line-clamp-2">
+                      {item.productName}
+                    </h3>
+                    <p className="text-slate-600 text-xs">{item.skuValue}</p>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-slate-500 text-xs">
+                        SL: <span className="font-medium text-slate-700">{item.quantity}</span>
+                      </p>
+                      <div className="text-right">
+                        <p className="text-xs text-slate-500">
+                          {item.skuPrice.toLocaleString()}₫ × {item.quantity}
                         </p>
-                        <div className="text-right">
-                          <p className="text-xs text-slate-500">
-                            {item.skuPrice.toLocaleString()}₫ × {item.quantity}
-                          </p>
-                          <p className="font-semibold text-sm text-emerald-600">
-                            {(item.skuPrice * item.quantity).toLocaleString()}₫
-                          </p>
-                        </div>
+                        <p className="font-semibold text-sm text-emerald-600">
+                          {(item.skuPrice * item.quantity).toLocaleString()}₫
+                        </p>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Right Column - Order Summary */}
-          <div className="lg:col-span-5 h-full">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200/60 sticky top-6 h-full">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <CreditCard className="w-4 h-4 text-purple-600" />
+        {/* Right Column - Order Summary */}
+        <div className="lg:col-span-5 h-full">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200/60 sticky top-6 h-full">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                <CreditCard className="w-4 h-4 text-purple-600" />
+              </div>
+              <h2 className="text-base font-medium text-slate-700">
+                English content normalized from the original source text.
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between py-2 border-b border-slate-200">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-3 h-3 text-slate-400" />
+                  <span className="text-slate-600 text-sm">
+                    English content normalized from the original source text.
+                  </span>
                 </div>
-                <h2 className="text-base font-medium text-slate-700">English content normalized from the original source text.</h2>
+                <span className="font-medium text-slate-800 text-sm">
+                  {format(new Date(orderDetail.createdAt), 'dd/MM/yyyy')}
+                </span>
               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center justify-between py-2 border-b border-slate-200">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-3 h-3 text-slate-400" />
-                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
-                  </div>
+              <div className="flex items-center justify-between py-2 border-b border-slate-200">
+                <div className="flex items-center gap-2">
+                  <CreditCard className="w-3 h-3 text-slate-400" />
+                  <span className="text-slate-600 text-sm">
+                    English content normalized from the original source text.
+                  </span>
+                </div>
+                <span className="font-medium text-slate-800 text-xs">#{orderDetail.paymentId}</span>
+              </div>
+
+              {}
+              <div className="space-y-2 pt-2">
+                <div className="flex items-center justify-between py-1.5">
+                  <span className="text-slate-600 text-sm">
+                    English content normalized from the original source text.
+                  </span>
                   <span className="font-medium text-slate-800 text-sm">
-                    {format(new Date(orderDetail.createdAt), "dd/MM/yyyy")}
+                    {orderDetail.totalItemCost?.toLocaleString() || '0'}₫
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between py-2 border-b border-slate-200">
-                  <div className="flex items-center gap-2">
-                    <CreditCard className="w-3 h-3 text-slate-400" />
-                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
-                  </div>
-                  <span className="font-medium text-slate-800 text-xs">
-                    #{orderDetail.paymentId}
+                <div className="flex items-center justify-between py-1.5">
+                  <span className="text-slate-600 text-sm">
+                    English content normalized from the original source text.
+                  </span>
+                  <span className="font-medium text-slate-800 text-sm">
+                    {orderDetail.totalShippingFee?.toLocaleString() || '0'}₫
                   </span>
                 </div>
 
-                {/* English content normalized from the original source text. */}
-                <div className="space-y-2 pt-2">
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
-                    <span className="font-medium text-slate-800 text-sm">
-                      {orderDetail.totalItemCost?.toLocaleString() || '0'}₫
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
-                    <span className="font-medium text-slate-800 text-sm">
-                      {orderDetail.totalShippingFee?.toLocaleString() || '0'}₫
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-slate-600 text-sm">English content normalized from the original source text.</span>
-                    <span className="font-medium text-red-600 text-sm">
-                      -{orderDetail.totalVoucherDiscount?.toLocaleString() || '0'}₫
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between py-4 bg-emerald-50 rounded-lg px-4 mt-4">
-                  <div className="flex items-center gap-2">
-                    <DollarSign className="w-4 h-4 text-emerald-600" />
-                    <span className="text-emerald-800 font-semibold text-sm">English content normalized from the original source text.</span>
-                  </div>
-                  <span className="font-semibold text-lg text-emerald-600">
-                    {totalAmount.toLocaleString()}₫
+                <div className="flex items-center justify-between py-1.5">
+                  <span className="text-slate-600 text-sm">
+                    English content normalized from the original source text.
+                  </span>
+                  <span className="font-medium text-red-600 text-sm">
+                    -{orderDetail.totalVoucherDiscount?.toLocaleString() || '0'}₫
                   </span>
                 </div>
+              </div>
+
+              <div className="flex items-center justify-between py-4 bg-emerald-50 rounded-lg px-4 mt-4">
+                <div className="flex items-center gap-2">
+                  <DollarSign className="w-4 h-4 text-emerald-600" />
+                  <span className="text-emerald-800 font-semibold text-sm">
+                    English content normalized from the original source text.
+                  </span>
+                </div>
+                <span className="font-semibold text-lg text-emerald-600">{totalAmount.toLocaleString()}₫</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-  );
+    </div>
+  )
 }

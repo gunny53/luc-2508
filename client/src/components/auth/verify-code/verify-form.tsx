@@ -3,27 +3,12 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage
-} from '@/components/ui/form'
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot
-} from '@/components/ui/input-otp'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 // import { Button } from '@/components/ui/button'
 import { otpSchema } from '../schema/index'
-import { useVerify } from './useVerify'
-import {
-  AnimatedForm,
-  AnimatedFormItem,
-  AnimatedButton
-} from '@/components/ui/animated-form'
+import { useVerify } from './use-verify'
+import { AnimatedForm, AnimatedFormItem, AnimatedButton } from '@/components/ui/animated-form'
 import { useTranslations } from 'next-intl'
 
 export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutRef<'form'>) {
@@ -35,8 +20,6 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
     resolver: zodResolver(otp),
     defaultValues: { otp: '' }
   })
-
-  // English content normalized from the original source text.
   const handleOTPChange = (value: string) => {
     form.setValue('otp', value, { shouldValidate: true })
     if (value.length === 6) {
@@ -46,19 +29,13 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleVerifyCode)}
-        className={cn('flex flex-col gap-6', className)}
-        {...props}
-      >
+      <form onSubmit={form.handleSubmit(handleVerifyCode)} className={cn('flex flex-col gap-6', className)} {...props}>
         <AnimatedForm>
-          {/* English content normalized from the original source text. */}
+          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.verifyOtp.title')}</h1>
-              <p className="text-balance text-md text-muted-foreground">
-              {t('auth.verifyOtp.subtitle')}
-              </p>
+              <p className="text-balance text-md text-muted-foreground">{t('auth.verifyOtp.subtitle')}</p>
             </div>
           </AnimatedFormItem>
 

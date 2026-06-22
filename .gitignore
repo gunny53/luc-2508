@@ -1,0 +1,10 @@
+.idea
+node_modules
+dist
+.next
+client/.next
+server/dist
+.env
+.env.*
+!.env.example
+yarn-error.log

@@ -1,11 +1,11 @@
-"use client";
-import { Globe, ChevronDown } from "lucide-react";
-import { useChangeLang } from "@/hooks/useChangeLang";
-import { useTranslations } from "next-intl";
+'use client'
+import { Globe, ChevronDown } from 'lucide-react'
+import { useChangeLang } from '@/hooks/use-change-lang'
+import { useTranslations } from 'next-intl'
 
 const LanguageDropdown = () => {
-  const { showLangMenu, toggleMenu, changeLanguage, currentLangName } = useChangeLang();
-  const t = useTranslations();
+  const { showLangMenu, toggleMenu, changeLanguage, currentLangName } = useChangeLang()
+  const t = useTranslations()
 
   return (
     <div className="relative flex items-center">
@@ -20,22 +20,16 @@ const LanguageDropdown = () => {
 
       {showLangMenu && (
         <div className="absolute top-full mt-2 w-32 bg-white shadow-md rounded border z-60">
-          <button
-            className="w-full text-left px-4 py-2 hover:bg-gray-100"
-            onClick={() => changeLanguage("vi")}
-          >
+          <button className="w-full text-left px-4 py-2 hover:bg-gray-100" onClick={() => changeLanguage('vi')}>
             {t('language.vi')}
           </button>
-          <button
-            className="w-full text-left px-4 py-2 hover:bg-gray-100"
-            onClick={() => changeLanguage("en")}
-          >
+          <button className="w-full text-left px-4 py-2 hover:bg-gray-100" onClick={() => changeLanguage('en')}>
             {t('language.en')}
           </button>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default LanguageDropdown;
+export default LanguageDropdown

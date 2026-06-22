@@ -1,28 +1,28 @@
-import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
+import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+  enabled: process.env.ANALYZE === 'true'
+})
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin()
 const nextConfig: NextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // English content normalized from the original source text.
+    ignoreDuringBuilds: true
   },
   reactStrictMode: false,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**', // English content normalized from the original source text.
+        hostname: '**'
       },
       {
         protocol: 'http',
-        hostname: '**', // English content normalized from the original source text.
-      },
-    ],
-  },
-};
+        hostname: '**'
+      }
+    ]
+  }
+}
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig)

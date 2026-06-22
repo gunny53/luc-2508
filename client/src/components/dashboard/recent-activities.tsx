@@ -1,10 +1,8 @@
-import { Activity } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { JSX } from 'react';
-
-// English content normalized from the original source text.
+import { Activity } from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+import { JSX } from 'react'
 interface RecentActivitiesProps {
-  activities: { text: string; icon: JSX.Element; date: string }[];
+  activities: { text: string; icon: JSX.Element; date: string }[]
 }
 
 export function RecentActivitiesList({ activities }: RecentActivitiesProps) {
@@ -13,9 +11,7 @@ export function RecentActivitiesList({ activities }: RecentActivitiesProps) {
       {activities.length > 0 ? (
         activities.map((activity, index) => (
           <div key={index} className="flex items-start space-x-4">
-            <div className="p-2 rounded-full bg-gray-100 text-red-500">
-              {activity.icon}
-            </div>
+            <div className="p-2 rounded-full bg-gray-100 text-red-500">{activity.icon}</div>
             <div className="flex-1">
               <p className="text-sm font-medium">{activity.text}</p>
               <p className="text-xs text-muted-foreground">{activity.date}</p>
@@ -26,5 +22,5 @@ export function RecentActivitiesList({ activities }: RecentActivitiesProps) {
         <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
       )}
     </div>
-  );
+  )
 }

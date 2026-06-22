@@ -180,8 +180,6 @@ Leverage these shared UI components for consistent implementation:
 
 This structure ensures maintainable, consistent module implementations across the application.
 
-
-
 You must follow exactly what is requested.
 Do not assume, add, or do anything beyond the specific instruction.
 If additional clarification is needed, you must ask the user before proceeding.

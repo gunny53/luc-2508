@@ -1,11 +1,7 @@
-import OrderDetail from "@/components/client/user/account/desktop/orders/orders-Detail";
+import OrderDetail from '@/components/client/user/account/desktop/orders/orders-detail'
 
-export default async function OrderDetailPage({
-  params,
-}: {
-  params: Promise<{ orderId: string }>;
-}) {
-  const { orderId } = await params;
+export default async function OrderDetailPage({ params }: { params: Promise<{ orderId: string }> }) {
+  const { orderId } = await params
 
-  return <OrderDetail orderId={orderId} />;
+  return <OrderDetail orderId={orderId} />
 }

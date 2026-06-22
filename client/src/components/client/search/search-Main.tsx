@@ -1,27 +1,25 @@
-"use client";
+'use client'
 
-import { useCheckDevice } from "@/hooks/useCheckDevices";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
-
-// English content normalized from the original source text.
-const SearchDesktopIndex = dynamic(() => import("@/components/client/search/desktop/search-Index"), {
+import { useCheckDevice } from '@/hooks/use-check-devices'
+import dynamic from 'next/dynamic'
+import { Skeleton } from '@/components/ui/skeleton'
+const SearchDesktopIndex = dynamic(() => import('@/components/client/search/desktop/search-index'), {
   loading: () => <Skeleton className="w-full h-full" />,
-  ssr: false,
-});
-const SearchMobileIndex = dynamic(() => import("@/components/client/search/mobile/search-IndexMobile"), {
+  ssr: false
+})
+const SearchMobileIndex = dynamic(() => import('@/components/client/search/mobile/search-index-mobile'), {
   loading: () => <Skeleton className="w-full h-full" />,
-  ssr: false,
-});
+  ssr: false
+})
 
 interface SearchContentProps {
-  categoryIds?: string[];
-  currentCategoryId?: string | null;
+  categoryIds?: string[]
+  currentCategoryId?: string | null
 }
 
 export function SearchContent({ categoryIds = [], currentCategoryId }: SearchContentProps) {
-  const deviceType = useCheckDevice();
-  const isMobileView = deviceType === "mobile";
+  const deviceType = useCheckDevice()
+  const isMobileView = deviceType === 'mobile'
 
   return (
     <div className="w-full h-full">
@@ -31,5 +29,5 @@ export function SearchContent({ categoryIds = [], currentCategoryId }: SearchCon
         <SearchDesktopIndex categoryIds={categoryIds} currentCategoryId={currentCategoryId} />
       )}
     </div>
-  );
+  )
 }

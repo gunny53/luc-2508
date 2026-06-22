@@ -9,12 +9,9 @@ export default function VerifyCodeHandler() {
 
   useEffect(() => {
     if (!type) {
-      // English content normalized from the original source text.
       window.location.replace('/verify-email?action=signup')
     }
   }, [type])
-
-  // English content normalized from the original source text.
   if (!type) return null
 
   return <VerifyEmailForm />
