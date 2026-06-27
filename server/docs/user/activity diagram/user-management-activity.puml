@@ -8,57 +8,57 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+User User Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:User User Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
     note right
       Database Operations:
-      • English content normalized from the original source text
-      • English content normalized from the original source text
+      • User User Management Activity: execute the validated workflow
+      • User User Management Activity: execute the validated workflow
       • Parallel execution cho performance
       end note
     :Include role information;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :GET /users/:userId;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
     :findUniqueIncludeRolePermissions;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :POST /users + user data;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
   note right
     Data Validation:
     • email: string validation
@@ -70,136 +70,136 @@ else (No)
     • roleId: string validation
     end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
       endif
     endif
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :PUT /users/:userId + user data;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
+          :User User Management Activity: execute the validated workflow;
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :User User Management Activity: execute the validated workflow;
+          :User User Management Activity: execute the validated workflow;
           if (condition?) then (Yes)
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :User User Management Activity: execute the validated workflow;
+            :User User Management Activity: execute the validated workflow;
           endif
         endif
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
         if (condition?) then (Yes)
           if (condition?) then (Yes)
             if (condition?) then (Yes)
-              :English content normalized from the original source text;
-              :English content normalized from the original source text;
+              :User User Management Activity: execute the validated workflow;
+              :User User Management Activity: execute the validated workflow;
             else (No)
-              :English content normalized from the original source text;
-              :English content normalized from the original source text;
+              :User User Management Activity: execute the validated workflow;
+              :User User Management Activity: execute the validated workflow;
             endif
           else (No)
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :User User Management Activity: execute the validated workflow;
+            :User User Management Activity: execute the validated workflow;
           endif
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :User User Management Activity: execute the validated workflow;
+          :User User Management Activity: execute the validated workflow;
         endif
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
       endif
     endif
   else (No)
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :DELETE /users/:userId;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :User User Management Activity: execute the validated workflow;
+  :User User Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
+    :User User Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :User User Management Activity: execute the validated workflow;
+      :User User Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
+          :User User Management Activity: execute the validated workflow;
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :User User Management Activity: execute the validated workflow;
+          :User User Management Activity: execute the validated workflow;
           if (condition?) then (Yes)
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :User User Management Activity: execute the validated workflow;
+            :User User Management Activity: execute the validated workflow;
           endif
         endif
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :User User Management Activity: execute the validated workflow;
+        :User User Management Activity: execute the validated workflow;
       endif
     endif
   else (No)
-    :English content normalized from the original source text;
+    :User User Management Activity: execute the validated workflow;
   endif
 
 else (Invalid operation)
-  :English content normalized from the original source text;
+  :User User Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:User User Management Activity: execute the validated workflow;
 
 stop
 

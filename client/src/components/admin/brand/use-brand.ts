@@ -9,7 +9,7 @@ import { showToast } from '@/components/ui/toastify'
 
 export const useBrand = () => {
   const t = useTranslations()
-  // Modal states
+  
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null)
 
@@ -28,7 +28,7 @@ export const useBrand = () => {
       totalPages: metadata.totalPages || 1,
       limit: metadata.limit || 10,
       hasNext: metadata.hasNext || false,
-      hasPrevious: metadata.hasPrev || false // Fixed property name to match server response
+      hasPrevious: metadata.hasPrev || false 
     }
   }, [])
 
@@ -53,16 +53,16 @@ export const useBrand = () => {
     defaultLimit: 10
   })
 
-  // CRUD operations
+  
   const createBrand = async (brand: BrandCreateRequest) => {
     try {
       const response = await brandsService.createBrand(brand)
-      showToast(`English content normalized from the original source text.${brand.name}`, 'success')
+      showToast(`Th??ng hi?u${brand.name}`, 'success')
       refreshData()
       handleCloseModal()
       return true
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'English content normalized from the original source text.'
+      const errorMessage = error.response?.data?.message || 'Th??ng hi?u'
       showToast(errorMessage, 'error')
       return false
     }
@@ -71,12 +71,12 @@ export const useBrand = () => {
   const updateBrand = async (id: number | string, brand: BrandUpdateRequest) => {
     try {
       const response = await brandsService.updateBrand(id, brand)
-      showToast(`English content normalized from the original source text.${brand.name}`, 'success')
+      showToast(`Th??ng hi?u${brand.name}`, 'success')
       refreshData()
       handleCloseModal()
       return true
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'English content normalized from the original source text.'
+      const errorMessage = error.response?.data?.message || 'Th??ng hi?u'
       showToast(errorMessage, 'error')
       return false
     }
@@ -87,13 +87,13 @@ export const useBrand = () => {
       setDeleteLoading(true)
       try {
         const response = await brandsService.deleteBrand(brandToDelete.id)
-        showToast(`English content normalized from the original source text.${brandToDelete.name}`, 'success')
+        showToast(`Th??ng hi?u${brandToDelete.name}`, 'success')
         refreshData()
         setDeleteOpen(false)
         setBrandToDelete(null)
       } catch (error: any) {
         const errorMessage =
-          error.response?.data?.message || 'English content normalized from the original source text.'
+          error.response?.data?.message || 'Th??ng hi?u'
         showToast(errorMessage, 'error')
       } finally {
         setDeleteLoading(false)
@@ -126,14 +126,14 @@ export const useBrand = () => {
     loading,
     pagination,
 
-    // Server-side pagination handlers
+    
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
     refreshData,
 
-    // Delete
+    
     deleteOpen,
     brandToDelete,
     deleteLoading,
@@ -141,7 +141,7 @@ export const useBrand = () => {
     handleConfirmDelete,
     handleCloseDeleteModal,
 
-    // Upsert
+    
     isModalOpen,
     selectedBrand,
     handleOpenModal,

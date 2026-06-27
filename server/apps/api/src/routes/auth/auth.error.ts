@@ -1,6 +1,6 @@
 import { UnauthorizedException, UnprocessableEntityException } from '@nestjs/common'
 
-// OTP related errors
+
 export const InvalidOTPException = new UnprocessableEntityException([
   {
     message: 'Error.InvalidOTP',
@@ -22,7 +22,7 @@ export const FailedToSendOTPException = new UnprocessableEntityException([
   }
 ])
 
-// Email related errors
+
 export const EmailAlreadyExistsException = new UnprocessableEntityException([
   {
     message: 'Error.EmailAlreadyExists',
@@ -37,11 +37,11 @@ export const EmailNotFoundException = new UnprocessableEntityException([
   }
 ])
 
-// Auth token related errors
+
 export const RefreshTokenAlreadyUsedException = new UnauthorizedException('Error.RefreshTokenAlreadyUsed')
 export const UnauthorizedAccessException = new UnauthorizedException('Error.UnauthorizedAccess')
 
-// Google auth related errors
+
 export const GoogleUserInfoError = new Error('Error.FailedToGetGoogleUserInfo')
 
 export const InvalidTOTPException = new UnprocessableEntityException([

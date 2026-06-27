@@ -6,17 +6,17 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Brand Brand Translation Create Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Brand Brand Translation Create Activity: execute the validated workflow;
 :brandTranslation.create({ createdById, data });
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Brand Brand Translation Create Activity: execute the validated workflow;
   stop
 else (OK)
   :Build message i18n;
-  :English content normalized from the original source text;
+  :Brand Brand Translation Create Activity: execute the validated workflow;
 endif
 stop
 

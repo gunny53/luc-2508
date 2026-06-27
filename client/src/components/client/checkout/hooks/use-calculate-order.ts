@@ -19,7 +19,7 @@ export const useCalculateOrder = () => {
 
   const calculateOrder = useCallback(async () => {
     if (!calculateOrderRequest) {
-      setError('English content normalized from the original source text.')
+      setError('??n h?ng')
       return null
     }
     const requestHash = JSON.stringify(calculateOrderRequest)
@@ -39,7 +39,7 @@ export const useCalculateOrder = () => {
 
       return response.data
     } catch (err: any) {
-      const errorMessage = err?.response?.data?.message || 'English content normalized from the original source text.'
+      const errorMessage = err?.response?.data?.message || '??n h?ng'
       setError(errorMessage)
       console.error('[Calculate Order] Error:', err)
       lastRequestRef.current = ''

@@ -38,7 +38,7 @@ export function SortableValueInput({
           <GripVertical className="h-5 w-5 text-muted-foreground" />
         </div>
       ) : (
-        <div className="w-4 h-4 p-1 mr-2" /> // Placeholder for alignment
+        <div className="w-4 h-4 p-1 mr-2" /> 
       )}
       <div className="relative w-full">
         <Input

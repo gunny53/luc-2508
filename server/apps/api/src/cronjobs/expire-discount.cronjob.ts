@@ -21,7 +21,7 @@ export class ExpireDiscountCronjob {
     })
     if (result.count > 0) {
       this.logger.log(
-        `English content normalized from the original source text.${result.count}English content normalized from the original source text.`
+        `Expired ${result.count} discounts.`
       )
     }
   }

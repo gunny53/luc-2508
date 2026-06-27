@@ -20,7 +20,7 @@ export const getAllBrands = async (params?: BrandParams): Promise<BrandGetAllRes
     const axiosError = error as AxiosError
     throw (
       axiosError.response?.data || {
-        message: 'English content normalized from the original source text.'
+        message: 'Th??ng hi?u'
       }
     )
   }
@@ -34,7 +34,7 @@ export const getBrandById = async (id: number | string): Promise<BrandGetByIdRes
     const axiosError = error as AxiosError
     throw (
       axiosError.response?.data || {
-        message: 'English content normalized from the original source text.'
+        message: 'Th??ng hi?u'
       }
     )
   }
@@ -47,7 +47,7 @@ export const createBrand = async (data: BrandCreateRequest): Promise<Brand> => {
     const axiosError = error as AxiosError
     throw (
       axiosError.response?.data || {
-        message: 'English content normalized from the original source text.'
+        message: 'Th??ng hi?u'
       }
     )
   }
@@ -61,7 +61,7 @@ export const updateBrand = async (id: number | string, data: BrandUpdateRequest)
     const axiosError = error as AxiosError
     throw (
       axiosError.response?.data || {
-        message: 'English content normalized from the original source text.'
+        message: 'Th??ng hi?u'
       }
     )
   }
@@ -74,7 +74,7 @@ export const deleteBrand = async (id: number | string): Promise<void> => {
     const axiosError = error as AxiosError
     throw (
       axiosError.response?.data || {
-        message: 'English content normalized from the original source text.'
+        message: 'Th??ng hi?u'
       }
     )
   }

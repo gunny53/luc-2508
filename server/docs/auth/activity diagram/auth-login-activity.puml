@@ -6,39 +6,39 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Auth Auth Login Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Auth Auth Login Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Auth Auth Login Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:Auth Auth Login Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Auth Auth Login Activity: execute the validated workflow;
   stop
 endif
 if (condition?) then (Yes)
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Auth Auth Login Activity: execute the validated workflow;
     stop
   endif
   if (condition?) then (Yes)
     :verifyTOTP();
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Auth Auth Login Activity: execute the validated workflow;
       stop
     endif
   else (No)
     :validateVerificationCode(LOGIN);
   endif
 endif
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Auth Auth Login Activity: execute the validated workflow;
+:Auth Auth Login Activity: execute the validated workflow;
+:Auth Auth Login Activity: execute the validated workflow;
 :Set auth cookies;
-:English content normalized from the original source text;
+:Auth Auth Login Activity: execute the validated workflow;
 stop
 
 @enduml

@@ -73,7 +73,7 @@ export class LanguageService {
 
   async delete(id: string) {
     try {
-      // hard delete
+      
       await this.languageRepo.delete(id, true)
       return {
         message: this.i18n.t('language.language.success.DELETE_SUCCESS')

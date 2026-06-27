@@ -3,7 +3,6 @@ global:
   smtp_smarthost: 'localhost:25'
   smtp_from: 'alertmanager@ecsite.com'
 
-# Route configuration - Simplified for VPS
 route:
   group_by: ['alertname', 'service']
   group_wait: 30s
@@ -11,7 +10,6 @@ route:
   repeat_interval: 2h
   receiver: 'web.hook'
   routes:
-    # Critical alerts - immediate notification
     - match:
         severity: critical
       receiver: 'critical-notifications'
@@ -20,7 +18,6 @@ route:
       repeat_interval: 10m
       continue: true
 
-    # Performance alerts - high priority
     - match:
         service: api-server
       receiver: 'performance-notifications'
@@ -29,7 +26,6 @@ route:
       repeat_interval: 30m
       continue: true
 
-    # Database alerts - high priority
     - match:
         service: postgresql
       receiver: 'database-notifications'
@@ -38,9 +34,7 @@ route:
       repeat_interval: 30m
       continue: true
 
-# Inhibition rules - Simplified
 inhibit_rules:
-  # Inhibit critical alerts when service is down
   - source_match:
       severity: 'critical'
       alertname: 'ServiceDown'
@@ -48,14 +42,12 @@ inhibit_rules:
       severity: 'critical'
     equal: ['instance', 'service']
 
-# Receivers - Simplified for VPS
 receivers:
   - name: 'web.hook'
     webhook_configs:
       - url: 'http://127.0.0.1:5001/'
         send_resolved: true
 
-  # Critical notifications - immediate action required
   - name: 'critical-notifications'
     webhook_configs:
       - url: 'http://127.0.0.1:5001/critical'
@@ -67,7 +59,6 @@ receivers:
         text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}\n{{ end }}'
         send_resolved: true
 
-  # Performance notifications - high priority
   - name: 'performance-notifications'
     webhook_configs:
       - url: 'http://127.0.0.1:5001/performance'
@@ -79,7 +70,6 @@ receivers:
         text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}\n{{ end }}'
         send_resolved: true
 
-  # Database notifications - high priority
   - name: 'database-notifications'
     webhook_configs:
       - url: 'http://127.0.0.1:5001/database'
@@ -91,6 +81,5 @@ receivers:
         text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}\n{{ end }}'
         send_resolved: true
 
-# Templates for notifications
 templates:
   - '/etc/alertmanager/template/*.tmpl'

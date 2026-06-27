@@ -6,7 +6,6 @@ import { Skeleton } from '@/components/ui/skeleton'
 export default function Loading() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header Skeleton */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <Skeleton className="h-6 w-64" />
@@ -15,7 +14,6 @@ export default function Loading() {
 
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Product Images Skeleton */}
           <div className="space-y-4">
             <Skeleton className="w-full aspect-square rounded-lg" />
             <div className="grid grid-cols-4 gap-2">
@@ -25,7 +23,6 @@ export default function Loading() {
             </div>
           </div>
 
-          {/* Product Info Skeleton */}
           <div className="space-y-6">
             <div className="space-y-3">
               <Skeleton className="h-8 w-3/4" />
@@ -57,7 +54,6 @@ export default function Loading() {
           </div>
         </div>
 
-        {/* Product Details Skeleton */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <Card>
@@ -100,7 +96,6 @@ export default function Loading() {
           </div>
         </div>
 
-        {/* Related Products Skeleton */}
         <div className="mt-12">
           <Skeleton className="h-8 w-48 mb-6" />
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">

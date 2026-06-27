@@ -20,19 +20,12 @@ export default function SearchDesktopIndex({ categoryIds = [], currentCategoryId
   return (
     <ProductsProvider currentCategoryId={currentCategoryId}>
       <div className="flex flex-col gap-6 p-6">
-        {/* Brands carousel section at the top */}
         <SearchBrand />
 
-        {/* Main content with sidebar and products */}
         <div className="flex gap-6">
           <SearchSidebar categoryIds={categoryIds} currentCategoryId={currentCategoryId} />
           <div className="flex-1 space-y-4">
-            {/* <ShopSuggestion /> */}
-            {keyword && (
-              <div className="text-sm text-gray-500">
-                English content normalized from the original source text. '{keyword}'
-              </div>
-            )}
+            {keyword && <div className="text-sm text-gray-500">Search results for &quot;{keyword}&quot;</div>}
             <SearchSortBar />
             <SearchProductGrid />
           </div>

@@ -5,7 +5,7 @@ export default function LinkedAccounts() {
   return (
     <div className="bg-white rounded-lg p-6 space-y-6 text-base py-6">
       <h2 className="font-semibold text-base text-[#121214]">
-        English content normalized from the original source text.
+        T?i kho?n
       </h2>
 
       <div className="flex items-center justify-between">
@@ -15,15 +15,14 @@ export default function LinkedAccounts() {
         </div>
         <div className="flex items-center gap-2">
           <span className="bg-green-100 text-green-600 px-2 py-0.5 rounded text-sm">
-            English content normalized from the original source text.
+            T?i kho?n
           </span>
           <Button variant="ghost" className="text-gray-500 text-sm hover:underline">
-            English content normalized from the original source text.
+            T?i kho?n
           </Button>
         </div>
       </div>
 
-      {}
     </div>
   )
 }

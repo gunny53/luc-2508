@@ -9,7 +9,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 const LANGUAGES = [
-  { code: 'vi', label: 'English content normalized from the original source text.' },
+  { code: 'vi', label: 'Ng?n ng?' },
   { code: 'en', label: 'English' }
 ]
 
@@ -45,7 +45,6 @@ export default function MobileChangeLanguage() {
           )
         })}
       </div>
-      {/* Floating home icon */}
       <div className="fixed bottom-6 right-4 z-50">
         <Link
           href="/"

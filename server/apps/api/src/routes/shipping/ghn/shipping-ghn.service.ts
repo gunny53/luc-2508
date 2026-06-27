@@ -468,7 +468,7 @@ export class ShippingService {
 
   async cancelGHNOrder(orderCode: string): Promise<{ success: boolean; message: string }> {
     try {
-      this.logger.log(`English content normalized from the original source text.${orderCode}`)
+      this.logger.log(`Creating GHN order ${orderCode}`)
 
       if (!orderCode?.trim()) {
         throw new Error('Order code is required')
@@ -477,26 +477,26 @@ export class ShippingService {
         orderCodes: [orderCode]
       })
 
-      this.logger.log(`English content normalized from the original source text.${JSON.stringify(result, null, 2)}`)
+      this.logger.log(`GHN response: ${JSON.stringify(result, null, 2)}`)
       if (result && Array.isArray(result)) {
         const orderResult = result.find((item: any) => item.order_code === orderCode)
         if (orderResult && orderResult.result === true) {
           return {
             success: true,
-            message: `English content normalized from the original source text.${orderCode}`
+            message: `Creating GHN order ${orderCode}`
           }
         }
       }
 
       return {
         success: false,
-        message: `English content normalized from the original source text.${orderCode}`
+        message: `Creating GHN order ${orderCode}`
       }
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      this.logger.error(`GHN order creation failed: ${error.message}`)
       return {
         success: false,
-        message: `English content normalized from the original source text.${error.message}`
+        message: `GHN order creation failed: ${error.message}`
       }
     }
   }

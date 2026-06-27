@@ -67,13 +67,10 @@ export default function OrderHistory() {
       onValueChange={setCurrentTab}
       className="w-full bg-white min-h-[70vh] rounded-none shadow-none md:min-h-[85vh] md:rounded-xl md:shadow-sm"
     >
-      {/* Tabs list */}
       <OrderTabs counts={counts} />
 
-      {}
       <OrderDateFilter />
 
-      {}
       <OrderTabContent currentTab={currentTab} onTabChange={setCurrentTab} />
     </Tabs>
   )

@@ -37,17 +37,17 @@ const getOrderActions = (
     })
   }
 
-  // if (onUpdateStatus) {
-  //   if (actions.length > 0) {
-  //     actions.push({ type: "separator" });
-  //   }
-  //   actions.push({
-  //     type: "command",
-  //     label: t("updateStatus"),
-  //     icon: <Package className="w-4 h-4" />,
-  //     onClick: (order) => onUpdateStatus(order.id),
-  //   });
-  // }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   return actions
 }
@@ -67,7 +67,7 @@ export const OrdersColumns = ({
   expandedRows?: Set<string>
   setExpandedRows?: (rows: Set<string>) => void
 }): ColumnDef<ManageOrder, any>[] => [
-  // Expand button column
+  
   {
     id: 'expand',
     header: '',
@@ -101,7 +101,7 @@ export const OrdersColumns = ({
     enableSorting: false,
     enableHiding: false
   },
-  // Products summary column
+  
   {
     accessorFn: (row) => row.items,
     id: 'products',
@@ -116,7 +116,7 @@ export const OrdersColumns = ({
         <div className="w-[120px] text-center py-3">
           <div className="flex items-center justify-center gap-2">
             <Package className="h-4 w-4 text-gray-500" />
-            <span className="text-sm">{totalItems} English content normalized from the original source text.</span>
+            <span className="text-sm">{totalItems} ??n h?ng</span>
           </div>
         </div>
       )
@@ -129,7 +129,7 @@ export const OrdersColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title="English content normalized from the original source text."
+        title="??n h?ng"
         className="justify-center text-center px-2"
       />
     ),
@@ -145,7 +145,7 @@ export const OrdersColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title="English content normalized from the original source text."
+        title="??n h?ng"
         className="justify-center text-center px-2"
       />
     ),
@@ -157,13 +157,13 @@ export const OrdersColumns = ({
           {orderCode ? (
             <div
               className="font-medium text-blue-600 text-sm"
-              title={`English content normalized from the original source text.${orderCode}`}
+              title={`??n h?ng${orderCode}`}
             >
               {orderCode}
             </div>
           ) : (
             <div className="text-gray-400 text-xs italic">
-              English content normalized from the original source text.
+              ??n h?ng
             </div>
           )}
         </div>
@@ -284,13 +284,13 @@ export const OrdersColumns = ({
         <div className="w-[140px] text-center py-3">
           <div className="font-bold text-lg text-green-600 mb-1">{formatCurrency(totalPayment)}₫</div>
           <div className="text-xs text-gray-500">
-            {itemCount} English content normalized from the original source text.
+            {itemCount} ??n h?ng
           </div>
         </div>
       )
     }
   },
-  // Actions column
+  
   {
     id: 'actions',
     cell: ({ row }) => (

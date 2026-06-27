@@ -6,15 +6,15 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Cart Cart Delete Items Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Cart Cart Delete Items Activity: execute the validated workflow;
+:Cart Cart Delete Items Activity: execute the validated workflow;
+:Cart Cart Delete Items Activity: execute the validated workflow;
+:Cart Cart Delete Items Activity: execute the validated workflow;
 :Build message i18n;
-:English content normalized from the original source text;
+:Cart Cart Delete Items Activity: execute the validated workflow;
 stop
 
 @enduml

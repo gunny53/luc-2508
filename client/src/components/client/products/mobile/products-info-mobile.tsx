@@ -7,7 +7,7 @@ import { productMock } from './mock-data'
 
 export default function ProductInfoMobile({ product = productMock }) {
   const colors =
-    product.variants.find((v) => v.value === 'English content normalized from the original source text.')?.options || []
+    product.variants.find((v) => v.value === 'S?n ph?m')?.options || []
 
   const [selectedColor, setSelectedColor] = useState(colors[0] || '')
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -17,7 +17,6 @@ export default function ProductInfoMobile({ product = productMock }) {
 
   return (
     <div className="bg-white p-4 text-sm space-y-3">
-      {}
       <div className="flex gap-2 overflow-x-auto no-scrollbar">
         {colors.map((color, index) => (
           <div
@@ -43,25 +42,22 @@ export default function ProductInfoMobile({ product = productMock }) {
         ))}
       </div>
 
-      {}
       <div className="flex items-center gap-3">
         <span className="text-red-600 text-2xl font-bold">₫{product.basePrice.toLocaleString('vi-VN')}</span>
         <span className="line-through text-gray-400 text-sm">₫{product.virtualPrice.toLocaleString('vi-VN')}</span>
         <span className="text-yellow-500 text-sm font-medium">-{discountPercent}%</span>
       </div>
 
-      {}
       <div className="flex items-center justify-between">
         <div className="bg-red-100 text-red-500 px-2 py-0.5 rounded text-xs font-semibold">
-          English content normalized from the original source text.
+          S?n ph?m
         </div>
         <div className="flex items-center gap-1 text-xs text-gray-500">
-          <span>English content normalized from the original source text.</span>
+          <span>S?n ph?m</span>
           <Heart className="w-4 h-4 text-gray-400" />
         </div>
       </div>
 
-      {}
       <div className="text-base font-medium text-black leading-snug">{product.name}</div>
     </div>
   )

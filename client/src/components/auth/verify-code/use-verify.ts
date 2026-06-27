@@ -20,7 +20,7 @@ export function useVerify() {
   const verifyOTP = async (code: string) => {
     try {
       setLoading(true)
-      // {message: "Auth.Otp.Verified", statusCode: 200}
+      
       const response = await authService.verifyOTP({ code })
       const successMessage = response?.message || t('admin.showToast.auth.authSuccessful')
       showToast(t(successMessage), 'success')

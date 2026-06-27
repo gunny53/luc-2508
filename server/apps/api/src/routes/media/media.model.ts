@@ -5,7 +5,7 @@ export const BatchPresignedUploadBodySchema = z.object({
     .array(
       z.object({
         filename: z.string(),
-        filesize: z.number().max(5 * 1024 * 1024) // 5MB per file
+        filesize: z.number().max(5 * 1024 * 1024) 
       })
     )
     .min(1)

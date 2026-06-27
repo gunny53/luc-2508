@@ -34,9 +34,9 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
   const [statsData, setStatsData] = useState<ManageOrder[]>(orders)
   const [isLoadingStats, setIsLoadingStats] = useState(false)
 
-  console.log('OrdersStats rendered with orders:', orders.length) // Debug log
+  console.log('OrdersStats rendered with orders:', orders.length) 
 
-  // Fetch orders for stats - with all data (limit 200)
+  
   const fetchOrdersStats = async () => {
     try {
       setIsLoadingStats(true)
@@ -45,21 +45,21 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
         page: 1
       })
 
-      console.log('Stats API Response:', response) // Debug log
+      console.log('Stats API Response:', response) 
 
       if (response && response.data) {
         setStatsData(response.data)
       } else {
-        // Fallback to current orders if API fails
+        
         console.warn('No data in response, falling back to current orders')
         setStatsData(orders)
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.name !== 'CanceledError') {
         console.error('Error fetching orders stats:', error)
-        toast.error('English content normalized from the original source text.')
+        toast.error('??n h?ng')
       }
-      // Fallback to current orders
+      
       setStatsData(orders)
     } finally {
       setIsLoadingStats(false)
@@ -76,7 +76,7 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
   const stats = useMemo(() => {
     const dataToUse = statsData && statsData.length > 0 ? statsData : orders
 
-    console.log('Stats calculation using data:', dataToUse.length, 'orders') // Debug log
+    console.log('Stats calculation using data:', dataToUse.length, 'orders') 
 
     if (!dataToUse || dataToUse.length === 0) {
       return {
@@ -179,7 +179,7 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
       averageOrderProcessingTime
     }
 
-    console.log('Calculated stats:', result) // Debug log
+    console.log('Calculated stats:', result) 
 
     return result
   }, [statsData, orders])
@@ -194,13 +194,12 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
   return (
     <TooltipProvider>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-6">
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <ShoppingCart className="h-4 w-4 text-muted-foreground" />
@@ -211,17 +210,16 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -234,20 +232,19 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
             <p className="text-xs text-muted-foreground mt-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Package className="h-4 w-4 text-muted-foreground" />
@@ -258,17 +255,16 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Users className="h-4 w-4 text-muted-foreground" />
@@ -281,17 +277,16 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Target className="h-4 w-4 text-muted-foreground" />
@@ -304,20 +299,19 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
             <p className="text-xs text-muted-foreground mt-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Activity className="h-4 w-4 text-muted-foreground" />
@@ -330,20 +324,19 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
             <p className="text-xs text-muted-foreground mt-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Percent className="h-4 w-4 text-muted-foreground" />
@@ -356,21 +349,19 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
             <p className="text-xs text-muted-foreground mt-1">
-              English content normalized from the original source text. {'>'}English content normalized from the
-              original source text.
+              ??n h?ng {'>'}??n h?ng
             </p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -383,17 +374,16 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <AlertTriangle className="h-4 w-4 text-muted-foreground" />
@@ -406,20 +396,19 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
             <p className="text-xs text-muted-foreground mt-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </p>
           </TooltipContent>
         </Tooltip>
 
-        {}
         <Tooltip>
           <TooltipTrigger asChild>
             <Card className="cursor-help">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1">
-                  English content normalized from the original source text.
+                  ??n h?ng
                   <Info className="h-3 w-3" />
                 </CardTitle>
                 <Clock className="h-4 w-4 text-muted-foreground" />
@@ -428,15 +417,15 @@ export function OrdersStats({ orders }: OrdersStatsProps) {
                 <div className="text-2xl font-bold text-indigo-600">
                   {isLoadingStats
                     ? '...'
-                    : `${stats.averageOrderProcessingTime.toFixed(1)}English content normalized from the original source text.`}
+                    : `${stats.averageOrderProcessingTime.toFixed(1)}??n h?ng`}
                 </div>
               </CardContent>
             </Card>
           </TooltipTrigger>
           <TooltipContent>
-            <p>English content normalized from the original source text.</p>
+            <p>??n h?ng</p>
             <p className="text-xs text-muted-foreground mt-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </p>
           </TooltipContent>
         </Tooltip>

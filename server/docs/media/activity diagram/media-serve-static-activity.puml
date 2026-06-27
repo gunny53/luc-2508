@@ -6,16 +6,16 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Media Media Serve Static Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Media Media Serve Static Activity: execute the validated workflow;
 :res.sendFile(resolve(UPLOAD_DIR, filename));
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Media Media Serve Static Activity: execute the validated workflow;
   :200 OK;
 else (No)
-  :English content normalized from the original source text;
+  :Media Media Serve Static Activity: execute the validated workflow;
 endif
 stop
 

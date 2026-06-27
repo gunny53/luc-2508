@@ -73,7 +73,7 @@ export default function VoucherDiscountSettings({
       <div className="group relative">
         <Info className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-help transition-colors" />
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-          English content normalized from the original source text.
+          M? gi?m gi?
         </div>
       </div>
     </Label>
@@ -102,23 +102,23 @@ export default function VoucherDiscountSettings({
         <CardTitle className="flex items-center gap-3 text-lg font-semibold text-gray-900">
           <div className="w-1 h-6 bg-gradient-to-b from-red-500 to-red-600 rounded-full" />
           {isEdit
-            ? 'English content normalized from the original source text.'
-            : 'English content normalized from the original source text.'}
+            ? 'M? gi?m gi?'
+            : 'M? gi?m gi?'}
         </CardTitle>
         {isEdit && (
           <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
             <div className="flex items-start gap-2">
               <AlertCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm text-red-800">
-                <p className="font-medium">English content normalized from the original source text.</p>
+                <p className="font-medium">M? gi?m gi?</p>
                 <ul className="mt-1 list-disc list-inside text-xs space-y-0.5">
-                  <li>English content normalized from the original source text.</li>
-                  <li>English content normalized from the original source text.</li>
-                  <li>English content normalized from the original source text.</li>
-                  <li>English content normalized from the original source text.</li>
-                  <li>English content normalized from the original source text.</li>
+                  <li>M? gi?m gi?</li>
+                  <li>M? gi?m gi?</li>
+                  <li>M? gi?m gi?</li>
+                  <li>M? gi?m gi?</li>
+                  <li>M? gi?m gi?</li>
                 </ul>
-                <p className="mt-1 text-xs text-green-700">English content normalized from the original source text.</p>
+                <p className="mt-1 text-xs text-green-700">M? gi?m gi?</p>
               </div>
             </div>
           </div>
@@ -126,55 +126,50 @@ export default function VoucherDiscountSettings({
       </CardHeader>
 
       <CardContent className="p-6 space-y-8">
-        {}
         <div className="space-y-3">
           <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
-            <InfoLabel icon={Settings}>English content normalized from the original source text.</InfoLabel>
+            <InfoLabel icon={Settings}>M? gi?m gi?</InfoLabel>
             <Switch
               checked={formData.isPrivate}
               onCheckedChange={(checked) => updateFormData('isPrivate', checked)}
               className="data-[state=checked]:bg-blue-600"
             />
           </div>
-          <p className="text-xs text-gray-600 ml-6">English content normalized from the original source text.</p>
+          <p className="text-xs text-gray-600 ml-6">M? gi?m gi?</p>
         </div>
 
-        {}
         <div className="space-y-4">
           <RequiredLabel icon={Percent} htmlFor="discountType">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </RequiredLabel>
 
-          {/* Combined row for select and input */}
           <div className="flex gap-3">
-            {/* Select for discount type */}
             <div className="flex-shrink-0 w-40">
               <Select
                 value={formData.discountType || 'PERCENTAGE'}
                 onValueChange={(value) => updateFormData('discountType', value)}
-                disabled={isEdit} // Disable khi edit
+                disabled={isEdit} 
               >
                 <SelectTrigger
                   id="discountType"
                   className={cn('h-full border-gray-300 text-gray-900', isEdit && 'bg-gray-100 cursor-not-allowed')}
                 >
-                  <SelectValue placeholder="English content normalized from the original source text." />
+                  <SelectValue placeholder="M? gi?m gi?" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="FIX_AMOUNT">English content normalized from the original source text.</SelectItem>
-                  <SelectItem value="PERCENTAGE">English content normalized from the original source text.</SelectItem>
+                  <SelectItem value="FIX_AMOUNT">M? gi?m gi?</SelectItem>
+                  <SelectItem value="PERCENTAGE">M? gi?m gi?</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            {/* Input for discount value */}
             <div className="flex-1 relative">
               <Input
                 type={formData.discountType === 'PERCENTAGE' ? 'number' : 'text'}
                 placeholder={formData.discountType === 'PERCENTAGE' ? 'VD: 10' : 'VD: 50.000'}
                 value={formData.discountType === 'PERCENTAGE' ? formData.value || '' : formatCurrency(formData.value)}
                 onChange={handleValueChange}
-                readOnly={isEdit} // Readonly khi edit
+                readOnly={isEdit} 
                 className={cn(
                   'h-11 pr-12 transition-all duration-200 text-gray-900',
                   'border-gray-300 focus:border-red-400 focus:ring-2 focus:ring-red-100',
@@ -196,15 +191,15 @@ export default function VoucherDiscountSettings({
             className={cn('space-y-3 p-4 border border-gray-300 rounded-md', isEdit ? 'bg-gray-100' : 'bg-gray-50/50')}
           >
             <Label className="text-sm font-medium text-gray-900">
-              English content normalized from the original source text.{' '}
+              M? gi?m gi?{' '}
               {isEdit && (
-                <span className="text-xs text-gray-500">English content normalized from the original source text.</span>
+                <span className="text-xs text-gray-500">M? gi?m gi?</span>
               )}
             </Label>
             <RadioGroup
               value={isMaxDiscountLimited ? 'limited' : 'unlimited'}
               onValueChange={(value) => {
-                if (isEdit) return // Prevent change when editing
+                if (isEdit) return 
                 const isLimited = value === 'limited'
                 setIsMaxDiscountLimited(isLimited)
                 if (!isLimited) {
@@ -212,7 +207,7 @@ export default function VoucherDiscountSettings({
                 }
               }}
               className="flex flex-col space-y-2 pt-1"
-              disabled={isEdit} // Disable when editing
+              disabled={isEdit} 
             >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="unlimited" id="unlimited" disabled={isEdit} />
@@ -223,7 +218,7 @@ export default function VoucherDiscountSettings({
                     isEdit && 'cursor-not-allowed text-gray-500'
                   )}
                 >
-                  English content normalized from the original source text.
+                  M? gi?m gi?
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
@@ -235,7 +230,7 @@ export default function VoucherDiscountSettings({
                     isEdit && 'cursor-not-allowed text-gray-500'
                   )}
                 >
-                  English content normalized from the original source text.
+                  M? gi?m gi?
                 </Label>
               </div>
             </RadioGroup>
@@ -243,26 +238,25 @@ export default function VoucherDiscountSettings({
               <div className="relative pl-7 pt-2">
                 <Input
                   type="text"
-                  placeholder="English content normalized from the original source text."
+                  placeholder="M? gi?m gi?"
                   value={formatCurrency(formData.maxDiscountValue)}
                   onChange={handleMaxDiscountChange}
-                  readOnly={isEdit} // Readonly khi edit
+                  readOnly={isEdit} 
                   className={cn('pr-12 h-11 border-gray-300 text-gray-900', isEdit && 'bg-gray-100 cursor-not-allowed')}
                 />
                 <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-700">
-                  English content normalized from the original source text.
+                  M? gi?m gi?
                 </span>
               </div>
             )}
           </div>
         )}
 
-        {}
         <div className="space-y-4">
           <RequiredLabel icon={ShoppingCart}>
-            English content normalized from the original source text.{' '}
+            M? gi?m gi?{' '}
             {isEdit && (
-              <span className="text-xs text-gray-500">English content normalized from the original source text.</span>
+              <span className="text-xs text-gray-500">M? gi?m gi?</span>
             )}
           </RequiredLabel>
           <div className="relative mt-2">
@@ -271,7 +265,7 @@ export default function VoucherDiscountSettings({
               placeholder="VD: 100.000"
               value={formatCurrency(formData.minOrderValue)}
               onChange={(e) => updateFormData('minOrderValue', parseCurrency(e.target.value))}
-              readOnly={isEdit} // Readonly khi edit
+              readOnly={isEdit} 
               className={cn(
                 'h-11 pr-12 transition-all duration-200 text-gray-900',
                 'border-gray-300 focus:border-red-400 focus:ring-2 focus:ring-red-100',
@@ -281,25 +275,23 @@ export default function VoucherDiscountSettings({
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-700 font-medium">₫</span>
           </div>
-          <p className="text-xs text-gray-600">English content normalized from the original source text.</p>
+          <p className="text-xs text-gray-600">M? gi?m gi?</p>
           <ErrorMessage error={errors.minOrderValue} />
         </div>
 
-        {}
         <div className="space-y-6">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-gray-600" />
             <span className="text-sm font-medium text-gray-900">
-              English content normalized from the original source text.
+              M? gi?m gi?
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-            {}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-sm font-medium text-gray-900 flex items-center gap-1 whitespace-nowrap">
-                  English content normalized from the original source text.<span className="text-red-500">*</span>
+                  M? gi?m gi?<span className="text-red-500">*</span>
                 </Label>
                 <Input
                   type="number"
@@ -320,11 +312,10 @@ export default function VoucherDiscountSettings({
               <ErrorMessage error={errors.usageLimit} />
             </div>
 
-            {}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-sm font-medium text-gray-900 flex items-center gap-1 whitespace-nowrap">
-                  English content normalized from the original source text.<span className="text-red-500">*</span>
+                  M? gi?m gi?<span className="text-red-500">*</span>
                 </Label>
                 <Input
                   type="number"
@@ -334,7 +325,7 @@ export default function VoucherDiscountSettings({
                     const value = parseInt(e.target.value)
                     updateFormData('maxUsesPerUser', isNaN(value) ? 1 : value)
                   }}
-                  readOnly={isEdit} // Readonly khi edit
+                  readOnly={isEdit} 
                   className={cn(
                     'h-10 w-28 text-center text-gray-900',
                     'border-gray-300 focus:border-red-400 focus:ring-2 focus:ring-red-100',
@@ -349,18 +340,17 @@ export default function VoucherDiscountSettings({
           </div>
         </div>
 
-        {}
         <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-xl p-4">
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
             <div className="space-y-1">
               <p className="text-sm font-medium text-gray-900">
-                English content normalized from the original source text.
+                M? gi?m gi?
               </p>
               <p className="text-xs text-gray-700">
                 {formData.value && formData.minOrderValue
-                  ? `English content normalized from the original source text.${formatCurrency(formData.value)}${formData.discountType === 'PERCENTAGE' ? '%' : '₫'}English content normalized from the original source text.${formatCurrency(formData.minOrderValue)}₫`
-                  : 'English content normalized from the original source text.'}
+                  ? `M? gi?m gi?${formatCurrency(formData.value)}${formData.discountType === 'PERCENTAGE' ? '%' : '₫'}M? gi?m gi?${formatCurrency(formData.minOrderValue)}₫`
+                  : 'M? gi?m gi?'}
               </p>
             </div>
           </div>

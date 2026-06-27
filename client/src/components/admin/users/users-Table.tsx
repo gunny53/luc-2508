@@ -52,7 +52,6 @@ export default function UserTable() {
   })
   return (
     <div className="w-full space-y-4">
-      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenUpsertModal('add')}>
           <PlusIcon className="w-4 h-4 mr-2" />
@@ -60,7 +59,6 @@ export default function UserTable() {
         </Button>
       </div>
 
-      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -73,7 +71,6 @@ export default function UserTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {/* Data Table */}
       <div className="relative">
         <DataTable
           table={table}
@@ -88,7 +85,6 @@ export default function UserTable() {
         />
       </div>
 
-      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
@@ -108,7 +104,6 @@ export default function UserTable() {
         loading={deleteLoading}
       />
 
-      {/* Add/Edit Modal */}
       {upsertOpen && (
         <UsersModalUpsert
           open={upsertOpen}

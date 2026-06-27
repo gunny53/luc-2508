@@ -13,15 +13,15 @@ import {
   Repeat2,
   CreditCard
 } from 'lucide-react'
-// import { useTranslations } from 'next-intl' // Add this import
+
 import { useLocale, useTranslations } from 'next-intl'
 
 export const useSettingsMockData = () => {
-  // Convert to a hook
-  const t = useTranslations() // Add translation hook
+  
+  const t = useTranslations() 
   const locale = useLocale()
 
-  const langLabel = locale === 'vi' ? 'English content normalized from the original source text.' : 'English'
+  const langLabel = locale === 'vi' ? 'T?i kho?n' : 'English'
 
   return {
     header: {

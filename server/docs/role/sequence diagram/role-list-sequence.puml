@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Role Role List Sequence: validate request and return the expected response
 
 actor "Admin" as A
 participant "RoleController" as RC
@@ -23,9 +23,9 @@ RS -> RR: list({ page, limit, name })
 activate RR
 
 note right of RR
-English content normalized from the original source text.
+Role Role List Sequence: validate request and return the expected response
 • deletedAt = null
-• English content normalized from the original source text
+• Role Role List Sequence: validate request and return the expected response
 Pagination:
 • skip/take theo page/limit
 end note

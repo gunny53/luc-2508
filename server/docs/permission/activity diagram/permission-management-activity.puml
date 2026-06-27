@@ -8,57 +8,57 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Permission Permission Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Permission Permission Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
   :GET /permissions?page=1&limit=10;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Permission Permission Management Activity: execute the validated workflow;
+  :Permission Permission Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
+    Permission Permission Management Activity: execute the validated workflow
     • skip = (page - 1) * limit
     • take = limit
     • Parallel queries: count + findMany
-    • English content normalized from the original source text
+    • Permission Permission Management Activity: execute the validated workflow
     end note
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
+    :Permission Permission Management Activity: execute the validated workflow;
+    :Permission Permission Management Activity: execute the validated workflow;
+    :Permission Permission Management Activity: execute the validated workflow;
+    :Permission Permission Management Activity: execute the validated workflow;
+    :Permission Permission Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :GET /permissions/:permissionId;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Permission Permission Management Activity: execute the validated workflow;
+  :Permission Permission Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
+    :Permission Permission Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :POST /permissions + {name, path, method, module};
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Permission Permission Management Activity: execute the validated workflow;
+  :Permission Permission Management Activity: execute the validated workflow;
   note right
     Data Validation:
     • name: required string
@@ -68,98 +68,98 @@ else (No)
     • Unique constraint: path + method
     end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Permission Permission Management Activity: execute the validated workflow
+    • Permission Permission Management Activity: execute the validated workflow
     • Audit trail: createdAt, createdById
     • Validate unique constraint
     end note
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :PUT /permissions/:permissionId + {data};
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Permission Permission Management Activity: execute the validated workflow;
+  :Permission Permission Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Permission Permission Management Activity: execute the validated workflow
+    • Permission Permission Management Activity: execute the validated workflow
     • Include roles relationship
     • Validate unique constraint
     • Audit trail: updatedAt, updatedById
     end note
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Permission Permission Management Activity: execute the validated workflow;
+        :Permission Permission Management Activity: execute the validated workflow;
         note right
         Cache Management:
-        • English content normalized from the original source text
+        • Permission Permission Management Activity: execute the validated workflow
         • Cache key: `role:${roleId}`
-        • English content normalized from the original source text
+        • Permission Permission Management Activity: execute the validated workflow
         • Ensure cache consistency
         end note
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Permission Permission Management Activity: execute the validated workflow;
+        :Permission Permission Management Activity: execute the validated workflow;
+        :Permission Permission Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Permission Permission Management Activity: execute the validated workflow;
+        :Permission Permission Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :DELETE /permissions/:permissionId;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Permission Permission Management Activity: execute the validated workflow;
+  :Permission Permission Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
+    Permission Permission Management Activity: execute the validated workflow
     • Soft delete: UPDATE deletedAt field
     • Include roles relationship
     • Audit trail: deletedAt, deletedById
-    • English content normalized from the original source text
+    • Permission Permission Management Activity: execute the validated workflow
     end note
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Permission Permission Management Activity: execute the validated workflow;
+      :Permission Permission Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Permission Permission Management Activity: execute the validated workflow;
   endif
 
 else (Invalid operation)
-  :English content normalized from the original source text;
+  :Permission Permission Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Permission Permission Management Activity: execute the validated workflow;
 
 stop
 

@@ -35,7 +35,7 @@ export function useCustomerInfo(
   const [shippingDistrictName, setShippingDistrictName] = useState<string>('')
   const [shippingWardName, setShippingWardName] = useState<string>('')
 
-  // Use the provinces hook for customer address
+  
   const {
     provinces,
     districts: customerDistricts,
@@ -51,12 +51,12 @@ export function useCustomerInfo(
     getWardName: getCustomerWardName,
     error: provincesError
   } = useProvinces()
-  // Debug logging removed
+  
   useEffect(() => {
-    // Track province changes silently
+    
   }, [customerProvince, customerProvinceName, provinces.length, isLoadingProvinces])
 
-  // Separate instance for shipping address
+  
   const {
     districts: shippingDistricts,
     wards: shippingWards,
@@ -94,7 +94,7 @@ export function useCustomerInfo(
     }
   }, [customerWard, customerWards, isLoadingCustomerWards])
 
-  // Update customerProvinceCode when customerProvince changes
+  
   useEffect(() => {
     if (customerProvince) {
       setCustomerProvinceCode(customerProvince)
@@ -105,7 +105,7 @@ export function useCustomerInfo(
     }
   }, [customerProvince, setCustomerProvinceCode])
 
-  // Update customerDistrictCode when customerDistrict changes
+  
   useEffect(() => {
     if (customerDistrict) {
       setCustomerDistrictCode(customerDistrict)
@@ -114,7 +114,7 @@ export function useCustomerInfo(
     }
   }, [customerDistrict, setCustomerDistrictCode])
 
-  // Update customerWardCode when customerWard changes
+  
   useEffect(() => {
     if (customerWard) {
       setCustomerWardCode(customerWard)
@@ -125,7 +125,7 @@ export function useCustomerInfo(
     }
   }, [customerWard, customerWardName, setCustomerWardCode, getCustomerWardName])
 
-  // Update shippingProvinceCode when shippingProvince changes
+  
   useEffect(() => {
     if (shippingProvince && !sameAsCustomer) {
       setShippingProvinceCode(shippingProvince)
@@ -138,7 +138,7 @@ export function useCustomerInfo(
     }
   }, [shippingProvince, shippingProvinceName, sameAsCustomer, setShippingProvinceCode, getShippingProvinceName])
 
-  // Update shippingDistrictCode when shippingDistrict changes
+  
   useEffect(() => {
     if (shippingDistrict && !sameAsCustomer) {
       setShippingDistrictCode(shippingDistrict)
@@ -172,7 +172,7 @@ export function useCustomerInfo(
       setShippingWard(customerWard)
       setShippingWardName(customerWardName)
 
-      // Set values in the hook
+      
       if (customerProvince) setShippingProvinceCode(customerProvince)
       if (customerDistrict) setShippingDistrictCode(customerDistrict)
       if (customerWard) setShippingWardCode(customerWard)
@@ -184,7 +184,7 @@ export function useCustomerInfo(
     const provinceName = selectedProvince ? selectedProvince.label : ''
     setCustomerProvinceName(provinceName)
 
-    // Ensure we have a valid provinceName before updating form data
+    
     if (provinceName) {
       const evt = {
         target: {
@@ -213,7 +213,7 @@ export function useCustomerInfo(
     const districtName = selectedDistrict ? selectedDistrict.label : ''
     setCustomerDistrictName(districtName)
 
-    // Ensure we have a valid districtName before updating form data
+    
     if (districtName) {
       const evt = {
         target: {
@@ -240,7 +240,7 @@ export function useCustomerInfo(
     const wardName = selectedWard ? selectedWard.label : ''
     setCustomerWardName(wardName)
 
-    // Ensure we have a valid wardName before updating form data
+    
     if (wardName) {
       const evt = {
         target: {
@@ -262,7 +262,7 @@ export function useCustomerInfo(
     const provinceName = getShippingProvinceName(value)
     setShippingProvinceName(provinceName)
 
-    // Ensure we have a valid provinceName before updating form data
+    
     if (provinceName) {
       const evt = {
         target: {
@@ -279,7 +279,7 @@ export function useCustomerInfo(
     const districtName = getShippingDistrictName(value)
     setShippingDistrictName(districtName)
 
-    // Ensure we have a valid districtName before updating form data
+    
     if (districtName) {
       const evt = {
         target: {
@@ -298,7 +298,7 @@ export function useCustomerInfo(
     const wardName = getShippingWardName(value)
     setShippingWardName(wardName)
 
-    // Ensure we have a valid wardName before updating form data
+    
     if (wardName) {
       const evt = {
         target: {
@@ -313,7 +313,7 @@ export function useCustomerInfo(
   }
 
   return {
-    // States
+    
     sameAsCustomer,
     customerProvince,
     customerDistrict,
@@ -328,24 +328,24 @@ export function useCustomerInfo(
     shippingDistrictName,
     shippingWardName,
 
-    // Data from hooks
+    
     provinces,
     customerDistricts,
     customerWards,
     shippingDistricts,
     shippingWards,
 
-    // Loading states
+    
     isLoadingProvinces,
     isLoadingCustomerDistricts,
     isLoadingCustomerWards,
     isLoadingShippingDistricts,
     isLoadingShippingWards,
 
-    // Error
+    
     provincesError,
 
-    // Handlers
+    
     handleSameAsCustomerChange,
     handleProvinceChange,
     handleDistrictChange,

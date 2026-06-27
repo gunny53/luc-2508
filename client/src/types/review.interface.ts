@@ -1,8 +1,8 @@
 import { BaseResponse, PaginationMetadata } from './base.interface'
 
-// ====================================
-//              SUB-TYPES
-// ====================================
+
+
+
 
 export type MediaType = 'IMAGE' | 'VIDEO'
 
@@ -20,9 +20,9 @@ export interface ReviewUser {
   avatar?: string
 }
 
-// ====================================
-//          MAIN REVIEW INTERFACE
-// ====================================
+
+
+
 
 export interface Review extends PaginationMetadata {
   id: string
@@ -38,9 +38,9 @@ export interface Review extends PaginationMetadata {
   user: ReviewUser
 }
 
-// ====================================
-//          API REQUEST
-// ====================================
+
+
+
 
 export interface CreateReviewMediaPayload {
   url: string
@@ -58,12 +58,12 @@ export interface CreateReviewRequest {
 export interface UpdateReviewRequest {
   content?: string
   rating?: number
-  medias?: CreateReviewMediaPayload[] // Assuming medias can be updated
+  medias?: CreateReviewMediaPayload[] 
 }
 
-// ====================================
-//          API RESPONSES
-// ====================================
+
+
+
 
 export interface GetReviewsResponse extends BaseResponse {
   data: {

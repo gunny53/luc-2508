@@ -1,17 +1,17 @@
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 {
-  data: English content normalized from the original source text.
-  metadata: English content normalized from the original source text.
+  data: T?i li?u k? thu?t ECSite
+  metadata: T?i li?u k? thu?t ECSite
     totalItems: number,
     page: number,
     limit: number,
@@ -25,21 +25,21 @@ English content normalized from the original source text.
 }
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 import { createDataTableAdapter } from '@/utils/api-adapters';
 import { yourService } from '@/services/your-service';
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 const adaptedFetchFunction = createDataTableAdapter(yourService.getAll);
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 import { useServerDataTable } from '@/hooks/use-server-data-table';
@@ -54,18 +54,18 @@ function useYourEntityHook() {
     handleSearch,
     handleSortChange,
   } = useServerDataTable({
-    fetchData: English content normalized from the original source text.
-    mapResponseToData: English content normalized from the original source text.
-      English content normalized from the original source text.
+    fetchData: T?i li?u k? thu?t ECSite
+    mapResponseToData: T?i li?u k? thu?t ECSite
+      T?i li?u k? thu?t ECSite
       id: item.id,
       name: item.name,
-      English content normalized from the original source text.
+      T?i li?u k? thu?t ECSite
     }),
-    initialSort: English content normalized from the original source text.
-    defaultLimit: English content normalized from the original source text.
+    initialSort: T?i li?u k? thu?t ECSite
+    defaultLimit: T?i li?u k? thu?t ECSite
   });
 
-  English content normalized from the original source text.
+  T?i li?u k? thu?t ECSite
 
   return {
     data,
@@ -74,12 +74,12 @@ function useYourEntityHook() {
     handlePageChange,
     handleLimitChange,
     handleSearch,
-    English content normalized from the original source text.
+    T?i li?u k? thu?t ECSite
   };
 }
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```tsx
 function YourEntityTable() {
@@ -113,24 +113,24 @@ function YourEntityTable() {
 }
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text. 2. **Debounced Search**: English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite 2. **Debounced Search**: T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite

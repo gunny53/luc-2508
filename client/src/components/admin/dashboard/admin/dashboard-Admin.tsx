@@ -10,10 +10,10 @@ import { Button } from '@/components/ui/button'
 export default function DashboardAdmin() {
   const { userStats, dashboardStats, overviewStats, chartData, refreshStats } = useDbAdmin()
 
-  // Stats cards data cho User module
+  
   const userStatsCards = [
     {
-      title: 'English content normalized from the original source text.',
+      title: 'B?ng ?i?u khi?n',
       value: dashboardStats.totalUsers.toLocaleString(),
       icon: <Users className="w-6 h-6" />,
       changeType: 'info',
@@ -23,7 +23,7 @@ export default function DashboardAdmin() {
       title: 'Admin',
       value: dashboardStats.adminUsersCount.toString(),
       icon: <Shield className="w-6 h-6" />,
-      change: 'English content normalized from the original source text.',
+      change: 'B?ng ?i?u khi?n',
       changeType: 'neutral',
       color: 'purple'
     },
@@ -31,7 +31,7 @@ export default function DashboardAdmin() {
       title: 'Seller',
       value: dashboardStats.sellerUsersCount.toString(),
       icon: <Store className="w-6 h-6" />,
-      change: 'English content normalized from the original source text.',
+      change: 'B?ng ?i?u khi?n',
       changeType: 'neutral',
       color: 'orange'
     },
@@ -39,7 +39,7 @@ export default function DashboardAdmin() {
       title: 'Client',
       value: dashboardStats.clientUsersCount.toString(),
       icon: <User className="w-6 h-6" />,
-      change: 'English content normalized from the original source text.',
+      change: 'B?ng ?i?u khi?n',
       changeType: 'neutral',
       color: 'blue'
     }
@@ -93,22 +93,19 @@ export default function DashboardAdmin() {
 
   return (
     <div className="space-y-6 p-6 h-screen bg-white">
-      {/* Error handling */}
       {userStats.error && (
         <Card className="p-4 border-red-200 bg-red-50">
           <p className="text-red-600 text-sm">⚠️ {userStats.error}</p>
         </Card>
       )}
 
-      {/* Overview Statistics Table */}
       <OverviewStatsTable overviewStats={overviewStats} />
 
-      {/* User Statistics Cards */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold flex items-center">
             <Users className="w-5 h-5 mr-2" />
-            English content normalized from the original source text.
+            B?ng ?i?u khi?n
           </h2>
           <Button
             onClick={refreshStats}
@@ -119,7 +116,7 @@ export default function DashboardAdmin() {
             <RefreshCw
               className={`w-4 h-4 mr-2 ${userStats.isLoading || overviewStats.isLoading ? 'animate-spin' : ''}`}
             />
-            English content normalized from the original source text.
+            B?ng ?i?u khi?n
           </Button>
         </div>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
@@ -140,24 +137,24 @@ export default function DashboardAdmin() {
         </div>
       </div>
 
-      {/* Quick Stats & Charts */}
+      {}
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold">English content normalized from the original source text.</h3>
+            <h3 className="text-lg font-semibold">B?ng ?i?u khi?n</h3>
             <Activity className="w-5 h-5 text-muted-foreground" />
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm">
-              <span>English content normalized from the original source text.</span>
+              <span>B?ng ?i?u khi?n</span>
               <span className="font-medium text-blue-600">{dashboardStats.totalUsers.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center text-sm">
-              <span>English content normalized from the original source text.</span>
+              <span>B?ng ?i?u khi?n</span>
               <span className="font-medium text-green-600">{dashboardStats.totalBrands.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center text-sm">
-              <span>English content normalized from the original source text.</span>
+              <span>B?ng ?i?u khi?n</span>
               <span className="font-medium text-purple-600">{dashboardStats.totalCategories.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center text-sm">
@@ -165,7 +162,7 @@ export default function DashboardAdmin() {
               <span className="font-medium text-orange-600">{dashboardStats.totalAuditLogs.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center text-sm border-t pt-2">
-              <span>English content normalized from the original source text.</span>
+              <span>B?ng ?i?u khi?n</span>
               <span className="font-medium text-green-600">
                 {((dashboardStats.activeUsersCount / dashboardStats.totalUsers) * 100 || 0).toFixed(1)}%
               </span>
@@ -174,7 +171,7 @@ export default function DashboardAdmin() {
         </Card>
       </div>
 
-      {/* Charts Section */}
+      {}
       <SimpleCharts chartData={chartData} />
     </div>
   )

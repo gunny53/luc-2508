@@ -54,7 +54,7 @@ export class PricingService {
         return { totalItemCost: 0, totalShippingFee: 0, totalVoucherDiscount: 0, totalPayment: 0, shops: [] }
       }
 
-      // Map nhanh cartItemId -> cartItem
+      
       const cartItemMap = new Map(cartItems.map((c) => [c.id, c]))
       const perShop = await Promise.all(
         input.shops.map(async (shop) => {

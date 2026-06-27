@@ -34,7 +34,7 @@ export default function OrderDetail() {
       <div className="flex items-center justify-center min-h-[50vh]">
         <div className="flex flex-col items-center gap-2">
           <Loader2 className="h-7 w-7 animate-spin text-blue-500" />
-          <p className="text-slate-600 text-sm">English content normalized from the original source text.</p>
+          <p className="text-slate-600 text-sm">??n h?ng</p>
         </div>
       </div>
     )
@@ -47,9 +47,9 @@ export default function OrderDetail() {
             <Package className="w-7 h-7 text-red-500" />
           </div>
           <p className="text-red-600 text-base font-medium">
-            English content normalized from the original source text.
+            ??n h?ng
           </p>
-          <p className="text-slate-500 mt-1 text-sm">English content normalized from the original source text.</p>
+          <p className="text-slate-500 mt-1 text-sm">??n h?ng</p>
         </div>
       </div>
     )
@@ -58,37 +58,37 @@ export default function OrderDetail() {
     PENDING_PAYMENT: {
       color: 'text-amber-700',
       bgColor: 'bg-amber-50 border-amber-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     },
     PENDING_PACKAGING: {
       color: 'text-blue-700',
       bgColor: 'bg-blue-50 border-blue-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     },
     PENDING_PICKUP: {
       color: 'text-blue-700',
       bgColor: 'bg-blue-50 border-blue-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     },
     PENDING_DELIVERY: {
       color: 'text-purple-700',
       bgColor: 'bg-purple-50 border-purple-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     },
     DELIVERED: {
       color: 'text-emerald-700',
       bgColor: 'bg-emerald-50 border-emerald-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     },
     RETURNED: {
       color: 'text-slate-700',
       bgColor: 'bg-slate-50 border-slate-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     },
     CANCELLED: {
       color: 'text-red-700',
       bgColor: 'bg-red-50 border-red-200',
-      label: 'English content normalized from the original source text.'
+      label: '??n h?ng'
     }
   }
 
@@ -104,16 +104,15 @@ export default function OrderDetail() {
 
   return (
     <div className="space-y-6">
-      {/* Status Badge and Cancel Button */}
       <div className="flex items-center justify-between bg-white rounded-xl p-6 shadow-sm border border-slate-200/60">
         <div className="flex items-center gap-4">
           <div>
             <h2 className="text-lg font-semibold text-slate-800">
-              English content normalized from the original source text.{orderDetail.id}
+              ??n h?ng{orderDetail.id}
             </h2>
             <p className="text-slate-500 text-sm mt-1">
-              English content normalized from the original source text.{' '}
-              {format(new Date(orderDetail.createdAt), 'English content normalized from the original source text.')}
+              ??n h?ng{' '}
+              {format(new Date(orderDetail.createdAt), '??n h?ng')}
             </p>
           </div>
         </div>
@@ -123,7 +122,7 @@ export default function OrderDetail() {
             {status.label}
           </Badge>
 
-          {/* Print Invoice Button */}
+          {}
           {id && (
             <Button
               variant="outline"
@@ -131,7 +130,7 @@ export default function OrderDetail() {
               className="text-blue-600 border-blue-300 hover:bg-blue-50 h-9 px-4 text-sm"
             >
               <Printer className="w-3 h-3 mr-2" />
-              English content normalized from the original source text.
+              ??n h?ng
             </Button>
           )}
 
@@ -145,28 +144,28 @@ export default function OrderDetail() {
               {loading ? (
                 <>
                   <Loader2 className="w-3 h-3 mr-2 animate-spin" />
-                  English content normalized from the original source text.
+                  ??n h?ng
                 </>
               ) : (
-                'English content normalized from the original source text.'
+                '??n h?ng'
               )}
             </Button>
           )}
         </div>
       </div>
 
-      {/* Content Grid - Balanced Layout */}
+      {}
       <div className="grid lg:grid-cols-12 gap-6">
-        {/* Left Column - Order Details */}
+        {}
         <div className="lg:col-span-7 space-y-6">
-          {/* Receiver Information */}
+          {}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200/60">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Package className="w-4 h-4 text-blue-600" />
               </div>
               <h2 className="text-base font-medium text-slate-700">
-                English content normalized from the original source text.
+                ??n h?ng
               </h2>
             </div>
 
@@ -174,7 +173,7 @@ export default function OrderDetail() {
               <div className="flex items-center gap-3">
                 <User className="w-4 h-4 text-slate-400 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
+                  <p className="text-xs text-slate-500">??n h?ng</p>
                   <p className="text-sm font-medium text-slate-800 truncate">{orderDetail.receiver.name}</p>
                 </div>
               </div>
@@ -182,7 +181,7 @@ export default function OrderDetail() {
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-slate-400 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
+                  <p className="text-xs text-slate-500">??n h?ng</p>
                   <p className="text-sm font-medium text-slate-800">{orderDetail.receiver.phone}</p>
                 </div>
               </div>
@@ -190,22 +189,21 @@ export default function OrderDetail() {
               <div className="sm:col-span-2 flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-slate-500">English content normalized from the original source text.</p>
+                  <p className="text-xs text-slate-500">??n h?ng</p>
                   <p className="text-sm font-medium text-slate-800 leading-relaxed">{orderDetail.receiver.address}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Product List */}
+          {}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200/60">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
                 <ShoppingBag className="w-4 h-4 text-emerald-600" />
               </div>
               <h2 className="text-base font-medium text-slate-700">
-                English content normalized from the original source text.{orderDetail.items.length} English content
-                normalized from the original source text.
+                ??n h?ng{orderDetail.items.length} ??n h?ng
               </h2>
             </div>
 
@@ -247,7 +245,7 @@ export default function OrderDetail() {
           </div>
         </div>
 
-        {/* Right Column - Order Summary */}
+        {}
         <div className="lg:col-span-5 h-full">
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200/60 sticky top-6 h-full">
             <div className="flex items-center gap-3 mb-5">
@@ -255,7 +253,7 @@ export default function OrderDetail() {
                 <CreditCard className="w-4 h-4 text-purple-600" />
               </div>
               <h2 className="text-base font-medium text-slate-700">
-                English content normalized from the original source text.
+                ??n h?ng
               </h2>
             </div>
 
@@ -264,7 +262,7 @@ export default function OrderDetail() {
                 <div className="flex items-center gap-2">
                   <Calendar className="w-3 h-3 text-slate-400" />
                   <span className="text-slate-600 text-sm">
-                    English content normalized from the original source text.
+                    ??n h?ng
                   </span>
                 </div>
                 <span className="font-medium text-slate-800 text-sm">
@@ -276,17 +274,16 @@ export default function OrderDetail() {
                 <div className="flex items-center gap-2">
                   <CreditCard className="w-3 h-3 text-slate-400" />
                   <span className="text-slate-600 text-sm">
-                    English content normalized from the original source text.
+                    ??n h?ng
                   </span>
                 </div>
                 <span className="font-medium text-slate-800 text-xs">#{orderDetail.paymentId}</span>
               </div>
 
-              {}
               <div className="space-y-2 pt-2">
                 <div className="flex items-center justify-between py-1.5">
                   <span className="text-slate-600 text-sm">
-                    English content normalized from the original source text.
+                    ??n h?ng
                   </span>
                   <span className="font-medium text-slate-800 text-sm">
                     {orderDetail.totalItemCost?.toLocaleString() || '0'}₫
@@ -295,7 +292,7 @@ export default function OrderDetail() {
 
                 <div className="flex items-center justify-between py-1.5">
                   <span className="text-slate-600 text-sm">
-                    English content normalized from the original source text.
+                    ??n h?ng
                   </span>
                   <span className="font-medium text-slate-800 text-sm">
                     {orderDetail.totalShippingFee?.toLocaleString() || '0'}₫
@@ -304,7 +301,7 @@ export default function OrderDetail() {
 
                 <div className="flex items-center justify-between py-1.5">
                   <span className="text-slate-600 text-sm">
-                    English content normalized from the original source text.
+                    ??n h?ng
                   </span>
                   <span className="font-medium text-red-600 text-sm">
                     -{orderDetail.totalVoucherDiscount?.toLocaleString() || '0'}₫
@@ -316,7 +313,7 @@ export default function OrderDetail() {
                 <div className="flex items-center gap-2">
                   <DollarSign className="w-4 h-4 text-emerald-600" />
                   <span className="text-emerald-800 font-semibold text-sm">
-                    English content normalized from the original source text.
+                    ??n h?ng
                   </span>
                 </div>
                 <span className="font-semibold text-lg text-emerald-600">{totalAmount.toLocaleString()}₫</span>

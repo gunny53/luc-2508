@@ -5,19 +5,19 @@ import { useState } from 'react'
 
 export default function SearchSortBar() {
   const [sort, setSort] = useState<
-    | 'English content normalized from the original source text.'
-    | 'English content normalized from the original source text.'
-    | 'English content normalized from the original source text.'
-    | 'English content normalized from the original source text.'
-  >('English content normalized from the original source text.')
+    | 'T?m ki?m'
+    | 'T?m ki?m'
+    | 'T?m ki?m'
+    | 'T?m ki?m'
+  >('T?m ki?m')
   const [priceAsc, setPriceAsc] = useState(true)
 
   const handleSort = (option: typeof sort) => {
-    if (option === 'English content normalized from the original source text.') {
-      if (sort === 'English content normalized from the original source text.') {
+    if (option === 'T?m ki?m') {
+      if (sort === 'T?m ki?m') {
         setPriceAsc(!priceAsc)
       } else {
-        setSort('English content normalized from the original source text.')
+        setSort('T?m ki?m')
         setPriceAsc(true)
       }
     } else {
@@ -26,9 +26,9 @@ export default function SearchSortBar() {
   }
 
   const sortOptions: Array<typeof sort> = [
-    'English content normalized from the original source text.',
-    'English content normalized from the original source text.',
-    'English content normalized from the original source text.'
+    'T?m ki?m',
+    'T?m ki?m',
+    'T?m ki?m'
   ]
 
   return (
@@ -50,15 +50,15 @@ export default function SearchSortBar() {
 
         <div className="flex items-center">
           <button
-            onClick={() => handleSort('English content normalized from the original source text.')}
+            onClick={() => handleSort('T?m ki?m')}
             className={`flex items-center gap-1 px-2 sm:px-3 py-1 font-medium ${
-              sort === 'English content normalized from the original source text.'
+              sort === 'T?m ki?m'
                 ? 'text-[#ee4d2d] border-b-2 border-[#ee4d2d]'
                 : 'text-gray-700'
             }`}
           >
-            English content normalized from the original source text.
-            {sort === 'English content normalized from the original source text.' &&
+            T?m ki?m
+            {sort === 'T?m ki?m' &&
               (priceAsc ? <ChevronUp size={14} /> : <ChevronDown size={14} />)}
           </button>
         </div>

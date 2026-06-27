@@ -42,10 +42,10 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
     !!formData.district?.split('|')[0]
   )
 
-  // Handle address selection changes (much simpler now)
+  
   const handleAddressFormChange = useCallback(
     (provinceId: string, districtId: string, wardCode: string) => {
-      // Only update if not selecting existing address to prevent conflicts
+      
       if (!isSelectingAddress) {
         const provinceName =
           provincesData?.data?.find((p) => p.ProvinceID.toString() === provinceId)?.ProvinceName || ''
@@ -116,8 +116,8 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
         province: `${selected.provinceId}|${selected.province}`,
         type:
           selected.addressType === 'HOME'
-            ? 'English content normalized from the original source text.'
-            : 'English content normalized from the original source text.'
+            ? 'Thanh to?n'
+            : 'Thanh to?n'
       }
       dispatch(
         setShippingInfo({
@@ -142,7 +142,7 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 sm:justify-between">
           <CardTitle className="flex items-center text-base font-semibold">
             <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
-            English content normalized from the original source text.
+            Thanh to?n
           </CardTitle>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
             {!isSelectingAddress && savedAddresses.length > 0 && (
@@ -153,36 +153,35 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
                 onClick={() => {
                   setIsSelectingAddress(true)
 
-                  // Clear any previously selected address
+                  
                   if (selectedAddressId) {
                     setSelectedAddressId('')
                   }
                 }}
               >
                 <Book className="h-4 w-4 mr-1.5 flex-shrink-0" />
-                English content normalized from the original source text.
+                Thanh to?n
               </Button>
             )}
           </div>
         </div>
         <CardDescription className="text-sm font-light mt-2">
           {isSelectingAddress
-            ? 'English content normalized from the original source text.'
-            : 'English content normalized from the original source text.'}
+            ? 'Thanh to?n'
+            : 'Thanh to?n'}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
               <Label htmlFor="receiverName" className="text-xs font-medium">
-                English content normalized from the original source text.
+                Thanh to?n
               </Label>
               <Input
                 id="receiverName"
                 name="receiverName"
-                placeholder="English content normalized from the original source text."
+                placeholder="Thanh to?n"
                 value={formData.receiverName || ''}
                 onChange={handleChange}
                 className="text-sm"
@@ -191,12 +190,12 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
             </div>
             <div className="space-y-1">
               <Label htmlFor="receiverPhone" className="text-xs font-medium">
-                English content normalized from the original source text.
+                Thanh to?n
               </Label>
               <Input
                 id="receiverPhone"
                 name="receiverPhone"
-                placeholder="English content normalized from the original source text."
+                placeholder="Thanh to?n"
                 value={formData.receiverPhone || ''}
                 onChange={handleChange}
                 className="text-sm"
@@ -209,7 +208,7 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
             <div className="space-y-3">
               <RadioGroup value={selectedAddressId} onValueChange={handleAddressSelect} className="space-y-3">
                 {isLoadingAddresses ? (
-                  <p>English content normalized from the original source text.</p>
+                  <p>Thanh to?n</p>
                 ) : (
                   savedAddresses.map((address) => (
                     <div
@@ -223,12 +222,12 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
                         <div className="flex items-center gap-2">
                           <span className="text-sm bg-gray-100 px-2 py-0.5 rounded">
                             {address.addressType === 'HOME'
-                              ? 'English content normalized from the original source text.'
-                              : 'English content normalized from the original source text.'}
+                              ? 'Thanh to?n'
+                              : 'Thanh to?n'}
                           </span>
                           {address.isDefault && (
                             <span className="text-xs text-red-500">
-                              English content normalized from the original source text.
+                              Thanh to?n
                             </span>
                           )}
                         </div>
@@ -241,16 +240,16 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
                 )}
               </RadioGroup>
               <div className="flex items-center">
-                <span className="text-sm mr-2">English content normalized from the original source text.</span>
+                <span className="text-sm mr-2">Thanh to?n</span>
                 <Button
                   variant="link"
                   className="text-red-500 font-normal p-0 h-auto text-sm hover:text-red-600"
                   onClick={() => {
-                    // Update local state
+                    
                     setIsSelectingAddress(false)
                     setSelectedAddressId('')
 
-                    // Clear address data
+                    
                     const clearedAddressData: Address = {
                       id: '',
                       receiverName: formData.receiverName,
@@ -259,7 +258,7 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
                       ward: '',
                       district: '',
                       province: '',
-                      type: 'English content normalized from the original source text.',
+                      type: 'Thanh to?n',
                       isDefault: false
                     }
 
@@ -268,13 +267,13 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
                     }, 0)
                   }}
                 >
-                  English content normalized from the original source text.
+                  Thanh to?n
                 </Button>
               </div>
             </div>
           ) : (
             <>
-              {/* Address Selection Form */}
+              {}
               <SimpleAddressSelect
                 disabled={false}
                 onAddressChange={handleAddressFormChange}
@@ -285,15 +284,15 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
                 }}
               />
 
-              {/* Specific Address Detail */}
+              {}
               <div className="space-y-1">
                 <Label htmlFor="address" className="text-xs font-medium">
-                  English content normalized from the original source text.
+                  Thanh to?n
                 </Label>
                 <Input
                   id="address"
                   name="address"
-                  placeholder="English content normalized from the original source text."
+                  placeholder="Thanh to?n"
                   value={formData.address}
                   onChange={handleChange}
                   className="text-sm h-9"
@@ -305,12 +304,12 @@ export function ShippingAddress({ formData, handleChange, addresses, onSelectExi
 
           <div className="space-y-1">
             <Label htmlFor="note" className="text-xs font-medium">
-              English content normalized from the original source text.
+              Thanh to?n
             </Label>
             <Textarea
               id="note"
               name="note"
-              placeholder="English content normalized from the original source text."
+              placeholder="Thanh to?n"
               value={formData.note}
               onChange={handleChange}
               className="h-20 text-sm resize-none"

@@ -22,9 +22,9 @@ export const GetAvailableDiscountsQuerySchema = z.object({
   onlyPlatformDiscounts: z.preprocess((value) => value === 'true', z.boolean()).default(false)
 })
 
-// Schema cho validate voucher code
+
 export const ValidateVoucherCodeBodySchema = z.object({
-  code: z.string().trim().min(1, 'English content normalized from the original source text.'),
+  code: z.string().trim().min(1, 'Voucher code is required.'),
   cartItemIds: z.array(z.string()).optional()
 })
 export const GetAvailableDiscountsResSchema = z.object({
@@ -32,7 +32,7 @@ export const GetAvailableDiscountsResSchema = z.object({
   data: z.array(DiscountSchema)
 })
 
-// Schema response cho validate voucher
+
 export const ValidateVoucherCodeResSchema = z.object({
   message: z.string().optional(),
   data: z.object({
@@ -116,7 +116,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['endDate'],
-        message: 'English content normalized from the original source text.'
+        message: 'Discount code must contain 1 to 5 uppercase letters or digits.'
       })
     }
 
@@ -125,7 +125,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['code'],
-        message: 'English content normalized from the original source text.'
+        message: 'End date must be after start date.'
       })
     }
 
@@ -134,7 +134,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
         return ctx.addIssue({
           code: 'custom',
           path: ['value'],
-          message: 'English content normalized from the original source text.'
+          message: 'Percentage discount value must be between 1 and 100.'
         })
       }
     }
@@ -143,7 +143,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['maxUsesPerUser'],
-        message: 'English content normalized from the original source text.'
+        message: 'Uses per user cannot exceed total max uses.'
       })
     }
 
@@ -156,7 +156,7 @@ export const CreateDiscountBodySchema = DiscountSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['discountApplyType'],
-        message: 'English content normalized from the original source text.'
+        message: 'Select at least one brand, category, or product for a specific discount.'
       })
     }
   })
@@ -170,7 +170,7 @@ export const CreateDiscountResSchema = z.object({
 
 export const UpdateDiscountResSchema = CreateDiscountResSchema
 
-// Type exports
+
 export type GetAvailableDiscountsQueryType = z.infer<typeof GetAvailableDiscountsQuerySchema>
 export type GetAvailableDiscountsResType = z.infer<typeof GetAvailableDiscountsResSchema>
 export type ValidateVoucherCodeBodyType = z.infer<typeof ValidateVoucherCodeBodySchema>

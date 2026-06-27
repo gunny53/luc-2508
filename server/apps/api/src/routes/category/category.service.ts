@@ -20,7 +20,7 @@ export class CategoryService {
 
   @Cacheable({
     key: 'category:list',
-    ttl: 1800, // 30 minutes
+    ttl: 1800, 
     scope: 'module',
     moduleName: 'CategoryModule',
     keyGenerator: (parentCategoryId?: string | null) => {
@@ -43,7 +43,7 @@ export class CategoryService {
 
   @Cacheable({
     key: 'category:detail',
-    ttl: 3600, // 1 hour
+    ttl: 3600, 
     scope: 'module',
     moduleName: 'CategoryModule',
     keyGenerator: (id: string) => {
@@ -77,9 +77,9 @@ export class CategoryService {
     }
   }
 
-  /**
-   * ♻️ Invalidate category cache khi update category
-   */
+  
+
+
   @CacheEvict(['CategoryModule:category:list:*', 'CategoryModule:category:detail:*'])
   async update({ id, data, user }: { id: string; data: UpdateCategoryBodyType; user: AccessTokenPayload }) {
     try {
@@ -100,9 +100,9 @@ export class CategoryService {
     }
   }
 
-  /**
-   * ♻️ Invalidate category cache khi delete category
-   */
+  
+
+
   @CacheEvict(['CategoryModule:category:list:*', 'CategoryModule:category:detail:*'])
   async delete({ id, user }: { id: string; user: AccessTokenPayload }) {
     try {

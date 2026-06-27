@@ -1,29 +1,29 @@
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 const getResponseData = useCallback((response: any) => {
   return response.data || [];
 }, []);
@@ -34,11 +34,11 @@ const getResponseMetadata = useCallback((response: any) => {
 
 const mapResponseToData = useCallback((item: ApiItemType): UiItemType => ({
   id: item.id,
-  English content normalized from the original source text.
+  T?i li?u k? thu?t ECSite
 }), []);
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 const {
@@ -59,56 +59,56 @@ const {
 })
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 const handleCreate = async (data) => {
   try {
     await yourService.create(data);
-    English content normalized from the original source text.
+    T?i li?u k? thu?t ECSite
     handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
   } catch (error) {
-    English content normalized from the original source text.
+    T?i li?u k? thu?t ECSite
   }
 };
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 2. **Fetching Data**:
-   - English content normalized from the original source text
-   - English content normalized from the original source text
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+   - T?i li?u k? thu?t ECSite
+   - T?i li?u k? thu?t ECSite
+   - T?i li?u k? thu?t ECSite
+   - T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-1. **React Strict Mode**: English content normalized from the original source text.
-2. **Waterfall requests**: English content normalized from the original source text.
-3. **Server Components & Suspense**: English content normalized from the original source text.
+1. **React Strict Mode**: T?i li?u k? thu?t ECSite
+2. **Waterfall requests**: T?i li?u k? thu?t ECSite
+3. **Server Components & Suspense**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-1. **AbortController**: English content normalized from the original source text.
-   English content normalized from the original source text.
-   English content normalized from the original source text.
+1. **AbortController**: T?i li?u k? thu?t ECSite
+   T?i li?u k? thu?t ECSite
+   T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite

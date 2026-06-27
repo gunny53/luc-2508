@@ -1,8 +1,6 @@
 import { ClientProductDetail } from '@/types/client.products.interface'
 
-/**
- * Interface MediaItem cho ProductGallery
- */
+
 export interface MediaItem {
   type: 'image' | 'video'
   src: string

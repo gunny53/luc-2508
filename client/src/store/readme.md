@@ -2,16 +2,16 @@
 
 # 🧠 Redux Store Setup (Next.js + Redux Toolkit + Persist + Encryption)
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ---
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 src/
 └── lib/
@@ -26,12 +26,12 @@ src/
 
 ## 🔧 1. `store.ts`
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 🔐 Encryption:
 
@@ -43,13 +43,13 @@ const encryptor = encryptTransform({
 
 🧩 2. StoreProvider.tsx
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 <StoreProvider>
   {children}
@@ -57,7 +57,7 @@ English content normalized from the original source text.
 
 🔐 3. authSlice.ts
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 user (object)
 
@@ -72,50 +72,50 @@ interface AuthState {
   token: string;
 }
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 const user = useSelector((state: RootState) => state.auth.user);
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 dispatch(setCredentials({ user, token }));
 dispatch(logOutAndRevertAll());
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
-
-✅
-
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ✅
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ✅
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ✅
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ✅
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+✅
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
+
+T?i li?u k? thu?t ECSite
+
+T?i li?u k? thu?t ECSite
 ```

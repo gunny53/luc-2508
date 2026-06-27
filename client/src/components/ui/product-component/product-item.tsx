@@ -11,7 +11,7 @@ interface ProductItemProps {
   isLoading?: boolean
 }
 
-// Skeleton UI cho ProductItem
+
 export const ProductItemSkeleton: React.FC = () => {
   return (
     <div className="group block w-full bg-gray-200 rounded-sm shadow-sm overflow-hidden">
@@ -66,7 +66,6 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
                   <span className="text-xs line-through text-gray-500">{formatCurrency(originalPrice)}</span>
                 )}
               </div>
-              {}
             </div>
           </div>
         </div>

@@ -43,14 +43,14 @@ export function ProductsExportData<TData>({ table, data }: ProductsExportDataPro
   const [fileType, setFileType] = useState(fileFormats[0].value)
 
   const handleExport = () => {
-    console.log('English content normalized from the original source text.', {
+    console.log('S?n ph?m', {
       dateRange: date,
       format: fileType,
       selectedRows: table?.getFilteredSelectedRowModel().rows.map((row) => row.original),
       allData: data
     })
     alert(
-      `English content normalized from the original source text.${fileType.toUpperCase()}English content normalized from the original source text.`
+      `S?n ph?m${fileType.toUpperCase()}S?n ph?m`
     )
     setIsOpen(false)
   }
@@ -69,7 +69,7 @@ export function ProductsExportData<TData>({ table, data }: ProductsExportDataPro
           <DialogDescription>{t('description')}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-6 py-4">
-          {/* Date Range Picker */}
+          {}
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="date-range">{t('dateRange')}</Label>
             <Popover>
@@ -105,7 +105,7 @@ export function ProductsExportData<TData>({ table, data }: ProductsExportDataPro
               </PopoverContent>
             </Popover>
           </div>
-          {/* File Format Selector */}
+          {}
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="file-type">{t('fileFormat')}</Label>
             <Select value={fileType} onValueChange={setFileType}>

@@ -26,9 +26,9 @@ export function useLanguages() {
   const mapResponseToData = useCallback(
     (lang: any): Language => ({
       id: parseInt(lang.id),
-      code: lang.id, // Using id as code
+      code: lang.id, 
       name: lang.name,
-      isActive: true, // Default value
+      isActive: true, 
       createdAt: lang.createdAt,
       updatedAt: lang.updatedAt
     }),
@@ -55,7 +55,7 @@ export function useLanguages() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null)
 
-  // Get language by ID
+  
   const getLanguageById = useCallback(async (id: string) => {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 8000)
@@ -73,7 +73,7 @@ export function useLanguages() {
     }
   }, [])
 
-  // Create new language
+  
   const createLanguage = useCallback(
     async (data: LangCreateRequest) => {
       const controller = new AbortController()
@@ -96,7 +96,7 @@ export function useLanguages() {
     [refreshData]
   )
 
-  // Update language
+  
   const updateLanguage = useCallback(
     async (id: string, data: LangUpdateRequest) => {
       const controller = new AbortController()
@@ -119,7 +119,7 @@ export function useLanguages() {
     [refreshData]
   )
 
-  // Delete language
+  
   const deleteLanguage = useCallback(
     async (id: string) => {
       const controller = new AbortController()
@@ -162,15 +162,15 @@ export function useLanguages() {
     isModalOpen,
     selectedLanguage,
     loading,
-    // API handlers
+    
     getLanguageById,
     createLanguage,
     updateLanguage,
     deleteLanguage,
-    // UI handlers
+    
     handleOpenModal,
     handleCloseModal,
-    // Pagination handlers
+    
     handlePageChange,
     handleLimitChange,
     handleSearch,

@@ -20,7 +20,7 @@ interface PaymentStatusProps {
   paymentMethod?: string
 }
 
-// Main component to orchestrate views
+
 export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMethod }: PaymentStatusProps) {
   const [status, setStatus] = useState(initialStatus)
   const dispatch = useDispatch()
@@ -37,7 +37,7 @@ export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMeth
     setStatus(initialStatus)
   }, [initialStatus])
 
-  // Clear Redux state on successful payment
+  
   useEffect(() => {
     if (status === 'success') {
       console.log('[Payment Success] Clearing checkout state from Redux.')
@@ -103,7 +103,7 @@ export function PaymentStatus({ orderId, totalAmount, initialStatus, paymentMeth
   return <FailureView orderId={orderId} />
 }
 
-// View for successful payment
+
 const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: number }) => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
     <Card className="w-full max-w-lg mx-auto shadow-lg text-center">
@@ -112,21 +112,21 @@ const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: n
           <CheckCircle2 className="h-16 w-16 text-green-600" />
         </div>
         <CardTitle className="text-2xl font-bold text-green-800 mt-4">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardTitle>
         <CardDescription className="text-gray-600">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4 pt-6">
         <div className="text-left bg-gray-50 p-4 rounded-lg border">
-          <h3 className="font-semibold text-lg mb-3">English content normalized from the original source text.</h3>
+          <h3 className="font-semibold text-lg mb-3">Thanh to?n</h3>
           <div className="flex justify-between items-center">
-            <span className="text-gray-500">English content normalized from the original source text.</span>
+            <span className="text-gray-500">Thanh to?n</span>
             <span className="font-mono font-semibold text-gray-800">{orderId}</span>
           </div>
           <div className="flex justify-between items-center mt-2">
-            <span className="text-gray-500">English content normalized from the original source text.</span>
+            <span className="text-gray-500">Thanh to?n</span>
             <span className="font-bold text-lg text-green-700">{formatCurrency(totalAmount)}</span>
           </div>
         </div>
@@ -135,13 +135,13 @@ const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: n
         <Button asChild className="w-full" variant="outline">
           <Link href="/">
             <Home className="mr-2 h-4 w-4" />
-            English content normalized from the original source text.
+            Thanh to?n
           </Link>
         </Button>
         <Button asChild className="w-full">
           <Link href="/user/orders">
             <ShoppingBag className="mr-2 h-4 w-4" />
-            English content normalized from the original source text.
+            Thanh to?n
           </Link>
         </Button>
       </CardFooter>
@@ -149,7 +149,7 @@ const SuccessView = ({ orderId, totalAmount }: { orderId: string; totalAmount: n
   </div>
 )
 
-// View for pending payment
+
 const PendingView = ({
   orderId,
   totalAmount,
@@ -187,7 +187,7 @@ const PendingView = ({
     console.log(`[Socket] Connecting with paymentId: ${paymentId} for ${paymentMethod} payment`)
     connect(paymentId)
     return () => disconnect()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [paymentId, paymentMethod])
 
   useEffect(() => {
@@ -284,34 +284,34 @@ const PendingView = ({
             <Loader2 className={`h-16 w-16 text-${colors.text} animate-spin`} />
           </div>
           <CardTitle className={`text-2xl font-bold text-${colors.textDark} mt-4`}>
-            English content normalized from the original source text.
+            Thanh to?n
           </CardTitle>
           <CardDescription className="text-gray-600">
-            English content normalized from the original source text.
+            Thanh to?n
           </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-4 pt-6">
           <div className="text-left bg-gray-50 p-4 rounded-lg border">
-            <h3 className="font-semibold text-lg mb-3">English content normalized from the original source text.</h3>
+            <h3 className="font-semibold text-lg mb-3">Thanh to?n</h3>
             <div className="flex justify-between items-center">
-              <span className="text-gray-500">English content normalized from the original source text.</span>
+              <span className="text-gray-500">Thanh to?n</span>
               <span className="font-mono font-semibold text-gray-800">{orderId}</span>
             </div>
             <div className="flex justify-between items-center mt-2">
-              <span className="text-gray-500">English content normalized from the original source text.</span>
+              <span className="text-gray-500">Thanh to?n</span>
               <span className="font-bold text-lg text-blue-700">{formatCurrency(totalAmount)}</span>
             </div>
           </div>
 
           <div className="text-center text-sm text-gray-500 mt-4">
-            <p>English content normalized from the original source text.</p>
-            <p className="mt-1">English content normalized from the original source text.</p>
+            <p>Thanh to?n</p>
+            <p className="mt-1">Thanh to?n</p>
           </div>
 
           <Button onClick={() => router.push('/')} variant="outline" className="w-full mt-4">
             <Home className="mr-2 h-4 w-4" />
-            English content normalized from the original source text.
+            Thanh to?n
           </Button>
         </CardContent>
       </Card>
@@ -319,7 +319,7 @@ const PendingView = ({
   )
 }
 
-// View for failed payment
+
 const FailureView = ({ orderId }: { orderId: string }) => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
     <Card className="w-full max-w-lg mx-auto shadow-lg text-center">
@@ -328,20 +328,20 @@ const FailureView = ({ orderId }: { orderId: string }) => (
           <XCircle className="h-16 w-16 text-red-600" />
         </div>
         <CardTitle className="text-2xl font-bold text-red-800 mt-4">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardTitle>
         <CardDescription className="text-gray-600">
-          English content normalized from the original source text.<span className="font-mono">{orderId}</span>.
+          Thanh to?n<span className="font-mono">{orderId}</span>.
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex flex-col sm:flex-row gap-4 pt-6">
         <Button asChild className="w-full" variant="outline">
-          <Link href="/checkout">English content normalized from the original source text.</Link>
+          <Link href="/checkout">Thanh to?n</Link>
         </Button>
         <Button asChild className="w-full">
           <Link href="/">
             <Home className="mr-2 h-4 w-4" />
-            English content normalized from the original source text.
+            Thanh to?n
           </Link>
         </Button>
       </CardFooter>

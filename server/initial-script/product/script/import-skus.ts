@@ -58,7 +58,7 @@ export async function importSKUs(
     return
   }
 
-  // Import theo batch
+  
   const copyBatchSize = CONFIG.SKU_BATCH_SIZE
   const copyChunks = Array.from({ length: Math.ceil(newSkus.length / copyBatchSize) }, (_, i) =>
     newSkus.slice(i * copyBatchSize, (i + 1) * copyBatchSize)

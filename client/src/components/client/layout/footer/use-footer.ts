@@ -11,7 +11,7 @@ export function useFooter() {
   }
 
   const handleSubscribe = () => {
-    // TODO: Implement newsletter subscription
+    
     console.log('Subscribe:', email)
     setEmail('')
   }

@@ -1,6 +1,6 @@
 import { BaseResponse, PaginationRequest } from '../base.interface'
 
-// Category data model
+
 export interface Category {
   id: string
   parentCategoryId: string | null
@@ -14,7 +14,7 @@ export interface Category {
   updatedAt: string
 }
 
-// Request interfaces
+
 export interface CategoryCreateRequest {
   name: string
   logo?: string | null
@@ -27,7 +27,7 @@ export interface CategoryUpdateRequest {
   parentCategoryId?: string | null
 }
 
-// Response interfaces
+
 export interface CategoryGetAllResponse extends BaseResponse {
   data: Category[]
 }

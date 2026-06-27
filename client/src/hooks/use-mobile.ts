@@ -1,4 +1,4 @@
-// hooks/use-mobile.ts
+
 import { useEffect, useState } from 'react'
 
 export function useIsMobile(breakpoint = 768) {

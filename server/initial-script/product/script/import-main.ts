@@ -64,11 +64,11 @@ type ReviewMediaData = {
 }
 
 async function main() {
-  logger.log('English content normalized from the original source text.')
+  logger.log('Starting product seed import.')
   await prisma.$connect()
   await createLanguages()
 
-  const jsonPath = require('path').join(process.cwd(), 'initial-script', 'product', 'data', 'Shopee-products.json')
+  const jsonPath = require('path').join(process.cwd(), 'initial-script', 'product', 'data', 'shopee-products.json')
   const products: ShopeeProduct[] = await readJsonStream(jsonPath)
   const validProducts: ShopeeProduct[] = []
   for (const product of products) {
@@ -76,15 +76,15 @@ async function main() {
     if (validation.isValid) validProducts.push(product)
   }
 
-  // 2. Import brands
+  
   const creatorUser = await prisma.user.findFirst({ orderBy: { createdAt: 'asc' } })
-  if (!creatorUser) throw new Error('English content normalized from the original source text.')
+  if (!creatorUser) throw new Error('No creator user found. Run the initial user seed before importing products.')
   const brandMap = await importBrands(validProducts, creatorUser.id, prisma)
 
-  // 3. Import categories
+  
   const categoryMap = await importCategories(validProducts, creatorUser.id, prisma)
 
-  // 4. Import users (sellers)
+  
   const uniqueSellers = new Map(
     validProducts
       .map((p) => [p.seller_id, p])
@@ -95,7 +95,7 @@ async function main() {
   )
   const sellerMap = await importUsers(uniqueSellers as Map<string, ShopeeProduct>, 'SELLER', creatorUser.id, prisma)
 
-  // 5. Import users (customers)
+  
   const uniqueCustomers = new Map(
     validProducts
       .flatMap((p) => p.product_ratings?.map((r) => [r.customer_name, r.customer_name]) || [])
@@ -163,7 +163,7 @@ async function main() {
     }
   })
 
-  // 8. Import products
+  
   const productResult = await importProducts(processedProducts, creatorUser.id, prisma)
   const allSellerIds = [...new Set(processedProducts.map((p) => p.sellerId).filter(Boolean))]
   const createdProducts = await prisma.product.findMany({
@@ -228,7 +228,7 @@ async function main() {
         createdAt: new Date(),
         updatedAt: new Date(),
         receiver: JSON.stringify({
-          name: review.clientName || 'English content normalized from the original source text.',
+          name: review.clientName || 'Khach hang an danh',
           phone: '',
           address: ''
         }),
@@ -364,7 +364,7 @@ async function main() {
     }
   }
   if (processedProducts.length > 0) {
-    logger.log('English content normalized from the original source text.')
+    logger.log('Syncing imported products to Elasticsearch.')
 
     try {
       const app = await NestFactory.createApplicationContext(AppModule)
@@ -378,7 +378,7 @@ async function main() {
         )
 
         logger.log(
-          `English content normalized from the original source text.${productIds.length} products trong ${batches.length} batches`
+          `Syncing ${productIds.length} products to Elasticsearch in ${batches.length} batches.`
         )
 
         let syncSuccessCount = 0
@@ -393,13 +393,13 @@ async function main() {
               action: 'create'
             })
             syncSuccessCount += batch.length
-            logger.log(`English content normalized from the original source text.${i + 1}/${batches.length}`)
+            logger.log(`Synced Elasticsearch batch ${i + 1}/${batches.length}.`)
             if (i < batches.length - 1) {
               await new Promise((resolve) => setTimeout(resolve, 1000))
             }
           } catch (error) {
             syncFailCount += batch.length
-            logger.error(`English content normalized from the original source text.${i + 1}/${batches.length}:`, error)
+            logger.error(`Failed to sync Elasticsearch batch ${i + 1}/${batches.length}:`, error)
           }
         }
 
@@ -408,17 +408,17 @@ async function main() {
 
       await app.close()
     } catch (error) {
-      logger.error('English content normalized from the original source text.', error)
+      logger.error('Elasticsearch sync failed after product import.', error)
     }
   }
 
-  logger.log('English content normalized from the original source text.')
+  logger.log('Product seed import completed.')
   await prisma.$disconnect()
 }
 
 if (require.main === module) {
   main().catch((err) => {
-    logger.error('English content normalized from the original source text.', err)
+    logger.error('Product seed import failed.', err)
     process.exit(1)
   })
 }

@@ -20,7 +20,7 @@ export class BrandService {
 
   @Cacheable({
     key: 'brand:list',
-    ttl: 1800, // 30 minutes
+    ttl: 1800, 
     scope: 'module',
     moduleName: 'BrandModule',
     keyGenerator: (pagination: PaginationQueryType) => {
@@ -39,7 +39,7 @@ export class BrandService {
 
   @Cacheable({
     key: 'brand:detail',
-    ttl: 3600, // 1 hour
+    ttl: 3600, 
     scope: 'module',
     moduleName: 'BrandModule',
     keyGenerator: (id: string) => {
@@ -70,9 +70,9 @@ export class BrandService {
     }
   }
 
-  /**
-   * ♻️ Invalidate brand cache khi update brand
-   */
+  
+
+
   @CacheEvict(['BrandModule:brand:list:*', 'BrandModule:brand:detail:*'])
   async update({ id, data, user }: { id: string; data: UpdateBrandBodyType; user: AccessTokenPayload }) {
     try {
@@ -93,9 +93,9 @@ export class BrandService {
     }
   }
 
-  /**
-   * ♻️ Invalidate brand cache khi delete brand
-   */
+  
+
+
   @CacheEvict(['BrandModule:brand:list:*', 'BrandModule:brand:detail:*'])
   async delete({ id, user }: { id: string; user: AccessTokenPayload }) {
     try {

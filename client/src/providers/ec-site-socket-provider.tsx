@@ -58,7 +58,7 @@ export const ECSiteSocketProvider = ({ children }: { children: ReactNode }) => {
       setPayments((prevPayments) => [...prevPayments, data])
     })
 
-    // Listen for any other payment-related events
+    
     newSocket.onAny((eventName, ...args) => {
       console.log(`🔔 [WebSocket] Received event "${eventName}":`, args)
     })

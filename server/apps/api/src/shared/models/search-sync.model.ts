@@ -1,8 +1,6 @@
 import { z } from 'zod'
 
-/**
- * Schema cho ES document attributes
- */
+
 export const EsAttributeSchema = z.object({
   attrName: z.string(),
   attrValue: z.string()
@@ -10,9 +8,7 @@ export const EsAttributeSchema = z.object({
 
 export type EsAttributeType = z.infer<typeof EsAttributeSchema>
 
-/**
- * Schema cho ES product document
- */
+
 export const EsProductDocumentSchema = z.object({
   skuId: z.string(),
   productId: z.string(),
@@ -36,9 +32,7 @@ export const EsProductDocumentSchema = z.object({
 
 export type EsProductDocumentType = z.infer<typeof EsProductDocumentSchema>
 
-/**
- * Schema cho sync job data
- */
+
 export const SyncProductJobSchema = z.object({
   productId: z.string(),
   action: z.enum(['create', 'update', 'delete'])
@@ -46,9 +40,7 @@ export const SyncProductJobSchema = z.object({
 
 export type SyncProductJobType = z.infer<typeof SyncProductJobSchema>
 
-/**
- * Schema cho batch sync job data
- */
+
 export const SyncProductsBatchJobSchema = z.object({
   productIds: z.array(z.string()),
   action: z.enum(['create', 'update', 'delete'])

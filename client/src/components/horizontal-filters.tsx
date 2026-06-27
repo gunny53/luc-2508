@@ -12,7 +12,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 
-// Modified base slider component to show end circle
+
 interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
   showEndCircle?: boolean
 }
@@ -35,7 +35,7 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, S
   )
 )
 Slider.displayName = SliderPrimitive.Root.displayName
-// End Modified base slider component to show end circle
+
 
 interface HorizontalFiltersProps {
   className?: string
@@ -68,7 +68,7 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
     const updated = { ...filters, ...newFilters }
     setFilters(updated)
 
-    // Count active filters
+    
     let count = 0
     if (updated.categories.length) count += updated.categories.length
     if (updated.brands.length) count += updated.brands.length
@@ -185,11 +185,11 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
 
   return (
     <>
-      {/* Height set for example purpose only */}
+      {}
       <div className={cn('w-full p-6 h-[350px]', className)}>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div className="flex flex-wrap items-center gap-2">
-            {/* Category Filter */}
+            {}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm" className="h-8">
@@ -221,7 +221,7 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
               </PopoverContent>
             </Popover>
 
-            {/* Brand Filter */}
+            {}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm" className="h-8">
@@ -253,7 +253,7 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
               </PopoverContent>
             </Popover>
 
-            {/* Price Range Filter */}
+            {}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm" className="h-8">
@@ -280,7 +280,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
               </PopoverContent>
             </Popover>
 
-            {/* Size Filter */}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm" className="h-8">
@@ -305,7 +304,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
               </PopoverContent>
             </Popover>
 
-            {/* Color Filter */}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm" className="h-8">
@@ -341,7 +339,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
               </PopoverContent>
             </Popover>
 
-            {/* Mobile All Filters Button */}
             <Button variant="outline" size="sm" className="h-8 sm:hidden" onClick={() => setShowMobileFilters(true)}>
               <Filter className="h-3 w-3 mr-1" />
               All Filters
@@ -353,7 +350,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
             </Button>
           </div>
 
-          {/* Sort By Dropdown */}
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground hidden sm:inline">Sort by:</span>
             <DropdownMenu>
@@ -379,10 +375,8 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
           </div>
         </div>
 
-        {/* Active Filter Badges */}
         <ActiveFilterBadges />
 
-        {/* Mobile Filters Overlay */}
         {showMobileFilters && (
           <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
             <div className="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-background p-6 shadow-lg">
@@ -395,7 +389,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
 
               <ScrollArea className="h-[calc(100vh-8rem)]">
                 <div className="space-y-6 pr-4">
-                  {/* Categories */}
                   <div className="space-y-3">
                     <h3 className="text-sm font-medium">Categories</h3>
                     <div className="space-y-2">
@@ -421,7 +414,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
 
                   <Separator />
 
-                  {/* Brands */}
                   <div className="space-y-3">
                     <h3 className="text-sm font-medium">Brands</h3>
                     <div className="space-y-2">
@@ -447,7 +439,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
 
                   <Separator />
 
-                  {/* Price Range */}
                   <div className="space-y-3">
                     <h3 className="text-sm font-medium">Price Range</h3>
                     <div className="space-y-4">
@@ -471,7 +462,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
 
                   <Separator />
 
-                  {/* Sizes */}
                   <div className="space-y-3">
                     <h3 className="text-sm font-medium">Sizes</h3>
                     <div className="grid grid-cols-3 gap-2">
@@ -491,7 +481,6 @@ export default function HorizontalFilters({ className, onFilterChange }: Horizon
 
                   <Separator />
 
-                  {/* Colors */}
                   <div className="space-y-3">
                     <h3 className="text-sm font-medium">Colors</h3>
                     <div className="grid grid-cols-4 gap-2">

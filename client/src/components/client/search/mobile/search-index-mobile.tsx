@@ -8,7 +8,7 @@ import SearchProductGrid from './search-product-grid'
 import SearchBrand from './search-brand'
 import { useSearchParams } from 'next/navigation'
 import { ProductsProvider } from '../context/products-context'
-// import SearchBrandInfo from './search-brand';
+
 
 interface SearchMobileIndexProps {
   categoryIds?: string[]
@@ -29,14 +29,9 @@ export default function SearchMobileIndex({ categoryIds = [], currentCategoryId 
         </div>
 
         <div className="flex-1 space-y-4">
-          {/* <SearchBrandInfo /> */}
           <SearchBrand />
           <ShopSuggestion />
-          {keyword && (
-            <div className="text-sm text-gray-500">
-              English content normalized from the original source text. '{keyword}'
-            </div>
-          )}
+          {keyword && <div className="text-sm text-gray-500">Search results for &quot;{keyword}&quot;</div>}
           <SearchSortBar />
           <SearchProductGrid />
           <Pagination />

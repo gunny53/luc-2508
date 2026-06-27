@@ -1,17 +1,17 @@
 {
   "media": {
     "success": {
-      "UPLOAD_SUCCESS": "English content normalized from the original source text.",
-      "GET_BATCH_PRESIGNED_URLS_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text."
+      "UPLOAD_SUCCESS": "Thao tác với tệp phương tiện thành công.",
+      "GET_BATCH_PRESIGNED_URLS_SUCCESS": "Lấy danh sách tệp phương tiện thành công.",
+      "DELETE_SUCCESS": "Xóa tệp phương tiện thành công."
     },
     "error": {
-      "UPLOAD_FAILED": "English content normalized from the original source text.",
-      "FILE_NOT_FOUND": "English content normalized from the original source text.",
-      "INVALID_FILE_TYPE": "English content normalized from the original source text.",
-      "FILE_TOO_LARGE": "English content normalized from the original source text.",
-      "PRESIGNED_URL_FAILED": "English content normalized from the original source text.",
-      "S3_ERROR": "English content normalized from the original source text."
+      "UPLOAD_FAILED": "Thao tác với tệp phương tiện không thành công.",
+      "FILE_NOT_FOUND": "Không tìm thấy tệp phương tiện.",
+      "INVALID_FILE_TYPE": "Thao tác với tệp phương tiện không thành công.",
+      "FILE_TOO_LARGE": "Thao tác với tệp phương tiện không thành công.",
+      "PRESIGNED_URL_FAILED": "Thao tác với tệp phương tiện không thành công.",
+      "S3_ERROR": "Thao tác với tệp phương tiện không thành công."
     }
   }
 }

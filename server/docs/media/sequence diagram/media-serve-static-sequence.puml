@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Media Media Serve Static Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "MediaController" as MC
@@ -15,14 +15,14 @@ C -> MC: GET /media/static/:filename
 activate MC
 
 MC -> RES: res.sendFile(resolve(UPLOAD_DIR, filename), callback)
-RES -> LD: English content normalized from the original source text.
-English content normalized from the original source text.
+RES -> LD: Media Media Serve Static Sequence: validate request and return the expected response
+Media Media Serve Static Sequence: validate request and return the expected response
   LD --> RES: Stream file
   RES --> C: 200 OK (file stream)
 else (No)
   LD --> RES: error
   RES --> MC: callback(error)
-  MC -> RES: English content normalized from the original source text.
+  MC -> RES: Media Media Serve Static Sequence: validate request and return the expected response
   RES --> C: 404 Not Found
 end
 

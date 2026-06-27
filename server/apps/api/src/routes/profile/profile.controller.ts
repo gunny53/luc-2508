@@ -39,7 +39,7 @@ export class ProfileController {
     return this.profileService.changePassword({ user, body } as any)
   }
 
-  // Address management endpoints
+  
   @Get('addresses')
   @ZodSerializerDto(GetUserAddressesResDTO)
   getAddresses(@ActiveUser() user: AccessTokenPayload) {

@@ -1,25 +1,25 @@
 {
   "discount": {
     "success": {
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text.",
-      "CALCULATE_SUCCESS": "English content normalized from the original source text.",
-      "GET_AVAILABLE_SUCCESS": "English content normalized from the original source text."
+      "CREATE_SUCCESS": "Tạo mã giảm giá thành công.",
+      "GET_SUCCESS": "Lấy danh sách mã giảm giá thành công.",
+      "UPDATE_SUCCESS": "Cập nhật mã giảm giá thành công.",
+      "DELETE_SUCCESS": "Xóa mã giảm giá thành công.",
+      "CALCULATE_SUCCESS": "Tính toán mã giảm giá thành công.",
+      "GET_AVAILABLE_SUCCESS": "Lấy danh sách mã giảm giá thành công."
     },
     "error": {
-      "CODE_EXISTS": "English content normalized from the original source text.",
-      "NOT_FOUND": "English content normalized from the original source text.",
-      "FORBIDDEN": "English content normalized from the original source text.",
-      "PRODUCT_OWNERSHIP": "English content normalized from the original source text.",
-      "USAGE_LIMIT_EXCEEDED": "English content normalized from the original source text.",
-      "EXPIRED": "English content normalized from the original source text.",
-      "INVALID_DATE_RANGE": "English content normalized from the original source text.",
-      "SHOP_VOUCHER_WITH_PRODUCTS": "English content normalized from the original source text.",
-      "PRODUCT_VOUCHER_WITHOUT_PRODUCTS": "English content normalized from the original source text.",
-      "INVALID_MAX_DISCOUNT_VALUE": "English content normalized from the original source text.",
-      "INVALID_CODE_FORMAT": "English content normalized from the original source text."
+      "CODE_EXISTS": "Thao tác với mã giảm giá không thành công.",
+      "NOT_FOUND": "Không tìm thấy mã giảm giá.",
+      "FORBIDDEN": "Bạn không có quyền thực hiện thao tác này.",
+      "PRODUCT_OWNERSHIP": "Thao tác với mã giảm giá không thành công.",
+      "USAGE_LIMIT_EXCEEDED": "Thao tác với mã giảm giá không thành công.",
+      "EXPIRED": "Thao tác với mã giảm giá không thành công.",
+      "INVALID_DATE_RANGE": "Thao tác với mã giảm giá không thành công.",
+      "SHOP_VOUCHER_WITH_PRODUCTS": "Thao tác với mã giảm giá không thành công.",
+      "PRODUCT_VOUCHER_WITHOUT_PRODUCTS": "Thao tác với mã giảm giá không thành công.",
+      "INVALID_MAX_DISCOUNT_VALUE": "Thao tác với mã giảm giá không thành công.",
+      "INVALID_CODE_FORMAT": "Thao tác với mã giảm giá không thành công."
     }
   }
 }

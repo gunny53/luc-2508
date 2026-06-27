@@ -46,7 +46,7 @@ interface UseProductsReturn {
 }
 
 export function useProducts({ categoryId, key, querySearch }: UseProductsProps): UseProductsReturn {
-  // console.log("useProducts hook called with:", { categoryId, key });
+  
   const router = useRouter()
   const searchParams = useSearchParams()
   const searchQuery = querySearch || searchParams.get('q') || ''
@@ -162,7 +162,7 @@ export function useProducts({ categoryId, key, querySearch }: UseProductsProps):
     if (initialPage > 1) {
       internalHandlePageChange(initialPage)
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, []) 
   const handlePageChange = (page: number): void => {
     if (page === pagination.page) return
     isUpdatingUrlRef.current = true
@@ -225,7 +225,7 @@ export function useProducts({ categoryId, key, querySearch }: UseProductsProps):
         router.push(newPath)
       }
 
-      // Reset flag
+      
       isUpdatingUrlRef.current = false
     }
   }, [categoryId, searchQuery, internalHandlePageChange, router, searchParams, refreshData])

@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
+note top : Review Review Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
+Review Review Module Sequence Overview: validate request and return the expected response
 participant "ReviewController" as RC
 participant "ReviewService" as RS
 participant "ReviewRepository" as RR
@@ -21,209 +21,209 @@ database "PostgreSQL" as DB
 == English Section ==
 Client -> RC: GET /reviews/products/:productId?page=1&limit=10
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
 RC -> RS: list(productId, pagination)
 
 RS -> RR: list(productId, pagination)
-RR -> RR: English content normalized from the original source text.
+RR -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
 • skip = (page - 1) * limit
 • take = limit
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
-RR -> PS: English content normalized from the original source text.
-RR -> PS: English content normalized from the original source text.
+RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
 • WHERE productId = :productId
 • Include user (id, name, avatar)
 • Include medias (url, type)
 • ORDER BY createdAt DESC
-• English content normalized from the original source text
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> RR: English content normalized from the original source text.
-RR -> RS: English content normalized from the original source text.
+PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
+RR -> RS: Review Review Module Sequence Overview: validate request and return the expected response
 RS -> IS: i18n.t('review.review.success.GET_SUCCESS')
-IS -> RS: English content normalized from the original source text.
-RS -> RC: English content normalized from the original source text.
-RC -> Client: English content normalized from the original source text.
+IS -> RS: Review Review Module Sequence Overview: validate request and return the expected response
+RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
+RC -> Client: Review Review Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 User -> RC: POST /reviews + {content, rating, productId, orderId, medias}
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
 RC -> AU: @ActiveUser()
-AU -> RC: English content normalized from the original source text.
+AU -> RC: Review Review Module Sequence Overview: validate request and return the expected response
 RC -> RS: create(user, body)
 
 RS -> RR: create(userId, body)
 RR -> RR: validateOrder({orderId, userId})
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
-RR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> RR: English content normalized from the original source text.
+RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-    RR -> PS: English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
+    RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
 
     RR -> PS: INSERT review
-    PS -> DB: English content normalized from the original source text.
+    PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
     DB -> PS: Review created
-    PS -> RR: English content normalized from the original source text.
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
     RR -> PS: createManyAndReturn reviewMedia
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
     PS -> DB: INSERT reviewMedia
-    DB -> PS: English content normalized from the original source text.
-    PS -> RR: English content normalized from the original source text.
+    DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
-    RR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> RR: English content normalized from the original source text.
-    RR -> RS: English content normalized from the original source text.
+    RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
+    RR -> RS: Review Review Module Sequence Overview: validate request and return the expected response
     RS -> IS: i18n.t('review.review.success.CREATE_SUCCESS')
-    IS -> RS: English content normalized from the original source text.
-    RS -> RC: English content normalized from the original source text.
+    IS -> RS: Review Review Module Sequence Overview: validate request and return the expected response
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 201 Created + JSON response
 
 else (No)
     RR -> RS: BadRequestException
-    RS -> RC: English content normalized from the original source text.
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 400 Bad Request
 end
 
 == English Section ==
 User -> RC: PUT /reviews/:reviewId + {data}
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
 RC -> AU: @ActiveUser()
-AU -> RC: English content normalized from the original source text.
+AU -> RC: Review Review Module Sequence Overview: validate request and return the expected response
 RC -> RS: update({user, reviewId, body})
 
 RS -> RR: update({userId, reviewId, body})
 
-RR -> RR: English content normalized from the original source text.
+RR -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
 RR -> PS: findUnique order
 RR -> PS: findUnique review
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> RR: English content normalized from the original source text.
+PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-    RR -> PS: English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
+    RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
 
-    RR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> RR: English content normalized from the original source text.
+    RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
     RR -> PS: DELETE reviewMedia WHERE reviewId
     PS -> DB: DELETE reviewMedia
-    DB -> PS: English content normalized from the original source text.
-    PS -> RR: English content normalized from the original source text.
+    DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
     RR -> PS: createManyAndReturn reviewMedia
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> RR: English content normalized from the original source text.
+    PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
 
-    RR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> RR: English content normalized from the original source text.
-    RR -> RS: English content normalized from the original source text.
+    RR -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Review Review Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Review Review Module Sequence Overview: validate request and return the expected response
+    PS -> RR: Review Review Module Sequence Overview: validate request and return the expected response
+    RR -> RS: Review Review Module Sequence Overview: validate request and return the expected response
     RS -> IS: i18n.t('review.review.success.UPDATE_SUCCESS')
-    IS -> RS: English content normalized from the original source text.
-    RS -> RC: English content normalized from the original source text.
+    IS -> RS: Review Review Module Sequence Overview: validate request and return the expected response
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 200 OK + JSON response
 
 else (No)
     RR -> RS: BadRequestException/NotFoundException
-    RS -> RC: English content normalized from the original source text.
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 400/404 Error
 end
 
 == English Section ==
-English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
     RR -> RS: BadRequestException
-    RS -> RC: English content normalized from the original source text.
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 400 Bad Request
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     RR -> RS: NotFoundException
-    RS -> RC: English content normalized from the original source text.
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 404 Not Found
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     RR -> RS: ConflictException
-    RS -> RC: English content normalized from the original source text.
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 409 Conflict
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     • Unique constraint: userId + productId
     end note
 
@@ -233,48 +233,48 @@ else (No)
 
 else (No)
     RR -> RS: DatabaseException
-    RS -> RC: English content normalized from the original source text.
+    RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
     RC -> User: 500 Internal Server Error
 end
 
 == English Section ==
-English content normalized from the original source text.
-    RS -> RS: English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
+    RS -> RS: Review Review Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
+    Review Review Module Sequence Overview: validate request and return the expected response
     • rating: number.int().min(0).max(5)
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Review Review Module Sequence Overview: validate request and return the expected response
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
 end
 
-English content normalized from the original source text.
-    RS -> RS: English content normalized from the original source text.
+Review Review Module Sequence Overview: validate request and return the expected response
+    RS -> RS: Review Review Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
+    Review Review Module Sequence Overview: validate request and return the expected response
     • url: string.max(1000)
     • type: MediaType enum
-    • English content normalized from the original source text
+    • Review Review Module Sequence Overview: validate request and return the expected response
     end note
 end
 
 == English Section ==
 RS -> IS: i18n.t('review.review.success.XXX')
-IS -> RS: English content normalized from the original source text.
-RS -> RC: English content normalized from the original source text.
-RC -> User: English content normalized from the original source text.
+IS -> RS: Review Review Module Sequence Overview: validate request and return the expected response
+RS -> RC: Review Review Module Sequence Overview: validate request and return the expected response
+RC -> User: Review Review Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
+• Review Review Module Sequence Overview: validate request and return the expected response
 end note
 
 @enduml

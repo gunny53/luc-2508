@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+User User Module Sequence Overview: validate request and return the expected response
+note top : User User Module Sequence Overview: validate request and return the expected response
 
 actor "Admin" as Admin
 actor "User" as User
@@ -27,40 +27,40 @@ Admin -> UC: GET /users?page=1&limit=10
 UC -> US: list(pagination)
 
 US -> UR: list(pagination)
-UR -> UR: English content normalized from the original source text.
+UR -> UR: User User Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+User User Module Sequence Overview: validate request and return the expected response
 • skip = (page - 1) * limit
 • take = limit
 • Parallel queries: count + findMany
 • Include role information
 end note
 
-UR -> PS: English content normalized from the original source text.
-UR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> UR: English content normalized from the original source text.
+UR -> PS: User User Module Sequence Overview: validate request and return the expected response
+UR -> PS: User User Module Sequence Overview: validate request and return the expected response
+PS -> DB: User User Module Sequence Overview: validate request and return the expected response
+DB -> PS: User User Module Sequence Overview: validate request and return the expected response
+PS -> UR: User User Module Sequence Overview: validate request and return the expected response
 UR -> US: Users data + metadata
 US -> IS: i18n.t('user.user.success.GET_SUCCESS')
-IS -> US: English content normalized from the original source text.
-US -> UC: English content normalized from the original source text.
-UC -> Admin: English content normalized from the original source text.
+IS -> US: User User Module Sequence Overview: validate request and return the expected response
+US -> UC: User User Module Sequence Overview: validate request and return the expected response
+UC -> Admin: User User Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 Admin -> UC: GET /users/:userId
 UC -> US: findById(userId)
 
 US -> SUR: findUniqueIncludeRolePermissions({id})
-SUR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> SUR: English content normalized from the original source text.
-SUR -> US: English content normalized from the original source text.
+SUR -> PS: User User Module Sequence Overview: validate request and return the expected response
+PS -> DB: User User Module Sequence Overview: validate request and return the expected response
+DB -> PS: User User Module Sequence Overview: validate request and return the expected response
+PS -> SUR: User User Module Sequence Overview: validate request and return the expected response
+SUR -> US: User User Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+User User Module Sequence Overview: validate request and return the expected response
     US -> IS: i18n.t('user.user.success.GET_DETAIL_SUCCESS')
-    IS -> US: English content normalized from the original source text.
+    IS -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> UC: Success response
     UC -> Admin: JSON user detail
 else (No)
@@ -71,30 +71,30 @@ end
 == English Section ==
 Admin -> UC: POST /users + {email, name, password, roleId, ...}
 UC -> AU: @ActiveUser()
-AU -> UC: English content normalized from the original source text.
+AU -> UC: User User Module Sequence Overview: validate request and return the expected response
 UC -> ARP: @ActiveRolePermissions('name')
-ARP -> UC: English content normalized from the original source text.
+ARP -> UC: User User Module Sequence Overview: validate request and return the expected response
 UC -> US: create({data, user, roleName})
 
 US -> US: verifyRole({roleNameAgent, roleIdTarget})
 note right
 Role Verification Logic:
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• User User Module Sequence Overview: validate request and return the expected response
+• User User Module Sequence Overview: validate request and return the expected response
+• User User Module Sequence Overview: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
+User User Module Sequence Overview: validate request and return the expected response
     US -> HS: hash(password)
-    HS -> US: English content normalized from the original source text.
+    HS -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> UR: create({createdById, data})
-    UR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
+    UR -> PS: User User Module Sequence Overview: validate request and return the expected response
+    PS -> DB: User User Module Sequence Overview: validate request and return the expected response
     DB -> PS: User created
-    PS -> UR: English content normalized from the original source text.
-    UR -> US: English content normalized from the original source text.
+    PS -> UR: User User Module Sequence Overview: validate request and return the expected response
+    UR -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> IS: i18n.t('user.user.success.CREATE_SUCCESS')
-    IS -> US: English content normalized from the original source text.
+    IS -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> UC: Success response
     UC -> Admin: 201 Created + JSON response
 
@@ -106,15 +106,15 @@ end
 == English Section ==
 Admin -> UC: PUT /users/:userId + {data}
 UC -> AU: @ActiveUser()
-AU -> UC: English content normalized from the original source text.
+AU -> UC: User User Module Sequence Overview: validate request and return the expected response
 UC -> ARP: @ActiveRolePermissions('name')
-ARP -> UC: English content normalized from the original source text.
+ARP -> UC: User User Module Sequence Overview: validate request and return the expected response
 UC -> US: update({id, data, user, roleName})
 
 US -> US: verifyYourself({userAgentId, userTargetId})
 note right
 Self-Operation Prevention:
-• English content normalized from the original source text
+• User User Module Sequence Overview: validate request and return the expected response
 • userAgentId !== userTargetId
 • Prevent self-modification
 end note
@@ -122,21 +122,21 @@ end note
 alt Self-operation check passed
     US -> SUR: findUnique({id})
     SUR -> PS: Query current user
-    PS -> DB: English content normalized from the original source text.
+    PS -> DB: User User Module Sequence Overview: validate request and return the expected response
     DB -> PS: Current user data
-    PS -> SUR: English content normalized from the original source text.
-    SUR -> US: English content normalized from the original source text.
+    PS -> SUR: User User Module Sequence Overview: validate request and return the expected response
+    SUR -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> US: verifyRole({roleNameAgent, currentRoleId})
 
-    English content normalized from the original source text.
+    User User Module Sequence Overview: validate request and return the expected response
         US -> SUR: update({id}, {data, updatedById})
-        SUR -> PS: English content normalized from the original source text.
-        PS -> DB: English content normalized from the original source text.
+        SUR -> PS: User User Module Sequence Overview: validate request and return the expected response
+        PS -> DB: User User Module Sequence Overview: validate request and return the expected response
         DB -> PS: User updated
-        PS -> SUR: English content normalized from the original source text.
-        SUR -> US: English content normalized from the original source text.
+        PS -> SUR: User User Module Sequence Overview: validate request and return the expected response
+        SUR -> US: User User Module Sequence Overview: validate request and return the expected response
         US -> IS: i18n.t('user.user.success.UPDATE_SUCCESS')
-        IS -> US: English content normalized from the original source text.
+        IS -> US: User User Module Sequence Overview: validate request and return the expected response
         US -> UC: Success response
         UC -> Admin: 200 OK + JSON response
     else (No)
@@ -151,29 +151,29 @@ end
 == English Section ==
 Admin -> UC: DELETE /users/:userId
 UC -> AU: @ActiveUser()
-AU -> UC: English content normalized from the original source text.
+AU -> UC: User User Module Sequence Overview: validate request and return the expected response
 UC -> ARP: @ActiveRolePermissions('name')
-ARP -> UC: English content normalized from the original source text.
+ARP -> UC: User User Module Sequence Overview: validate request and return the expected response
 UC -> US: delete({id, user, roleName})
 
 US -> US: verifyYourself({userAgentId, userTargetId})
 US -> SUR: findUnique({id})
 SUR -> PS: Query current user
-PS -> DB: English content normalized from the original source text.
+PS -> DB: User User Module Sequence Overview: validate request and return the expected response
 DB -> PS: Current user data
-PS -> SUR: English content normalized from the original source text.
-SUR -> US: English content normalized from the original source text.
+PS -> SUR: User User Module Sequence Overview: validate request and return the expected response
+SUR -> US: User User Module Sequence Overview: validate request and return the expected response
 US -> US: verifyRole({roleNameAgent, currentRoleId})
 
-English content normalized from the original source text.
+User User Module Sequence Overview: validate request and return the expected response
     US -> UR: delete({id, deletedById})
     UR -> PS: UPDATE deletedAt (soft delete)
     PS -> DB: UPDATE deletedAt field
     DB -> PS: User marked deleted
-    PS -> UR: English content normalized from the original source text.
-    UR -> US: English content normalized from the original source text.
+    PS -> UR: User User Module Sequence Overview: validate request and return the expected response
+    UR -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> IS: i18n.t('user.user.success.DELETE_SUCCESS')
-    IS -> US: English content normalized from the original source text.
+    IS -> US: User User Module Sequence Overview: validate request and return the expected response
     US -> UC: Success response
     UC -> Admin: 200 OK + message
 else (No)
@@ -182,7 +182,7 @@ else (No)
 end
 
 == English Section ==
-English content normalized from the original source text.
+User User Module Sequence Overview: validate request and return the expected response
     UR -> US: UserAlreadyExistsException
     US -> UC: Throw exception
     UC -> Admin: 422 Unprocessable Entity
@@ -209,21 +209,21 @@ end
 
 == English Section ==
 US -> IS: i18n.t('user.user.success.XXX')
-IS -> US: English content normalized from the original source text.
-US -> UC: English content normalized from the original source text.
-UC -> Admin: English content normalized from the original source text.
+IS -> US: User User Module Sequence Overview: validate request and return the expected response
+US -> UC: User User Module Sequence Overview: validate request and return the expected response
+UC -> Admin: User User Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
+* User User Module Sequence Overview: validate request and return the expected response
 • Role-based access control (Admin/Seller/User)
-• English content normalized from the original source text
+• User User Module Sequence Overview: validate request and return the expected response
 • Self-operation prevention
 • Admin privilege validation
-• English content normalized from the original source text
+• User User Module Sequence Overview: validate request and return the expected response
 • Unique constraint validation (email)
 • Foreign key validation (roleId)
-• English content normalized from the original source text
-• English content normalized from the original source text
+• User User Module Sequence Overview: validate request and return the expected response
+• User User Module Sequence Overview: validate request and return the expected response
 • Comprehensive error handling
 end note
 

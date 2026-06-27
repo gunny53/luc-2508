@@ -7,7 +7,7 @@ interface SalesChartProps {
 
 export function SalesChart({ data }: SalesChartProps) {
   if (!data || data.length === 0) {
-    return <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
+    return <p className="text-sm text-muted-foreground">B?ng ?i?u khi?n</p>
   }
 
   return (
@@ -20,7 +20,7 @@ export function SalesChart({ data }: SalesChartProps) {
           tickLine={false}
           axisLine={false}
           tickFormatter={(value) =>
-            `${value.toLocaleString('vi-VN')}English content normalized from the original source text.`
+            `${value.toLocaleString('vi-VN')}B?ng ?i?u khi?n`
           }
         />
         <Tooltip cursor={{ fill: 'transparent' }} />

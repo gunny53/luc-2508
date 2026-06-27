@@ -238,7 +238,7 @@ function BannerSectionComponent() {
                         >
                           <Link href={banner.link} className="inline-flex items-center gap-1.5">
                             <span className="relative z-10 font-medium">
-                              English content normalized from the original source text.
+                              ECSite
                             </span>
                             <motion.span
                               className="relative z-10"

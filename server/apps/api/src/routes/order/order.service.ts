@@ -41,8 +41,8 @@ export class OrderService {
               return sum + (discount.discountAmount || 0)
             }, 0)
           }
-          // totalPayment = totalItemCost + totalShippingFee - totalVoucherDiscount
-          // => totalVoucherDiscount = totalItemCost + totalShippingFee - totalPayment
+          
+          
           if (totalVoucherDiscount === 0 && orderShipping) {
             const expectedTotalPayment = orderShipping.codAmount || 0
             const calculatedVoucherDiscount = totalItemCost + totalShippingFee - expectedTotalPayment
@@ -68,7 +68,7 @@ export class OrderService {
             totalPayment
           }
         } catch (error) {
-          this.logger.error(`English content normalized from the original source text.${order.id}: ${error.message}`)
+          this.logger.error(`Failed to process order ${order.id}: ${error.message}`)
           return {
             ...order,
             totalItemCost: 0,
@@ -88,8 +88,8 @@ export class OrderService {
   }
 
   async create(user: AccessTokenPayload, body: CreateOrderBodyType) {
-    this.logger.log(`English content normalized from the original source text.${user.userId}`)
-    this.logger.log(`English content normalized from the original source text.${body.shops.length}`)
+    this.logger.log(`Creating order for user ${user.userId}`)
+    this.logger.log(`Creating orders for ${body.shops.length} shops`)
     this.logger.log(`[ORDER_CREATE] Body data: ${JSON.stringify(body, null, 2)}`)
 
     const shopDiscountCodes = body.shops
@@ -103,13 +103,13 @@ export class OrderService {
     this.logger.log(`[ORDER_CREATE] Discount codes: ${JSON.stringify(allDiscountCodes)}`)
 
     if (allDiscountCodes.length > 0) {
-      this.logger.log(`English content normalized from the original source text.`)
+      this.logger.log(`Validating voucher codes.`)
       const discounts = await this.sharedDiscountRepo.findDiscountsByCodes(allDiscountCodes)
       if (discounts.length !== allDiscountCodes.length) {
         const foundCodes = discounts.map((d) => d.code)
         const missingCodes = allDiscountCodes.filter((code) => !foundCodes.includes(code))
         throw new BadRequestException(
-          `English content normalized from the original source text.${missingCodes.join(', ')}`
+          `Voucher codes not found: ${missingCodes.join(', ')}`
         )
       }
 
@@ -123,37 +123,37 @@ export class OrderService {
       for (const discount of discounts) {
         if (discount.discountStatus !== 'ACTIVE') {
           this.logger.error(
-            `English content normalized from the original source text.${discount.id} - status: ${discount.discountStatus}`
+            `Voucher ${discount.id} has invalid status: ${discount.discountStatus}`
           )
-          throw new BadRequestException('English content normalized from the original source text.')
+          throw new BadRequestException('Voucher is not active.')
         }
 
         const now = new Date()
         if (now < discount.startDate || now > discount.endDate) {
           this.logger.error(
-            `English content normalized from the original source text.${discount.id} - start: ${discount.startDate}, end: ${discount.endDate}, now: ${now}`
+            `Voucher ${discount.id} is outside its valid date range. start: ${discount.startDate}, end: ${discount.endDate}, now: ${now}`
           )
-          throw new BadRequestException('English content normalized from the original source text.')
+          throw new BadRequestException('Voucher is not active.')
         }
         if (discount.maxUses > 0 && discount.usesCount >= discount.maxUses) {
           this.logger.error(
-            `English content normalized from the original source text.${discount.id} - used: ${discount.usesCount}, max: ${discount.maxUses}`
+            `Voucher ${discount.id} usage limit reached: ${discount.usesCount}/${discount.maxUses}`
           )
-          throw new BadRequestException('English content normalized from the original source text.')
+          throw new BadRequestException('Voucher is not active.')
         }
         if (discount.maxUsesPerUser && discount.maxUsesPerUser > 0) {
           const usedCount = userUsageMap.get(discount.id) || 0
           if (usedCount >= discount.maxUsesPerUser) {
             this.logger.error(
-              `English content normalized from the original source text.${discount.id} - used: ${usedCount}, max: ${discount.maxUsesPerUser}`
+              `Voucher ${discount.id} user usage limit reached: ${usedCount}/${discount.maxUsesPerUser}`
             )
-            throw new BadRequestException('English content normalized from the original source text.')
+            throw new BadRequestException('Voucher is not active.')
           }
         }
       }
     }
 
-    this.logger.log(`English content normalized from the original source text.`)
+    this.logger.log(`Validating voucher codes.`)
     const calc = await this.pricingService.tinhTamTinhDonHang(user, {
       shops: body.shops.map((s) => ({
         shopId: s.shopId,
@@ -174,25 +174,25 @@ export class OrderService {
       })
     )
 
-    this.logger.log(`English content normalized from the original source text.`)
+    this.logger.log(`Validating voucher codes.`)
     const result = await this.orderRepo.create(user.userId, body.shops)
     this.logger.log(`[ORDER_CREATE] Orders created: ${result.orders.length} orders, paymentId: ${result.paymentId}`)
 
-    this.logger.log(`English content normalized from the original source text.`)
+    this.logger.log(`Validating voucher codes.`)
     await Promise.all(
       result.orders.map(async (order) => {
-        this.logger.log(`English content normalized from the original source text.${order.id}, shopId: ${order.shopId}`)
+        this.logger.log(`Created order ${order.id}, shopId: ${order.shopId}`)
 
         const shop = body.shops.find((s) => s.shopId === order.shopId)
         if (!shop?.shippingInfo) {
-          this.logger.warn(`[ORDER_CREATE] Order ${order.id}English content normalized from the original source text.`)
+          this.logger.warn(`[ORDER_CREATE] Order ${order.id} processed.`)
           return
         }
 
         this.logger.log(
           `[ORDER_CREATE] Shipping info cho order ${order.id}: ${JSON.stringify(shop.shippingInfo, null, 2)}`
         )
-        this.logger.log(`English content normalized from the original source text.${shop.shopId}`)
+        this.logger.log(`Preparing shipping for shop ${shop.shopId}`)
         const shopInfo = await this.sharedShippingRepo.getShopAddressForShipping(shop.shopId)
         const { shop: shopData, address: shopAddressRecord } = shopInfo
 
@@ -209,7 +209,7 @@ export class OrderService {
         this.logger.log(
           `[ORDER_CREATE] Order ${order.id} - isCod: ${isCod}, codAmount: ${codAmount}, shopPayment: ${JSON.stringify(shopPayment)}`
         )
-        this.logger.log(`English content normalized from the original source text.${order.id}`)
+        this.logger.log(`Processing order ${order.id}`)
         const orderShipping = await this.sharedShippingRepo.createOrderShipping({
           orderId: order.id,
           serviceId: info.service_id,
@@ -243,7 +243,7 @@ export class OrderService {
 
         this.logger.log(`[ORDER_CREATE] OrderShipping created: ${JSON.stringify(orderShipping, null, 2)}`)
         if (isCod) {
-          this.logger.log(`[ORDER_CREATE] Order ${order.id}English content normalized from the original source text.`)
+          this.logger.log(`[ORDER_CREATE] Order ${order.id} processed.`)
           try {
             const ghnOrderData = {
               from_address: shopAddressRecord.street || '',
@@ -291,25 +291,25 @@ export class OrderService {
             this.logger.log(`[ORDER_CREATE] GHN order data cho COD: ${JSON.stringify(ghnOrderData, null, 2)}`)
 
             await this.shippingProducer.enqueueCreateOrder(ghnOrderData)
-            this.logger.log(`English content normalized from the original source text.${order.id}`)
+            this.logger.log(`Processing order ${order.id}`)
             await this.sharedShippingRepo.updateOrderShippingStatus(order.id, OrderShippingStatus.ENQUEUED)
             this.logger.log(`[ORDER_CREATE] OrderShipping status updated to ENQUEUED cho order: ${order.id}`)
           } catch (error) {
-            this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+            this.logger.error(`Order operation failed: ${error.message}`, error.stack)
             console.error('Failed to enqueue COD shipping order:', error)
           }
         } else {
-          this.logger.log(`[ORDER_CREATE] Order ${order.id}English content normalized from the original source text.`)
+          this.logger.log(`[ORDER_CREATE] Order ${order.id} processed.`)
         }
       })
     )
 
-    this.logger.log(`English content normalized from the original source text.`)
+    this.logger.log(`Validating voucher codes.`)
     await this.updateCodOrdersStatus(result.orders, body.shops)
     const updatedResult = this.updateCodOrdersInResponse(result, body.shops)
 
     this.logger.log(
-      `English content normalized from the original source text.${JSON.stringify(updatedResult, null, 2)}`
+      `Order update result: ${JSON.stringify(updatedResult, null, 2)}`
     )
     return {
       message: this.i18n.t('order.order.success.CREATE_SUCCESS'),
@@ -318,7 +318,7 @@ export class OrderService {
   }
 
   async cancel(user: AccessTokenPayload, orderId: string) {
-    this.logger.log(`English content normalized from the original source text.${orderId} cho user: ${user.userId}`)
+    this.logger.log(`Canceling order ${orderId} for user ${user.userId}`)
 
     try {
       const result = await this.orderRepo.cancel(user.userId, orderId)
@@ -332,7 +332,7 @@ export class OrderService {
       this.logger.log(`[ORDER_SERVICE] Response: ${JSON.stringify(response, null, 2)}`)
       return response
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+      this.logger.error(`Order operation failed: ${error.message}`, error.stack)
       throw error
     }
   }

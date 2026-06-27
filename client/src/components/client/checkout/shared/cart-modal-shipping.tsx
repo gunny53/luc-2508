@@ -66,10 +66,10 @@ export function ShippingModal({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Truck className="h-5 w-5" />
-            English content normalized from the original source text.
+            Thanh to?n
           </DialogTitle>
           <p className="text-sm text-gray-600 mt-1">
-            English content normalized from the original source text.<span className="font-medium">{shopName}</span>
+            Thanh to?n<span className="font-medium">{shopName}</span>
           </p>
         </DialogHeader>
 
@@ -77,19 +77,19 @@ export function ShippingModal({
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="h-6 w-6 animate-spin mr-2" />
-              <span>English content normalized from the original source text.</span>
+              <span>Thanh to?n</span>
             </div>
           ) : error ? (
             <div className="text-center py-8">
               <p className="text-red-600 mb-4">{error}</p>
               <Button variant="outline" onClick={() => window.location.reload()}>
-                English content normalized from the original source text.
+                Thanh to?n
               </Button>
             </div>
           ) : shippingMethods.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-gray-600 mb-4">English content normalized from the original source text.</p>
-              <p className="text-sm text-gray-500">English content normalized from the original source text.</p>
+              <p className="text-gray-600 mb-4">Thanh to?n</p>
+              <p className="text-sm text-gray-500">Thanh to?n</p>
             </div>
           ) : (
             <RadioGroup value={selectedMethodId} onValueChange={setSelectedMethodId}>
@@ -111,10 +111,10 @@ export function ShippingModal({
                           <div className="flex items-center gap-2">
                             {getIcon(method.icon || 'truck')}
                             <span className="font-medium text-base">
-                              {method.name === 'English content normalized from the original source text.'
-                                ? 'English content normalized from the original source text.'
-                                : method.name === 'English content normalized from the original source text.'
-                                  ? 'English content normalized from the original source text.'
+                              {method.name === 'Thanh to?n'
+                                ? 'Thanh to?n'
+                                : method.name === 'Thanh to?n'
+                                  ? 'Thanh to?n'
                                   : method.name}
                             </span>
                             <span className="text-lg font-semibold text-red-600">
@@ -123,8 +123,8 @@ export function ShippingModal({
                           </div>
                           <Badge variant="secondary" className="bg-red-100 text-red-700">
                             {selectedMethodId === method.id
-                              ? 'English content normalized from the original source text.'
-                              : 'English content normalized from the original source text.'}
+                              ? 'Thanh to?n'
+                              : 'Thanh to?n'}
                           </Badge>
                         </div>
 
@@ -132,12 +132,12 @@ export function ShippingModal({
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <Clock className="h-4 w-4" />
                             <span>
-                              {method.estimatedTime || 'English content normalized from the original source text.'}
+                              {method.estimatedTime || 'Thanh to?n'}
                             </span>
                           </div>
 
                           <p className="text-sm text-gray-700">
-                            {method.description || 'English content normalized from the original source text.'}
+                            {method.description || 'Thanh to?n'}
                           </p>
 
                           {method.features && method.features.length > 0 && (
@@ -162,22 +162,22 @@ export function ShippingModal({
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
               <MapPin className="h-4 w-4" />
-              <span>English content normalized from the original source text.</span>
+              <span>Thanh to?n</span>
             </div>
             <ul className="text-xs text-gray-600 space-y-1">
-              <li>English content normalized from the original source text.</li>
-              <li>English content normalized from the original source text.</li>
-              <li>English content normalized from the original source text.</li>
+              <li>Thanh to?n</li>
+              <li>Thanh to?n</li>
+              <li>Thanh to?n</li>
             </ul>
           </div>
         </div>
 
         <div className="flex gap-3 pt-4 border-t">
           <Button variant="outline" onClick={onClose} className="flex-1">
-            English content normalized from the original source text.
+            Thanh to?n
           </Button>
           <Button onClick={handleConfirm} className="flex-1 bg-red-600 hover:bg-red-700">
-            English content normalized from the original source text.
+            Thanh to?n
           </Button>
         </div>
       </DialogContent>

@@ -24,23 +24,22 @@ import { useShipping } from '@/components/client/checkout/hooks/use-shipping'
 import { useCalculateOrder } from '@/components/client/checkout/hooks/use-calculate-order'
 import { Truck, Clock, X } from 'lucide-react'
 
-// Header component for the product list - desktop only
+
 function ProductHeader() {
   return (
     <div className="hidden lg:grid grid-cols-12 gap-4 py-3 px-6 bg-gray-50 text-sm font-medium text-gray-500 border-b">
-      <div className="col-span-6">English content normalized from the original source text.</div>
-      <div className="col-span-2 text-center">English content normalized from the original source text.</div>
-      <div className="col-span-2 text-center">English content normalized from the original source text.</div>
-      <div className="col-span-2 text-center">English content normalized from the original source text.</div>
+      <div className="col-span-6">Thanh to?n</div>
+      <div className="col-span-2 text-center">Thanh to?n</div>
+      <div className="col-span-2 text-center">Thanh to?n</div>
+      <div className="col-span-2 text-center">Thanh to?n</div>
     </div>
   )
 }
 
-// Component to display a single product
+
 function ProductItem({ item }: { item: ProductInfo }) {
   return (
     <div className="lg:grid lg:grid-cols-12 lg:gap-4 py-4 lg:py-5 px-4 lg:px-6 border-b text-sm hover:bg-gray-50 transition-colors">
-      {/* Mobile & Desktop: Product Info */}
       <div className="lg:col-span-6 flex items-start space-x-3 lg:space-x-4">
         <div className="relative w-16 h-16 lg:w-20 lg:h-20 flex-shrink-0">
           <Image src={item.image || '/placeholder.png'} alt={item.name} fill className="object-cover rounded-md" />
@@ -48,9 +47,8 @@ function ProductItem({ item }: { item: ProductInfo }) {
         <div className="flex-1 min-w-0">
           <h3 className="text-gray-900 font-medium text-sm lg:text-base line-clamp-2">{item.name}</h3>
           <p className="text-gray-500 mt-1 text-xs lg:text-sm">
-            English content normalized from the original source text. {item.variation}
+            Thanh to?n {item.variation}
           </p>
-          {/* Mobile Only: Price & Quantity */}
           <div className="flex items-center justify-between mt-2 lg:hidden">
             <div className="text-gray-500 text-xs">
               ₫{item.price.toLocaleString()} x {item.quantity}
@@ -60,7 +58,6 @@ function ProductItem({ item }: { item: ProductInfo }) {
         </div>
       </div>
 
-      {/* Desktop Only: Price, Quantity, Total */}
       <div className="hidden lg:flex lg:col-span-2 items-center justify-center">
         <div className="text-gray-700 font-medium">₫{item.price.toLocaleString()}</div>
       </div>
@@ -74,7 +71,7 @@ function ProductItem({ item }: { item: ProductInfo }) {
   )
 }
 
-// Component to display a shop and its products
+
 function ShopSection({ shopId, products }: { shopId: string; products: ProductInfo[] }) {
   const dispatch = useDispatch()
   const appliedVouchers = useSelector(selectAppliedVouchers)
@@ -117,13 +114,11 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
 
   return (
     <div className="bg-white rounded-lg border overflow-hidden">
-      {/* Shop header */}
       <div className="flex items-center px-4 lg:px-6 py-3 border-b bg-white">
         <PiStorefrontLight className="h-4 w-4 lg:h-5 lg:w-5 mr-2" />
         <span className="text-sm text-gray-700 font-medium">{shopName}</span>
       </div>
 
-      {/* Products */}
       <ProductHeader />
       <div className="divide-y divide-gray-100">
         {products.map((item, index) => (
@@ -131,10 +126,10 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
         ))}
       </div>
 
-      {/* Footer: Voucher, Shipping & Total */}
+      {}
       <div className="py-4 bg-gray-50/50 border-t">
         <div className="flex flex-col gap-4">
-          {/* Voucher Section */}
+          {}
           <div className="">
             <VoucherButton
               shopName={shopName}
@@ -144,27 +139,27 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
             />
           </div>
 
-          {/* Shipping Method Section */}
+          {}
           <div className="border-t border-dashed border-gray-300 pt-3 bg-[#FAFDFF] px-6">
             {shippingLoading ? (
               <div className="flex items-center justify-center py-4">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
                 <span className="ml-2 text-sm text-gray-600">
-                  English content normalized from the original source text.
+                  Thanh to?n
                 </span>
               </div>
             ) : shippingError ? (
               <div className="text-center py-4">
                 <p className="text-red-600 text-sm mb-2">{shippingError}</p>
-                <p className="text-xs text-gray-500">English content normalized from the original source text.</p>
+                <p className="text-xs text-gray-500">Thanh to?n</p>
               </div>
             ) : !selectedShippingMethod ? (
               <div className="text-center py-4">
-                <p className="text-gray-600 text-sm mb-2">English content normalized from the original source text.</p>
+                <p className="text-gray-600 text-sm mb-2">Thanh to?n</p>
                 <p className="text-xs text-gray-500">
                   {!shippingInfo?.districtId || !shippingInfo?.wardCode
-                    ? 'English content normalized from the original source text.'
-                    : 'English content normalized from the original source text.'}
+                    ? 'Thanh to?n'
+                    : 'Thanh to?n'}
                 </p>
               </div>
             ) : (
@@ -172,13 +167,13 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-sm text-black">
-                      English content normalized from the original source text.
+                      Thanh to?n
                     </span>
                     <span className="text-sm text-black">
-                      {selectedShippingMethod.name === 'English content normalized from the original source text.'
-                        ? 'English content normalized from the original source text.'
-                        : selectedShippingMethod.name === 'English content normalized from the original source text.'
-                          ? 'English content normalized from the original source text.'
+                      {selectedShippingMethod.name === 'Thanh to?n'
+                        ? 'Thanh to?n'
+                        : selectedShippingMethod.name === 'Thanh to?n'
+                          ? 'Thanh to?n'
                           : selectedShippingMethod.name}
                     </span>
                   </div>
@@ -198,18 +193,18 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                     onClick={() => setIsShippingModalOpen(true)}
                     className="text-sm text-blue-600 hover:text-blue-700 font-medium underline"
                   >
-                    English content normalized from the original source text.
+                    Thanh to?n
                   </button>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Applied Voucher */}
+          {}
           {appliedVoucher && (
             <div className="flex items-center justify-between px-6">
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">English content normalized from the original source text.</span>
+                <span className="text-sm text-gray-600">Thanh to?n</span>
                 <span className="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
                   {appliedVoucher.code}
                 </span>
@@ -221,22 +216,22 @@ function ShopSection({ shopId, products }: { shopId: string; products: ProductIn
                 <button
                   onClick={() => handleRemoveVoucher(shopId)}
                   className="p-1 hover:bg-red-50 rounded-full transition-colors group"
-                  title="English content normalized from the original source text."
+                  title="Thanh to?n"
                 >
                   <X className="h-4 w-4 text-gray-400 group-hover:text-red-500" />
                 </button>
               </div>
             </div>
           )}
-          {/* Total */}
+          {}
           <div className="flex items-center justify-end gap-3 pt-2 px-6 border-t border-dashed">
-            <span className="text-sm text-gray-600">English content normalized from the original source text.</span>
+            <span className="text-sm text-gray-600">Thanh to?n</span>
             <span className="text-xl font-bold text-primary">₫{finalTotal.toLocaleString()}</span>
           </div>
         </div>
       </div>
 
-      {/* Shipping Modal */}
+      {}
       <ShippingModal
         isOpen={isShippingModalOpen}
         onClose={() => setIsShippingModalOpen(false)}
@@ -255,7 +250,7 @@ export function ProductsInfo() {
   const shopProducts = useSelector<RootState, Record<string, ProductInfo[]>>(selectShopProducts)
 
   if (Object.keys(shopProducts).length === 0) {
-    return <p>English content normalized from the original source text.</p>
+    return <p>Thanh to?n</p>
   }
 
   return (

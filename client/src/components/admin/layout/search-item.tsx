@@ -16,19 +16,19 @@ export function SearchItem() {
 
   const t = useTranslations()
 
-  // Focus input when modal opens
+  
   React.useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 100)
     }
   }, [open])
 
-  // Toggle expand/collapse for subItems
+  
   const toggleExpand = (href: string) => {
     setExpanded((prev) => (prev.includes(href) ? prev.filter((item) => item !== href) : [...prev, href]))
   }
 
-  // Render menu recursively
+  
   const renderMenu = (items: SidebarItem[], level = 0) => (
     <ul>
       {items.map((item) => (
@@ -78,7 +78,7 @@ export function SearchItem() {
         <div className="flex items-center max-w-md w-full relative">
           <Search className="absolute left-3 h-4 w-4 text-gray-400" />
           <Input
-            placeholder="English content normalized from the original source text."
+            placeholder="T?m ki?m"
             className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 bg-white cursor-pointer"
             onFocus={() => setOpen(true)}
             readOnly

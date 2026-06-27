@@ -1,6 +1,6 @@
-// Shipping Address Interfaces
 
-// Base Response Interface
+
+
 export interface BaseShippingResponse<T> {
   statusCode: number
   message: string
@@ -8,7 +8,7 @@ export interface BaseShippingResponse<T> {
   data: T
 }
 
-// Province Interfaces
+
 export interface Province {
   ProvinceID: number
   ProvinceName: string
@@ -18,7 +18,7 @@ export interface Province {
 
 export interface GetProvincesResponse extends BaseShippingResponse<Province[]> {}
 
-// District Interfaces
+
 export interface District {
   DistrictID: number
   ProvinceID: number
@@ -32,7 +32,7 @@ export interface GetDistrictsParams {
 
 export interface GetDistrictsResponse extends BaseShippingResponse<District[]> {}
 
-// Ward Interfaces
+
 export interface Ward {
   WardCode: string
   DistrictID: number
@@ -45,7 +45,7 @@ export interface GetWardsParams {
 
 export interface GetWardsResponse extends BaseShippingResponse<Ward[]> {}
 
-// Shipping Fee Calculation Interfaces (updated)
+
 export interface CalculateShippingFeeRequest {
   height: number
   weight: number
@@ -118,7 +118,7 @@ export interface OrderLog {
   updated_date: string
 }
 
-// Order Info Interfaces
+
 export interface OrderInfo {
   order_code: string
   client_order_code: string

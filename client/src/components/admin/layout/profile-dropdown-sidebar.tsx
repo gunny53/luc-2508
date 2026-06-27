@@ -21,7 +21,7 @@ import { useUserData } from '@/hooks/use-get-data-user-login'
 import { AiOutlineHome } from 'react-icons/ai'
 
 export function ProfileDropdownSidebar() {
-  // Static user info for demo
+  
   const userData = useUserData()
   const name = userData?.username
   const email = userData?.email

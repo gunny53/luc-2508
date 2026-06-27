@@ -9,11 +9,7 @@ import {
 } from '@/types/client.products.interface'
 
 export const clientProductsService = {
-  /**
-   * Get a list of products with flexible filtering options
-   * @param params - All parameters for filtering, pagination, etc.
-   * @returns Promise with the products response
-   */
+  
   getProducts: async (params?: ClientProductsListParams): Promise<ClientProductsResponse> => {
     try {
       const response = await publicAxios.get(API_ENDPOINTS.PRODUCTS.LIST, { params })
@@ -24,11 +20,7 @@ export const clientProductsService = {
     }
   },
 
-  /**
-   * Get detailed information about a specific product
-   * @param id - The product ID (extracted from slug or direct ID)
-   * @returns Promise with the product detail
-   */
+  
   getProductDetail: async (id: string): Promise<ClientProductDetail> => {
     try {
       const url = API_ENDPOINTS.PRODUCTS.DETAIL.replace(':id', id)
@@ -40,11 +32,11 @@ export const clientProductsService = {
     }
   },
 
-  /**
-   * Search for products based on query string and other filters
-   * @param params - Search parameters including query string and filters
-   * @returns Promise with search results
-   */
+  
+
+
+
+
   searchProducts: async (params: ClientSearchParams): Promise<ClientSearchResponse> => {
     try {
       console.log('🔍 Searching products with params:', params)
@@ -57,13 +49,13 @@ export const clientProductsService = {
     }
   },
 
-  /**
-   * Get search suggestions based on a query string
-   * Used for autocomplete in search inputs
-   * @param query - The search query
-   * @param limit - Maximum number of results to return
-   * @returns Promise with search suggestions
-   */
+  
+
+
+
+
+
+
   getSearchSuggestions: async (query: string, limit: number = 5, options: any): Promise<ClientSearchResponse> => {
     try {
       const response = await publicAxios.get(API_ENDPOINTS.PRODUCTS.SEARCH, {

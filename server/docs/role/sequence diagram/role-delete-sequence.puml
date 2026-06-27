@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Role Role Delete Sequence: validate request and return the expected response
 
 actor "Admin" as A
 participant "RoleController" as RC

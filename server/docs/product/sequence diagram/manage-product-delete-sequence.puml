@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Product Manage Product Delete Sequence: validate request and return the expected response
 
 actor "ShopOwner/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -18,7 +18,7 @@ queue "BullMQ (search-sync)" as Q
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MPC: English content normalized from the original source text.
+AG --> MPC: Product Manage Product Delete Sequence: validate request and return the expected response
 activate MPC
 
 MPC -> MPS: delete({ productId, user })
@@ -42,7 +42,7 @@ end
 
 MPS -> MPS: validatePrivilege(userIdRequest=user.userId,\n roleNameRequest=user.roleName,\n createdById=product.createdById)
 
-English content normalized from the original source text.
+Product Manage Product Delete Sequence: validate request and return the expected response
   MPS -> MPS: throw ForbiddenException
   MPS --> MPC: 403 Forbidden
   MPC --> U: 403 Forbidden

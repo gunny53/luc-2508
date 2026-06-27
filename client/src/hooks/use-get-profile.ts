@@ -15,14 +15,14 @@ export const useGetProfile = () => {
     setError(null)
     try {
       const response: UserProfileResponse = await profileService.getProfile()
-      // console.log('PROFILE RESPONSE:', response);
+      
 
-      // Validate response data
+      
       if (!response?.data) {
         throw new Error('Invalid profile data received')
       }
 
-      // Safely extract and flatten profile data with optional chaining
+      
       const flattenedProfile: UserProfile = {
         id: response.data?.id,
         email: response.data?.email,
@@ -42,7 +42,7 @@ export const useGetProfile = () => {
         statistics: response.data?.statistics
       }
 
-      // Validate required fields
+      
       if (!flattenedProfile.id || !flattenedProfile.email) {
         throw new Error('Missing required profile data')
       }
@@ -54,7 +54,7 @@ export const useGetProfile = () => {
       setError(errorMessage)
       toast.error(errorMessage)
 
-      // Clear profile on critical errors
+      
       if (err.response?.status === 401 || err.response?.status === 403) {
         dispatch(clearProfile())
       }

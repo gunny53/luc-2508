@@ -151,9 +151,9 @@ export class ElasticsearchService implements OnModuleInit {
     }
   }
 
-  /**
-   * Bulk index documents
-   */
+  
+
+
   async bulkIndex(index: string, docs: any[], idField: string = 'skuId') {
     if (!docs.length) {
       this.logger.warn('No documents to index')
@@ -185,9 +185,9 @@ export class ElasticsearchService implements OnModuleInit {
     }
   }
 
-  /**
-   * Delete document by ID
-   */
+  
+
+
   async deleteById(index: string, id: string) {
     try {
       await this.client.delete({ index, id })
@@ -198,9 +198,9 @@ export class ElasticsearchService implements OnModuleInit {
     }
   }
 
-  /**
-   * Check if document exists
-   */
+  
+
+
   async exists(index: string, id: string): Promise<boolean> {
     try {
       const result = await this.client.exists({ index, id })

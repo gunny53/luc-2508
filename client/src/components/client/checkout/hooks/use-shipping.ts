@@ -17,11 +17,11 @@ export const useShipping = (shopId?: string) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Get shipping info from Redux
+  
   const shippingInfo = useSelector(selectShippingInfo)
   const shopOrders = useSelector(selectShopOrders)
 
-  // Get first shop ID if not provided
+  
   const effectiveShopId = shopId || (shopOrders.length > 0 ? shopOrders[0].shopId : '')
 
   const fetchShippingServices = async () => {
@@ -33,14 +33,14 @@ export const useShipping = (shopId?: string) => {
     setError(null)
 
     try {
-      // Get current shop order to get cartItemIds
+      
       const shopOrder = shopOrders.find((o) => o.shopId === effectiveShopId)
       if (!shopOrder || !shopOrder.cartItemIds.length) {
         setShippingMethods([])
         return
       }
 
-      // Fetch services for each cartItemId
+      
       const allShippingMethods: ShippingMethod[] = []
 
       for (const cartItemId of shopOrder.cartItemIds) {
@@ -52,12 +52,12 @@ export const useShipping = (shopId?: string) => {
           if (servicesResponse.data) {
             const services = Array.isArray(servicesResponse.data) ? servicesResponse.data : [servicesResponse.data]
 
-            // Process each service for this cartItemId
+            
             for (const service of services) {
               try {
                 let feeResponse, timeResponse
                 let fallbackPrice = 30000
-                let fallbackTime = 'English content normalized from the original source text.'
+                let fallbackTime = 'Thanh to?n'
 
                 try {
                   ;[feeResponse, timeResponse] = await Promise.all([
@@ -76,7 +76,7 @@ export const useShipping = (shopId?: string) => {
                   ])
 
                   const expectedDeliveryDate = new Date(timeResponse.data.expected_delivery_time)
-                  fallbackTime = `English content normalized from the original source text.${expectedDeliveryDate.toLocaleDateString(
+                  fallbackTime = `Thanh to?n${expectedDeliveryDate.toLocaleDateString(
                     'vi-VN',
                     {
                       weekday: 'long',
@@ -93,14 +93,14 @@ export const useShipping = (shopId?: string) => {
                 const finalPrice = feeResponse?.data?.total || fallbackPrice
                 const finalTime = fallbackTime
 
-                // Check if this service already exists (from other cartItems)
+                
                 const existingMethodIndex = allShippingMethods.findIndex((m) => m.service_id === service.service_id)
 
                 if (existingMethodIndex >= 0) {
-                  // Update existing method with combined price
+                  
                   allShippingMethods[existingMethodIndex].price += finalPrice
                 } else {
-                  // Add new method
+                  
                   allShippingMethods.push({
                     ...service,
                     id: String(service.service_id),
@@ -108,9 +108,9 @@ export const useShipping = (shopId?: string) => {
                     price: finalPrice,
                     estimatedTime: finalTime,
                     description: feeResponse?.data?.total
-                      ? 'English content normalized from the original source text.'
-                      : 'English content normalized from the original source text.',
-                    features: ['English content normalized from the original source text.'],
+                      ? 'Thanh to?n'
+                      : 'Thanh to?n',
+                    features: ['Thanh to?n'],
                     icon: service.service_type_id === 5 ? 'package' : 'truck'
                   } as ShippingMethod)
                 }
@@ -122,11 +122,11 @@ export const useShipping = (shopId?: string) => {
                   allShippingMethods.push({
                     ...service,
                     id: String(service.service_id),
-                    name: service.short_name || 'English content normalized from the original source text.',
+                    name: service.short_name || 'Thanh to?n',
                     price: 30000,
-                    estimatedTime: 'English content normalized from the original source text.',
-                    description: 'English content normalized from the original source text.',
-                    features: ['English content normalized from the original source text.'],
+                    estimatedTime: 'Thanh to?n',
+                    description: 'Thanh to?n',
+                    features: ['Thanh to?n'],
                     icon: service.service_type_id === 5 ? 'package' : 'truck'
                   } as ShippingMethod)
                 }
@@ -141,13 +141,13 @@ export const useShipping = (shopId?: string) => {
       setShippingMethods(allShippingMethods)
     } catch (err: any) {
       console.error('Error fetching shipping services:', err)
-      setError('English content normalized from the original source text.')
+      setError('Thanh to?n')
     } finally {
       setLoading(false)
     }
   }
 
-  // Auto fetch when shipping info changes
+  
   useEffect(() => {
     if (shippingInfo?.districtId && shippingInfo?.wardCode) {
       fetchShippingServices()

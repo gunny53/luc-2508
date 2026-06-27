@@ -25,16 +25,16 @@ export interface UserProfile {
   createdById: string | null
 }
 
-// export interface User {
-//   id: number;
-//   email: string;
-//   status: string;
-//   roleId: number;
-//   isEmailVerified: boolean;
-//   createdAt: string;
-//   updatedAt: string;
-//   userProfile?: UserProfile;
-// }
+
+
+
+
+
+
+
+
+
+
 
 export interface UserRole {
   id: string
@@ -96,7 +96,7 @@ export interface UserCreateRequest {
   phoneNumber: string
   avatar?: string
   password: string
-  confirmPassword?: string // Made optional since it's only used for frontend validation
+  confirmPassword?: string 
   roleId: string
   status: string
 }
@@ -105,7 +105,7 @@ export interface UserCreateResponse extends BaseResponse {
   data: User
 }
 export interface UserUpdateRequest {
-  // id excluded from the request body as it should be provided as URL parameter only
+  
   email?: string
   name?: string
   phoneNumber?: string

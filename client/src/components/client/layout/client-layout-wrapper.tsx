@@ -31,23 +31,21 @@ export default function ClientLayoutWrapper({
 }: ClientLayoutWrapperProps) {
   const deviceType = useCheckDevice()
 
-  // Convert maxWidth to string with px if it's a number
+  
   const maxWidthValue = typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth
 
   return (
     <div className="min-h-screen w-full flex flex-col">
       <ScrollLock />
 
-      {/* Header */}
+      {}
       {!hideHeader && <HeaderWrapper />}
 
-      {}
       {!hideCommit && deviceType !== 'mobile' && <DesktopCommit />}
 
-      {}
       {topContent && <div className="w-full">{topContent}</div>}
 
-      {/* Main content */}
+      {}
       <main className="flex-grow bg-[#F5F5FA]">
         {!hideHero && <HeroSectionWrapper />}
         <div
@@ -58,7 +56,7 @@ export default function ClientLayoutWrapper({
         </div>
       </main>
 
-      {/* Footer */}
+      {}
       {!hideFooter && <Footer />}
     </div>
   )

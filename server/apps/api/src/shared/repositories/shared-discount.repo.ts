@@ -31,9 +31,9 @@ type DiscountWithIncludes = {
 export class SharedDiscountRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  // ============================================================
-  // DATA ACCESS METHODS - Repository Pattern
-  // ============================================================
+  
+  
+  
 
   async findDiscountsByCodes(discountCodes: string[]): Promise<DiscountWithIncludes[]> {
     if (discountCodes.length === 0) {

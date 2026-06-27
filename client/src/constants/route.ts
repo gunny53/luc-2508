@@ -61,8 +61,8 @@ export const ROUTES = {
   }
 } as const
 
-// ==================================================
-// ROUTE CONFIGURATION
+
+
 export const ADMIN_ONLY_ROUTES = [
   '/admin/audit-logs',
   '/admin/device',
@@ -73,7 +73,7 @@ export const ADMIN_ONLY_ROUTES = [
   '/admin/users'
 ] as const
 export const SELLER_ALLOWED_ROUTES = [
-  '/admin', // Dashboard
+  '/admin', 
   '/admin/brand',
   '/admin/category',
   '/admin/order',

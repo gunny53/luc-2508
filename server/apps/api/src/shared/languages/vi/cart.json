@@ -1,18 +1,18 @@
 {
   "cart": {
     "success": {
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text.",
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "GET_DETAIL_SUCCESS": "English content normalized from the original source text."
+      "CREATE_SUCCESS": "Tạo giỏ hàng thành công.",
+      "UPDATE_SUCCESS": "Cập nhật giỏ hàng thành công.",
+      "DELETE_SUCCESS": "Xóa giỏ hàng thành công.",
+      "GET_SUCCESS": "Lấy danh sách giỏ hàng thành công.",
+      "GET_DETAIL_SUCCESS": "Lấy chi tiết giỏ hàng thành công."
     },
     "error": {
-      "SKU_NOT_FOUND": "English content normalized from the original source text.",
-      "SKU_OUT_OF_STOCK": "English content normalized from the original source text.",
-      "PRODUCT_NOT_FOUND": "English content normalized from the original source text.",
-      "CART_ITEM_NOT_FOUND": "English content normalized from the original source text.",
-      "INVALID_QUANTITY": "English content normalized from the original source text."
+      "SKU_NOT_FOUND": "Không tìm thấy giỏ hàng.",
+      "SKU_OUT_OF_STOCK": "Thao tác với giỏ hàng không thành công.",
+      "PRODUCT_NOT_FOUND": "Không tìm thấy sản phẩm.",
+      "CART_ITEM_NOT_FOUND": "Không tìm thấy giỏ hàng.",
+      "INVALID_QUANTITY": "Thao tác với giỏ hàng không thành công."
     }
   }
 }

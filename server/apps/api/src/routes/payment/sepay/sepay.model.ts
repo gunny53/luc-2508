@@ -1,8 +1,6 @@
 import z from 'zod'
 
-/**
- * https://docs.sepay.vn/tich-hop-webhooks.html
- */
+
 export const WebhookPaymentBodySchema = z.object({
   id: z.number().transform((val) => val.toString()),
   gateway: z.string(),

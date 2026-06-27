@@ -44,7 +44,7 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
     const canAccessAdminRoute = (userRole: string) => {
       if (!isAdminRoute) return true
 
-      // Normalize role name
+      
       const normalizedRole = userRole?.toUpperCase?.() || ''
 
       console.log(`Checking admin route access: User role "${normalizedRole}", Route: "${pathname}"`)
@@ -98,7 +98,7 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
 
       if (!isAuthed) {
         if (options.showError !== false && showToastMessage) {
-          showToast('English content normalized from the original source text.', 'error')
+          showToast('X?c th?c', 'error')
         }
         throw new Error('UNAUTHORIZED')
       }
@@ -108,7 +108,7 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
       } catch (error: any) {
         if (error?.response?.status === 401) {
           if (options.showError !== false && showToastMessage) {
-            showToast('English content normalized from the original source text.', 'error')
+            showToast('X?c th?c', 'error')
           }
           throw new Error('SESSION_EXPIRED')
         }
@@ -119,7 +119,7 @@ export const useAuthGuard = (options: UseAuthGuardOptions = {}) => {
   const requireAuth = () => {
     const isAuthed = checkAuth()
     if (!isAuthed && showToastMessage) {
-      showToast('English content normalized from the original source text.', 'error')
+      showToast('X?c th?c', 'error')
     }
     return isAuthed
   }

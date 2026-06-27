@@ -8,184 +8,184 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Search Search Module Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Search Search Module Activity: execute the validated workflow;
 
-:English content normalized from the original source text;
+:Search Search Module Activity: execute the validated workflow;
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Search Search Module Activity: execute the validated workflow
+• Search Search Module Activity: execute the validated workflow
+• Search Search Module Activity: execute the validated workflow
+• Search Search Module Activity: execute the validated workflow
 end note
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Search Search Module Activity: execute the validated workflow;
+:Search Search Module Activity: execute the validated workflow;
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
+Search Search Module Activity: execute the validated workflow
+• Search Search Module Activity: execute the validated workflow
 • page: number.int().positive().default(1)
 • limit: number.int().positive().default(20)
 • orderBy: OrderBy enum (asc/desc)
 • sortBy: SortBy enum (price, sale, createdAt)
 • filters: brandIds, categoryIds, minPrice, maxPrice, attrs
-• English content normalized from the original source text
+• Search Search Module Activity: execute the validated workflow
 end note
 
 if (condition?) then (Yes)
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
+      :Search Search Module Activity: execute the validated workflow;
     else (No)
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Search Search Module Activity: execute the validated workflow;
+        :Search Search Module Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
+        :Search Search Module Activity: execute the validated workflow;
         note right
-          English content normalized from the original source text.
-          • English content normalized from the original source text
-          • English content normalized from the original source text
-          • English content normalized from the original source text
-          • English content normalized from the original source text
+          Search Search Module Activity: execute the validated workflow
+          • Search Search Module Activity: execute the validated workflow
+          • Search Search Module Activity: execute the validated workflow
+          • Search Search Module Activity: execute the validated workflow
+          • Search Search Module Activity: execute the validated workflow
           end note
-        :English content normalized from the original source text;
+        :Search Search Module Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
+          :Search Search Module Activity: execute the validated workflow;
         else (No)
-          :English content normalized from the original source text;
+          :Search Search Module Activity: execute the validated workflow;
           note right
-            English content normalized from the original source text.
-            • English content normalized from the original source text
+            Search Search Module Activity: execute the validated workflow
+            • Search Search Module Activity: execute the validated workflow
             • Terms aggregation cho attrName
             • Terms aggregation cho attrValue
-            • English content normalized from the original source text
-            • English content normalized from the original source text
+            • Search Search Module Activity: execute the validated workflow
+            • Search Search Module Activity: execute the validated workflow
             end note
-          :English content normalized from the original source text;
+          :Search Search Module Activity: execute the validated workflow;
         endif
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Search Search Module Activity: execute the validated workflow;
+        :Search Search Module Activity: execute the validated workflow;
+        :Search Search Module Activity: execute the validated workflow;
+        :Search Search Module Activity: execute the validated workflow;
+        :Search Search Module Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
+          :Search Search Module Activity: execute the validated workflow;
           note right
-            English content normalized from the original source text.
-            • English content normalized from the original source text
-            • English content normalized from the original source text
-            • English content normalized from the original source text
+            Search Search Module Activity: execute the validated workflow
+            • Search Search Module Activity: execute the validated workflow
+            • Search Search Module Activity: execute the validated workflow
+            • Search Search Module Activity: execute the validated workflow
             end note
         endif
       endif
     endif
   endif
 
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Search Search Module Activity: execute the validated workflow;
+  :Search Search Module Activity: execute the validated workflow;
   note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
     • Boost fields (productName^3, productName^2)
     • Minimum should match 75%
-    • English content normalized from the original source text
+    • Search Search Module Activity: execute the validated workflow
     end note
 
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
   endif
 
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
     endif
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
     endif
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
     endif
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
       note right
         Nested Attribute Queries:
         • Nested path: 'attrs'
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        • Search Search Module Activity: execute the validated workflow
+        • Search Search Module Activity: execute the validated workflow
         end note
     endif
   endif
 
-  :English content normalized from the original source text;
+  :Search Search Module Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
   else
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
   endif
-  :English content normalized from the original source text;
+  :Search Search Module Activity: execute the validated workflow;
 
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Search Search Module Activity: execute the validated workflow;
+  :Search Search Module Activity: execute the validated workflow;
+  :Search Search Module Activity: execute the validated workflow;
   note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
+    • Search Search Module Activity: execute the validated workflow
     • Collapse by productId
-    • English content normalized from the original source text
+    • Search Search Module Activity: execute the validated workflow
     end note
 
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
+    :Search Search Module Activity: execute the validated workflow;
     note right
-      English content normalized from the original source text.
-      • English content normalized from the original source text
-      • English content normalized from the original source text
+      Search Search Module Activity: execute the validated workflow
+      • Search Search Module Activity: execute the validated workflow
+      • Search Search Module Activity: execute the validated workflow
       • Key: 'search.search.success.SEARCH_SUCCESS'
       end note
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Search Search Module Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
+      :Search Search Module Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
+      :Search Search Module Activity: execute the validated workflow;
     else
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Search Search Module Activity: execute the validated workflow;
+      :Search Search Module Activity: execute the validated workflow;
     endif
   endif
 
 else (No)
-  :English content normalized from the original source text;
+  :Search Search Module Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Search Search Module Activity: execute the validated workflow;
 
 stop
 

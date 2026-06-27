@@ -121,7 +121,7 @@ export class AuthService {
     if (error) {
       throw FailedToSendOTPException
     }
-    return { message: 'English content normalized from the original source text.' }
+    return { message: 'OTP sent successfully.' }
   }
 
   async login(body: LoginBodyType & { userAgent: string; ip: string }, res: Response) {
@@ -170,7 +170,7 @@ export class AuthService {
 
     this.cookieService.setAuthCookies(res, tokens.accessToken, tokens.refreshToken)
 
-    return { message: 'English content normalized from the original source text.' }
+    return { message: 'Login successful.' }
   }
 
   async generateTokens({ userId, deviceId, roleId, roleName }: AccessTokenPayloadCreate) {
@@ -231,7 +231,7 @@ export class AuthService {
       const $tokens = this.generateTokens({ userId, roleId, roleName, deviceId })
       const [, , tokens] = await Promise.all([$updateDevice, $deleteRefreshToken, $tokens])
       this.cookieService.setAuthCookies(res, tokens.accessToken, tokens.refreshToken)
-      return { message: 'English content normalized from the original source text.' }
+      return { message: 'Token refreshed successfully.' }
     } catch (error) {
       if (error instanceof HttpException) {
         throw error
@@ -249,7 +249,7 @@ export class AuthService {
       await this.authRepository.updateDevice(deletedRefreshToken.deviceId, {
         isActive: false
       })
-      return { message: 'English content normalized from the original source text.' }
+      return { message: 'Logged out successfully.' }
     } catch (error) {
       if (isNotFoundPrismaError(error)) {
         throw RefreshTokenAlreadyUsedException
@@ -287,7 +287,7 @@ export class AuthService {
       })
     ])
     return {
-      message: 'English content normalized from the original source text.'
+      message: 'Password reset successfully.'
     }
   }
 
@@ -335,7 +335,7 @@ export class AuthService {
     }
     await this.sharedUserRepository.update({ id: userId }, { totpSecret: null, updatedById: userId })
     return {
-      message: 'English content normalized from the original source text.'
+      message: 'Two-factor authentication disabled successfully.'
     }
   }
 }

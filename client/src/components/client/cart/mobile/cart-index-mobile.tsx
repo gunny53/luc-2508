@@ -40,7 +40,7 @@ export default function MobileCartIndex() {
     setSelectedItems(updatedItems)
   }
 
-  // ✅ Toggle shop
+  
   const handleToggleShop = (shopId: string, items: CartItem[]) => {
     const isChecked = !selectedShops[shopId]
     const updatedItems = { ...selectedItems }
@@ -54,7 +54,7 @@ export default function MobileCartIndex() {
     setSelectedItems(updatedItems)
   }
 
-  // ✅ Toggle item
+  
   const handleToggleItem = (shopId: string, itemId: string, shopItems: CartItem[]) => {
     const newIsSelected = !selectedItems[itemId]
     const updatedItems = { ...selectedItems, [itemId]: newIsSelected }
@@ -100,7 +100,7 @@ export default function MobileCartIndex() {
       const selectedItemIds = Object.keys(selectedItems).filter((itemId) => selectedItems[itemId])
 
       if (selectedItemIds.length === 0) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('Gi? h?ng')
         return
       }
 
@@ -110,11 +110,11 @@ export default function MobileCartIndex() {
       setSelectAll(false)
 
       toast.success(
-        `English content normalized from the original source text.${selectedItemIds.length}English content normalized from the original source text.`
+        `Gi? h?ng${selectedItemIds.length}Gi? h?ng`
       )
     } catch (error) {
       console.error('Error removing selected items:', error)
-      toast.error('English content normalized from the original source text.')
+      toast.error('Gi? h?ng')
     }
   }
   const { total, totalSaved, selectedCount } = useMemo(() => {
@@ -148,7 +148,7 @@ export default function MobileCartIndex() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  // ✅ Checkout
+  
   const handleCheckout = () => {
     const selectedShopCarts = shopCarts
       .map((shopCart: ShopCart) => ({
@@ -158,7 +158,7 @@ export default function MobileCartIndex() {
       .filter((shopCart: ShopCart) => shopCart.cartItems.length > 0)
 
     if (selectedShopCarts.length === 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('Gi? h?ng')
       return
     }
 
@@ -196,7 +196,7 @@ export default function MobileCartIndex() {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       <div className="sticky top-0 z-10 bg-white shadow-sm">
-        <MobileCartHeader title="English content normalized from the original source text." />
+        <MobileCartHeader title="Gi? h?ng" />
       </div>
 
       <main className="flex-grow overflow-y-auto">
@@ -209,7 +209,7 @@ export default function MobileCartIndex() {
             <div className="relative w-32 h-32 mb-4">
               <Image src="/images/empty-cart.png" alt="Empty Cart" fill className="object-contain" />
             </div>
-            <p className="text-gray-500">English content normalized from the original source text.</p>
+            <p className="text-gray-500">Gi? h?ng</p>
           </div>
         ) : (
           <div className="pb-4">

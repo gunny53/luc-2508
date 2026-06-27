@@ -33,7 +33,7 @@ export class MediaModule {
         mkdirSync(UPLOAD_DIR, { recursive: true })
       }
     } catch (error) {
-      console.warn(`English content normalized from the original source text.${UPLOAD_DIR}`, error.message)
+      console.warn(`Failed to ensure upload directory ${UPLOAD_DIR}`, error.message)
     }
   }
 }

@@ -56,7 +56,6 @@ export function BrandTable() {
 
   return (
     <div className="w-full space-y-4">
-      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenModal()}>
           <PlusIcon className="w-4 h-4 mr-2" />
@@ -64,7 +63,6 @@ export function BrandTable() {
         </Button>
       </div>
 
-      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -77,7 +75,6 @@ export function BrandTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {/* Data Table */}
       <div className="relative">
         <DataTable
           table={table}
@@ -95,7 +92,6 @@ export function BrandTable() {
         />
       </div>
 
-      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {
@@ -115,7 +111,6 @@ export function BrandTable() {
         loading={deleteLoading}
       />
 
-      {}
       {isModalOpen && (
         <BrandModalUpsert
           open={isModalOpen}

@@ -8,19 +8,19 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Discount Discount Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Discount Discount Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
   note right
-  English content normalized from the original source text.
+  Discount Discount Management Activity: execute the validated workflow
   • WHERE deletedAt IS NULL
   • WHERE discountStatus = 'ACTIVE'
   • WHERE startDate <= now <= endDate
@@ -28,162 +28,162 @@ if (condition?) then (Yes)
   • Filter theo minOrderValue
   • Include relations (products, categories, brands)
   end note
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
   :Filter available discounts;
   note right
-  English content normalized from the original source text.
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  Discount Discount Management Activity: execute the validated workflow
+  • Discount Discount Management Activity: execute the validated workflow
+  • Discount Discount Management Activity: execute the validated workflow
   • Validate product/category/brand applicability
   • Filter theo cart items
   end note
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
 
 elseif (POST /discounts/validate-code - Validate voucher code) then
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
+        :Discount Discount Management Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Discount Discount Management Activity: execute the validated workflow;
+          :Discount Discount Management Activity: execute the validated workflow;
           if (condition?) then (Yes)
-            :English content normalized from the original source text;
+            :Discount Discount Management Activity: execute the validated workflow;
             if (condition?) then (Yes)
-              :English content normalized from the original source text;
-              :English content normalized from the original source text;
+              :Discount Discount Management Activity: execute the validated workflow;
+              :Discount Discount Management Activity: execute the validated workflow;
               if (condition?) then (Yes)
-                :English content normalized from the original source text;
+                :Discount Discount Management Activity: execute the validated workflow;
                 note right
-                English content normalized from the original source text.
+                Discount Discount Management Activity: execute the validated workflow
                 • PERCENTAGE: (orderTotal * value) / 100
                 • FIX_AMOUNT: min(value, orderTotal)
                 • Apply maxDiscountValue limit
                 end note
-                :English content normalized from the original source text;
+                :Discount Discount Management Activity: execute the validated workflow;
               else (No)
-                :English content normalized from the original source text;
+                :Discount Discount Management Activity: execute the validated workflow;
               endif
             else (GENERAL)
-              :English content normalized from the original source text;
-              :English content normalized from the original source text;
+              :Discount Discount Management Activity: execute the validated workflow;
+              :Discount Discount Management Activity: execute the validated workflow;
             endif
           else (No)
-            :English content normalized from the original source text;
+            :Discount Discount Management Activity: execute the validated workflow;
           endif
         else (No)
-          :English content normalized from the original source text;
+          :Discount Discount Management Activity: execute the validated workflow;
         endif
       else (No)
-        :English content normalized from the original source text;
+        :Discount Discount Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
   note right
-  English content normalized from the original source text.
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  Discount Discount Management Activity: execute the validated workflow
+  • Discount Discount Management Activity: execute the validated workflow
+  • Discount Discount Management Activity: execute the validated workflow
   • Auto-set shopId = userId cho Seller
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
       :Validate business rules;
       note right
-      English content normalized from the original source text.
+      Discount Discount Management Activity: execute the validated workflow
       • startDate < endDate
       • Code format: A-Z0-9, max 5 chars
       • PERCENTAGE: 1-100%
       • maxUsesPerUser <= maxUses
-      • English content normalized from the original source text
+      • Discount Discount Management Activity: execute the validated workflow
       end note
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
+        :Discount Discount Management Activity: execute the validated workflow;
         :Connect brands/categories/products;
-        :English content normalized from the original source text;
+        :Discount Discount Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
+        :Discount Discount Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
         :Validate business rules;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
+          :Discount Discount Management Activity: execute the validated workflow;
           :Update brands/categories/products relations;
-          :English content normalized from the original source text;
+          :Discount Discount Management Activity: execute the validated workflow;
         else (No)
-          :English content normalized from the original source text;
+          :Discount Discount Management Activity: execute the validated workflow;
         endif
       else (No)
-        :English content normalized from the original source text;
+        :Discount Discount Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
+      :Discount Discount Management Activity: execute the validated workflow;
+      :Discount Discount Management Activity: execute the validated workflow;
+      :Discount Discount Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Discount Discount Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
+  :Discount Discount Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
+    :Discount Discount Management Activity: execute the validated workflow;
+    :Discount Discount Management Activity: execute the validated workflow;
+    :Discount Discount Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Discount Discount Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
+  :Discount Discount Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Discount Discount Management Activity: execute the validated workflow;
+:Discount Discount Management Activity: execute the validated workflow;
 
 stop
 

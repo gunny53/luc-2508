@@ -26,14 +26,12 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
       }`}
       onClick={() => onSelect(voucher)}
     >
-      {}
       <div className="w-12 h-12 mr-4 flex-shrink-0">
         <div className="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
           <Ticket className="w-6 h-6 text-gray-500" />
         </div>
       </div>
 
-      {}
       <div className="flex-grow space-y-1">
         <div className="flex items-center justify-between">
           <h4 className="font-semibold text-sm text-gray-800">{voucher.name}</h4>
@@ -42,12 +40,12 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
 
         {voucher.description && <p className="text-xs text-gray-600">{voucher.description}</p>}
 
-        {/* Discount Value Display */}
+        {}
         <div className="mb-2">
           <span className="inline-block px-2 py-1 bg-red-100 text-red-600 text-xs font-semibold rounded">
             {voucher.discountType === 'PERCENTAGE'
-              ? `English content normalized from the original source text.${voucher.value}%${voucher.maxDiscountValue ? ` English content normalized from the original source text.{voucher.maxDiscountValue.toLocaleString('vi-VN')}₫)` : ''}`
-              : `English content normalized from the original source text.${voucher.value.toLocaleString('vi-VN')}₫`}
+              ? `M? gi?m gi?${voucher.value}%${voucher.maxDiscountValue ? ` M? gi?m gi?{voucher.maxDiscountValue.toLocaleString('vi-VN')}₫)` : ''}`
+              : `M? gi?m gi?${voucher.value.toLocaleString('vi-VN')}₫`}
           </span>
         </div>
 
@@ -58,7 +56,7 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
           </span>
           {voucher.minOrderValue && (
             <span className="text-gray-500">
-              English content normalized from the original source text.{' '}
+              M? gi?m gi?{' '}
               <span className="font-medium text-gray-700">{voucher.minOrderValue.toLocaleString('vi-VN')}₫</span>
             </span>
           )}
@@ -92,7 +90,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
         setError(null)
         try {
           if (cartItemIds.length === 0) {
-            setError('English content normalized from the original source text.')
+            setError('M? gi?m gi?')
             setVouchers([])
             return
           }
@@ -104,7 +102,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
           const response = await discountService.getGuestDiscountList(params)
           setVouchers(response.data || [])
         } catch (err) {
-          setError('English content normalized from the original source text.')
+          setError('M? gi?m gi?')
           console.error(err)
         } finally {
           setLoading(false)
@@ -121,7 +119,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
 
   const handleValidateVoucher = async (code: string) => {
     if (!code) {
-      toast.info('English content normalized from the original source text.')
+      toast.info('M? gi?m gi?')
       return
     }
 
@@ -135,17 +133,17 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
           discount: response.data.discount,
           discountAmount: response.data.discountAmount
         }
-        // Pass both shopId and voucher information back to the parent
+        
         onApplyVoucher(shopId, appliedVoucher)
         toast.success(
-          `English content normalized from the original source text.${appliedVoucher.code}English content normalized from the original source text.`
+          `M? gi?m gi?${appliedVoucher.code}M? gi?m gi?`
         )
         onClose()
       } else {
-        toast.error('English content normalized from the original source text.')
+        toast.error('M? gi?m gi?')
       }
     } catch (err) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       console.error(err)
     } finally {
       setIsValidating(false)
@@ -162,7 +160,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
       return (
         <div className="text-center py-10 flex flex-col items-center justify-center h-full">
           <Loader2 className="w-8 h-8 animate-spin text-blue-500 mb-2" />
-          <p className="text-gray-500">English content normalized from the original source text.</p>
+          <p className="text-gray-500">M? gi?m gi?</p>
         </div>
       )
     }
@@ -180,7 +178,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
       return (
         <div className="text-center py-10 flex flex-col items-center justify-center h-full">
           <Ticket className="w-8 h-8 text-gray-400 mb-2" />
-          <p className="text-gray-500">English content normalized from the original source text.</p>
+          <p className="text-gray-500">M? gi?m gi?</p>
         </div>
       )
     }
@@ -201,7 +199,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
         <DialogHeader className="px-6 pt-6 pb-2 border-b">
           <DialogTitle className="flex items-center gap-2 text-lg font-semibold">
             <Ticket className="w-5 h-5 text-red-500" />
-            <span>English content normalized from the original source text. {shopName}</span>
+            <span>M? gi?m gi? {shopName}</span>
           </DialogTitle>
         </DialogHeader>
 
@@ -209,7 +207,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
           <div className="relative flex-1">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <Input
-              placeholder="English content normalized from the original source text."
+              placeholder="M? gi?m gi?"
               value={voucherCode}
               onChange={(e) => setVoucherCode(e.target.value)}
               className="pl-9"
@@ -224,7 +222,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
             {isValidating ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              'English content normalized from the original source text.'
+              'M? gi?m gi?'
             )}
           </Button>
         </div>
@@ -233,7 +231,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
 
         <DialogFooter className="gap-2 sm:gap-2 p-4 border-t">
           <Button variant="outline" onClick={onClose} className="w-full sm:w-auto">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </Button>
           <Button
             onClick={() => handleValidateVoucher(selectedVoucher!.code)}
@@ -243,7 +241,7 @@ const VoucherModal = ({ isOpen, onClose, onApplyVoucher, shopId, shopName, cartI
             {isValidating ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              'English content normalized from the original source text.'
+              'M? gi?m gi?'
             )}
           </Button>
         </DialogFooter>
@@ -265,10 +263,10 @@ export function VoucherButton({
       <div className="flex items-center justify-between px-4 py-3 text-base">
         <div className="flex items-center gap-4 text-gray-500 text-sm">
           <Ticket className="w-5 h-5 text-red-500" />
-          <span className="text-black">English content normalized from the original source text. {shopName}</span>
+          <span className="text-black">M? gi?m gi? {shopName}</span>
         </div>
         <button onClick={() => setIsModalOpen(true)} className="text-blue-600 hover:underline text-base">
-          English content normalized from the original source text.
+          M? gi?m gi?
         </button>
       </div>
 

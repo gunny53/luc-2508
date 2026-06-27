@@ -1,4 +1,4 @@
-// components/client/landing-page/suggest-Section.tsx
+
 'use client'
 
 import { useClientSuggestedProducts } from '@/hooks/client-products/use-client-suggested-products'
@@ -11,7 +11,7 @@ interface SuggestSectionProps {
 }
 
 const SuggestSection = ({
-  title = 'English content normalized from the original source text.',
+  title = 'ECSite',
   categoryId,
   initialLimit = 48
 }: SuggestSectionProps) => {
@@ -25,10 +25,9 @@ const SuggestSection = ({
   return (
     <div className="bg-gray-100 py-4">
       <div className="container mx-auto">
-        {/* <h2 className="text-xl font-medium mb-4 px-2">{title}</h2> */}
 
         {error && (
-          <div className="text-center p-4 text-red-500">English content normalized from the original source text.</div>
+          <div className="text-center p-4 text-red-500">ECSite</div>
         )}
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
@@ -45,8 +44,8 @@ const SuggestSection = ({
               disabled={loading}
             >
               {loading
-                ? 'English content normalized from the original source text.'
-                : 'English content normalized from the original source text.'}
+                ? 'ECSite'
+                : 'ECSite'}
             </button>
           </div>
         )}

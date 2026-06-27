@@ -46,7 +46,7 @@ export function useDataTable<TData>({ data, columns }: UseDataTableProps<TData>)
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-    // Disable internal pagination as we're using server-side pagination
+    
     manualPagination: true
   })
 

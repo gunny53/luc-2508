@@ -1,10 +1,10 @@
 import { BaseResponse } from '../base.interface'
 import { UserProfile } from './profile.interface'
 
-// A generic type for actions within a permission subject
+
 type PermissionActions = { [action: string]: boolean }
 
-// The structure for all permissions, based on the API response
+
 export interface Permissions {
   User?: PermissionActions
   Role?: PermissionActions
@@ -14,7 +14,7 @@ export interface Permissions {
   Password?: PermissionActions
   Session?: PermissionActions
   all?: PermissionActions
-  // Allow for other potential keys not explicitly defined
+  
   [key: string]: PermissionActions | undefined
 }
 export interface GetAbilityResponse extends BaseResponse {
@@ -167,7 +167,7 @@ export interface Disable2faResponse {
   message: string
 }
 
-// REFRESH TOKEN
+
 export interface RefreshTokenRequest {
   refreshToken: string
 }

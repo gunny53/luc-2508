@@ -6,23 +6,23 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Cart Cart Get List Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Cart Cart Get List Activity: execute the validated workflow;
+:Cart Cart Get List Activity: execute the validated workflow;
+:Cart Cart Get List Activity: execute the validated workflow;
+:Cart Cart Get List Activity: execute the validated workflow;
+:Cart Cart Get List Activity: execute the validated workflow;
 note right
 Filter:
 • Product.deletedAt IS NULL
 • Product.publishedAt IS NOT NULL AND <= NOW()
-• English content normalized from the original source text
+• Cart Cart Get List Activity: execute the validated workflow
 end note
-:English content normalized from the original source text;
+:Cart Cart Get List Activity: execute the validated workflow;
 :Build message i18n;
-:English content normalized from the original source text;
+:Cart Cart Get List Activity: execute the validated workflow;
 stop
 
 @enduml

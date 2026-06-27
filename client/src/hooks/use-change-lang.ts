@@ -13,7 +13,7 @@ export const useChangeLang = () => {
 
   const currentLanguage = useSelector((state: RootState) => state.langECSite.language)
   const currentLangName =
-    currentLanguage === 'vi' ? 'English content normalized from the original source text.' : 'English'
+    currentLanguage === 'vi' ? 'ECSite' : 'English'
 
   const toggleMenu = () => setShowLangMenu((prev) => !prev)
 

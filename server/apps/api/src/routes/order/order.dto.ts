@@ -32,7 +32,7 @@ export class CalculateOrderBodyDTO extends createZodDto(CalculateOrderPerShopSch
 
 export class CalculateOrderResDTO extends createZodDto(CalculateOrderResSchema) {}
 
-// Manage Order DTOs
+
 export class GetManageOrderListQueryDTO extends createZodDto(GetManageOrderListQuerySchema) {}
 
 export class GetManageOrderListResDTO extends createZodDto(GetManageOrderListResSchema) {}

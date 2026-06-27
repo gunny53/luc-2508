@@ -6,28 +6,28 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Product Manage Product Update Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Product Manage Product Update Activity: execute the validated workflow;
+:Product Manage Product Update Activity: execute the validated workflow;
+:Product Manage Product Update Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Product Manage Product Update Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Product Manage Product Update Activity: execute the validated workflow;
+    :Product Manage Product Update Activity: execute the validated workflow;
+    :Product Manage Product Update Activity: execute the validated workflow;
+    :Product Manage Product Update Activity: execute the validated workflow;
     :$transaction: update product + soft delete skusToDelete + update skusToUpdate + createMany skusToCreate;
     :enqueue addSyncProductJob(productId, 'update');
     :Build message i18n;
-    :English content normalized from the original source text;
+    :Product Manage Product Update Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Product Manage Product Update Activity: execute the validated workflow;
   endif
 else (No)
-  :English content normalized from the original source text;
+  :Product Manage Product Update Activity: execute the validated workflow;
 endif
 stop
 

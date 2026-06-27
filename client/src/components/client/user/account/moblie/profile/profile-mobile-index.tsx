@@ -49,7 +49,7 @@ export default function ProfileMobileIndex() {
     setTitle(t('user.settings.items.Account security'))
   }, [setTitle, t])
 
-  const name = user?.name || 'English content normalized from the original source text.'
+  const name = user?.name || 'T?i kho?n'
   const phoneNumber = user?.phoneNumber || t('user.account.profile.noPhone')
   const avatar = user?.avatar || ''
   const avatarText = name ? name[0].toUpperCase() : 'U'
@@ -61,7 +61,6 @@ export default function ProfileMobileIndex() {
 
   return (
     <div className="pb-8 space-y-4 text-sm text-black bg-white">
-      {/* Header status */}
       <div className="flex items-center bg-white py-4">
         <div className="flex-shrink-0 flex items-center">
           <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
@@ -76,7 +75,6 @@ export default function ProfileMobileIndex() {
         </div>
       </div>
 
-      {/* Basic Information */}
       <div className="flex items-center justify-between border-b py-3">
         <div className="flex flex-col space-y-3">
           <div>
@@ -99,7 +97,6 @@ export default function ProfileMobileIndex() {
         </Button>
       </div>
 
-      {/* Password */}
       <div className="flex items-center justify-between border-b py-3">
         <div className="flex flex-col">
           <p className="text-black font-medium">{t('user.account.profile.password')}</p>
@@ -114,7 +111,6 @@ export default function ProfileMobileIndex() {
         </Button>
       </div>
 
-      {/* 2FA */}
       <div className="flex items-center justify-between border-b py-3">
         <div className="flex flex-col">
           <p className="text-black font-medium">
@@ -132,7 +128,7 @@ export default function ProfileMobileIndex() {
         </Button>
       </div>
 
-      {/* Third-party accounts */}
+      {}
       <div className="border-b pb-4">
         <p className="font-medium text-black mb-3 text-sm">{t('user.account.profile.thirdPartyAccounts')}</p>
         {[
@@ -162,7 +158,7 @@ export default function ProfileMobileIndex() {
         ))}
       </div>
 
-      {/* Delete Account */}
+      {}
       <div className="pt-3">
         <div className="flex justify-between items-center">
           <p className="text-sm text-gray-700 font-medium">{t('user.account.profile.accountTermination')}</p>
@@ -176,7 +172,7 @@ export default function ProfileMobileIndex() {
         </div>
       </div>
 
-      {/* Modals */}
+      {}
       <ProfileUpdateSheet
         open={profileSheetOpen}
         onOpenChange={setProfileSheetOpen}

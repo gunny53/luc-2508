@@ -158,7 +158,7 @@ export function SearchInput() {
 
   return (
     <>
-      {/* Background overlay khi search focused */}
+      {}
       <div
         className={cn(
           'fixed top-[75px] left-0 right-0 bottom-0 bg-black transition-all duration-300 search-backdrop',
@@ -180,14 +180,14 @@ export function SearchInput() {
           <Input
             ref={inputRef}
             type="text"
-            placeholder="English content normalized from the original source text."
+            placeholder="T?m ki?m"
             className="border-none focus-visible:ring-0 focus-visible:ring-offset-0 h-10 px-4 text-[13px] rounded-l-lg"
             onFocus={handleFocus}
             onBlur={handleBlur}
             value={searchTerm}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            aria-label="English content normalized from the original source text."
+            aria-label="T?m ki?m"
             aria-expanded={isFocused}
             aria-controls="search-suggestions"
             role="combobox"
@@ -220,7 +220,7 @@ export function SearchInput() {
                 type="button"
                 size="sm"
                 className="h-9 rounded-full px-6 m-1 bg-red-500 hover:bg-red-600"
-                aria-label="English content normalized from the original source text."
+                aria-label="T?m ki?m"
                 onClick={() => searchTerm && navigateToSearch(searchTerm)}
               >
                 <Search className="h-5 w-5 text-white" />
@@ -229,7 +229,7 @@ export function SearchInput() {
           </div>
         </motion.div>
 
-        {/* Search dropdown with AnimatePresence for smooth enter/exit */}
+        {}
         <AnimatePresence>
           {isFocused && (
             <motion.div
@@ -252,16 +252,15 @@ export function SearchInput() {
                 }
               }}
             >
-              {/* Bubble arrow pointing to the search bar */}
+              {}
               <div className="absolute search-dropdown-arrow w-3 h-3 bg-white transform rotate-45 border-t border-l border-gray-200"></div>
 
               <div>
                 {searchHistory.length > 0 && (
                   <div className="px-5 pt-5">
-                    {}
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="text-[16px] font-semibold text-gray-800">
-                        English content normalized from the original source text.
+                        T?m ki?m
                       </h3>
                       <button
                         className="text-xs text-red-500 hover:underline"
@@ -270,24 +269,21 @@ export function SearchInput() {
                           localStorage.removeItem('searchHistory')
                         }}
                       >
-                        English content normalized from the original source text.
+                        T?m ki?m
                       </button>
                     </div>
 
-                    {}
                     {searchHistory.map((term, index) => (
                       <div
                         key={index}
                         className="px-2 py-2.5 cursor-pointer hover:bg-gray-50 flex items-center justify-between rounded"
                         onClick={() => navigateToSearch(term)}
                       >
-                        {}
                         <div className="flex items-center gap-2">
                           <Clock className="h-4 w-4 text-gray-500" />
                           <span className="text-sm text-gray-700">{term}</span>
                         </div>
 
-                        {}
                         <X
                           className="h-4 w-4 text-gray-400 hover:text-red-500 flex-shrink-0"
                           onClick={(e) => {
@@ -304,28 +300,27 @@ export function SearchInput() {
                   </div>
                 )}
 
-                {/* Header section with padding */}
+                {}
                 <div className="px-5 pt-5">
                   {!searchTerm ? (
                     <h3 className="text-[16px] font-semibold text-gray-800 border-b border-gray-100 pb-2">
-                      English content normalized from the original source text.
+                      T?m ki?m
                     </h3>
                   ) : (
                     <div className="flex items-center mb-2">
-                      {/* <Search className='h-4 w-4 text-red-500 mr-2' /> */}
+                      {}
                       <h3 className="text-[16px] font-semibold text-black">
-                        English content normalized from the original source text.
+                        T?m ki?m
                       </h3>
                     </div>
                   )}
                 </div>
 
-                {/* Content section with full-width hover backgrounds */}
+                {}
                 <div className="mb-0">
-                  {/* Changed mb-5 to mb-0 to remove extra space at bottom */}
+                  {}
                   {!searchTerm ? (
                     <>
-                      {}
                       <div>
                         {loading
                           ? Array(5)
@@ -376,7 +371,6 @@ export function SearchInput() {
                     </>
                   ) : (
                     <>
-                      {}
                       <div>
                         {isLoadingSuggestions ? (
                           Array(3)
@@ -427,7 +421,7 @@ export function SearchInput() {
                         ) : searchTerm.length > 1 ? (
                           <div className="px-5 py-6 text-center">
                             <p className="text-gray-500">
-                              English content normalized from the original source text. "{searchTerm}"
+                              T?m ki?m "{searchTerm}"
                             </p>
                           </div>
                         ) : null}
@@ -436,7 +430,7 @@ export function SearchInput() {
                   )}
                 </div>
 
-                {/* Footer section with padding - added pt-5 to create proper spacing */}
+                {}
                 {searchTerm && (
                   <div className="px-5 pb-5">
                     <div className="border-t border-gray-100 pt-4">
@@ -449,9 +443,8 @@ export function SearchInput() {
                       >
                         <Search className="h-4 w-4 mr-2.5" />
                         <span>
-                          English content normalized from the original source text.{' '}
-                          <span className="font-bold text-red-600">"{totalItems}"</span> English content normalized from
-                          the original source text. <span className="font-bold text-red-600">"{searchTerm}"</span>
+                          T?m ki?m{' '}
+                          <span className="font-bold text-red-600">"{totalItems}"</span> k?t qu? t?m ki?m <span className="font-bold text-red-600">"{searchTerm}"</span>
                         </span>
                       </div>
                     </div>

@@ -52,7 +52,7 @@ export function PermissionsTable() {
       await handleDelete(permissionToDelete.id)
       handleCloseDeleteModal()
     } catch (error) {
-      console.error('English content normalized from the original source text.', error)
+      console.error('Quy?n truy c?p', error)
     } finally {
       setDeleteLoading(false)
     }
@@ -66,15 +66,15 @@ export function PermissionsTable() {
         await handleCreate(formData)
       }
     } catch (error) {
-      console.error('English content normalized from the original source text.', error)
+      console.error('Quy?n truy c?p', error)
     }
   }
 
-  // Log to check if permissions are updated
+  
   console.log('Permissions data:', permissions.length, 'items')
   console.log('Current pagination:', pagination)
 
-  // Ensure table is recreated when permissions or pagination changes
+  
   const table = useDataTable({
     data: permissions,
     columns: PermissionsColumns({ onDelete: handleOpenDelete, onEdit: handleOpenModal })
@@ -82,15 +82,13 @@ export function PermissionsTable() {
 
   return (
     <div className="w-full space-y-4">
-      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenModal()} variant="default">
           <PlusIcon className="w-4 h-4 mr-2" />
-          {t('admin.permissions.addAction') || 'English content normalized from the original source text.'}
+          {t('admin.permissions.addAction') || 'Quy?n truy c?p'}
         </Button>
       </div>
 
-      {}
       <div className="flex justify-between flex-wrap gap-2 items-center">
         <SearchInput
           value={pagination?.search || ''}
@@ -101,7 +99,6 @@ export function PermissionsTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {}
       <DataTable
         table={table}
         columns={PermissionsColumns({ onDelete: handleOpenDelete, onEdit: handleOpenModal })}
@@ -121,7 +118,6 @@ export function PermissionsTable() {
         }}
       />
 
-      {}
       <PermissionsModalUpsert
         open={isModalOpen}
         onClose={handleCloseModal}
@@ -129,7 +125,6 @@ export function PermissionsTable() {
         permission={selectedPermission}
       />
 
-      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={handleCloseDeleteModal}

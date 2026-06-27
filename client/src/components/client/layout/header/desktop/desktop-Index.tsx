@@ -15,17 +15,17 @@ import '../style.css'
 function HeaderLayout() {
   const showHeader = useScrollHeader()
   const { openDropdown, setOpenDropdown } = useDropdown()
-  // Determine if the overlay should be shown. Exclude 'cart' and 'none'.
+  
   const showOverlay = openDropdown !== 'none' && openDropdown !== 'cart'
 
-  // Close all dropdowns when header is hidden
+  
   useEffect(() => {
     if (!showHeader && openDropdown !== 'none') {
       setOpenDropdown('none')
     }
-  }, [showHeader, openDropdown, setOpenDropdown]) // Remove scroll-locking effect
+  }, [showHeader, openDropdown, setOpenDropdown]) 
   useEffect(() => {
-    document.body.style.overflow = '' // Always ensure scrolling is enabled
+    document.body.style.overflow = '' 
   }, [])
 
   return (
@@ -38,7 +38,7 @@ function HeaderLayout() {
       >
         <div className="max-w-[1350px] mx-auto h-full header-container">
           <div className="px-4 h-full flex items-center justify-between gap-4">
-            {/* Logo */}
+            {}
             <Link href="/" className="flex items-center gap-2 header-logo">
               <div className="rounded-xl overflow-hidden">
                 <Image
@@ -75,7 +75,7 @@ function HeaderLayout() {
           </div>
         </div>
       </header>
-      {/* <DesktopCommit /> */}
+      {}
       <div className="body-overlay" />
     </>
   )

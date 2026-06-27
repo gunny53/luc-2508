@@ -12,7 +12,7 @@ export const useUserData = () => {
     if (!user) {
       return null
     }
-    // const name = [user.firstName, user.lastName].filter(Boolean).join(' ');
+    
     return {
       ...user
     }

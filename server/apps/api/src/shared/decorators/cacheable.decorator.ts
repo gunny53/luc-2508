@@ -1,43 +1,29 @@
 import { Logger } from '@nestjs/common'
 
 export interface CacheableOptions {
-  /**
-   * Cache key identifier
-   */
+  
   key: string
 
-  /**
-   * Time-to-live in seconds (default: 300)
-   */
+  
   ttl?: number
 
   ttlJitter?: number
 
-  /**
-   * Cache scope: 'global' or 'module' (default: 'global')
-   */
+  
   scope?: 'global' | 'module'
 
-  /**
-   * Module name (required when scope is 'module')
-   */
+  
   moduleName?: string
 
-  /**
-   * Enable JSON serialization (default: true)
-   */
+  
   serialize?: boolean
 
   staleTtl?: number
 
-  /**
-   * Function to generate dynamic cache key based on method arguments
-   */
+  
   keyGenerator?: (...args: any[]) => string
 
-  /**
-   * Condition function to determine if result should be cached
-   */
+  
   condition?: (result: any) => boolean
 }
 
@@ -84,10 +70,10 @@ export function Cacheable(options: CacheableOptions) {
       }
 
       try {
-        // Build cache key
+        
         const cacheKey = buildCacheKey(options, args)
 
-        // Try to get from cache first
+        
         const cachedResult = await redisService.get(cacheKey)
         if (cachedResult !== null) {
           logger.debug(`Cache hit for key: ${cacheKey}`)
@@ -134,16 +120,16 @@ export function Cacheable(options: CacheableOptions) {
 
         logger.debug(`Cache miss for key: ${cacheKey}`)
 
-        // Execute original method
+        
         const result = await method.apply(this, args)
 
-        // Check condition before caching
+        
         if (options.condition && !options.condition(result)) {
           logger.debug(`Condition not met for caching key: ${cacheKey}`)
           return result
         }
 
-        // Cache the result
+        
         const ttlBase = options.ttl || 300
         const jitter = Math.floor(Math.random() * (options.ttlJitter || 0))
         if (options.staleTtl) {
@@ -162,7 +148,7 @@ export function Cacheable(options: CacheableOptions) {
         return result
       } catch (error) {
         logger.error(`Cache operation failed for ${target.constructor.name}.${propertyName}:`, error)
-        // Fallback to original method execution
+        
         return method.apply(this, args)
       }
     }
@@ -174,18 +160,18 @@ export function Cacheable(options: CacheableOptions) {
 function buildCacheKey(options: CacheableOptions, args: any[]): string {
   let baseKey = options.key
 
-  // Add scope prefix if specified
+  
   if (options.scope === 'module' && options.moduleName) {
     baseKey = `${options.moduleName}:${baseKey}`
   }
 
-  // Use custom key generator if provided
+  
   if (options.keyGenerator) {
     const dynamicSuffix = options.keyGenerator(...args)
     return `${baseKey}:${dynamicSuffix}`
   }
 
-  // Default: append serialized arguments as suffix
+  
   if (args.length > 0) {
     const argsSuffix = args
       .map((arg) => {
@@ -211,7 +197,7 @@ export function CacheEvict(pattern: string | string[]) {
       const redisService = this.redisService || this.cacheService
 
       try {
-        // Execute original method first
+        
         const result = await method.apply(this, args)
 
         if (redisService) {
@@ -226,7 +212,7 @@ export function CacheEvict(pattern: string | string[]) {
         return result
       } catch (error) {
         logger.error(`Cache eviction failed for ${target.constructor.name}.${propertyName}:`, error)
-        // Still execute the method even if cache eviction fails
+        
         return method.apply(this, args)
       }
     }
@@ -245,13 +231,13 @@ export function CachePut(options: CacheableOptions) {
       const redisService = this.redisService || this.cacheService
 
       try {
-        // Always execute original method
+        
         const result = await method.apply(this, args)
 
         if (redisService) {
           const cacheKey = buildCacheKey(options, args)
 
-          // Check condition before caching
+          
           if (!options.condition || options.condition(result)) {
             const valueToCache = options.serialize !== false ? result : JSON.stringify(result)
             await redisService.set(cacheKey, valueToCache, options.ttl || 300)

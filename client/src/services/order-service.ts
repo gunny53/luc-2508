@@ -103,9 +103,9 @@ export const orderService = {
   }
 }
 
-// ==================================================
-// MANAGE ORDER SERVICE
-// ==================================================
+
+
+
 export const manageOrderService = {
   getAll: async (params?: ManageOrderGetAllParams, signal?: AbortSignal): Promise<ManageOrderGetAllResponse> => {
     try {

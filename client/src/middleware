@@ -1,116 +1,115 @@
-// import { NextResponse } from 'next/server';
-// import type { NextRequest } from 'next/server';
-// import jwt from 'jsonwebtoken';
 
-// English content normalized from the original source text.
-// interface AccessTokenPayload {
-//   userId: number;
-//   deviceId: number;
-//   roleId: number;
-//   roleName: string;
-//   uuid: string;
-//   iat: number;
-//   exp: number;
-// }
 
-// export function middleware(request: NextRequest) {
-//   const { pathname } = request.nextUrl;
 
-// English content normalized from the original source text.
-//   const protectedAuthRoutes = [
-//     '/forgot-password',
-//     '/reset-password',
-//     '/sign-in',
-//     '/sign-up',
-//     '/verify-2fa',
-//     '/verify-code',
-//     '/verify-email',
-//   ];
 
-// English content normalized from the original source text.
-//   if (protectedAuthRoutes.includes(pathname)) {
-// English content normalized from the original source text.
-//     const accessToken = request.cookies.get('access_token')?.value;
 
-//     if (accessToken) {
-//       try {
-// English content normalized from the original source text.
-//         const decoded = jwt.decode(accessToken) as AccessTokenPayload | null;
 
-//         if (decoded && decoded.roleName) {
-// English content normalized from the original source text.
 
-// English content normalized from the original source text.
-//           if (roleName === 'ADMIN' || roleName === 'SELLER') {
-//             return NextResponse.redirect(new URL('/admin', request.url));
-//           } else if (roleName === 'CUSTOMER' || roleName === 'USER') {
-//             return NextResponse.redirect(new URL('/', request.url));
-//           }
-//         }
-//       } catch (error) {
-//         console.error('Error decoding accessToken in auth routes:', error);
-// English content normalized from the original source text.
-//         const response = NextResponse.next();
-//         response.cookies.delete('access_token');
-//         return response;
-//       }
-//     }
-//   }
 
-// English content normalized from the original source text.
-//   if (pathname.startsWith('/admin')) {
-//     const accessToken = request.cookies.get('access_token')?.value;
 
-//     if (!accessToken) {
-// English content normalized from the original source text.
-//       return NextResponse.redirect(new URL('/sign-in', request.url));
-//     }
 
-//     try {
-//       const decoded = jwt.decode(accessToken) as AccessTokenPayload | null;
 
-//       if (!decoded) {
-// English content normalized from the original source text.
-//         const response = NextResponse.redirect(new URL('/sign-in', request.url));
-//         response.cookies.delete('access_token');
-//         return response;
-//       }
 
-//       if (decoded.roleName) {
-//         const roleName = decoded.roleName.toUpperCase(); // Normalize
 
-// English content normalized from the original source text.
-//         if (roleName === 'ADMIN' || roleName === 'SELLER') {
-// English content normalized from the original source text.
-//           return NextResponse.next();
-//         } else {
-// English content normalized from the original source text.
-//           return NextResponse.redirect(new URL('/', request.url));
-//         }
-//       }
-//     } catch (error) {
-//       console.error('Error decoding accessToken in admin routes:', error);
-// English content normalized from the original source text.
-//       const response = NextResponse.redirect(new URL('/sign-in', request.url));
-//       response.cookies.delete('access_token');
-//       return response;
-//     }
-//   }
 
-// English content normalized from the original source text.
-//   return NextResponse.next();
-// }
 
-// English content normalized from the original source text.
-// export const config = {
-//   matcher: [
-//     '/forgot-password',
-//     '/reset-password',
-//     '/sign-in',
-//     '/sign-up',
-//     '/verify-2fa',
-//     '/verify-code',
-//     '/verify-email',
-//     '/admin/:path*',
-//   ],
-// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

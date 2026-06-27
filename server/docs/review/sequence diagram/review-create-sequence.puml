@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Review Review Create Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Review Review Create Sequence: validate request and return the expected response
 participant "ReviewController" as RC
 participant "ActiveUser" as AU
 participant "ReviewService" as RS
@@ -31,7 +31,7 @@ RR -> DB: order.findUnique({ id: orderId, userId })
 DB --> RR: order | null
 
 alt order == null
-  RR -> RS: English content normalized from the original source text.
+  RR -> RS: Review Review Create Sequence: validate request and return the expected response
   RS --> RC: 400 Bad Request
   RC --> U: 400 Bad Request
   deactivate RR
@@ -41,7 +41,7 @@ alt order == null
 end
 
 alt order.status !== DELIVERED
-  RR -> RS: English content normalized from the original source text.
+  RR -> RS: Review Review Create Sequence: validate request and return the expected response
   RS --> RC: 400 Bad Request
   RC --> U: 400 Bad Request
   deactivate RR
@@ -54,7 +54,7 @@ RR -> DB: $transaction begin
 RR -> DB: review.create({ data, include: user }) catch unique → Conflict
 DB --> RR: review | throw
 alt unique conflict
-  RR -> RS: English content normalized from the original source text.
+  RR -> RS: Review Review Create Sequence: validate request and return the expected response
   RS --> RC: 409 Conflict
   RC --> U: 409 Conflict
   deactivate RR

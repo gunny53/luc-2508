@@ -10,7 +10,7 @@ import { DiscountType } from '@shared/models/shared-discount.model'
 import { PrismaService } from '@shared/services/prisma.service'
 import { Prisma } from '@prisma/client'
 
-// Types cho admin list query
+
 type AdminListQuery = {
   limit: number
   page: number
@@ -211,11 +211,9 @@ export class DiscountRepo {
     })
   }
 
-  // Helper methods
+  
 
-  /**
-   * Build where clause cho available discounts
-   */
+  
   private async buildAvailableDiscountsWhereClause({
     cartItemIds,
     onlyShopDiscounts,
@@ -248,9 +246,7 @@ export class DiscountRepo {
     return where
   }
 
-  /**
-   * Build where clause cho admin list
-   */
+  
   private buildAdminListWhereClause(
     filters: Omit<AdminListQuery, 'limit' | 'page' | 'orderBy' | 'sortBy'>
   ): Prisma.DiscountWhereInput {
@@ -316,9 +312,7 @@ export class DiscountRepo {
     return where
   }
 
-  /**
-   * Build orderBy clause
-   */
+  
   private buildOrderByClause(orderBy: string, sortBy: string): Prisma.DiscountOrderByWithRelationInput {
     if (sortBy === 'value') {
       return { value: orderBy as any }
@@ -331,9 +325,7 @@ export class DiscountRepo {
     return { createdAt: orderBy as any }
   }
 
-  /**
-   * Build pagination metadata
-   */
+  
   private buildPaginationMetadata(totalItems: number, page: number, limit: number) {
     const totalPages = Math.ceil(totalItems / limit)
     return {
@@ -346,9 +338,7 @@ export class DiscountRepo {
     }
   }
 
-  /**
-   * Build relations clause cho create/update
-   */
+  
   private buildRelationsClause(
     relations: { brands?: string[]; categories?: string[]; products?: string[] },
     operation: 'connect' | 'set' = 'connect'
@@ -376,9 +366,7 @@ export class DiscountRepo {
     return result
   }
 
-  /**
-   * Get include clause cho discount queries
-   */
+  
   private getDiscountIncludeClause() {
     return {
       products: { select: { id: true } },

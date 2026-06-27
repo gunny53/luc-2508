@@ -8,59 +8,59 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Role Role Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Role Role Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Role Role Management Activity: execute the validated workflow;
+  :Role Role Management Activity: execute the validated workflow;
+  :Role Role Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
     note right
       Database Operations:
-      • English content normalized from the original source text
-      • English content normalized from the original source text
+      • Role Role Management Activity: execute the validated workflow
+      • Role Role Management Activity: execute the validated workflow
       • Parallel execution cho performance
       end note
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
     endif
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :GET /roles/:roleId;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Role Role Management Activity: execute the validated workflow;
+  :Role Role Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
+      :Role Role Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
+      :Role Role Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :POST /roles + role data;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Role Role Management Activity: execute the validated workflow;
+  :Role Role Management Activity: execute the validated workflow;
   note right
     Data Validation:
     • name: required string (unique)
@@ -69,109 +69,109 @@ else (No)
     • Unique constraint: name
     end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
+      :Role Role Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
+      :Role Role Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :PUT /roles/:roleId + role data;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Role Role Management Activity: execute the validated workflow;
+  :Role Role Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
     note right
       Base Role Protection:
-      • English content normalized from the original source text
+      • Role Role Management Activity: execute the validated workflow
       • Base roles: Admin, Client, Seller
-      • English content normalized from the original source text
+      • Role Role Management Activity: execute the validated workflow
       end note
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
+          :Role Role Management Activity: execute the validated workflow;
           :findMany permissions theo IDs;
           :Filter deleted permissions;
           if (condition?) then (Yes)
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :Role Role Management Activity: execute the validated workflow;
+            :Role Role Management Activity: execute the validated workflow;
+            :Role Role Management Activity: execute the validated workflow;
             :Include permissions trong response;
-            :English content normalized from the original source text;
+            :Role Role Management Activity: execute the validated workflow;
             note right
               Cache Management:
               • Delete cached role data
               • Cache key: `role:${roleId}`
               • Ensure cache consistency
               end note
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :Role Role Management Activity: execute the validated workflow;
+            :Role Role Management Activity: execute the validated workflow;
           else (No)
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :Role Role Management Activity: execute the validated workflow;
+            :Role Role Management Activity: execute the validated workflow;
           endif
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Role Role Management Activity: execute the validated workflow;
+          :Role Role Management Activity: execute the validated workflow;
+          :Role Role Management Activity: execute the validated workflow;
+          :Role Role Management Activity: execute the validated workflow;
+          :Role Role Management Activity: execute the validated workflow;
         endif
       endif
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
+      :Role Role Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :DELETE /roles/:roleId;
-  :English content normalized from the original source text;
+  :Role Role Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
+    :Role Role Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
+        :Role Role Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Role Role Management Activity: execute the validated workflow;
+      :Role Role Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Role Role Management Activity: execute the validated workflow;
   endif
 
 else (Invalid operation)
-  :English content normalized from the original source text;
+  :Role Role Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Role Role Management Activity: execute the validated workflow;
 
 stop
 

@@ -1,4 +1,4 @@
-// src/app/(client)/products/[slug]/page.tsx
+
 import { clientProductsService } from '@/services/client-products-service'
 import ProductPageWrapper from '@/components/client/products/products-wrapper'
 import { extractProductId } from '@/components/client/products/shared/product-slug'
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps, parent: ResolvingM
     const previousImages = (await parent).openGraph?.images || []
     const description = productData.description
       ? `${productData.description.slice(0, 150)}...`
-      : `Mua ${productData.name}English content normalized from the original source text.`
+      : `Mua ${productData.name}S?n ph?m`
 
     return {
       title: `${productData.name} | ECSite`,
@@ -44,8 +44,8 @@ export async function generateMetadata({ params }: PageProps, parent: ResolvingM
   } catch (error) {
     console.error('❌ [Metadata] Error generating metadata:', error)
     return {
-      title: 'English content normalized from the original source text.',
-      description: 'English content normalized from the original source text.'
+      title: 'S?n ph?m',
+      description: 'S?n ph?m'
     }
   }
 }

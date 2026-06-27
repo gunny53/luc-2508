@@ -145,7 +145,7 @@ export function VariantInput({
             <GripVertical className="h-5 w-5 text-muted-foreground" />
           </div>
           <div className="flex-1 space-y-4">
-            {/* Option name input */}
+            {}
             <div className="space-y-2">
               <Label htmlFor={`option-name-${option.id}`} className="text-sm font-medium">
                 Option name
@@ -160,7 +160,7 @@ export function VariantInput({
               />
             </div>
 
-            {/* Option values input - indented */}
+            {}
             <div className="space-y-2">
               <Label className="text-sm font-medium">Option values</Label>
               <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
@@ -182,7 +182,7 @@ export function VariantInput({
               </DndContext>
             </div>
 
-            {/* Action buttons */}
+            {}
             <div className="flex items-center justify-between pt-2">
               <Button
                 type="button"

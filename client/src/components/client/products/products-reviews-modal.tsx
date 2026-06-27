@@ -29,7 +29,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
   const { files, uploadedUrls, handleAddFiles, handleRemoveFile, handleRemoveAllFiles, isUploading, progress } =
     useUploadMedia()
 
-  // Hook review
+  
   const { createReview, loading } = useProductReview(product.productId)
 
   const handleSubmit = async () => {
@@ -43,7 +43,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
       orderId: product.orderId,
       medias: uploadedUrls.map((url) => ({
         url,
-        type: 'IMAGE' as const // default IMAGE
+        type: 'IMAGE' as const 
       }))
     })
     setContent('')
@@ -57,11 +57,10 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
       <DialogContent className="max-w-3xl rounded-2xl p-4 shadow-xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold text-center">
-            English content normalized from the original source text.
+            S?n ph?m
           </DialogTitle>
         </DialogHeader>
 
-        {}
         <div className="flex items-center gap-4 rounded-xl bg-gray-50 p-2">
           <img
             src="/images/client/profile/cps-ant.webp"
@@ -72,7 +71,6 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
         </div>
 
         <div className="space-y-5">
-          {}
           <div className="flex w-full justify-between px-6">
             {Array.from({ length: 5 }).map((_, i) => (
               <button
@@ -86,15 +84,13 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
             ))}
           </div>
 
-          {}
           <Input
-            placeholder="English content normalized from the original source text."
+            placeholder="S?n ph?m"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="rounded-xl border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/30 h-14"
           />
 
-          {}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <Button
@@ -103,7 +99,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
                 className="rounded-xl"
                 onClick={() => document.getElementById('file-upload')?.click()}
               >
-                English content normalized from the original source text.
+                S?n ph?m
               </Button>
               <Input
                 id="file-upload"
@@ -122,7 +118,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
                   onClick={handleRemoveAllFiles}
                   className="text-red-500 hover:bg-red-50 rounded-xl"
                 >
-                  English content normalized from the original source text.
+                  S?n ph?m
                 </Button>
               )}
             </div>
@@ -138,7 +134,6 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
                         className="w-full h-24 object-cover rounded-lg"
                       />
 
-                      {}
                       <Button
                         type="button"
                         size="icon"
@@ -149,7 +144,6 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
                         <X className="w-4 h-4" />
                       </Button>
 
-                      {}
                       {isUploading && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                           <Progress value={progress} className="h-2 w-3/4 rounded-full" />
@@ -165,7 +159,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
 
         <DialogFooter className="flex justify-end gap-3 pt-4">
           <Button variant="outline" onClick={() => onOpenChange(false)} className="rounded-xl">
-            English content normalized from the original source text.
+            S?n ph?m
           </Button>
           <Button
             onClick={async () => {
@@ -178,7 +172,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
             disabled={isUploading || loading}
             className="rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold"
           >
-            English content normalized from the original source text.
+            S?n ph?m
           </Button>
         </DialogFooter>
       </DialogContent>

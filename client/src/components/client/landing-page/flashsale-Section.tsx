@@ -89,7 +89,7 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
     if (!allProducts || allProducts.length === 0) return []
     const shuffled = [...allProducts]
 
-    // Fisher-Yates shuffle algorithm
+    
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
@@ -100,7 +100,6 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
   return (
     <section className={cn('w-full bg-white mt-4 py-4 rounded-sm', className)}>
       <div className="max-w-[1250px] w-full mx-auto px-4 sm:px-6">
-        {/* Section Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2 sm:gap-4">
             <h2 className={cn('font-bold text-red-500 uppercase tracking-wider', isMobile ? 'text-base' : 'text-xl')}>
@@ -109,17 +108,15 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
             <CountdownTimer isMobile={isMobile} />
           </div>
           <a href="#" className="flex items-center text-sm text-red-500 hover:underline">
-            English content normalized from the original source text.
+            ECSite
             <ChevronRight className="w-4 h-4 ml-1" />
           </a>
         </div>
 
-        {/* Error State */}
         {error && (
-          <div className="text-center p-4 text-red-500">English content normalized from the original source text.</div>
+          <div className="text-center p-4 text-red-500">ECSite</div>
         )}
 
-        {/* Products Carousel */}
         <Carousel
           opts={{
             align: 'start',
@@ -166,7 +163,7 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
                             style={{ width: `${Math.floor(Math.random() * 80) + 20}%` }}
                           ></div>
                           <span className="absolute inset-0 text-white text-xs font-semibold flex items-center justify-center uppercase tracking-tighter">
-                            English content normalized from the original source text.{' '}
+                            ECSite{' '}
                             {Math.floor(Math.random() * 50) + 10}
                           </span>
                         </div>

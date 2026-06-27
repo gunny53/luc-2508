@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BASE_URL = 'https://provinces.open-api.vn/api'
 
-// Define interfaces for the response data
+
 export interface Province {
   code: string
   name: string
@@ -29,15 +29,9 @@ export interface Ward {
   district_code: string
 }
 
-/**
- * Service to interact with the provinces.open-api.vn API
- */
+
 export const provincesService = {
-  /**
-   * Get list of all provinces
-   * @param depth Optional parameter to include nested districts (depth=2) or districts and wards (depth=3)
-   * @returns Promise with array of provinces
-   */
+  
   getProvinces: async (depth?: number): Promise<Province[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/p`, {
@@ -50,12 +44,12 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get a specific province by code
-   * @param code Province code
-   * @param depth Optional parameter to include nested districts (depth=2) or districts and wards (depth=3)
-   * @returns Promise with province data
-   */
+  
+
+
+
+
+
   getProvince: async (code: string, depth?: number): Promise<Province> => {
     try {
       const response = await axios.get(`${BASE_URL}/p/${code}`, {
@@ -68,11 +62,11 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get list of all districts
-   * @param depth Optional parameter to include nested wards (depth=2)
-   * @returns Promise with array of districts
-   */
+  
+
+
+
+
   getDistricts: async (depth?: number): Promise<District[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/d`, {
@@ -85,12 +79,12 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get districts by province code
-   * @param provinceCode Province code
-   * @param depth Optional parameter to include nested wards (depth=2)
-   * @returns Promise with array of districts
-   */
+  
+
+
+
+
+
   getDistrictsByProvince: async (provinceCode: string, depth?: number): Promise<District[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/p/${provinceCode}`, {
@@ -103,12 +97,12 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get a specific district by code
-   * @param code District code
-   * @param depth Optional parameter to include nested wards (depth=2)
-   * @returns Promise with district data
-   */
+  
+
+
+
+
+
   getDistrict: async (code: string, depth?: number): Promise<District> => {
     try {
       const response = await axios.get(`${BASE_URL}/d/${code}`, {
@@ -121,10 +115,10 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get list of all wards
-   * @returns Promise with array of wards
-   */
+  
+
+
+
   getWards: async (): Promise<Ward[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/w`)
@@ -135,11 +129,11 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get wards by district code
-   * @param districtCode District code
-   * @returns Promise with array of wards
-   */
+  
+
+
+
+
   getWardsByDistrict: async (districtCode: string): Promise<Ward[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/d/${districtCode}`, {
@@ -152,11 +146,11 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Get a specific ward by code
-   * @param code Ward code
-   * @returns Promise with ward data
-   */
+  
+
+
+
+
   getWard: async (code: string): Promise<Ward> => {
     try {
       const response = await axios.get(`${BASE_URL}/w/${code}`)
@@ -167,12 +161,12 @@ export const provincesService = {
     }
   },
 
-  /**
-   * Search for provinces, districts or wards by name
-   * @param q Search query
-   * @param type Type of administrative unit to search for (p: province, d: district, w: ward)
-   * @returns Promise with search results
-   */
+  
+
+
+
+
+
   search: async (q: string, type?: 'p' | 'd' | 'w'): Promise<any[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/search`, {

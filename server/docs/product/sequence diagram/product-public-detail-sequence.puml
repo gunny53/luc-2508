@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Product Product Public Detail Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "ProductController" as PC
@@ -27,7 +27,7 @@ Build where:
 • id = productId, deletedAt = null
 • publishedAt <= now (public only)
 Include:
-• English content normalized from the original source text
+• Product Product Public Detail Sequence: validate request and return the expected response
 • skus where deletedAt = null
 • brand with brandTranslations (filter theo language)
 • categories with categoryTranslations (filter theo language)

@@ -3,7 +3,7 @@ import { randomInt } from 'crypto'
 import path from 'path'
 import { v4 as uuidv4 } from 'uuid'
 
-// Type Predicate
+
 export function isUniqueConstraintPrismaError(error: any): error is Prisma.PrismaClientKnownRequestError {
   return error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002'
 }
@@ -63,7 +63,7 @@ export function calculateDiscountAmount(discount: any, orderTotal: number): numb
 }
 export const getDateInGMT7 = (): number => {
   const now = new Date()
-  const gmt7Offset = 7 * 60 // GMT+7 in minutes
+  const gmt7Offset = 7 * 60 
   const gmt7Time = new Date(now.getTime() + gmt7Offset * 60 * 1000)
 
   const year = gmt7Time.getUTCFullYear()
@@ -76,9 +76,9 @@ export const getDateInGMT7 = (): number => {
   return parseInt(`${year}${month}${day}${hours}${minutes}${seconds}`)
 }
 
-/**
- * Validate discount eligibility cho order
- */
+
+
+
 export function validateDiscountForOrder(
   discount: any,
   orderTotal: number,
@@ -110,9 +110,9 @@ export function validateDiscountForOrder(
   return true
 }
 
-/**
- * Prepare discount data cho DiscountSnapshot
- */
+
+
+
 export function prepareDiscountSnapshotData(discount: any, discountAmount: number, targetInfo?: any) {
   return {
     name: discount.name,

@@ -67,10 +67,10 @@ export class ReviewRepository {
       }
     })
     if (!order) {
-      throw new BadRequestException('English content normalized from the original source text.')
+      throw new BadRequestException('Order was not found for this user.')
     }
     if (order.status !== OrderStatus.DELIVERED) {
-      throw new BadRequestException('English content normalized from the original source text.')
+      throw new BadRequestException('Order was not found for this user.')
     }
     return order
   }
@@ -83,10 +83,10 @@ export class ReviewRepository {
       }
     })
     if (!review) {
-      throw new NotFoundException('English content normalized from the original source text.')
+      throw new NotFoundException('Review not found.')
     }
     if (review.updateCount >= 1) {
-      throw new BadRequestException('English content normalized from the original source text.')
+      throw new BadRequestException('Order was not found for this user.')
     }
     return review
   }
@@ -119,7 +119,7 @@ export class ReviewRepository {
         })
         .catch((error) => {
           if (isUniqueConstraintPrismaError(error)) {
-            throw new ConflictException('English content normalized from the original source text.')
+            throw new ConflictException('This order has already been reviewed.')
           }
           throw error
         })

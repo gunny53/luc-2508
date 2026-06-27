@@ -1,4 +1,4 @@
-// src/app/admin/voucher/page.tsx
+
 import { metadataConfig } from '@/lib/metadata'
 import type { Metadata } from 'next'
 import VoucherPageClient from './voucher-page-client'

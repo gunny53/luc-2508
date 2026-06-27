@@ -6,29 +6,29 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Payment Sepay Receiver Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Payment Sepay Receiver Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Payment Sepay Receiver Activity: execute the validated workflow;
     stop
   endif
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Payment Sepay Receiver Activity: execute the validated workflow;
     stop
   endif
-  :English content normalized from the original source text;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
   :validatePaymentAmount(orders, totalPrice, transferAmount);
   :updatePaymentAndOrdersOnSuccess(paymentId, orders);
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
+  :Payment Sepay Receiver Activity: execute the validated workflow;
 endif
 stop
 

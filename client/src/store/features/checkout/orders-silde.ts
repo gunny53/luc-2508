@@ -3,7 +3,7 @@ import { RootState } from '../../store'
 import { OrderCreateRequest, ProductInfo, AppliedVoucherInfo, CalculateOrderRequest } from '@/types/order.interface'
 import { ShippingMethod } from '@/types/shipping.interface'
 
-// --- Interfaces cho State ---
+
 interface CommonOrderInfo {
   receiver: {
     name: string
@@ -46,14 +46,14 @@ interface CheckoutState {
   shopOrders: ShopOrderInfo[]
   shopProducts: Record<string, ProductInfo[]>
   appliedVouchers: Record<string, AppliedVoucherInfo>
-  appliedPlatformVoucher: AppliedVoucherInfo | null // For platform-wide voucher
+  appliedPlatformVoucher: AppliedVoucherInfo | null 
   platformDiscountCodes: string[]
   calculationResult: any | null
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }
 
-// --- Initial State ---
+
 
 const initialState: CheckoutState = {
   commonInfo: {
@@ -72,7 +72,7 @@ const initialState: CheckoutState = {
   error: null
 }
 
-// --- Slice Definition ---
+
 
 const checkoutSlice = createSlice({
   name: 'checkout',
@@ -185,7 +185,7 @@ const checkoutSlice = createSlice({
   }
 })
 
-// --- Actions ---
+
 export const {
   setCommonInfo,
   setShippingInfo,
@@ -204,7 +204,7 @@ export const {
   setCalculationResult
 } = checkoutSlice.actions
 
-// --- Selectors ---
+
 
 const selectCheckoutState = (state: RootState) => state.orders
 export const selectAppliedPlatformVoucher = createSelector(
@@ -290,5 +290,5 @@ export const selectPlatformDiscountCodes = createSelector(
   (checkout) => checkout.platformDiscountCodes
 )
 
-// --- Reducer ---
+
 export default checkoutSlice.reducer

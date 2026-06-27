@@ -19,47 +19,47 @@ const determineUseCaseFromVoucher = (voucher: Discount, userRole: string): Vouch
     displayType: voucher.displayType
   })
 
-  // Case 4: PLATFORM voucher (ADMIN only)
+  
   if (isPlatform && voucherType === 'PLATFORM') {
     return VoucherUseCase.PLATFORM
   }
 
-  // Case 5: CATEGORIES voucher (ADMIN only) - Check voucherType first
+  
   if (voucherType === 'CATEGORY' || (categories && categories.length > 0)) {
     return VoucherUseCase.CATEGORIES
   }
 
-  // Case 6: BRAND voucher (ADMIN only) - Check voucherType first
+  
   if (voucherType === 'BRAND' || (brands && brands.length > 0)) {
     return VoucherUseCase.BRAND
   }
 
-  // Case 7: SHOP_ADMIN voucher (ADMIN only) - voucher for specific shop
+  
   if (userRole === 'ADMIN' && shopId && voucherType === 'SHOP') {
     return VoucherUseCase.SHOP_ADMIN
   }
 
-  // Case 8: PRODUCT_ADMIN voucher (ADMIN only) - product voucher created by admin
+  
   if (userRole === 'ADMIN' && voucherType === 'PRODUCT') {
     return VoucherUseCase.PRODUCT_ADMIN
   }
 
-  // Case 9: PRIVATE_ADMIN voucher (ADMIN only) - private voucher created by admin
+  
   if (userRole === 'ADMIN' && voucher.displayType === 'PRIVATE' && !shopId) {
     return VoucherUseCase.PRIVATE_ADMIN
   }
 
-  // Case 2: PRODUCT voucher (SELLER)
+  
   if (voucherType === 'PRODUCT' && productIds && productIds.length > 0) {
     return VoucherUseCase.PRODUCT
   }
 
-  // Case 3: PRIVATE voucher (SELLER)
+  
   if (voucher.displayType === 'PRIVATE') {
     return VoucherUseCase.PRIVATE
   }
 
-  // Case 1: SHOP voucher (default for SELLER)
+  
   return VoucherUseCase.SHOP
 }
 const convertVoucherToFormData = async (voucher: Discount, useCase: VoucherUseCase): Promise<VoucherFormState> => {
@@ -89,7 +89,7 @@ const convertVoucherToFormData = async (voucher: Discount, useCase: VoucherUseCa
     maxDiscountType: voucher.maxDiscountValue ? 'limited' : 'unlimited'
   }
 
-  // TODO: Populate selected items based on useCase
+  
   return baseFormData
 }
 
@@ -132,7 +132,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       isActive: voucher.discountStatus === 'ACTIVE',
       discountApplyType: voucher.discountApplyType,
 
-      // UI-specific fields
+      
       showOnProductPage: true,
       selectedProducts: [],
       selectedBrands: [],
@@ -168,7 +168,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     })
   }, [voucher, useCase, voucherType, userData])
   const parseErrorMessage = (error: any): string => {
-    const defaultMessage = 'English content normalized from the original source text.'
+    const defaultMessage = 'M? gi?m gi?'
 
     if (!error?.response?.data?.message) {
       return error?.message || defaultMessage
@@ -225,7 +225,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
       isActive: voucher.discountStatus === 'ACTIVE',
       discountApplyType: voucher.discountApplyType,
 
-      // UI-specific fields
+      
       showOnProductPage: true,
       selectedProducts: [],
       selectedBrands: [],
@@ -241,76 +241,76 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
     setErrors({})
   }
 
-  // Validate form
+  
   const validateForm = (): boolean => {
     if (!formData.name?.trim()) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (!formData.code?.trim()) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     const codePattern = /^[A-Z0-9_-]+$/
     if (formData.code && !codePattern.test(formData.code)) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (!formData.startDate) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (!formData.endDate) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.startDate && formData.endDate && new Date(formData.startDate) >= new Date(formData.endDate)) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.value <= 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.discountType === 'PERCENTAGE' && formData.value > 100) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if ((formData.minOrderValue ?? 0) < 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.maxUses < 1) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.maxUsesPerUser < 1) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     if (formData.maxUsesPerUser > formData.maxUses) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     return true
   }
 
-  // Submit voucher
+  
   const submitVoucher = async (): Promise<void> => {
     if (!validateForm()) {
       return
     }
     if (!userData) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return
     }
 
@@ -361,7 +361,7 @@ export function useEditVoucher({ voucher, userData, onEditSuccess }: UseEditVouc
 
       await discountService.update(voucher.id, updateData)
 
-      toast.success('English content normalized from the original source text.')
+      toast.success('M? gi?m gi?')
       onEditSuccess?.()
     } catch (error: any) {
       console.error('Error updating voucher:', error)

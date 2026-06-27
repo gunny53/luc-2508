@@ -4,10 +4,7 @@ import { authService } from '@/services/auth/auth-service'
 import { setPermissions } from '@/store/features/auth/profile-slide'
 import { AppDispatch } from '@/store/store'
 
-/**
- * Custom hook to fetch and manage user abilities (permissions).
- * It handles loading and error states and dispatches the permissions to the Redux store.
- */
+
 export const useGetAbility = () => {
   const dispatch = useDispatch<AppDispatch>()
   const [loading, setLoading] = useState(false)
@@ -21,7 +18,7 @@ export const useGetAbility = () => {
       if (response && response.data && response.data.permissions) {
         dispatch(setPermissions(response.data.permissions))
       } else {
-        // This case might happen if the API response is not as expected
+        
         throw new Error('Invalid response structure for permissions')
       }
     } catch (err: any) {

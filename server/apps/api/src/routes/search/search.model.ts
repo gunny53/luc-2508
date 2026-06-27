@@ -1,9 +1,7 @@
 import { z } from 'zod'
 import { OrderBy, SortBy } from '@shared/constants/other.constant'
 
-/**
- * Schema cho search query
- */
+
 export const SearchProductsQuerySchema = z.object({
   q: z.string().optional(),
   page: z.coerce.number().int().positive().default(1),
@@ -42,9 +40,7 @@ export const SearchProductsQuerySchema = z.object({
     .optional()
 })
 
-/**
- * Schema cho search response
- */
+
 export const SearchProductsResSchema = z.object({
   message: z.string().optional(),
   data: z.array(
@@ -86,6 +82,6 @@ export const SearchProductsResSchema = z.object({
   })
 })
 
-// Type exports
+
 export type SearchProductsQueryType = z.infer<typeof SearchProductsQuerySchema>
 export type SearchProductsResType = z.infer<typeof SearchProductsResSchema>

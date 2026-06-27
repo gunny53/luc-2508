@@ -46,7 +46,7 @@ export function OrdersTable() {
     }
   })
 
-  // Handlers cho actions
+  
   const handleViewDetail = (orderId: string) => {
     router.push(`/admin/order/${orderId}`)
   }
@@ -58,14 +58,14 @@ export function OrdersTable() {
     console.log('Order Code:', order.orderCode)
 
     if (!order.orderCode) {
-      alert('English content normalized from the original source text.')
+      alert('??n h?ng')
       return
     }
     handlePrintInvoice(order.id, order.orderCode)
   }
 
   const handleUpdateStatus = (orderId: string) => {
-    // TODO: Implement update status modal/dialog
+    
     console.log('Update status for order:', orderId)
   }
 
@@ -102,7 +102,7 @@ export function OrdersTable() {
   const renderExpandedRow = (order: ManageOrder) => (
     <div className="bg-gray-50 border-t p-4">
       <h4 className="font-semibold mb-3 text-sm">
-        English content normalized from the original source text.{order.id}:
+        ??n h?ng{order.id}:
       </h4>
       <div className="space-y-3 max-h-60 overflow-y-auto">
         {order.items.map((item, index) => (
@@ -121,7 +121,7 @@ export function OrdersTable() {
             <div className="flex-1 min-w-0">
               <div className="font-medium text-sm">{item.productName}</div>
               <div className="text-gray-500 text-xs">
-                SKU: {item.skuValue || 'N/A'} English content normalized from the original source text. {item.quantity}
+                SKU: {item.skuValue || 'N/A'} ??n h?ng {item.quantity}
               </div>
               <div className="font-semibold text-green-600 text-sm">
                 {new Intl.NumberFormat('vi-VN').format(item.skuPrice * item.quantity)}₫
@@ -135,7 +135,7 @@ export function OrdersTable() {
 
   return (
     <div className="w-full space-y-4">
-      {/* Statistics Cards */}
+      {}
       <OrdersStats orders={orders} />
 
       <DataTable

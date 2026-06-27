@@ -13,8 +13,8 @@ import {
 import { discountService } from '@/services/discount-service'
 import { toast } from 'sonner'
 
-// The explicit and complete state for the voucher form.
-// This approach avoids using Partial<> to prevent downstream 'undefined' errors.
+
+
 export type VoucherFormState = {
   name: string
   code: string
@@ -30,7 +30,7 @@ export type VoucherFormState = {
   isActive: boolean
   discountApplyType: DiscountApplyType
 
-  // UI-specific fields
+  
   showOnProductPage?: boolean
   selectedProducts?: Array<{ id: string; name: string; price: number; image: string }>
   selectedBrands?: Array<{ value: string; label: string; image?: string | null }>
@@ -43,7 +43,7 @@ export type VoucherFormState = {
   maxDiscountType?: 'limited' | 'unlimited'
 }
 
-// Interface for the hook's return value
+
 export interface UseNewVoucherReturn {
   formData: VoucherFormState
   updateFormData: (field: keyof VoucherFormState, value: any) => void
@@ -59,7 +59,7 @@ const getInitialFormData = (): VoucherFormState => {
   const now = new Date()
   const tomorrow = new Date(now)
   tomorrow.setDate(tomorrow.getDate() + 1)
-  tomorrow.setHours(23, 59, 0, 0) // Set 23:59 cho endDate
+  tomorrow.setHours(23, 59, 0, 0) 
 
   return {
     name: '',
@@ -100,7 +100,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const parseErrorMessage = (error: any): string => {
-    const defaultMessage = 'English content normalized from the original source text.'
+    const defaultMessage = 'M? gi?m gi?'
 
     if (!error?.response?.data?.message) {
       return error?.message || defaultMessage
@@ -134,9 +134,9 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       voucherType
     })
 
-    // Sanitize form data based on use case
+    
     setFormData((prev) => {
-      const newFormData = { ...getInitialFormData(), name: prev.name, code: prev.code } // Reset to initial but keep name/code
+      const newFormData = { ...getInitialFormData(), name: prev.name, code: prev.code } 
       switch (useCase) {
         case VoucherUseCase.SHOP:
           newFormData.discountApplyType = DiscountApplyType.ALL
@@ -147,7 +147,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
 
         case VoucherUseCase.PRODUCT:
           newFormData.discountApplyType = DiscountApplyType.SPECIFIC
-          newFormData.selectedProducts = [] // Start with empty selection
+          newFormData.selectedProducts = [] 
           newFormData.displayType = 'PUBLIC'
           newFormData.isPrivate = false
           break
@@ -155,14 +155,14 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
         case VoucherUseCase.PRIVATE:
           newFormData.displayType = 'PRIVATE'
           newFormData.isPrivate = true
-          newFormData.discountApplyType = DiscountApplyType.ALL // Default to all
+          newFormData.discountApplyType = DiscountApplyType.ALL 
           newFormData.selectedProducts = []
           break
 
         case VoucherUseCase.PRIVATE_ADMIN:
           newFormData.displayType = 'PRIVATE'
           newFormData.isPrivate = true
-          newFormData.discountApplyType = DiscountApplyType.ALL // Default to all
+          newFormData.discountApplyType = DiscountApplyType.ALL 
           newFormData.selectedProducts = []
           break
       }
@@ -190,72 +190,72 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
     }
   }
 
-  // Reset form
+  
   const resetForm = () => {
     setFormData(getInitialFormData())
     setErrors({})
   }
 
-  // Validate form
+  
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
 
     if (!formData.name?.trim()) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (!formData.code?.trim()) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     const codePattern = /^[A-Z0-9_-]+$/
     if (formData.code && !codePattern.test(formData.code)) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (!formData.startDate) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (!formData.endDate) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.startDate && formData.endDate && new Date(formData.startDate) >= new Date(formData.endDate)) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.value <= 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.discountType === 'PERCENTAGE' && formData.value > 100) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if ((formData.minOrderValue ?? 0) < 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.maxUses < 1) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     if (formData.maxUsesPerUser < 1) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     if (formData.maxUsesPerUser > formData.maxUses) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     if (
@@ -263,25 +263,25 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       formData.discountApplyType === DiscountApplyType.SPECIFIC &&
       (formData.selectedProducts ?? []).length === 0
     ) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
-    // Validation cho voucher CATEGORIES
+    
     if (useCase === VoucherUseCase.CATEGORIES && (formData.selectedCategories ?? []).length === 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
-    // Validation cho voucher BRAND
+    
     if (useCase === VoucherUseCase.BRAND && (formData.selectedBrands ?? []).length === 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
-    // Validation cho voucher SHOP_ADMIN
+    
     if (useCase === VoucherUseCase.SHOP_ADMIN && !formData.selectedShopUser) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     if (
@@ -291,7 +291,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       formData.discountApplyType === DiscountApplyType.SPECIFIC &&
       formData.selectedProducts.length === 0
     ) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     if (
@@ -299,7 +299,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       formData.discountApplyType === DiscountApplyType.SPECIFIC &&
       (formData.selectedProducts ?? []).length === 0
     ) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
     if (
@@ -308,20 +308,20 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       formData.maxDiscountValue !== undefined &&
       formData.maxDiscountValue <= 0
     ) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return false
     }
 
     return true
   }
 
-  // Submit voucher
+  
   const submitVoucher = async (): Promise<void> => {
     if (!validateForm()) {
       return
     }
     if (!userData) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return
     }
     const isAdminCase =
@@ -344,7 +344,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       finalVoucherType = getVoucherType(useCase)
     }
     if (!isAdminCase && !isPlatformVoucher && !userData?.id) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return
     }
 
@@ -422,7 +422,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
           payload.voucherType = VoucherType.SHOP
           payload.isPlatform = false
           payload.shopId = null
-          payload.displayType = DisplayType.PRIVATE // Force private
+          payload.displayType = DisplayType.PRIVATE 
           payload.discountApplyType = formData.discountApplyType
           break
 
@@ -578,7 +578,7 @@ export function useNewVoucher({ useCase, owner, userData, onCreateSuccess }: Use
       const response = await discountService.create(payload)
 
       console.log('Voucher created successfully:', response)
-      toast.success('English content normalized from the original source text.')
+      toast.success('M? gi?m gi?')
       resetForm()
       onCreateSuccess?.()
     } catch (error: any) {

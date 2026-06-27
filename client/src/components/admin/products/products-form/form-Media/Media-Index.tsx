@@ -58,7 +58,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
     if (urlsChanged && differentFromProps) {
       prevImagesRef.current = newUrls
       setImages(newUrls.length > 0 ? newUrls : [])
-      console.log('English content normalized from the original source text.', newUrls.length > 0 ? newUrls : [])
+      console.log('S?n ph?m', newUrls.length > 0 ? newUrls : [])
     }
   }, [imageObjects])
 
@@ -73,7 +73,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.id as string)
-    onDragStart() // Call hook's drag start
+    onDragStart() 
   }
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -89,17 +89,17 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
     <div className="grid gap-3">
       <div className="flex justify-between items-center">
         {!isSelectionMode ? (
-          <Label>English content normalized from the original source text.</Label>
+          <Label>S?n ph?m</Label>
         ) : (
           <div className="flex items-center gap-3 w-full">
             <Checkbox
               id="select-all-images"
               checked={allSelected}
               onCheckedChange={handleSelectAll}
-              aria-label="English content normalized from the original source text."
+              aria-label="S?n ph?m"
             />
             <Label htmlFor="select-all-images" className="text-sm font-medium cursor-pointer">
-              English content normalized from the original source text. {selectedImages.length} / {images.length}
+              S?n ph?m {selectedImages.length} / {images.length}
             </Label>
             <Button
               variant="ghost"
@@ -108,13 +108,12 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
               onClick={handleRemoveSelected}
             >
               <Trash2 className="w-4 h-4 mr-2" />
-              English content normalized from the original source text.
+              S?n ph?m
             </Button>
           </div>
         )}
       </div>
 
-      {}
       <input
         type="file"
         ref={fileInputRef}
@@ -122,8 +121,8 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
         accept="image/*"
         multiple
         className="hidden"
-        title="English content normalized from the original source text."
-        aria-label="English content normalized from the original source text."
+        title="S?n ph?m"
+        aria-label="S?n ph?m"
       />
 
       {images.length === 0 ? (
@@ -140,13 +139,13 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
           <UploadCloud className={`w-8 h-8 ${isDragOver ? 'text-primary' : 'text-gray-400'}`} />
           <p className="mt-3 font-semibold text-sm">
             {isDragOver
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'S?n ph?m'
+              : 'S?n ph?m'}
           </p>
           <p className="text-xs text-muted-foreground">
             {isDragOver
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'S?n ph?m'
+              : 'S?n ph?m'}
           </p>
         </div>
       ) : (
@@ -182,7 +181,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                   />
                 ))}
 
-                {/* Add image button */}
+                {}
                 {images.length < 12 && !isUploading && (
                   <div
                     onClick={handleImageUpload}
@@ -190,7 +189,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                   >
                     <UploadCloud className="w-5 h-5 text-gray-400" />
                     <p className="text-xs font-medium mt-1">
-                      English content normalized from the original source text.
+                      S?n ph?m
                     </p>
                   </div>
                 )}
@@ -204,24 +203,24 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                   src={imageObjects.find((img) => img.id === activeId)?.url || ''}
                   index={imageObjects.findIndex((img) => img.id === activeId)}
                   isDragging={true}
-                  isMainImage={false} // Overlay image is never the main one
+                  isMainImage={false} 
                   hoveredImageIndex={null}
                   selectedImages={[]}
                   setHoveredImageIndex={() => {}}
                   handleToggleSelect={() => {}}
-                  isUploading={false} // Don't show progress on overlay
+                  isUploading={false} 
                   progress={0}
                 />
               ) : null}
             </DragOverlay>
 
-            {/* Drag overlay for file upload */}
+            {}
             {isDragOver && (
               <div className="absolute inset-0 bg-primary/5 border-2 border-primary border-dashed rounded-lg flex items-center justify-center z-10 pointer-events-none">
                 <div className="text-center">
                   <UploadCloud className="w-10 h-10 text-primary mx-auto" />
                   <p className="mt-2 text-lg font-semibold text-primary">
-                    English content normalized from the original source text.
+                    S?n ph?m
                   </p>
                 </div>
               </div>

@@ -58,14 +58,14 @@ export function ProductsProvider({ children, currentCategoryId, querySearch }: P
   })
 
   console.log('check1: ', productsData)
-  // useEffect(() => {
-  //   console.log("ProductsContext detected changes:", {
-  //     searchQuery,
-  //     currentCategoryId,
-  //     effectiveCategoryId,
-  //     dataKey
-  //   });
-  // }, [searchQuery, currentCategoryId, effectiveCategoryId, dataKey]);
+  
+  
+  
+  
+  
+  
+  
+  
 
   const contextValue = useMemo(
     () => ({

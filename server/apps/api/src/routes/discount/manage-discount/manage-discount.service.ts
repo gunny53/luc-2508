@@ -44,7 +44,7 @@ export class ManageDiscountService {
     }
     if (roleNameRequest !== RoleName.Admin) {
       if (shopId && shopId !== userIdRequest) {
-        throw new ForbiddenException('English content normalized from the original source text.')
+        throw new ForbiddenException('Seller can only create discounts for their own shop.')
       }
     }
 

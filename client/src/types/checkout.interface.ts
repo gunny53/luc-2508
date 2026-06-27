@@ -1,4 +1,4 @@
-// For the form in InformationTabs
+
 export interface CustomerFormData {
   fullName: string
   phoneNumber: string
@@ -14,7 +14,7 @@ export interface CustomerFormData {
   deliveryMethod: string
 }
 
-// For the Redux checkout state (commonInfo.shippingAddress)
+
 export interface ShippingAddress {
   receiverName?: string
   receiverPhone?: string
@@ -25,7 +25,7 @@ export interface ShippingAddress {
   province?: string
 }
 
-// For the list of saved addresses
+
 export interface Address {
   id: string
   isDefault: boolean
@@ -36,11 +36,11 @@ export interface Address {
   district: string
   province: string
   type:
-    | 'English content normalized from the original source text.'
-    | 'English content normalized from the original source text.'
+    | 'Thanh to?n'
+    | 'Thanh to?n'
 }
 
-// For the Redux checkout state (commonInfo.customerInfo)
+
 export interface CustomerInfo {
   name: string
   email: string

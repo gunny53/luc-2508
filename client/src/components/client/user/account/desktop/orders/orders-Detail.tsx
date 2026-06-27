@@ -73,17 +73,17 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
   }
 
   if (loading || !order) {
-    return <div>English content normalized from the original source text.</div>
+    return <div>??n h?ng</div>
   }
 
   const statusMap: Record<string, { label: string; variant?: 'default' | 'destructive' }> = {
-    PENDING_PAYMENT: { label: 'English content normalized from the original source text.' },
-    PENDING_PACKAGING: { label: 'English content normalized from the original source text.' },
-    PENDING_PICKUP: { label: 'English content normalized from the original source text.' },
-    PENDING_DELIVERY: { label: 'English content normalized from the original source text.' },
-    DELIVERED: { label: 'English content normalized from the original source text.' },
-    RETURNED: { label: 'English content normalized from the original source text.' },
-    CANCELLED: { label: 'English content normalized from the original source text.', variant: 'destructive' }
+    PENDING_PAYMENT: { label: '??n h?ng' },
+    PENDING_PACKAGING: { label: '??n h?ng' },
+    PENDING_PICKUP: { label: '??n h?ng' },
+    PENDING_DELIVERY: { label: '??n h?ng' },
+    DELIVERED: { label: '??n h?ng' },
+    RETURNED: { label: '??n h?ng' },
+    CANCELLED: { label: '??n h?ng', variant: 'destructive' }
   }
 
   const currentStatus = statusMap[order.status] || { label: order.status }
@@ -108,18 +108,18 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
       >
         <ChevronLeft className="w-5 h-5" />
         <span className="text-[#121214] text-sm">
-          English content normalized from the original source text.
-          <span className="font-medium text-[#CFCFD3]"> English content normalized from the original source text.</span>
+          ??n h?ng
+          <span className="font-medium text-[#CFCFD3]"> ??n h?ng</span>
         </span>
       </Link>
 
       <section className="bg-white rounded-lg border p-4 space-y-3">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+          <h2 className="text-lg font-semibold">??n h?ng</h2>
           <span className="text-sm font-medium">
             {order.status === 'DELIVERED'
-              ? `English content normalized from the original source text.${order.orderCode}`
-              : `English content normalized from the original source text.${order.orderCode}`}
+              ? `??n h?ng${order.orderCode}`
+              : `??n h?ng${order.orderCode}`}
           </span>
         </div>
         <OrderTimeline
@@ -136,16 +136,15 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
         </section>
       )}
 
-      {}
       <section className="bg-white rounded-lg border p-4 space-y-3">
-        <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+        <h2 className="text-lg font-semibold">??n h?ng</h2>
         <div className="flex flex-wrap items-center gap-2 text-sm">
           <span className="font-medium">
-            English content normalized from the original source text.{order.paymentId}
+            ??n h?ng{order.paymentId}
           </span>
           <span className="text-muted-foreground">•</span>
           <span className="text-muted-foreground">
-            English content normalized from the original source text.{' '}
+            ??n h?ng{' '}
             {new Date(order.createdAt).toLocaleDateString('vi-VN')}
           </span>
           <span className="text-muted-foreground">•</span>
@@ -161,17 +160,15 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
               <p className="font-medium line-clamp-2">{selectedItem?.productName}</p>
               <div className="flex items-center gap-2">
                 <span className="text-[#d70018] font-semibold">
-                  {(selectedItem?.skuPrice ?? 0).toLocaleString()}English content normalized from the original source
-                  text.
+                  {(selectedItem?.skuPrice ?? 0).toLocaleString()}??n h?ng
                 </span>
               </div>
               <span className="text-xs bg-gray-100 rounded px-2 py-0.5">{selectedItem?.skuValue}</span>
             </div>
           </div>
           <div className="flex flex-col items-end gap-2 min-w-[100px]">
-            <span className="text-sm">English content normalized from the original source text. {totalQuantity}</span>
+            <span className="text-sm">??n h?ng {totalQuantity}</span>
             <div className="flex gap-2">
-              {}
               {(order.status === 'DELIVERED' || order.status === 'RETURNED' || order.status === 'CANCELLED') && (
                 <Button
                   variant="outline"
@@ -184,10 +181,9 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                     }
                   }}
                 >
-                  English content normalized from the original source text.
+                  ??n h?ng
                 </Button>
               )}
-              {}
               {order.status === 'PENDING_PAYMENT' && (
                 <Button
                   variant="outline"
@@ -197,11 +193,10 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                     router.push(`/checkout/retry/${order.id}`)
                   }}
                 >
-                  English content normalized from the original source text.
+                  ??n h?ng
                 </Button>
               )}
 
-              {}
               {(order.status === 'PENDING_PAYMENT' || order.status === 'PENDING_PACKAGING') && (
                 <Button
                   variant="outline"
@@ -209,7 +204,7 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                   className="text-red-500 border-red-500 hover:bg-red-50 min-w-[110px]"
                   onClick={handleCancelClick}
                 >
-                  English content normalized from the original source text.
+                  ??n h?ng
                 </Button>
               )}
             </div>
@@ -217,39 +212,36 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
         </div>
       </section>
 
-      {/* Grid */}
+      {}
       <div className="grid grid-cols-1 md:grid-cols-10 gap-3">
-        {}
         <div className="md:col-span-5 flex flex-col space-y-3">
-          {}
           <section className="bg-white rounded-lg border p-4 space-y-3">
-            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+            <h2 className="text-lg font-semibold">??n h?ng</h2>
             <div className="px-2 space-y-2 text-base">
               <div className="flex justify-between border-b pb-2">
-                <span className="text-muted-foreground">English content normalized from the original source text.</span>
+                <span className="text-muted-foreground">??n h?ng</span>
                 <span className="font-sm">{order.receiver?.name}</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span className="text-muted-foreground">English content normalized from the original source text.</span>
+                <span className="text-muted-foreground">??n h?ng</span>
                 <span className="font-sm">{order.receiver?.phone}</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span className="text-muted-foreground">English content normalized from the original source text.</span>
+                <span className="text-muted-foreground">??n h?ng</span>
                 <span className="font-sm text-right max-w-[70%]">{order.receiver?.address}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">English content normalized from the original source text.</span>
+                <span className="text-muted-foreground">??n h?ng</span>
                 <span className="text-muted-foreground">-</span>
               </div>
             </div>
           </section>
 
-          {}
           <section className="bg-white rounded-lg border p-4 py-6 space-y-3">
-            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+            <h2 className="text-lg font-semibold">??n h?ng</h2>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm">English content normalized from the original source text.</span>
+                <span className="text-sm">??n h?ng</span>
                 <span className="font-semibold">18002097</span>
               </div>
               <Button
@@ -258,111 +250,105 @@ export default function OrderDetail({ orderId }: OrderDetailProps) {
                 className="border-[#d70018] text-[#d70018] hover:bg-[#d70018] hover:text-white"
               >
                 <Phone className="w-4 h-4 mr-1" />
-                English content normalized from the original source text.
+                ??n h?ng
               </Button>
             </div>
           </section>
 
-          {}
           <section className="bg-white rounded-lg border p-4 space-y-3 flex-1">
-            <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+            <h2 className="text-lg font-semibold">??n h?ng</h2>
             <div className="flex justify-between border-b">
-              <span>English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
               <Button variant="link" className="text-primary px-0">
-                English content normalized from the original source text.
+                ??n h?ng
               </Button>
             </div>
             <div className="flex justify-between">
-              <span>English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
               <Button variant="link" className="text-primary px-0">
-                English content normalized from the original source text.
+                ??n h?ng
               </Button>
             </div>
           </section>
         </div>
 
-        {}
         <section className="bg-white rounded-lg border p-6 space-y-4 md:col-span-5 flex flex-col shadow-sm h-full">
-          <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+          <h2 className="text-lg font-semibold">??n h?ng</h2>
 
-          {}
           <div className="p-2 space-y-3">
             <h3 className="text-base font-medium bg-neutral-100 rounded-xs px-2 py-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </h3>
             <div className="flex px-2 justify-between border-b pb-2">
-              <span>English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
               <span>{totalQuantity}</span>
             </div>
             <div className="flex px-2 justify-between border-b pb-2">
-              <span>English content normalized from the original source text.</span>
-              <span>{totalAmount.toLocaleString()}English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
+              <span>{totalAmount.toLocaleString()}??n h?ng</span>
             </div>
             <div className="flex px-2 justify-between border-b pb-2">
-              <span>English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
               <span>
                 {shippingFee === 0
-                  ? 'English content normalized from the original source text.'
-                  : `${shippingFee.toLocaleString()}English content normalized from the original source text.`}
+                  ? '??n h?ng'
+                  : `${shippingFee.toLocaleString()}??n h?ng`}
               </span>
             </div>
             <div className="flex px-2 justify-between border-b pb-2 text-green-600">
-              <span>English content normalized from the original source text.</span>
-              <span>-{discount.toLocaleString()}English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
+              <span>-{discount.toLocaleString()}??n h?ng</span>
             </div>
           </div>
 
-          {}
           <div className="p-2 space-y-3 mt-3">
             <h3 className="text-base font-medium bg-neutral-100 rounded-xs px-2 py-1">
-              English content normalized from the original source text.
+              ??n h?ng
             </h3>
             <div className="flex px-2 justify-between border-b pb-2 font-semibold text-[#d70018] text-lg">
-              <span>English content normalized from the original source text.</span>
-              <span>{finalAmount.toLocaleString()}English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
+              <span>{finalAmount.toLocaleString()}??n h?ng</span>
             </div>
             <p className="text-xs px-2 text-muted-foreground border-b pb-2">
-              English content normalized from the original source text.
+              ??n h?ng
             </p>
             <div className="flex px-2 justify-between text-red-600">
-              <span>English content normalized from the original source text.</span>
+              <span>??n h?ng</span>
               <span>
                 {order.status === 'PICKUPED' || order.status === 'PENDING_DELIVERY' || order.status === 'DELIVERED'
                   ? order.totalPayment.toLocaleString()
                   : '0'}
-                English content normalized from the original source text.
+                ??n h?ng
               </span>
             </div>
           </div>
         </section>
       </div>
 
-      {}
       <Dialog open={showCancelDialog} onOpenChange={handleCancelDialogClose}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <div className="flex items-center gap-2">
               <AlertTriangle className="h-5 w-5 text-amber-500" />
-              <DialogTitle>English content normalized from the original source text.</DialogTitle>
+              <DialogTitle>??n h?ng</DialogTitle>
             </div>
             <DialogDescription className="text-left">
-              English content normalized from the original source text.{' '}
-              <span className="font-semibold">#{order?.paymentId}</span>English content normalized from the original
-              source text.
+              ??n h?ng{' '}
+              <span className="font-semibold">#{order?.paymentId}</span>??n h?ng
               <br />
               <span className="text-red-600 text-sm mt-2 block">
-                English content normalized from the original source text.
+                ??n h?ng
               </span>
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2">
             <Button variant="outline" onClick={handleCancelDialogClose} disabled={isCancelling}>
-              English content normalized from the original source text.
+              ??n h?ng
             </Button>
             <Button variant="destructive" onClick={handleConfirmCancel} disabled={isCancelling} className="text-white">
               {isCancelling
-                ? 'English content normalized from the original source text.'
-                : 'English content normalized from the original source text.'}
+                ? '??n h?ng'
+                : '??n h?ng'}
             </Button>
           </DialogFooter>
         </DialogContent>

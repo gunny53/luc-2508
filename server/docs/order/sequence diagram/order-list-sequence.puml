@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Order Order List Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Order Order List Sequence: validate request and return the expected response
 participant "AccessTokenGuard" as AG
 participant "OrderController" as OC
 participant "OrderService" as OS
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> OC: English content normalized from the original source text.
+AG --> OC: Order Order List Sequence: validate request and return the expected response
 activate OC
 
 OC -> OS: list(user, { page, limit, status? })
@@ -26,7 +26,7 @@ OS -> OR: list(user.userId, query)
 activate OR
 
 note right of OR
-English content normalized from the original source text.
+Order Order List Sequence: validate request and return the expected response
 • userId = user.userId
 • status (optional)
 Pagination:

@@ -44,26 +44,26 @@ export function ProfileDropdown() {
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       onClick: () => router.push(ROUTES.CLIENT.USER.DASHBOARD)
     },
     {
       icon: ShoppingCart,
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       onClick: () => router.push(ROUTES.CLIENT.CART),
       requireDivider: true
     },
     {
       icon: ShoppingCart,
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
       requireDivider: true
     },
     {
       icon: LogOut,
       label: logoutLoading
-        ? 'English content normalized from the original source text.'
-        : 'English content normalized from the original source text.',
+        ? 'T?i kho?n'
+        : 'T?i kho?n',
       onClick: () => handleLogout()
     }
   ]
@@ -113,7 +113,6 @@ export function ProfileDropdown() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop for mobile */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -122,7 +121,6 @@ export function ProfileDropdown() {
               className="fixed inset-0 bg-black/20 z-40 lg:hidden"
             />
 
-            {/* Dropdown Menu */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -130,13 +128,11 @@ export function ProfileDropdown() {
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="absolute right-0 mt-2 w-56 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden z-60"
             >
-              {/* User Info Section */}
               <div className="px-4 py-3 border-b border-gray-200">
                 <p className="text-sm font-semibold text-gray-900 truncate">{name}</p>
                 {user.email && <p className="text-xs text-gray-500 truncate mt-1">{user.email}</p>}
               </div>
 
-              {/* Menu Items */}
               <div className="py-1">
                 {menuItems.map((item, index) => (
                   <MenuItem key={index} {...item} />

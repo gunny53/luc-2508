@@ -6,27 +6,27 @@ import { GiPriceTag } from 'react-icons/gi'
 const commitments = [
   {
     icon: <BsPatchCheckFill className="h-5 w-5 text-primary" />,
-    text: 'English content normalized from the original source text.'
+    text: 'ECSite'
   },
   {
     icon: <FaTruckFast className="h-5 w-5 text-primary" />,
-    text: 'English content normalized from the original source text.'
+    text: 'ECSite'
   },
   {
     icon: <FaMoneyBillTransfer className="h-5 w-5 text-primary" />,
-    text: 'English content normalized from the original source text.'
+    text: 'ECSite'
   },
   {
     icon: <GoPackageDependencies className="h-5 w-5 text-primary" />,
-    text: 'English content normalized from the original source text.'
+    text: 'ECSite'
   },
   {
     icon: <GiPriceTag className="h-5 w-5 text-primary" />,
-    text: 'English content normalized from the original source text.'
+    text: 'ECSite'
   },
   {
     icon: <FaTruckPlane className="h-5 w-5 text-primary" />,
-    text: 'English content normalized from the original source text.'
+    text: 'ECSite'
   }
 ]
 
@@ -36,7 +36,7 @@ const DesktopCommit = () => {
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-start h-12 gap-6">
           <span className="text-sm font-semibold text-primary">
-            English content normalized from the original source text.
+            ECSite
           </span>
           <div className="flex flex-1 items-center justify-between cursor-pointer">
             {commitments.map((commit, index) => (

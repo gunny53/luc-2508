@@ -67,28 +67,28 @@ async function bootstrap(): Promise<void> {
     server.set('trust proxy', 'loopback')
     app.enableShutdownHooks()
 
-    // WebSocket setup.
+    
     const websocketAdapter = new WebsocketAdapter(app)
     await websocketAdapter.connectToRedis()
     app.useWebSocketAdapter(websocketAdapter)
 
-    // Global settings.
-    // app.useGlobalPipes(
-    //   new ValidationPipe({
-    //     transform: true,
-    //     whitelist: true,
-    //     forbidNonWhitelisted: true
-    //   })
-    // )
+    
+    
+    
+    
+    
+    
+    
+    
 
-    // app.enableVersioning({
-    //   type: VersioningType.URI,
-    //   defaultVersion: '1'
-    // })
+    
+    
+    
+    
 
-    // useContainer(app.select(AppModule), { fallbackOnErrors: true })
+    
 
-    // Graceful shutdown.
+    
     const gracefulShutdown = async (signal: string): Promise<void> => {
       logger.log(`Received ${signal}, shutting down gracefully...`)
 
@@ -111,7 +111,7 @@ async function bootstrap(): Promise<void> {
       void gracefulShutdown('SIGINT')
     })
 
-    // Start server.
+    
     await app.listen(port, host)
   } catch (error) {
     console.error('Application failed to start:', error)

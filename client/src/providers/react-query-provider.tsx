@@ -9,13 +9,13 @@ export default function ReactQueryProvider({ children }: { children: React.React
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 1000 * 60 * 5, // 5 minutes
-            gcTime: 1000 * 60 * 60 * 24, // 24 hours
-            refetchOnWindowFocus: false, // Disable auto refetch on window focus
-            retry: 2 // Retry failed requests 2 times
+            staleTime: 1000 * 60 * 5, 
+            gcTime: 1000 * 60 * 60 * 24, 
+            refetchOnWindowFocus: false, 
+            retry: 2 
           },
           mutations: {
-            retry: 1 // Retry failed mutations 1 time
+            retry: 1 
           }
         }
       })

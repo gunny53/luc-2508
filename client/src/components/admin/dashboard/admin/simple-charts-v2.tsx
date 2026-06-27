@@ -9,7 +9,7 @@ interface SimpleChartsProps {
 const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
   const { usersByRole, usersByStatus, isLoading } = chartData
 
-  // Color mapping cho roles
+  
   const getRoleColorClass = (name: string) => {
     switch (name) {
       case 'Admin':
@@ -23,7 +23,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
     }
   }
 
-  // Color mapping cho status
+  
   const getStatusColorClass = (name: string) => {
     switch (name) {
       case 'Active':
@@ -44,7 +44,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>English content normalized from the original source text.</CardTitle>
+            <CardTitle>B?ng ?i?u khi?n</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="animate-pulse space-y-3">
@@ -57,7 +57,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
 
         <Card>
           <CardHeader>
-            <CardTitle>English content normalized from the original source text.</CardTitle>
+            <CardTitle>B?ng ?i?u khi?n</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="animate-pulse space-y-3">
@@ -72,10 +72,10 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {/* User Roles Chart */}
+      {}
       <Card>
         <CardHeader>
-          <CardTitle>English content normalized from the original source text.</CardTitle>
+          <CardTitle>B?ng ?i?u khi?n</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -98,7 +98,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
             })}
           </div>
 
-          {/* Simple progress bars */}
+          {}
           <div className="mt-4 space-y-2">
             {usersByRole.map((item) => {
               const total = usersByRole.reduce((sum, role) => sum + role.value, 0)
@@ -121,10 +121,10 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         </CardContent>
       </Card>
 
-      {/* User Status Chart */}
+      {}
       <Card>
         <CardHeader>
-          <CardTitle>English content normalized from the original source text.</CardTitle>
+          <CardTitle>B?ng ?i?u khi?n</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -147,9 +147,9 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
             })}
           </div>
 
-          {/* Summary */}
+          {}
           <div className="mt-4 p-3 bg-blue-50 rounded-lg text-center">
-            <div className="text-sm text-gray-600">English content normalized from the original source text.</div>
+            <div className="text-sm text-gray-600">B?ng ?i?u khi?n</div>
             <div className="text-2xl font-bold text-blue-600">
               {usersByStatus.reduce((sum, status) => sum + status.value, 0).toLocaleString()}
             </div>

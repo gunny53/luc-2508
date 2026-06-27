@@ -32,24 +32,24 @@ export function ProfileSettingsTable() {
       )
     },
     {
-      label: 'English content normalized from the original source text.',
-      value: user.name || 'English content normalized from the original source text.'
+      label: 'T?i kho?n',
+      value: user.name || 'T?i kho?n'
     },
     { label: 'Email', value: user.email },
     {
-      label: 'English content normalized from the original source text.',
-      value: user.phoneNumber || 'English content normalized from the original source text.'
+      label: 'T?i kho?n',
+      value: user.phoneNumber || 'T?i kho?n'
     },
     {
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       value: <Badge variant={user.status === 'ACTIVE' ? 'secondary' : 'destructive'}>{user.status}</Badge>
     },
     {
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       value: <Badge variant="outline">{typeof user.role === 'string' ? user.role : user.role?.name}</Badge>
     },
     {
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       value: new Date(user.createdAt).toLocaleDateString('vi-VN')
     }
   ]
@@ -58,8 +58,8 @@ export function ProfileSettingsTable() {
     <>
       <SettingTable
         columns={columns}
-        title="English content normalized from the original source text."
-        subtitle="English content normalized from the original source text."
+        title="T?i kho?n"
+        subtitle="T?i kho?n"
         rightAction={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -70,7 +70,7 @@ export function ProfileSettingsTable() {
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => setOpenUpdate(true)}>
                 <Pencil className="w-4 h-4 mr-2" />
-                English content normalized from the original source text.
+                T?i kho?n
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

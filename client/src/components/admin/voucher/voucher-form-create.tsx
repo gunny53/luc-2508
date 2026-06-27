@@ -118,21 +118,20 @@ export default function VoucherFormCreate() {
       <div>
         <h2 className="text-xl font-semibold tracking-tight">{t('createVoucher')}</h2>
         <p className="text-muted-foreground text-sm mt-1">{t('createVoucherDesc')}</p>
-        {}
         <div className="mt-2">
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
             {isAdmin
-              ? 'English content normalized from the original source text.'
+              ? 'M? gi?m gi?'
               : isSeller
-                ? 'English content normalized from the original source text.'
-                : 'English content normalized from the original source text.'}
+                ? 'M? gi?m gi?'
+                : 'M? gi?m gi?'}
           </span>
         </div>
       </div>
 
       {voucherTypes.length === 0 ? (
         <div className="text-center py-8">
-          <p className="text-muted-foreground">English content normalized from the original source text.</p>
+          <p className="text-muted-foreground">M? gi?m gi?</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

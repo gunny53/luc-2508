@@ -12,7 +12,7 @@ import { useCart } from '@/providers/cart-context'
 import { ROUTES } from '@/constants/route'
 import { useAuthGuard } from '@/hooks/use-auth-guard'
 
-// Define the structure for a cart item with UI selection state
+
 interface LocalCartItem extends ApiCartItem {
   selected: boolean
 }
@@ -128,27 +128,27 @@ export function CartDropdown() {
       <SheetContent side="right" className="w-full max-w-md p-0 flex flex-col rounded-md">
         <SheetHeader className="px-6 pt-6 pb-4 border-b border-gray-200">
           <SheetTitle className="text-lg font-semibold text-gray-900 mb-1">
-            English content normalized from the original source text.
+            Gi? h?ng
           </SheetTitle>
         </SheetHeader>
 
         {!isAuthenticated ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
             <ShoppingCart size={48} className="text-gray-300 mb-4" />
-            <p className="text-gray-500 mb-4">English content normalized from the original source text.</p>
+            <p className="text-gray-500 mb-4">Gi? h?ng</p>
             <Button asChild className="bg-red-600 hover:bg-red-700">
-              <Link href={ROUTES.AUTH.SIGNIN}>English content normalized from the original source text.</Link>
+              <Link href={ROUTES.AUTH.SIGNIN}>Gi? h?ng</Link>
             </Button>
           </div>
         ) : isLoading ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
             <Loader2 size={48} className="text-gray-300 mb-4 animate-spin" />
-            <p className="text-gray-500">English content normalized from the original source text.</p>
+            <p className="text-gray-500">Gi? h?ng</p>
           </div>
         ) : allCartItems.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
             <ShoppingCart size={48} className="text-gray-300 mb-4" />
-            <p className="text-gray-500">English content normalized from the original source text.</p>
+            <p className="text-gray-500">Gi? h?ng</p>
           </div>
         ) : (
           <>
@@ -161,15 +161,14 @@ export function CartDropdown() {
                     onCheckedChange={handleToggleSelectAll}
                   />
                   <span className="text-sm font-medium">
-                    English content normalized from the original source text.{allCartItems.length} English content
-                    normalized from the original source text.
+                    Gi? h?ng{allCartItems.length} s?n ph?m trong gi? h?ng
                   </span>
                 </label>
               </div>
               <div className="divide-y divide-gray-200">
                 {allCartItems.map((item: ApiCartItem & { shopName: string }) => {
                   const product = item.sku.product
-                  // const productImage = product.images && product.images.length > 0
+                  
                   const productImage = item.sku.image ? item.sku.image : '/images/image-placeholder.jpg'
 
                   return (
@@ -186,7 +185,7 @@ export function CartDropdown() {
                         <div className="ml-4 flex-1">
                           <h3 className="text-sm font-medium text-gray-800 line-clamp-2">{product.name}</h3>
                           <p className="text-xs text-gray-500 mt-1">
-                            English content normalized from the original source text. {item.sku.value}
+                            Gi? h?ng {item.sku.value}
                           </p>
                           <p className="text-sm text-red-600 font-semibold mt-1">
                             {product.basePrice.toLocaleString('vi-VN')}₫
@@ -238,17 +237,16 @@ export function CartDropdown() {
               <div className="w-full space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-md font-semibold text-gray-800">
-                    English content normalized from the original source text.
+                    Gi? h?ng
                   </span>
                   <span className="text-xl font-bold text-red-600">
                     {calculateSelectedTotal().toLocaleString('vi-VN')}₫
                   </span>
                 </div>
-                {}
                 <Button asChild size="lg" variant="outline" className="w-full">
                   <Link href="/cart" className="flex items-center justify-center gap-2">
                     <ShoppingCart className="h-5 w-5" />
-                    <span>English content normalized from the original source text.</span>
+                    <span>Gi? h?ng</span>
                   </Link>
                 </Button>
               </div>

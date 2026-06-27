@@ -5,9 +5,9 @@ export const OrderEmpty = () => {
   return (
     <div className="flex flex-col items-center justify-center text-muted-foreground gap-2 py-12">
       <img src="/images/client/profile/logo mini.png" alt="empty" className="w-36 h-36 object-contain" />
-      <p>English content normalized from the original source text.</p>
+      <p>??n h?ng</p>
       <Button variant="link" className="text-primary px-0">
-        English content normalized from the original source text.
+        ??n h?ng
       </Button>
     </div>
   )

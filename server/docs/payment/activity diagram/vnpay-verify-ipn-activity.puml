@@ -6,27 +6,27 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Payment Vnpay Verify Ipn Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Payment Vnpay Verify Ipn Activity: execute the validated workflow;
+:Payment Vnpay Verify Ipn Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Payment Vnpay Verify Ipn Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:Payment Vnpay Verify Ipn Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Payment Vnpay Verify Ipn Activity: execute the validated workflow;
   stop
 endif
 if (condition?) then (Yes)
   :updatePaymentAndOrdersOnSuccess(paymentId, orders);
-  :English content normalized from the original source text;
+  :Payment Vnpay Verify Ipn Activity: execute the validated workflow;
 else (No)
   :updatePaymentAndOrdersOnFailed(paymentId, orders);
 endif
-:English content normalized from the original source text;
+:Payment Vnpay Verify Ipn Activity: execute the validated workflow;
 stop
 
 @enduml

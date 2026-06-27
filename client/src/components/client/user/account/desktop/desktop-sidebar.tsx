@@ -16,13 +16,11 @@ export default function DesktopSidebar() {
 
   return (
     <aside className="bg-gradient-to-br from-white via-gray-50/30 to-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full md:w-[320px] h-full flex flex-col border border-gray-100 relative overflow-hidden">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-3">
         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-red-500/5 to-transparent rounded-full translate-x-8 -translate-y-8"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-red-600/5 to-transparent rounded-full -translate-x-12 translate-y-12"></div>
       </div>
 
-      {/* Header */}
       <div className="px-6 py-6 border-b border-gray-100/80 relative z-10">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
@@ -31,8 +29,8 @@ export default function DesktopSidebar() {
             </svg>
           </div>
           <div>
-            <h3 className="font-bold text-gray-800">English content normalized from the original source text.</h3>
-            <p className="text-sm text-gray-500">English content normalized from the original source text.</p>
+            <h3 className="font-bold text-gray-800">T?i kho?n</h3>
+            <p className="text-sm text-gray-500">T?i kho?n</p>
           </div>
         </div>
       </div>
@@ -59,7 +57,6 @@ export default function DesktopSidebar() {
                       : 'text-gray-700 hover:bg-gradient-to-r hover:from-red-500/5 hover:via-red-600/3 hover:to-transparent hover:text-red-600 hover:shadow-sm'
                   )}
                 >
-                  {/* Active Indicator */}
                   {isActive && (
                     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-red-500 to-red-600 rounded-r-full shadow-sm"></div>
                   )}
@@ -85,7 +82,6 @@ export default function DesktopSidebar() {
                     </span>
                   </div>
 
-                  {/* Arrow Indicator */}
                   <ChevronRight
                     className={cn(
                       'w-5 h-5 transition-all duration-200',
@@ -95,7 +91,6 @@ export default function DesktopSidebar() {
                     )}
                   />
 
-                  {/* Hover Glow */}
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/5 to-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
                 </div>
               </Link>
@@ -104,7 +99,6 @@ export default function DesktopSidebar() {
         })}
       </nav>
 
-      {/* Logout Section */}
       <div className="px-3 pb-6 mt-4 border-t border-gray-100/80 pt-4 relative z-10">
         <Button
           variant="ghost"
@@ -125,13 +119,12 @@ export default function DesktopSidebar() {
               )}
             </div>
             <span className="font-semibold transition-colors duration-200 group-hover:text-red-600">
-              {logoutLoading ? 'English content normalized from the original source text.' : t('auth.common.logout')}
+              {logoutLoading ? 'T?i kho?n' : t('auth.common.logout')}
             </span>
           </div>
 
           <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all duration-200" />
 
-          {/* Hover Glow */}
           <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-50 to-red-25 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10"></div>
         </Button>
       </div>

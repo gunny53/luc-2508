@@ -101,7 +101,7 @@ export class GoogleService {
       })
       this.cookieService.setAuthCookies(res, authTokens.accessToken, authTokens.refreshToken)
 
-      return { message: 'English content normalized from the original source text.' }
+      return { message: 'Google login successful.' }
     } catch (error) {
       console.error('Error in googleCallback', error)
       throw error

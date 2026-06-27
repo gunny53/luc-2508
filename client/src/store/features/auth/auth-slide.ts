@@ -5,7 +5,7 @@ export const revertAll = createAction('REVERT_ALL')
 
 export interface AuthState {
   user: { id: string; name: string } | null
-  accessToken: string // access token
+  accessToken: string 
   refreshToken: string
 }
 
@@ -22,7 +22,7 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       console.log('action.payload', action.payload)
       state.user = action.payload.user
-      state.accessToken = action.payload.accessToken // access token
+      state.accessToken = action.payload.accessToken 
       state.refreshToken = action.payload.refreshToken
     },
     logOut: (state) => {

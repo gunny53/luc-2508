@@ -36,7 +36,7 @@ interface UsersModalUpsertProps {
 export default function UsersModalUpsert({ roles, open, onClose, mode, user, onSubmit }: UsersModalUpsertProps) {
   const t = useTranslations()
 
-  // Form state
+  
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -48,7 +48,7 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  // Upload media hook
+  
   const {
     files,
     uploadedUrls,
@@ -65,19 +65,19 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
     reset: resetUpload
   } = useUploadMediaPresign()
 
-  // Status options
+  
   const STATUS_OPTIONS = [
     {
       value: 'ACTIVE',
-      label: t('admin.users.modal.statusActive') || 'English content normalized from the original source text.'
+      label: t('admin.users.modal.statusActive') || 'T?i kho?n'
     },
     {
       value: 'INACTIVE',
-      label: t('admin.users.modal.statusInactive') || 'English content normalized from the original source text.'
+      label: t('admin.users.modal.statusInactive') || 'T?i kho?n'
     }
   ]
 
-  // Reset form when modal opens or mode/user changes
+  
   useEffect(() => {
     if (mode === 'edit' && user) {
       setName(user.name || '')
@@ -89,7 +89,7 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
       setPassword('')
       setConfirmPassword('')
 
-      // Reset upload state
+      
       resetUpload()
     } else if (mode === 'add') {
       setName('')
@@ -102,32 +102,32 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
       setStatus('ACTIVE')
       setErrors({})
 
-      // Reset upload state
+      
       resetUpload()
     }
   }, [mode, user, open, resetUpload])
 
-  // Handle file change for avatar upload
+  
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      // File type validation
+      
       const file = e.target.files[0]
       if (!file.type.startsWith('image/')) {
-        toast.error('English content normalized from the original source text.', {
-          description: 'English content normalized from the original source text.'
+        toast.error('T?i kho?n', {
+          description: 'T?i kho?n'
         })
         return
       }
 
-      // Clear existing files first
+      
       handleRemoveAllFiles()
 
-      // Add the new file and process it (compress + get presigned URLs)
+      
       handleAddFiles(e.target.files)
     }
   }
 
-  // Handle avatar upload
+  
   const handleUploadAvatar = async () => {
     if (files.length === 0) return
     let urls: string[] = []
@@ -136,12 +136,12 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
       urls = await uploadToS3Multiple()
     } else {
       await handleAddFiles(files)
-      // Sau khi process xong, upload
+      
       urls = await uploadToS3Multiple()
     }
 
     if (urls.length > 0) {
-      // Use the first uploaded image URL as avatar
+      
       setAvatar(urls[0])
     }
   }
@@ -179,7 +179,7 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
             email,
             name,
             phoneNumber,
-            password, // Only send password, not confirmPassword
+            password, 
             roleId,
             status,
             avatar
@@ -197,10 +197,10 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
             data.email = email
           }
 
-          // Construct the final object to submit, including the user's id
+          
           const submitData: User = {
-            ...user, // Start with the original user data to have a complete User object
-            ...data // Override with updated fields
+            ...user, 
+            ...data 
           }
           await onSubmit(submitData)
         }
@@ -229,13 +229,13 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
         <DialogHeader>
           <DialogTitle>
             {mode === 'add'
-              ? t('admin.users.modal.addTitle') || 'English content normalized from the original source text.'
-              : t('admin.users.modal.editTitle') || 'English content normalized from the original source text.'}
+              ? t('admin.users.modal.addTitle') || 'T?i kho?n'
+              : t('admin.users.modal.editTitle') || 'T?i kho?n'}
           </DialogTitle>
           <DialogDescription>
             {mode === 'add'
-              ? t('admin.users.modal.addDescription') || 'English content normalized from the original source text.'
-              : t('admin.users.modal.editDescription') || 'English content normalized from the original source text.'}
+              ? t('admin.users.modal.addDescription') || 'T?i kho?n'
+              : t('admin.users.modal.editDescription') || 'T?i kho?n'}
           </DialogDescription>
         </DialogHeader>
 
@@ -243,12 +243,12 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.name') || 'English content normalized from the original source text.'}
+                {t('admin.users.modal.name') || 'T?i kho?n'}
               </label>
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t('admin.users.modal.name') || 'English content normalized from the original source text.'}
+                placeholder={t('admin.users.modal.name') || 'T?i kho?n'}
               />
               {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
             </div>
@@ -267,13 +267,13 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.phoneNumber') || 'English content normalized from the original source text.'}
+                {t('admin.users.modal.phoneNumber') || 'T?i kho?n'}
               </label>
               <Input
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder={
-                  t('admin.users.modal.phoneNumber') || 'English content normalized from the original source text.'
+                  t('admin.users.modal.phoneNumber') || 'T?i kho?n'
                 }
               />
               {errors.phoneNumber && <p className="text-sm text-red-500 mt-1">{errors.phoneNumber}</p>}
@@ -281,11 +281,10 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.avatar') || 'English content normalized from the original source text.'}
+                {t('admin.users.modal.avatar') || 'T?i kho?n'}
               </label>
 
               <div className="space-y-3">
-                {/* Avatar preview with integrated select button */}
                 <div className="flex items-center space-x-4">
                   <div className="relative group">
                     <Avatar className="h-16 w-16 border-2 border-gray-200">
@@ -298,18 +297,17 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
                       )}
                     </Avatar>
 
-                    {/* Overlay select button */}
                     <button
                       type="button"
                       onClick={() => document.getElementById('avatar-upload')?.click()}
                       disabled={isUploading || isProcessing}
                       aria-label={
                         t('admin.users.modal.selectImage') ||
-                        'English content normalized from the original source text.'
+                        'T?i kho?n'
                       }
                       title={
                         t('admin.users.modal.selectImage') ||
-                        'English content normalized from the original source text.'
+                        'T?i kho?n'
                       }
                       className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 rounded-full transition-opacity"
                     >
@@ -317,18 +315,16 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
                     </button>
                   </div>
 
-                  {/* Avatar URL - Read Only */}
                   <div className="flex-1 space-y-1">
                     <Input
                       value={avatar}
                       readOnly
                       placeholder={
-                        t('admin.users.modal.avatarUrl') || 'English content normalized from the original source text.'
+                        t('admin.users.modal.avatarUrl') || 'T?i kho?n'
                       }
                       className="bg-muted"
                     />
 
-                    {}
                     {files.length > 0 && presignedData.length > 0 && !isUploading && (
                       <Button
                         type="button"
@@ -339,16 +335,15 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
                       >
                         {isUploading
                           ? t('admin.users.modal.uploading') ||
-                            'English content normalized from the original source text.'
+                            'T?i kho?n'
                           : t('admin.users.modal.uploadImage') ||
-                            'English content normalized from the original source text.'}
+                            'T?i kho?n'}
                       </Button>
                     )}
 
-                    {}
                     {isProcessing && (
                       <Button type="button" size="sm" disabled className="w-full">
-                        {progressMessage || 'English content normalized from the original source text.'}
+                        {progressMessage || 'T?i kho?n'}
                       </Button>
                     )}
                   </div>
@@ -362,49 +357,46 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
                   disabled={isUploading || isProcessing}
                   accept="image/*"
                   aria-label={
-                    t('admin.users.modal.selectImage') || 'English content normalized from the original source text.'
+                    t('admin.users.modal.selectImage') || 'T?i kho?n'
                   }
                 />
 
-                {/* Upload progress */}
                 {(isUploading || isProcessing) && (
                   <div className="space-y-1">
                     <Progress value={progress} className="h-1" />
                     <p className="text-xs text-muted-foreground">
                       {progress}%{' '}
-                      {t('admin.users.modal.completed') || 'English content normalized from the original source text.'}{' '}
+                      {t('admin.users.modal.completed') || 'T?i kho?n'}{' '}
                       - {progressMessage}
                     </p>
                   </div>
                 )}
 
-                {/* File preview */}
                 {files.length > 0 && !isUploading && !isProcessing && (
                   <div className="text-xs text-muted-foreground">
                     {files[0].name} ({Math.round(files[0].size / 1024)} KB)
                     {presignedData.length > 0 && (
                       <span className="text-green-600 ml-2">
-                        English content normalized from the original source text.
+                        T?i kho?n
                       </span>
                     )}
                   </div>
                 )}
 
-                {/* Upload error */}
                 {uploadError && <p className="text-sm text-red-500">{uploadError}</p>}
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.role') || 'English content normalized from the original source text.'}
+                {t('admin.users.modal.role') || 'T?i kho?n'}
               </label>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full flex justify-between items-center">
                     {roles.find((role) => role.id === roleId)?.name ||
                       t('admin.users.modal.selectRole') ||
-                      'English content normalized from the original source text.'}
+                      'T?i kho?n'}
                     <ChevronDown size={16} />
                   </Button>
                 </DropdownMenuTrigger>
@@ -421,13 +413,13 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('admin.users.modal.status') || 'English content normalized from the original source text.'}
+                {t('admin.users.modal.status') || 'T?i kho?n'}
               </label>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full flex justify-between items-center">
                     {STATUS_OPTIONS.find((option) => option.value === status)?.label ||
-                      'English content normalized from the original source text.'}
+                      'T?i kho?n'}
                     <ChevronDown size={16} />
                   </Button>
                 </DropdownMenuTrigger>
@@ -441,19 +433,18 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
               </DropdownMenu>
             </div>
 
-            {}
             {mode === 'add' && (
               <>
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    {t('admin.users.modal.password') || 'English content normalized from the original source text.'}
+                    {t('admin.users.modal.password') || 'T?i kho?n'}
                   </label>
                   <Input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder={
-                      t('admin.users.modal.password') || 'English content normalized from the original source text.'
+                      t('admin.users.modal.password') || 'T?i kho?n'
                     }
                   />
                   {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
@@ -462,7 +453,7 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
                 <div>
                   <label className="block text-sm font-medium mb-1">
                     {t('admin.users.modal.confirmPassword') ||
-                      'English content normalized from the original source text.'}
+                      'T?i kho?n'}
                   </label>
                   <Input
                     type="password"
@@ -470,7 +461,7 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder={
                       t('admin.users.modal.confirmPassword') ||
-                      'English content normalized from the original source text.'
+                      'T?i kho?n'
                     }
                   />
                   {errors.confirmPassword && <p className="text-sm text-red-500 mt-1">{errors.confirmPassword}</p>}
@@ -481,16 +472,16 @@ export default function UsersModalUpsert({ roles, open, onClose, mode, user, onS
 
           <DialogFooter className="mt-6">
             <Button type="button" variant="outline" onClick={onClose} disabled={loading}>
-              {t('admin.users.modal.cancel') || 'English content normalized from the original source text.'}
+              {t('admin.users.modal.cancel') || 'T?i kho?n'}
             </Button>
             <Button type="submit" disabled={loading}>
               {loading
                 ? mode === 'add'
-                  ? t('admin.users.modal.adding') || 'English content normalized from the original source text.'
-                  : t('admin.users.modal.saving') || 'English content normalized from the original source text.'
+                  ? t('admin.users.modal.adding') || 'T?i kho?n'
+                  : t('admin.users.modal.saving') || 'T?i kho?n'
                 : mode === 'add'
-                  ? t('admin.users.modal.add') || 'English content normalized from the original source text.'
-                  : t('admin.users.modal.save') || 'English content normalized from the original source text.'}
+                  ? t('admin.users.modal.add') || 'T?i kho?n'
+                  : t('admin.users.modal.save') || 'T?i kho?n'}
             </Button>
           </DialogFooter>
         </form>

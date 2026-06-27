@@ -34,7 +34,7 @@ export class VNPayRepo {
           body: JSON.stringify(vnpayData)
         }
       })
-      // Extract paymentId
+      
       const paymentId = this.sharedPaymentRepository.extractPaymentId(
         PREFIX_PAYMENT_CODE,
         vnpayData.vnp_OrderInfo,

@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
+note top : Search Search Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
 participant "SearchController" as SC
 participant "SearchService" as SS
 participant "SearchRepo" as SR
@@ -17,150 +17,150 @@ participant "SearchSyncService" as SSS
 participant "SearchSyncConsumer" as SSC
 participant "I18nService" as IS
 database "Elasticsearch" as ESDB
-English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 Client -> SC: GET /search/products?q=query&page=1&limit=20&filters=...
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
 end note
 
 SC -> SS: searchProducts(query)
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
 end note
 
-SS -> SS: English content normalized from the original source text.
+SS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
-    English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
+    Search Search Module Sequence Overview: validate request and return the expected response
         SS -> SS: parseQuery(rawQuery)
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
         end note
 
         SS -> SS: getDictionary()
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
         end note
 
-        English content normalized from the original source text.
-            SS -> SS: English content normalized from the original source text.
+        Search Search Module Sequence Overview: validate request and return the expected response
+            SS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
         else (No)
-            SS -> ES: English content normalized from the original source text.
-            ES -> ESDB: English content normalized from the original source text.
+            SS -> ES: Search Search Module Sequence Overview: validate request and return the expected response
+            ES -> ESDB: Search Search Module Sequence Overview: validate request and return the expected response
             note right
-            English content normalized from the original source text.
-            • English content normalized from the original source text
+            Search Search Module Sequence Overview: validate request and return the expected response
+            • Search Search Module Sequence Overview: validate request and return the expected response
             • Terms aggregation cho attrName
             • Terms aggregation cho attrValue
-            • English content normalized from the original source text
+            • Search Search Module Sequence Overview: validate request and return the expected response
             end note
-            ESDB -> ES: English content normalized from the original source text.
-            ES -> SS: English content normalized from the original source text.
-            SS -> SS: English content normalized from the original source text.
+            ESDB -> ES: Search Search Module Sequence Overview: validate request and return the expected response
+            ES -> SS: Search Search Module Sequence Overview: validate request and return the expected response
+            SS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
         end
 
-        SS -> SS: English content normalized from the original source text.
+        SS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
         end note
 
-        English content normalized from the original source text.
-            SS -> SS: English content normalized from the original source text.
+        Search Search Module Sequence Overview: validate request and return the expected response
+            SS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
             note right
-            English content normalized from the original source text.
-            • English content normalized from the original source text
-            • English content normalized from the original source text
-            • English content normalized from the original source text
+            Search Search Module Sequence Overview: validate request and return the expected response
+            • Search Search Module Sequence Overview: validate request and return the expected response
+            • Search Search Module Sequence Overview: validate request and return the expected response
+            • Search Search Module Sequence Overview: validate request and return the expected response
             end note
         end
     end
 
     SS -> SR: searchProducts(processedQuery)
-    SR -> SR: English content normalized from the original source text.
+    SR -> SR: Search Search Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     • Boost fields (productName^3, productName^2)
     • Minimum should match 75%
-    • English content normalized from the original source text
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
     SR -> ES: search(index, query, options)
-    ES -> ESDB: English content normalized from the original source text.
+    ES -> ESDB: Search Search Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     • Collapse by productId
-    • English content normalized from the original source text
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
-    English content normalized from the original source text.
-        ESDB -> ES: English content normalized from the original source text.
-        ES -> SR: English content normalized from the original source text.
-        SR -> SR: English content normalized from the original source text.
+    Search Search Module Sequence Overview: validate request and return the expected response
+        ESDB -> ES: Search Search Module Sequence Overview: validate request and return the expected response
+        ES -> SR: Search Search Module Sequence Overview: validate request and return the expected response
+        SR -> SR: Search Search Module Sequence Overview: validate request and return the expected response
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
+        • Search Search Module Sequence Overview: validate request and return the expected response
         end note
-        SR -> SS: English content normalized from the original source text.
+        SR -> SS: Search Search Module Sequence Overview: validate request and return the expected response
         SS -> IS: i18n.t('search.search.success.SEARCH_SUCCESS')
-        IS -> SS: English content normalized from the original source text.
-        SS -> SC: English content normalized from the original source text.
-        SC -> Client: English content normalized from the original source text.
+        IS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
+        SS -> SC: Search Search Module Sequence Overview: validate request and return the expected response
+        SC -> Client: Search Search Module Sequence Overview: validate request and return the expected response
 
     else (No)
-        ESDB -> ES: English content normalized from the original source text.
-        ES -> SR: English content normalized from the original source text.
-        SR -> SR: English content normalized from the original source text.
+        ESDB -> ES: Search Search Module Sequence Overview: validate request and return the expected response
+        ES -> SR: Search Search Module Sequence Overview: validate request and return the expected response
+        SR -> SR: Search Search Module Sequence Overview: validate request and return the expected response
         note right
-        English content normalized from the original source text.
+        Search Search Module Sequence Overview: validate request and return the expected response
         • ConnectionError → ElasticsearchConnectionException
         • TimeoutError → SearchTimeoutException
-        • English content normalized from the original source text
+        • Search Search Module Sequence Overview: validate request and return the expected response
         end note
-        SR -> SS: English content normalized from the original source text.
-        SS -> SC: English content normalized from the original source text.
-        SC -> Client: English content normalized from the original source text.
+        SR -> SS: Search Search Module Sequence Overview: validate request and return the expected response
+        SS -> SC: Search Search Module Sequence Overview: validate request and return the expected response
+        SC -> Client: Search Search Module Sequence Overview: validate request and return the expected response
     end
 
 else (No)
@@ -169,141 +169,141 @@ else (No)
 end
 
 == English Section ==
-note over SSS, SSC: English content normalized from the original source text.
+note over SSS, SSC: Search Search Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
     SSS -> SSC: process(syncProductJob)
     SSC -> SSS: syncProductToES(productId, action)
     SSS -> SSS: getProductWithRelations(productId)
     SSS -> SSS: transformProductToEsDocuments(product)
     SSS -> ES: indexProduct(document)
-    ES -> ESDB: English content normalized from the original source text.
-    ESDB -> ES: English content normalized from the original source text.
-    ES -> SSS: English content normalized from the original source text.
+    ES -> ESDB: Search Search Module Sequence Overview: validate request and return the expected response
+    ESDB -> ES: Search Search Module Sequence Overview: validate request and return the expected response
+    ES -> SSS: Search Search Module Sequence Overview: validate request and return the expected response
 end
 
-English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
     SSS -> SSC: process(syncProductsBatchJob)
     SSC -> SSS: syncProductsBatchToES(batchData)
     SSS -> SSS: getProductsWithRelations(productIds)
-    English content normalized from the original source text.
+    Search Search Module Sequence Overview: validate request and return the expected response
         SSS -> SSS: transformProductToEsDocuments(product)
         SSS -> ES: indexProduct(document)
-        ES -> ESDB: English content normalized from the original source text.
+        ES -> ESDB: Search Search Module Sequence Overview: validate request and return the expected response
     end
-    ES -> SSS: English content normalized from the original source text.
+    ES -> SSS: Search Search Module Sequence Overview: validate request and return the expected response
 end
 
-English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
     SSS -> SSC: process(deleteProductJob)
     SSC -> SSS: syncProductToES(productId, action: delete)
     SSS -> SSS: deleteProductFromES(productId)
     SSS -> ES: deleteProduct(productId)
-    ES -> ESDB: English content normalized from the original source text.
-    ESDB -> ES: English content normalized from the original source text.
-    ES -> SSS: English content normalized from the original source text.
+    ES -> ESDB: Search Search Module Sequence Overview: validate request and return the expected response
+    ESDB -> ES: Search Search Module Sequence Overview: validate request and return the expected response
+    ES -> SSS: Search Search Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
-English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
     SS -> SC: EmptySearchQueryException
     SC -> Client: 400 Bad Request
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     SS -> SC: SearchQueryTooShortException
     SC -> Client: 400 Bad Request
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     SS -> SC: DictionaryLoadException
     SC -> Client: 500 Internal Server Error
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     SS -> SC: DictionaryParseException
     SC -> Client: 400 Bad Request
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     SR -> SS: ElasticsearchConnectionException
-    SS -> SC: English content normalized from the original source text.
+    SS -> SC: Search Search Module Sequence Overview: validate request and return the expected response
     SC -> Client: 503 Service Unavailable
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     SR -> SS: SearchTimeoutException
-    SS -> SC: English content normalized from the original source text.
+    SS -> SC: Search Search Module Sequence Overview: validate request and return the expected response
     SC -> Client: 503 Service Unavailable
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     SR -> SS: ElasticsearchQueryException
-    SS -> SC: English content normalized from the original source text.
+    SS -> SC: Search Search Module Sequence Overview: validate request and return the expected response
     SC -> Client: 500 Internal Server Error
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 end
 
 == English Section ==
-English content normalized from the original source text.
-    SS -> SS: English content normalized from the original source text.
+Search Search Module Sequence Overview: validate request and return the expected response
+    SS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
+    • Search Search Module Sequence Overview: validate request and return the expected response
     end note
 end
 
 == English Section ==
 SS -> IS: i18n.t('search.search.success.SEARCH_SUCCESS')
-IS -> SS: English content normalized from the original source text.
-SS -> SC: English content normalized from the original source text.
-SC -> Client: English content normalized from the original source text.
+IS -> SS: Search Search Module Sequence Overview: validate request and return the expected response
+SS -> SC: Search Search Module Sequence Overview: validate request and return the expected response
+SC -> Client: Search Search Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
+• Search Search Module Sequence Overview: validate request and return the expected response
 end note
 
 @enduml

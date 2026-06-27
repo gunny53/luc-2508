@@ -167,15 +167,15 @@ export interface OrderHandlerResult {
     paymentId?: number
     [key: string]: any
   }
-  orderId?: string // The ID of the order (from the first order in orders array)
+  orderId?: string 
   paymentId?: number
   paymentUrl?: string
   error?: string
 }
 
-// ==================================================
-// MANAGE ORDER INTERFACES
-// ==================================================
+
+
+
 
 export interface ManageOrderUser {
   id: string
@@ -230,10 +230,7 @@ export interface ManageOrder {
   orderCode: string
 }
 
-/**
- * @interface ManageOrderGetAllParams
- * @description Parameters cho API get all manage orders
- */
+
 export interface ManageOrderGetAllParams extends PaginationRequest {
   status?: OrderStatus
   shopId?: string
@@ -243,10 +240,7 @@ export interface ManageOrderGetAllParams extends PaginationRequest {
   sortOrder?: 'asc' | 'desc'
 }
 
-/**
- * @interface ManageOrderGetAllResponse
- * @description Response cho API get all manage orders
- */
+
 export interface ManageOrderGetAllResponse {
   statusCode: number
   message: string
@@ -255,10 +249,7 @@ export interface ManageOrderGetAllResponse {
   metadata: PaginationMetadata
 }
 
-/**
- * @interface ManageOrderGetByIdResponse
- * @description Response cho API get manage order by ID
- */
+
 export interface ManageOrderGetByIdResponse {
   statusCode: number
   message: string

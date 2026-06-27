@@ -145,7 +145,7 @@ export default function PasswordSection() {
 
       {lastUpdated && (
         <div className="flex items-center justify-between text-sm text-[#71717A]">
-          <p>English content normalized from the original source text.</p>
+          <p>T?i kho?n</p>
           <span className="font-medium text-[#1D1D20]">{formatDate(lastUpdated)}</span>
         </div>
       )}

@@ -1,4 +1,4 @@
-// src/app/admin/voucher/VoucherPageClient.tsx
+
 'use client'
 
 import VoucherDynamic from '@/components/admin/voucher/voucher-wrapper'

@@ -31,35 +31,35 @@ export default function DashboardOrders() {
 
   const statusLabel: Record<OrderStatus, StatusInfo> = {
     PENDING_PAYMENT: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-amber-50 to-yellow-100 text-amber-700 border border-amber-200'
     },
     PENDING_PACKAGING: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 border border-orange-200'
     },
     PICKUPED: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-sky-50 to-blue-100 text-sky-700 border border-sky-200'
     },
     PENDING_DELIVERY: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-violet-50 to-purple-100 text-violet-700 border border-violet-200'
     },
     DELIVERED: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-emerald-50 to-green-100 text-emerald-700 border border-emerald-200'
     },
     RETURNED: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-slate-50 to-gray-100 text-slate-700 border border-slate-200'
     },
     CANCELLED: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-red-50 to-rose-100 text-red-700 border border-red-200'
     },
     VERIFY_PAYMENT: {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       className: 'bg-gradient-to-r from-emerald-50 to-green-100 text-emerald-700 border border-emerald-200'
     }
   }
@@ -70,7 +70,7 @@ export default function DashboardOrders() {
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D70018]"></div>
           <span className="ml-3 text-gray-600 font-medium">
-            English content normalized from the original source text.
+            ??n h?ng
           </span>
         </div>
       </div>
@@ -85,17 +85,17 @@ export default function DashboardOrders() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#D70018]/10 to-[#FF6B35]/10 rounded-full blur-xl"></div>
             <Image
               src="/images/client/profile/logo mini.png"
-              alt="English content normalized from the original source text."
+              alt="??n h?ng"
               width={120}
               height={120}
               className="mx-auto relative z-10"
             />
           </div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">
-            English content normalized from the original source text.
+            ??n h?ng
           </h3>
           <p className="text-gray-600 mb-6 text-sm max-w-sm">
-            English content normalized from the original source text.
+            ??n h?ng
           </p>
           <Link
             href="/"
@@ -109,7 +109,7 @@ export default function DashboardOrders() {
                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
               />
             </svg>
-            English content normalized from the original source text.
+            ??n h?ng
           </Link>
         </div>
       </div>
@@ -122,16 +122,16 @@ export default function DashboardOrders() {
 
   return (
     <div className="bg-white rounded-xl border border-gray-100 p-3 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-200 w-full">
-      {/* Header */}
+      {}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-3">
         <h2 className="text-lg sm:text-xl font-bold text-gray-800">
-          English content normalized from the original source text.
+          ??n h?ng
         </h2>
         <Link
           href="/user/orders"
           className="inline-flex items-center text-[#D70018] font-semibold hover:text-[#B8001A] transition-colors duration-200 group self-start sm:self-auto"
         >
-          <span className="text-sm sm:text-base">English content normalized from the original source text.</span>
+          <span className="text-sm sm:text-base">??n h?ng</span>
           <svg
             className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
             fill="none"
@@ -143,7 +143,7 @@ export default function DashboardOrders() {
         </Link>
       </div>
 
-      {/* Orders List */}
+      {}
       <div className="space-y-3 sm:space-y-4">
         {orders.map((order) =>
           order.items.map((item: OrderItem) => {
@@ -155,14 +155,14 @@ export default function DashboardOrders() {
                 className="group border border-gray-200 rounded-lg p-3 sm:p-4 bg-white hover:border-[#D70018]/30 hover:shadow-md transition-all duration-300 cursor-pointer"
                 onClick={() => handleViewDetail(order.id, item.productId)}
               >
-                {/* Mobile Layout */}
+                {}
                 <div className="block sm:hidden">
-                  {/* Header Row */}
+                  {}
                   <div className="flex items-start justify-between mb-3 gap-2">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xs text-gray-500">
-                          English content normalized from the original source text.
+                          ??n h?ng
                         </span>
                         <span className="text-xs font-bold px-2 py-0.5 rounded">#{order.id}</span>
                       </div>
@@ -181,12 +181,12 @@ export default function DashboardOrders() {
                     </span>
                   </div>
 
-                  {/* Product Row */}
+                  {}
                   <div className="flex gap-3">
                     <div className="flex-shrink-0">
                       <Image
                         src={item.image || '/static/no-image.png'}
-                        alt={item.productName || 'English content normalized from the original source text.'}
+                        alt={item.productName || '??n h?ng'}
                         width={60}
                         height={60}
                         className="rounded-lg object-cover w-[60px] h-[60px] border border-gray-100"
@@ -200,13 +200,13 @@ export default function DashboardOrders() {
 
                       {item.skuValue && (
                         <p className="text-xs text-gray-500 mb-2 bg-gray-50 px-2 py-1 rounded inline-block">
-                          English content normalized from the original source text. {item.skuValue}
+                          ??n h?ng {item.skuValue}
                         </p>
                       )}
 
                       <div className="flex items-center justify-between">
                         <div className="text-sm font-bold text-[#D70018]">
-                          {totalAmount.toLocaleString()}English content normalized from the original source text.
+                          {totalAmount.toLocaleString()}??n h?ng
                         </div>
                         <div className="text-xs text-gray-500">SL: {item.quantity}</div>
                       </div>
@@ -214,13 +214,13 @@ export default function DashboardOrders() {
                   </div>
                 </div>
 
-                {/* Desktop Layout */}
+                {}
                 <div className="hidden sm:block">
-                  {/* Header Row */}
+                  {}
                   <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center gap-4">
                       <div className="text-sm text-gray-600">
-                        English content normalized from the original source text.{' '}
+                        ??n h?ng{' '}
                         <span className="font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded-md">#{order.id}</span>
                       </div>
                       <div className="flex items-center gap-2">
@@ -244,13 +244,13 @@ export default function DashboardOrders() {
                     </span>
                   </div>
 
-                  {/* Product Info Row */}
+                  {}
                   <div className="flex justify-between items-center gap-4">
                     <div className="flex gap-3 items-center flex-1 min-w-0">
                       <div className="relative group-hover:scale-105 transition-transform duration-200 flex-shrink-0">
                         <Image
                           src={item.image || '/static/no-image.png'}
-                          alt={item.productName || 'English content normalized from the original source text.'}
+                          alt={item.productName || '??n h?ng'}
                           width={60}
                           height={60}
                           className="rounded-lg object-cover w-[60px] h-[60px] shadow-sm border border-gray-100"
@@ -265,7 +265,7 @@ export default function DashboardOrders() {
                         {item.skuValue && (
                           <p className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-md inline-block">
                             <span className="font-medium">
-                              English content normalized from the original source text.
+                              ??n h?ng
                             </span>{' '}
                             {item.skuValue}
                           </p>
@@ -276,17 +276,17 @@ export default function DashboardOrders() {
                     <div className="flex flex-col items-end gap-2 flex-shrink-0">
                       <div className="text-right">
                         <p className="text-xs text-gray-500 mb-1">
-                          English content normalized from the original source text.
+                          ??n h?ng
                         </p>
                         <p className="text-base font-bold text-[#D70018]">
-                          {totalAmount.toLocaleString()}English content normalized from the original source text.
+                          {totalAmount.toLocaleString()}??n h?ng
                         </p>
                       </div>
                       <div className="inline-flex items-center text-sm text-[#D70018] font-semibold hover:text-[#B8001A] transition-colors duration-200 group/link">
                         <span className="hidden sm:inline">
-                          English content normalized from the original source text.
+                          ??n h?ng
                         </span>
-                        <span className="sm:hidden">English content normalized from the original source text.</span>
+                        <span className="sm:hidden">??n h?ng</span>
                         <svg
                           className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-200"
                           fill="none"

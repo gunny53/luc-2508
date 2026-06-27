@@ -85,9 +85,9 @@ export default function ProductInfo({ product }: { product: Product }) {
     const matchingSku = findMatchingSku(selectedVariants, product.skus, variantGroups as VariantGroup[])
 
     if (matchingSku) {
-      console.log('English content normalized from the original source text.', matchingSku)
+      console.log('S?n ph?m', matchingSku)
     } else if (areAllVariantsSelected(selectedVariants)) {
-      console.log('English content normalized from the original source text.')
+      console.log('S?n ph?m')
     }
 
     setCurrentSku(matchingSku)
@@ -97,8 +97,8 @@ export default function ProductInfo({ product }: { product: Product }) {
 
   const category = product.categories[0]?.name ?? ''
   const brand = product.brand?.name ?? ''
-  const origin = product.origin ?? 'English content normalized from the original source text.'
-  const material = product.material ?? 'English content normalized from the original source text.'
+  const origin = product.origin ?? 'S?n ph?m'
+  const material = product.material ?? 'S?n ph?m'
 
   const isFlashSale = !!product.flashSale
   const flashSalePrice = product.flashSale?.price ?? 0
@@ -163,7 +163,7 @@ export default function ProductInfo({ product }: { product: Product }) {
           console.log('Added to cart with ID:', cartItemId)
           router.push(`/cart?selectItem=${cartItemId}`)
         } else {
-          console.warn('English content normalized from the original source text.')
+          console.warn('S?n ph?m')
           router.push('/cart')
         }
       } catch (error) {
@@ -200,21 +200,18 @@ export default function ProductInfo({ product }: { product: Product }) {
 
   return (
     <div className="w-full flex flex-col gap-4 text-[15px] leading-relaxed">
-      {}
       <h1 className="text-2xl font-medium text-gray-900">{product.name}</h1>
-      {}
       <div className="flex items-center gap-4 text-sm mt-1">
         <span className="flex items-center gap-1">
           <Truck className="w-4 h-4 text-green-600" />
-          <span className="text-black">English content normalized from the original source text.</span>
+          <span className="text-black">S?n ph?m</span>
         </span>
         <span className="flex items-center gap-1">
           <RefreshCcw className="w-4 h-4 text-blue-600" />
-          <span className="text-black">English content normalized from the original source text.</span>
+          <span className="text-black">S?n ph?m</span>
         </span>
       </div>
 
-      {}
       <div className="flex items-center w-full text-sm text-muted-foreground mb-1">
         <div className="flex items-center gap-1">
           <span className="font-medium text-black">{rating.toFixed(1)}</span>
@@ -222,22 +219,20 @@ export default function ProductInfo({ product }: { product: Product }) {
         </div>
         <span className="mx-2">|</span>
         <span>
-          <span className="text-black font-medium">{reviewCount}</span>English content normalized from the original
-          source text.
+          <span className="text-black font-medium">{reviewCount}</span>s?n ph?m
         </span>
         <span className="mx-2">|</span>
         <span>
-          English content normalized from the original source text.
+          S?n ph?m
           <span className="text-black font-medium">{sold.toLocaleString()}</span>
         </span>
         <div className="flex-1" />
         <Button variant="ghost" size="sm" className="text-grey-500 px-2 py-1 h-auto">
           <Flag className="w-4 h-4" />
-          English content normalized from the original source text.
+          S?n ph?m
         </Button>
       </div>
 
-      {}
       {isFlashSale ? (
         <div className="flex items-center gap-3 text-xl font-bold text-red-600">
           <Badge className="bg-red-600 text-white">FLASH SALE</Badge>₫{flashSalePrice.toLocaleString('vi-VN')}
@@ -246,7 +241,7 @@ export default function ProductInfo({ product }: { product: Product }) {
           </span>
           {flashSaleEnd && (
             <span className="text-xs text-orange-500 ml-2">
-              English content normalized from the original source text. {flashSaleEnd.toLocaleTimeString('vi-VN')}
+              S?n ph?m {flashSaleEnd.toLocaleTimeString('vi-VN')}
             </span>
           )}
         </div>
@@ -260,11 +255,11 @@ export default function ProductInfo({ product }: { product: Product }) {
         </div>
       )}
 
-      {/* Vouchers */}
-      {/* {vouchers.length > 0 && ( */}
+      {}
+      {}
       <div className="space-y-2">
         <div className="flex items-center gap-2 font-medium text-sm text-muted-foreground">
-          English content normalized from the original source text.
+          S?n ph?m
         </div>
         <div className="flex gap-2 flex-wrap">
           {vouchers.map((v) => (
@@ -275,9 +270,9 @@ export default function ProductInfo({ product }: { product: Product }) {
           ))}
         </div>
       </div>
-      {/* )} */}
+      {}
 
-      {/* Variants - Dynamic rendering based on API */}
+      {}
       {variantGroups.map((variantGroup) => (
         <div key={variantGroup.value} className="flex flex-wrap items-center gap-3">
           <span className="w-24 text-muted-foreground">{variantGroup.value}:</span>
@@ -328,10 +323,9 @@ export default function ProductInfo({ product }: { product: Product }) {
         </div>
       ))}
 
-      {}
       <div className="flex items-center gap-4">
         <span className="min-w-[90px] text-muted-foreground">
-          English content normalized from the original source text.
+          S?n ph?m
         </span>
         <div className="flex items-center border rounded">
           <Button
@@ -350,8 +344,8 @@ export default function ProductInfo({ product }: { product: Product }) {
             value={quantity}
             onChange={handleQuantityInput}
             disabled={!isVariantSelected || !currentSku?.stock}
-            aria-label="English content normalized from the original source text."
-            title="English content normalized from the original source text."
+            aria-label="S?n ph?m"
+            title="S?n ph?m"
             className="w-12 h-8 text-center outline-none border-x [appearance:textfield]\n            [&::-webkit-outer-spin-button]:appearance-none\n            [&::-webkit-inner-spin-button]:appearance-none"
           />
           <Button
@@ -368,7 +362,7 @@ export default function ProductInfo({ product }: { product: Product }) {
         </div>
         {isVariantSelected && (
           <span className="text-xs text-muted-foreground whitespace-nowrap">
-            English content normalized from the original source text.{' '}
+            S?n ph?m{' '}
             <span className="font-semibold">
               {currentSku ? currentSku.stock.toLocaleString() : totalStock.toLocaleString()}
             </span>
@@ -376,14 +370,11 @@ export default function ProductInfo({ product }: { product: Product }) {
         )}
       </div>
 
-      {}
       {isVariantSelected && currentSku && currentSku.stock === 0 && (
-        <div className="text-red-500 text-sm">English content normalized from the original source text.</div>
+        <div className="text-red-500 text-sm">S?n ph?m</div>
       )}
 
-      {}
       <div className="flex gap-3 pt-2 w-full">
-        {}
         <Button
           className="flex-1 h-12 rounded-xs border border-red-500 text-red-600 bg-red-50 hover:bg-red-100 hover:text-red-700 shadow-sm text-base font-medium flex items-center justify-center gap-2 transition-all duration-200"
           disabled={!isVariantSelected || !currentSku || currentSku.stock === 0 || isAddingToCart}
@@ -401,17 +392,17 @@ export default function ProductInfo({ product }: { product: Product }) {
                   ></path>
                 </svg>
               </span>
-              English content normalized from the original source text.
+              S?n ph?m
             </>
           ) : (
             <>
               <ShoppingCart className="w-5 h-5" />
-              English content normalized from the original source text.
+              S?n ph?m
             </>
           )}
         </Button>
 
-        {/* Mua ngay */}
+        {}
         <Button
           className="flex-1 h-12 rounded-xs bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-md text-base font-medium flex items-center justify-center gap-2 transition-all duration-200"
           disabled={!isVariantSelected || !currentSku || currentSku.stock === 0 || isBuyingNow}
@@ -429,7 +420,7 @@ export default function ProductInfo({ product }: { product: Product }) {
                   ></path>
                 </svg>
               </span>
-              English content normalized from the original source text.
+              S?n ph?m
             </>
           ) : (
             <>

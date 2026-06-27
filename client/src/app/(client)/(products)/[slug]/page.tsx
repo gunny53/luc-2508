@@ -23,13 +23,13 @@ function cleanCategoryName(slug: string): string {
 }
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  let title = 'English content normalized from the original source text.'
-  let description = 'English content normalized from the original source text.'
+  let title = 'S?n ph?m'
+  let description = 'S?n ph?m'
 
   if (isCategorySlug(slug)) {
     const categoryName = cleanCategoryName(slug)
-    title = `English content normalized from the original source text.${categoryName}English content normalized from the original source text.`
-    description = `English content normalized from the original source text.${categoryName.toLowerCase()}English content normalized from the original source text.`
+    title = `S?n ph?m${categoryName}S?n ph?m`
+    description = `S?n ph?m${categoryName.toLowerCase()}S?n ph?m`
   }
 
   return {

@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Discount Discount Module Sequence Overview: validate request and return the expected response
+note top : Discount Discount Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-English content normalized from the original source text.
+Discount Discount Module Sequence Overview: validate request and return the expected response
+Discount Discount Module Sequence Overview: validate request and return the expected response
 actor "Admin" as Admin
 participant "DiscountController" as DC
 participant "ManageDiscountController" as MDC
@@ -22,11 +22,11 @@ participant "AccessTokenGuard" as AG
 database "PostgreSQL" as DB
 
 == English Section ==
-Client -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> DC: English content normalized from the original source text.
+Client -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> DC: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 Client -> DC: GET /discounts/available?limit=20&cartItemIds=123,456&onlyShopDiscounts=true
@@ -34,7 +34,7 @@ DC -> DS: getAvailableDiscounts(query)
 DS -> DR: getAvailableDiscounts(params)
 DR -> DR: buildAvailableDiscountsWhereClause()
 note right
-English content normalized from the original source text.
+Discount Discount Module Sequence Overview: validate request and return the expected response
 • WHERE deletedAt IS NULL
 • WHERE discountStatus = 'ACTIVE'
 • WHERE startDate <= now <= endDate
@@ -43,104 +43,104 @@ English content normalized from the original source text.
 • Include relations (products, categories, brands)
 end note
 DR -> PS: calculateOrderInfoFromCartItems(cartItemIds)
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
+PS -> DB: Discount Discount Module Sequence Overview: validate request and return the expected response
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DB: Discount Discount Module Sequence Overview: validate request and return the expected response
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
 DR -> DR: filterAvailableDiscounts(discounts, cartItemIds)
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
 • Validate product/category/brand applicability
 • Filter theo cart items
 end note
-DR -> DS: English content normalized from the original source text.
-DS -> DC: English content normalized from the original source text.
-DC -> Client: English content normalized from the original source text.
+DR -> DS: Discount Discount Module Sequence Overview: validate request and return the expected response
+DS -> DC: Discount Discount Module Sequence Overview: validate request and return the expected response
+DC -> Client: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 Client -> DC: POST /discounts/validate-code + {code: "ABC123", cartItemIds: ["123", "456"]}
 DC -> DS: validateVoucherCode(body)
 DS -> DR: findByCode(code)
-DR -> PS: English content normalized from the original source text.
+DR -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
 PS -> DB: Query discount theo code
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> DS: English content normalized from the original source text.
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> DS: Discount Discount Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Discount Discount Module Sequence Overview: validate request and return the expected response
     DS -> DS: validateDiscountEligibility()
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Discount Discount Module Sequence Overview: validate request and return the expected response
+    • Discount Discount Module Sequence Overview: validate request and return the expected response
+    • Discount Discount Module Sequence Overview: validate request and return the expected response
+    • Discount Discount Module Sequence Overview: validate request and return the expected response
+    • Discount Discount Module Sequence Overview: validate request and return the expected response
+    • Discount Discount Module Sequence Overview: validate request and return the expected response
+    • Discount Discount Module Sequence Overview: validate request and return the expected response
     end note
 
     DS -> DS: calculateOrderTotalFromCartItems(cartItemIds)
-    DS -> PS: English content normalized from the original source text.
+    DS -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
     PS -> DB: Query cart items
-    DB -> PS: English content normalized from the original source text.
-    PS -> DS: English content normalized from the original source text.
+    DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+    PS -> DS: Discount Discount Module Sequence Overview: validate request and return the expected response
     DS -> DS: calculateDiscountAmount(discount, orderTotal)
     note right
-    English content normalized from the original source text.
+    Discount Discount Module Sequence Overview: validate request and return the expected response
     • PERCENTAGE: (orderTotal * value) / 100
     • FIX_AMOUNT: min(value, orderTotal)
     • Apply maxDiscountValue limit
     end note
-    DS -> DC: English content normalized from the original source text.
-    DC -> Client: English content normalized from the original source text.
+    DS -> DC: Discount Discount Module Sequence Overview: validate request and return the expected response
+    DC -> Client: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 else (No)
-    DS -> DC: English content normalized from the original source text.
-    DC -> Client: English content normalized from the original source text.
+    DS -> DC: Discount Discount Module Sequence Overview: validate request and return the expected response
+    DC -> Client: Discount Discount Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
-ShopOwner -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> MDC: English content normalized from the original source text.
+ShopOwner -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> AG: Discount Discount Module Sequence Overview: validate request and return the expected response
+AG -> MDC: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 ShopOwner -> MDC: POST /manage-discount/discounts + {name, code, value, startDate, endDate, ...}
 MDC -> MDS: create({data, user})
 MDS -> MDS: validateCreatePrivilege()
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
 • Auto-set shopId = userId cho Seller
 end note
-MDS -> DR: English content normalized from the original source text.
-DR -> PS: English content normalized from the original source text.
+MDS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
 PS -> DB: Query discount theo code
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> MDS: English content normalized from the original source text.
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Discount Discount Module Sequence Overview: validate request and return the expected response
     MDS -> DR: create({createdById, data})
-    DR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> DR: English content normalized from the original source text.
-    DR -> MDS: English content normalized from the original source text.
+    DR -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Discount Discount Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+    PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+    DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
     MDS -> IS: i18n.t('discount.discount.success.CREATE_SUCCESS')
-    IS -> MDS: English content normalized from the original source text.
-    MDS -> MDC: English content normalized from the original source text.
-    MDC -> ShopOwner: English content normalized from the original source text.
+    IS -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
+    MDS -> MDC: Discount Discount Module Sequence Overview: validate request and return the expected response
+    MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MDS -> MDC: Throw BadRequestException
-    MDC -> ShopOwner: English content normalized from the original source text.
+    MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 end
 
 ShopOwner -> MDC: PUT /manage-discount/discounts/:discountId + {name, code, value, ...}
@@ -148,101 +148,101 @@ MDC -> MDS: update({discountId, data, user})
 MDS -> DR: findById(discountId)
 DR -> PS: discount.findUnique()
 PS -> DB: Query discount theo ID
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> MDS: English content normalized from the original source text.
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
 MDS -> MDS: validatePrivilege()
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
 • createdById validation
 end note
 MDS -> DR: update({id, updatedById, data})
-DR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> MDS: English content normalized from the original source text.
+DR -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DB: Discount Discount Module Sequence Overview: validate request and return the expected response
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
 MDS -> IS: i18n.t('discount.discount.success.UPDATE_SUCCESS')
-IS -> MDS: English content normalized from the original source text.
-MDS -> MDC: English content normalized from the original source text.
-MDC -> ShopOwner: English content normalized from the original source text.
+IS -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDS -> MDC: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 ShopOwner -> MDC: DELETE /manage-discount/discounts/:discountId
 MDC -> MDS: delete({discountId, user})
 MDS -> DR: findById(discountId)
 DR -> PS: discount.findUnique()
 PS -> DB: Query discount theo ID
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> MDS: English content normalized from the original source text.
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
 MDS -> MDS: validatePrivilege()
 MDS -> DR: delete({id, deletedById})
 DR -> PS: discount.update() soft delete
 PS -> DB: UPDATE deletedAt field
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> MDS: English content normalized from the original source text.
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
 MDS -> IS: i18n.t('discount.discount.success.DELETE_SUCCESS')
-IS -> MDS: English content normalized from the original source text.
-MDS -> MDC: English content normalized from the original source text.
-MDC -> ShopOwner: English content normalized from the original source text.
+IS -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDS -> MDC: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 ShopOwner -> MDC: GET /manage-discount/discounts?page=1&limit=10&createdById=123
 MDC -> MDS: list({query, user})
 MDS -> MDS: validatePrivilege()
 MDS -> DR: list(query)
 DR -> DR: buildAdminListWhereClause(filters)
-DR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> DR: English content normalized from the original source text.
-DR -> MDS: English content normalized from the original source text.
+DR -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DB: Discount Discount Module Sequence Overview: validate request and return the expected response
+DB -> PS: Discount Discount Module Sequence Overview: validate request and return the expected response
+PS -> DR: Discount Discount Module Sequence Overview: validate request and return the expected response
+DR -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
 MDS -> IS: i18n.t('discount.discount.success.GET_SUCCESS')
-IS -> MDS: English content normalized from the original source text.
-MDS -> MDC: English content normalized from the original source text.
-MDC -> ShopOwner: English content normalized from the original source text.
+IS -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDS -> MDC: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
-English content normalized from the original source text.
+Discount Discount Module Sequence Overview: validate request and return the expected response
     DS -> DC: ValidationException
-    DC -> Client: English content normalized from the original source text.
+    DC -> Client: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MDS -> MDC: ForbiddenException
-    MDC -> ShopOwner: English content normalized from the original source text.
+    MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MDS -> MDC: NotFoundRecordException
-    MDC -> ShopOwner: English content normalized from the original source text.
+    MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MDS -> MDC: BadRequestException
-    MDC -> ShopOwner: English content normalized from the original source text.
+    MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 else (No)
     DR -> MDS: PrismaException
     MDS -> MDC: Database error
-    MDC -> ShopOwner: English content normalized from the original source text.
+    MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
 MDS -> IS: i18n.t('discount.discount.success.XXX')
-IS -> MDS: English content normalized from the original source text.
-MDS -> MDC: English content normalized from the original source text.
-MDC -> ShopOwner: English content normalized from the original source text.
+IS -> MDS: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDS -> MDC: Discount Discount Module Sequence Overview: validate request and return the expected response
+MDC -> ShopOwner: Discount Discount Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
 • Pagination cho admin management
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Discount Discount Module Sequence Overview: validate request and return the expected response
+• Discount Discount Module Sequence Overview: validate request and return the expected response
 end note
 
 @enduml

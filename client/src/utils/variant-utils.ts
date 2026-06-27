@@ -9,11 +9,7 @@ export interface Sku {
   variantValues: { optionName: string; value: string }[]
 }
 
-/**
- * Generates all possible combinations (Cartesian product) from a list of options.
- * @param options - An array of OptionData objects, each with a name and an array of values.
- * @returns An array of Sku objects, each representing a unique variant.
- */
+
 export const generateSKUs = (options: OptionData[]): Sku[] => {
   if (!options || options.length === 0 || options.some((opt) => !opt.values || opt.values.length === 0)) {
     return []
@@ -60,11 +56,7 @@ export const generateSKUs = (options: OptionData[]): Sku[] => {
   })
 }
 
-/**
- * Generates a URL-friendly and API-friendly variant name from its values.
- * @param variantValues - An array of variant value objects.
- * @returns A lowercase string with values joined by hyphens.
- */
+
 export const generateApiVariantName = (variantValues: { value: string }[]): string => {
   return variantValues
     .map((v) => v.value)

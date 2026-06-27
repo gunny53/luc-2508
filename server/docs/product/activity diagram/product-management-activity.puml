@@ -8,62 +8,62 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Product Product Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Product Product Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   note right
-  English content normalized from the original source text.
+  Product Product Management Activity: execute the validated workflow
   • WHERE deletedAt IS NULL
   • WHERE publishedAt <= now (public only)
   • Filter theo name, brandIds, categories
   • Filter theo price range
   • Include productTranslations theo language
   end note
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   note right
   Detail Includes:
   • productTranslations theo language
   • skus (active only)
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  • Product Product Management Activity: execute the validated workflow
+  • Product Product Management Activity: execute the validated workflow
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
+    :Product Product Management Activity: execute the validated workflow;
+    :Product Product Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   note right
   SKU Validation Logic:
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  • Product Product Management Activity: execute the validated workflow
+  • Product Product Management Activity: execute the validated workflow
   • Validate SKU values
   • Business rules validation
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
     :Connect categories;
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
     :Include all relations;
     :Trigger Elasticsearch sync job;
     note right
@@ -72,25 +72,25 @@ else (No)
     • Background job processing
     • Non-blocking operation
     end note
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Product Product Management Activity: execute the validated workflow
+    • Product Product Management Activity: execute the validated workflow
+    • Product Product Management Activity: execute the validated workflow
     • createdById validation
     end note
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
         :Handle SKU updates;
         note right
@@ -101,83 +101,83 @@ else (No)
         • Create new SKUs
         • Transaction-based updates
         end note
-        :English content normalized from the original source text;
+        :Product Product Management Activity: execute the validated workflow;
         :Update SKUs trong transaction;
         :Trigger Elasticsearch sync job;
-        :English content normalized from the original source text;
+        :Product Product Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
+        :Product Product Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
+      :Product Product Management Activity: execute the validated workflow;
+      :Product Product Management Activity: execute the validated workflow;
       :Soft delete related translations;
       :Soft delete related SKUs;
       :Trigger Elasticsearch sync job;
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Product Product Management Activity: execute the validated workflow;
+      :Product Product Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
+    :Product Product Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Product Product Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
+  :Product Product Management Activity: execute the validated workflow;
 
 else (No)
-  :English content normalized from the original source text;
+  :Product Product Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Product Product Management Activity: execute the validated workflow;
+:Product Product Management Activity: execute the validated workflow;
 
 stop
 

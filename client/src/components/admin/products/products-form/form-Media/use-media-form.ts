@@ -9,7 +9,7 @@ interface ImageObject {
   url: string
   file?: File
   progress: number
-  originalIndex?: number // Track original position for reordering
+  originalIndex?: number 
 }
 
 interface UseMediaFormProps {
@@ -22,7 +22,7 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
   )
 
   const prevUrlsRef = useRef<string[]>([])
-  const lastProcessedLengthRef = useRef<number>(0) // Track last processed uploadedUrls length
+  const lastProcessedLengthRef = useRef<number>(0) 
   useEffect(() => {
     const currentUrls = imageObjects.map((img) => img.url)
     const initialUrlsChanged = JSON.stringify(initialImageUrls) !== JSON.stringify(prevUrlsRef.current)
@@ -44,19 +44,19 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
 
   const presignHook = useUploadMediaPresign()
 
-  // Wrapper to maintain compatibility with old interface
+  
   const uploadedUrls = presignHook.uploadedUrls
   const isUploading = presignHook.isProcessing || presignHook.isUploading
   const overallProgress = presignHook.progress
 
-  // Enhanced handleAddFiles that automatically uploads after processing
+  
   const handleAddFiles = useCallback(
     async (files: File[]) => {
       try {
-        // Step 1: Process files (compress + get presigned URLs)
+        
         const result = await presignHook.handleAddFiles(files)
 
-        // Step 2: Auto upload to S3 if processing was successful
+        
         if (result && result.presignedData && result.presignedData.length > 0) {
           console.log(
             'Uploading with files:',
@@ -65,7 +65,7 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
             result.presignedData.length
           )
 
-          // Call with explicit data to avoid state timing issues
+          
           await presignHook.uploadToS3Multiple(result.processedFiles, result.presignedData)
         }
       } catch (error) {
@@ -75,17 +75,17 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
     [presignHook]
   )
 
-  // Keep uploadFiles for compatibility
+  
   const uploadFiles = handleAddFiles
 
-  // Keep handleRemoveFile for compatibility
+  
   const handleRemoveFile = presignHook.handleRemoveFile
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
   const [selectedImageIds, setSelectedImageIds] = useState<string[]>([])
-  const [isDragging, setIsDragging] = useState(false) // Track drag state
+  const [isDragging, setIsDragging] = useState(false) 
 
   useEffect(() => {
     setImageObjects((currentObjects) =>
@@ -93,11 +93,11 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
     )
   }, [overallProgress])
   useEffect(() => {
-    // Don't update IDs while dragging to avoid confusion
+    
     if (isDragging) return
 
     if (uploadedUrls.length > lastProcessedLengthRef.current) {
-      // Get only new URLs since last processing
+      
       const newUrls = uploadedUrls.slice(lastProcessedLengthRef.current)
 
       console.log('Processing new uploaded URLs:', newUrls)
@@ -108,39 +108,39 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
         )
         const uploadingObjects = currentObjects.filter((obj) => obj.file)
 
-        // Create updated objects for new URLs
+        
 
-        // Create a new array by updating existing uploading objects with new URLs
+        
         const updatedObjects = currentObjects.map((obj) => {
-          // If it's an uploading object, try to match it with a new URL
+          
           if (obj.file) {
             const uploadingIndex = uploadingObjects.indexOf(obj)
             if (uploadingIndex !== -1 && uploadingIndex < newUrls.length) {
-              // Update this uploading object with the final URL and CHANGE ID to final URL
+              
               console.log(`Updating object: ${obj.id} with URL: ${newUrls[uploadingIndex]}`)
               return {
-                id: newUrls[uploadingIndex], // Change ID to final URL (like original system)
-                url: newUrls[uploadingIndex], // Final URL
+                id: newUrls[uploadingIndex], 
+                url: newUrls[uploadingIndex], 
                 progress: 100,
-                file: undefined // Remove file reference
+                file: undefined 
               }
             }
           }
-          // Keep non-uploading objects as-is
+          
           return obj
         })
 
-        // Add any remaining new URLs that couldn't be matched (fallback)
+        
         const unmatchedUrls = newUrls.slice(uploadingObjects.length)
         unmatchedUrls.forEach((url) => {
           updatedObjects.push({
-            id: url, // Use URL as ID like original
+            id: url, 
             url: url,
             progress: 100
           })
         })
 
-        // Update last processed length
+        
         lastProcessedLengthRef.current = uploadedUrls.length
 
         console.log(
@@ -157,7 +157,7 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
     async (files: File[]) => {
       const availableSlots = 12 - imageObjects.length
       if (availableSlots <= 0) {
-        toast.warning('English content normalized from the original source text.')
+        toast.warning('S?n ph?m')
         return
       }
 
@@ -165,7 +165,7 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
       if (filesToProcess.length === 0) return
 
       const newImageObjects: ImageObject[] = filesToProcess.map((file) => ({
-        id: `uploading-${file.name}-${Date.now()}`, // Simple ID like original
+        id: `uploading-${file.name}-${Date.now()}`, 
         url: URL.createObjectURL(file),
         file: file,
         progress: 0
@@ -209,7 +209,7 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
       .filter((img) => selectedImageIds.includes(img.id) && img.file)
       .map((img) => img.file!)
 
-    // Remove from presign hook state
+    
     uploadingFilesToRemove.forEach((file) => handleRemoveFile(file.name))
 
     setImageObjects((prev) => prev.filter((img) => !selectedImageIds.includes(img.id)))
@@ -238,23 +238,23 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
     (id: string) => {
       const imageToRemove = imageObjects.find((img) => img.id === id)
 
-      // Remove from local UI state
+      
       setImageObjects((prev) => prev.filter((img) => img.id !== id))
 
-      // If it was an uploading file, call handleRemoveFile with its name
+      
       if (imageToRemove && imageToRemove.file) {
         handleRemoveFile(imageToRemove.file.name)
       }
-      // Note: For already uploaded files (not in the 'files' state of useUploadMedia anymore),
-      // removing them from the UI is enough. If server-side deletion is needed,
-      // a separate mechanism would be required here.
+      
+      
+      
     },
     [imageObjects, handleRemoveFile]
   )
 
   const handleDragEnd = useCallback((event: DragEndEvent) => {
     const { active, over } = event
-    setIsDragging(false) // End drag state
+    setIsDragging(false) 
 
     if (over && active.id !== over.id) {
       setImageObjects((items) => {

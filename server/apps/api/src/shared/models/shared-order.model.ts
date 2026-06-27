@@ -62,7 +62,7 @@ export const DiscountSnapshotSchema = z.object({
   voucherType: z.nativeEnum(VoucherType),
   displayType: z.nativeEnum(DisplayType),
   discountApplyType: z.nativeEnum(DiscountApplyType),
-  targetInfo: z.any().nullable(), // { productIds: string[], categoryIds: string[], brandIds: string[] }
+  targetInfo: z.any().nullable(), 
   discountId: z.string().nullable(),
   orderId: z.string().nullable(),
   createdAt: z.union([z.string(), z.date()]),

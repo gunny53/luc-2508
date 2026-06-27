@@ -31,7 +31,7 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
 
   const handleRegenerateClick = () => {
     if (is2FAEnabled) {
-      setCode('') // Reset code input
+      setCode('') 
       setShowRegenerateConfirm(true)
     } else {
       showToast(t('admin.profileSettings.2fa.enable2FAFirst'), 'info')
@@ -44,8 +44,8 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
       setLoading(true)
       const response = await authService.regenerateRecoveryCodes({ code })
       setRecoveryCodes(response.data.recoveryCodes || [])
-      setShowRegenerateConfirm(false) // Close confirmation modal
-      setShowRecoveryCodesDialog(true) // Open results modal
+      setShowRegenerateConfirm(false) 
+      setShowRecoveryCodesDialog(true) 
       showToast(response.message, 'success')
     } catch (error: any) {
       console.error('Error regenerating recovery codes:', error)
@@ -59,16 +59,16 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
     try {
       setLoading(true)
       if (!is2FAEnabled) {
-        // Setup 2FA
+        
         const response = await authService.setup2fa()
 
-        // Handle new response format with qrCode and secret
+        
         setQrCodeImage(response.data?.qrCode || '')
         setSecret(response.data?.secret || '')
         setShowQRDialog(true)
         showToast(t('admin.profileSettings.2fa.scanQRFirst'), 'info')
       } else {
-        // Disable 2FA
+        
         const response = await authService.disable2fa({ method: 'totp', code: Code })
         setIs2FAEnabled(false)
         fetchProfile()
@@ -113,7 +113,7 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
         })
         .catch((error) => {
           console.error('Error copying recovery codes:', error)
-          showToast('English content normalized from the original source text.', 'error')
+          showToast('ECSite', 'error')
         })
     }
   }
@@ -133,7 +133,7 @@ export function usePasswordSecurity({ isEnabled }: { isEnabled: boolean }) {
         URL.revokeObjectURL(url)
       }, 100)
 
-      showToast('English content normalized from the original source text.', 'success')
+      showToast('ECSite', 'success')
     }
   }
 

@@ -29,7 +29,7 @@ export class DiscountService {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'English content normalized from the original source text.'
+          error: 'Voucher code does not exist.'
         }
       }
     }
@@ -38,7 +38,7 @@ export class DiscountService {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'English content normalized from the original source text.'
+          error: 'Voucher is not active.'
         }
       }
     }
@@ -48,7 +48,7 @@ export class DiscountService {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'English content normalized from the original source text.'
+          error: 'Voucher is outside its valid date range.'
         }
       }
     }
@@ -57,7 +57,7 @@ export class DiscountService {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: 'English content normalized from the original source text.'
+          error: 'Voucher usage limit has been reached.'
         }
       }
     }
@@ -67,7 +67,7 @@ export class DiscountService {
         message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
         data: {
           isValid: false,
-          error: `English content normalized from the original source text.${discount.minOrderValue.toLocaleString('vi-VN')}English content normalized from the original source text.`
+          error: `Minimum order value is ${discount.minOrderValue.toLocaleString('vi-VN')} VND.`
         }
       }
     }
@@ -88,7 +88,7 @@ export class DiscountService {
           message: 'discount.voucher.success.VALIDATE_VOUCHER_SUCCESS',
           data: {
             isValid: false,
-            error: 'English content normalized from the original source text.'
+            error: 'Voucher cannot be applied to the selected cart items.'
           }
         }
       }
@@ -181,12 +181,9 @@ export class DiscountService {
 
       return percentageAmount
     } else {
-      // FIX_AMOUNT
       return Math.min(discount.value, orderTotal)
     }
   }
-
-  // Legacy methods for backward compatibility
   async list(query: any) {
     return this.getAvailableDiscounts(query)
   }

@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Discount Manage Discount Delete Sequence: validate request and return the expected response
 
 actor "Seller/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MDC: English content normalized from the original source text.
+AG --> MDC: Discount Manage Discount Delete Sequence: validate request and return the expected response
 activate MDC
 
 MDC -> MDS: delete({ discountId, user })

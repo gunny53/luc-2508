@@ -27,12 +27,12 @@ export function createSkuValueFromSelectedVariants(
   }
   const colorVariant =
     selectedVariants['Color'] ||
-    selectedVariants['English content normalized from the original source text.'] ||
-    selectedVariants['English content normalized from the original source text.']
+    selectedVariants['S?n ph?m'] ||
+    selectedVariants['S?n ph?m']
   const sizeVariant =
     selectedVariants['Size'] ||
-    selectedVariants['English content normalized from the original source text.'] ||
-    selectedVariants['English content normalized from the original source text.']
+    selectedVariants['S?n ph?m'] ||
+    selectedVariants['S?n ph?m']
 
   if (colorVariant && sizeVariant) {
     return `${colorVariant}-${sizeVariant}`
@@ -60,7 +60,7 @@ export function findMatchingSku(
     return null
   }
 
-  // Normalize the sku.value from the API by removing spaces around the hyphen for a reliable comparison.
+  
   return skus.find((sku) => sku.value.replace(/\s*-\s*/g, '-') === skuValue) || null
 }
 
@@ -100,14 +100,14 @@ export function getCurrentStock(
 
 export function getStockMessage(stock: number): ReactNode {
   if (stock <= 0) {
-    return <span className="text-red-500">English content normalized from the original source text.</span>
+    return <span className="text-red-500">S?n ph?m</span>
   }
 
   if (stock <= 5) {
-    return <span className="text-orange-500">English content normalized from the original source text. {stock})</span>
+    return <span className="text-orange-500">S?n ph?m {stock})</span>
   }
 
-  return <span>English content normalized from the original source text. {stock}</span>
+  return <span>S?n ph?m {stock}</span>
 }
 
 export function areAllVariantsSelected(selectedVariants: SelectedVariants): boolean {
@@ -133,11 +133,11 @@ export async function handleAddToCart(
 ): Promise<string | false> {
   const selectedSku = findMatchingSku(selectedVariants, skus, variantGroups)
   if (!selectedSku) {
-    console.error('English content normalized from the original source text.')
+    console.error('S?n ph?m')
     return false
   }
   if (selectedSku.stock <= 0) {
-    console.error('English content normalized from the original source text.')
+    console.error('S?n ph?m')
     return false
   }
   const safeQuantity = Math.min(quantity, selectedSku.stock)
@@ -150,10 +150,10 @@ export async function handleAddToCart(
       true
     )
 
-    // Return cart item ID if available, otherwise false
+    
     return typeof result === 'string' ? result : false
   } catch (error) {
-    console.error('English content normalized from the original source text.', error)
+    console.error('S?n ph?m', error)
     return false
   }
 }

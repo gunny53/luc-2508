@@ -38,12 +38,12 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
         </div>
         {voucher.description && <p className="text-xs text-gray-600">{voucher.description}</p>}
 
-        {/* Discount Value Display */}
+        {}
         <div className="mb-2">
           <span className="inline-block px-2 py-1 bg-red-100 text-red-600 text-xs font-semibold rounded">
             {voucher.discountType === 'PERCENTAGE'
-              ? `English content normalized from the original source text.${voucher.value}%${voucher.maxDiscountValue ? ` English content normalized from the original source text.{voucher.maxDiscountValue.toLocaleString('vi-VN')}₫)` : ''}`
-              : `English content normalized from the original source text.${voucher.value.toLocaleString('vi-VN')}₫`}
+              ? `M? gi?m gi?${voucher.value}%${voucher.maxDiscountValue ? ` M? gi?m gi?{voucher.maxDiscountValue.toLocaleString('vi-VN')}₫)` : ''}`
+              : `M? gi?m gi?${voucher.value.toLocaleString('vi-VN')}₫`}
           </span>
         </div>
 
@@ -54,7 +54,7 @@ const VoucherCard = ({ voucher, onSelect, isSelected }: VoucherCardProps) => {
           </span>
           {voucher.minOrderValue && (
             <span className="text-gray-500">
-              English content normalized from the original source text.{' '}
+              M? gi?m gi?{' '}
               <span className="font-medium text-gray-700">{voucher.minOrderValue.toLocaleString('vi-VN')}₫</span>
             </span>
           )}
@@ -88,7 +88,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
         setError(null)
         try {
           if (cartItemIds.length === 0) {
-            setError('English content normalized from the original source text.')
+            setError('M? gi?m gi?')
             setVouchers([])
             return
           }
@@ -100,7 +100,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
           const response = await discountService.getGuestDiscountList(params)
           setVouchers(response.data || [])
         } catch (err) {
-          setError('English content normalized from the original source text.')
+          setError('M? gi?m gi?')
           console.error(err)
         } finally {
           setLoading(false)
@@ -112,21 +112,21 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
 
   const handleValidateVoucher = async (code: string) => {
     if (!code) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       return
     }
 
     setIsValidating(true)
     try {
       if (cartItemIds.length === 0) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('M? gi?m gi?')
         return
       }
 
       const response = await discountService.validate({ code, cartItemIds })
 
       if (response.data.isValid && response.data.discount && response.data.discountAmount !== undefined) {
-        toast.success('English content normalized from the original source text.')
+        toast.success('M? gi?m gi?')
         const appliedVoucher: AppliedVoucherInfo = {
           code: response.data.discount.code,
           discount: response.data.discount,
@@ -136,11 +136,11 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
         onApplyVoucher(appliedVoucher)
         onClose()
       } else {
-        toast.error(response.data.message || 'English content normalized from the original source text.')
+        toast.error(response.data.message || 'M? gi?m gi?')
         dispatch(applyPlatformVoucher(null))
       }
     } catch (err) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('M? gi?m gi?')
       console.error(err)
     } finally {
       setIsValidating(false)
@@ -157,7 +157,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
       return (
         <div className="text-center py-10 flex flex-col items-center justify-center h-full">
           <Loader2 className="w-8 h-8 animate-spin text-blue-500 mb-2" />
-          <p className="text-gray-500">English content normalized from the original source text.</p>
+          <p className="text-gray-500">M? gi?m gi?</p>
         </div>
       )
     }
@@ -175,7 +175,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
       return (
         <div className="text-center py-10 flex flex-col items-center justify-center h-full">
           <Ticket className="w-8 h-8 text-gray-400 mb-2" />
-          <p className="text-gray-500">English content normalized from the original source text.</p>
+          <p className="text-gray-500">M? gi?m gi?</p>
         </div>
       )
     }
@@ -196,7 +196,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
         <DialogHeader className="px-6 pt-6 pb-2 border-b">
           <DialogTitle className="flex items-center gap-2 text-lg font-semibold">
             <Ticket className="w-5 h-5 text-red-500" />
-            <span>English content normalized from the original source text.</span>
+            <span>M? gi?m gi?</span>
           </DialogTitle>
         </DialogHeader>
 
@@ -204,7 +204,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
           <div className="relative flex-1">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <Input
-              placeholder="English content normalized from the original source text."
+              placeholder="M? gi?m gi?"
               value={voucherCode}
               onChange={(e) => setVoucherCode(e.target.value)}
               className="pl-9"
@@ -219,7 +219,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
             {isValidating ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              'English content normalized from the original source text.'
+              'M? gi?m gi?'
             )}
           </Button>
         </div>
@@ -228,7 +228,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
 
         <DialogFooter className="gap-2 sm:gap-2 p-4 border-t">
           <Button variant="outline" onClick={onClose} className="w-full sm:w-auto">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </Button>
           <Button
             onClick={() => handleValidateVoucher(selectedVoucher!.code)}
@@ -238,7 +238,7 @@ export function PlatformVoucherModal({ isOpen, onClose, onApplyVoucher }: Platfo
             {isValidating ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              'English content normalized from the original source text.'
+              'M? gi?m gi?'
             )}
           </Button>
         </DialogFooter>
@@ -253,13 +253,13 @@ export function PlatformVoucherButton() {
   return (
     <>
       <button onClick={() => setIsModalOpen(true)} className="text-blue-600 hover:underline text-sm font-medium">
-        English content normalized from the original source text.
+        M? gi?m gi?
       </button>
 
       <PlatformVoucherModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onApplyVoucher={() => {}} // Dummy function to satisfy prop requirement
+        onApplyVoucher={() => {}} 
       />
     </>
   )

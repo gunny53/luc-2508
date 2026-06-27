@@ -97,7 +97,6 @@ export function ChangePasswordModal({ open, onOpenChange, name }: ChangePassword
                 })}
                 className="space-y-4"
               >
-                {/* Current Password */}
                 <FormField
                   control={form.control}
                   name="password"
@@ -138,7 +137,6 @@ export function ChangePasswordModal({ open, onOpenChange, name }: ChangePassword
                   )}
                 />
 
-                {/* New Password */}
                 <FormField
                   control={form.control}
                   name="newPassword"
@@ -173,7 +171,6 @@ export function ChangePasswordModal({ open, onOpenChange, name }: ChangePassword
                   )}
                 />
 
-                {/* Confirm Password */}
                 <FormField
                   control={form.control}
                   name="confirmNewPassword"
@@ -209,7 +206,6 @@ export function ChangePasswordModal({ open, onOpenChange, name }: ChangePassword
                   )}
                 />
 
-                {/* Revoke other sessions */}
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="revokeOtherSessions"

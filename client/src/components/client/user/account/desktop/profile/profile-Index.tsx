@@ -19,7 +19,7 @@ export default function ProfilePage() {
           name={userData?.name ?? ''}
           email={userData?.email ?? ''}
           phone={userData?.phoneNumber ?? ''}
-          // birthday={userData?.dob ?? ""}
+          
           avatar={userData?.avatar ?? ''}
           totalOrders={userData?.statistics?.totalOrders ?? 0}
           totalSpent={userData?.statistics?.totalSpent ?? 0}

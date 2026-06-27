@@ -1,4 +1,4 @@
-// src/components/client/layout/header/header-Main.tsx
+
 'use client'
 
 import { Header as DesktopHeader } from './desktop/desktop-index'
@@ -23,7 +23,7 @@ export function Header() {
     return () => clearTimeout(timer)
   }, [])
 
-  // Hydration mismatch prevention
+  
   if (!isMounted) {
     return (
       <div className="fixed top-0 left-0 right-0 z-50 h-[60px] bg-gradient-to-r from-red-700 via-red-600 to-red-700" />

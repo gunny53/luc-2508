@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Product Manage Product List Sequence: validate request and return the expected response
 
 actor "ShopOwner/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MPC: English content normalized from the original source text.
+AG --> MPC: Product Manage Product List Sequence: validate request and return the expected response
 activate MPC
 
 MPC -> MPS: list({ query, user })
@@ -24,7 +24,7 @@ activate MPS
 
 MPS -> MPS: validatePrivilege(userIdRequest=user.userId,\n roleNameRequest=user.roleName,\n createdById=query.createdById)
 
-English content normalized from the original source text.
+Product Manage Product List Sequence: validate request and return the expected response
   MPS -> MPS: throw ForbiddenException
   MPS --> MPC: 403 Forbidden
   MPC --> U: 403 Forbidden
@@ -42,7 +42,7 @@ note right of PR
 • isPublic:
   - true: where.publishedAt <= now
   - false: where.publishedAt is null OR > now
-• English content normalized from the original source text
+• Product Manage Product List Sequence: validate request and return the expected response
 • include.productTranslations theo languageId
 end note
 

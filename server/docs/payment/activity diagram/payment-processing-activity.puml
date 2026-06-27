@@ -8,111 +8,111 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Payment Payment Processing Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Payment Payment Processing Activity: execute the validated workflow;
 
-:English content normalized from the original source text;
+:Payment Payment Processing Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
   note right
-  English content normalized from the original source text.
-  • English content normalized from the original source text
+  Payment Payment Processing Activity: execute the validated workflow
+  • Payment Payment Processing Activity: execute the validated workflow
   • orderInfoWithPrefix = PREFIX_PAYMENT_CODE + paymentId
   • orderIdWithPrefix = PREFIX_PAYMENT_CODE + paymentId
   • vnp_Amount, vnp_OrderInfo, vnp_TxnRef
   • vnp_IpAddr, vnp_ReturnUrl, vnp_Locale
   • vnp_CurrCode, vnp_OrderType
   end note
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
 
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Payment Payment Processing Activity: execute the validated workflow;
+    :Payment Payment Processing Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
       note right
-      English content normalized from the original source text.
+      Payment Payment Processing Activity: execute the validated workflow
       • gateway: 'vnpay'
-      • English content normalized from the original source text
+      • Payment Payment Processing Activity: execute the validated workflow
       • amountOut: 0
       • code: vnp_TxnRef
       • transactionContent: vnp_OrderInfo
       • referenceNumber: vnp_TransactionNo
       • body: JSON.stringify(vnpayData)
       end note
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Payment Payment Processing Activity: execute the validated workflow;
+        :Payment Payment Processing Activity: execute the validated workflow;
+        :Payment Payment Processing Activity: execute the validated workflow;
+        :Payment Payment Processing Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
+        :Payment Payment Processing Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Payment Payment Processing Activity: execute the validated workflow;
   endif
 
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Payment Payment Processing Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
       if (condition?) then (Yes)
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Payment Payment Processing Activity: execute the validated workflow;
+          :Payment Payment Processing Activity: execute the validated workflow;
+          :Payment Payment Processing Activity: execute the validated workflow;
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Payment Payment Processing Activity: execute the validated workflow;
+          :Payment Payment Processing Activity: execute the validated workflow;
         endif
-        :English content normalized from the original source text;
+        :Payment Payment Processing Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
+        :Payment Payment Processing Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Payment Payment Processing Activity: execute the validated workflow;
   endif
 
 else (Sepay)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
 
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Payment Payment Processing Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
       note right
-      English content normalized from the original source text.
+      Payment Payment Processing Activity: execute the validated workflow
       • id: body.id
       • gateway: body.gateway
-      • English content normalized from the original source text
-      • English content normalized from the original source text
+      • Payment Payment Processing Activity: execute the validated workflow
+      • Payment Payment Processing Activity: execute the validated workflow
       • accountNumber: body.accountNumber
       • subAccount: body.subAccount
       • accumulated: body.accumulated
@@ -121,48 +121,48 @@ else (Sepay)
       • referenceNumber: body.referenceCode
       • body: body.description
       end note
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
+      :Payment Payment Processing Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Payment Payment Processing Activity: execute the validated workflow;
+        :Payment Payment Processing Activity: execute the validated workflow;
+        :Payment Payment Processing Activity: execute the validated workflow;
+        :Payment Payment Processing Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
+        :Payment Payment Processing Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Payment Payment Processing Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Payment Payment Processing Activity: execute the validated workflow;
   endif
 endif
 
-:English content normalized from the original source text;
+:Payment Payment Processing Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
   note right
   WebSocket Notification:
-  • English content normalized from the original source text
+  • Payment Payment Processing Activity: execute the validated workflow
   • Real-time notification
-  • English content normalized from the original source text
+  • Payment Payment Processing Activity: execute the validated workflow
   • Event: {status: 'success', gateway: 'vnpay/sepay', paymentId}
   end note
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
+  :Payment Payment Processing Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Payment Payment Processing Activity: execute the validated workflow;
 
 stop
 

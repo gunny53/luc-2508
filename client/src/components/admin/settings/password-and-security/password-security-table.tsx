@@ -41,21 +41,21 @@ export function PasswordSecurityTable() {
 
   const columns: SettingTableColumn[] = [
     {
-      label: 'English content normalized from the original source text.',
-      value: 'English content normalized from the original source text.',
+      label: 'ECSite',
+      value: 'ECSite',
       startIcon: <Lock />,
       endIcon: <ChevronRight />,
       onClick: () => setShowChangePassword(true)
     },
     {
-      label: 'English content normalized from the original source text.',
+      label: 'ECSite',
       value: (
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${user?.twoFactorEnabled ? 'bg-green-500' : 'bg-red-500'}`}></div>
           <span>
             {user?.twoFactorEnabled
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'ECSite'
+              : 'ECSite'}
           </span>
         </div>
       ),
@@ -64,17 +64,17 @@ export function PasswordSecurityTable() {
       onClick: handle2FAToggle
     },
     {
-      label: 'English content normalized from the original source text.',
-      value: 'English content normalized from the original source text.', // You might want to update this with actual count
+      label: 'ECSite',
+      value: 'ECSite', 
       startIcon: <Clock />,
       endIcon: <ChevronRight />,
       onClick: () => router.push('/admin/settings/session')
     },
     {
-      label: 'English content normalized from the original source text.',
+      label: 'ECSite',
       value: (
         <div className="flex items-center gap-2">
-          <span>English content normalized from the original source text.</span>
+          <span>ECSite</span>
         </div>
       ),
       startIcon: <KeyRound />,
@@ -86,8 +86,8 @@ export function PasswordSecurityTable() {
   return (
     <>
       <SettingTable
-        title="English content normalized from the original source text."
-        subtitle="English content normalized from the original source text."
+        title="ECSite"
+        subtitle="ECSite"
         columns={columns}
       />
       <ChangePasswordModal open={showChangePassword} onOpenChange={setShowChangePassword} />

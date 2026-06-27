@@ -6,7 +6,7 @@ export interface PermissionDetail {
   module: string
   path: string
   method: string
-  action?: string // METHOD - /path format for UI display
+  action?: string 
   createdById: string
   updatedById: string
   deletedById: string

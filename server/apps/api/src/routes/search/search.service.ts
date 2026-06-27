@@ -32,7 +32,7 @@ export class SearchService {
 
   @Cacheable({
     key: 'search:dictionary',
-    ttl: 1800, // 30 minutes
+    ttl: 1800, 
     scope: 'module',
     moduleName: 'SearchModule'
   })
@@ -73,7 +73,7 @@ export class SearchService {
       return dictionary
     } catch (error) {
       this.logger.warn('Elasticsearch dictionary aggregation failed:', error)
-      // Return empty dictionary instead of throwing
+      
       return {}
     }
   }
@@ -121,7 +121,7 @@ export class SearchService {
       }
     } catch (error) {
       this.logger.warn('Dictionary parsing failed, falling back to simple search:', error)
-      // Graceful fallback - return original query without parsing
+      
       return {
         q: rawQuery,
         options: []
@@ -131,11 +131,11 @@ export class SearchService {
 
   @Cacheable({
     key: 'search:products',
-    ttl: 900, // 15 minutes base TTL
+    ttl: 900, 
     scope: 'module',
     moduleName: 'SearchModule',
     keyGenerator: (query: SearchProductsQueryType) => {
-      // Create smart cache key - inline logic to avoid 'this' context issues
+      
       const hasComplexFilters = (filters?: any): boolean => {
         if (!filters) return false
         const filterCount = [
@@ -148,7 +148,7 @@ export class SearchService {
         return filterCount >= 2
       }
 
-      // Determine search type
+      
       let searchType = 'default'
       if (!query.q?.trim() && !hasComplexFilters(query.filters)) {
         searchType = 'browse'
@@ -158,7 +158,7 @@ export class SearchService {
         searchType = 'complex'
       }
 
-      // Generate compact hash
+      
       const searchData = {
         q: query.q?.trim().toLowerCase() || '',
         p: query.page || 1,
@@ -187,7 +187,7 @@ export class SearchService {
       return `${searchType}:${queryHash}`
     },
     condition: (result: SearchProductsResType) => {
-      // Only cache successful results with data
+      
       return result && result.data && result.data.length > 0
     }
   })
@@ -229,7 +229,7 @@ export class SearchService {
   }
 
   private getSearchType(query: SearchProductsQueryType): string {
-    // Browse all (no search query, minimal filters)
+    
     if (!query.q?.trim() && !this.hasComplexFilters(query.filters)) {
       return 'browse'
     }
@@ -243,9 +243,9 @@ export class SearchService {
     return 'default'
   }
 
-  /**
-   * 🔧 Check if search has complex filters
-   */
+  
+
+
   private hasComplexFilters(filters?: any): boolean {
     if (!filters) return false
 
@@ -257,12 +257,12 @@ export class SearchService {
       filters.attrs?.length > 0
     ].filter(Boolean).length
 
-    return filterCount >= 2 // 2+ filters = complex
+    return filterCount >= 2 
   }
 
-  /**
-   * 🔑 Generate compact hash for search parameters
-   */
+  
+
+
   private generateSearchHash(query: SearchProductsQueryType): string {
     const searchData = {
       q: query.q?.trim().toLowerCase() || '',
@@ -285,7 +285,7 @@ export class SearchService {
         : {}
     }
 
-    // Create compact hash using Buffer.from + base64
+    
     return Buffer.from(JSON.stringify(searchData)).toString('base64').replace(/[=+/]/g, '').substring(0, 16)
   }
 }

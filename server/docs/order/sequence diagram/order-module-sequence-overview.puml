@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
+note top : Order Order Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
 participant "OrderController" as OC
 participant "OrderService" as OS
 participant "OrderRepo" as OR
@@ -21,33 +21,33 @@ participant "BullMQ Queue" as BQ
 database "PostgreSQL" as DB
 
 == English Section ==
-User -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> OC: English content normalized from the original source text.
+User -> AG: Order Order Module Sequence Overview: validate request and return the expected response
+AG -> AG: Order Order Module Sequence Overview: validate request and return the expected response
+AG -> AG: Order Order Module Sequence Overview: validate request and return the expected response
+AG -> AG: Order Order Module Sequence Overview: validate request and return the expected response
+AG -> OC: Order Order Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 User -> OC: GET /orders?page=1&limit=10&status=PENDING_PAYMENT
 OC -> OS: list(user, query)
 OS -> OR: list(userId, query)
-OR -> PS: English content normalized from the original source text.
+OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
 note right
 Database Query Logic:
 • WHERE userId = user.userId
 • Filter theo status (optional)
 • Include order items
-• English content normalized from the original source text
+• Order Order Module Sequence Overview: validate request and return the expected response
 • ORDER BY createdAt DESC
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> OR: English content normalized from the original source text.
-OR -> OS: English content normalized from the original source text.
+PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
+OR -> OS: Order Order Module Sequence Overview: validate request and return the expected response
 OS -> IS: i18n.t('order.order.success.GET_SUCCESS')
-IS -> OS: English content normalized from the original source text.
-OS -> OC: English content normalized from the original source text.
-OC -> User: English content normalized from the original source text.
+IS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
+OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 User -> OC: POST /orders + {shopId, receiver, cartItemIds, discountCodes}
@@ -55,29 +55,29 @@ OC -> OS: create(user, body)
 OS -> OS: validateDiscountCodes()
 note right
 Discount Validation Logic:
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
-    OS -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> OS: English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
+    OS -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
     OS -> PS: discountSnapshot.groupBy() cho usage count
     PS -> DB: Query user usage count
-    DB -> PS: English content normalized from the original source text.
-    PS -> OS: English content normalized from the original source text.
+    DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
     OS -> OS: validateDiscountEligibility()
     note right
     Validation Steps:
-    • English content normalized from the original source text
+    • Order Order Module Sequence Overview: validate request and return the expected response
     • Validate startDate <= now <= endDate
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Order Order Module Sequence Overview: validate request and return the expected response
+    • Order Order Module Sequence Overview: validate request and return the expected response
     end note
 end
 
@@ -85,37 +85,37 @@ OS -> OR: create(userId, body)
 OR -> OR: validateCartItems()
 note right
 Cart Items Validation:
-• English content normalized from the original source text
+• Order Order Module Sequence Overview: validate request and return the expected response
 • Validate stock quantity
-• English content normalized from the original source text
+• Order Order Module Sequence Overview: validate request and return the expected response
 • Validate shop ownership
 end note
 
-OR -> RL: English content normalized from the original source text.
+OR -> RL: Order Order Module Sequence Overview: validate request and return the expected response
 note right
 Redis Lock Logic:
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
 • Prevent race conditions
 end note
-RL -> OR: English content normalized from the original source text.
+RL -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
-OR -> PS: English content normalized from the original source text.
+OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
 PS -> DB: BEGIN TRANSACTION
 
-OR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> OR: English content normalized from the original source text.
+OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
 OR -> OR: validateCartItems()
-English content normalized from the original source text.
-    OR -> PS: English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
+    OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
     PS -> DB: INSERT payment record
-    DB -> PS: English content normalized from the original source text.
-    PS -> OR: English content normalized from the original source text.
+    DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
-    English content normalized from the original source text.
+    Order Order Module Sequence Overview: validate request and return the expected response
         OR -> OR: calculateOrderTotal()
         OR -> OR: processDiscounts()
         note right
@@ -126,55 +126,55 @@ English content normalized from the original source text.
         • Update discount usage count
         end note
 
-        OR -> PS: English content normalized from the original source text.
-        PS -> DB: English content normalized from the original source text.
-        DB -> PS: English content normalized from the original source text.
-        PS -> OR: English content normalized from the original source text.
+        OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+        PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+        DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+        PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
-        OR -> PS: English content normalized from the original source text.
+        OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
         PS -> DB: INSERT discount snapshots
-        DB -> PS: English content normalized from the original source text.
-        PS -> OR: English content normalized from the original source text.
+        DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+        PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
     end
 
     OR -> PS: cartItem.deleteMany()
     PS -> DB: DELETE cart items
-    DB -> PS: English content normalized from the original source text.
-    PS -> OR: English content normalized from the original source text.
+    DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
     OR -> PS: SKU.update() decrement stock
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> OR: English content normalized from the original source text.
+    PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
     OR -> OP: addCancelPaymentJob(paymentId)
-    OP -> BQ: English content normalized from the original source text.
-    BQ -> OP: English content normalized from the original source text.
-    OP -> OR: English content normalized from the original source text.
+    OP -> BQ: Order Order Module Sequence Overview: validate request and return the expected response
+    BQ -> OP: Order Order Module Sequence Overview: validate request and return the expected response
+    OP -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 end
 
 PS -> DB: COMMIT TRANSACTION
 DB -> PS: Transaction committed
-PS -> OR: English content normalized from the original source text.
+PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
-OR -> RL: English content normalized from the original source text.
+OR -> RL: Order Order Module Sequence Overview: validate request and return the expected response
 RL -> OR: Locks released
-OR -> OS: English content normalized from the original source text.
+OR -> OS: Order Order Module Sequence Overview: validate request and return the expected response
 OS -> IS: i18n.t('order.order.success.CREATE_SUCCESS')
-IS -> OS: English content normalized from the original source text.
-OS -> OC: English content normalized from the original source text.
-OC -> User: English content normalized from the original source text.
+IS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
+OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 User -> OC: GET /orders/:orderId
 OC -> OS: detail(user, orderId)
 OS -> OR: detail(userId, orderId)
-OR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> OR: English content normalized from the original source text.
+OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
     OR -> OR: calculateOrderTotals()
     note right
     Total Calculation:
@@ -182,16 +182,16 @@ English content normalized from the original source text.
     • totalVoucherDiscount = sum(discount amounts)
     • totalPayment = totalItemCost - totalVoucherDiscount
     end note
-    OR -> OS: English content normalized from the original source text.
+    OR -> OS: Order Order Module Sequence Overview: validate request and return the expected response
     OS -> IS: i18n.t('order.order.success.GET_DETAIL_SUCCESS')
-    IS -> OS: English content normalized from the original source text.
-    OS -> OC: English content normalized from the original source text.
-    OC -> User: English content normalized from the original source text.
+    IS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
+    OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
     OR -> OS: Throw OrderNotFoundException
     OS -> OC: Throw exception
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
@@ -200,43 +200,43 @@ OC -> OS: cancel(user, orderId)
 OS -> OR: cancel(userId, orderId)
 OR -> PS: order.findUniqueOrThrow()
 PS -> DB: Query order theo ID
-DB -> PS: English content normalized from the original source text.
-PS -> OR: English content normalized from the original source text.
+DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
     OR -> OR: validateCancelEligibility()
     note right
     Cancel Validation:
-    • English content normalized from the original source text
+    • Order Order Module Sequence Overview: validate request and return the expected response
     • Validate user ownership
     • Check business rules
     end note
 
-    OR -> PS: English content normalized from the original source text.
+    OR -> PS: Order Order Module Sequence Overview: validate request and return the expected response
     PS -> DB: UPDATE order status
-    DB -> PS: English content normalized from the original source text.
-    PS -> OR: English content normalized from the original source text.
-    OR -> OS: English content normalized from the original source text.
+    DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+    PS -> OR: Order Order Module Sequence Overview: validate request and return the expected response
+    OR -> OS: Order Order Module Sequence Overview: validate request and return the expected response
     OS -> IS: i18n.t('order.order.success.CANCEL_SUCCESS')
-    IS -> OS: English content normalized from the original source text.
-    OS -> OC: English content normalized from the original source text.
-    OC -> User: English content normalized from the original source text.
+    IS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
+    OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
     OR -> OS: Throw CannotCancelOrderException
     OS -> OC: Throw exception
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
 User -> OC: POST /orders/calculate + {cartItemIds, discountCodes}
 OC -> OS: calculate(user, body)
-OS -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> OS: English content normalized from the original source text.
+OS -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> DB: Order Order Module Sequence Overview: validate request and return the expected response
+DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+PS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
     OS -> OS: calculateTotalPayment()
     OS -> OS: processDiscountCalculation()
     note right
@@ -247,43 +247,43 @@ English content normalized from the original source text.
     • Apply max discount limits
     end note
 
-    English content normalized from the original source text.
-        OS -> PS: English content normalized from the original source text.
+    Order Order Module Sequence Overview: validate request and return the expected response
+        OS -> PS: Order Order Module Sequence Overview: validate request and return the expected response
         PS -> DB: Query active discounts
-        DB -> PS: English content normalized from the original source text.
-        PS -> OS: English content normalized from the original source text.
+        DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+        PS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
 
         OS -> PS: discountSnapshot.groupBy() cho usage
         PS -> DB: Query user usage count
-        DB -> PS: English content normalized from the original source text.
-        PS -> OS: English content normalized from the original source text.
+        DB -> PS: Order Order Module Sequence Overview: validate request and return the expected response
+        PS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
 
         OS -> OS: validateAndCalculateDiscounts()
         OS -> OS: calculateFinalTotals()
     end
 
-    OS -> OC: English content normalized from the original source text.
-    OC -> User: English content normalized from the original source text.
+    OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
-    OS -> OC: English content normalized from the original source text.
-    OC -> User: English content normalized from the original source text.
+    OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
-English content normalized from the original source text.
+Order Order Module Sequence Overview: validate request and return the expected response
     OR -> OS: Throw NotFoundCartItemException
     OS -> OC: Throw exception
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
     OR -> OS: Throw OutOfStockSKUException
     OS -> OC: Throw exception
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
     OS -> OC: Throw BadRequestException
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
     PS -> DB: ROLLBACK TRANSACTION
@@ -291,30 +291,30 @@ else (No)
     PS -> OR: Throw PrismaException
     OR -> OS: Throw exception
     OS -> OC: Throw exception
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 else (No)
-    OC -> User: English content normalized from the original source text.
+    OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
 OS -> IS: i18n.t('order.order.success.XXX')
-IS -> OS: English content normalized from the original source text.
-OS -> OC: English content normalized from the original source text.
-OC -> User: English content normalized from the original source text.
+IS -> OS: Order Order Module Sequence Overview: validate request and return the expected response
+OS -> OC: Order Order Module Sequence Overview: validate request and return the expected response
+OC -> User: Order Order Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
 • BullMQ queue cho payment cancellation
 • Optimistic locking cho SKU stock updates
 • Comprehensive error handling
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
+• Order Order Module Sequence Overview: validate request and return the expected response
 end note
 
 @enduml

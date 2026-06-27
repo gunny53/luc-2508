@@ -22,7 +22,7 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
     defaultValues: { otp: '' }
   })
 
-  // Reset form when type changes
+  
   useEffect(() => {
     form.reset({ otp: '' })
   }, [type])
@@ -32,7 +32,7 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
       const firstPart = cleanValue.slice(0, 5)
       const secondPart = cleanValue.slice(5, 10)
       const processedValue = `${firstPart}-${secondPart}`
-      // console.log('Processed value:', processedValue);
+      
       form.setValue('otp', processedValue, { shouldValidate: true })
 
       if (cleanValue.length === 10) {
@@ -90,7 +90,6 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleVerifyCode)} className={cn('flex flex-col gap-6', className)} {...props}>
         <AnimatedForm>
-          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{renderTitle()}</h1>
@@ -98,7 +97,7 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
             </div>
           </AnimatedFormItem>
 
-          {/* Input OTP/Recovery */}
+          {}
           <AnimatedFormItem>
             <FormField
               control={form.control}
@@ -144,10 +143,8 @@ export function Verify2FAForm({ className, ...props }: React.ComponentPropsWitho
             />
           </AnimatedFormItem>
 
-          {}
           {renderSwitchMethod()}
 
-          {}
           {type === 'OTP' && (
             <AnimatedFormItem>
               <div className="text-center text-sm">

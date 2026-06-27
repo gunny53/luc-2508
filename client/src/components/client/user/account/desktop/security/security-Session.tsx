@@ -13,7 +13,6 @@ export function PasswordSecuritySession() {
 
   return (
     <div className="min-h-screen bg-white p-6">
-      {/* Header */}
       <div className="flex items-center gap-2 mb-4">
         <h2 className="text-lg font-semibold">{t('user.account.security.loggedInDevices')}</h2>
       </div>
@@ -22,7 +21,6 @@ export function PasswordSecuritySession() {
         {t('user.account.security.device')}
       </p>
 
-      {}
       <Accordion type="single" collapsible className="w-full">
         {devices.map((device, deviceIndex) => (
           <AccordionItem key={device.deviceId || deviceIndex} value={device.deviceId || `device-${deviceIndex}`}>
@@ -63,7 +61,7 @@ export function PasswordSecuritySession() {
                         <DropdownMenuContent align="end">
                           <DropdownMenuItem
                             onClick={() => {
-                              /* TODO: handle terminate session */
+                              
                             }}
                           >
                             {t('user.account.security.deleteSession')}

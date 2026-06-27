@@ -1,151 +1,151 @@
 # ECSITE — FRONTEND PROJECT DESCRIPTION (CV READY)
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-  English content normalized from the original source text.
+- T?i li?u k? thu?t ECSite
+  T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ---
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 - `app/`: App Router, route groups cho `(auth)`, `(client)`, `admin`
 - `components/`: component theo module (`client`, `admin`, `ui`)
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 - `providers/`: React Query provider, cart context, socket context...
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
 - `constants/`: route map, API constants, sidebar config, search data...
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-
----
-
-English content normalized from the original source text.
-
-English content normalized from the original source text.
-
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-
-English content normalized from the original source text.
-
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-
-English content normalized from the original source text.
-
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ---
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
+
+T?i li?u k? thu?t ECSite
+
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+
+T?i li?u k? thu?t ECSite
+
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+
+T?i li?u k? thu?t ECSite
+
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+
+---
+
+T?i li?u k? thu?t ECSite
 
 ### 4.1 Performance Optimization
 
-- English content normalized from the original source text
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
   - debounce search (500ms)
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-- English content normalized from the original source text
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 4.2 SEO & Metadata
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 4.3 Data Fetching & API Layer
 
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
   - `publicAxios`
   - `privateAxios`
   - `refreshAxios`
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
   - inject `x-csrf-token`
   - inject `Accept-Language`
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-- English content normalized from the original source text
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 4.4 i18n / Localization
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 4.5 Auth, Security & Authorization
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 4.6 UI/UX Engineering
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ---
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 - **Payment**: VNPay/Sepay + realtime payment events.
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ---
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-
----
-
-English content normalized from the original source text.
-
-English content normalized from the original source text.
-English content normalized from the original source text.
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ---
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
+
+T?i li?u k? thu?t ECSite
+T?i li?u k? thu?t ECSite
+
+---
+
+T?i li?u k? thu?t ECSite
 
 `Next.js` · `TypeScript` · `React Query` · `Redux Toolkit` · `App Router` · `SEO` · `Metadata` · `i18n` · `Axios Interceptors` · `RBAC` · `Socket.IO` · `Tailwind CSS` · `E-commerce Frontend`

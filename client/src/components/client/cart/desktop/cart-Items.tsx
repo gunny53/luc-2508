@@ -33,7 +33,7 @@ export default function CartItems({
   quantity,
   onQuantityChange
 }: CartItemsProps) {
-  // 1. Call all hooks at the top level
+  
   const { updateCartItem, isUpdating, updateItemQuantity, shopCarts } = useCart()
   const { productDetails, isLoading, error, fetchProductDetails } = useCartAction()
   const [isPopoverOpen, setIsPopoverOpen] = useState(false)
@@ -49,10 +49,10 @@ export default function CartItems({
   const [currentSku, setCurrentSku] = useState<Sku | null>(null)
 
   useEffect(() => {
-    // This effect synchronizes the popover's selected variants with the current item
-    // whenever the popover is opened or the underlying item data changes.
+    
+    
     if (isPopoverOpen && productDetails) {
-      // Re-implement the logic to get initial variants based on the current item's SKU
+      
       const initialVariants: SelectedVariants = {}
       const currentSkuValueParts = currentItem.sku.value.split('-').map((part: string) => part.trim())
       productDetails.variants.forEach((group, index) => {
@@ -62,13 +62,13 @@ export default function CartItems({
       })
       setSelectedVariants(initialVariants)
 
-      // Convert SkuDetail[] to Sku[] by mapping productId to a string to resolve type mismatch.
+      
       const compatibleSkus = productDetails.skus.map((sku) => ({
         ...sku,
         productId: String(sku.productId)
       }))
 
-      // Find the currently matching SKU based on the determined variants, with correct argument order
+      
       const matchingSku = findMatchingSku(initialVariants, compatibleSkus, productDetails.variants)
       setCurrentSku(matchingSku)
     }
@@ -76,14 +76,14 @@ export default function CartItems({
 
   useEffect(() => {
     if (productDetails) {
-      // Safely convert SkuDetail[] to Sku[] to match the utility function's requirement
+      
       const skusForMatching: Sku[] = productDetails.skus.map((s) => ({
         id: s.id,
         value: s.value,
         price: s.price,
         stock: s.stock,
-        image: s.image || '', // Ensure image is always a string
-        productId: String(s.productId) // Convert productId from number to string
+        image: s.image || '', 
+        productId: String(s.productId) 
       }))
 
       const matchingSku = findMatchingSku(selectedVariants, skusForMatching, productDetails.variants)
@@ -92,14 +92,14 @@ export default function CartItems({
   }, [selectedVariants, productDetails])
 
   const handleVariantSelect = (variantType: string, option: string) => {
-    // Create new variants object, allowing for deselection
+    
     const newSelectedVariants = {
       ...selectedVariants,
       [variantType]: selectedVariants[variantType] === option ? null : option
     }
     setSelectedVariants(newSelectedVariants)
 
-    // Immediately find the matching SKU for the new selection and update the state
+    
     if (productDetails) {
       const compatibleSkus = productDetails.skus.map((sku) => ({ ...sku, productId: String(sku.productId) }))
       const matchingSku = findMatchingSku(newSelectedVariants, compatibleSkus, productDetails.variants)
@@ -130,23 +130,23 @@ export default function CartItems({
     }
   }
 
-  // Use useEffect to call the update API when quantity changes
+  
   useEffect(() => {
-    // Avoid running on initial mount or if quantity hasn't changed from the prop value
+    
     if (quantity === currentItem.quantity) {
       return
     }
 
     const handler = setTimeout(() => {
-      // Always use the most up-to-date IDs from currentItem
+      
       updateItemQuantity(currentItem.id, currentItem.sku.id, quantity)
-    }, 500) // Debounce requests by 500ms
+    }, 500) 
 
-    // Cleanup function to cancel the timeout if quantity changes again before the timeout fires
+    
     return () => {
       clearTimeout(handler)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [quantity, currentItem.id, currentItem.sku.id])
 
   if (!currentItem || !currentItem.sku || !currentItem.sku.product) {
@@ -183,7 +183,7 @@ export default function CartItems({
                   fetchProductDetails(currentItem.sku.product.id)
                 }}
               >
-                English content normalized from the original source text. {currentItem.sku.value}{' '}
+                Gi? h?ng {currentItem.sku.value}{' '}
                 <ChevronDown className="w-4 h-4" />
               </button>
             </PopoverTrigger>
@@ -191,14 +191,14 @@ export default function CartItems({
               <div className="grid gap-4">
                 <div className="space-y-2">
                   <h4 className="font-medium leading-none">
-                    English content normalized from the original source text.
+                    Gi? h?ng
                   </h4>
                   <p className="text-sm text-muted-foreground">
-                    English content normalized from the original source text.
+                    Gi? h?ng
                   </p>
                 </div>
                 <Separator />
-                {isLoading && <p>English content normalized from the original source text.</p>}
+                {isLoading && <p>Gi? h?ng</p>}
                 {error && <p className="text-red-500">{error}</p>}
                 {productDetails && (
                   <div className="space-y-4">
@@ -215,7 +215,7 @@ export default function CartItems({
                                 key={option}
                                 onClick={() => handleVariantSelect(variant.value, option)}
                                 className={cn(
-                                  'relative px-3 py-1.5 border rounded-md text-sm transition-all', // Adjusted padding for smaller size
+                                  'relative px-3 py-1.5 border rounded-md text-sm transition-all', 
                                   'hover:border-primary hover:text-primary',
                                   isSelected
                                     ? 'border-primary text-primary bg-primary/5'
@@ -252,15 +252,15 @@ export default function CartItems({
                 <Separator />
                 <div className="flex justify-end gap-2">
                   <Button variant="outline" onClick={() => setIsPopoverOpen(false)} disabled={isUpdating}>
-                    English content normalized from the original source text.
+                    Gi? h?ng
                   </Button>
                   <Button
                     onClick={handleConfirmUpdate}
                     disabled={!currentSku || currentSku.id === currentItem.sku.id || isUpdating}
                   >
                     {isUpdating
-                      ? 'English content normalized from the original source text.'
-                      : 'English content normalized from the original source text.'}
+                      ? 'Gi? h?ng'
+                      : 'Gi? h?ng'}
                   </Button>
                 </div>
               </div>
@@ -269,7 +269,6 @@ export default function CartItems({
         </div>
       </div>
 
-      {/* Unit Price: w-[15%] */}
       <div className="w-[15%] text-center">
         {item.sku.product.virtualPrice > item.sku.price && (
           <span className="line-through text-muted-foreground text-sm mr-2">
@@ -283,7 +282,6 @@ export default function CartItems({
         </span>
       </div>
 
-      {/* Quantity: w-[15%] */}
       <div className="w-[15%] flex items-center justify-center">
         <button
           onClick={() => handleQuantityChange(quantity - 1)}
@@ -308,12 +306,10 @@ export default function CartItems({
         </button>
       </div>
 
-      {/* Total Price: w-[15%] */}
       <div className="w-[15%] text-center font-semibold text-primary">
         {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.sku.price * quantity)}
       </div>
 
-      {/* Actions: w-[10%] */}
       <div className="w-[10%] text-center">
         <button onClick={onRemove} className="text-muted-foreground hover:text-red-500">
           <Trash2 size={20} />

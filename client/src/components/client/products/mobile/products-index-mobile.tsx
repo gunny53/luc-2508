@@ -19,11 +19,11 @@ interface Props {
 }
 
 export default function ProductDetailMobile({ slug, product: productData, isLoading = false }: Props) {
-  // Show loading state if needed
+  
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>English content normalized from the original source text.</p>
+        <p>S?n ph?m</p>
       </div>
     )
   }
@@ -42,10 +42,10 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   }
 
   const sizes =
-    productToUse?.variants?.find((v: any) => v.value === 'English content normalized from the original source text.')
+    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
       ?.options || []
   const colors =
-    productToUse?.variants?.find((v: any) => v.value === 'English content normalized from the original source text.')
+    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
       ?.options || []
   const product = {
     ...productToUse,
@@ -59,17 +59,17 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
     name: 'Cool Crew',
     avatar: '/images/logo/coolcrew-logo.png',
     isOnline: true,
-    lastActive: 'English content normalized from the original source text.',
+    lastActive: 'S?n ph?m',
     rating: 3.7,
     responseRate: 100,
-    responseTime: 'English content normalized from the original source text.',
+    responseTime: 'S?n ph?m',
     followers: 5500,
-    joinedDate: 'English content normalized from the original source text.',
+    joinedDate: 'S?n ph?m',
     productsCount: 86
   }
 
   const handleAddToCart = (skuId: string, quantity: number) => {
-    console.log('English content normalized from the original source text.', { skuId, quantity })
+    console.log('S?n ph?m', { skuId, quantity })
   }
 
   const handleBuyNow = () => {
@@ -77,7 +77,7 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   }
 
   const handleChat = () => {
-    console.log('English content normalized from the original source text.')
+    console.log('S?n ph?m')
   }
 
   return (

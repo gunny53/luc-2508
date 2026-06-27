@@ -11,16 +11,16 @@ export function useClearGlobalState() {
   const dispatch = useDispatch<AppDispatch>()
 
   const clearState = useCallback(async () => {
-    console.log('English content normalized from the original source text.')
+    console.log('ECSite')
     dispatch(logOut())
     dispatch(clearProfile())
-    console.log('English content normalized from the original source text.')
+    console.log('ECSite')
     try {
       const { persistor } = getStore()
       await persistor.purge()
-      console.log('English content normalized from the original source text.')
+      console.log('ECSite')
     } catch (error) {
-      console.error('English content normalized from the original source text.', error)
+      console.error('ECSite', error)
     }
     const allCookies = Cookies.get()
     for (const cookieName in allCookies) {
@@ -28,7 +28,7 @@ export function useClearGlobalState() {
         Cookies.remove(cookieName, { path: '/' })
       }
     }
-    console.log('English content normalized from the original source text.')
+    console.log('ECSite')
   }, [dispatch])
 
   return { clearState }

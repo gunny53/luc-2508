@@ -79,7 +79,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
       } catch (error: any) {
         console.error('Error fetching cart:', error)
         const errorMessage =
-          error.response?.data?.message || error.message || 'English content normalized from the original source text.'
+          error.response?.data?.message || error.message || 'Gi? h?ng'
         toast.error(errorMessage)
         setShopCarts([])
         setCart(null)
@@ -98,19 +98,19 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
         await fetchCart()
 
         if (showNotification) {
-          const successMessage = response.message || 'English content normalized from the original source text.'
+          const successMessage = response.message || 'Gi? h?ng'
           toast.success(successMessage)
         }
 
-        // Return the cart item ID from the API response
-        // Handle both possible response structures
+        
+        
         let cartItemId: string | null = null
         if (response.data) {
           if ('id' in response.data) {
-            // Direct CartItem structure
+            
             cartItemId = response.data.id
           } else if ('cartItem' in response.data && response.data.cartItem) {
-            // Nested structure
+            
             cartItemId = response.data.cartItem.id
           }
         }
@@ -122,7 +122,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
           const errorMessage =
             error.response?.data?.message ||
             error.message ||
-            'English content normalized from the original source text.'
+            'Gi? h?ng'
           toast.error(errorMessage)
         }
         return false
@@ -151,7 +151,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
         }
 
         if (showNotification) {
-          const successMessage = response.message || 'English content normalized from the original source text.'
+          const successMessage = response.message || 'Gi? h?ng'
           toast.success(successMessage)
         }
         return response
@@ -161,7 +161,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
           const errorMessage =
             error.response?.data?.message ||
             error.message ||
-            'English content normalized from the original source text.'
+            'Gi? h?ng'
           toast.error(errorMessage)
         }
         return false
@@ -179,7 +179,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
         await fetchCart()
 
         if (showNotification) {
-          const successMessage = response.message || 'English content normalized from the original source text.'
+          const successMessage = response.message || 'Gi? h?ng'
           toast.success(successMessage)
         }
         return true
@@ -189,7 +189,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
           const errorMessage =
             error.response?.data?.message ||
             error.message ||
-            'English content normalized from the original source text.'
+            'Gi? h?ng'
           toast.error(errorMessage)
         }
         return false
@@ -209,7 +209,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
         if (showNotification) {
           const successMessage =
             response.message ||
-            `English content normalized from the original source text.${isSelected ? 'English content normalized from the original source text.' : 'English content normalized from the original source text.'}English content normalized from the original source text.`
+            `Gi? h?ng${isSelected ? 'Gi? h?ng' : 'Gi? h?ng'}Gi? h?ng`
           toast.success(successMessage)
         }
         return true
@@ -219,7 +219,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
           const errorMessage =
             error.response?.data?.message ||
             error.message ||
-            'English content normalized from the original source text.'
+            'Gi? h?ng'
           toast.error(errorMessage)
         }
         return false
@@ -272,14 +272,14 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
   )
 
   return {
-    // State
+    
     cart,
     shopCarts,
     isLoading,
     isUpdating,
     isAuthenticated,
 
-    // Actions
+    
     fetchCart,
     addToCart,
     updateCartItem,
@@ -287,7 +287,7 @@ export const useCart = (options: UseCartOptions = { autoFetch: false }) => {
     selectAllItems,
     updateItemQuantity,
 
-    // Helpers
+    
     calculateSelectedTotal,
     getCartDetails
   }

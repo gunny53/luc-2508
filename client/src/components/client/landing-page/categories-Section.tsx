@@ -51,7 +51,7 @@ const SkeletonLoader = memo(() => (
 SkeletonLoader.displayName = 'SkeletonLoader'
 const EmptyState = memo(() => (
   <CarouselItem className="pl-4 basis-auto">
-    <div className="px-6 py-3 text-gray-500">English content normalized from the original source text.</div>
+    <div className="px-6 py-3 text-gray-500">Danh m?c</div>
   </CarouselItem>
 ))
 
@@ -68,7 +68,7 @@ NavigationButtons.displayName = 'NavigationButtons'
 function CategoriesSectionComponent() {
   const { categories, loading } = useCbbCategory(null)
 
-  // 5. Memoize carousel options
+  
   const carouselOpts = useMemo(
     () => ({
       align: 'start' as const,
@@ -84,12 +84,12 @@ function CategoriesSectionComponent() {
     return categories.map((category: CategoryOption) => <CategoryItem key={category.value} category={category} />)
   }, [categories, loading])
 
-  // 7. Memoize title component
+  
   const sectionTitle = useMemo(
     () => (
       <h2 className="text-lg font-bold text-gray-800 mb-3.5 flex items-center justify-center gap-1.5">
         <span className="tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-red-500/20">
-          English content normalized from the original source text.
+          Danh m?c
         </span>
       </h2>
     ),
@@ -101,7 +101,7 @@ function CategoriesSectionComponent() {
       <div className="container mx-auto">
         <BannerSection />
 
-        {/* Categories Section */}
+        {}
         <div className="mt-5">
           {sectionTitle}
 

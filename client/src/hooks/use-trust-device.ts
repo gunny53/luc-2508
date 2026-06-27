@@ -21,7 +21,7 @@ export function useTrustDevice() {
       await authService.trustDevice()
       sessionStorage.removeItem(TRUST_DEVICE_KEY)
       setIsOpen(false)
-      showToast('English content normalized from the original source text.', 'success')
+      showToast('X?c th?c', 'success')
     } catch (error) {
       showToast(parseApiError(error), 'error')
     } finally {

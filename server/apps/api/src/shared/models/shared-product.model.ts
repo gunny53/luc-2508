@@ -12,7 +12,7 @@ export const VariantsSchema = z.array(VariantSchema).superRefine((variants, ctx)
     if (isExistingVariant) {
       return ctx.addIssue({
         code: 'custom',
-        message: `English content normalized from the original source text.${variant.value}English content normalized from the original source text.`,
+        message: `Variant "${variant.value}" is duplicated.`,
         path: ['variants']
       })
     }
@@ -23,7 +23,7 @@ export const VariantsSchema = z.array(VariantSchema).superRefine((variants, ctx)
     if (isDifferentOption) {
       return ctx.addIssue({
         code: 'custom',
-        message: `Variant ${variant.value}English content normalized from the original source text.`,
+        message: `Variant "${variant.value}" has duplicated options.`,
         path: ['variants']
       })
     }
@@ -54,7 +54,7 @@ export const ProductSchema = z.object({
   virtualPrice: z.number().min(0),
   brandId: z.string(),
   images: z.array(z.string()),
-  variants: VariantsSchema, // Json field represented as a record
+  variants: VariantsSchema,
   specifications: SpecificationsSchema.nullable().default([]),
   createdById: z.string().nullable(),
   updatedById: z.string().nullable(),

@@ -79,7 +79,6 @@ export default function RolesTable() {
   const table = useDataTable({ data: data, columns })
   return (
     <div className="w-full space-y-4">
-      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenUpsertModal('add')}>
           <PlusIcon className="w-4 h-4 mr-2" />
@@ -87,7 +86,6 @@ export default function RolesTable() {
         </Button>
       </div>
 
-      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -100,7 +98,6 @@ export default function RolesTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {/* Data Table */}
       <div className="relative">
         <DataTable
           table={table}
@@ -115,7 +112,6 @@ export default function RolesTable() {
         />
       </div>
 
-      {/* Modal Add/Edit */}
       {upsertOpen && (
         <RolesModalUpsert
           open={upsertOpen}
@@ -128,7 +124,6 @@ export default function RolesTable() {
         />
       )}
 
-      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {

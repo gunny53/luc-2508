@@ -31,14 +31,14 @@ export class OrderRepo {
 
   constructor(
     private readonly prismaService: PrismaService,
-    private orderProducer: OrderProducer, // TODO: Move to OrderService - business orchestration
-    private readonly configService: ConfigService, // TODO: Move lock logic to OrderService
+    private orderProducer: OrderProducer, 
+    private readonly configService: ConfigService, 
     private readonly sharedShippingRepo: SharedShippingRepository
   ) {}
 
-  // ============================================================
-  // CORE CRUD METHODS - Repository Pattern Compliant
-  // ============================================================
+  
+  
+  
 
   async list(userId: string, query: GetOrderListQueryType): Promise<GetOrderListResType> {
     const { page, limit, status } = query
@@ -113,10 +113,10 @@ export class OrderRepo {
     }
   }
 
-  // ============================================================
-  // BUSINESS LOGIC METHODS - Should be moved to OrderService
-  // TODO: Refactor to move business orchestration to Service layer
-  // ============================================================
+  
+  
+  
+  
 
   private async getSkuIdsFromCartItems(cartItemIds: string[], userId: string): Promise<string[]> {
     const cartItemsForSKUId = await this.prismaService.cartItem.findMany({
@@ -129,19 +129,16 @@ export class OrderRepo {
     return cartItemsForSKUId.map((cartItem) => cartItem.skuId)
   }
 
-  /**
-   * Acquire locks cho SKUs - Core business logic
-   * TODO: Move lock management to OrderService - business orchestration concern
-   */
+  
   private async acquireSkuLocks(skuIds: string[]) {
     const redlock = this.configService.get('redis.redlock')
     return Promise.all(skuIds.map((skuId) => redlock.acquire([`lock:sku:${skuId}`], 3000)))
   }
 
-  /**
-   * Release locks - Core business logic
-   * TODO: Move lock management to OrderService - business orchestration concern
-   */
+  
+
+
+
   private async releaseLocks(locks: any[]) {
     await Promise.all(locks.map((lock) => lock.release().catch(() => {})))
   }
@@ -158,8 +155,8 @@ export class OrderRepo {
       const orders = await this.createSimpleOrders(tx, shops, cartItemMap, payment.id, userId)
       await this.cleanupCartAndUpdateStock(tx, allBodyCartItemIds, cartItems)
 
-      // Schedule payment cancellation job
-      // TODO: Move queue scheduling to OrderService - business orchestration concern
+      
+      
       await this.orderProducer.addCancelPaymentJob(payment.id)
 
       return [payment.id, orders]
@@ -277,7 +274,7 @@ export class OrderRepo {
           }
         })
         .catch((e) => {
-          this.logger.error(`English content normalized from the original source text.${item.sku.id}: ${e.message}`)
+          this.logger.error(`Failed to reserve stock for SKU ${item.sku.id}: ${e.message}`)
           if (isNotFoundPrismaError(e)) {
             throw VersionConflictException
           }
@@ -641,10 +638,10 @@ export class OrderRepo {
   }
 
   async cancel(userId: string, orderId: string): Promise<CancelOrderResType> {
-    this.logger.log(`English content normalized from the original source text.${orderId} cho user: ${userId}`)
+    this.logger.log(`Canceling order ${orderId} for user ${userId}`)
 
     try {
-      this.logger.log(`English content normalized from the original source text.`)
+      this.logger.log(`Order can be canceled.`)
       const order = await this.prismaService.order.findUniqueOrThrow({
         where: {
           id: orderId,
@@ -663,10 +660,10 @@ export class OrderRepo {
       ]
 
       if (!cancellableStatuses.includes(order.status as OrderStatusType)) {
-        this.logger.warn(`English content normalized from the original source text.${order.status}`)
+        this.logger.warn(`Order cannot be canceled from status ${order.status}`)
         throw CannotCancelOrderException
       }
-      this.logger.log(`English content normalized from the original source text.${orderId}`)
+      this.logger.log(`Canceling GHN shipping for order ${orderId}`)
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId },
         select: { orderCode: true, status: true }
@@ -677,7 +674,7 @@ export class OrderRepo {
         try {
           const cancelResult = await this.sharedShippingRepo.cancelGHNOrderForOrder(orderId)
           this.logger.log(
-            `English content normalized from the original source text.${JSON.stringify(cancelResult, null, 2)}`
+            `GHN cancel response: ${JSON.stringify(cancelResult, null, 2)}`
           )
           await this.sharedShippingRepo.updateOrderShippingStatusForCancellation(
             orderId,
@@ -685,7 +682,7 @@ export class OrderRepo {
             'Order cancelled by user - GHN order cancelled'
           )
         } catch (error) {
-          this.logger.error(`English content normalized from the original source text.${error.message}`)
+          this.logger.error(`Failed to cancel GHN shipping: ${error.message}`)
         }
       }
 

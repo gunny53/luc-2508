@@ -28,16 +28,16 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
           url: databaseUrl
         }
       }
-      // Connection timeout = 20s
-      // Idle timeout = 10s
-      // Acquire timeout = 60s
+      
+      
+      
     })
   }
 
   async onModuleInit() {
-    // Retry logic cho database connection
+    
     const maxRetries = 10
-    const retryDelay = 5000 // 5 seconds
+    const retryDelay = 5000 
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
@@ -57,11 +57,11 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
       }
     }
 
-    // Log database info
+    
     const dbInfo = (await this.$queryRaw`SELECT version() as version`) as Array<{ version: string }>
     console.log('📊 Database version:', dbInfo[0]?.version)
 
-    // Log connection pool info
+    
     const poolInfo = (await this.$queryRaw`
       SELECT
         setting as max_connections,
@@ -94,8 +94,8 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
 
   async executeTransaction<T>(fn: (prisma: Prisma.TransactionClient) => Promise<T>): Promise<T> {
     return await this.$transaction(fn, {
-      maxWait: 5000, // 5s max wait
-      timeout: 10000, // 10s timeout
+      maxWait: 5000, 
+      timeout: 10000, 
       isolationLevel: 'ReadCommitted'
     })
   }
@@ -191,7 +191,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     const searchConditions = searchFields.map((field) => ({
       [field]: {
         contains: searchTerm,
-        mode: 'insensitive' // Case insensitive search
+        mode: 'insensitive' 
       }
     }))
 

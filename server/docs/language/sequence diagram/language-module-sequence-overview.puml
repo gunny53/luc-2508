@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Language Language Module Sequence Overview: validate request and return the expected response
+note top : Language Language Module Sequence Overview: validate request and return the expected response
 
 actor "Client" as Client
 actor "Admin" as Admin
@@ -22,42 +22,42 @@ database "PostgreSQL" as DB
 Client -> LC: GET /languages
 LC -> LS: findAll()
 
-LS -> LS: English content normalized from the original source text.
+LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
 end note
 
 LS -> LR: findAll()
-LR -> PS: English content normalized from the original source text.
+LR -> PS: Language Language Module Sequence Overview: validate request and return the expected response
 note right
 Database Query:
 • Filter deletedAt IS NULL
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
 • Include audit fields
 end note
-PS -> DB: English content normalized from the original source text.
+PS -> DB: Language Language Module Sequence Overview: validate request and return the expected response
 DB -> PS: Language records
 PS -> LR: Languages data
 LR -> LS: Languages data
 
-LS -> LS: English content normalized from the original source text.
+LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
 • Wrap data trong response object
 • Include i18n message
 end note
 
 LS -> IS: i18n.t('language.language.success.GET_SUCCESS')
-IS -> LS: English content normalized from the original source text.
-LS -> LC: English content normalized from the original source text.
-LC -> Client: English content normalized from the original source text.
+IS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
+LS -> LC: Language Language Module Sequence Overview: validate request and return the expected response
+LC -> Client: Language Language Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 Client -> LC: GET /languages/:languageId
@@ -65,7 +65,7 @@ LC -> LS: findById(languageId)
 
 LS -> LS: Validate languageId
 note right
-English content normalized from the original source text.
+Language Language Module Sequence Overview: validate request and return the expected response
 • Validate string format
 • Max length 10 characters
 • Zod schema validation
@@ -73,7 +73,7 @@ English content normalized from the original source text.
 end note
 
 LS -> LR: findById(languageId)
-LR -> PS: English content normalized from the original source text.
+LR -> PS: Language Language Module Sequence Overview: validate request and return the expected response
 note right
 Database Query:
 • Find unique language by ID
@@ -81,41 +81,41 @@ Database Query:
 • Return single language record
 • Include all audit fields
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
+PS -> DB: Language Language Module Sequence Overview: validate request and return the expected response
+DB -> PS: Language Language Module Sequence Overview: validate request and return the expected response
 
 alt Language found
     PS -> LR: Language data
     LR -> LS: Language data
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     note right
     Success Response:
-    • English content normalized from the original source text
+    • Language Language Module Sequence Overview: validate request and return the expected response
     • Wrap data trong response object
     • Include language details
     end note
     LS -> IS: i18n.t('language.language.success.GET_DETAIL_SUCCESS')
-    IS -> LS: English content normalized from the original source text.
+    IS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> LC: Success response
     LC -> Client: 200 OK + language details
 
 else Language not found
     PS -> LR: null
     LR -> LS: null
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> LC: NotFoundRecordException
     LC -> Client: 404 Not Found
 end
 
 == English Section ==
 Admin -> AU: @ActiveUser()
-AU -> Admin: English content normalized from the original source text.
+AU -> Admin: Language Language Module Sequence Overview: validate request and return the expected response
 Admin -> LC: POST /languages + {id, name}
 LC -> LS: create({data, createdById})
 
 LS -> LS: Validate request body
 note right
-English content normalized from the original source text.
+Language Language Module Sequence Overview: validate request and return the expected response
 • id: required string, max 10 chars
 • name: required string, max 500 chars
 • Zod schema validation
@@ -124,28 +124,28 @@ end note
 
 alt Validation passed
     LS -> LR: create({createdById, data})
-    LR -> PS: English content normalized from the original source text.
+    LR -> PS: Language Language Module Sequence Overview: validate request and return the expected response
     note right
     Database Insert:
     • Insert new language record
-    • English content normalized from the original source text
+    • Language Language Module Sequence Overview: validate request and return the expected response
     • Auto-set timestamps
     • Handle unique constraint
     end note
-    PS -> DB: English content normalized from the original source text.
+    PS -> DB: Language Language Module Sequence Overview: validate request and return the expected response
     DB -> PS: New language record
     PS -> LR: Created language
     LR -> LS: Created language
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> IS: i18n.t('language.language.success.CREATE_SUCCESS')
-    IS -> LS: English content normalized from the original source text.
+    IS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> LC: Success response
     LC -> Admin: 201 Created + language details
 
 else Unique constraint violation
     PS -> LR: UniqueConstraintError
     LR -> LS: Prisma error
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     note right
     Error Handling:
     • Check isUniqueConstraintPrismaError
@@ -163,13 +163,13 @@ end
 
 == English Section ==
 Admin -> AU: @ActiveUser()
-AU -> Admin: English content normalized from the original source text.
+AU -> Admin: Language Language Module Sequence Overview: validate request and return the expected response
 Admin -> LC: PUT /languages/:languageId + {name}
 LC -> LS: update({id, data, updatedById})
 
 LS -> LS: Validate request
 note right
-English content normalized from the original source text.
+Language Language Module Sequence Overview: validate request and return the expected response
 • languageId: required string, max 10 chars
 • name: required string, max 500 chars
 • Zod schema validation
@@ -179,29 +179,29 @@ end note
 
 alt Validation passed
     LS -> LR: update({id, updatedById, data})
-    LR -> PS: English content normalized from the original source text.
+    LR -> PS: Language Language Module Sequence Overview: validate request and return the expected response
     note right
     Database Update:
     • Update language name only
-    • English content normalized from the original source text
+    • Language Language Module Sequence Overview: validate request and return the expected response
     • Auto-update updatedAt
     • Filter deletedAt IS NULL
     • Immutable language ID
     end note
-    PS -> DB: English content normalized from the original source text.
+    PS -> DB: Language Language Module Sequence Overview: validate request and return the expected response
     DB -> PS: Updated language record
     PS -> LR: Updated language
     LR -> LS: Updated language
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> IS: i18n.t('language.language.success.UPDATE_SUCCESS')
-    IS -> LS: English content normalized from the original source text.
+    IS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> LC: Success response
     LC -> Admin: 200 OK + updated language
 
 else Language not found
     PS -> LR: NotFoundError
     LR -> LS: Prisma error
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     note right
     Error Handling:
     • Check isNotFoundPrismaError
@@ -225,9 +225,9 @@ LS -> LS: Validate languageId
 LS -> LR: delete(languageId, true)
 note right
 Hard Delete Logic:
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
 • Immediate removal
 end note
 
@@ -239,26 +239,26 @@ Database Delete:
 • No soft delete logic
 • Immediate deletion
 end note
-PS -> DB: English content normalized from the original source text.
+PS -> DB: Language Language Module Sequence Overview: validate request and return the expected response
 DB -> PS: Deleted record
 PS -> LR: Delete confirmation
 LR -> LS: Delete confirmation
-LS -> LS: English content normalized from the original source text.
+LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
 LS -> IS: i18n.t('language.language.success.DELETE_SUCCESS')
-IS -> LS: English content normalized from the original source text.
+IS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
 LS -> LC: Success response
 LC -> Admin: 200 OK + success message
 
 else Language not found
     PS -> LR: NotFoundError
     LR -> LS: Prisma error
-    LS -> LS: English content normalized from the original source text.
+    LS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
     LS -> LC: NotFoundRecordException
     LC -> Admin: 404 Not Found
 end
 
 == English Section ==
-English content normalized from the original source text.
+Language Language Module Sequence Overview: validate request and return the expected response
     LS -> LC: ValidationException
     LC -> Client: 400 Bad Request
     note right
@@ -274,7 +274,7 @@ else (No)
     LC -> Client: 422 Unprocessable Entity
     note right
     Unique Constraint Errors:
-    • English content normalized from the original source text
+    • Language Language Module Sequence Overview: validate request and return the expected response
     • Duplicate language creation
     • Constraint violation
     end note
@@ -284,8 +284,8 @@ else (No)
     LC -> Client: 404 Not Found
     note right
     Not Found Errors:
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Language Language Module Sequence Overview: validate request and return the expected response
+    • Language Language Module Sequence Overview: validate request and return the expected response
     • Invalid ID format
     end note
 
@@ -303,21 +303,21 @@ end
 
 == English Section ==
 LS -> IS: i18n.t('language.language.success.XXX')
-IS -> LS: English content normalized from the original source text.
-LS -> LC: English content normalized from the original source text.
-LC -> Client: English content normalized from the original source text.
+IS -> LS: Language Language Module Sequence Overview: validate request and return the expected response
+LS -> LC: Language Language Module Sequence Overview: validate request and return the expected response
+LC -> Client: Language Language Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
 • Unique constraint validation cho language ID
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Language Language Module Sequence Overview: validate request and return the expected response
+• Language Language Module Sequence Overview: validate request and return the expected response
 • Zod schema validation cho input/output
 • Comprehensive error handling
 • No pagination cho list operation
-• English content normalized from the original source text
+• Language Language Module Sequence Overview: validate request and return the expected response
 • Admin-only access cho create/update/delete
 end note
 

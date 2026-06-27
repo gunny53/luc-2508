@@ -18,7 +18,7 @@ import { useTranslations } from 'next-intl'
 export function useRoles() {
   const t = useTranslations()
 
-  // Modal states
+  
   const [upsertOpen, setUpsertOpen] = useState(false)
   const [modalMode, setModalMode] = useState<'add' | 'edit'>('add')
   const [roleToEdit, setRoleToEdit] = useState<Role | null>(null)
@@ -27,11 +27,11 @@ export function useRoles() {
   const [roleToDelete, setRoleToDelete] = useState<Role | null>(null)
   const [deleteLoading, setDeleteLoading] = useState(false)
 
-  // Permissions data for the modal
+  
   const [permissionsData, setPermissionsData] = useState<Record<string, PermissionDetail[]>>({})
   const [isPermissionsLoading, setIsPermissionsLoading] = useState(true)
 
-  // Callbacks for useServerDataTable
+  
   const getResponseData = useCallback((response: any) => {
     return response.data || []
   }, [])
@@ -57,7 +57,7 @@ export function useRoles() {
     }
   }, [])
 
-  // Use the useServerDataTable hook
+  
   const {
     data: roles,
     loading,
@@ -81,7 +81,7 @@ export function useRoles() {
     }
   })
 
-  // Fetch permissions for the modal
+  
   const fetchPermissions = useCallback(async () => {
     try {
       setIsPermissionsLoading(true)
@@ -93,8 +93,8 @@ export function useRoles() {
       console.log(
         'Permissions API response data:',
         responseData.length
-          ? 'English content normalized from the original source text.'
-          : 'English content normalized from the original source text.'
+          ? 'Vai tr?'
+          : 'Vai tr?'
       )
       const sortedData = [...responseData].sort((a, b) => {
         const moduleA = a.module || 'OTHERS'
@@ -130,17 +130,17 @@ export function useRoles() {
     fetchPermissions()
   }, [fetchPermissions])
 
-  // CRUD operations
+  
   const addRole = async (data: RoleCreateRequest) => {
     try {
       const response = await roleService.create(data)
-      showToast(response.message || 'English content normalized from the original source text.', 'success')
+      showToast(response.message || 'Vai tr?', 'success')
       refreshData()
       handleCloseUpsertModal()
       return response
     } catch (error) {
       showToast(parseApiError(error), 'error')
-      console.error('English content normalized from the original source text.', error)
+      console.error('Vai tr?', error)
       return null
     }
   }
@@ -148,13 +148,13 @@ export function useRoles() {
   const editRole = async (id: string, data: RoleUpdateRequest) => {
     try {
       const response = await roleService.update(id, data)
-      showToast(response.message || 'English content normalized from the original source text.', 'success')
+      showToast(response.message || 'Vai tr?', 'success')
       refreshData()
       handleCloseUpsertModal()
       return response
     } catch (error) {
       showToast(parseApiError(error), 'error')
-      console.error('English content normalized from the original source text.', error)
+      console.error('Vai tr?', error)
       return null
     }
   }
@@ -164,19 +164,19 @@ export function useRoles() {
       setDeleteLoading(true)
       try {
         const response = await roleService.delete(roleToDelete.id)
-        showToast(response.message || 'English content normalized from the original source text.', 'success')
+        showToast(response.message || 'Vai tr?', 'success')
         refreshData()
         handleCloseDeleteModal()
       } catch (error) {
         showToast(parseApiError(error), 'error')
-        console.error('English content normalized from the original source text.', error)
+        console.error('Vai tr?', error)
       } finally {
         setDeleteLoading(false)
       }
     }
   }
 
-  // Modal handlers
+  
   const handleOpenDelete = (role: Role) => {
     setRoleToDelete(role)
     setDeleteOpen(true)
@@ -187,14 +187,14 @@ export function useRoles() {
     setRoleToDelete(null)
   }
 
-  // Fetch role details by ID including permissions
+  
   const fetchRoleDetails = async (roleId: string) => {
     try {
       setIsPermissionsLoading(true)
       const response = await roleService.getById(roleId)
       console.log('Role API response structure:', response)
 
-      // Update roleToEdit with full details including permissions
+      
       if (response) {
         let roleDetails: any
 
@@ -209,7 +209,7 @@ export function useRoles() {
 
           console.log('API Response for role details:', roleDetails)
 
-          // Extract the necessary data and explicitly type as Role
+          
           const roleData: Role = {
             id: roleDetails.id,
             name: roleDetails.name,
@@ -231,7 +231,7 @@ export function useRoles() {
           }
           setRoleToEdit(roleData)
 
-          // Log for debugging
+          
           console.log('Processed role data:', roleData)
           console.log('Permissions count:', roleData.permissions?.length || 0)
           console.log('Role permissions:', roleData.permissions)
@@ -239,7 +239,7 @@ export function useRoles() {
       }
     } catch (error) {
       showToast(parseApiError(error), 'error')
-      console.error('English content normalized from the original source text.', error)
+      console.error('Vai tr?', error)
     } finally {
       setIsPermissionsLoading(false)
     }
@@ -251,7 +251,7 @@ export function useRoles() {
     if (mode === 'edit' && role) {
       console.log('Opening edit modal for role:', role)
       setRoleToEdit(role)
-      // Fetch detailed role info including permissions
+      
       fetchRoleDetails(role.id)
     } else {
       console.log('Opening add modal')
@@ -271,14 +271,14 @@ export function useRoles() {
     loading,
     pagination,
 
-    // Server-side pagination handlers
+    
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
     refreshData,
 
-    // Delete
+    
     deleteOpen,
     roleToDelete,
     deleteLoading,
@@ -286,7 +286,7 @@ export function useRoles() {
     handleConfirmDelete,
     handleCloseDeleteModal,
 
-    // Upsert
+    
     upsertOpen,
     modalMode,
     roleToEdit,
@@ -296,7 +296,7 @@ export function useRoles() {
     editRole,
     fetchRoleDetails,
 
-    // Permissions data
+    
     permissionsData,
     isPermissionsLoading
   }

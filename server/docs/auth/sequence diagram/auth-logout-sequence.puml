@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Auth Auth Logout Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -16,13 +16,13 @@ database "PostgreSQL (Prisma)" as DB
 C -> AC: POST /auth/logout (cookie refresh_token)
 activate AC
 
-AC -> AC: English content normalized from the original source text.
+AC -> AC: Auth Auth Logout Sequence: validate request and return the expected response
 AC -> AS: logout(refreshToken)
 activate AS
 
 AS -> TS: verifyRefreshToken(refreshToken)
 TS --> AS: ok | error
-English content normalized from the original source text.
+Auth Auth Logout Sequence: validate request and return the expected response
   AS --> AC: UnauthorizedAccessException (401)
   AC --> C: 401 Unauthorized
   deactivate AS
@@ -46,7 +46,7 @@ AS -> AR: updateDevice(deviceId, { isActive: false })
 AR -> DB: device.update()
 DB --> AR: device
 AR --> AS: ok
-AS --> AC: English content normalized from the original source text.
+AS --> AC: Auth Auth Logout Sequence: validate request and return the expected response
 deactivate AS
 
 AC --> C: 200 OK + JSON

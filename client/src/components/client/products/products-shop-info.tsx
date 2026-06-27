@@ -31,12 +31,12 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
     name: 'Cool Crew',
     avatar: '/images/logo/coolcrew-logo.png',
     isOnline: true,
-    lastActive: 'English content normalized from the original source text.',
+    lastActive: 'S?n ph?m',
     rating: 3.7,
     responseRate: 100,
-    responseTime: 'English content normalized from the original source text.',
+    responseTime: 'S?n ph?m',
     followers: 5500,
-    joinedDate: 'English content normalized from the original source text.',
+    joinedDate: 'S?n ph?m',
     productsCount: 86
   }
   const demoShop = { ...defaultShop, ...shop }
@@ -44,7 +44,6 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
   return (
     <div className={cn('bg-white rounded-sm overflow-hidden', isMobile ? 'mt-2' : 'border', className)}>
       <div className={cn('flex items-center border-b', isMobile ? 'p-3' : 'p-5')}>
-        {/* Avatar shop */}
         <div className={cn('relative rounded-full overflow-hidden', isMobile ? 'w-10 h-10 mr-3' : 'w-16 h-16 mr-4')}>
           <Image
             src={demoShop.avatar || '/images/placeholder.png'}
@@ -63,7 +62,6 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           )}
         </div>
 
-        {/* Shop name and status */}
         <div className="flex-1">
           <h3 className={cn('font-medium', isMobile ? 'text-sm' : 'text-lg')}>{demoShop.name}</h3>
           <p className={cn('text-muted-foreground', isMobile ? 'text-xs' : 'text-sm')}>
@@ -71,7 +69,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           </p>
         </div>
 
-        {/* Action buttons */}
+        {}
         {isMobile ? (
           <Button
             variant="outline"
@@ -108,14 +106,14 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
         )}
       </div>
 
-      {/* Shop metrics */}
+      {}
       <div className={cn('grid grid-cols-4 text-center', isMobile ? 'py-2.5 text-xs' : 'border-y py-4')}>
         <div className={cn('border-r', isMobile ? 'px-2' : 'px-4')}>
           <div className={cn('text-red-500 font-medium', isMobile ? '' : 'text-lg')}>
             {isMobile ? demoShop.rating : `${demoShop.rating}k`}
           </div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
-            English content normalized from the original source text.
+            S?n ph?m
           </div>
         </div>
 
@@ -123,19 +121,19 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn('font-medium', isMobile ? '' : 'text-lg')}>{demoShop.productsCount}</div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
             {isMobile
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'S?n ph?m'
+              : 'S?n ph?m'}
           </div>
         </div>
 
         <div className={cn('border-r', isMobile ? 'px-2' : 'px-4')}>
           <div className={cn('font-medium', isMobile ? 'text-[10px] leading-tight' : 'text-lg')}>
-            English content normalized from the original source text.
+            S?n ph?m
           </div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
             {isMobile
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'S?n ph?m'
+              : 'S?n ph?m'}
           </div>
         </div>
 
@@ -143,13 +141,13 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn('font-medium', isMobile ? '' : 'text-lg')}>{demoShop.responseRate}%</div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
             {isMobile
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'S?n ph?m'
+              : 'S?n ph?m'}
           </div>
         </div>
       </div>
 
-      {/* Shop details */}
+      {}
       <div
         className={cn(
           isMobile ? 'flex justify-between text-xs px-3 py-2 border-t' : 'grid grid-cols-2 text-sm px-5 py-3'
@@ -162,7 +160,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
 
         <div className={cn('flex items-center', isMobile ? 'gap-1' : 'gap-2 justify-end')}>
           <span className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : '')}>
-            English content normalized from the original source text.
+            S?n ph?m
           </span>
           <span className={cn('font-medium text-red-500', isMobile ? 'text-[10px]' : '')}>
             {demoShop.followers.toLocaleString()}

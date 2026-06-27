@@ -20,9 +20,9 @@ export const usePasswordSecuritySession = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  // Pagination state
+  
   const [page, setPage] = useState(1)
-  const [limit, setLimit] = useState(10) // Default limit
+  const [limit, setLimit] = useState(10) 
   const [totalPages, setTotalPages] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
   const [isRevoking, setIsRevoking] = useState(false)
@@ -33,12 +33,12 @@ export const usePasswordSecuritySession = () => {
   const fetchSessions = useCallback(async () => {
     try {
       setLoading(true)
-      // The PaginationRequest interface was modified to represent response metadata.
-      // We pass page and limit directly, casting to `any` to bypass the type mismatch
-      // as the backend expects top-level `page` and `limit` query parameters.
+      
+      
+      
       const response = await sessionService.getAll({ page, limit } as any)
 
-      // The response data is now strictly typed as Device[]
+      
       const devicesFromApi: Device[] = response.data || []
 
       const groups: { [key: string]: GroupedDevice } = {}
@@ -49,7 +49,7 @@ export const usePasswordSecuritySession = () => {
           groups[osKey] = { os: osKey, totalSessions: 0, devices: [] }
         }
         groups[osKey].devices.push(device)
-        // Use the totalSessions from the device data, or count the sessions array
+        
         groups[osKey].totalSessions += device.totalSessions || device.sessions?.length || 0
       })
 
@@ -79,7 +79,7 @@ export const usePasswordSecuritySession = () => {
 
   const handleLimitChange = (newLimit: number) => {
     setLimit(newLimit)
-    setPage(1) // Reset to page 1 when limit changes
+    setPage(1) 
   }
 
   const toggleSessionSelection = (sessionId: string) => {
@@ -95,7 +95,7 @@ export const usePasswordSecuritySession = () => {
 
     setSelectedDeviceIds((prev) => (isDeviceSelected ? prev.filter((id) => id !== deviceId) : [...prev, deviceId]))
 
-    // When selecting a device, select all its sessions. When deselecting, deselect them.
+    
     setSelectedSessionIds((prev) => {
       const otherSessionIds = prev.filter((id) => !sessionIds.includes(id))
       return isDeviceSelected ? otherSessionIds : [...otherSessionIds, ...sessionIds]
@@ -107,7 +107,7 @@ export const usePasswordSecuritySession = () => {
     try {
       const response = await sessionService.revoke(params)
       toast.success(response.message || 'Successfully revoked selected items.')
-      // Clear selections and refetch
+      
       setSelectedSessionIds([])
       setSelectedDeviceIds([])
       await fetchSessions()
@@ -125,12 +125,12 @@ export const usePasswordSecuritySession = () => {
       const response = await sessionService.revokeAll({ excludeCurrentSession: excludeCurrent })
       if (response.verificationType === 'OTP') {
         router.push(`${ROUTES.AUTH.VERIFY_2FA}?type=OTP&revokeAll=true`)
-        // showToast(response.message, 'info')
+        
         return
       }
       if (response.verificationType === '2FA') {
         router.push(`${ROUTES.AUTH.VERIFY_2FA}?type=TOTP&revokeAll=true`)
-        // showToast(response.message, 'info')
+        
         return
       }
 
@@ -155,7 +155,7 @@ export const usePasswordSecuritySession = () => {
     handleLimitChange,
     isRevoking,
     handleRevokeAllSessions,
-    // Selections
+    
     selectedSessionIds,
     selectedDeviceIds,
     toggleSessionSelection,

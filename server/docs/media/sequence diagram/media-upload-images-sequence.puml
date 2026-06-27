@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Media Media Upload Images Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "MediaController" as MC
@@ -20,13 +20,13 @@ C -> MC: POST /media/images/upload (multipart 'files')
 activate MC
 
 MC -> FI: Intercept files (max 100, size limit 5MB)
-FI -> LD: English content normalized from the original source text.
+FI -> LD: Media Media Upload Images Sequence: validate request and return the expected response
 LD --> FI: Files saved
 FI --> MC: Files metadata
 
 MC -> PFP: Validate files (MaxFileSize=1MB, FileType=jpg|jpeg|png|webp)
 alt Validation OK
-  PFP --> MC: English content normalized from the original source text.
+  PFP --> MC: Media Media Upload Images Sequence: validate request and return the expected response
   MC -> MS: uploadFile(files)
   activate MS
   loop For each file
@@ -35,7 +35,7 @@ alt Validation OK
     S3DB --> S3: { Location }
     S3 --> MS: { Location }
   end
-  MS -> LD: English content normalized from the original source text.
+  MS -> LD: Media Media Upload Images Sequence: validate request and return the expected response
   LD --> MS: ok
   MS -> IS: t('media.media.success.UPLOAD_SUCCESS')
   IS --> MS: message
@@ -43,7 +43,7 @@ alt Validation OK
   deactivate MS
   MC --> C: 200 OK + JSON
 else Validation Failed
-  PFP -> LD: English content normalized from the original source text.
+  PFP -> LD: Media Media Upload Images Sequence: validate request and return the expected response
   LD --> PFP: ok
   PFP --> MC: ValidationException (400)
   MC --> C: 400 Bad Request

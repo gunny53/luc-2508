@@ -6,9 +6,7 @@ import { ConfigService } from '@nestjs/config'
 export class CookieService {
   constructor(private readonly configService: ConfigService) {}
 
-  /**
-   * Set both access and refresh token cookies
-   */
+  
   setAuthCookies(res: Response, accessToken: string, refreshToken: string): void {
     this.clearAuthCookies(res)
     const accessTokenOptions = this.configService.getOrThrow('cookie.accessToken.options')
@@ -18,9 +16,7 @@ export class CookieService {
     res.cookie(this.configService.getOrThrow('cookie.refreshToken.name'), refreshToken, refreshTokenOptions)
   }
 
-  /**
-   * Clear all authentication cookies
-   */
+  
   clearAuthCookies(res: Response): void {
     res.clearCookie(this.configService.getOrThrow('cookie.accessToken.name'))
     res.clearCookie(this.configService.getOrThrow('cookie.refreshToken.name'))

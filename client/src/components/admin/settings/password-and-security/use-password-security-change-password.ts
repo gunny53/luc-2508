@@ -24,10 +24,10 @@ export const usePasswordSecurityChangePassword = () => {
         showToast(response.message, 'info')
         return
       }
-      return true // Indicate success
+      return true 
     } catch (error: any) {
       showToast(parseApiError(error), 'error')
-      return false // Indicate failure
+      return false 
     } finally {
       setLoading(false)
     }

@@ -35,7 +35,7 @@ const fetchCategories = async (parentCategoryId: string | null) => {
     return []
   } catch (error) {
     showToast(parseApiError(error), 'error')
-    // In case of an error, re-throw it so React Query can handle it
+    
     throw error
   }
 }
@@ -44,7 +44,7 @@ export const useCbbCategory = (parentCategoryId: string | null) => {
   const queryResult = useQuery<CategoryOption[], Error>({
     queryKey: ['categories', parentCategoryId],
     queryFn: () => fetchCategories(parentCategoryId),
-    staleTime: 1000 * 60 * 60, // 1 hour
+    staleTime: 1000 * 60 * 60, 
     placeholderData: (previousData) => previousData
   })
 

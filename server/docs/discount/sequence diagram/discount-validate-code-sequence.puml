@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Discount Discount Validate Code Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Discount Discount Validate Code Sequence: validate request and return the expected response
 participant "DiscountController" as DC
 participant "DiscountService" as DS
 participant "DiscountRepo" as DR
@@ -26,7 +26,7 @@ DR --> DS: discount | null
 deactivate DR
 
 alt discount == null
-  DS --> DC: English content normalized from the original source text.
+  DS --> DC: Discount Discount Validate Code Sequence: validate request and return the expected response
   DC --> U: 200 OK + JSON
   deactivate DS
   deactivate DC
@@ -34,7 +34,7 @@ alt discount == null
 end
 
 alt discount.status != ACTIVE OR out of time OR out of uses
-  DS --> DC: English content normalized from the original source text.
+  DS --> DC: Discount Discount Validate Code Sequence: validate request and return the expected response
   DC --> U: 200 OK + JSON
   deactivate DS
   deactivate DC
@@ -43,7 +43,7 @@ end
 
 DS -> DS: orderTotal = calculateOrderTotalFromCartItems(cartItemIds)
 alt orderTotal < minOrderValue
-  DS --> DC: English content normalized from the original source text.
+  DS --> DC: Discount Discount Validate Code Sequence: validate request and return the expected response
   DC --> U: 200 OK + JSON
   deactivate DS
   deactivate DC
@@ -54,7 +54,7 @@ alt discount.applyType == SPECIFIC
   DS -> DS: getCartItemInfo(cartItemIds) → { productIds, categoryIds, brandIds }
   DS -> DS: validate applicability (match any)
   alt not applicable
-    DS --> DC: English content normalized from the original source text.
+    DS --> DC: Discount Discount Validate Code Sequence: validate request and return the expected response
     DC --> U: 200 OK + JSON
     deactivate DS
     deactivate DC

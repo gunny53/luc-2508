@@ -33,40 +33,40 @@ export const OrderTabs = ({ counts }: { counts: Record<string, number> }) => {
   }, [])
 
   const tabValues = [
-    { value: 'all', label: 'English content normalized from the original source text.', count: counts.all },
+    { value: 'all', label: '??n h?ng', count: counts.all },
     {
       value: OrderStatus.PENDING_PAYMENT,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.pendingPayment
     },
     {
       value: OrderStatus.PENDING_PACKAGING,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.pendingPackaging
     },
     {
       value: OrderStatus.PICKUPED,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.pickuped
     },
     {
       value: OrderStatus.PENDING_DELIVERY,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.pendingDelivery
     },
     {
       value: OrderStatus.DELIVERED,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.delivered
     },
     {
       value: OrderStatus.RETURNED,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.returned
     },
     {
       value: OrderStatus.CANCELLED,
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       count: counts.cancelled
     }
   ]
@@ -83,7 +83,6 @@ export const OrderTabs = ({ counts }: { counts: Record<string, number> }) => {
             >
               <span>{tab.label}</span>
 
-              {}
               {tab.count > 0 && (
                 <div className="\n                  w-5 h-5 rounded-full\n                  bg-gradient-to-r from-[#D70018] to-[#FF4444]\n                  text-white text-[10px] font-bold\n                  flex items-center justify-center\n                  shadow-md\n                  data-[state=active]:from-white data-[state=active]:to-white \n                  data-[state=active]:text-[#D70018]\n                  transition-all duration-200\n                ">
                   {tab.count > 99 ? '99+' : tab.count}
@@ -94,7 +93,6 @@ export const OrderTabs = ({ counts }: { counts: Record<string, number> }) => {
         </TabsList>
       </div>
 
-      {/* Navigation arrows */}
       {showLeftArrow && (
         <div className="absolute left-0 top-0 h-full w-8 flex items-center bg-gradient-to-r from-white to-transparent md:hidden">
           <ChevronLeft className="text-gray-400 w-4 h-4" />

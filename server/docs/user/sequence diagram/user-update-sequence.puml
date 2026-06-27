@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+User User Update Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+User User Update Sequence: validate request and return the expected response
 participant "UserController" as UC
 participant "ActiveUser" as AU
 participant "ActiveRolePermissions('name')" as ARP

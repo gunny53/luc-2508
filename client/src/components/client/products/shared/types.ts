@@ -1,9 +1,9 @@
-// src/components/client/products/shared/types.ts
+
 
 export interface ProductVariantOption {
   name: string
   values: string[]
-  images?: Record<string, string> // Mapping value -> image
+  images?: Record<string, string> 
 }
 
 export interface ProductSku {
@@ -14,12 +14,12 @@ export interface ProductSku {
   image?: string
 }
 
-// UI State interfaces
+
 export interface SelectedVariants {
   [key: string]: string | null
 }
 
-// Cart related types
+
 export interface AddToCartPayload {
   productId: string
   skuId: string

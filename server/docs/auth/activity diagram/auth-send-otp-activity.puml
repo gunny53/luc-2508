@@ -6,27 +6,27 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Auth Auth Send Otp Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Auth Auth Send Otp Activity: execute the validated workflow;
+:Auth Auth Send Otp Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Auth Auth Send Otp Activity: execute the validated workflow;
   stop
 endif
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Auth Auth Send Otp Activity: execute the validated workflow;
   stop
 endif
 :generateOTP();
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Auth Auth Send Otp Activity: execute the validated workflow;
+:Auth Auth Send Otp Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Auth Auth Send Otp Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:Auth Auth Send Otp Activity: execute the validated workflow;
 stop
 
 @enduml

@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Order Order Create Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Order Order Create Sequence: validate request and return the expected response
 participant "AccessTokenGuard" as AG
 participant "OrderController" as OC
 participant "OrderService" as OS
@@ -20,14 +20,14 @@ queue "BullMQ Queue" as BQ
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> OC: English content normalized from the original source text.
+AG --> OC: Order Order Create Sequence: validate request and return the expected response
 activate OC
 
 OC -> OS: create(user, body[])
 activate OS
 
 OS -> OS: validateDiscountCodesIfAny()
-English content normalized from the original source text.
+Order Order Create Sequence: validate request and return the expected response
   OS -> PS: discount.findMany({ codes }, include targets)
   PS -> DB: Query discounts
   DB --> PS: discounts
@@ -36,7 +36,7 @@ English content normalized from the original source text.
   PS -> DB: Query usage count per discount
   DB --> PS: usage[]
   PS --> OS: usage map
-  OS -> OS: English content normalized from the original source text.
+  OS -> OS: Order Order Create Sequence: validate request and return the expected response
   alt invalid
     OS -> OC: throw BadRequestException
     OC --> U: 400 Bad Request
@@ -49,7 +49,7 @@ end
 OS -> OR: create(user.userId, body)
 activate OR
 
-OR -> PS: English content normalized from the original source text.
+OR -> PS: Order Order Create Sequence: validate request and return the expected response
 PS -> DB: Query cart items (for skuIds)
 DB --> PS: cartItems
 PS --> OR: cartItems (skuIds)
@@ -67,10 +67,10 @@ PS --> OR: cartItems
 
 OR -> OR: validateCartItems(cartItems, body)
 note right of OR
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Order Order Create Sequence: validate request and return the expected response
+• Order Order Create Sequence: validate request and return the expected response
 • Product publish OK
-• English content normalized from the original source text
+• Order Order Create Sequence: validate request and return the expected response
 end note
 
 OR -> PS: payment.create({ status: PENDING })
@@ -78,15 +78,15 @@ PS -> DB: INSERT payment
 DB --> PS: payment
 PS --> OR: payment.id
 
-English content normalized from the original source text.
-  OR -> OR: English content normalized from the original source text.
-  English content normalized from the original source text.
+Order Order Create Sequence: validate request and return the expected response
+  OR -> OR: Order Order Create Sequence: validate request and return the expected response
+  Order Order Create Sequence: validate request and return the expected response
     OR -> PS: discount.findMany(active+time+deletedAt=null, include targets)
     PS -> DB: Query discounts
     DB --> PS: discounts
     PS --> OR: discounts
-    OR -> OR: English content normalized from the original source text.
-    OR -> PS: English content normalized from the original source text.
+    OR -> OR: Order Order Create Sequence: validate request and return the expected response
+    OR -> PS: Order Order Create Sequence: validate request and return the expected response
     PS -> DB: UPDATE discount
     DB --> PS: ok
   end
@@ -100,7 +100,7 @@ OR -> PS: cartItem.deleteMany({ ids in allBodyCartItemIds })
 PS -> DB: DELETE cart items
 DB --> PS: { count }
 
-English content normalized from the original source text.
+Order Order Create Sequence: validate request and return the expected response
   OR -> PS: sKU.update({ where: { id, updatedAt, stock >= quantity }, data: { stock: decrement quantity } })
   PS -> DB: UPDATE SKU (optimistic lock)
   DB --> PS: ok | throw

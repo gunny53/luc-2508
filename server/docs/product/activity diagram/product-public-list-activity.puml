@@ -6,13 +6,13 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Product Product Public List Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Product Product Public List Activity: execute the validated workflow;
+:Product Product Public List Activity: execute the validated workflow;
+:Product Product Public List Activity: execute the validated workflow;
+:Product Product Public List Activity: execute the validated workflow;
 note right
 • deletedAt IS NULL
 • publishedAt <= now
@@ -22,11 +22,11 @@ note right
 • basePrice gte/lte theo range
 • orderBy theo sortBy
 end note
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Product Product Public List Activity: execute the validated workflow;
+:Product Product Public List Activity: execute the validated workflow;
+:Product Product Public List Activity: execute the validated workflow;
 :Build message i18n;
-:English content normalized from the original source text;
+:Product Product Public List Activity: execute the validated workflow;
 stop
 
 @enduml

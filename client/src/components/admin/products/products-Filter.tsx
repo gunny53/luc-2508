@@ -39,9 +39,9 @@ export function ProductsFilter<TData>({
   currentCategoryFilter
 }: ProductsFilterProps<TData>) {
   const t = useTranslations('admin.ModuleProduct.Filter')
-  // const categoryColumn = table.getColumn("category");
-  // const priceColumn = table.getColumn("price");
-  // const sizeColumn = table.getColumn("size");
+  
+  
+  
   const [categories, setCategories] = React.useState<
     Array<{
       value: string
@@ -91,10 +91,10 @@ export function ProductsFilter<TData>({
     }
   }, [currentPriceFilter])
 
-  // Apply server-side filtering via API parameters
+  
   const applyPriceFilter = () => {
     if (onPriceFilterChange) {
-      // Pass min and max price to the API handler
+      
       onPriceFilterChange(priceRange[0], priceRange[1])
     }
   }
@@ -102,7 +102,7 @@ export function ProductsFilter<TData>({
   const clearPriceFilter = () => {
     setPriceRange([defaultMinPrice, defaultMaxPrice])
     if (onPriceFilterChange) {
-      // Clear the price filter by passing null values
+      
       onPriceFilterChange(null, null)
     }
   }
@@ -120,11 +120,10 @@ export function ProductsFilter<TData>({
       onCategoryFilterChange(null)
     }
   }
-  // const selectedSizes = new Set(sizeColumn?.getFilterValue() as string[]);
+  
 
   return (
     <div className="flex items-center space-x-2">
-      {}
       {
         <Popover>
           <PopoverTrigger asChild>
@@ -134,7 +133,7 @@ export function ProductsFilter<TData>({
               className={cn('h-8', currentCategoryFilter ? 'border-primary/50 bg-primary/10' : 'border-dashed')}
             >
               <PlusCircle className="mr-2 h-4 w-4" />
-              {t('category') || 'English content normalized from the original source text.'}
+              {t('category') || 'S?n ph?m'}
               {currentCategoryFilter && (
                 <>
                   <Separator orientation="vertical" className="mx-2 h-4" />
@@ -148,17 +147,17 @@ export function ProductsFilter<TData>({
           <PopoverContent className="w-[200px] p-0" align="start">
             <Command>
               <CommandInput
-                placeholder={t('searchCategory') || 'English content normalized from the original source text.'}
+                placeholder={t('searchCategory') || 'S?n ph?m'}
               />
               <CommandList>
                 <CommandEmpty>
-                  {t('noResults') || 'English content normalized from the original source text.'}
+                  {t('noResults') || 'S?n ph?m'}
                 </CommandEmpty>
                 <CommandGroup>
                   {loadingCategories ? (
                     <CommandItem disabled>
                       <span className="opacity-70">
-                        {t('loading') || 'English content normalized from the original source text.'}
+                        {t('loading') || 'S?n ph?m'}
                       </span>
                     </CommandItem>
                   ) : (
@@ -189,7 +188,7 @@ export function ProductsFilter<TData>({
                     <CommandSeparator />
                     <CommandGroup>
                       <CommandItem onSelect={clearCategoryFilter} className="justify-center text-center">
-                        {t('clearFilters') || 'English content normalized from the original source text.'}
+                        {t('clearFilters') || 'S?n ph?m'}
                       </CommandItem>
                     </CommandGroup>
                   </>
@@ -200,7 +199,6 @@ export function ProductsFilter<TData>({
         </Popover>
       }
 
-      {}
       {
         <Popover>
           <PopoverTrigger asChild>
@@ -215,7 +213,7 @@ export function ProductsFilter<TData>({
               )}
             >
               <PlusCircle className="mr-2 h-4 w-4" />
-              {t('price') || 'English content normalized from the original source text.'}
+              {t('price') || 'S?n ph?m'}
               {(priceRange[0] !== defaultMinPrice || priceRange[1] !== defaultMaxPrice) && (
                 <>
                   <Separator orientation="vertical" className="mx-2 h-4" />
@@ -239,7 +237,7 @@ export function ProductsFilter<TData>({
           <PopoverContent className="w-64 p-4" align="start">
             <div className="space-y-4">
               <h4 className="font-medium leading-none">
-                {t('priceRange') || 'English content normalized from the original source text.'}
+                {t('priceRange') || 'S?n ph?m'}
               </h4>
               <Slider
                 defaultValue={[1000, 10000000]}
@@ -260,7 +258,7 @@ export function ProductsFilter<TData>({
               <div className="flex flex-col gap-2 pt-2">
                 {(currentPriceFilter?.minPrice !== null || currentPriceFilter?.maxPrice !== null) && (
                   <p className="text-sm text-muted-foreground italic">
-                    {t('activeFilter') || 'English content normalized from the original source text.'}:{' '}
+                    {t('activeFilter') || 'S?n ph?m'}:{' '}
                     {currentPriceFilter?.minPrice?.toLocaleString('vi-VN')} -{' '}
                     {currentPriceFilter?.maxPrice?.toLocaleString('vi-VN')} VND
                   </p>
@@ -270,16 +268,16 @@ export function ProductsFilter<TData>({
                     variant="ghost"
                     size="sm"
                     onClick={clearPriceFilter}
-                    title={t('clearFilter') || 'English content normalized from the original source text.'}
+                    title={t('clearFilter') || 'S?n ph?m'}
                   >
-                    {t('clear') || 'English content normalized from the original source text.'}
+                    {t('clear') || 'S?n ph?m'}
                   </Button>
                   <Button
                     size="sm"
                     onClick={applyPriceFilter}
-                    title={t('applyFilter') || 'English content normalized from the original source text.'}
+                    title={t('applyFilter') || 'S?n ph?m'}
                   >
-                    {t('apply') || 'English content normalized from the original source text.'}
+                    {t('apply') || 'S?n ph?m'}
                   </Button>
                 </div>
               </div>

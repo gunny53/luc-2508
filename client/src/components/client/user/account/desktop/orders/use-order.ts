@@ -32,7 +32,7 @@ export function useOrder() {
       await fetchProfile.fetchProfile()
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -47,7 +47,7 @@ export function useOrder() {
       setMetadata(res.metadata)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -64,7 +64,7 @@ export function useOrder() {
 
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -77,7 +77,7 @@ export function useOrder() {
       const res: OrderCreateResponse = await orderService.create(data)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -90,7 +90,7 @@ export function useOrder() {
       const res: OrderCancelResponse = await orderService.cancel(orderId)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)

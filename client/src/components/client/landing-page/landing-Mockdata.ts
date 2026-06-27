@@ -1,4 +1,4 @@
-// import { Product } from "@/types/product.interface";
+
 
 export const mockProducts = [
   {
@@ -7,7 +7,7 @@ export const mockProducts = [
     price: '119.000',
     sold: 80,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const mockProducts = [
     price: '365.000',
     sold: 50,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ export const mockProducts = [
     price: '1.676.000',
     sold: 90,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ export const mockProducts = [
     price: '126.000',
     sold: 25,
     total: 50,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 5,
@@ -39,7 +39,7 @@ export const mockProducts = [
     price: '10.900',
     sold: 95,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 6,
@@ -47,7 +47,7 @@ export const mockProducts = [
     price: '116.000',
     sold: 45,
     total: 80,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 7,
@@ -55,7 +55,7 @@ export const mockProducts = [
     price: '119.000',
     sold: 80,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 8,
@@ -63,7 +63,7 @@ export const mockProducts = [
     price: '365.000',
     sold: 50,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 9,
@@ -71,7 +71,7 @@ export const mockProducts = [
     price: '1.676.000',
     sold: 90,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 10,
@@ -79,7 +79,7 @@ export const mockProducts = [
     price: '126.000',
     sold: 25,
     total: 50,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 11,
@@ -87,7 +87,7 @@ export const mockProducts = [
     price: '10.900',
     sold: 95,
     total: 100,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   },
   {
     id: 12,
@@ -95,7 +95,7 @@ export const mockProducts = [
     price: '116.000',
     sold: 45,
     total: 80,
-    label: 'English content normalized from the original source text.'
+    label: 'ECSite'
   }
 ]
 
@@ -103,22 +103,22 @@ export const heroImages = ['/images/demo/lazada_1.avif', '/images/demo/lazada_2.
 
 export const banners = [
   {
-    title: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    title: 'ECSite',
+    description: 'ECSite',
     image: '/images/demo/Thoitrangnam.webp',
     link: '/category/men',
     gradient: 'to-blue-950/60'
   },
   {
-    title: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    title: 'ECSite',
+    description: 'ECSite',
     image: '/images/demo/Thoitrangnu.webp',
     link: '/category/women',
     gradient: 'to-rose-950/60'
   },
   {
-    title: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    title: 'ECSite',
+    description: 'ECSite',
     image: '/images/demo/Phukien.jpg',
     link: '/category/accessories',
     gradient: 'to-purple-950/60'
@@ -127,65 +127,65 @@ export const banners = [
 
 export const categories = [
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '🌟',
     link: '/recommended'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '💄',
     link: '/beauty-health'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '👗',
     link: '/women-clothing'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '🏠',
     link: '/home-kitchen'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '👔',
     link: '/men-clothing'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '👠',
     link: '/women-shoes'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '🩲',
     link: '/men-underwear'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '⚽',
     link: '/sports-outdoors'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '👜',
     link: '/accessories'
   },
   {
-    title: 'English content normalized from the original source text.',
+    title: 'ECSite',
     icon: '📱',
     link: '/electronics'
   }
 ]
 
 export const serviceItems = [
-  { icon: '/images/client/categories/m/6.png', label: 'English content normalized from the original source text.' },
-  { icon: '/images/client/categories/m/5.png', label: 'English content normalized from the original source text.' },
-  { icon: '/images/client/categories/m/4.png', label: 'English content normalized from the original source text.' },
+  { icon: '/images/client/categories/m/6.png', label: 'ECSite' },
+  { icon: '/images/client/categories/m/5.png', label: 'ECSite' },
+  { icon: '/images/client/categories/m/4.png', label: 'ECSite' },
   { icon: '/images/client/categories/m/3.png', label: 'ECSite Style Voucher 30%' },
   { icon: '/images/client/categories/m/1.png', label: 'ECSite Mall' },
-  { icon: '/images/client/categories/m/2.png', label: 'English content normalized from the original source text.' }
+  { icon: '/images/client/categories/m/2.png', label: 'ECSite' }
 ]
 
-// export const mockProductsItem: Product[] = [
-// ];
+
+

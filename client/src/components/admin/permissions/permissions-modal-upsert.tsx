@@ -42,7 +42,7 @@ export default function PermissionsModalUpsert({ open, onClose, permission, onSu
   const [method, setMethod] = useState('GET')
   const [loading, setLoading] = useState(false)
 
-  // Reset form when modal opens or permission changes
+  
   useEffect(() => {
     if (permission) {
       setName(permission.name || '')
@@ -75,7 +75,7 @@ export default function PermissionsModalUpsert({ open, onClose, permission, onSu
       await onSubmit(data)
       onClose()
     } catch (error) {
-      // Error is already handled by the parent component's try-catch block
+      
     } finally {
       setLoading(false)
     }

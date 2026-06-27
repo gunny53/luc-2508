@@ -6,21 +6,21 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Auth Auth Register Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Auth Auth Register Activity: execute the validated workflow;
 :validateVerificationCode(REGISTER);
 if (condition?) then (Yes)
   :Hash password;
   fork
-    :English content normalized from the original source text;
+    :Auth Auth Register Activity: execute the validated workflow;
   fork again
-    :English content normalized from the original source text;
+    :Auth Auth Register Activity: execute the validated workflow;
   end fork
-  :English content normalized from the original source text;
+  :Auth Auth Register Activity: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
+  :Auth Auth Register Activity: execute the validated workflow;
 endif
 stop
 

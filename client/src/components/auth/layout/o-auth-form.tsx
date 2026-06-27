@@ -24,8 +24,8 @@ export function OAuthForm({ className, type = 'signin' }: OAuthFormProps) {
       window.location.replace(url)
     } catch (error) {
       console.error('Google auth error:', error)
-      setError('English content normalized from the original source text.')
-      toast.error('English content normalized from the original source text.')
+      setError('X?c th?c')
+      toast.error('X?c th?c')
     }
   }
 

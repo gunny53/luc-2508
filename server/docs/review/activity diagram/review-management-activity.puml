@@ -8,154 +8,154 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Review Review Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Review Review Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
     end note
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :POST /reviews + {content, rating, productId, orderId, medias};
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
   note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
     • rating: number.int().min(0).max(5)
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
     end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
+    • Review Review Management Activity: execute the validated workflow
     end note
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
       note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
         end note
-      :English content normalized from the original source text;
+      :Review Review Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
+        :Review Review Management Activity: execute the validated workflow;
         note right
-          English content normalized from the original source text.
-          • English content normalized from the original source text
-          • English content normalized from the original source text
-          • English content normalized from the original source text
-          • English content normalized from the original source text
+          Review Review Management Activity: execute the validated workflow
+          • Review Review Management Activity: execute the validated workflow
+          • Review Review Management Activity: execute the validated workflow
+          • Review Review Management Activity: execute the validated workflow
+          • Review Review Management Activity: execute the validated workflow
           end note
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Review Review Management Activity: execute the validated workflow;
+        :Review Review Management Activity: execute the validated workflow;
+        :Review Review Management Activity: execute the validated workflow;
+        :Review Review Management Activity: execute the validated workflow;
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Review Review Management Activity: execute the validated workflow;
+        :Review Review Management Activity: execute the validated workflow;
+        :Review Review Management Activity: execute the validated workflow;
         note right
-          English content normalized from the original source text.
-          • English content normalized from the original source text
+          Review Review Management Activity: execute the validated workflow
+          • Review Review Management Activity: execute the validated workflow
           • Unique constraint: userId + productId
           end note
       endif
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
       note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
         end note
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :PUT /reviews/:reviewId + {data};
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
+  :Review Review Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
     note right
-      English content normalized from the original source text.
-      • English content normalized from the original source text
-      • English content normalized from the original source text
-      • English content normalized from the original source text
+      Review Review Management Activity: execute the validated workflow
+      • Review Review Management Activity: execute the validated workflow
+      • Review Review Management Activity: execute the validated workflow
+      • Review Review Management Activity: execute the validated workflow
       end note
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
+    :Review Review Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
       note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
+        Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
         • Increment updateCount
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        • Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
         end note
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Review Review Management Activity: execute the validated workflow;
+      :Review Review Management Activity: execute the validated workflow;
       note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
+        • Review Review Management Activity: execute the validated workflow
         end note
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Review Review Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
+  :Review Review Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Review Review Management Activity: execute the validated workflow;
 
 stop
 

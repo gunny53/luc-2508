@@ -82,14 +82,14 @@ export const useDbSeller = () => {
           error: null
         })
       } else {
-        throw new Error(response.message || 'English content normalized from the original source text.')
+        throw new Error(response.message || 'B?ng ?i?u khi?n')
       }
     } catch (error) {
       console.error('Error fetching discount stats:', error)
       setDiscountStats((prev) => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'English content normalized from the original source text.'
+        error: error instanceof Error ? error.message : 'B?ng ?i?u khi?n'
       }))
     }
   }, [user?.id])
@@ -121,24 +121,24 @@ export const useDbSeller = () => {
           error: null
         })
       } else {
-        throw new Error(response.message || 'English content normalized from the original source text.')
+        throw new Error(response.message || 'B?ng ?i?u khi?n')
       }
     } catch (error) {
       console.error('Error fetching seller stats:', error)
       setSellerStats((prev) => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'English content normalized from the original source text.'
+        error: error instanceof Error ? error.message : 'B?ng ?i?u khi?n'
       }))
     }
   }, [user?.id])
 
-  // Fetch combined stats
+  
   const fetchAllStats = useCallback(async () => {
     await Promise.all([fetchSellerStats(), fetchDiscountStats()])
   }, [fetchSellerStats, fetchDiscountStats])
 
-  // Load data khi component mount
+  
   useEffect(() => {
     fetchAllStats()
   }, [fetchAllStats])

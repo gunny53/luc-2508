@@ -18,12 +18,12 @@ export function DataTableExport<TData>({ table }: DataTableExportProps<TData>) {
 
   const handleExport = async (type: 'csv' | 'excel') => {
     try {
-      setIsExporting(true) // Get visible rows
+      setIsExporting(true) 
       const rows = table.getRowModel().rows
       const data = rows.map((row) => {
         const rowData: Record<string, unknown> = {}
         row.getVisibleCells().forEach((cell) => {
-          // Skip selection column
+          
           if (cell.column.id !== 'select') {
             rowData[cell.column.id] = cell.getValue()
           }
@@ -31,17 +31,17 @@ export function DataTableExport<TData>({ table }: DataTableExportProps<TData>) {
         return rowData
       })
 
-      // Create worksheet
+      
       const ws = XLSX.utils.json_to_sheet(data)
 
-      // Create workbook
+      
       const wb = XLSX.utils.book_new()
       XLSX.utils.book_append_sheet(wb, ws, 'Data')
 
-      // Generate buffer
+      
       const excelBuffer = XLSX.write(wb, { bookType: type === 'csv' ? 'csv' : 'xlsx', type: 'array' })
 
-      // Convert buffer to Blob
+      
       const blob = new Blob([excelBuffer], {
         type:
           type === 'csv'
@@ -49,7 +49,7 @@ export function DataTableExport<TData>({ table }: DataTableExportProps<TData>) {
             : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       })
 
-      // Save file
+      
       saveAs(blob, `export_${new Date().toISOString().split('T')[0]}.${type === 'csv' ? 'csv' : 'xlsx'}`)
     } catch (error) {
       console.error('Export failed:', error)

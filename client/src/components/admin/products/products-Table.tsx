@@ -23,7 +23,7 @@ export function ProductsTable() {
   const t = useTranslations('admin.ModuleProduct')
   const router = useRouter()
 
-  // State cho modal barcode
+  
   const [barcodeModalOpen, setBarcodeModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<ProductColumn | null>(null)
 
@@ -51,7 +51,7 @@ export function ProductsTable() {
   }
 
   const onView = (product: ProductColumn) => {
-    // Use window.open to open the client product page in a new tab
+    
     const productUrl = getProductUrl(product.name, product.id)
     window.open(productUrl, '_blank')
   }

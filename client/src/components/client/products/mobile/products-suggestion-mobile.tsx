@@ -1,4 +1,4 @@
-// ✅ ProductSuggestionsMobile.tsx
+
 'use client'
 
 interface ProductSuggestion {
@@ -11,7 +11,7 @@ interface ProductSuggestion {
 export default function ProductSuggestionsMobile({ products }: { products: ProductSuggestion[] }) {
   return (
     <div className="bg-white p-4 mt-2">
-      <h2 className="text-sm font-semibold mb-3">English content normalized from the original source text.</h2>
+      <h2 className="text-sm font-semibold mb-3">S?n ph?m</h2>
       <div className="grid grid-cols-2 gap-3">
         {products.map((item) => (
           <div key={item.id} className="text-sm">

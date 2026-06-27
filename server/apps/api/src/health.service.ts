@@ -93,7 +93,7 @@ export class RedisHealthService {
       return {
         status: 'healthy',
         connection: this.redis.status,
-        info: info.substring(0, 500) + '...' // Truncate long info
+        info: info.substring(0, 500) + '...' 
       }
     } catch (error) {
       return {

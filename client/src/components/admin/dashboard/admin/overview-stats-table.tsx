@@ -16,7 +16,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'users',
       title: 'Users',
-      description: 'English content normalized from the original source text.',
+      description: 'B?ng ?i?u khi?n',
       value: totalUsers,
       icon: Users,
       color: 'bg-blue-50 text-blue-600 border-blue-200',
@@ -25,7 +25,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'brands',
       title: 'Brands',
-      description: 'English content normalized from the original source text.',
+      description: 'B?ng ?i?u khi?n',
       value: totalBrands,
       icon: ShoppingBag,
       color: 'bg-green-50 text-green-600 border-green-200',
@@ -34,7 +34,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'categories',
       title: 'Categories',
-      description: 'English content normalized from the original source text.',
+      description: 'B?ng ?i?u khi?n',
       value: totalCategories,
       icon: FolderTree,
       color: 'bg-purple-50 text-purple-600 border-purple-200',
@@ -43,7 +43,7 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     {
       id: 'auditlogs',
       title: 'Audit Logs',
-      description: 'English content normalized from the original source text.',
+      description: 'B?ng ?i?u khi?n',
       value: totalAuditLogs,
       icon: FileText,
       color: 'bg-orange-50 text-orange-600 border-orange-200',
@@ -55,8 +55,8 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
     return (
       <Card>
         <CardHeader>
-          <CardTitle>English content normalized from the original source text.</CardTitle>
-          <CardDescription>English content normalized from the original source text.</CardDescription>
+          <CardTitle>B?ng ?i?u khi?n</CardTitle>
+          <CardDescription>B?ng ?i?u khi?n</CardDescription>
         </CardHeader>
         <CardContent>
           <Alert variant="destructive">
@@ -71,8 +71,8 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
   return (
     <Card>
       <CardHeader>
-        <CardTitle>English content normalized from the original source text.</CardTitle>
-        <CardDescription>English content normalized from the original source text.</CardDescription>
+        <CardTitle>B?ng ?i?u khi?n</CardTitle>
+        <CardDescription>B?ng ?i?u khi?n</CardDescription>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -106,27 +106,27 @@ const OverviewStatsTable: React.FC<OverviewStatsTableProps> = ({ overviewStats }
           </div>
         )}
 
-        {/* Summary section */}
+        {}
         {!isLoading && !error && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <h4 className="font-medium text-gray-900 mb-2">
-              English content normalized from the original source text.
+              B?ng ?i?u khi?n
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
-                <span className="text-gray-500">English content normalized from the original source text.</span>
+                <span className="text-gray-500">B?ng ?i?u khi?n</span>
                 <span className="ml-2 font-medium">{totalUsers.toLocaleString()}</span>
               </div>
               <div>
-                <span className="text-gray-500">English content normalized from the original source text.</span>
+                <span className="text-gray-500">B?ng ?i?u khi?n</span>
                 <span className="ml-2 font-medium">{totalBrands.toLocaleString()}</span>
               </div>
               <div>
-                <span className="text-gray-500">English content normalized from the original source text.</span>
+                <span className="text-gray-500">B?ng ?i?u khi?n</span>
                 <span className="ml-2 font-medium">{totalCategories.toLocaleString()}</span>
               </div>
               <div>
-                <span className="text-gray-500">English content normalized from the original source text.</span>
+                <span className="text-gray-500">B?ng ?i?u khi?n</span>
                 <span className="ml-2 font-medium">{totalAuditLogs.toLocaleString()}</span>
               </div>
             </div>

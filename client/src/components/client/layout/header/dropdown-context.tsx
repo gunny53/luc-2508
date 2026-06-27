@@ -13,7 +13,7 @@ const DropdownContext = createContext<DropdownContextType>({
 export function DropdownProvider({ children }: { children: React.ReactNode }) {
   const [openDropdown, setOpenDropdown] = useState<DropdownType>('none')
 
-  // Update overlay visibility without locking scroll
+  
   useEffect(() => {
     const overlayElement = document.querySelector('.body-overlay')
     const shouldShowOverlay = openDropdown !== 'none' && openDropdown !== 'cart'
@@ -25,7 +25,7 @@ export function DropdownProvider({ children }: { children: React.ReactNode }) {
     }
   }, [openDropdown])
 
-  // Handle outside clicks
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const isOutsideClick = !(

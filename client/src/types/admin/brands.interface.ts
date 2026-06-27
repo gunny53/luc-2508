@@ -1,6 +1,6 @@
 import { PaginationMetadata, PaginationRequest } from '../base.interface'
 
-// Interface cho Brand Translation
+
 export interface BrandTranslation {
   id?: number
   brandId: number
@@ -43,7 +43,7 @@ export interface BrandUpdateRequest {
   }>
 }
 
-// Response interface
+
 export interface BrandGetAllResponse {
   data: Brand[]
   metadata: PaginationMetadata
@@ -53,5 +53,5 @@ export interface BrandGetByIdResponse {
   data: Brand
 }
 
-// Params interface
+
 export interface BrandParams extends PaginationRequest {}

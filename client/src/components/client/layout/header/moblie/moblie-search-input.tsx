@@ -126,7 +126,7 @@ export function MobileSearchInput() {
 
   return (
     <>
-      {/* Overlay */}
+      {}
       <div
         className={`fixed inset-0 bg-black transition-all duration-300 ${
           isFocused ? 'opacity-50 visible z-40' : 'opacity-0 invisible'
@@ -135,7 +135,7 @@ export function MobileSearchInput() {
       />
 
       <div className="relative w-full z-50">
-        {/* Input */}
+        {}
         <div className="flex items-center gap-2 bg-[#f8f8f8] rounded-md border border-gray-200 h-10 px-2">
           <Search className="h-4 w-4 text-gray-400" />
           <input
@@ -151,7 +151,7 @@ export function MobileSearchInput() {
                 else setIsFocused(false)
               }
             }}
-            placeholder="English content normalized from the original source text."
+            placeholder="T?m ki?m"
             className="flex-1 bg-transparent text-sm text-black placeholder-gray-400 focus:outline-none"
             role="combobox"
             aria-expanded={isFocused}
@@ -170,7 +170,7 @@ export function MobileSearchInput() {
           )}
         </div>
 
-        {/* Dropdown */}
+        {}
         <AnimatePresence>
           {isFocused && (
             <motion.div
@@ -185,16 +185,15 @@ export function MobileSearchInput() {
               <div className="pb-3">
                 {!searchTerm ? (
                   <>
-                    {}
                     {searchHistory.length === 0 ? (
                       <div className="px-4 py-6 text-center text-gray-400 text-sm">
-                        English content normalized from the original source text.
+                        T?m ki?m
                       </div>
                     ) : (
                       <div className="px-4 pt-3">
                         <div className="flex justify-between items-center mb-2">
                           <h3 className="text-sm font-semibold text-gray-800">
-                            English content normalized from the original source text.
+                            T?m ki?m
                           </h3>
                           <button
                             className="text-xs text-red-500 hover:underline"
@@ -203,7 +202,7 @@ export function MobileSearchInput() {
                               localStorage.removeItem('searchHistory')
                             }}
                           >
-                            English content normalized from the original source text.
+                            T?m ki?m
                           </button>
                         </div>
 
@@ -234,10 +233,9 @@ export function MobileSearchInput() {
                       </div>
                     )}
 
-                    {}
                     <div className="px-4 pt-3">
                       <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                        English content normalized from the original source text.
+                        T?m ki?m
                       </h3>
                       {categories.slice(0, 5).map((category) => (
                         <motion.div
@@ -281,10 +279,9 @@ export function MobileSearchInput() {
                     .map((_, i) => <SkeletonSuggestion key={i} />)
                 ) : searchSuggestions.length > 0 ? (
                   <>
-                    {}
                     <div className="px-4 pt-3">
                       <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                        English content normalized from the original source text.
+                        T?m ki?m
                       </h3>
                     </div>
 
@@ -321,12 +318,12 @@ export function MobileSearchInput() {
                   </>
                 ) : (
                   <div className="px-4 py-6 text-center text-gray-500">
-                    English content normalized from the original source text. "{searchTerm}"
+                    T?m ki?m "{searchTerm}"
                   </div>
                 )}
               </div>
 
-              {/* Footer CTA */}
+              {}
               {searchTerm && (
                 <div className="px-5 pb-5">
                   <div className="border-t border-gray-100 pt-4">
@@ -338,9 +335,8 @@ export function MobileSearchInput() {
                     >
                       <Search className="h-4 w-4 mr-2.5" />
                       <span>
-                        English content normalized from the original source text.{' '}
-                        <span className="font-bold text-red-600">"{totalItems}"</span> English content normalized from
-                        the original source text. <span className="font-bold text-red-600">"{searchTerm}"</span>
+                        T?m ki?m{' '}
+                        <span className="font-bold text-red-600">"{totalItems}"</span> k?t qu? t?m ki?m <span className="font-bold text-red-600">"{searchTerm}"</span>
                       </span>
                     </div>
                   </div>

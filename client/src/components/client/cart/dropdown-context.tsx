@@ -24,7 +24,7 @@ export function DropdownProvider({ children }: { children: React.ReactNode }) {
     }
   }, [openDropdown])
 
-  // Close dropdown when click outside search container
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const isOutsideClick = !(event.target instanceof Element && event.target.closest('.search-container'))

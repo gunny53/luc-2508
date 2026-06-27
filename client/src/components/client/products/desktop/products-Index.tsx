@@ -23,11 +23,11 @@ interface Props {
 }
 
 export default function ProductDetail({ slug, product: productData, isLoading = false }: Props) {
-  // Show loading state if needed
+  
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[500px]">
-        <p>English content normalized from the original source text.</p>
+        <p>S?n ph?m</p>
       </div>
     )
   }
@@ -45,10 +45,10 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
     })) as MediaItem[]
   }
   const sizes =
-    productToUse?.variants?.find((v: any) => v.value === 'English content normalized from the original source text.')
+    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
       ?.options || []
   const colors =
-    productToUse?.variants?.find((v: any) => v.value === 'English content normalized from the original source text.')
+    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
       ?.options || []
   const product = {
     ...productToUse,
@@ -63,7 +63,6 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
 
   return (
     <div className="bg-[#f5f5f5] py-4">
-      {/* ✅ Breadcrumb */}
       <div className="max-w-[1200px] mx-auto px-4 mb-3">
         <Breadcrumb className="mb-3 flex flex-wrap items-center text-sm text-muted-foreground">
           <BreadcrumbItem className="flex items-center gap-1">
@@ -103,7 +102,6 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
         </Breadcrumb>
       </div>
 
-      {}
       <div className="max-w-[1200px] mx-auto bg-white p-4 rounded">
         <div className="grid md:grid-cols-[450px_1fr] gap-4 md:items-start">
           <div className="w-full">
@@ -114,23 +112,17 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
           </div>
         </div>
 
-        {}
       </div>
       <div className="max-w-[1200px] mx-auto mt-6 rounded space-y-6">
-        {}
-        {}
 
-        {}
         <div>
           <ProductSpecs product={product as any} />
         </div>
 
-        {}
         <div>
           <ProductReviews productId={String(product.id)} />
         </div>
 
-        {}
         <div>
           <ProductSuggestions products={[]} />
         </div>

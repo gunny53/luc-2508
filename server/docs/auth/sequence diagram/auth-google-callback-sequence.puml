@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Auth Auth Google Callback Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "AuthController" as AC

@@ -18,7 +18,7 @@ export class EmailService {
   }
 
   async sendOTP(payload: { email: string; code: string }) {
-    const subject = 'English content normalized from the original source text.'
+    const subject = 'Your ECSite verification code'
     return this.resend.emails.send({
       from: 'ECSite Ecommerce <no-reply@ecsite.live>',
       to: [payload.email],

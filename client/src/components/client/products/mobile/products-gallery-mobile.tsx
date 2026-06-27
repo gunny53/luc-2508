@@ -44,7 +44,7 @@ export default function ProductGalleryMobile({ media }: Props) {
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (!wrapperRef.current || dragStartX.current === null) return
     const deltaX = e.changedTouches[0].clientX - dragStartX.current
-    // wrapperRef.current.classList.add(styles.galleryWrapper);
+    
     wrapperRef.current.classList.remove(styles.galleryWrapperNoTransition)
 
     if (deltaX < -40 && currentIndex < media.length - 1) {

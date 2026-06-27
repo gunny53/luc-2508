@@ -26,7 +26,6 @@ function ProductForm({ initialData, onCreateSuccess }: ProductFormProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
-      {}
       <div className="grid auto-rows-max items-start gap-4 md:gap-8">
         <ProductBasicInfoForm productData={productData} handleInputChange={handleInputChange} />
 
@@ -43,7 +42,6 @@ function ProductForm({ initialData, onCreateSuccess }: ProductFormProps) {
         />
       </div>
 
-      {}
       <div className="grid auto-rows-max items-start gap-4 md:gap-8">
         <ProductAsideForm
           brandId={productData.brandId}

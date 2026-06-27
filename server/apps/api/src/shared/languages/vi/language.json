@@ -1,16 +1,16 @@
 {
   "language": {
     "success": {
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text.",
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "GET_DETAIL_SUCCESS": "English content normalized from the original source text."
+      "CREATE_SUCCESS": "Tạo ngôn ngữ thành công.",
+      "UPDATE_SUCCESS": "Cập nhật ngôn ngữ thành công.",
+      "DELETE_SUCCESS": "Xóa ngôn ngữ thành công.",
+      "GET_SUCCESS": "Lấy danh sách ngôn ngữ thành công.",
+      "GET_DETAIL_SUCCESS": "Lấy chi tiết ngôn ngữ thành công."
     },
     "error": {
-      "NOT_FOUND": "English content normalized from the original source text.",
-      "ALREADY_EXISTS": "English content normalized from the original source text.",
-      "CANNOT_DELETE": "English content normalized from the original source text."
+      "NOT_FOUND": "Không tìm thấy ngôn ngữ.",
+      "ALREADY_EXISTS": "Dữ liệu đã tồn tại.",
+      "CANNOT_DELETE": "Thao tác với ngôn ngữ không thành công."
     }
   }
 }

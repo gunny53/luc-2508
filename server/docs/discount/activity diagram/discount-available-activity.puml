@@ -6,22 +6,22 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Discount Discount Available Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Discount Discount Available Activity: execute the validated workflow;
+:Discount Discount Available Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Available Activity: execute the validated workflow;
+  :Discount Discount Available Activity: execute the validated workflow;
+  :Discount Discount Available Activity: execute the validated workflow;
+  :Discount Discount Available Activity: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
+  :Discount Discount Available Activity: execute the validated workflow;
 endif
 :Query discount.findMany(where, include relations, orderBy desc, take limit);
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Discount Discount Available Activity: execute the validated workflow;
+:Discount Discount Available Activity: execute the validated workflow;
 stop
 
 @enduml

@@ -1,7 +1,6 @@
 groups:
   - name: VPS Performance Monitoring
     rules:
-      # CPU Monitoring
       - alert: HighCPUUsagePerCore
         expr: 100 - (avg by (cpu) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
         for: 3m
@@ -20,7 +19,6 @@ groups:
           summary: 'Critical CPU usage on {{ $labels.cpu }}'
           description: 'CPU usage is {{ $value }}% on {{ $labels.cpu }} for more than 2 minutes'
 
-      # Memory Monitoring
       - alert: HighMemoryUsage
         expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
         for: 3m
@@ -39,7 +37,6 @@ groups:
           summary: 'Critical memory usage'
           description: 'Memory usage is {{ $value }}% for more than 2 minutes'
 
-      # Load Average Monitoring
       - alert: HighLoadAverage
         expr: node_load1 > count(count by (cpu) (node_cpu_seconds_total)) * 0.8
         for: 3m
@@ -58,7 +55,6 @@ groups:
           summary: 'Critical system load average'
           description: '1-minute load average is {{ $value }} for more than 2 minutes'
 
-      # Disk I/O Monitoring
       - alert: HighDiskIO
         expr: rate(node_disk_io_time_seconds_total[5m]) > 0.8
         for: 3m
@@ -68,7 +64,6 @@ groups:
           summary: 'High disk I/O utilization'
           description: 'Disk I/O utilization is {{ $value }} for more than 3 minutes'
 
-      # Network I/O Monitoring
       - alert: HighNetworkIO
         expr: rate(node_network_receive_bytes_total[5m]) + rate(node_network_transmit_bytes_total[5m]) > 1000000000
         for: 3m
@@ -80,7 +75,6 @@ groups:
 
   - name: VPS Infrastructure Health
     rules:
-      # Disk Space Monitoring
       - alert: LowDiskSpace
         expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"} * 100) < 15
         for: 5m
@@ -99,7 +93,6 @@ groups:
           summary: 'Critical disk space on root filesystem'
           description: 'Disk space is {{ $value }}% available on root filesystem'
 
-      # System Uptime Monitoring
       - alert: SystemReboot
         expr: node_boot_time_seconds > 0
         for: 0m

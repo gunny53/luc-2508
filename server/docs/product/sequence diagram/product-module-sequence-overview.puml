@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
+note top : Product Product Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
+Product Product Module Sequence Overview: validate request and return the expected response
 actor "Admin" as Admin
 participant "ProductController" as PC
 participant "ManageProductController" as MPC
@@ -32,95 +32,95 @@ PC -> PS: list({query})
 PS -> PR: list({page, limit, name, brandIds, categories, minPrice, maxPrice, languageId, isPublic: true})
 PR -> PS: buildWhereClause()
 note right
-English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
 • WHERE deletedAt IS NULL
 • WHERE publishedAt <= now (public only)
 • Filter theo name, brandIds, categories
 • Filter theo price range
 • Include productTranslations theo language
 end note
-PR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> PR: English content normalized from the original source text.
-PR -> PS: English content normalized from the original source text.
+PR -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> DB: Product Product Module Sequence Overview: validate request and return the expected response
+DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
+PR -> PS: Product Product Module Sequence Overview: validate request and return the expected response
 PS -> IS: i18n.t('product.product.success.GET_SUCCESS')
-IS -> PS: English content normalized from the original source text.
-PS -> PC: English content normalized from the original source text.
-PC -> Client: English content normalized from the original source text.
+IS -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PC: Product Product Module Sequence Overview: validate request and return the expected response
+PC -> Client: Product Product Module Sequence Overview: validate request and return the expected response
 
 Client -> PC: GET /products/:productId
 PC -> PS: getDetail({productId})
 PS -> PR: getDetail({productId, languageId, isPublic: true})
-PR -> PS: English content normalized from the original source text.
+PR -> PS: Product Product Module Sequence Overview: validate request and return the expected response
 note right
 Detail Includes:
 • productTranslations theo language
 • skus (active only)
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Product Product Module Sequence Overview: validate request and return the expected response
+• Product Product Module Sequence Overview: validate request and return the expected response
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> PR: English content normalized from the original source text.
+PS -> DB: Product Product Module Sequence Overview: validate request and return the expected response
+DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-    PR -> PS: English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
+    PR -> PS: Product Product Module Sequence Overview: validate request and return the expected response
     PS -> IS: i18n.t('product.product.success.GET_DETAIL_SUCCESS')
-    IS -> PS: English content normalized from the original source text.
-    PS -> PC: English content normalized from the original source text.
-    PC -> Client: English content normalized from the original source text.
+    IS -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+    PS -> PC: Product Product Module Sequence Overview: validate request and return the expected response
+    PC -> Client: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     PR -> PS: Throw NotFoundRecordException
     PS -> PC: Throw exception
-    PC -> Client: English content normalized from the original source text.
+    PC -> Client: Product Product Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
-ShopOwner -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> MPC: English content normalized from the original source text.
+ShopOwner -> AG: Product Product Module Sequence Overview: validate request and return the expected response
+AG -> AG: Product Product Module Sequence Overview: validate request and return the expected response
+AG -> AG: Product Product Module Sequence Overview: validate request and return the expected response
+AG -> AG: Product Product Module Sequence Overview: validate request and return the expected response
+AG -> MPC: Product Product Module Sequence Overview: validate request and return the expected response
 
 ShopOwner -> MPC: POST /manage-product/products + {name, description, variants, skus, ...}
 MPC -> MPS: create({data, user})
 MPS -> MPS: validateSKUsWithVariants()
 note right
 SKU Validation Logic:
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Product Product Module Sequence Overview: validate request and return the expected response
+• Product Product Module Sequence Overview: validate request and return the expected response
 • Validate SKU values
 • Business rules validation
 end note
 
-English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
     MPS -> PR: create({createdById, data})
-    PR -> PS: English content normalized from the original source text.
+    PR -> PS: Product Product Module Sequence Overview: validate request and return the expected response
     note right
     Create Logic:
-    • English content normalized from the original source text
+    • Product Product Module Sequence Overview: validate request and return the expected response
     • Connect categories
-    • English content normalized from the original source text
+    • Product Product Module Sequence Overview: validate request and return the expected response
     • Include all relations
     end note
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> PR: English content normalized from the original source text.
+    PS -> DB: Product Product Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+    PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
     PR -> SSS: addSyncProductJob(productId, 'create')
     SSS -> ES: Sync product to Elasticsearch
     ES -> SSS: Sync completed
-    SSS -> PR: English content normalized from the original source text.
-    PR -> MPS: English content normalized from the original source text.
+    SSS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
+    PR -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
     MPS -> IS: i18n.t('product.product.success.CREATE_SUCCESS')
-    IS -> MPS: English content normalized from the original source text.
-    MPS -> MPC: English content normalized from the original source text.
-    MPC -> ShopOwner: English content normalized from the original source text.
+    IS -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
+    MPS -> MPC: Product Product Module Sequence Overview: validate request and return the expected response
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MPS -> MPC: Throw ValidationException
-    MPC -> ShopOwner: English content normalized from the original source text.
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 end
 
 ShopOwner -> MPC: PUT /manage-product/products/:productId + {name, description, variants, skus, ...}
@@ -128,18 +128,18 @@ MPC -> MPS: update({productId, data, user})
 MPS -> PR: findById(productId)
 PR -> PS: product.findUnique()
 PS -> DB: Query product theo ID
-DB -> PS: English content normalized from the original source text.
-PS -> PR: English content normalized from the original source text.
-PR -> MPS: English content normalized from the original source text.
+DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
+PR -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
 MPS -> MPS: validatePrivilege()
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Product Product Module Sequence Overview: validate request and return the expected response
+• Product Product Module Sequence Overview: validate request and return the expected response
+• Product Product Module Sequence Overview: validate request and return the expected response
 • createdById validation
 end note
 
-English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
     MPS -> PR: update({id, updatedById, data})
     PR -> PR: handleSKUUpdates()
     note right
@@ -150,23 +150,23 @@ English content normalized from the original source text.
     • Create new SKUs
     • Transaction-based updates
     end note
-    PR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> PR: English content normalized from the original source text.
+    PR -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Product Product Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+    PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
     PR -> SSS: addSyncProductJob(productId, 'update')
     SSS -> ES: Sync product to Elasticsearch
     ES -> SSS: Sync completed
-    SSS -> PR: English content normalized from the original source text.
-    PR -> MPS: English content normalized from the original source text.
+    SSS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
+    PR -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
     MPS -> IS: i18n.t('product.product.success.UPDATE_SUCCESS')
-    IS -> MPS: English content normalized from the original source text.
-    MPS -> MPC: English content normalized from the original source text.
-    MPC -> ShopOwner: English content normalized from the original source text.
+    IS -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
+    MPS -> MPC: Product Product Module Sequence Overview: validate request and return the expected response
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MPS -> MPC: Throw NotFoundRecordException/ForbiddenException
-    MPC -> ShopOwner: English content normalized from the original source text.
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 end
 
 ShopOwner -> MPC: DELETE /manage-product/products/:productId
@@ -174,24 +174,24 @@ MPC -> MPS: delete({productId, user})
 MPS -> PR: findById(productId)
 PR -> PS: product.findUnique()
 PS -> DB: Query product theo ID
-DB -> PS: English content normalized from the original source text.
-PS -> PR: English content normalized from the original source text.
-PR -> MPS: English content normalized from the original source text.
+DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
+PR -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
 MPS -> MPS: validatePrivilege()
 MPS -> PR: delete({id, deletedById})
 PR -> PS: product.update() soft delete
 PS -> DB: UPDATE deletedAt field
-DB -> PS: English content normalized from the original source text.
-PS -> PR: English content normalized from the original source text.
+DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
 PR -> SSS: addSyncProductJob(productId, 'delete')
 SSS -> ES: Remove product from Elasticsearch
 ES -> SSS: Delete completed
-SSS -> PR: English content normalized from the original source text.
-PR -> MPS: English content normalized from the original source text.
+SSS -> PR: Product Product Module Sequence Overview: validate request and return the expected response
+PR -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
 MPS -> IS: i18n.t('product.product.success.DELETE_SUCCESS')
-IS -> MPS: English content normalized from the original source text.
-MPS -> MPC: English content normalized from the original source text.
-MPC -> ShopOwner: English content normalized from the original source text.
+IS -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
+MPS -> MPC: Product Product Module Sequence Overview: validate request and return the expected response
+MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 == API Product Translation ==
 ShopOwner -> PTC: POST /product-translations + {productId, languageId, name, description}
@@ -199,13 +199,13 @@ PTC -> PTS: create({data, user})
 PTS -> PTR: create({createdById, data})
 PTR -> PS: productTranslation.create()
 PS -> DB: INSERT productTranslation
-DB -> PS: English content normalized from the original source text.
-PS -> PTR: English content normalized from the original source text.
-PTR -> PTS: English content normalized from the original source text.
+DB -> PS: Product Product Module Sequence Overview: validate request and return the expected response
+PS -> PTR: Product Product Module Sequence Overview: validate request and return the expected response
+PTR -> PTS: Product Product Module Sequence Overview: validate request and return the expected response
 PTS -> IS: i18n.t('product.productTranslation.success.CREATE_SUCCESS')
-IS -> PTS: English content normalized from the original source text.
-PTS -> PTC: English content normalized from the original source text.
-PTC -> ShopOwner: English content normalized from the original source text.
+IS -> PTS: Product Product Module Sequence Overview: validate request and return the expected response
+PTS -> PTC: Product Product Module Sequence Overview: validate request and return the expected response
+PTC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 alt Unique constraint violation
     PTR -> PS: productTranslation.create()
@@ -215,47 +215,47 @@ alt Unique constraint violation
     PTR -> PTS: Throw exception
     PTS -> PTS: isUniqueConstraintPrismaError(error)
     PTS -> PTC: Throw ProductTranslationAlreadyExistsException
-    PTC -> ShopOwner: English content normalized from the original source text.
+    PTC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
-English content normalized from the original source text.
+Product Product Module Sequence Overview: validate request and return the expected response
     MPS -> MPC: ValidationException
-    MPC -> ShopOwner: English content normalized from the original source text.
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MPS -> MPC: ForbiddenException
-    MPC -> ShopOwner: English content normalized from the original source text.
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MPS -> MPC: NotFoundRecordException
-    MPC -> ShopOwner: English content normalized from the original source text.
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     PTS -> PTC: ProductTranslationAlreadyExistsException
-    PTC -> ShopOwner: English content normalized from the original source text.
+    PTC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 else (No)
     SSS -> PR: Log sync error
     PR -> MPS: Continue without sync
     MPS -> MPC: Success response (sync failed)
-    MPC -> ShopOwner: English content normalized from the original source text.
+    MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
 MPS -> IS: i18n.t('product.product.success.XXX')
-IS -> MPS: English content normalized from the original source text.
-MPS -> MPC: English content normalized from the original source text.
-MPC -> ShopOwner: English content normalized from the original source text.
+IS -> MPS: Product Product Module Sequence Overview: validate request and return the expected response
+MPS -> MPC: Product Product Module Sequence Overview: validate request and return the expected response
+MPC -> ShopOwner: Product Product Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
+* Product Product Module Sequence Overview: validate request and return the expected response
 • Role-based access control (Admin/Seller)
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Product Product Module Sequence Overview: validate request and return the expected response
+• Product Product Module Sequence Overview: validate request and return the expected response
 • Elasticsearch sync cho search functionality
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Product Product Module Sequence Overview: validate request and return the expected response
+• Product Product Module Sequence Overview: validate request and return the expected response
 • Transaction-based SKU operations
 • Comprehensive error handling
 end note

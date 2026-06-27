@@ -12,7 +12,7 @@ import { showToast } from '@/components/ui/toastify'
 import { parseApiError } from '@/utils/error'
 import { useGetProfile } from '@/hooks/use-get-profile'
 
-// Interface cho AddressFormValues
+
 export interface AddressFormValues {
   id?: string
   recipient: string
@@ -34,7 +34,7 @@ export const useAddress = () => {
   const dispatch = useDispatch()
   const { fetchProfile } = useGetProfile()
 
-  /* ------------------- GET ALL ------------------- */
+  
   const getAllAddresses = async (params?: Record<string, any>): Promise<AddressGetAllResponse['data'] | null> => {
     setLoading(true)
     try {
@@ -48,7 +48,7 @@ export const useAddress = () => {
     }
   }
 
-  /* ------------------- GET BY ID ------------------- */
+  
   const getAddressById = async (id: string): Promise<AddressGetByIdResponse['data'] | null> => {
     setLoading(true)
     try {
@@ -62,12 +62,12 @@ export const useAddress = () => {
     }
   }
 
-  /* ------------------- CREATE ------------------- */
+  
   const createAddress = async (payload: AddAddressRequest, onSuccess?: () => void) => {
     setLoading(true)
     try {
       const { message } = await addressService.create(payload)
-      showToast(message || 'English content normalized from the original source text.', 'success')
+      showToast(message || 'T?i kho?n', 'success')
       await fetchProfile()
       onSuccess?.()
     } catch (error) {
@@ -77,12 +77,12 @@ export const useAddress = () => {
     }
   }
 
-  /* ------------------- UPDATE ------------------- */
+  
   const updateAddress = async (id: string, payload: UpdateAddressRequest, onSuccess?: () => void) => {
     setLoading(true)
     try {
       const { message } = await addressService.update(id, payload)
-      showToast(message || 'English content normalized from the original source text.', 'success')
+      showToast(message || 'T?i kho?n', 'success')
       await fetchProfile()
       onSuccess?.()
     } catch (error) {
@@ -92,12 +92,12 @@ export const useAddress = () => {
     }
   }
 
-  /* ------------------- DELETE ------------------- */
+  
   const deleteAddress = async (id: string, onSuccess?: () => void) => {
     setLoading(true)
     try {
       const { message }: DeleteAddressResponse = await addressService.delete(id)
-      showToast(message || 'English content normalized from the original source text.', 'success')
+      showToast(message || 'T?i kho?n', 'success')
       await fetchProfile()
       onSuccess?.()
     } catch (error) {
@@ -107,7 +107,7 @@ export const useAddress = () => {
     }
   }
 
-  /* ------------------- UTILITY FUNCTIONS ------------------- */
+  
   const fetchAndMapAddresses = async (): Promise<AddressFormValues[]> => {
     const data = await getAllAddresses()
     if (!data) return []
@@ -134,7 +134,7 @@ export const useAddress = () => {
 
       console.log('Finding match for address:', addressDetail)
 
-      // Load provinces
+      
       const provincesResult = await shippingService.getProvinces()
       console.log('Provinces loaded:', provincesResult.data?.length)
 
@@ -149,7 +149,7 @@ export const useAddress = () => {
         return { provinceId: '', districtId: '', wardCode: '' }
       }
 
-      // Load districts
+      
       const districtsResult = await shippingService.getDistricts({
         provinceId: matchedProvince.ProvinceID
       })
@@ -170,7 +170,7 @@ export const useAddress = () => {
         }
       }
 
-      // Load wards
+      
       const wardsResult = await shippingService.getWards({
         districtId: matchedDistrict.DistrictID
       })
@@ -283,7 +283,7 @@ export const useAddress = () => {
     createAddress,
     updateAddress,
     deleteAddress,
-    // Utility functions
+    
     fetchAndMapAddresses,
     findMatchingAddress,
     prepareAddressForEdit,

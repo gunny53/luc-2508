@@ -28,7 +28,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-// Custom styles for the editor content
+
 import './rich-text-editor.css'
 
 interface RichTextEditorProps {
@@ -45,11 +45,11 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
     if (!editor) return
     const previousUrl = editor.getAttributes('link').href
 
-    // Modern approach: set state variables instead of using window.prompt
+    
     setLinkUrl(previousUrl || '')
     setLinkDialogOpen(true)
 
-    // When dialog is confirmed, this will be handled in a separate function
+    
   }, [editor])
 
   const confirmLink = useCallback(() => {
@@ -64,19 +64,19 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
     setLinkDialogOpen(false)
   }, [editor, linkUrl])
 
-  // Create a reference to the file input element
+  
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const addImage = useCallback(() => {
     if (!editor) return
 
-    // Open file selector when the button is clicked
+    
     if (fileInputRef.current) {
       fileInputRef.current.click()
     }
   }, [editor])
 
-  // Handle file selection
+  
   const handleFileChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       if (!editor || !event.target.files?.length) return
@@ -87,11 +87,11 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         return
       }
 
-      // Read the file as a data URL
+      
       const reader = new FileReader()
       reader.onload = (e) => {
         if (typeof e.target?.result === 'string') {
-          // Insert the image into the editor
+          
           editor
             .chain()
             .focus()
@@ -105,7 +105,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       }
       reader.readAsDataURL(file)
 
-      // Clear the file input
+      
       event.target.value = ''
     },
     [editor]
@@ -115,7 +115,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
     return null
   }
 
-  // Button component for consistent styling and accessibility
+  
   const ToolbarButton = ({
     onClick,
     isActive = false,
@@ -140,8 +140,6 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
 
   return (
     <div className="border border-input bg-transparent rounded-t-md p-1.5 flex items-center gap-1.5 flex-wrap">
-      {/* Text formatting */}
-      {/* Text formatting */}
       <div className="flex items-center gap-1 mr-1 border-r pr-1">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
@@ -187,7 +185,6 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         </ToolbarButton>
       </div>
 
-      {/* Lists */}
       <div className="flex items-center gap-1 mr-1 border-r pr-1">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -219,7 +216,6 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         </ToolbarButton>
       </div>
 
-      {/* Alignment */}
       <div className="flex items-center gap-1 mr-1 border-r pr-1">
         <ToolbarButton
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
@@ -244,7 +240,6 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         </ToolbarButton>
       </div>
 
-      {/* Media */}
       <div className="flex items-center gap-1">
         <ToolbarButton onClick={setLink} isActive={editor.isActive('link')} title="Insert Link">
           <LinkIcon className="w-4 h-4" />
@@ -252,7 +247,6 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         <ToolbarButton onClick={addImage} title="Insert Image">
           <ImageIcon className="w-4 h-4" />
         </ToolbarButton>
-        {/* Hidden file input for image uploads */}
         <input
           type="file"
           ref={fileInputRef}
@@ -263,8 +257,6 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
         />
       </div>
 
-      {/* Link Dialog */}
-      {/* Modal for inserting/editing links */}
       {linkDialogOpen && (
         <div className="fixed inset-0 bg-black/20 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
@@ -338,13 +330,13 @@ export const RichTextEditor = ({ value, onChange, placeholder = 'Type your conte
             class: 'my-2'
           }
         },
-        // Configure code block with syntax highlighting
+        
         codeBlock: {
           HTMLAttributes: {
             class: 'rounded bg-gray-100 p-2 font-mono text-sm'
           }
         },
-        // Configure blockquote
+        
         blockquote: {
           HTMLAttributes: {
             class: 'border-l-4 border-gray-300 pl-4 italic'
@@ -391,11 +383,11 @@ export const RichTextEditor = ({ value, onChange, placeholder = 'Type your conte
       editor.commands.setContent(value || '')
     }
   }, [editor, value])
-  // Add keyboard shortcuts functionality
+  
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!editor) return
 
-    // Handle Tab key (doesn't work well in editorProps)
+    
     if (e.key === 'Tab') {
       e.preventDefault()
 
@@ -406,7 +398,7 @@ export const RichTextEditor = ({ value, onChange, placeholder = 'Type your conte
           editor.commands.sinkListItem('listItem')
         }
       } else {
-        // Insert 2 spaces instead of a tab character
+        
         editor.commands.insertContent('  ')
       }
     }

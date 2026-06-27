@@ -61,7 +61,7 @@ export default function ProfileHeader({
         icon: Star
       }
     return {
-      level: 'English content normalized from the original source text.',
+      level: 'T?i kho?n',
       color: 'from-blue-500 to-cyan-500',
       icon: User
     }
@@ -72,16 +72,12 @@ export default function ProfileHeader({
 
   return (
     <div className="bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col lg:flex-row min-h-[200px] overflow-hidden items-center border border-gray-100 relative">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#D70018] to-[#FF6B35] rounded-full -translate-x-16 -translate-y-16"></div>
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-[#D70018]/20 to-[#FF6B35]/20 rounded-full translate-x-20 translate-y-20"></div>
       </div>
 
-      {/* Avatar + Info Section */}
       <div className="flex flex-1 items-center gap-6 p-6 sm:p-8 w-full relative z-10">
-        {/* Avatar with Status Ring */}
-        {/* Avatar with Status Ring */}
         <div className="relative w-20 h-20 sm:w-24 sm:h-24">
           {avatar ? (
             <img
@@ -95,7 +91,6 @@ export default function ProfileHeader({
             </div>
           )}
 
-          {}
           <div
             className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
                 px-3 py-1 rounded-full text-xs font-bold text-white
@@ -107,7 +102,7 @@ export default function ProfileHeader({
           </div>
         </div>
 
-        {/* User Info */}
+        {}
         <div className="space-y-3 flex-1">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-gray-100 group-hover:bg-[#D70018]/10 transition-colors">
@@ -119,7 +114,7 @@ export default function ProfileHeader({
                 <div className="hidden sm:flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-xs font-medium text-green-700">
-                    English content normalized from the original source text.
+                    T?i kho?n
                   </span>
                 </div>
               </h2>
@@ -159,15 +154,15 @@ export default function ProfileHeader({
         </div>
       </div>
 
-      {/* Elegant Separator */}
+      {}
       <div className="hidden lg:block relative">
         <div className="h-32 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></div>
       </div>
 
-      {/* Statistics Section */}
+      {}
       <div className="flex flex-col lg:flex-row flex-1 w-full">
-        {/* Total Orders */}
+        {}
         <div className="flex flex-1 items-center gap-4 p-6 sm:p-8 w-full border-t lg:border-t-0 border-gray-100 group hover:bg-gradient-to-br hover:from-blue-50 hover:to-transparent transition-all duration-300">
           <div className="relative">
             <div className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-gradient-to-br from-red-100 to-white flex items-center justify-center">
@@ -182,20 +177,20 @@ export default function ProfileHeader({
               {totalOrders.toLocaleString()}
             </span>
             <span className="text-sm text-gray-500 font-medium">
-              English content normalized from the original source text.
+              T?i kho?n
             </span>
             <span className="text-xs text-gray-400 mt-1">
-              English content normalized from the original source text.
+              T?i kho?n
             </span>
           </div>
         </div>
 
-        {/* Mini Separator */}
+        {}
         <div className="hidden lg:block relative">
           <div className="h-24 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent"></div>
         </div>
 
-        {/* Total Spent */}
+        {}
         <div className="flex flex-1 items-center gap-4 p-6 sm:p-8 w-full border-t lg:border-t-0 border-gray-100 group hover:bg-gradient-to-br hover:from-emerald-50 hover:to-transparent transition-all duration-300">
           <div className="relative">
             <div className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-gradient-to-br from-red-100 to-white flex items-center justify-center">
@@ -209,14 +204,14 @@ export default function ProfileHeader({
           </div>
           <div className="flex flex-col">
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#D70018] to-[#FF6B35] bg-clip-text text-transparent leading-none mb-1">
-              {totalSpent.toLocaleString()}English content normalized from the original source text.
+              {totalSpent.toLocaleString()}T?i kho?n
             </span>
             <span className="text-sm text-gray-500 font-medium">
-              English content normalized from the original source text.
+              T?i kho?n
             </span>
             {createdAt && (
               <span className="text-xs text-gray-400 mt-1">
-                English content normalized from the original source text. {createdAt}
+                T?i kho?n {createdAt}
               </span>
             )}
           </div>

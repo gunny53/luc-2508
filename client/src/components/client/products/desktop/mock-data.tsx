@@ -19,16 +19,16 @@ export const productMock = {
   ],
   variants: [
     {
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       options: [
-        'English content normalized from the original source text.',
-        'English content normalized from the original source text.',
+        'S?n ph?m',
+        'S?n ph?m',
         'Xanh',
-        'English content normalized from the original source text.'
+        'S?n ph?m'
       ]
     },
     {
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       options: ['S', 'M', 'L', 'XL']
     }
   ],
@@ -42,7 +42,7 @@ export const productMock = {
   skus: [
     {
       id: 1,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -56,7 +56,7 @@ export const productMock = {
     },
     {
       id: 2,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -70,7 +70,7 @@ export const productMock = {
     },
     {
       id: 3,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -84,7 +84,7 @@ export const productMock = {
     },
     {
       id: 4,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -98,7 +98,7 @@ export const productMock = {
     },
     {
       id: 5,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -112,7 +112,7 @@ export const productMock = {
     },
     {
       id: 6,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -126,7 +126,7 @@ export const productMock = {
     },
     {
       id: 7,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -140,7 +140,7 @@ export const productMock = {
     },
     {
       id: 8,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -210,7 +210,7 @@ export const productMock = {
     },
     {
       id: 13,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -224,7 +224,7 @@ export const productMock = {
     },
     {
       id: 14,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -238,7 +238,7 @@ export const productMock = {
     },
     {
       id: 15,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -252,7 +252,7 @@ export const productMock = {
     },
     {
       id: 16,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -269,7 +269,7 @@ export const productMock = {
     {
       id: 1,
       parentCategoryId: null,
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       logo: 'https://ecsite.s3.ap-southeast-1.amazonaws.com/images/b4acb401-0d86-447d-8dff-69f1de122dee.png',
       createdById: 1,
       updatedById: null,
@@ -296,7 +296,7 @@ export const productMock = {
     {
       id: 6,
       parentCategoryId: 1,
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       logo: null,
       createdById: 1,
       updatedById: null,
@@ -340,7 +340,7 @@ import { Review } from '@/types/review.interface'
 export const reviewsMock: Review[] = [
   {
     id: 'review-1',
-    content: 'English content normalized from the original source text.',
+    content: 'S?n ph?m',
     rating: 5,
     orderId: 'order-123',
     productId: 'product-abc',
@@ -366,13 +366,13 @@ export const reviewsMock: Review[] = [
     ],
     user: {
       id: 'user-xyz',
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       avatar: '/assets/demo/user-avatar-1.png'
     }
   },
   {
     id: 'review-2',
-    content: 'English content normalized from the original source text.',
+    content: 'S?n ph?m',
     rating: 4,
     orderId: 'order-124',
     productId: 'product-abc',
@@ -383,13 +383,13 @@ export const reviewsMock: Review[] = [
     medias: [],
     user: {
       id: 'user-qwe',
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       avatar: '/assets/demo/user-avatar-2.png'
     }
   },
   {
     id: 'review-3',
-    content: 'English content normalized from the original source text.',
+    content: 'S?n ph?m',
     rating: 3,
     orderId: 'order-125',
     productId: 'product-abc',
@@ -400,13 +400,13 @@ export const reviewsMock: Review[] = [
     medias: [],
     user: {
       id: 'user-asd',
-      name: 'English content normalized from the original source text.'
-      // No avatar to test fallback
+      name: 'S?n ph?m'
+      
     }
   },
   {
     id: 'review-4',
-    content: 'English content normalized from the original source text.',
+    content: 'S?n ph?m',
     rating: 5,
     orderId: 'order-126',
     productId: 'product-abc',
@@ -415,11 +415,11 @@ export const reviewsMock: Review[] = [
     createdAt: '2025-07-23T18:00:00.000Z',
     updatedAt: '2025-07-23T18:00:00.000Z',
     medias: [],
-    user: undefined as any // Test missing user object
+    user: undefined as any 
   },
   {
     id: 'review-5',
-    content: 'English content normalized from the original source text.',
+    content: 'S?n ph?m',
     rating: 1,
     orderId: 'order-127',
     productId: 'product-abc',
@@ -430,7 +430,7 @@ export const reviewsMock: Review[] = [
     medias: [],
     user: {
       id: 'user-jkl',
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       avatar: '/assets/demo/user-avatar-3.png'
     }
   }

@@ -9,7 +9,7 @@ import { showToast } from '@/components/ui/toastify'
 
 export const useBrand = () => {
   const t = useTranslations()
-  // Modal states
+  
   const getResponseData = useCallback((response: any) => {
     return response.data || []
   }, [])
@@ -22,7 +22,7 @@ export const useBrand = () => {
       totalPages: metadata.totalPages || 1,
       limit: metadata.limit || 10,
       hasNext: metadata.hasNext || false,
-      hasPrevious: metadata.hasPrev || false // Fixed property name to match server response
+      hasPrevious: metadata.hasPrev || false 
     }
   }, [])
 
@@ -52,7 +52,7 @@ export const useBrand = () => {
     loading,
     pagination,
 
-    // Server-side pagination handlers
+    
     handlePageChange,
     handleLimitChange,
     handleSearch,

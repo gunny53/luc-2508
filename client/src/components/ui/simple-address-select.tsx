@@ -68,7 +68,6 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {/* Province Select */}
       <div className="space-y-1">
         <div>
           <Label className="text-xs font-medium">Province</Label>
@@ -91,7 +90,6 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
         </div>
       </div>
 
-      {/* District Select */}
       <div className="space-y-1">
         <div>
           <Label className="text-xs font-medium">District</Label>
@@ -114,7 +112,6 @@ export const SimpleAddressSelect: React.FC<SimpleAddressSelectProps> = ({
         </div>
       </div>
 
-      {/* Ward Select - Full width on next row */}
       <div className="space-y-1 md:col-span-2">
         <div>
           <Label className="text-xs font-medium">Ward</Label>

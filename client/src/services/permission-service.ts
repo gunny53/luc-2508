@@ -58,22 +58,22 @@ export const permissionService = {
       throw error
     }
   }
-  // getRolePermissions: async (roleId: string) => {
-  //     try {
-  //         const url = API_ENDPOINTS.PERMISSION.GET_ROLE_PERMISSIONS.replace(':id', roleId);
-  //         const response = await privateAxios.get(url);
-  //         return response.data;
-  //     } catch (error) {
-  //         throw error;
-  //     }
-  // },
-  // updateRolePermissions: async (roleId: string, permissions: string[]) => {
-  //     try {
-  //         const url = API_ENDPOINTS.PERMISSION.UPDATE_ROLE_PERMISSIONS.replace(':id', roleId);
-  //         const response = await privateAxios.put(url, { permissions });
-  //         return response.data;
-  //     } catch (error) {
-  //         throw error;
-  //     }
-  // }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

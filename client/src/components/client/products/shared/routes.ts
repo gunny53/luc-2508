@@ -1,4 +1,4 @@
-// src/utils/routes.ts
+
 import { createProductSlug } from './product-slug'
 
 export function getProductUrl(name: string, id: string | number): string {

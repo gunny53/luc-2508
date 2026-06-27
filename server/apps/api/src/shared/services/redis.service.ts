@@ -11,7 +11,7 @@ export interface CacheConfig {
 export class RedisService implements OnModuleDestroy {
   private readonly logger = new Logger(RedisService.name)
   private readonly client: Redis
-  private readonly defaultTtl: number = 300 // 5 minutes
+  private readonly defaultTtl: number = 300 
   private readonly keyPrefix: string
 
   constructor(private readonly configService: ConfigService) {
@@ -113,9 +113,9 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Set TTL cho key
-   */
+  
+
+
   async expire(key: string, ttl: number): Promise<boolean> {
     try {
       const cacheKey = this.buildKey(key)
@@ -131,7 +131,7 @@ export class RedisService implements OnModuleDestroy {
     try {
       const searchPattern = this.buildKey(pattern)
       const keys = await this.client.keys(searchPattern)
-      // Remove prefix from returned keys
+      
       return keys.map((key) => key.replace(this.keyPrefix, ''))
     } catch (error) {
       this.logger.error(`Failed to get keys for pattern ${pattern}:`, error)
@@ -194,9 +194,9 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Flush all cache
-   */
+  
+
+
   async flushAll(): Promise<void> {
     try {
       await this.client.flushall()
@@ -210,9 +210,9 @@ export class RedisService implements OnModuleDestroy {
     return this.client
   }
 
-  /**
-   * Health check
-   */
+  
+
+
   async ping(): Promise<boolean> {
     try {
       const result = await this.client.ping()
@@ -223,9 +223,9 @@ export class RedisService implements OnModuleDestroy {
     }
   }
 
-  /**
-   * Get cache statistics
-   */
+  
+
+
   async getStats(): Promise<any> {
     try {
       const info = await this.client.info('memory')
@@ -246,7 +246,7 @@ export class RedisService implements OnModuleDestroy {
     try {
       this.logger.log('🔄 Initiating graceful Redis shutdown...')
 
-      // Wait for pending operations to complete (max 5 seconds)
+      
       const shutdownTimeout = 5000
       const startTime = Date.now()
 
@@ -281,7 +281,7 @@ export class RedisService implements OnModuleDestroy {
           return null
         }
 
-        // Exponential backoff
+        
         const delay = backoffMs * Math.pow(2, attempt - 1)
         await new Promise((resolve) => setTimeout(resolve, delay))
       }

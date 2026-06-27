@@ -20,17 +20,6 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
             <div className=" pt-2">
               <main className="px-2 h-[calc(100vh-72px)] overflow-y-auto pb-[72px]">
                 <div className="max-w-4xl mx-auto w-full">
-                  {/* Profile Header mobile */}
-                  {/* <ProfileHeader
-                    name={userData?.name || ""}
-                    email={userData?.email || ""}
-                    phone={userData?.phoneNumber || ""}
-                    // birthday={userData?.dob || ""}
-                    avatar={userData?.avatar || ""}
-                    totalOrders={userData?.statistics?.totalOrders || 0}
-                    totalSpent={userData?.statistics?.totalSpent || 0}
-                    memberSince={userData?.statistics.memberSince}
-                  /> */}
                   {children}
                 </div>
               </main>
@@ -38,14 +27,13 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
             </div>
           ) : (
             <div className="flex flex-col min-h-[90vh] text-foreground">
-              {/* ✅ Profile header full width */}
               <div className="px-6 pt-6">
                 <div className="w-full lg:max-w-[1280px] xl:max-w-[1440px] mx-auto rounded-xl">
                   <ProfileHeader
                     name={userData?.name || ''}
                     email={userData?.email || ''}
                     phone={userData?.phoneNumber || ''}
-                    // birthday={userData?.dob || ""}
+                    
                     avatar={userData?.avatar || ''}
                     totalOrders={userData?.statistics?.totalOrders || 0}
                     totalSpent={userData?.statistics?.totalSpent || 0}
@@ -54,7 +42,6 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
                 </div>
               </div>
 
-              {/* Sidebar + children */}
               <div className="flex flex-1 gap-3 px-6 pb-6">
                 <aside className="w-[320px] min-w-[280px] pt-4">
                   <Sidebar />

@@ -48,10 +48,10 @@ export default function SearchBrand() {
     <div className="mb-6 bg-white p-2">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-gray-800 text-lg font-semibold">
-          English content normalized from the original source text.
+          Th??ng hi?u
         </h2>
         <Link href="/brands" className="text-sm text-primary hover:underline whitespace-nowrap flex items-center gap-1">
-          English content normalized from the original source text.<span className="text-xs">&#8250;</span>
+          Th??ng hi?u<span className="text-xs">&#8250;</span>
         </Link>
       </div>
 
@@ -64,11 +64,8 @@ export default function SearchBrand() {
         className="w-full"
       >
         <CarouselContent>
-          {}
           <CarouselItem className="basis-full p-0">
-            {}
             <div className="border border-gray-200 rounded-lg overflow-hidden bg-white">
-              {}
               <div className="grid grid-cols-6">
                 {allItems.slice(0, 6).map((item, i) => (
                   <div
@@ -83,7 +80,6 @@ export default function SearchBrand() {
                 ))}
               </div>
 
-              {}
               <div className="grid grid-cols-6">
                 {allItems.slice(6, 12).map((item, i) => (
                   <div

@@ -50,16 +50,12 @@ export class TokenService {
     })
   }
 
-  /**
-   * Decode token without verification (for debugging purposes)
-   */
+  
   decodeToken(token: string): any {
     return this.jwtService.decode(token)
   }
 
-  /**
-   * Get token expiration time
-   */
+  
   getTokenExpiration(token: string): Date | null {
     try {
       const decoded = this.jwtService.decode(token)
@@ -69,9 +65,7 @@ export class TokenService {
     }
   }
 
-  /**
-   * Check if token is expired
-   */
+  
   isTokenExpired(token: string): boolean {
     const expiration = this.getTokenExpiration(token)
     return expiration ? expiration < new Date() : true

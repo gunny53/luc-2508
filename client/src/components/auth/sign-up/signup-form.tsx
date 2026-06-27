@@ -60,7 +60,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormItem>
                         <FormLabel>{t('auth.common.firstname')}</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="English content normalized from the original source text." />
+                          <Input {...field} placeholder="X?c th?c" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -73,7 +73,7 @@ export function SignupForm({ email, className }: SignupFormProps) {
                       <FormItem>
                         <FormLabel>{t('auth.common.lastname')}</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="English content normalized from the original source text." />
+                          <Input {...field} placeholder="X?c th?c" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -180,14 +180,12 @@ export function SignupForm({ email, className }: SignupFormProps) {
                 {loading ? t('auth.register.registering') : t('auth.register.register')}
               </AnimatedButton>
 
-              {/* OAuth Form */}
               <OAuthForm type="signup" />
             </div>
           </AnimatedForm>
         </form>
       </Form>
 
-      {/* Google Sign In and Login Link */}
       <div className="mt-8 space-y-6">
         <AnimatedFormItem>
           <div className="text-center text-sm">

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { FileText, DollarSign, Package, Truck, Star, XCircle } from 'lucide-react'
 
-// Mock OrderStatus enum for demo
+
 const OrderStatus = {
   PENDING_PAYMENT: 'PENDING_PAYMENT',
   VERIFY_PAYMENT: 'VERIFY_PAYMENT',
@@ -31,33 +31,32 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
           <XCircle className="relative w-16 h-16 text-red-500 mb-3 drop-shadow-sm" />
         </div>
         <p className="text-lg font-semibold text-red-600 bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
-          English content normalized from the original source text. {orderCode ? `#${orderCode}` : ''} English content
-          normalized from the original source text.
+          ??n h?ng {orderCode ? `#${orderCode}` : ''} ??n h?ng
         </p>
-        <p className="text-sm text-gray-500 mt-1">English content normalized from the original source text.</p>
+        <p className="text-sm text-gray-500 mt-1">??n h?ng</p>
       </div>
     )
   }
 
   const isPickuped = OrderStatus.PENDING_PICKUP === status || status === OrderStatus.PICKUPED
 
-  // ===== Labels =====
-  let step2Label = 'English content normalized from the original source text.'
-  let step3Label = 'English content normalized from the original source text.'
+  
+  let step2Label = '??n h?ng'
+  let step3Label = '??n h?ng'
 
   if (status === OrderStatus.PENDING_PACKAGING) {
-    step3Label = 'English content normalized from the original source text.'
+    step3Label = '??n h?ng'
   } else if (isPickuped) {
-    step3Label = 'English content normalized from the original source text.'
+    step3Label = '??n h?ng'
   }
 
-  let step4Label = 'English content normalized from the original source text.'
-  if (status === OrderStatus.PENDING_DELIVERY) step4Label = 'English content normalized from the original source text.'
-  if (status === OrderStatus.DELIVERED) step4Label = 'English content normalized from the original source text.'
+  let step4Label = '??n h?ng'
+  if (status === OrderStatus.PENDING_DELIVERY) step4Label = '??n h?ng'
+  if (status === OrderStatus.DELIVERED) step4Label = '??n h?ng'
 
   const steps = [
     {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       icon: FileText,
       color: 'from-blue-500 to-blue-600'
     },
@@ -65,13 +64,13 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
     { label: step3Label, icon: Package, color: 'from-amber-500 to-orange-500' },
     { label: step4Label, icon: Truck, color: 'from-indigo-500 to-purple-500' },
     {
-      label: 'English content normalized from the original source text.',
+      label: '??n h?ng',
       icon: Star,
       color: 'from-pink-500 to-rose-500'
     }
   ]
 
-  // ===== currentStepIndex =====
+  
   let currentStepIndex = 0
 
   if (status === OrderStatus.VERIFY_PAYMENT || status === OrderStatus.PENDING_PACKAGING) {
@@ -86,18 +85,18 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
 
   return (
     <div className="w-full px-6 py-8">
-      {/* Desktop */}
+      {}
       <div className="hidden md:flex items-center justify-between relative w-full">
-        {/* Background line */}
+        {}
         <div className="absolute top-1/2 left-0 w-full h-[4px] -translate-y-1/2 bg-gray-200 rounded-full">
-          {/* Progress line with gradient */}
+          {}
           <div
             className="h-[4px] bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-full transition-[width] duration-700 ease-out shadow-md relative overflow-hidden"
             style={{
               width: `${(currentStepIndex / (steps.length - 1)) * 100}%`
             }}
           >
-            {/* Animated shimmer effect */}
+            {}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
           </div>
         </div>
@@ -109,21 +108,21 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
 
           return (
             <div key={index} className="relative flex flex-col items-center flex-1 text-center group">
-              {/* Glow effect for active step */}
+              {}
               {isActive && (
                 <div
                   className={`absolute top-[22px] w-8 h-8 rounded-full bg-gradient-to-r ${step.color} opacity-20 blur-sm animate-pulse`}
                 />
               )}
 
-              {/* Background circle */}
+              {}
               <div
                 className={`absolute top-[22px] w-8 h-8 rounded-full transition-all duration-500 ${
                   isActive ? 'bg-white shadow-lg ring-2 ring-white' : 'bg-gray-100 shadow-sm'
                 }`}
               />
 
-              {/* Icon container */}
+              {}
               <div
                 className={`relative flex items-center justify-center w-12 h-12 rounded-full z-10 transition-all duration-500 transform ${
                   isActive
@@ -133,7 +132,7 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
               >
                 <Icon className={`w-6 h-6 transition-transform duration-300 ${isActive ? 'drop-shadow-sm' : ''}`} />
 
-                {/* Success checkmark overlay for completed steps */}
+                {}
                 {isCompleted && (
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
                     <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -147,7 +146,7 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
                 )}
               </div>
 
-              {/* Label */}
+              {}
               <p
                 className={`mt-3 text-sm font-medium leading-snug break-words px-4 max-w-[200px] transition-all duration-300 ${
                   isActive
@@ -162,7 +161,6 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
         })}
       </div>
 
-      {/* Mobile */}
       <div className="flex flex-col gap-6 md:hidden relative">
         {steps.map((step, index) => {
           const Icon = step.icon
@@ -171,7 +169,6 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
 
           return (
             <div key={index} className="flex items-start gap-4 relative group">
-              {/* Icon container */}
               <div
                 className={`relative flex items-center justify-center w-12 h-12 rounded-full border-2 z-10 shrink-0 transition-all duration-500 ${
                   isActive
@@ -181,7 +178,6 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
               >
                 <Icon className="w-5 h-5 transition-transform duration-300" />
 
-                {/* Success checkmark for completed steps */}
                 {isCompleted && (
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
                     <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -195,7 +191,6 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
                 )}
               </div>
 
-              {/* Label */}
               <div className="flex-1">
                 <p
                   className={`text-sm font-medium leading-snug transition-all duration-300 ${
@@ -208,7 +203,6 @@ export function OrderTimeline({ status, finalAmount, createdAt, orderCode }: Ord
                 </p>
               </div>
 
-              {/* Connecting line */}
               {index < steps.length - 1 && (
                 <div
                   className={`absolute left-6 top-12 w-[3px] h-full rounded-full transition-all duration-500 ${
@@ -227,13 +221,13 @@ export default function TimelineDemo() {
   const [currentStatus, setCurrentStatus] = useState(OrderStatus.VERIFY_PAYMENT)
 
   const statusOptions = [
-    { value: OrderStatus.PENDING_PAYMENT, label: 'English content normalized from the original source text.' },
-    { value: OrderStatus.VERIFY_PAYMENT, label: 'English content normalized from the original source text.' },
-    { value: OrderStatus.PENDING_PACKAGING, label: 'English content normalized from the original source text.' },
-    { value: OrderStatus.PENDING_PICKUP, label: 'English content normalized from the original source text.' },
-    { value: OrderStatus.PENDING_DELIVERY, label: 'English content normalized from the original source text.' },
-    { value: OrderStatus.DELIVERED, label: 'English content normalized from the original source text.' },
-    { value: OrderStatus.CANCELLED, label: 'English content normalized from the original source text.' }
+    { value: OrderStatus.PENDING_PAYMENT, label: '??n h?ng' },
+    { value: OrderStatus.VERIFY_PAYMENT, label: '??n h?ng' },
+    { value: OrderStatus.PENDING_PACKAGING, label: '??n h?ng' },
+    { value: OrderStatus.PENDING_PICKUP, label: '??n h?ng' },
+    { value: OrderStatus.PENDING_DELIVERY, label: '??n h?ng' },
+    { value: OrderStatus.DELIVERED, label: '??n h?ng' },
+    { value: OrderStatus.CANCELLED, label: '??n h?ng' }
   ]
 
   return (

@@ -31,7 +31,7 @@ export const baseService = {
       console.error('Error uploading media:', axiosError)
       throw (
         axiosError.response?.data || {
-          message: 'English content normalized from the original source text.'
+          message: 'Failed to upload media.'
         }
       )
     }
@@ -56,7 +56,7 @@ export const baseService = {
       console.error('Error getting presigned URLs:', axiosError)
       throw (
         axiosError.response?.data || {
-          message: 'English content normalized from the original source text.'
+          message: 'Failed to create upload URLs.'
         }
       )
     }

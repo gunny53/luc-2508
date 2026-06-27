@@ -7,7 +7,7 @@ import HTMLPreview from '@/components/ui/component/html-preview'
 
 interface Product {
   weight?: string
-  description?: string // HTML Markdown content
+  description?: string 
   categories?: {
     id: string
     name: string
@@ -39,7 +39,7 @@ interface Product {
 export default function ProductSpecsMobile({ product }: { product: Product }) {
   const renderCategoryLinks = () => {
     if (!product.categories || product.categories.length === 0)
-      return 'English content normalized from the original source text.'
+      return 'S?n ph?m'
 
     return (
       <div className="flex flex-wrap items-center gap-1 text-xs">
@@ -59,31 +59,28 @@ export default function ProductSpecsMobile({ product }: { product: Product }) {
 
   return (
     <div className="bg-white p-4 mt-2 rounded-sm">
-      <h2 className="text-sm font-semibold mb-3">English content normalized from the original source text.</h2>
+      <h2 className="text-sm font-semibold mb-3">S?n ph?m</h2>
       <div className="text-xs space-y-2.5 mb-4">
-        {}
         <div className="flex">
-          <div className="w-1/3 text-muted-foreground">English content normalized from the original source text.</div>
+          <div className="w-1/3 text-muted-foreground">S?n ph?m</div>
           <div className="flex-1">{renderCategoryLinks()}</div>
         </div>
 
-        <SpecRowMobile label="English content normalized from the original source text." value={product.brand?.name} />
+        <SpecRowMobile label="S?n ph?m" value={product.brand?.name} />
         <SpecRowMobile
-          label="English content normalized from the original source text."
+          label="S?n ph?m"
           value={product.series ?? product.name}
         />
-        {}
 
-        {/* Dynamic specifications */}
+        {}
         {product.specifications?.map((specification) => (
           <SpecRowMobile key={specification.name} label={specification.name} value={specification.value} />
         ))}
       </div>
 
-      {}
       {product.description && (
         <div className="mt-2 pt-3 border-t">
-          <h3 className="text-sm font-semibold mb-2">English content normalized from the original source text.</h3>
+          <h3 className="text-sm font-semibold mb-2">S?n ph?m</h3>
           <div className="text-xs">
             <HTMLPreview
               content={product.description.replace(/(#[a-zA-Z0-9_]+)/g, '<span class="font-medium">$1</span>')}
@@ -99,7 +96,7 @@ function SpecRowMobile({ label, value }: { label: string; value?: string | React
   return (
     <div className="flex">
       <div className="w-1/3 text-muted-foreground">{label}</div>
-      <div className="flex-1">{value ?? 'English content normalized from the original source text.'}</div>
+      <div className="flex-1">{value ?? 'S?n ph?m'}</div>
     </div>
   )
 }

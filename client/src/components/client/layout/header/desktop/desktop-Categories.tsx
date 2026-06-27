@@ -25,10 +25,10 @@ export function Categories() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { openDropdown, setOpenDropdown } = useDropdown()
 
-  // Fetch parent categories (level 1)
+  
   const { categories: parentCategories, loading: parentLoading } = useCbbCategory(null)
 
-  // Fetch child categories based on the active parent category
+  
   const { categories: subCategories, loading: subLoading } = useCbbCategory(activeCategory?.value || null)
 
   const open = openDropdown === 'categories'
@@ -39,7 +39,7 @@ export function Categories() {
 
   const handleMouseLeave = () => {
     setOpenDropdown('none')
-    setActiveCategory(null) // Reset active category on leave
+    setActiveCategory(null) 
   }
 
   const handleClick = () => {
@@ -47,19 +47,19 @@ export function Categories() {
   }
 
   useEffect(() => {
-    // Set the first category as active by default when dropdown opens and data is loaded
+    
     if (open && !parentLoading && parentCategories.length > 0 && !activeCategory) {
       setActiveCategory(parentCategories[0])
     }
-    // Reset when dropdown closes
+    
     if (!open) {
       setActiveCategory(null)
     }
   }, [open, parentLoading, parentCategories, activeCategory])
-  // Xem file header-styles.css
+  
   return (
     <>
-      {/* Background overlay when dropdown is open - positioned below header */}{' '}
+      {}{' '}
       <div
         className={cn(
           'fixed top-[75px] left-0 right-0 bottom-0 bg-black transition-all duration-300 category-backdrop pointer-events-none',
@@ -67,9 +67,7 @@ export function Categories() {
         )}
         aria-hidden="true"
       />
-      {}
       <div ref={containerRef} className="relative z-50 category-hover-container">
-        {/* Invisible extended hover area to maintain hover state */}
         {open && (
           <div
             className="absolute top-0 left-[-20px] w-[260px] h-[calc(100%+18px)] category-hover-area"
@@ -92,7 +90,7 @@ export function Categories() {
               scaleY: open ? 1 : 0.8
             }}
             whileHover={{
-              backgroundColor: 'rgba(233, 233, 233, 0.4)', // #E9E9E9 khi hover
+              backgroundColor: 'rgba(233, 233, 233, 0.4)', 
               boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
               scaleX: [0.8, 1.1, 1],
               scaleY: [0.9, 1.05, 1]
@@ -107,13 +105,12 @@ export function Categories() {
               scaleY: { duration: 0.25, ease: 'easeOut' }
             }}
           />
-          {/* Content layer - stays in place */}
           <div
             className="cursor-pointer relative whitespace-nowrap inline-flex items-center gap-1 px-4 py-3 text-white font-semibold text-sm z-10"
             onClick={handleClick}
           >
             <Menu className="w-5 h-5" />
-            English content normalized from the original source text.
+            Danh m?c
             <motion.span
               animate={{ rotate: open ? 180 : 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -149,16 +146,14 @@ export function Categories() {
           onMouseLeave={handleMouseLeave}
           layoutId="categories-dropdown"
         >
-          {/* Bubble arrow pointing to the title */}
           <div className="absolute left-[230px] top-[-7px] w-3 h-3 bg-white transform rotate-45 border-t-1 border-l-1 border-gray-200 z-1"></div>
 
           <div className="flex h-full w-full relative z-10">
             {' '}
-            {/* Left: Main categories */}
             <div className="h-full w-1/4 bg-white border-r-1 pr-2 py-4 rounded-l-md overflow-y-auto">
               <div role="menu" className="space-y-1">
                 {parentLoading
-                  ? // Skeleton loader for parent categories
+                  ? 
                     Array.from({ length: 8 }).map((_, index) => (
                       <div key={index} className="flex items-center justify-between px-3 py-2 h-[38px]">
                         <Skeleton className="h-5 w-3/4" />
@@ -182,10 +177,9 @@ export function Categories() {
                     ))}
               </div>
             </div>
-            {/* Right: Sub categories */}
             <div className="w-3/4 p-4 bg-white rounded-r-md overflow-y-auto h-full">
               {subLoading ? (
-                // Skeleton loader for sub-categories
+                
                 <div className="space-y-6">
                   <div className="flex items-center justify-between mb-3">
                     <Skeleton className="h-6 w-1/3" />
@@ -208,7 +202,7 @@ export function Categories() {
                       href={createCategorySlug(activeCategory.label, [activeCategory.value])}
                       className="flex items-center text-sm text-red-600 hover:underline font-medium"
                     >
-                      English content normalized from the original source text.
+                      Danh m?c
                       <ChevronRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
@@ -243,8 +237,8 @@ export function Categories() {
                 <div className="flex items-center justify-center h-full text-gray-500">
                   <p>
                     {activeCategory
-                      ? `English content normalized from the original source text.${activeCategory.label}`
-                      : 'English content normalized from the original source text.'}
+                      ? `Danh m?c${activeCategory.label}`
+                      : 'Danh m?c'}
                   </p>
                 </div>
               )}

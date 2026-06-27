@@ -91,13 +91,13 @@ export class HealthController {
       const testKey = 'health:test'
       const testValue = { test: true, timestamp: new Date() }
 
-      // Test set
+      
       await this.redisService.set(testKey, testValue, 60)
 
-      // Test get
+      
       const retrieved = await this.redisService.get(testKey)
 
-      // Test delete
+      
       const deleted = await this.redisService.del(testKey)
 
       return {
@@ -143,7 +143,7 @@ export class HealthController {
     try {
       const result = await this.redisService.withRetry(
         async () => {
-          // Simulate unreliable operation (50% fail rate)
+          
           if (Math.random() < 0.5) {
             throw new Error('Simulated Redis operation failure')
           }

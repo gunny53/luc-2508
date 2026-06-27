@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
-// import { Button } from '@/components/ui/button'
+
 import { otpSchema } from '../schema/index'
 import { useVerify } from './use-verify'
 import { AnimatedForm, AnimatedFormItem, AnimatedButton } from '@/components/ui/animated-form'
@@ -31,7 +31,6 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleVerifyCode)} className={cn('flex flex-col gap-6', className)} {...props}>
         <AnimatedForm>
-          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.verifyOtp.title')}</h1>
@@ -39,7 +38,6 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
             </div>
           </AnimatedFormItem>
 
-          {/* Input OTP */}
           <AnimatedFormItem>
             <FormField
               control={form.control}
@@ -62,7 +60,6 @@ export function VerifyForm({ className, ...props }: React.ComponentPropsWithoutR
             />
           </AnimatedFormItem>
 
-          {/* Link resend */}
           <AnimatedFormItem>
             <div className="text-center text-sm">
               {t('auth.verifyOtp.No code')}{' '}

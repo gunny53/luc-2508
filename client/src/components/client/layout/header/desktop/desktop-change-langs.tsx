@@ -17,13 +17,11 @@ export function ChangeLangs() {
 
   return (
     <div className="relative group flex items-center language-container" ref={dropdownRef}>
-      {/* Trigger Button */}
       <div
         className="cursor-pointer relative whitespace-nowrap inline-flex items-center gap-1.5 px-4 py-3 text-black font-medium text-[13px]"
         onClick={() => setOpenDropdown(isOpen ? 'none' : 'language')}
         onMouseEnter={() => setOpenDropdown('language')}
       >
-        {/* Backdrop blur effect */}
         <motion.div
           className="absolute rounded-full inset-0 backdrop-blur-sm"
           initial={{
@@ -54,11 +52,10 @@ export function ChangeLangs() {
           }}
         />
 
-        {/* Content layer */}
         <div className="relative z-10 w-7 h-7 overflow-hidden flex-shrink-0">
           {currentSelectedLang === 'vi' ? (
             <VN
-              title="English content normalized from the original source text."
+              title="Ng?n ng?"
               className="w-full h-full object-cover"
             />
           ) : (
@@ -75,10 +72,8 @@ export function ChangeLangs() {
         </motion.span>
       </div>
 
-      {/* Invisible gap to prevent dropdown from closing when moving cursor to dropdown */}
       <div className="absolute h-3 w-full top-full"></div>
 
-      {/* Dropdown Menu */}
       <motion.div
         className={cn(
           'absolute top-[calc(100%+3px)] right-0 w-40 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50',
@@ -96,10 +91,8 @@ export function ChangeLangs() {
           }
         }}
       >
-        {/* Bubble arrow pointing to the title */}
         <div className="absolute right-4 top-[-7px] w-3 h-3 bg-white transform rotate-45 border-t-1 border-l-1 border-gray-200 z-1"></div>
 
-        {/* Menu Items */}
         <div className="relative py-1">
           <div
             className="relative flex items-center px-4 py-2 cursor-pointer text-[13px] text-gray-800"
@@ -108,7 +101,6 @@ export function ChangeLangs() {
               setOpenDropdown('none')
             }}
           >
-            {/* Hover background effect */}
             <motion.div
               className={cn(
                 'absolute inset-0 backdrop-blur-sm',
@@ -122,9 +114,8 @@ export function ChangeLangs() {
               }}
             />
 
-            {/* Content (stays above the hover background) */}
             <div className="relative z-10 flex items-center w-full justify-between">
-              <span>English content normalized from the original source text.</span>
+              <span>Ng?n ng?</span>
               {currentSelectedLang === 'vi' && <Check className="w-3.5 h-3.5 text-green-500 ml-auto" />}
             </div>
           </div>
@@ -136,7 +127,6 @@ export function ChangeLangs() {
               setOpenDropdown('none')
             }}
           >
-            {/* Hover background effect */}
             <motion.div
               className={cn(
                 'absolute inset-0 backdrop-blur-sm',
@@ -150,7 +140,6 @@ export function ChangeLangs() {
               }}
             />
 
-            {/* Content (stays above the hover background) */}
             <div className="relative z-10 flex items-center w-full justify-between">
               <span>English</span>
               {currentSelectedLang === 'en' && <Check className="w-3.5 h-3.5 text-green-500 ml-auto" />}

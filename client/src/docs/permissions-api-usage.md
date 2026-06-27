@@ -1,17 +1,17 @@
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ### Permission Object
 
 ```typescript
 interface Permission {
   id: number;
-  name: English content normalized from the original source text.
-  description: English content normalized from the original source text.
-  module: English content normalized from the original source text.
+  name: Quy?n truy c?p
+  description: Quy?n truy c?p
+  module: Quy?n truy c?p
   path: string;        // API path
   method: string;      // HTTP method (GET, POST, PUT, DELETE, etc.)
   createdById: string;
@@ -25,10 +25,10 @@ interface Permission {
 
 ## API Endpoints
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
-English content normalized from the original source text.
+Quy?n truy c?p
 interface PaginationRequest {
   page: number;
   limit: number;
@@ -37,11 +37,11 @@ interface PaginationRequest {
   sortOrder?: 'asc' | 'desc';
 }
 
-English content normalized from the original source text.
+Quy?n truy c?p
 const response = await permissionService.getAll(paginationParams, abortSignal);
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 interface PerCreateRequest {
@@ -52,11 +52,11 @@ interface PerCreateRequest {
   description?: string;
 }
 
-English content normalized from the original source text.
+Quy?n truy c?p
 const response = await permissionService.create(permissionData, abortSignal);
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 interface PerUpdateRequest {
@@ -67,55 +67,55 @@ interface PerUpdateRequest {
   description?: string;
 }
 
-English content normalized from the original source text.
+Quy?n truy c?p
 const response = await permissionService.update(permissionId, updateData, abortSignal);
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
-English content normalized from the original source text.
+Quy?n truy c?p
 const response = await permissionService.delete(permissionId, abortSignal);
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text. `usePermissions` English content normalized from the original source text.
+Quy?n truy c?p `usePermissions` Quy?n truy c?p
 
 ```typescript
 const {
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
-  English content normalized from the original source text.
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
+  Quy?n truy c?p
 } = usePermissions();
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p
 
 2. **Debounced Search**:
-   - English content normalized from the original source text
+   - Quy?n truy c?p
 
 3. **Memoization**:
-   - English content normalized from the original source text
+   - Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 const handleCreatePermission = async (data) => {
@@ -134,7 +134,7 @@ const handleCreatePermission = async (data) => {
 }
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 const handleUpdatePermission = async (id, data) => {
@@ -155,33 +155,33 @@ const handleUpdatePermission = async (id, data) => {
 
 ## Best Practices
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p
 
 3. **UX**:
-   - English content normalized from the original source text
-   - English content normalized from the original source text
+   - Quy?n truy c?p
+   - Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p

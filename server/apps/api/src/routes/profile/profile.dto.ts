@@ -15,7 +15,7 @@ export class UpdateMeBodyDTO extends createZodDto(UpdateMeBodySchema) {}
 
 export class ChangePasswordBodyDTO extends createZodDto(ChangePasswordBodySchema) {}
 
-// Address DTOs
+
 export class CreateAddressBodyDTO extends createZodDto(CreateAddressBodySchema) {}
 
 export class UpdateAddressBodyDTO extends createZodDto(UpdateAddressBodySchema) {}

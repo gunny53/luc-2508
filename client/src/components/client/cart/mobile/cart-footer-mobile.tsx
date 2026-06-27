@@ -29,16 +29,13 @@ export default function CartFooterMobile({
 
   return (
     <div className="w-full sticky bottom-0 bg-white border-t text-sm text-muted-foreground safe-area-inset-bottom">
-      {}
 
-      {/* Bottom Row - Mobile optimized */}
       <div className="flex flex-col gap-2 px-3 py-2 bg-white min-h-[60px]">
-        {/* Top row - Checkbox + Delete button */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-foreground">
             <Checkbox id="select-all-mobile" className="w-4 h-4" checked={allSelected} onCheckedChange={onToggleAll} />
             <label htmlFor="select-all-mobile" className="text-sm">
-              English content normalized from the original source text.{selectedCount})
+              Gi? h?ng{selectedCount})
             </label>
 
             {selectedCount > 0 && (
@@ -48,24 +45,22 @@ export default function CartFooterMobile({
                 onClick={onDeleteSelected}
                 className="ml-2 text-red-600 border-red-300 hover:bg-red-50 hover:border-red-400 text-xs px-2 py-1 h-7"
               >
-                English content normalized from the original source text.{selectedCount})
+                Gi? h?ng{selectedCount})
               </Button>
             )}
           </div>
         </div>
 
-        {/* Bottom row - Total + Checkout */}
         <div className="flex items-center justify-between">
           <div className="flex-1 text-right">
             <div className="text-xs text-black mb-1">
-              English content normalized from the original source text.{selectedCount} English content normalized from
-              the original source text.
+              Gi? h?ng{selectedCount} s?n ph?m trong gi? h?ng
             </div>
             <div>
               <span className="text-red-500 font-medium text-lg">₫{total.toLocaleString('vi-VN')}</span>
               {totalSaved > 0 && (
                 <div className="text-xs text-muted-foreground">
-                  English content normalized from the original source text.{totalSaved.toLocaleString('vi-VN')}
+                  Gi? h?ng{totalSaved.toLocaleString('vi-VN')}
                 </div>
               )}
             </div>
@@ -76,7 +71,7 @@ export default function CartFooterMobile({
             onClick={onCheckout}
             disabled={selectedCount === 0}
           >
-            English content normalized from the original source text.
+            Gi? h?ng
           </Button>
         </div>
       </div>

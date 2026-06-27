@@ -1,4 +1,4 @@
-// Base URL cho API
+
 const API_BASE = ''
 
 export const API_ENDPOINTS = {
@@ -9,7 +9,7 @@ export const API_ENDPOINTS = {
     SEND_OTP: `${API_BASE}/auth/send-otp`,
     GOOGLE_LOGIN: `${API_BASE}/auth/google-link`,
     GET_CSRF_TOKEN: `${API_BASE}/cookies/csrf-token`,
-    //PROFILE
+    
     PROFILE: `${API_BASE}/profile`,
     UPDATE_PROFILE: `${API_BASE}/profile`,
     ADD_ADDRESS: `${API_BASE}/profile/addresses`,
@@ -18,28 +18,28 @@ export const API_ENDPOINTS = {
     UPDATE_ADDRESS: `${API_BASE}/profile/addresses/:addressId`,
     DELETE_ADDRESS: `${API_BASE}/profile/addresses/:addressId`,
     CHANGE_PASSWORD_PROFILE: `${API_BASE}/profile/change-password`,
-    // SIGN-UP
+    
     SIGNUP: `${API_BASE}/auth/complete-registration`,
     SIGNUP_SEND: `${API_BASE}/auth/initiate-registration`,
-    // CHANGE PASSWORD
+    
     CHANGE_PASSWORD: `${API_BASE}/auth/password/change`,
-    // RESET PASSWORD
+    
     RESET_PASSWORD: `${API_BASE}/auth/password/set-new`,
     RESET_PASSWORD_SEND: `${API_BASE}/auth/password/initiate-reset`,
-    //VERIFY & RESEND
+    
     VERIFY_OTP: `${API_BASE}/auth/otp/verify`,
     VERIFY_2FA: `${API_BASE}/auth/2fa/verify`,
     RESEND_OTP: `${API_BASE}/auth/otp/resend`,
-    //SETUP 2FA
+    
     SETUP_2FA: `${API_BASE}/auth/2fa/setup`,
     CONFIRM_2FA: `${API_BASE}/auth/2fa/confirm-setup`,
     DISABLE_2FA: `${API_BASE}/auth/2fa/disable`,
-    //RECOVERY CODE
+    
     REGENERATE_RECOVERY_CODES: `${API_BASE}/auth/2fa/regenerate-recovery-codes`,
-    // DEVICE
+    
     TRUST_DEVICE: `${API_BASE}/sessions/devices/trust-current`,
     UNTRUST_DEVICE: `${API_BASE}/auth/devices/:deviceId/untrust`,
-    //GET ABILITY BY ROLE (PERMISSION)
+    
     GET_ABILITY: `${API_BASE}/auth/ui-capabilities`
   },
   BASE: {

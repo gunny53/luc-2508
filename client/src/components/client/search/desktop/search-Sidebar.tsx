@@ -10,12 +10,12 @@ import { useSidebar } from '../hooks/use-sidebar'
 import { createCategorySlug } from '@/utils/slugify'
 import Link from 'next/link'
 const locations = [
-  'English content normalized from the original source text.',
-  'English content normalized from the original source text.',
-  'English content normalized from the original source text.',
-  'English content normalized from the original source text.'
+  'T?m ki?m',
+  'T?m ki?m',
+  'T?m ki?m',
+  'T?m ki?m'
 ]
-const shippingOptions = ['Nhanh', 'English content normalized from the original source text.']
+const shippingOptions = ['Nhanh', 'T?m ki?m']
 const brands = ['Nike', 'Adidas', 'Uniqlo', 'Zara', 'H&M']
 
 interface SearchSidebarProps {
@@ -39,9 +39,9 @@ export default function SearchSidebar({ categoryIds = [], currentCategoryId }: S
   return (
     <aside className="w-64 shrink-0 space-y-6 text-sm">
       <CategorySectionWithParent
-        title="English content normalized from the original source text."
+        title="T?m ki?m"
         icon={<ListFilter className="h-4 w-4" />}
-        parentCategory={parentCategory?.label || 'English content normalized from the original source text.'}
+        parentCategory={parentCategory?.label || 'T?m ki?m'}
         parentCategoryId={parentCategory?.value || ''}
         items={subcategories.map((cat) => cat.label)}
         itemIds={subcategories.map((cat) => cat.value)}
@@ -52,7 +52,6 @@ export default function SearchSidebar({ categoryIds = [], currentCategoryId }: S
         isLoading={loadingSubcategories}
       />
       <Separator className="my-4" />
-      {}
     </aside>
   )
 }
@@ -102,7 +101,6 @@ function CategorySectionWithParent({
       </h3>
 
       <div className="space-y-1">
-        {}
         <div
           className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-200 ${
             selectedValue === parentCategoryId ? 'font-bold text-red-600' : 'hover:bg-gray-50 font-medium'
@@ -117,7 +115,6 @@ function CategorySectionWithParent({
           </Link>
         </div>
 
-        {}
         {isLoading ? (
           <div className="space-y-2">
             {[1, 2, 3].map((i) => (
@@ -157,8 +154,8 @@ function CategorySectionWithParent({
                 onClick={() => setExpanded(!expanded)}
               >
                 {expanded
-                  ? 'English content normalized from the original source text.'
-                  : 'English content normalized from the original source text.'}
+                  ? 'T?m ki?m'
+                  : 'T?m ki?m'}
                 <ChevronDown className={`h-3.5 w-3.5 ml-1 transition-transform ${expanded ? 'rotate-180' : ''}`} />
               </button>
             )}

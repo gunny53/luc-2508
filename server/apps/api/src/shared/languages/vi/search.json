@@ -1,24 +1,24 @@
 {
   "search": {
     "success": {
-      "SEARCH_SUCCESS": "English content normalized from the original source text."
+      "SEARCH_SUCCESS": "Thao tác với tìm kiếm thành công."
     },
     "error": {
-      "SEARCH_FAILED": "English content normalized from the original source text.",
-      "INVALID_QUERY": "English content normalized from the original source text.",
-      "NO_RESULTS": "English content normalized from the original source text.",
-      "EMPTY_QUERY": "English content normalized from the original source text.",
-      "QUERY_TOO_SHORT": "English content normalized from the original source text.",
-      "INVALID_FILTERS": "English content normalized from the original source text.",
-      "INVALID_PRICE_RANGE": "English content normalized from the original source text.",
-      "INVALID_ATTRIBUTE_FILTER": "English content normalized from the original source text.",
-      "ELASTICSEARCH_CONNECTION_FAILED": "English content normalized from the original source text.",
-      "ELASTICSEARCH_QUERY_FAILED": "English content normalized from the original source text.",
-      "ELASTICSEARCH_INDEX_NOT_FOUND": "English content normalized from the original source text.",
-      "SEARCH_TIMEOUT": "English content normalized from the original source text.",
-      "SEARCH_SERVICE_UNAVAILABLE": "English content normalized from the original source text.",
-      "DICTIONARY_LOAD_FAILED": "English content normalized from the original source text.",
-      "DICTIONARY_PARSE_FAILED": "English content normalized from the original source text."
+      "SEARCH_FAILED": "Thao tác với tìm kiếm không thành công.",
+      "INVALID_QUERY": "Thao tác với tìm kiếm không thành công.",
+      "NO_RESULTS": "Thao tác với tìm kiếm không thành công.",
+      "EMPTY_QUERY": "Thao tác với tìm kiếm không thành công.",
+      "QUERY_TOO_SHORT": "Thao tác với tìm kiếm không thành công.",
+      "INVALID_FILTERS": "Thao tác với tìm kiếm không thành công.",
+      "INVALID_PRICE_RANGE": "Thao tác với tìm kiếm không thành công.",
+      "INVALID_ATTRIBUTE_FILTER": "Thao tác với tìm kiếm không thành công.",
+      "ELASTICSEARCH_CONNECTION_FAILED": "Thao tác với tìm kiếm không thành công.",
+      "ELASTICSEARCH_QUERY_FAILED": "Thao tác với tìm kiếm không thành công.",
+      "ELASTICSEARCH_INDEX_NOT_FOUND": "Không tìm thấy tìm kiếm.",
+      "SEARCH_TIMEOUT": "Thao tác với tìm kiếm không thành công.",
+      "SEARCH_SERVICE_UNAVAILABLE": "Thao tác với tìm kiếm không thành công.",
+      "DICTIONARY_LOAD_FAILED": "Thao tác với tìm kiếm không thành công.",
+      "DICTIONARY_PARSE_FAILED": "Thao tác với tìm kiếm không thành công."
     }
   }
 }

@@ -36,17 +36,17 @@ export function ProductAsideForm({
   isEditMode,
   publishedAt
 }: ProductAsideFormProps) {
-  // State for publishing date/time
+  
   const [isPublished, setIsPublished] = useState(false)
   const [publishDate, setPublishDate] = useState<Date | undefined>(undefined)
 
-  // State for category modal
+  
   const [isCategoryModalOpen, setCategoryModalOpen] = useState(false)
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([])
   const [selectedCategoryPath, setSelectedCategoryPath] = useState<string>('')
   const [isLoadingCategory, setIsLoadingCategory] = useState<boolean>(false)
 
-  // Update states when publishedAt changes (from API)
+  
   useEffect(() => {
     if (publishedAt) {
       try {
@@ -71,7 +71,7 @@ export function ProductAsideForm({
     }
   }, [publishedAt])
 
-  // Simplified category processing
+  
   useEffect(() => {
     if (categories && categories.length > 0 && selectedCategoryPath === '') {
       const fetchCategoryData = async () => {
@@ -88,7 +88,7 @@ export function ProductAsideForm({
           const categoryPaths: string[] = []
           const processedCategories = new Set<string>()
 
-          // Debug log
+          
           console.log('Original categories:', categories)
           console.log('All fetched categories:', allCategories)
           for (const categoryId of categories) {
@@ -139,8 +139,8 @@ export function ProductAsideForm({
                 }
               } catch (detailError) {
                 console.error(`Failed to fetch category ${categoryId}:`, detailError)
-                if (!categoryPaths.includes('English content normalized from the original source text.')) {
-                  categoryPaths.push('English content normalized from the original source text.')
+                if (!categoryPaths.includes('S?n ph?m')) {
+                  categoryPaths.push('S?n ph?m')
                 }
                 processedCategories.add(categoryId)
               }
@@ -152,7 +152,7 @@ export function ProductAsideForm({
           setSelectedCategoryPath(finalPath)
         } catch (error) {
           console.error('Failed to fetch category data:', error)
-          setSelectedCategoryPath('English content normalized from the original source text.')
+          setSelectedCategoryPath('S?n ph?m')
         } finally {
           setIsLoadingCategory(false)
         }
@@ -162,7 +162,7 @@ export function ProductAsideForm({
     }
   }, [categories, selectedCategoryPath])
 
-  // Handle publish status change
+  
   const handlePublishToggle = (checked: boolean) => {
     setIsPublished(checked)
 
@@ -183,7 +183,7 @@ export function ProductAsideForm({
     }
   }
 
-  // Handle publish date change
+  
   const handlePublishDateChange = (date: Date | undefined) => {
     if (!date) {
       setPublishDate(undefined)
@@ -207,12 +207,12 @@ export function ProductAsideForm({
     }
   }
 
-  // Handle brand change
+  
   const handleBrandChange = (id: string | null) => {
     handleInputChange('brandId', id)
   }
 
-  // Handle category selection from modal
+  
   const handleCategoryConfirm = (categoryIds: string[], selectionPath: string) => {
     console.log('Selected category IDs (unchanged):', categoryIds)
 
@@ -223,51 +223,49 @@ export function ProductAsideForm({
 
   return (
     <div className="sticky top-4 grid auto-rows-max items-start gap-4 md:gap-8">
-      {/* Action Buttons */}
+      {}
       <div className="flex flex-col gap-2">
         {!isEditMode && (
           <Button type="button" onClick={handleSaveAndAddNew} disabled={isSubmitting} variant="secondary">
             {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            English content normalized from the original source text.
+            S?n ph?m
           </Button>
         )}
         {isEditMode && (
           <Button variant="outline" className="flex-1 flex items-center gap-2">
             <Eye className="h-4 w-4" />
-            English content normalized from the original source text.
+            S?n ph?m
           </Button>
         )}
         <Button onClick={() => handleSubmit()} disabled={isSubmitting} className="flex-1 flex items-center gap-2">
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {isEditMode
-            ? 'English content normalized from the original source text.'
-            : 'English content normalized from the original source text.'}
+            ? 'S?n ph?m'
+            : 'S?n ph?m'}
         </Button>
       </div>
 
-      {/* Card 1: Product Status */}
+      {}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">English content normalized from the original source text.</CardTitle>
+          <CardTitle className="text-base">S?n ph?m</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {}
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label htmlFor="publish-toggle">English content normalized from the original source text.</Label>
+              <Label htmlFor="publish-toggle">S?n ph?m</Label>
               <p className="text-sm text-muted-foreground">
                 {isPublished
-                  ? 'English content normalized from the original source text.'
-                  : 'English content normalized from the original source text.'}
+                  ? 'S?n ph?m'
+                  : 'S?n ph?m'}
               </p>
             </div>
             <Switch id="publish-toggle" checked={isPublished} onCheckedChange={handlePublishToggle} />
           </div>
 
-          {}
           {isPublished && (
             <div className="grid gap-2">
-              <Label htmlFor="publish-date">English content normalized from the original source text.</Label>
+              <Label htmlFor="publish-date">S?n ph?m</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
@@ -281,7 +279,7 @@ export function ProductAsideForm({
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {publishDate
                       ? format(publishDate, 'PPpp', { locale: vi })
-                      : 'English content normalized from the original source text.'}
+                      : 'S?n ph?m'}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
@@ -289,7 +287,7 @@ export function ProductAsideForm({
                   <div className="p-3 border-t border-border">
                     <div className="flex justify-between items-center">
                       <div className="grid gap-1">
-                        <p className="text-sm font-medium">English content normalized from the original source text.</p>
+                        <p className="text-sm font-medium">S?n ph?m</p>
                         <div className="flex items-center space-x-2">
                           <select
                             id="publish-hour-select"
@@ -340,21 +338,21 @@ export function ProductAsideForm({
                             handlePublishDateChange(now)
                           }}
                         >
-                          English content normalized from the original source text.
+                          S?n ph?m
                         </Button>
                       </div>
                     </div>
                     <div className="mt-3 text-xs text-muted-foreground text-center">
                       {publishDate && (
                         <p>
-                          English content normalized from the original source text.{' '}
+                          S?n ph?m{' '}
                           {format(publishDate, 'PPpp', { locale: vi })}
                         </p>
                       )}
-                      English content normalized from the original source text.{' '}
+                      S?n ph?m{' '}
                       {publishDate
                         ? format(publishDate, 'PPpp', { locale: vi })
-                        : 'English content normalized from the original source text.'}
+                        : 'S?n ph?m'}
                     </div>
                   </div>
                 </PopoverContent>
@@ -362,11 +360,11 @@ export function ProductAsideForm({
               <p className="text-xs text-muted-foreground">
                 {publishedAt ? (
                   <span>
-                    English content normalized from the original source text.{' '}
+                    S?n ph?m{' '}
                     {format(new Date(publishedAt), 'PPpp', { locale: vi })}
                   </span>
                 ) : isPublished ? (
-                  <span>English content normalized from the original source text.</span>
+                  <span>S?n ph?m</span>
                 ) : null}
               </p>
             </div>
@@ -374,19 +372,19 @@ export function ProductAsideForm({
         </CardContent>
       </Card>
 
-      {/* Card 2: Product Details */}
+      {}
       <Card>
         <CardContent className="pt-6">
           <div className="grid gap-6">
-            {/* Vendor/Brand */}
+            {}
             <div className="grid gap-3">
-              <Label htmlFor="vendor">English content normalized from the original source text.</Label>
+              <Label htmlFor="vendor">S?n ph?m</Label>
               <BrandCbb value={brandId} onChange={handleBrandChange} />
             </div>
 
-            {/* Category */}
+            {}
             <div className="grid gap-3">
-              <Label htmlFor="category">English content normalized from the original source text.</Label>
+              <Label htmlFor="category">S?n ph?m</Label>
               <Button
                 type="button"
                 variant="outline"
@@ -398,19 +396,19 @@ export function ProductAsideForm({
                   {isLoadingCategory ? (
                     <span className="flex items-center">
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      English content normalized from the original source text.
+                      S?n ph?m
                     </span>
                   ) : (
                     <div className="space-y-1">
                       <span
                         className="block text-sm leading-tight line-clamp-2"
-                        title={selectedCategoryPath || 'English content normalized from the original source text.'}
+                        title={selectedCategoryPath || 'S?n ph?m'}
                       >
-                        {selectedCategoryPath || 'English content normalized from the original source text.'}
+                        {selectedCategoryPath || 'S?n ph?m'}
                       </span>
                       {selectedCategoryPath && selectedCategoryIds.length > 0 && (
                         <span className="text-xs text-muted-foreground">
-                          {selectedCategoryIds.length} English content normalized from the original source text.
+                          {selectedCategoryIds.length} S?n ph?m
                         </span>
                       )}
                     </div>
@@ -423,7 +421,7 @@ export function ProductAsideForm({
         </CardContent>
       </Card>
 
-      {/* Category Modal */}
+      {}
       <CategoryModal
         open={isCategoryModalOpen}
         onOpenChange={setCategoryModalOpen}

@@ -4,7 +4,7 @@ export const GHN_PAYMENT_TYPE = {
   COD: 2
 } as const
 
-// GHN Order status Mapping
+
 export const GHN_ORDER_STATUS = {
   CREATED: 'CREATED',
   PICKUPED: 'PICKUPED',
@@ -15,7 +15,7 @@ export const GHN_ORDER_STATUS = {
   RETURNED: 'RETURNED'
 } as const
 
-// GHN Service Types
+
 export const GHN_SERVICE_TYPE = {
   STANDARD: 1,
   EXPRESS: 2,

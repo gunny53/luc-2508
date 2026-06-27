@@ -48,7 +48,7 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
   const router = useRouter()
   const variantGroups = product.variants || []
 
-  // Auto-select variants khi component mount
+  
   useEffect(() => {
     const initialVariants: SelectedVariants = {}
     variantGroups.forEach((group) => {
@@ -72,9 +72,9 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
     const matchingSku = findMatchingSku(selectedVariants, product.skus, variantGroups)
 
     if (matchingSku) {
-      console.log('English content normalized from the original source text.', matchingSku)
+      console.log('Gi? h?ng', matchingSku)
     } else if (areAllVariantsSelected(selectedVariants)) {
-      console.log('English content normalized from the original source text.')
+      console.log('Gi? h?ng')
     }
 
     setCurrentSku(matchingSku)
@@ -131,8 +131,7 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
                 <div className="text-sm text-muted-foreground">
                   {isVariantSelected && currentSku && (
                     <span>
-                      English content normalized from the original source text. {currentSku.stock} English content
-                      normalized from the original source text.
+                      Gi? h?ng {currentSku.stock} s?n ph?m trong gi? h?ng
                     </span>
                   )}
                 </div>
@@ -146,7 +145,6 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
             </DrawerClose>
           </div>
 
-          {}
           <div className="space-y-5 mb-6">
             {variantGroups.map((variantGroup) => (
               <div key={variantGroup.value} className="space-y-3">
@@ -201,9 +199,8 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
             ))}
           </div>
 
-          {}
           <div className="mb-6">
-            <div className="font-medium text-sm mb-3">English content normalized from the original source text.</div>
+            <div className="font-medium text-sm mb-3">Gi? h?ng</div>
             <div className="flex items-center">
               <div className="flex items-center border rounded-md">
                 <Button
@@ -231,22 +228,20 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
             </div>
           </div>
 
-          {}
           {isVariantSelected && currentSku && currentSku.stock === 0 && (
-            <div className="text-red-500 text-sm mb-4">English content normalized from the original source text.</div>
+            <div className="text-red-500 text-sm mb-4">Gi? h?ng</div>
           )}
 
-          {}
           <Button
             className="w-full h-12 bg-red-600 hover:bg-red-700 text-white font-medium text-base rounded-md"
             disabled={!isVariantSelected || !currentSku || currentSku.stock === 0 || isAddingToCart}
             onClick={handleAddToCartClick}
           >
             {isAddingToCart
-              ? 'English content normalized from the original source text.'
+              ? 'Gi? h?ng'
               : isBuyNowMode
-                ? 'English content normalized from the original source text.'
-                : 'English content normalized from the original source text.'}
+                ? 'Gi? h?ng'
+                : 'Gi? h?ng'}
           </Button>
         </div>
       </DrawerContent>

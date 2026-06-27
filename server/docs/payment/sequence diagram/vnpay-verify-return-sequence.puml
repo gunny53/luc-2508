@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Payment Vnpay Verify Return Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "VNPayController" as VC
@@ -26,9 +26,9 @@ VNS --> VS: { isSuccess, isVerified, message, vnp_* }
 alt isSuccess && isVerified && vnp_ResponseCode == '00'
   VS -> VR: processVNPayWebhook(queryData)
   activate VR
-  VR -> VR: English content normalized from the original source text.
-  VR -> VR: English content normalized from the original source text.
-  VR -> VR: English content normalized from the original source text.
+  VR -> VR: Payment Vnpay Verify Return Sequence: validate request and return the expected response
+  VR -> VR: Payment Vnpay Verify Return Sequence: validate request and return the expected response
+  VR -> VR: Payment Vnpay Verify Return Sequence: validate request and return the expected response
   VR -> VR: extractPaymentId(PREFIX_PAYMENT_CODE, vnp_OrderInfo, vnp_TxnRef)
   VR -> VR: validateAndFindPayment(paymentId)
   VR -> VR: validatePaymentAmount(orders, total, actualAmount)

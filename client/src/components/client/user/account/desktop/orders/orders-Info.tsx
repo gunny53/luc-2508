@@ -6,28 +6,28 @@ interface OrderInfoProps {
 }
 
 const statusMapping: Record<string, string> = {
-  ready_to_pick: 'English content normalized from the original source text.',
-  picking: 'English content normalized from the original source text.',
-  cancel: 'English content normalized from the original source text.',
-  money_collect_picking: 'English content normalized from the original source text.',
-  picked: 'English content normalized from the original source text.',
-  storing: 'English content normalized from the original source text.',
-  transporting: 'English content normalized from the original source text.',
-  sorting: 'English content normalized from the original source text.',
-  delivering: 'English content normalized from the original source text.',
-  money_collect_delivering: 'English content normalized from the original source text.',
-  delivered: 'English content normalized from the original source text.',
-  delivery_fail: 'English content normalized from the original source text.',
-  waiting_to_return: 'English content normalized from the original source text.',
-  return: 'English content normalized from the original source text.',
-  return_transporting: 'English content normalized from the original source text.',
-  return_sorting: 'English content normalized from the original source text.',
-  returning: 'English content normalized from the original source text.',
-  return_fail: 'English content normalized from the original source text.',
-  returned: 'English content normalized from the original source text.',
-  exception: 'English content normalized from the original source text.',
-  damage: 'English content normalized from the original source text.',
-  lost: 'English content normalized from the original source text.'
+  ready_to_pick: '??n h?ng',
+  picking: '??n h?ng',
+  cancel: '??n h?ng',
+  money_collect_picking: '??n h?ng',
+  picked: '??n h?ng',
+  storing: '??n h?ng',
+  transporting: '??n h?ng',
+  sorting: '??n h?ng',
+  delivering: '??n h?ng',
+  money_collect_delivering: '??n h?ng',
+  delivered: '??n h?ng',
+  delivery_fail: '??n h?ng',
+  waiting_to_return: '??n h?ng',
+  return: '??n h?ng',
+  return_transporting: '??n h?ng',
+  return_sorting: '??n h?ng',
+  returning: '??n h?ng',
+  return_fail: '??n h?ng',
+  returned: '??n h?ng',
+  exception: '??n h?ng',
+  damage: '??n h?ng',
+  lost: '??n h?ng'
 }
 
 const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
@@ -40,11 +40,11 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
   }, [orderCode, fetchOrderInfo])
 
   if (loading) {
-    return <p className="text-center text-gray-500">English content normalized from the original source text.</p>
+    return <p className="text-center text-gray-500">??n h?ng</p>
   }
 
   if (!orderInfo) {
-    return <p className="text-center text-gray-500">English content normalized from the original source text.</p>
+    return <p className="text-center text-gray-500">??n h?ng</p>
   }
 
   const currentStatus = orderInfo.log?.length ? orderInfo.log[orderInfo.log.length - 1]?.status : undefined
@@ -55,20 +55,19 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
     <div className="bg-white p-4 max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg font-semibold text-gray-800">
-          English content normalized from the original source text.
+          ??n h?ng
         </h2>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {}
         <div className="flex-1 bg-white p-4 space-y-4">
           <h3 className="text-lg lg:text-xl font-semibold text-gray-700 border-b pb-2">
-            English content normalized from the original source text.
+            ??n h?ng
           </h3>
 
           <p className="flex items-center justify-between gap-2">
             <span className="text-gray-600 font-medium flex-shrink-0">
-              English content normalized from the original source text.
+              ??n h?ng
             </span>
             <span
               className={`font-bold flex-1 text-right ${
@@ -81,30 +80,29 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
 
           <p className="flex items-center justify-between gap-2">
             <span className="text-gray-600 font-medium flex-shrink-0">
-              English content normalized from the original source text.
+              ??n h?ng
             </span>
             <span className="flex-1 text-right text-gray-800 break-words">{orderInfo.to_name}</span>
           </p>
 
           <p className="flex items-center justify-between gap-2">
             <span className="text-gray-600 font-medium flex-shrink-0">
-              English content normalized from the original source text.
+              ??n h?ng
             </span>
             <span className="flex-1 text-right text-gray-800 break-words">{orderInfo.to_address}</span>
           </p>
 
           <p className="flex items-center justify-between gap-2">
             <span className="text-gray-600 font-medium flex-shrink-0">
-              English content normalized from the original source text.
+              ??n h?ng
             </span>
             <span className="flex-1 text-right text-gray-800">{orderInfo.to_phone}</span>
           </p>
         </div>
 
-        {}
         <div className="flex-1 bg-white p-4">
           <h3 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">
-            English content normalized from the original source text.
+            ??n h?ng
           </h3>
           <div className="relative border-l-2 border-dashed border-gray-200 ml-4">
             {visibleLogs.length > 0 ? (
@@ -136,20 +134,19 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ orderCode }) => {
                 )
               })
             ) : (
-              <p className="ml-4 text-gray-500">English content normalized from the original source text.</p>
+              <p className="ml-4 text-gray-500">??n h?ng</p>
             )}
           </div>
 
-          {}
           {logs.length > 5 && (
             <div className="mt-2 text-center">
               {visibleCount < logs.length ? (
                 <button onClick={() => setVisibleCount((prev) => prev + 5)} className="text-blue-500 hover:underline">
-                  English content normalized from the original source text.
+                  ??n h?ng
                 </button>
               ) : (
                 <button onClick={() => setVisibleCount(5)} className="text-blue-500 hover:underline">
-                  English content normalized from the original source text.
+                  ??n h?ng
                 </button>
               )}
             </div>

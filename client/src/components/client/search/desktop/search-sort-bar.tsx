@@ -9,7 +9,7 @@ interface SearchSortBarProps {
 }
 
 export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
-  const [sort, setSort] = useState('English content normalized from the original source text.')
+  const [sort, setSort] = useState('T?m ki?m')
   const [showPriceDropdown, setShowPriceDropdown] = useState(false)
   const [priceSort, setPriceSort] = useState<string | null>(null)
   const { currentPage, paginationData, handlePageChange, isLoading } = useProductsContext()
@@ -31,12 +31,11 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
 
   return (
     <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm mb-4">
-      {}
       <div className="flex items-center gap-3">
         {[
-          'English content normalized from the original source text.',
-          'English content normalized from the original source text.',
-          'English content normalized from the original source text.'
+          'T?m ki?m',
+          'T?m ki?m',
+          'T?m ki?m'
         ].map((option) => (
           <button
             key={option}
@@ -51,7 +50,6 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
           </button>
         ))}
 
-        {}
         <div className="relative" ref={dropdownRef}>
           <button
             className={`text-sm px-3 py-1.5 border rounded-md flex items-center gap-1 transition-colors duration-200 ${
@@ -61,40 +59,39 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
             }`}
             onClick={() => setShowPriceDropdown(!showPriceDropdown)}
           >
-            {priceSort || 'English content normalized from the original source text.'}{' '}
+            {priceSort || 'T?m ki?m'}{' '}
             <ChevronDown
               size={14}
               className={`transition-transform duration-200 ${showPriceDropdown ? 'rotate-180' : ''}`}
             />
           </button>
 
-          {/* Dropdown menu */}
+          {}
           {showPriceDropdown && (
             <div className="absolute top-full left-0 mt-1 w-48 bg-white border rounded-md shadow-md z-10">
               <button
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors duration-150"
                 onClick={() => {
-                  setPriceSort('English content normalized from the original source text.')
+                  setPriceSort('T?m ki?m')
                   setShowPriceDropdown(false)
                 }}
               >
-                English content normalized from the original source text.
+                T?m ki?m
               </button>
               <button
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors duration-150"
                 onClick={() => {
-                  setPriceSort('English content normalized from the original source text.')
+                  setPriceSort('T?m ki?m')
                   setShowPriceDropdown(false)
                 }}
               >
-                English content normalized from the original source text.
+                T?m ki?m
               </button>
             </div>
           )}
         </div>
       </div>
 
-      {}
       {!isLoading && totalPages > 1 && (
         <div className="flex items-center gap-2">
           <button

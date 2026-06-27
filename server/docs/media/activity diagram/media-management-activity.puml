@@ -8,96 +8,96 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Media Media Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Media Media Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Media Media Management Activity: execute the validated workflow;
+  :Media Media Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Media Media Management Activity: execute the validated workflow;
+    :Media Media Management Activity: execute the validated workflow;
+    :Media Media Management Activity: execute the validated workflow;
     :ParseFilePipeWithUnlink validation;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Media Media Management Activity: execute the validated workflow;
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
+        :Media Media Management Activity: execute the validated workflow;
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Media Media Management Activity: execute the validated workflow;
+          :Media Media Management Activity: execute the validated workflow;
           note right
-          English content normalized from the original source text.
-          • English content normalized from the original source text
-          • English content normalized from the original source text
-          • English content normalized from the original source text
-          • English content normalized from the original source text
+          Media Media Management Activity: execute the validated workflow
+          • Media Media Management Activity: execute the validated workflow
+          • Media Media Management Activity: execute the validated workflow
+          • Media Media Management Activity: execute the validated workflow
+          • Media Media Management Activity: execute the validated workflow
           end note
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Media Media Management Activity: execute the validated workflow;
+          :Media Media Management Activity: execute the validated workflow;
+          :Media Media Management Activity: execute the validated workflow;
+          :Media Media Management Activity: execute the validated workflow;
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Media Media Management Activity: execute the validated workflow;
+          :Media Media Management Activity: execute the validated workflow;
         endif
       else (No)
-        :English content normalized from the original source text;
-        :English content normalized from the original source text;
+        :Media Media Management Activity: execute the validated workflow;
+        :Media Media Management Activity: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Media Media Management Activity: execute the validated workflow;
+      :Media Media Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Media Media Management Activity: execute the validated workflow;
   endif
 
 elseif (GET /media/static/:filename)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Media Media Management Activity: execute the validated workflow;
+  :Media Media Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Media Media Management Activity: execute the validated workflow;
+    :Media Media Management Activity: execute the validated workflow;
+    :Media Media Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Media Media Management Activity: execute the validated workflow;
   endif
 
 elseif (POST /media/images/upload/presigned-url)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Media Media Management Activity: execute the validated workflow;
+  :Media Media Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Media Media Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Media Media Management Activity: execute the validated workflow;
+      :Media Media Management Activity: execute the validated workflow;
       note right
-      English content normalized from the original source text.
-      • English content normalized from the original source text
-      • English content normalized from the original source text
-      • English content normalized from the original source text
-      • English content normalized from the original source text
+      Media Media Management Activity: execute the validated workflow
+      • Media Media Management Activity: execute the validated workflow
+      • Media Media Management Activity: execute the validated workflow
+      • Media Media Management Activity: execute the validated workflow
+      • Media Media Management Activity: execute the validated workflow
       end note
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Media Media Management Activity: execute the validated workflow;
+      :Media Media Management Activity: execute the validated workflow;
+      :Media Media Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Media Media Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Media Media Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
+  :Media Media Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Media Media Management Activity: execute the validated workflow;
+:Media Media Management Activity: execute the validated workflow;
 
 stop
 

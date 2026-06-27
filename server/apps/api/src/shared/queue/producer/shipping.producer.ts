@@ -44,9 +44,9 @@ export class ShippingProducer {
     }
   }
 
-  /**
-   * Validate shipping job data
-   */
+  
+
+
   private validateShippingJobData(jobData: CreateOrderType): void {
     const requiredFields = [
       'client_order_code',
@@ -63,13 +63,13 @@ export class ShippingProducer {
       'height'
     ] as const
 
-    // Check required fields
+    
     const missingFields = requiredFields.filter((field) => !jobData[field])
     if (missingFields.length > 0) {
       throw new Error(`Missing required fields: ${missingFields.join(', ')}`)
     }
 
-    // Validate numeric fields
+    
     const numericFields = ['weight', 'length', 'width', 'height', 'service_id'] as const
     const invalidNumericFields = numericFields.filter((field) => {
       const value = jobData[field]
@@ -80,14 +80,14 @@ export class ShippingProducer {
       throw new Error(`Invalid numeric fields: ${invalidNumericFields.join(', ')}`)
     }
 
-    // Validate phone numbers
+    
     this.validatePhoneNumber(jobData.from_phone, 'from_phone')
     this.validatePhoneNumber(jobData.to_phone, 'to_phone')
   }
 
-  /**
-   * Validate phone number format
-   */
+  
+
+
   private validatePhoneNumber(phone: string, fieldName: string): void {
     const phoneRegex = /^(\+84|84|0)[0-9]{9}$/
     if (!phoneRegex.test(phone)) {
@@ -95,9 +95,9 @@ export class ShippingProducer {
     }
   }
 
-  /**
-   * Enqueue multiple shipping jobs
-   */
+  
+
+
   async enqueueMultipleShippingOrders(ordersData: CreateOrderType[]): Promise<void> {
     this.logger.log(`[SHIPPING_PRODUCER] Enqueue ${ordersData.length} shipping orders`)
 
@@ -114,7 +114,7 @@ export class ShippingProducer {
     this.logger.log(`[SHIPPING_PRODUCER] Batch enqueue completed: ${successful} successful, ${failed} failed`)
 
     if (failed > 0) {
-      // Log failed jobs for debugging
+      
       results.forEach((result, index) => {
         if (result.status === 'rejected') {
           this.logger.error(`[SHIPPING_PRODUCER] Failed to enqueue order ${index}: ${result.reason}`)
@@ -124,9 +124,9 @@ export class ShippingProducer {
     }
   }
 
-  /**
-   * Enqueue GHN webhook processing job
-   */
+  
+
+
   async enqueueWebhookProcessing(payload: GHNWebhookPayloadType): Promise<any> {
     this.logger.log(`[SHIPPING_PRODUCER] Enqueue webhook processing: ${payload.orderCode}`)
 

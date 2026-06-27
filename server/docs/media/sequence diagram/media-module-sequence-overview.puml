@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
+note top : Media Media Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
 participant "MediaController" as MC
 participant "MediaService" as MS
 participant "S3Service" as S3
@@ -22,95 +22,95 @@ database "AWS_S3" as S3DB
 == English Section ==
 Client -> MC: POST /media/images/upload + multipart files
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
 MC -> FI: FilesInterceptor('files', 100)
-FI -> MM: English content normalized from the original source text.
+FI -> MM: Media Media Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
 • Storage: multer.diskStorage
 • Destination: UPLOAD_DIR
 • Filename: generateRandomFilename()
-• English content normalized from the original source text
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
-MM -> LS: English content normalized from the original source text.
-LS -> MM: English content normalized from the original source text.
-MM -> MC: English content normalized from the original source text.
+MM -> LS: Media Media Module Sequence Overview: validate request and return the expected response
+LS -> MM: Media Media Module Sequence Overview: validate request and return the expected response
+MM -> MC: Media Media Module Sequence Overview: validate request and return the expected response
 
 MC -> PFP: ParseFilePipeWithUnlink validation
-PFP -> PFP: English content normalized from the original source text.
+PFP -> PFP: Media Media Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
+Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
 • FileTypeValidator: jpg, jpeg, png, webp
 • Skip magic numbers validation
-• English content normalized from the original source text
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
-    PFP --> MC: English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
+    PFP --> MC: Media Media Module Sequence Overview: validate request and return the expected response
     MC -> MS: uploadFile(files)
 
-    MS -> MS: English content normalized from the original source text.
+    MS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
-    English content normalized from the original source text.
+    Media Media Module Sequence Overview: validate request and return the expected response
         MS -> S3: uploadedFile({filename, filepath, contentType})
-        S3 -> S3: English content normalized from the original source text.
+        S3 -> S3: Media Media Module Sequence Overview: validate request and return the expected response
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
         end note
 
-        S3 -> S3DB: English content normalized from the original source text.
-        S3DB --> S3: English content normalized from the original source text.
-        S3 --> MS: English content normalized from the original source text.
+        S3 -> S3DB: Media Media Module Sequence Overview: validate request and return the expected response
+        S3DB --> S3: Media Media Module Sequence Overview: validate request and return the expected response
+        S3 --> MS: Media Media Module Sequence Overview: validate request and return the expected response
 
-        MS -> MS: English content normalized from the original source text.
+        MS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
+        • Media Media Module Sequence Overview: validate request and return the expected response
         end note
     end
 
-    MS -> MS: English content normalized from the original source text.
+    MS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
-    MS -> LS: English content normalized from the original source text.
-    LS --> MS: English content normalized from the original source text.
+    MS -> LS: Media Media Module Sequence Overview: validate request and return the expected response
+    LS --> MS: Media Media Module Sequence Overview: validate request and return the expected response
 
     MS -> IS: i18n.t('media.media.success.UPLOAD_SUCCESS')
-    IS -> MS: English content normalized from the original source text.
-    MS --> MC: English content normalized from the original source text.
-    MC --> Client: English content normalized from the original source text.
+    IS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
+    MS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
+    MC --> Client: Media Media Module Sequence Overview: validate request and return the expected response
 
 else (No)
-    PFP -> PFP: English content normalized from the original source text.
-    PFP -> LS: English content normalized from the original source text.
-    LS --> PFP: English content normalized from the original source text.
+    PFP -> PFP: Media Media Module Sequence Overview: validate request and return the expected response
+    PFP -> LS: Media Media Module Sequence Overview: validate request and return the expected response
+    LS --> PFP: Media Media Module Sequence Overview: validate request and return the expected response
     PFP --> MC: ValidationException
     MC --> Client: 400 Bad Request
 end
@@ -119,71 +119,71 @@ end
 Client -> MC: GET /media/static/:filename
 MC -> MC: serveFile(filename, res)
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
-MC -> LS: English content normalized from the original source text.
-LS --> MC: English content normalized from the original source text.
+MC -> LS: Media Media Module Sequence Overview: validate request and return the expected response
+LS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-    MC -> Client: English content normalized from the original source text.
-    Client -> Client: English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
+    MC -> Client: Media Media Module Sequence Overview: validate request and return the expected response
+    Client -> Client: Media Media Module Sequence Overview: validate request and return the expected response
 else (No)
-    MC -> Client: English content normalized from the original source text.
+    MC -> Client: Media Media Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
 Client -> MC: POST /media/images/upload/presigned-url + {filename, filesize}
 MC -> MS: getPresignUrl(body)
 
-MS -> MS: English content normalized from the original source text.
+MS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
     MS -> MS: generateRandomFilename(filename)
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
     MS -> S3: createPresignedUrlWithClient(randomFilename)
-    S3 -> S3: English content normalized from the original source text.
+    S3 -> S3: Media Media Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
-    S3 -> S3DB: English content normalized from the original source text.
+    S3 -> S3DB: Media Media Module Sequence Overview: validate request and return the expected response
     S3DB --> S3: Presigned URL
     S3 --> MS: Presigned URL
 
-    MS -> MS: English content normalized from the original source text.
+    MS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
     MS -> IS: i18n.t('media.media.success.GET_PRESIGNED_URL_SUCCESS')
-    IS -> MS: English content normalized from the original source text.
-    MS --> MC: English content normalized from the original source text.
-    MC --> Client: English content normalized from the original source text.
+    IS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
+    MS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
+    MC --> Client: Media Media Module Sequence Overview: validate request and return the expected response
 
 else (No)
     MS --> MC: ValidationException
@@ -191,96 +191,96 @@ else (No)
 end
 
 == English Section ==
-MC -> MC: English content normalized from the original source text.
+MC -> MC: Media Media Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
-MC -> LS: English content normalized from the original source text.
-LS --> MC: English content normalized from the original source text.
+MC -> LS: Media Media Module Sequence Overview: validate request and return the expected response
+LS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
     MC -> LS: mkdirSync(UPLOAD_DIR, { recursive: true })
-    LS --> MC: English content normalized from the original source text.
+    LS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
-English content normalized from the original source text.
+Media Media Module Sequence Overview: validate request and return the expected response
     PFP --> MC: ValidationException
     MC --> Client: 400 Bad Request
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     S3 --> MS: S3UploadException
-    MS --> MC: English content normalized from the original source text.
+    MS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
     MC --> Client: 500 Internal Server Error
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     • S3 bucket access denied
     • File upload timeout
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     MC --> Client: 404 Not Found
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     S3 --> MS: PresignedUrlException
-    MS --> MC: English content normalized from the original source text.
+    MS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
     MC --> Client: 500 Internal Server Error
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 
 else (No)
     MC --> MC: DirectoryCreationException
     MC --> Client: 500 Internal Server Error
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
+    • Media Media Module Sequence Overview: validate request and return the expected response
     end note
 end
 
 == English Section ==
 MS -> IS: i18n.t('media.media.success.XXX')
-IS -> MS: English content normalized from the original source text.
-MS --> MC: English content normalized from the original source text.
-MC --> Client: English content normalized from the original source text.
+IS -> MS: Media Media Module Sequence Overview: validate request and return the expected response
+MS --> MC: Media Media Module Sequence Overview: validate request and return the expected response
+MC --> Client: Media Media Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
+• Media Media Module Sequence Overview: validate request and return the expected response
 end note
 
 @enduml

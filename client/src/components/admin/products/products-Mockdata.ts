@@ -1,54 +1,54 @@
-// import { Product } from "./products-columns";
 
-// export const MOCK_PRODUCTS: Product[] = [
-//   {
-//     id: '1',
-//     slug: 'ao-thun-nam-cotton-compact',
-//     images: [{url: '/images/product-1.jpg'}],
-//     price: 199000,
-//     stock: 120,
-//     status: 'active',
-//     createdAt: '2023-10-01T10:00:00Z',
-//     updatedAt: '2023-10-25T14:30:00Z',
-//   },
-//   {
-//     id: '2',
-//     slug: 'quan-jeans-nam-slim-fit',
-//     images: [{url: '/images/product-2.jpg'}],
-//     price: 499000,
-//     stock: 80,
-//     status: 'active',
-//     createdAt: '2023-09-15T09:00:00Z',
-//     updatedAt: '2023-10-20T11:00:00Z',
-//   },
-//   {
-//     id: '3',
-//     slug: 'ao-so-mi-nu-tay-dai',
-//     images: [{url: '/images/product-3.jpg'}],
-//     price: 349000,
-//     stock: 50,
-//     status: 'inactive',
-//     createdAt: '2023-09-20T14:00:00Z',
-//     updatedAt: '2023-10-18T16:45:00Z',
-//   },
-//   {
-//     id: '4',
-//     slug: 'vay-dam-nu-dang-chu-a',
-//     images: [{url: '/images/product-4.jpg'}],
-//     price: 599000,
-//     stock: 30,
-//     status: 'active',
-//     createdAt: '2023-10-05T11:20:00Z',
-//     updatedAt: '2023-10-22T09:10:00Z',
-//   },
-//   {
-//     id: '5',
-//     slug: 'giay-sneaker-nam-da',
-//     images: [{url: '/images/product-5.jpg'}],
-//     price: 799000,
-//     stock: 45,
-//     status: 'archived',
-//     createdAt: '2023-08-30T18:00:00Z',
-//     updatedAt: '2023-10-15T12:00:00Z',
-//   },
-// ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

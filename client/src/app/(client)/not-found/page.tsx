@@ -3,14 +3,13 @@
 export default function NotFound() {
   return (
     <div className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center bg-white px-6 py-16 space-y-16 lg:space-y-0 lg:space-x-16">
-      {/* Text Section */}
       <div className="w-full lg:w-1/2 flex flex-col items-center justify-center text-center">
         <p className="text-7xl md:text-8xl lg:text-9xl font-extrabold text-gray-300 tracking-wider">404</p>
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700 mt-4">
-          English content normalized from the original source text.
+          ECSite
         </h1>
         <p className="text-lg md:text-xl text-gray-500 mt-6 mb-10 max-w-xl">
-          English content normalized from the original source text.
+          ECSite
         </p>
         <a
           href="/"
@@ -24,11 +23,10 @@ export default function NotFound() {
               clipRule="evenodd"
             />
           </svg>
-          <span>English content normalized from the original source text.</span>
+          <span>ECSite</span>
         </a>
       </div>
 
-      {/* Illustration Section */}
       <div className="w-full lg:w-1/2 flex items-center justify-center">
         <img src="/images/404/404-illustration.svg" alt="404 Illustration" className="max-w-full h-auto" />
       </div>

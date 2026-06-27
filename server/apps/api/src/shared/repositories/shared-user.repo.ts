@@ -75,7 +75,7 @@ export class SharedUserRepository {
     })
   }
 
-  // ==================== ADDRESS MANAGEMENT METHODS ====================
+  
 
   async listAddressesByUserId(userId: string): Promise<GetUserAddressesResType['data']> {
     const userAddresses = await this.prismaService.userAddress.findMany({
@@ -207,7 +207,7 @@ export class SharedUserRepository {
     data: UpdateAddressBodyType,
     userId: string
   ): Promise<GetUserAddressDetailResType['data']> {
-    // Verify user owns this address
+    
     const userAddress = await this.prismaService.userAddress.findFirst({
       where: {
         addressId,
@@ -276,7 +276,7 @@ export class SharedUserRepository {
   }
 
   async deleteAddress(addressId: string, userId: string): Promise<AddressType> {
-    // Verify user owns this address
+    
     const userAddress = await this.prismaService.userAddress.findFirst({
       where: {
         addressId,
@@ -292,7 +292,7 @@ export class SharedUserRepository {
     }
 
     return this.prismaService.$transaction(async (tx) => {
-      // Soft delete the address
+      
       const address = await tx.address.update({
         where: {
           id: addressId
@@ -303,7 +303,7 @@ export class SharedUserRepository {
         }
       })
 
-      // Remove the user-address relationship
+      
       await tx.userAddress.delete({
         where: {
           userId_addressId: {

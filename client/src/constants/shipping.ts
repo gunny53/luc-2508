@@ -1,6 +1,6 @@
-// Default shipping configuration
+
 export const SHIPPING_CONFIG = {
-  // Default dimensions and weight for shipping calculation
+  
   DEFAULT_PACKAGE: {
     height: 10,
     weight: 500,
@@ -8,15 +8,15 @@ export const SHIPPING_CONFIG = {
     width: 10
   },
 
-  // Default from address (from environment variables or fallback)
+  
   DEFAULT_FROM: {
     districtId: process.env.NEXT_PUBLIC_FROM_DISTRICT_ID ? parseInt(process.env.NEXT_PUBLIC_FROM_DISTRICT_ID) : 1536,
     wardCode: process.env.NEXT_PUBLIC_FROM_WARD_CODE || '480105'
   },
 
-  // API configuration
+  
   API_CONFIG: {
-    timeout: 10000, // 10 seconds
+    timeout: 10000, 
     retryCount: 3
   }
 } as const

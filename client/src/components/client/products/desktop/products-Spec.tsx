@@ -7,7 +7,7 @@ import HTMLPreview from '@/components/ui/component/html-preview'
 
 interface Product {
   weight?: string
-  description?: string // HTML Markdown content
+  description?: string 
   categories?: {
     id: string
     name: string
@@ -42,7 +42,7 @@ interface Product {
 export default function ProductSpecs({ product }: { product: Product }) {
   const renderCategoryLinks = () => {
     if (!product.categories || product.categories.length === 0)
-      return 'English content normalized from the original source text.'
+      return 'S?n ph?m'
 
     return (
       <div className="flex flex-wrap items-center gap-1">
@@ -67,18 +67,17 @@ export default function ProductSpecs({ product }: { product: Product }) {
   return (
     <div className="bg-white border rounded-sm overflow-hidden">
       <h2 className="text-base font-medium px-5 py-4 border-b">
-        English content normalized from the original source text.
+        S?n ph?m
       </h2>
       <div className="divide-y text-sm">
-        {}
         <div className="flex px-5 py-3">
-          <div className="w-1/3 text-muted-foreground">English content normalized from the original source text.</div>
+          <div className="w-1/3 text-muted-foreground">S?n ph?m</div>
           <div className="flex-1">{renderCategoryLinks()}</div>
         </div>
 
-        <SpecRow label="English content normalized from the original source text." value={product.brand?.name} />
+        <SpecRow label="S?n ph?m" value={product.brand?.name} />
         <SpecRow
-          label="English content normalized from the original source text."
+          label="S?n ph?m"
           value={product.series ?? product.name}
         />
         {product.specifications.map((specification) => (
@@ -86,11 +85,10 @@ export default function ProductSpecs({ product }: { product: Product }) {
         ))}
       </div>
 
-      {}
       {product.description && (
         <div className="border-t">
           <h3 className="text-base font-medium px-5 py-4 border-b">
-            English content normalized from the original source text.
+            S?n ph?m
           </h3>
           <div className="p-5">
             <HTMLPreview
@@ -107,7 +105,7 @@ function SpecRow({ label, value }: { label: string; value?: string | React.React
   return (
     <div className="flex px-5 py-3">
       <div className="w-1/3 text-muted-foreground">{label}</div>
-      <div className="flex-1">{value ?? 'English content normalized from the original source text.'}</div>
+      <div className="flex-1">{value ?? 'S?n ph?m'}</div>
     </div>
   )
 }

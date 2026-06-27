@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Permission Permission Update Sequence: validate request and return the expected response
 
 actor "Admin" as A
 participant "PermissionController" as PC
@@ -28,12 +28,12 @@ activate PS
 PS -> PR: update({ id, updatedById: user.userId, data })
 activate PR
 PR -> DB: permission.update({ where: { id, deletedAt: null }, data: { ...data, updatedById }, include: roles })
-DB --> PR: English content normalized from the original source text.
-PR --> PS: English content normalized from the original source text.
+DB --> PR: Permission Permission Update Sequence: validate request and return the expected response
+PR --> PS: Permission Permission Update Sequence: validate request and return the expected response
 deactivate PR
 
 PS -> PS: deleteCachedRole(roles)
-PS -> CM: English content normalized from the original source text.
+PS -> CM: Permission Permission Update Sequence: validate request and return the expected response
 CM -> RD: Delete cache entries
 RD --> CM: ok
 

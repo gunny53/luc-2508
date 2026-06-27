@@ -76,7 +76,7 @@ export function BrandCbb({ value, onChange }: BrandCbbProps) {
               {brands.map((brand) => (
                 <CommandItem
                   key={brand.value}
-                  value={brand.label} // Command uses this for searching
+                  value={brand.label} 
                   onSelect={() => {
                     const newValue = brand.value === selectedValue ? null : brand.value
                     onChange(newValue)

@@ -30,7 +30,7 @@ export class MediaController {
   @UseInterceptors(
     FilesInterceptor('files', 100, {
       limits: {
-        fileSize: 10 * 1024 * 1024 // 10MB
+        fileSize: 10 * 1024 * 1024 
       }
     })
   )
@@ -38,7 +38,7 @@ export class MediaController {
     @UploadedFiles(
       new ParseFilePipeWithUnlink({
         validators: [
-          new MaxFileSizeValidator({ maxSize: 1 * 1024 * 1024 }), // 5MB
+          new MaxFileSizeValidator({ maxSize: 1 * 1024 * 1024 }), 
           new FileTypeValidator({ fileType: /(jpg|jpeg|png|webp)$/, skipMagicNumbersValidation: true })
         ]
       })
@@ -46,9 +46,9 @@ export class MediaController {
     files: Array<Express.Multer.File>
   ) {
     return this.mediaService.uploadFile(files)
-    // return files.map((file) => ({
-    //   url: `${envConfig.PREFIX_STATIC_ENPOINT}/${file.filename}`,
-    // }))
+    
+    
+    
   }
 
   @Get('static/:filename')

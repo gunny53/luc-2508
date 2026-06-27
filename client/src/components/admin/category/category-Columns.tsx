@@ -9,7 +9,7 @@ import { DataTableColumnHeader } from '@/components/ui/data-table-component/data
 import { DataTableRowActions, ActionItem } from '@/components/ui/data-table-component/data-table-row-actions'
 import { Category } from '@/types/admin/category.interface'
 
-// Use Category type from interface instead of local type
+
 export type CategoryTableData = Category
 const getCategoryActions = (
   category: Category,
@@ -61,7 +61,7 @@ export const CategoryColumns = (param: CategoryColumnsProps = {}): ColumnDef<Cat
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           onClick={(e) => e.stopPropagation()}
-          // aria-label={t('admin.pages.category.selectAll')}
+          
         />
       ),
       cell: ({ row }) => (
@@ -70,7 +70,7 @@ export const CategoryColumns = (param: CategoryColumnsProps = {}): ColumnDef<Cat
           disabled={!row.getCanSelect()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
           onClick={(e) => e.stopPropagation()}
-          // aria-label={t('admin.pages.category.selectRow')}
+          
         />
       ),
       enableSorting: false,

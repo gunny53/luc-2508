@@ -7,7 +7,7 @@ import { AlertCircle } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import Image from 'next/image'
 
-// Define interfaces for payment methods
+
 interface BasePaymentMethod {
   id: string
   name: string
@@ -33,34 +33,34 @@ interface CardPaymentMethod extends BasePaymentMethod {
 
 type PaymentMethod = TextPaymentMethod | ImagePaymentMethod | CardPaymentMethod
 
-// Mock data for payment methods
+
 const paymentMethodsData: PaymentMethod[] = [
   {
     id: 'cod',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'Thanh to?n',
+    description: 'Thanh to?n',
     icon: '/images/client/checkout/COD.webp',
     bgColor: 'bg-gray-100',
     iconType: 'image'
   } as ImagePaymentMethod,
-  // {
-  //   id: 'momo',
-  //   icon: '/images/client/checkout/momo_vi.webp',
-  //   bgColor: 'bg-pink-50',
-  //   iconType: 'image'
-  // } as ImagePaymentMethod,
+  
+  
+  
+  
+  
+  
   {
     id: 'sepay',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'Thanh to?n',
+    description: 'Thanh to?n',
     icon: '/images/client/checkout/QRCode.png',
     bgColor: 'bg-blue-100',
     iconType: 'image'
   } as ImagePaymentMethod,
   {
     id: 'vnpay',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'Thanh to?n',
+    description: 'Thanh to?n',
     icon: '/images/client/checkout/vnpay_vi.webp',
     bgColor: 'bg-blue-100',
     iconType: 'image'
@@ -77,10 +77,10 @@ export function PaymentMethods({ paymentMethod, handlePaymentMethodChange }: Pay
     <Card className="shadow-none">
       <CardHeader className="pb-3">
         <CardTitle className="text-base font-semibold">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardTitle>
         <CardDescription className="text-sm font-light">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -98,7 +98,7 @@ export function PaymentMethods({ paymentMethod, handlePaymentMethodChange }: Pay
                     <div className="text-xs text-gray-500">{method.description}</div>
                   </div>
 
-                  {/* Display appropriate icon based on icon type */}
+                  {}
                   {method.iconType === 'text' && (
                     <div
                       className={`w-10 h-7 ${(method as TextPaymentMethod).bgColor} rounded flex items-center justify-center text-xs`}
@@ -136,9 +136,9 @@ export function PaymentMethods({ paymentMethod, handlePaymentMethodChange }: Pay
 
         <Alert className="mt-4 text-xs">
           <AlertCircle className="h-3 w-3" />
-          <AlertTitle className="text-xs">English content normalized from the original source text.</AlertTitle>
+          <AlertTitle className="text-xs">Thanh to?n</AlertTitle>
           <AlertDescription className="text-xs">
-            English content normalized from the original source text.
+            Thanh to?n
           </AlertDescription>
         </Alert>
       </CardContent>

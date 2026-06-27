@@ -116,7 +116,7 @@ export class AuthController {
       return res.redirect(redirectUrl)
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : 'English content normalized from the original source text.'
+        error instanceof Error ? error.message : 'Google authentication failed.'
       const redirectUrl = this.configService.get('auth.google.client.redirectUri')
       return res.redirect(`${redirectUrl}?errorMessage=${encodeURIComponent(message)}`)
     }

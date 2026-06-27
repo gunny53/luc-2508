@@ -123,9 +123,9 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Pause queue
-   */
+  
+
+
   async pauseQueue() {
     try {
       await this.queue.pause()
@@ -136,9 +136,9 @@ export class SearchSyncService {
     }
   }
 
-  /**
-   * Resume queue
-   */
+  
+
+
   async resumeQueue() {
     try {
       await this.queue.resume()

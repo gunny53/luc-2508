@@ -10,16 +10,16 @@ export interface FileWithPreview extends File {
   preview?: string
 }
 
-// Constants from original hook
-export const FILE_SIZE_LIMIT = 1 // 1MB size limit
-export const FILE_SIZE_MB = 1024 * 1024 // Convert to bytes
+
+export const FILE_SIZE_LIMIT = 1 
+export const FILE_SIZE_MB = 1024 * 1024 
 
 export interface UploadPresignState {
   files: FileWithPreview[]
   presignedData: PresignedUrlData[]
   uploadedUrls: string[]
-  isProcessing: boolean // Compress + Get URLs
-  isUploading: boolean // Upload to S3
+  isProcessing: boolean 
+  isUploading: boolean 
   progress: number
   error: string | null
   currentStep: 'compressing' | 'getting-urls' | 'uploading' | 'idle'
@@ -37,13 +37,13 @@ export function useUploadMediaPresign() {
     currentStep: 'idle'
   })
 
-  // Validate file size (reuse from original)
+  
   const validateFileSize = useCallback((file: File): boolean => {
     const fileSizeMB = file.size / FILE_SIZE_MB
     return fileSizeMB <= FILE_SIZE_LIMIT
   }, [])
 
-  // Compress image before upload (reuse from original)
+  
   const compressImage = useCallback(
     async (file: File): Promise<File> => {
       if (!file.type.startsWith('image/') || validateFileSize(file)) {
@@ -71,7 +71,7 @@ export function useUploadMediaPresign() {
     [validateFileSize]
   )
 
-  // Get presigned URLs from server using baseService
+  
   const getPresignedUrls = useCallback(async (files: File[]): Promise<PresignedUrlData[]> => {
     const filesRequest: PresignedFileRequest[] = files.map((file) => ({
       filename: file.name,
@@ -82,7 +82,7 @@ export function useUploadMediaPresign() {
     return response.data || []
   }, [])
 
-  // Upload file to S3 using presigned URL
+  
   const uploadToS3 = useCallback(async (file: File, presignedUrl: string): Promise<void> => {
     await baseService.uploadToS3(file, presignedUrl)
   }, [])
@@ -99,7 +99,7 @@ export function useUploadMediaPresign() {
       }))
 
       try {
-        // Step 1: Compress images (0-50%)
+        
         setState((prev) => ({ ...prev, progress: 10 }))
 
         const processedFiles = await Promise.all(
@@ -107,7 +107,7 @@ export function useUploadMediaPresign() {
             if (file.type.startsWith('image/') && file.size > FILE_SIZE_MB) {
               const compressedFile = await compressImage(file)
 
-              // Update progress during compression
+              
               const compressionProgress = 10 + ((index + 1) / filesArray.length) * 40
               setState((prev) => ({ ...prev, progress: compressionProgress }))
 
@@ -115,7 +115,7 @@ export function useUploadMediaPresign() {
               fileWithPreview.preview = URL.createObjectURL(compressedFile)
 
               if (compressedFile.size > FILE_SIZE_MB) {
-                toast.warning(`English content normalized from the original source text.${file.name}`)
+                toast.warning(`X?c th?c${file.name}`)
               }
 
               return fileWithPreview
@@ -127,12 +127,12 @@ export function useUploadMediaPresign() {
           })
         )
 
-        // Step 2: Get presigned URLs (50-100%)
+        
         setState((prev) => ({ ...prev, currentStep: 'getting-urls', progress: 50 }))
 
         const presignedData = await getPresignedUrls(processedFiles)
 
-        // Complete processing
+        
         setState((prev) => ({
           ...prev,
           files: processedFiles,
@@ -143,7 +143,7 @@ export function useUploadMediaPresign() {
         }))
 
         toast.success(
-          `English content normalized from the original source text.${processedFiles.length}English content normalized from the original source text.`
+          `X?c th?c${processedFiles.length}X?c th?c`
         )
         return { processedFiles, presignedData }
       } catch (error: any) {
@@ -153,12 +153,12 @@ export function useUploadMediaPresign() {
           ...prev,
           isProcessing: false,
           progress: 0,
-          error: error.message || 'English content normalized from the original source text.',
+          error: error.message || 'X?c th?c',
           currentStep: 'idle'
         }))
 
-        toast.error('English content normalized from the original source text.', {
-          description: error.message || 'English content normalized from the original source text.'
+        toast.error('X?c th?c', {
+          description: error.message || 'X?c th?c'
         })
 
         return { processedFiles: [], presignedData: [] }
@@ -167,14 +167,14 @@ export function useUploadMediaPresign() {
     [compressImage, getPresignedUrls]
   )
 
-  // Upload files to S3 (separate function)
+  
   const uploadToS3Multiple = useCallback(
     async (files?: FileWithPreview[], presignedData?: PresignedUrlData[]) => {
       const filesToUpload = files || state.files
       const presignedDataToUse = presignedData || state.presignedData
 
       if (filesToUpload.length === 0 || presignedDataToUse.length === 0) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('X?c th?c')
         return []
       }
 
@@ -195,16 +195,16 @@ export function useUploadMediaPresign() {
 
           await uploadToS3(file, presignedInfo.presignedUrl)
 
-          // Update progress during upload
+          
           const uploadProgress = ((index + 1) / filesToUpload.length) * 100
           setState((prev) => ({ ...prev, progress: uploadProgress }))
 
-          return presignedInfo.url // Return final URL
+          return presignedInfo.url 
         })
 
         const uploadedUrls = await Promise.all(uploadPromises)
 
-        // Complete upload
+        
         setState((prev) => ({
           ...prev,
           uploadedUrls: [...prev.uploadedUrls, ...uploadedUrls],
@@ -214,7 +214,7 @@ export function useUploadMediaPresign() {
         }))
 
         toast.success(
-          `English content normalized from the original source text.${uploadedUrls.length}English content normalized from the original source text.`
+          `X?c th?c${uploadedUrls.length}X?c th?c`
         )
         return uploadedUrls
       } catch (error: any) {
@@ -224,12 +224,12 @@ export function useUploadMediaPresign() {
           ...prev,
           isUploading: false,
           progress: 0,
-          error: error.message || 'English content normalized from the original source text.',
+          error: error.message || 'X?c th?c',
           currentStep: 'idle'
         }))
 
-        toast.error('English content normalized from the original source text.', {
-          description: error.message || 'English content normalized from the original source text.'
+        toast.error('X?c th?c', {
+          description: error.message || 'X?c th?c'
         })
 
         return []
@@ -277,7 +277,7 @@ export function useUploadMediaPresign() {
     })
   }, [])
 
-  // Upload specific files (for manual trigger)
+  
   const uploadFiles = useCallback(
     async (filesToUpload?: FileWithPreview[]) => {
       const filesToProcess = filesToUpload || state.files
@@ -291,7 +291,7 @@ export function useUploadMediaPresign() {
     [state.files, handleAddFiles]
   )
 
-  // Reset state (reuse from original)
+  
   const reset = useCallback(() => {
     setState((prev) => {
       prev.files.forEach((file) => {
@@ -311,15 +311,15 @@ export function useUploadMediaPresign() {
     })
   }, [])
 
-  // Get progress message based on current step
+  
   const getProgressMessage = useCallback(() => {
     switch (state.currentStep) {
       case 'compressing':
-        return 'English content normalized from the original source text.'
+        return 'X?c th?c'
       case 'getting-urls':
-        return 'English content normalized from the original source text.'
+        return 'X?c th?c'
       case 'uploading':
-        return 'English content normalized from the original source text.'
+        return 'X?c th?c'
       default:
         return ''
     }

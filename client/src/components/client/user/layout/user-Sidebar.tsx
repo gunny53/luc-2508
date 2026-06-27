@@ -18,13 +18,13 @@ export function Sidebar() {
   const isMobileView = deviceType === 'mobile'
 
   useEffect(() => {
-    // Only redirect on desktop from /user to /user/profile
+    
     if (!isMobileView && pathname === '/user') {
       router.push('/user/dashboard')
     }
   }, [isMobileView, router, pathname])
 
-  // Return null for mobile, show sidebar for desktop
+  
   if (isMobileView) {
     return null
   }

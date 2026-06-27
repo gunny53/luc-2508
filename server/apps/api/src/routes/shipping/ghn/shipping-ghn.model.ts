@@ -212,7 +212,7 @@ export const GHNWebhookPayloadSchema = z.object({
   ConvertedWeight: z.number().optional(),
   CODTransferDate: z.string().nullable().optional(),
 
-  // Fee object (camelCase only)
+  
   Fee: z
     .object({
       MainService: z.number().optional(),
@@ -248,28 +248,28 @@ export const GetOrderInfoQuerySchema = z.object({
 })
 
 export const OrderInfoDataSchema = z.object({
-  // Basic order info
+  
   order_code: z.string(),
   client_order_code: z.string().nullable(),
   status: z.string(),
   created_date: z.union([z.string(), z.date()]),
   updated_date: z.union([z.string(), z.date()]),
 
-  // From info (sender/shop)
+  
   from_name: z.string(),
   from_phone: z.string(),
   from_address: z.string(),
   from_ward_code: z.string(),
   from_district_id: z.number(),
 
-  // To info (receiver/customer)
+  
   to_name: z.string(),
   to_phone: z.string(),
   to_address: z.string(),
   to_ward_code: z.string(),
   to_district_id: z.number(),
 
-  // Package info
+  
   weight: z.number(),
   converted_weight: z.number().nullable().optional(),
   length: z.number(),
@@ -277,7 +277,7 @@ export const OrderInfoDataSchema = z.object({
   height: z.number(),
   content: z.string().nullable().optional(),
 
-  // Service info
+  
   service_id: z.number(),
   service_type_id: z.number(),
   payment_type_id: z.number(),
@@ -285,19 +285,19 @@ export const OrderInfoDataSchema = z.object({
   insurance_value: z.number().nullable().optional(),
   order_value: z.number().nullable().optional(),
 
-  // Timing info
+  
   order_date: z.union([z.string(), z.date()]).nullable().optional(),
   leadtime: z.union([z.string(), z.date()]).nullable().optional(),
   finish_date: z.union([z.string(), z.date()]).nullable().optional(),
 
-  // status & tracking
+  
   pick_warehouse_id: z.number().nullable().optional(),
   deliver_warehouse_id: z.number().nullable().optional(),
   current_warehouse_id: z.number().nullable().optional(),
   log: z.unknown().array().optional(),
   tag: z.string().array().optional(),
 
-  // Additional useful fields
+  
   note: z.string().nullable().optional(),
   required_note: z.string().nullable().optional()
 })
@@ -307,7 +307,7 @@ export const GetOrderInfoResSchema = z.object({
   data: OrderInfoDataSchema
 })
 
-// Schema cho Tracking URL
+
 export const GetTrackingUrlQuerySchema = z.object({
   orderCode: z.string().min(1, 'Order code is required')
 })

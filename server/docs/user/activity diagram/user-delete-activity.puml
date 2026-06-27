@@ -6,24 +6,24 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+User User Delete Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:User User Delete Activity: execute the validated workflow;
 :verifyYourself(user.userId, id);
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :User User Delete Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:User User Delete Activity: execute the validated workflow;
 :verifyRole(roleNameAgent, roleIdTarget);
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :User User Delete Activity: execute the validated workflow;
   stop
 endif
 :Soft delete user (deletedAt, deletedById);
 :Build message i18n;
-:English content normalized from the original source text;
+:User User Delete Activity: execute the validated workflow;
 stop
 
 @enduml

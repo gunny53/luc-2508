@@ -1,4 +1,4 @@
-/* Enhance dropdown menu appearance */
+
 header {
   position: sticky;
   top: 0;
@@ -6,7 +6,7 @@ header {
   box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Category hover improvements */
+
 .category-hover-container {
   position: relative;
 }
@@ -18,7 +18,7 @@ header {
   z-index: 1;
 }
 
-/* Search dropdown improvements */
+
 .search-dropdown {
   width: 100%;
   min-width: 650px;
@@ -29,7 +29,7 @@ header {
   overflow-y: auto;
 }
 
-/* Improve dropdown animation */
+
 .category-dropdown-enter {
   opacity: 0;
   transform: translateY(-10px);
@@ -50,16 +50,16 @@ header {
 }
 
 .items-hover {
-  color: #fee2e2; /* text-red-100 */
+  color: #fee2e2; 
   transition: all 0.3s ease;
-  border-radius: 0.5rem; /* rounded-lg */
-  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.5rem; 
+  padding: 0.5rem 1rem; 
   border: 1px solid transparent;
   position: relative;
   overflow: hidden;
 }
 
-/* Search dropdown enhancements */
+
 .search-dropdown {
   width: 750px;
   min-width: 600px;
@@ -82,15 +82,15 @@ header {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(239, 68, 68, 0.4); /* bg-red-500/40 */
+  background: rgba(239, 68, 68, 0.4); 
   transition: all 0.4s ease;
   z-index: -1;
 }
 
 .items-hover:hover {
   color: white;
-  border-color: rgba(248, 113, 113, 0.6); /* border-red-400/60 */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  border-color: rgba(248, 113, 113, 0.6); 
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
 }
 
 .items-hover:hover::before {
@@ -111,11 +111,11 @@ header {
   background-color: rgba(240, 240, 240, 0.8);
 }
 
-/* Lock scroll when header is hovered */
+
 .scroll-locked {
   overflow: auto;
 }
-/* Backdrop blur effect for category dropdown */
+
 .category-backdrop,
 .search-backdrop {
   -webkit-backdrop-filter: blur(3px);
@@ -124,29 +124,29 @@ header {
   pointer-events: auto;
 }
 
-/* Body overlay styles */
+
 .body-overlay {
-  /* display: none; */ /* Replaced by opacity and pointer-events logic */
+   
   position: fixed;
-  top: 75px; /* Same as header height */
+  top: 75px; 
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5); 
   z-index: 40;
-  pointer-events: none; /* Initially not interactive and invisible */
+  pointer-events: none; 
   transition: all 0.3s ease;
   opacity: 0;
   will-change: opacity;
 }
 
-/* Show overlay when a dropdown is active */
+
 .body-overlay.overlay-active {
   opacity: 1;
-  pointer-events: all; /* Becomes interactive when visible */
+  pointer-events: all; 
 }
 
-/* Mobile header styles */
+
 @media (max-width: 768px) {
   .search-dropdown {
     width: 100%;
@@ -154,7 +154,7 @@ header {
     max-width: 100%;
   }
 
-  /* Mobile search styling */
+  
   .mobile-search-container {
     position: relative;
     z-index: 60;

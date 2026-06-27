@@ -1,6 +1,6 @@
 import { BadRequestException, InternalServerErrorException, ServiceUnavailableException } from '@nestjs/common'
 
-// Search query related errors
+
 export const InvalidSearchQueryException = new BadRequestException([
   {
     message: 'search.search.error.INVALID_QUERY',
@@ -22,7 +22,7 @@ export const SearchQueryTooShortException = new BadRequestException([
   }
 ])
 
-// Search filters related errors
+
 export const InvalidSearchFiltersException = new BadRequestException([
   {
     message: 'search.search.error.INVALID_FILTERS',
@@ -44,7 +44,7 @@ export const InvalidAttributeFilterException = new BadRequestException([
   }
 ])
 
-// Elasticsearch related errors
+
 export const ElasticsearchConnectionException = new ServiceUnavailableException(
   'search.search.error.ELASTICSEARCH_CONNECTION_FAILED'
 )
@@ -57,14 +57,14 @@ export const ElasticsearchIndexNotFoundException = new InternalServerErrorExcept
   'search.search.error.ELASTICSEARCH_INDEX_NOT_FOUND'
 )
 
-// Search results related errors
+
 export const SearchTimeoutException = new ServiceUnavailableException('search.search.error.SEARCH_TIMEOUT')
 
 export const SearchServiceUnavailableException = new ServiceUnavailableException(
   'search.search.error.SEARCH_SERVICE_UNAVAILABLE'
 )
 
-// Dictionary related errors
+
 export const DictionaryLoadException = new InternalServerErrorException('search.search.error.DICTIONARY_LOAD_FAILED')
 
 export const DictionaryParseException = new BadRequestException('search.search.error.DICTIONARY_PARSE_FAILED')

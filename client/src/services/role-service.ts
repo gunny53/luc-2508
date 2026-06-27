@@ -41,18 +41,18 @@ export const roleService = {
       throw error
     }
   },
-  // assignPermissions: async (
-  //   id: string,
-  //   data: RoleAssignPermissionRequest
-  // ): Promise<RoleAssignPermissionResponse> => {
-  //   try {
-  //     const url = API_ENDPOINTS.ROLES.POST_ROLE_PERMISSIONS.replace(":id", id);
-  //     const response = await privateAxios.post(url, data);
-  //     return response.data;
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // },
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   update: async (id: string, data: RoleUpdateRequest): Promise<RoleUpdateResponse> => {
     try {
       const url = API_ENDPOINTS.ROLES.UPDATE.replace(':id', id)

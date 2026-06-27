@@ -10,8 +10,8 @@ import {
 const mockDiscounts: Discount[] = [
   {
     id: 'd1',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'M? gi?m gi?',
+    description: 'M? gi?m gi?',
     code: 'SUMMER20',
     value: 20,
     maxDiscountValue: 50000,
@@ -33,8 +33,8 @@ const mockDiscounts: Discount[] = [
   },
   {
     id: 'd2',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'M? gi?m gi?',
+    description: 'M? gi?m gi?',
     code: 'PLATFORM100K',
     value: 100000,
     minOrderValue: 500000,
@@ -44,9 +44,9 @@ const mockDiscounts: Discount[] = [
     usesCount: 450,
     maxUsesPerUser: 1,
     usersUsed: [],
-    shopId: '', // Platform voucher
+    shopId: '', 
     isPlatform: true,
-    voucherType: VoucherType.SHOP, // Or any other relevant type for platform
+    voucherType: VoucherType.SHOP, 
     discountType: DiscountType.FIX_AMOUNT,
     discountApplyType: DiscountApplyType.ALL,
     discountStatus: DiscountStatus.ACTIVE,
@@ -55,8 +55,8 @@ const mockDiscounts: Discount[] = [
   },
   {
     id: 'd3',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'M? gi?m gi?',
+    description: 'M? gi?m gi?',
     code: 'FREESHIP15K',
     value: 15000,
     maxDiscountValue: 15000,
@@ -69,7 +69,7 @@ const mockDiscounts: Discount[] = [
     usersUsed: [],
     shopId: '',
     isPlatform: true,
-    voucherType: VoucherType.PRODUCT, // Assuming freeship is a type of product voucher
+    voucherType: VoucherType.PRODUCT, 
     discountType: DiscountType.FIX_AMOUNT,
     discountApplyType: DiscountApplyType.ALL,
     discountStatus: DiscountStatus.EXPIRED,
@@ -78,8 +78,8 @@ const mockDiscounts: Discount[] = [
   },
   {
     id: 'd4',
-    name: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    name: 'M? gi?m gi?',
+    description: 'M? gi?m gi?',
     code: 'PRIVATE4U',
     value: 99000,
     minOrderValue: 300000,

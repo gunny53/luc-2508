@@ -8,100 +8,100 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Auth Auth Activity Diagram: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Auth Auth Activity Diagram: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Auth Auth Activity Diagram: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Auth Auth Activity Diagram: execute the validated workflow;
       if (condition?) then (Yes)
         if (condition?) then (Yes)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Auth Auth Activity Diagram: execute the validated workflow;
+          :Auth Auth Activity Diagram: execute the validated workflow;
+          :Auth Auth Activity Diagram: execute the validated workflow;
           if (condition?) then (Yes)
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
-            :English content normalized from the original source text;
+            :Auth Auth Activity Diagram: execute the validated workflow;
+            :Auth Auth Activity Diagram: execute the validated workflow;
+            :Auth Auth Activity Diagram: execute the validated workflow;
+            :Auth Auth Activity Diagram: execute the validated workflow;
             :Set auth cookies;
-            :English content normalized from the original source text;
+            :Auth Auth Activity Diagram: execute the validated workflow;
           else (No)
-            :English content normalized from the original source text;
+            :Auth Auth Activity Diagram: execute the validated workflow;
           endif
         else (No)
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
-          :English content normalized from the original source text;
+          :Auth Auth Activity Diagram: execute the validated workflow;
+          :Auth Auth Activity Diagram: execute the validated workflow;
+          :Auth Auth Activity Diagram: execute the validated workflow;
+          :Auth Auth Activity Diagram: execute the validated workflow;
           :Set auth cookies;
-          :English content normalized from the original source text;
+          :Auth Auth Activity Diagram: execute the validated workflow;
         endif
       else (No)
-        :English content normalized from the original source text;
+        :Auth Auth Activity Diagram: execute the validated workflow;
       endif
     else (No)
-      :English content normalized from the original source text;
+      :Auth Auth Activity Diagram: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
   endif
 
 else (Google OAuth)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Auth Auth Activity Diagram: execute the validated workflow;
+  :Auth Auth Activity Diagram: execute the validated workflow;
+  :Auth Auth Activity Diagram: execute the validated workflow;
+  :Auth Auth Activity Diagram: execute the validated workflow;
+  :Auth Auth Activity Diagram: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
+    :Auth Auth Activity Diagram: execute the validated workflow;
   endif
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Auth Auth Activity Diagram: execute the validated workflow;
+  :Auth Auth Activity Diagram: execute the validated workflow;
+  :Auth Auth Activity Diagram: execute the validated workflow;
   :Set auth cookies;
-  :English content normalized from the original source text;
+  :Auth Auth Activity Diagram: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Auth Auth Activity Diagram: execute the validated workflow;
 
 if (condition?) then (Yes)
   :Validate refresh token;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Auth Auth Activity Diagram: execute the validated workflow;
+      :Auth Auth Activity Diagram: execute the validated workflow;
+      :Auth Auth Activity Diagram: execute the validated workflow;
+      :Auth Auth Activity Diagram: execute the validated workflow;
+      :Auth Auth Activity Diagram: execute the validated workflow;
+      :Auth Auth Activity Diagram: execute the validated workflow;
+      :Auth Auth Activity Diagram: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Auth Auth Activity Diagram: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
   endif
 
 else (No)
   :Validate refresh token;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
+    :Auth Auth Activity Diagram: execute the validated workflow;
+    :Auth Auth Activity Diagram: execute the validated workflow;
+    :Auth Auth Activity Diagram: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Auth Auth Activity Diagram: execute the validated workflow;
   endif
 endif
 

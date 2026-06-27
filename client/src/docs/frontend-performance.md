@@ -1,78 +1,78 @@
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text. `_next/js_original-stack-frames` English content normalized from the original source text.
+T?i li?u k? thu?t ECSite `_next/js_original-stack-frames` T?i li?u k? thu?t ECSite
 
-1. **Error Overlay**: English content normalized from the original source text.
+1. **Error Overlay**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-3. **React StrictMode**: English content normalized from the original source text.
+3. **React StrictMode**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-2. **Memoized Callbacks**: English content normalized from the original source text.
+2. **Memoized Callbacks**: T?i li?u k? thu?t ECSite
 
-3. **Disable StrictMode**: English content normalized from the original source text.
+3. **Disable StrictMode**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-1. **Custom Error Boundary**: English content normalized from the original source text.
+1. **Custom Error Boundary**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-3. **Production Preview**: English content normalized from the original source text.
+3. **Production Preview**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-1. **Debounce Search**: English content normalized from the original source text.
+1. **Debounce Search**: T?i li?u k? thu?t ECSite
 
-2. **Abort Previous Requests**: English content normalized from the original source text.
+2. **Abort Previous Requests**: T?i li?u k? thu?t ECSite
 
-3. **Request Timeout**: English content normalized from the original source text.
+3. **Request Timeout**: T?i li?u k? thu?t ECSite
 
-4. **Memoized Callback**: English content normalized from the original source text.
+4. **Memoized Callback**: T?i li?u k? thu?t ECSite
 
-5. **Optimistic UI Updates**: English content normalized from the original source text.
+5. **Optimistic UI Updates**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-1. **Lazy Loading Modules**: English content normalized from the original source text.
+1. **Lazy Loading Modules**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-3. **State Management**: English content normalized from the original source text.
+3. **State Management**: T?i li?u k? thu?t ECSite
 
-4. **API Connection Pool**: English content normalized from the original source text.
+4. **API Connection Pool**: T?i li?u k? thu?t ECSite
 
-5. **Monitoring & Analytics**: English content normalized from the original source text.
+5. **Monitoring & Analytics**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 // next.config.ts
 const nextConfig: NextConfig = {
   // ...other config
-  reactStrictMode: English content normalized from the original source text.
+  reactStrictMode: T?i li?u k? thu?t ECSite
 };
 ```
 
@@ -115,10 +115,10 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 }
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 const apiCache = new Map();
 
 export async function cachedApiCall(key, apiFn) {

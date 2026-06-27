@@ -27,7 +27,7 @@ export interface UserStats {
   refreshUserStats: () => Promise<void>
 }
 
-// Interface cho overview statistics
+
 export interface OverviewStats {
   totalUsers: number
   totalBrands: number
@@ -37,7 +37,7 @@ export interface OverviewStats {
   error: string | null
 }
 
-// Interface cho chart data
+
 export interface ChartData {
   usersByRole: { name: string; value: number; color: string }[]
   usersByStatus: { name: string; value: number; color: string }[]
@@ -146,12 +146,12 @@ export const useDbAdmin = () => {
       setOverviewStats((prev) => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'English content normalized from the original source text.'
+        error: error instanceof Error ? error.message : 'B?ng ?i?u khi?n'
       }))
     }
   }, [])
 
-  // Fetch user statistics
+  
   const fetchUserStats = useCallback(async () => {
     try {
       setUserStats((prev) => ({ ...prev, isLoading: true, error: null }))
@@ -161,7 +161,7 @@ export const useDbAdmin = () => {
         limit: 50
       })
       if (response?.success === false) {
-        throw new Error(response?.message || 'English content normalized from the original source text.')
+        throw new Error(response?.message || 'B?ng ?i?u khi?n')
       }
       const { data: users, totalItems: totalUsers } = normalizeResponse(response)
 
@@ -217,17 +217,17 @@ export const useDbAdmin = () => {
       setUserStats((prev) => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'English content normalized from the original source text.'
+        error: error instanceof Error ? error.message : 'B?ng ?i?u khi?n'
       }))
     }
   }, [])
 
-  // Fetch combined stats
+  
   const fetchAllStats = useCallback(async () => {
     await Promise.all([fetchUserStats(), fetchOverviewStats()])
   }, [fetchUserStats, fetchOverviewStats])
 
-  // Load data khi component mount
+  
   useEffect(() => {
     fetchAllStats()
   }, [fetchAllStats])

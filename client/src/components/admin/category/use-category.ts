@@ -5,7 +5,7 @@ import { Category, CategoryCreateRequest, CategoryUpdateRequest } from '@/types/
 import { useServerDataTable } from '@/hooks/use-server-data-table'
 import { showToast } from '@/components/ui/toastify'
 
-// Types
+
 type ModalMode = 'add' | 'edit'
 
 type BreadcrumbItem = {
@@ -16,17 +16,17 @@ type BreadcrumbItem = {
 export const useCategory = () => {
   const t = useTranslations()
 
-  // Modal states
+  
   const [upsertOpen, setUpsertOpen] = useState(false)
   const [modalMode, setModalMode] = useState<ModalMode>('add')
   const [categoryToEdit, setCategoryToEdit] = useState<Category | null>(null)
 
-  // Delete states
+  
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [categoryToDelete, setCategoryToDelete] = useState<Category | null>(null)
   const [deleteLoading, setDeleteLoading] = useState(false)
 
-  // Navigation state
+  
   const [currentParentId, setCurrentParentId] = useState<string | null>(null)
   const [breadcrumb, setBreadcrumb] = useState<BreadcrumbItem[]>([])
   const [currentCategoryTitle, setCurrentCategoryTitle] = useState<string>('')
@@ -77,11 +77,11 @@ export const useCategory = () => {
     defaultLimit: 10
   })
 
-  // Use stable reference for refreshData to avoid infinite loop
+  
   const refreshDataRef = useRef(refreshData)
   refreshDataRef.current = refreshData
 
-  // Modal handlers
+  
   const handleOpenUpsertModal = useCallback((mode: ModalMode, category?: Category) => {
     setModalMode(mode)
     setCategoryToEdit(category || null)
@@ -93,7 +93,7 @@ export const useCategory = () => {
     setCategoryToEdit(null)
   }, [])
 
-  // Delete handlers
+  
   const handleOpenDelete = useCallback((category: Category) => {
     setCategoryToDelete(category)
     setDeleteOpen(true)
@@ -115,7 +115,7 @@ export const useCategory = () => {
       setCategoryToDelete(null)
     } catch (error) {
       const errorMessage =
-        (error as any).response?.data?.message || 'English content normalized from the original source text.'
+        (error as any).response?.data?.message || 'Danh m?c'
       showToast(errorMessage, 'error')
       console.error('Error deleting category:', error)
     } finally {
@@ -123,7 +123,7 @@ export const useCategory = () => {
     }
   }, [categoryToDelete, refreshData, t])
 
-  // Navigation handlers
+  
   const handleViewSubcategories = useCallback((category: Category) => {
     console.log('🚀 Navigating to subcategories of:', category.name, 'ID:', category.id)
 
@@ -131,7 +131,7 @@ export const useCategory = () => {
     setBreadcrumb((prev) => [...prev, { id: category.id, name: category.name }])
     setCurrentCategoryTitle(category.name)
 
-    // Use requestAnimationFrame to ensure state update has been processed
+    
     requestAnimationFrame(() => {
       refreshDataRef.current()
     })
@@ -170,7 +170,7 @@ export const useCategory = () => {
     [breadcrumb, handleBackToRoot]
   )
 
-  // CRUD operations
+  
   const addCategory = useCallback(
     async (data: CategoryCreateRequest) => {
       try {
@@ -184,7 +184,7 @@ export const useCategory = () => {
         return response
       } catch (error) {
         const errorMessage =
-          (error as any).response?.data?.message || 'English content normalized from the original source text.'
+          (error as any).response?.data?.message || 'Danh m?c'
         showToast(errorMessage, 'error')
         console.error('Error creating category:', error)
         return null
@@ -203,7 +203,7 @@ export const useCategory = () => {
         return response
       } catch (error) {
         const errorMessage =
-          (error as any).response?.data?.message || 'English content normalized from the original source text.'
+          (error as any).response?.data?.message || 'Danh m?c'
         showToast(errorMessage, 'error')
         console.error('Error updating category:', error)
         return null
@@ -213,26 +213,26 @@ export const useCategory = () => {
   )
 
   return {
-    // Data & loading state
+    
     data,
     loading,
     pagination,
     refreshData,
 
-    // Server-side pagination handlers from useServerDataTable
+    
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
 
-    // Modal state & handlers
+    
     upsertOpen,
     modalMode,
     categoryToEdit,
     handleOpenUpsertModal,
     handleCloseUpsertModal,
 
-    // Delete state & handlers
+    
     deleteOpen,
     categoryToDelete,
     deleteLoading,
@@ -240,11 +240,11 @@ export const useCategory = () => {
     handleConfirmDelete,
     handleCloseDeleteModal,
 
-    // CRUD operations
+    
     addCategory,
     editCategory,
 
-    // Navigation state & handlers
+    
     currentParentId,
     breadcrumb,
     currentCategoryTitle,

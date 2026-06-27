@@ -14,7 +14,6 @@ export default function RolesPage() {
         <p className="text-muted-foreground">{t('admin.roles.subtitle')}</p>
       </div>
       <RolesTableWrapper />
-      {/* <RolesTable /> */}
     </div>
   )
 }

@@ -17,7 +17,7 @@ export const useCartAction = () => {
       setProductDetails(details)
     } catch (err) {
       console.error('Failed to fetch product details:', err)
-      setError('English content normalized from the original source text.')
+      setError('Gi? h?ng')
     } finally {
       setIsLoading(false)
     }

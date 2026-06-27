@@ -18,7 +18,7 @@ publicAxios.interceptors.request.use(
       if (csrfToken && config.headers) {
         config.headers['x-csrf-token'] = csrfToken
       }
-      // Inject Accept-Language from Redux
+      
       const store = getStore()
       const lang = store.store.getState().langECSite?.language || 'vi'
       if (config.headers) {
@@ -56,7 +56,7 @@ refreshAxios.interceptors.request.use(
       if (csrfToken && config.headers) {
         config.headers['x-csrf-token'] = csrfToken
       }
-      // Inject Accept-Language from Redux
+      
       const store = getStore()
       const lang = store.store.getState().langECSite?.language || 'vi'
       if (config.headers) {
@@ -80,7 +80,7 @@ privateAxios.interceptors.request.use(
       if (csrfToken && config.headers) {
         config.headers['x-csrf-token'] = csrfToken
       }
-      // Inject Accept-Language from Redux
+      
       const store = getStore()
       const lang = store.store.getState().langECSite?.language || 'vi'
       if (config.headers) {

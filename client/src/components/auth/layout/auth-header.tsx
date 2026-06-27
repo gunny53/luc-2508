@@ -10,7 +10,6 @@ export function AuthHeader() {
 
   return (
     <header className="w-full py-2 px-6 md:px-40 lg:px-90 flex items-center justify-between bg-white/80 backdrop-blur-sm fixed top-0 z-50 border-b">
-      {}
       <motion.div
         className="flex items-center gap-3"
         initial={{ opacity: 0, x: -20 }}
@@ -30,16 +29,13 @@ export function AuthHeader() {
         <h1 className="text-2xl font-small text-black whitespace-nowrap hidden md:inline">{}</h1>
       </motion.div>
 
-      {}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex items-center gap-6 text-sm text-primary cursor-pointer"
       >
-        {}
 
-        {}
         <LanguageDropdown />
       </motion.div>
     </header>

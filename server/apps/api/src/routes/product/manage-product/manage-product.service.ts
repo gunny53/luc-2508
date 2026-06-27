@@ -93,9 +93,7 @@ export class ManageProductService {
     }
   }
 
-  /**
-   * ⚡ Invalidate product & search cache khi update product
-   */
+  
   @CacheEvict(['products:*', 'ProductModule:product:*', 'SearchModule:search:*'])
   async update({
     productId,
@@ -133,9 +131,7 @@ export class ManageProductService {
     }
   }
 
-  /**
-   * ⚡ Invalidate product & search cache khi delete product
-   */
+  
   @CacheEvict(['products:*', 'ProductModule:product:*', 'SearchModule:search:*'])
   async delete({ productId, user }: { productId: string; user: AccessTokenPayload }) {
     const product = await this.productRepo.findById(productId)

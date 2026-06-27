@@ -72,15 +72,12 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
 
   return (
     <div className="flex items-center gap-3 p-4 border-b border-gray-100 bg-white">
-      {/* Checkbox */}
       <div className="flex-shrink-0 mt-1">
         <Checkbox checked={selected} onCheckedChange={onToggle} className="w-4 h-4" />
       </div>
 
-      {/* Product Content */}
       <div className="flex-1 min-w-0">
         <div className="flex gap-3">
-          {/* Product Image */}
           <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-50 border">
             <Image
               src={item.sku.image || '/images/placeholder.png'}
@@ -91,9 +88,7 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
             />
           </div>
 
-          {/* Product Details */}
           <div className="flex-1 min-w-0">
-            {/* Header: Name + Delete Button */}
             <div className="flex items-start justify-between gap-2 mb-2">
               <h3 className="text-sm font-medium text-gray-900 line-clamp-2 leading-5 flex-1">
                 {item.sku.product.name}
@@ -108,7 +103,6 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
               </Button>
             </div>
 
-            {/* Variant Selector */}
             <div className="mb-3">
               <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
                 <PopoverTrigger asChild>
@@ -117,7 +111,7 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
                     onClick={() => fetchProductDetails(item.sku.product.id)}
                   >
                     <span className="truncate">
-                      English content normalized from the original source text. {item.sku.value}
+                      Gi? h?ng {item.sku.value}
                     </span>
                     <ChevronDown className="w-3 h-3 flex-shrink-0" />
                   </button>
@@ -128,13 +122,13 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
                       <div className="flex items-center justify-center py-8">
                         <div className="w-5 h-5 border-2 border-gray-300 border-t-primary rounded-full animate-spin"></div>
                         <span className="ml-2 text-sm text-gray-500">
-                          English content normalized from the original source text.
+                          Gi? h?ng
                         </span>
                       </div>
                     ) : productDetails ? (
                       <div className="space-y-4">
                         <div className="text-sm font-semibold text-gray-900 pb-2 border-b">
-                          English content normalized from the original source text.
+                          Gi? h?ng
                         </div>
 
                         {productDetails.variants.map((v) => (
@@ -171,7 +165,7 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
                             onClick={() => setIsPopoverOpen(false)}
                             className="rounded-lg border-gray-200"
                           >
-                            English content normalized from the original source text.
+                            Gi? h?ng
                           </Button>
                           <Button
                             size="sm"
@@ -180,14 +174,14 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
                             className="rounded-lg"
                           >
                             {isUpdating
-                              ? 'English content normalized from the original source text.'
-                              : 'English content normalized from the original source text.'}
+                              ? 'Gi? h?ng'
+                              : 'Gi? h?ng'}
                           </Button>
                         </div>
                       </div>
                     ) : (
                       <div className="text-sm text-gray-500 py-4 text-center">
-                        English content normalized from the original source text.
+                        Gi? h?ng
                       </div>
                     )}
                   </div>
@@ -195,12 +189,9 @@ export default function MobileCartItem({ item, selected, onToggle, onRemove }: M
               </Popover>
             </div>
 
-            {/* Price and Quantity Row */}
             <div className="flex items-center justify-between">
-              {/* Price */}
               <div className="text-red-500 font-bold text-base">₫{item.sku.price.toLocaleString('vi-VN')}</div>
 
-              {/* Quantity Controls */}
               <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
                 <Button
                   variant="ghost"

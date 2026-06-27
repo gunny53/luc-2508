@@ -1,22 +1,22 @@
 {
   "global": {
     "success": {
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "GET_DETAIL_SUCCESS": "English content normalized from the original source text.",
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text."
+      "GET_SUCCESS": "Lấy danh sách dữ liệu thành công.",
+      "GET_DETAIL_SUCCESS": "Lấy chi tiết dữ liệu thành công.",
+      "CREATE_SUCCESS": "Tạo dữ liệu thành công.",
+      "UPDATE_SUCCESS": "Cập nhật dữ liệu thành công.",
+      "DELETE_SUCCESS": "Xóa dữ liệu thành công."
     },
     "error": {
-      "NOT_FOUND_RECORD": "English content normalized from the original source text.",
-      "INVALID_PASSWORD": "English content normalized from the original source text.",
-      "UNAUTHORIZED": "English content normalized from the original source text.",
-      "FORBIDDEN": "English content normalized from the original source text.",
-      "SESSION_NOT_FOUND": "English content normalized from the original source text.",
-      "TOKEN_BLACKLISTED": "English content normalized from the original source text.",
-      "USER_NOT_ACTIVE": "English content normalized from the original source text.",
-      "INSUFFICIENT_PERMISSIONS": "English content normalized from the original source text.",
-      "MISSING_ACCESS_TOKEN": "English content normalized from the original source text."
+      "NOT_FOUND_RECORD": "Không tìm thấy dữ liệu.",
+      "INVALID_PASSWORD": "Mật khẩu không chính xác.",
+      "UNAUTHORIZED": "Bạn chưa được xác thực.",
+      "FORBIDDEN": "Bạn không có quyền thực hiện thao tác này.",
+      "SESSION_NOT_FOUND": "Không tìm thấy phiên đăng nhập.",
+      "TOKEN_BLACKLISTED": "Token đã bị vô hiệu hóa.",
+      "USER_NOT_ACTIVE": "Tài khoản người dùng chưa hoạt động.",
+      "INSUFFICIENT_PERMISSIONS": "Bạn không có đủ quyền truy cập.",
+      "MISSING_ACCESS_TOKEN": "Thiếu access token."
     }
   }
 }

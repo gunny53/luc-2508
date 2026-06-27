@@ -25,7 +25,7 @@ export class SearchRepo {
       }
     }
 
-    // Text search trong productName
+    
     if (q && q.trim()) {
       const searchTerms = q
         .trim()
@@ -63,7 +63,7 @@ export class SearchRepo {
       }
     }
 
-    // Filters
+    
     if (filters) {
       const filterClauses: any[] = []
 
@@ -105,7 +105,7 @@ export class SearchRepo {
       }
     }
 
-    // Sort options
+    
     const sortOptions: any[] = []
 
     if (sortBy === SortBy.Price) {

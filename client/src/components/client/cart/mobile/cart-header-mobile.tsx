@@ -28,21 +28,6 @@ export default function MobileCartHeader({ title, onEdit, isEditingGlobal }: Mob
           <ChevronLeft className="w-6 h-7 text-gray-600" />
         </Link>
         <h1 className="text-lg font-bold flex-1 text-start">{title}</h1>
-        {/* <Button
-          variant="ghost"
-          size="sm"
-          className="flex items-center gap-1"
-          onClick={onEdit}
-        >
-          {isEditingGlobal ? (
-            <Check className="w-5 h-5" />
-          ) : (
-            <Pencil className="w-5 h-5" />
-          )}
-          <span className="text-sm">
-            {isEditingGlobal ? t("user.cart.done") : t("user.cart.edit")}
-          </span>
-        </Button> */}
       </div>
     </div>
   )

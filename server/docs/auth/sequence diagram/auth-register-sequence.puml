@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Auth Auth Register Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -26,15 +26,15 @@ AS -> AR: findUniqueVerificationCode({ email_type })
 AR -> DB: verificationCode.findUnique()
 DB --> AR: verificationCode | null
 AR --> AS: code | null
-English content normalized from the original source text.
+Auth Auth Register Sequence: validate request and return the expected response
   AS --> AC: InvalidOTPException (422)
   AC --> C: 422 Unprocessable Entity
   deactivate AS
   deactivate AC
   stop
 end
-AS -> HP: English content normalized from the original source text.
-English content normalized from the original source text.
+AS -> HP: Auth Auth Register Sequence: validate request and return the expected response
+Auth Auth Register Sequence: validate request and return the expected response
   AS --> AC: OTPExpiredException (422)
   AC --> C: 422 Unprocessable Entity
   deactivate AS
@@ -47,19 +47,19 @@ SRR --> AS: clientRoleId
 AS -> HS: hash(password)
 HS --> AS: hashedPassword
 
-English content normalized from the original source text.
+Auth Auth Register Sequence: validate request and return the expected response
   AS -> AR: createUser({ email, name, phoneNumber, password: hashedPassword, roleId: clientRoleId })
   AR -> DB: user.create()
   DB --> AR: user
   AR --> AS: user (omit password, totpSecret)
-English content normalized from the original source text.
+Auth Auth Register Sequence: validate request and return the expected response
   AS -> AR: deleteVerificationCode({ email_type: { email, type: REGISTER } })
   AR -> DB: verificationCode.delete()
   DB --> AR: deleted
   AR --> AS: ok
 end
 
-AS --> AC: English content normalized from the original source text.
+AS --> AC: Auth Auth Register Sequence: validate request and return the expected response
 deactivate AS
 
 AC --> C: 201 Created + JSON

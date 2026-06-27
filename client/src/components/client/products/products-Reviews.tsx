@@ -26,7 +26,7 @@ const StarRating = ({ rating, size = 4 }: { rating: number; size?: number }) => 
 )
 
 const ReviewItem = ({ review }: { review: Review }) => {
-  const userName = review.user?.name || 'English content normalized from the original source text.'
+  const userName = review.user?.name || 'S?n ph?m'
   const userAvatar = review.user?.avatar || '/assets/demo/shop-avatar.png'
   const userFallback = userName.charAt(0).toUpperCase()
 
@@ -122,7 +122,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm font-sans">
-      <h2 className="text-xl font-medium mb-4">English content normalized from the original source text.</h2>
+      <h2 className="text-xl font-medium mb-4">S?n ph?m</h2>
 
       <div className="bg-neutral-50 p-4 rounded-lg flex flex-col md:flex-row md:items-center md:space-x-8 border">
         <div className="text-center text-red-600 md:pr-8 md:border-r pb-4 md:pb-0">
@@ -137,7 +137,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
           <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-2 -mb-2">
             <FilterButton
               value="all"
-              label="English content normalized from the original source text."
+              label="S?n ph?m"
               count={summary.total}
             />
             <FilterButton value={5} label="5 Sao" count={summary.counts[5]} />
@@ -147,7 +147,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
             <FilterButton value={1} label="1 Sao" count={summary.counts[1]} />
             <FilterButton
               value="media"
-              label="English content normalized from the original source text."
+              label="S?n ph?m"
               count={summary.mediaCount}
             />
           </div>
@@ -169,7 +169,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
               paginatedReviews.map((review) => <ReviewItem key={review.id} review={review} />)
             ) : (
               <div className="py-8 text-center text-gray-500">
-                English content normalized from the original source text.
+                S?n ph?m
               </div>
             )}
           </div>

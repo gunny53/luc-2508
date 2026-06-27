@@ -21,12 +21,12 @@ export default function OauthCallbackPage() {
           setAuthSuccess(true)
           const userRole = profileData.role?.name?.toUpperCase()
           if (userRole === 'ADMIN' || userRole === 'SELLER') {
-            showToast('English content normalized from the original source text.', 'success')
+            showToast('Signed in successfully. Redirecting to admin...', 'success')
             setTimeout(() => {
               window.location.replace('/admin')
             }, 1000)
           } else {
-            showToast('English content normalized from the original source text.', 'success')
+            showToast('Signed in successfully. Redirecting...', 'success')
             setTimeout(() => {
               window.location.replace('/')
             }, 1000)
@@ -36,7 +36,7 @@ export default function OauthCallbackPage() {
         }
       } catch (error) {
         console.error('OAuth callback error:', error)
-        showToast('English content normalized from the original source text.', 'error')
+        showToast('Google sign-in failed. Please try again.', 'error')
         setTimeout(() => {
           router.push('/sign-in')
         }, 2000)
@@ -46,7 +46,7 @@ export default function OauthCallbackPage() {
     }
 
     handleOAuthCallback()
-  }, [fetchProfile, router]) // Show error state
+  }, [fetchProfile, router]) 
   if (!authSuccess && !isProcessing && !loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -56,16 +56,16 @@ export default function OauthCallbackPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <p className="text-red-600 font-medium">English content normalized from the original source text.</p>
+          <p className="text-red-600 font-medium">Sign-in failed</p>
           <p className="text-muted-foreground text-sm mt-1">
-            English content normalized from the original source text.
+            We could not complete Google sign-in. Redirecting you to the sign-in page.
           </p>
         </div>
       </div>
     )
   }
 
-  // Show success state
+  
   if (authSuccess) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -75,21 +75,21 @@ export default function OauthCallbackPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <p className="text-green-600 font-medium">English content normalized from the original source text.</p>
+          <p className="text-green-600 font-medium">Signed in successfully</p>
           <p className="text-muted-foreground text-sm mt-1">
-            English content normalized from the original source text.
+            Redirecting you to the right page.
           </p>
         </div>
       </div>
     )
   }
 
-  // Show loading state (default)
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <div className="flex flex-col items-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
-        <p className="text-muted-foreground">English content normalized from the original source text.</p>
+        <p className="text-muted-foreground">Completing Google sign-in...</p>
       </div>
     </div>
   )

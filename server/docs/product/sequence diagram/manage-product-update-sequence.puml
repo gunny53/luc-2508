@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Product Manage Product Update Sequence: validate request and return the expected response
 
 actor "ShopOwner/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -18,7 +18,7 @@ queue "BullMQ (search-sync)" as Q
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MPC: English content normalized from the original source text.
+AG --> MPC: Product Manage Product Update Sequence: validate request and return the expected response
 activate MPC
 
 MPC -> MPS: update({ productId, data, user })
@@ -42,7 +42,7 @@ end
 
 MPS -> MPS: validatePrivilege(userIdRequest=user.userId,\n roleNameRequest=user.roleName,\n createdById=product.createdById)
 
-English content normalized from the original source text.
+Product Manage Product Update Sequence: validate request and return the expected response
   MPS -> MPS: throw ForbiddenException
   MPS --> MPC: 403 Forbidden
   MPC --> U: 403 Forbidden
@@ -52,12 +52,12 @@ English content normalized from the original source text.
 end
 
 note right of PR
-English content normalized from the original source text.
+Product Manage Product Update Sequence: validate request and return the expected response
 1) existingSKUs = sKU.findMany(productId, deletedAt=null)
 2) skusToDelete = existingSKUs - dataSkus (theo value)
-English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
+Product Manage Product Update Sequence: validate request and return the expected response
+Product Manage Product Update Sequence: validate request and return the expected response
+Product Manage Product Update Sequence: validate request and return the expected response
 end note
 
 MPS -> PR: update({ id=productId, updatedById=user.userId, data })

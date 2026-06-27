@@ -8,78 +8,78 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Order Order Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Order Order Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
   note right
-  English content normalized from the original source text.
+  Order Order Management Activity: execute the validated workflow
   • WHERE userId = user.userId
   • Filter theo status (optional)
   • Include order items
-  • English content normalized from the original source text
+  • Order Order Management Activity: execute the validated workflow
   • ORDER BY createdAt DESC
-  • English content normalized from the original source text
+  • Order Order Management Activity: execute the validated workflow
   end note
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
   note right
   Discount Validation Logic:
-  • English content normalized from the original source text
-  • English content normalized from the original source text
-  • English content normalized from the original source text
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  • Order Order Management Activity: execute the validated workflow
+  • Order Order Management Activity: execute the validated workflow
+  • Order Order Management Activity: execute the validated workflow
+  • Order Order Management Activity: execute the validated workflow
+  • Order Order Management Activity: execute the validated workflow
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
     :Validate discount eligibility;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   endif
 
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
   note right
   Redis Lock Logic:
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  • Order Order Management Activity: execute the validated workflow
+  • Order Order Management Activity: execute the validated workflow
   • Prevent race conditions
   end note
 
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
   :Validate cart items;
   note right
   Cart Items Validation:
-  • English content normalized from the original source text
+  • Order Order Management Activity: execute the validated workflow
   • Validate stock quantity
-  • English content normalized from the original source text
+  • Order Order Management Activity: execute the validated workflow
   • Validate shop ownership
   end note
 
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
 
-    English content normalized from the original source text.
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+    Order Order Management Activity: execute the validated workflow
+      :Order Order Management Activity: execute the validated workflow;
+      :Order Order Management Activity: execute the validated workflow;
       note right
       Discount Processing:
       • Validate discount eligibility
@@ -88,84 +88,84 @@ else (No)
       • Update discount usage count
       end note
 
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
+      :Order Order Management Activity: execute the validated workflow;
+      :Order Order Management Activity: execute the validated workflow;
     end
 
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
+    :Order Order Management Activity: execute the validated workflow;
+    :Order Order Management Activity: execute the validated workflow;
     note right
     Queue Job Logic:
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Order Order Management Activity: execute the validated workflow
+    • Order Order Management Activity: execute the validated workflow
+    • Order Order Management Activity: execute the validated workflow
     end note
 
     :Commit transaction;
     :Release Redis locks;
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   else (No)
     :Rollback transaction;
     :Release Redis locks;
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
+    :Order Order Management Activity: execute the validated workflow;
     note right
     Total Calculation:
     • totalItemCost = sum(items * price * quantity)
     • totalVoucherDiscount = sum(discount amounts)
     • totalPayment = totalItemCost - totalVoucherDiscount
     end note
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
+    :Order Order Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
     :Validate cancel eligibility;
     note right
     Cancel Validation:
-    • English content normalized from the original source text
+    • Order Order Management Activity: execute the validated workflow
     • Validate user ownership
     • Check business rules
     end note
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
+      :Order Order Management Activity: execute the validated workflow;
+      :Order Order Management Activity: execute the validated workflow;
+      :Order Order Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
+  :Order Order Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
       :Validate discount eligibility;
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
       note right
       Discount Calculation:
       • Validate discount codes
@@ -173,21 +173,21 @@ else (No)
       • Calculate discount amounts
       • Apply max discount limits
       end note
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :Order Order Management Activity: execute the validated workflow;
     endif
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Order Order Management Activity: execute the validated workflow;
   endif
 
 else (No)
-  :English content normalized from the original source text;
+  :Order Order Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Order Order Management Activity: execute the validated workflow;
+:Order Order Management Activity: execute the validated workflow;
 
 stop
 

@@ -189,7 +189,6 @@ export function Sidebar({ isOpen: externalOpen, onOpenChange, onCollapse }: Side
             </Link>
           )}
 
-          {}
           {hasSubItems && (
             <ChevronDown
               className={cn(
@@ -200,7 +199,6 @@ export function Sidebar({ isOpen: externalOpen, onOpenChange, onCollapse }: Side
           )}
         </div>
 
-        {}
         {hasSubItems && isExpanded && (
           <div className="mt-1 space-y-0.5">{item.subItems?.map((subItem) => renderItem(subItem, level + 1))}</div>
         )}
@@ -250,7 +248,7 @@ export function Sidebar({ isOpen: externalOpen, onOpenChange, onCollapse }: Side
             {isSettingsPage
               ? renderSettingsSidebar()
               : currentSidebarConfig
-                  .filter((item) => item.title !== 'English content normalized from the original source text.')
+                  .filter((item) => item.title !== 'ECSite')
                   .map((item) => renderItem(item))}
           </nav>
         </div>

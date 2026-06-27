@@ -70,10 +70,10 @@ export function LanguagesTable() {
     async (values: { code: string; name: string }) => {
       try {
         if (selectedLanguage) {
-          // Update
+          
           await updateLanguage(selectedLanguage.code, { name: values.name })
         } else {
-          // Create
+          
           await createLanguage({ id: values.code, name: values.name })
         }
         handleCloseModal()
@@ -90,7 +90,6 @@ export function LanguagesTable() {
 
   return (
     <div className="w-full space-y-4">
-      {}
       <div className="flex justify-end">
         <Button onClick={() => handleOpenModal()}>
           <PlusIcon className="w-4 h-4 mr-2" />
@@ -98,7 +97,6 @@ export function LanguagesTable() {
         </Button>
       </div>
 
-      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -111,7 +109,6 @@ export function LanguagesTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {/* Data Table */}
       <div className="relative">
         <DataTable
           table={table}
@@ -133,7 +130,6 @@ export function LanguagesTable() {
         />
       </div>
 
-      {}
       <LanguagesModalUpsert
         open={isModalOpen}
         onClose={handleCloseModal}
@@ -142,7 +138,6 @@ export function LanguagesTable() {
         onSubmit={handleSubmit}
       />
 
-      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {

@@ -26,7 +26,7 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
   const [selectedParent, setSelectedParent] = useState<Category | null>(null)
   const [selectedChildId, setSelectedChildId] = useState<string | null>(null)
 
-  // Reset states when modal closes
+  
   useEffect(() => {
     if (!open) {
       setSelectedParent(null)
@@ -66,7 +66,7 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
         }
       }
     } catch (error) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('Danh m?c')
     } finally {
       setLoadingParents(false)
     }
@@ -89,7 +89,7 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
           }
         }
       } catch (error) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('Danh m?c')
       } finally {
         setLoadingChildren(false)
       }
@@ -111,7 +111,7 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
     setSelectedChildId(null)
 
     if (parent.id) {
-      // Log the ID that will be used for fetching children
+      
       console.log('Fetching child categories with parent ID:', parent.id.toString())
       fetchChildCategories(parent.id.toString())
     }
@@ -143,16 +143,16 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-none w-[80vw] max-w-5xl max-h-[80vh] flex flex-col">
         <DialogHeader className="flex-shrink-0">
-          <DialogTitle>English content normalized from the original source text.</DialogTitle>
+          <DialogTitle>Danh m?c</DialogTitle>
         </DialogHeader>
 
-        {/* Main Content - Fixed Height with Proper Overflow */}
+        {}
         <div className="flex-1 min-h-0 overflow-hidden">
           <div className="grid grid-cols-4 gap-px bg-border rounded-lg" style={{ height: '450px' }}>
-            {/* Parent Category Column */}
+            {}
             <div className="bg-background flex flex-col overflow-auto">
               <div className="p-3 border-b bg-muted/30">
-                <h3 className="text-sm font-medium">English content normalized from the original source text.</h3>
+                <h3 className="text-sm font-medium">Danh m?c</h3>
               </div>
               <div className="flex-1 overflow-hidden">
                 <ScrollArea className="h-full">
@@ -160,13 +160,13 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
                     {loadingParents ? (
                       <div className="flex items-center justify-center py-8">
                         <p className="text-sm text-muted-foreground">
-                          English content normalized from the original source text.
+                          Danh m?c
                         </p>
                       </div>
                     ) : parentCategories.length === 0 ? (
                       <div className="flex items-center justify-center py-8">
                         <p className="text-sm text-muted-foreground">
-                          English content normalized from the original source text.
+                          Danh m?c
                         </p>
                       </div>
                     ) : (
@@ -193,10 +193,10 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
               </div>
             </div>
 
-            {/* Child Category Column */}
+            {}
             <div className="bg-background flex flex-col overflow-auto">
               <div className="p-3 border-b bg-muted/30">
-                <h3 className="text-sm font-medium">English content normalized from the original source text.</h3>
+                <h3 className="text-sm font-medium">Danh m?c</h3>
               </div>
               <div className="flex-1 overflow-hidden">
                 <ScrollArea className="h-full">
@@ -204,19 +204,19 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
                     {!selectedParent ? (
                       <div className="flex items-center justify-center py-8">
                         <p className="text-sm text-muted-foreground">
-                          English content normalized from the original source text.
+                          Danh m?c
                         </p>
                       </div>
                     ) : loadingChildren ? (
                       <div className="flex items-center justify-center py-8">
                         <p className="text-sm text-muted-foreground">
-                          English content normalized from the original source text.
+                          Danh m?c
                         </p>
                       </div>
                     ) : childCategories.length === 0 ? (
                       <div className="flex items-center justify-center py-8">
                         <p className="text-sm text-muted-foreground">
-                          English content normalized from the original source text.
+                          Danh m?c
                         </p>
                       </div>
                     ) : (
@@ -242,30 +242,30 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
               </div>
             </div>
 
-            {/* 3rd Column - Reserved */}
+            {}
             <div className="bg-background flex flex-col">
               <div className="p-3 border-b bg-muted/30">
                 <h3 className="text-sm font-medium text-muted-foreground">
-                  English content normalized from the original source text.
+                  Danh m?c
                 </h3>
               </div>
               <div className="flex-1 flex items-center justify-center">
                 <p className="text-sm text-muted-foreground">
-                  English content normalized from the original source text.
+                  Danh m?c
                 </p>
               </div>
             </div>
 
-            {/* 4th Column - Reserved */}
+            {}
             <div className="bg-background flex flex-col">
               <div className="p-3 border-b bg-muted/30">
                 <h3 className="text-sm font-medium text-muted-foreground">
-                  English content normalized from the original source text.
+                  Danh m?c
                 </h3>
               </div>
               <div className="flex-1 flex items-center justify-center">
                 <p className="text-sm text-muted-foreground">
-                  English content normalized from the original source text.
+                  Danh m?c
                 </p>
               </div>
             </div>
@@ -275,19 +275,19 @@ export function CategoryModal({ open, onOpenChange, onConfirm, initialSelectedId
         <DialogFooter className="flex-shrink-0 mt-4 pt-4 border-t">
           <div className="flex items-center justify-between w-full">
             <div className="text-sm text-muted-foreground">
-              English content normalized from the original source text.
+              Danh m?c
               <span className="text-foreground font-medium">
-                {selectionPath || 'English content normalized from the original source text.'}
+                {selectionPath || 'Danh m?c'}
               </span>
             </div>
             <div className="flex gap-2">
               <DialogClose asChild>
                 <Button type="button" variant="outline">
-                  English content normalized from the original source text.
+                  Danh m?c
                 </Button>
               </DialogClose>
               <Button type="button" onClick={handleConfirm} disabled={!selectionPath}>
-                English content normalized from the original source text.
+                Danh m?c
               </Button>
             </div>
           </div>

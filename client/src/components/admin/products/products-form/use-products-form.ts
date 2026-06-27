@@ -171,16 +171,16 @@ export const useProductsForm = ({ initialData, onCreateSuccess }: UseProductsFor
       image: skuRest.image || ''
     }))
     const filteredImages = productData.images.filter((url) => url && url.trim() !== '')
-    console.log('English content normalized from the original source text.', productData.images)
-    console.log('English content normalized from the original source text.', filteredImages)
+    console.log('S?n ph?m', productData.images)
+    console.log('S?n ph?m', filteredImages)
     const validCategories = productData.categories.filter(
       (id) => id && id !== 'null' && id !== 'undefined' && String(id).trim() !== ''
     )
 
-    console.log('English content normalized from the original source text.', productData.categories)
-    console.log('English content normalized from the original source text.', validCategories)
+    console.log('S?n ph?m', productData.categories)
+    console.log('S?n ph?m', validCategories)
     console.log(
-      'English content normalized from the original source text.',
+      'S?n ph?m',
       productData.categories.map((id) => ({
         original: id,
         numeric: String(id).match(/\d+/)?.[0] || 'no match',
@@ -213,21 +213,21 @@ export const useProductsForm = ({ initialData, onCreateSuccess }: UseProductsFor
 
     console.log('Submitting product data:', submissionData)
     if (!submissionData.brandId) {
-      showToast('English content normalized from the original source text.', 'error')
+      showToast('S?n ph?m', 'error')
       setIsSubmitting(false)
       return
     }
     if (!submissionData.name || submissionData.name.trim() === '') {
-      showToast('English content normalized from the original source text.', 'error')
+      showToast('S?n ph?m', 'error')
       setIsSubmitting(false)
       return
     }
     const requiredSpecNames = [
-      'English content normalized from the original source text.',
-      'English content normalized from the original source text.',
-      'English content normalized from the original source text.',
-      'English content normalized from the original source text.',
-      'English content normalized from the original source text.'
+      'S?n ph?m',
+      'S?n ph?m',
+      'S?n ph?m',
+      'S?n ph?m',
+      'S?n ph?m'
     ]
     const existingSpecNames = submissionData.specifications.map((spec) => spec.name)
 
@@ -238,20 +238,20 @@ export const useProductsForm = ({ initialData, onCreateSuccess }: UseProductsFor
     )
 
     if (missingSpecs.length > 0) {
-      showToast(`English content normalized from the original source text.${missingSpecs.join(', ')}`, 'error')
+      showToast(`S?n ph?m${missingSpecs.join(', ')}`, 'error')
       setIsSubmitting(false)
       return
     }
     if (submissionData.variants && submissionData.variants.length > 0) {
       if (!submissionData.skus || submissionData.skus.length === 0) {
-        showToast('English content normalized from the original source text.', 'error')
+        showToast('S?n ph?m', 'error')
         setIsSubmitting(false)
         return
       }
       const skusWithoutPrice = submissionData.skus.filter((sku) => !sku.price || sku.price <= 0)
       if (skusWithoutPrice.length > 0) {
         showToast(
-          `English content normalized from the original source text.${skusWithoutPrice.length}English content normalized from the original source text.`,
+          `S?n ph?m${skusWithoutPrice.length}S?n ph?m`,
           'error'
         )
         setIsSubmitting(false)
@@ -269,10 +269,10 @@ export const useProductsForm = ({ initialData, onCreateSuccess }: UseProductsFor
       if (initialData) {
         await productsService.update(String(initialData.id), submissionData as unknown as ProductUpdateRequest)
         console.log('Product updated successfully')
-        showToast('English content normalized from the original source text.', 'success')
+        showToast('S?n ph?m', 'success')
       } else {
         const response = await productsService.create(submissionData)
-        showToast('English content normalized from the original source text.', 'success')
+        showToast('S?n ph?m', 'success')
         if (options.stayOnPage) {
           resetForm()
         } else {
@@ -282,7 +282,7 @@ export const useProductsForm = ({ initialData, onCreateSuccess }: UseProductsFor
     } catch (error: any) {
       console.error('Failed to submit product:', error)
       const errorMessage =
-        error?.response?.data?.message || error?.message || 'English content normalized from the original source text.'
+        error?.response?.data?.message || error?.message || 'S?n ph?m'
       showToast(errorMessage, 'error')
       console.log('Request data was:', submissionData)
       console.log('Error details:', {

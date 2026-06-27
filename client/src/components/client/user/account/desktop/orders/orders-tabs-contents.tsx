@@ -13,23 +13,23 @@ import { ReviewsModal } from '@/components/client/products/products-reviews-moda
 
 const statusConfig = {
   PENDING_PAYMENT: {
-    label: 'English content normalized from the original source text.',
+    label: '??n h?ng',
     bg: 'bg-amber-100 text-amber-700'
   },
   PENDING_PACKAGING: {
-    label: 'English content normalized from the original source text.',
+    label: '??n h?ng',
     bg: 'bg-orange-100 text-orange-700'
   },
-  PICKUPED: { label: 'English content normalized from the original source text.', bg: 'bg-blue-100 text-blue-700' },
+  PICKUPED: { label: '??n h?ng', bg: 'bg-blue-100 text-blue-700' },
   PENDING_DELIVERY: {
-    label: 'English content normalized from the original source text.',
+    label: '??n h?ng',
     bg: 'bg-purple-100 text-purple-700'
   },
-  DELIVERED: { label: 'English content normalized from the original source text.', bg: 'bg-green-100 text-green-700' },
-  RETURNED: { label: 'English content normalized from the original source text.', bg: 'bg-gray-100 text-gray-700' },
-  CANCELLED: { label: 'English content normalized from the original source text.', bg: 'bg-red-100 text-red-700' },
+  DELIVERED: { label: '??n h?ng', bg: 'bg-green-100 text-green-700' },
+  RETURNED: { label: '??n h?ng', bg: 'bg-gray-100 text-gray-700' },
+  CANCELLED: { label: '??n h?ng', bg: 'bg-red-100 text-red-700' },
   VERIFY_PAYMENT: {
-    label: 'English content normalized from the original source text.',
+    label: '??n h?ng',
     bg: 'bg-green-100 text-green-700'
   }
 }
@@ -72,7 +72,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
             <div className="h-full flex items-center justify-center">
               <div className="text-center">
                 <div className="animate-spin w-8 h-8 border-2 border-[#D70018] border-t-transparent rounded-full mx-auto mb-4"></div>
-                <p className="text-gray-600">English content normalized from the original source text.</p>
+                <p className="text-gray-600">??n h?ng</p>
               </div>
             </div>
           ) : error ? (
@@ -99,17 +99,17 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                     className="border rounded-lg p-4 hover:shadow-md hover:border-[#D70018]/30 transition-all cursor-pointer"
                     onClick={() => handleViewDetail(order.id)}
                   >
-                    {/* Header */}
+                    {}
                     <div className="flex justify-between items-center mb-3 pb-2 border-b">
                       <span className="text-sm text-gray-600">
-                        English content normalized from the original source text.<strong>{order.id}</strong>
+                        ??n h?ng<strong>{order.id}</strong>
                       </span>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${status.bg}`}>{status.label}</span>
                     </div>
 
-                    {/* Content */}
+                    {}
                     <div className="flex gap-3">
-                      {/* Image */}
+                      {}
                       <div className="relative">
                         <img
                           src={firstItem?.image || '/static/no-image.png'}
@@ -123,32 +123,30 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                         )}
                       </div>
 
-                      {/* Info */}
+                      {}
                       <div className="flex-1 min-w-0">
                         <h4 className="font-semibold text-gray-800 mb-1 line-clamp-2">{firstItem?.productName}</h4>
                         {order.items.length > 1 && (
                           <p className="text-xs text-gray-500 mb-2">
-                            English content normalized from the original source text. {order.items.length - 1} English
-                            content normalized from the original source text.
+                            ??n h?ng {order.items.length - 1} ??n h?ng
                           </p>
                         )}
                         <div className="text-xs text-gray-500 space-y-1">
                           <p>
-                            English content normalized from the original source text.{' '}
+                            ??n h?ng{' '}
                             {new Date(order.createdAt).toLocaleDateString('vi-VN')}
                           </p>
                           <p>
-                            SL: {order.items.reduce((sum, item) => sum + item.quantity, 0)} English content normalized
-                            from the original source text.
+                            SL: {order.items.reduce((sum, item) => sum + item.quantity, 0)} ??n h?ng
                           </p>
                         </div>
                       </div>
 
-                      {/* Price & Actions */}
+                      {}
                       <div className="text-right">
                         <div className="mb-3">
                           <p className="text-xs text-gray-500">
-                            English content normalized from the original source text.
+                            ??n h?ng
                           </p>
                           <p className="font-bold text-[#D70018] text-lg">{order.totalPayment.toLocaleString()}₫</p>
                         </div>
@@ -168,12 +166,12 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                               })
                             }}
                           >
-                            English content normalized from the original source text.
+                            ??n h?ng
                           </Button>
                         )}
 
                         <div className="flex items-center gap-1 text-xs text-[#D70018] font-medium">
-                          English content normalized from the original source text.
+                          ??n h?ng
                           <ArrowRight className="w-3 h-3" />
                         </div>
                       </div>
@@ -182,7 +180,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                 )
               })}
 
-              {/* Load more */}
+              {}
               {metadata?.totalItems && visibleCount < metadata.totalItems && (
                 <div className="text-center mt-6">
                   <Button
@@ -199,7 +197,7 @@ export const OrderTabContent = ({ currentTab, onTabChange }: Props) => {
                     }}
                     className="text-[#D70018] border-[#D70018]/30 hover:bg-[#D70018] hover:text-white"
                   >
-                    English content normalized from the original source text.
+                    ??n h?ng
                     <ChevronDown className="w-4 h-4 ml-1" />
                   </Button>
                 </div>

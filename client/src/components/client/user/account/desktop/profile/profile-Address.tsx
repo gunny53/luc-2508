@@ -34,7 +34,7 @@ export default function AddressBook() {
   } = useAddress()
   const { isMobile } = useResponsive()
 
-  // State cho address selection
+  
   const [selectedProvinceId, setSelectedProvinceId] = useState<string>('')
   const [selectedDistrictId, setSelectedDistrictId] = useState<string>('')
   const [selectedWardCode, setSelectedWardCode] = useState<string>('')
@@ -85,7 +85,7 @@ export default function AddressBook() {
       type: 'home'
     })
 
-    // Reset address selection
+    
     setSelectedProvinceId('')
     setSelectedDistrictId('')
     setSelectedWardCode('')
@@ -118,7 +118,7 @@ export default function AddressBook() {
       setSelectedDistrictId(districtId)
       setSelectedWardCode(wardCode)
 
-      // Update form values
+      
       const numProvinceId = parseInt(provinceId) || 0
       const numDistrictId = parseInt(districtId) || 0
 
@@ -126,7 +126,7 @@ export default function AddressBook() {
       form.setValue('districtId', numDistrictId)
       form.setValue('wardCode', wardCode)
 
-      // Update province name
+      
       if (provincesData?.data && provinceId) {
         const province = provincesData.data.find((p) => p.ProvinceID.toString() === provinceId)
         if (province) {
@@ -134,7 +134,7 @@ export default function AddressBook() {
         }
       }
 
-      // Update district name
+      
       if (districtsData?.data && districtId) {
         const district = districtsData.data.find((d) => d.DistrictID.toString() === districtId)
         if (district) {
@@ -144,7 +144,7 @@ export default function AddressBook() {
         form.setValue('district', '')
       }
 
-      // Update ward name
+      
       if (wardsData?.data && wardCode) {
         const ward = wardsData.data.find((w) => w.WardCode === wardCode)
         if (ward) {
@@ -180,9 +180,8 @@ export default function AddressBook() {
   const formContent = (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(handleSave)}>
-        {}
         <div className="space-y-2">
-          <label className="text-sm font-medium">English content normalized from the original source text.</label>
+          <label className="text-sm font-medium">T?i kho?n</label>
           <SimpleAddressSelect
             onAddressChange={handleAddressChange}
             initialValues={{
@@ -193,25 +192,24 @@ export default function AddressBook() {
           />
         </div>
 
-        {}
         {[
-          ['detail', 'English content normalized from the original source text.', 'required'],
-          ['label', 'English content normalized from the original source text.'],
-          ['recipient', 'English content normalized from the original source text.', 'required']
+          ['detail', 'T?i kho?n', 'required'],
+          ['label', 'T?i kho?n'],
+          ['recipient', 'T?i kho?n', 'required']
         ].map(([name, label, required]) => (
           <FormField
             key={String(name)}
             control={form.control}
             name={name as keyof AddressFormValues}
             rules={
-              required ? { required: `${label}English content normalized from the original source text.` } : undefined
+              required ? { required: `${label}T?i kho?n` } : undefined
             }
             render={({ field }) => (
               <FormItem>
                 <FormLabel>{label}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder={`English content normalized from the original source text.${label.toLowerCase()}`}
+                    placeholder={`T?i kho?n${label.toLowerCase()}`}
                     {...field}
                     value={typeof field.value === 'string' ? field.value : ''}
                   />
@@ -225,18 +223,18 @@ export default function AddressBook() {
           control={form.control}
           name="phone"
           rules={{
-            required: 'English content normalized from the original source text.',
+            required: 'T?i kho?n',
             pattern: {
               value: /^(0|\+84)\d{9}$/,
-              message: 'English content normalized from the original source text.'
+              message: 'T?i kho?n'
             }
           }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>English content normalized from the original source text.</FormLabel>
+              <FormLabel>T?i kho?n</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="English content normalized from the original source text."
+                  placeholder="T?i kho?n"
                   {...field}
                   value={typeof field.value === 'string' ? field.value : ''}
                 />
@@ -250,7 +248,7 @@ export default function AddressBook() {
           name="type"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>English content normalized from the original source text.</FormLabel>
+              <FormLabel>T?i kho?n</FormLabel>
               <div className="flex gap-3 border-b border-gray-200 pb-4">
                 <Button
                   type="button"
@@ -258,7 +256,7 @@ export default function AddressBook() {
                   onClick={() => field.onChange('home')}
                 >
                   <Home className="h-4 w-4 mr-2" />
-                  English content normalized from the original source text.
+                  T?i kho?n
                 </Button>
                 <Button
                   type="button"
@@ -266,7 +264,7 @@ export default function AddressBook() {
                   onClick={() => field.onChange('office')}
                 >
                   <Building2 className="h-4 w-4 mr-2" />
-                  English content normalized from the original source text.
+                  T?i kho?n
                 </Button>
               </div>
             </FormItem>
@@ -278,7 +276,7 @@ export default function AddressBook() {
           name="isDefault"
           render={({ field }) => (
             <FormItem className="flex items-center gap-3">
-              <FormLabel className="mb-0">English content normalized from the original source text.</FormLabel>
+              <FormLabel className="mb-0">T?i kho?n</FormLabel>
               <FormControl>
                 <Switch checked={!!field.value} onCheckedChange={(checked) => field.onChange(checked)} />
               </FormControl>
@@ -286,7 +284,6 @@ export default function AddressBook() {
           )}
         />
 
-        {}
         <input type="hidden" {...form.register('provinceId')} />
         <input type="hidden" {...form.register('districtId')} />
         <input type="hidden" {...form.register('wardCode')} />
@@ -301,11 +298,11 @@ export default function AddressBook() {
     <div className="bg-white rounded-lg p-6 space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="font-semibold text-base text-[#121214]">
-          English content normalized from the original source text.
+          T?i kho?n
         </h2>
         <Button variant="ghost" className="flex items-center gap-2 text-[#D70019]" onClick={handleAdd}>
           <Plus size={18} />
-          English content normalized from the original source text.
+          T?i kho?n
         </Button>
       </div>
 
@@ -315,11 +312,11 @@ export default function AddressBook() {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2 text-sm font-medium">
                 {addr.type === 'home' ? <Home size={16} /> : <Building2 size={16} />}
-                {addr.label || 'English content normalized from the original source text.'}
+                {addr.label || 'T?i kho?n'}
               </div>
               {addr.isDefault && (
                 <Badge variant="outline" className="bg-blue-100 text-[#193767]">
-                  English content normalized from the original source text.
+                  T?i kho?n
                 </Badge>
               )}
             </div>
@@ -338,12 +335,12 @@ export default function AddressBook() {
                 {addressLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  'English content normalized from the original source text.'
+                  'T?i kho?n'
                 )}
               </button>
               <span className="text-gray-300">|</span>
               <button onClick={() => handleEdit(addr)} className="text-[#3B82F6] hover:underline">
-                English content normalized from the original source text.
+                T?i kho?n
               </button>
             </div>
           </div>
@@ -356,8 +353,8 @@ export default function AddressBook() {
             <DrawerHeader>
               <DrawerTitle>
                 {editingAddress
-                  ? 'English content normalized from the original source text.'
-                  : 'English content normalized from the original source text.'}
+                  ? 'T?i kho?n'
+                  : 'T?i kho?n'}
               </DrawerTitle>
             </DrawerHeader>
 
@@ -366,8 +363,8 @@ export default function AddressBook() {
             <DrawerFooter className="flex justify-end gap-2 mt-4">
               <Button onClick={form.handleSubmit(handleSave)} disabled={addressLoading}>
                 {addressLoading
-                  ? 'English content normalized from the original source text.'
-                  : 'English content normalized from the original source text.'}
+                  ? 'T?i kho?n'
+                  : 'T?i kho?n'}
               </Button>
             </DrawerFooter>
           </DrawerContent>
@@ -378,18 +375,18 @@ export default function AddressBook() {
           onOpenChange={setOpen}
           title={
             editingAddress
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'
+              ? 'T?i kho?n'
+              : 'T?i kho?n'
           }
-          subtitle="English content normalized from the original source text."
+          subtitle="T?i kho?n"
           onCancel={() => setOpen(false)}
           onConfirm={form.handleSubmit(handleSave)}
           confirmText={
             addressLoading
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'
+              ? 'T?i kho?n'
+              : 'T?i kho?n'
           }
-          cancelText="English content normalized from the original source text."
+          cancelText="T?i kho?n"
         >
           {formContent}
         </SheetRework>

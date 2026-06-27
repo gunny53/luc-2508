@@ -19,7 +19,7 @@ export function RecentActivitiesList({ activities }: RecentActivitiesProps) {
           </div>
         ))
       ) : (
-        <p className="text-sm text-muted-foreground">English content normalized from the original source text.</p>
+        <p className="text-sm text-muted-foreground">B?ng ?i?u khi?n</p>
       )}
     </div>
   )

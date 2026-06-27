@@ -17,12 +17,12 @@ export default function DesktopCartHeader({ allSelected, onToggleAll }: DesktopC
         <div className="flex items-center px-3 py-4">
           <div className="flex items-center gap-2 w-[45%]">
             <Checkbox className="scale-100 ml-[30px]" checked={allSelected} onCheckedChange={onToggleAll} />
-            <span className="font-medium text-black">English content normalized from the original source text.</span>
+            <span className="font-medium text-black">Gi? h?ng</span>
           </div>
-          <div className="w-[15%] text-center">English content normalized from the original source text.</div>
-          <div className="w-[15%] text-center">English content normalized from the original source text.</div>
-          <div className="w-[15%] text-center">English content normalized from the original source text.</div>
-          <div className="w-[10%] text-center">English content normalized from the original source text.</div>
+          <div className="w-[15%] text-center">Gi? h?ng</div>
+          <div className="w-[15%] text-center">Gi? h?ng</div>
+          <div className="w-[15%] text-center">Gi? h?ng</div>
+          <div className="w-[10%] text-center">Gi? h?ng</div>
         </div>
       </div>
     </div>

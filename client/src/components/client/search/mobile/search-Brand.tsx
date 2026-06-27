@@ -11,10 +11,10 @@ export default function SearchBrand() {
     <div className="bg-white rounded-md shadow-sm border p-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-red-600 text-sm font-semibold uppercase">
-          English content normalized from the original source text.
+          Th??ng hi?u
         </h2>
         <Link href="/brands" className="text-sm text-muted-foreground hover:underline">
-          English content normalized from the original source text.
+          Th??ng hi?u
         </Link>
       </div>
 

@@ -8,12 +8,12 @@ import DashboardSeller from '@/components/admin/dashboard/seller/dashboard-selle
 import { Card } from '@/components/ui/card'
 import { AlertCircle } from 'lucide-react'
 
-// export const metadata: Metadata = metadataConfig['/admin']
+
 
 export default function AdminDashboard() {
   const userData = useUserData()
 
-  // Loading state
+  
   if (!userData) {
     return (
       <div className="space-y-6 p-6 h-screen bg-white">
@@ -48,19 +48,18 @@ export default function AdminDashboard() {
       return (
         <div className="space-y-6 p-6 h-screen bg-white">
           <div>
-            <h1 className="text-3xl font-bold">English content normalized from the original source text.</h1>
-            <p className="text-muted-foreground">English content normalized from the original source text.</p>
+            <h1 className="text-3xl font-bold">ECSite</h1>
+            <p className="text-muted-foreground">ECSite</p>
           </div>
 
           <Card className="p-6 border-amber-200 bg-amber-50">
             <div className="flex items-center space-x-3">
               <AlertCircle className="w-6 h-6 text-amber-600" />
               <div>
-                <p className="font-medium text-amber-800">English content normalized from the original source text.</p>
+                <p className="font-medium text-amber-800">ECSite</p>
                 <p className="text-sm text-amber-700">
-                  English content normalized from the original source text.{' '}
-                  {userRole || 'English content normalized from the original source text.'}. English content normalized
-                  from the original source text.
+                  ECSite{' '}
+                  {userRole || 'ECSite'}. ECSite
                 </p>
               </div>
             </div>

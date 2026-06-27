@@ -48,12 +48,12 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
   if (isError) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
-        <div className="text-red-500 mb-4">English content normalized from the original source text.</div>
+        <div className="text-red-500 mb-4">S?n ph?m</div>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
         >
-          English content normalized from the original source text.
+          S?n ph?m
         </button>
       </div>
     )
@@ -66,10 +66,10 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
       <div className="w-full py-12 flex flex-col items-center justify-center">
         <div className="text-black text-lg mb-2">
           {searchQuery
-            ? `English content normalized from the original source text.${searchQuery}"`
+            ? `S?n ph?m${searchQuery}"`
             : categoryId
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'S?n ph?m'
+              : 'S?n ph?m'}
         </div>
       </div>
     )
@@ -141,28 +141,23 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
   }
   return (
     <div className="space-y-8">
-      {}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {products.map((product: ClientProduct) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
 
-      {}
       {totalPages > 1 && (
         <Pagination className="mt-8">
           <PaginationContent>
-            {}
             {hasPrevPage && (
               <PaginationItem>
                 <PaginationPrevious onClick={() => handlePageChange(currentPage - 1)} />
               </PaginationItem>
             )}
 
-            {}
             {renderPaginationItems()}
 
-            {}
             {hasNextPage && (
               <PaginationItem>
                 <PaginationNext onClick={() => handlePageChange(currentPage + 1)} />

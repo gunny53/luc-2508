@@ -2,21 +2,21 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 const recentOrders = [
   {
     id: '#98765',
-    customer: 'English content normalized from the original source text.',
-    total: 'English content normalized from the original source text.',
-    status: 'English content normalized from the original source text.'
+    customer: '??n h?ng',
+    total: '??n h?ng',
+    status: '??n h?ng'
   },
   {
     id: '#98764',
-    customer: 'English content normalized from the original source text.',
-    total: 'English content normalized from the original source text.',
-    status: 'English content normalized from the original source text.'
+    customer: '??n h?ng',
+    total: '??n h?ng',
+    status: '??n h?ng'
   },
   {
     id: '#98763',
-    customer: 'English content normalized from the original source text.',
-    total: 'English content normalized from the original source text.',
-    status: 'English content normalized from the original source text.'
+    customer: '??n h?ng',
+    total: '??n h?ng',
+    status: '??n h?ng'
   }
 ]
 
@@ -25,10 +25,10 @@ export function RecentOrdersTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>English content normalized from the original source text.</TableHead>
-          <TableHead>English content normalized from the original source text.</TableHead>
-          <TableHead className="text-right">English content normalized from the original source text.</TableHead>
-          <TableHead>English content normalized from the original source text.</TableHead>
+          <TableHead>??n h?ng</TableHead>
+          <TableHead>??n h?ng</TableHead>
+          <TableHead className="text-right">??n h?ng</TableHead>
+          <TableHead>??n h?ng</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

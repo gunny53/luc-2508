@@ -9,10 +9,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <AuthHeader />
       <main className="relative min-h-screen flex items-center justify-center pt-20 px-4 md:px-8 lg:px-12 overflow-hidden bg-white">
         <AnimatedBackground />
-        {}
         <div className="relative z-10 w-full max-w-[1400px]">
           <div className="grid lg:grid-cols-2">
-            {/* Left: Form */}
             <div className="relative flex flex-col">
               <div className="absolute top-0 z-[-2] h-full w-full bg-transparent bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.05)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div>
               <div className="flex flex-1 items-center justify-center p-6 md:p-8 lg:p-10">
@@ -24,20 +22,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               </footer>
             </div>
 
-            {/* Right: Illustration + Titles */}
             <div className="relative hidden lg:flex flex-col items-center justify-center">
-              {/* Content Container */}
               <div className="flex flex-col items-center justify-center w-full py-8">
-                {/* Titles */}
                 <div className="text-center mb-6 w-full px-6 max-w-[380px] mx-auto">
                   <h2 className="text-4xl font-bold text-primary">
-                    English content normalized from the original source text.
+                    X?c th?c
                   </h2>
                   <p className="text-muted-foreground text-md mt-1">
-                    English content normalized from the original source text.
+                    X?c th?c
                   </p>
                 </div>
-                {/* Image */}
                 <div className="w-full px-6">
                   <Image
                     src="/images/auth/xetai.png"

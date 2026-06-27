@@ -19,16 +19,16 @@ export const productMock = {
   ],
   variants: [
     {
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       options: [
-        'English content normalized from the original source text.',
-        'English content normalized from the original source text.',
+        'S?n ph?m',
+        'S?n ph?m',
         'Xanh',
-        'English content normalized from the original source text.'
+        'S?n ph?m'
       ]
     },
     {
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       options: ['S', 'M', 'L', 'XL']
     }
   ],
@@ -42,7 +42,7 @@ export const productMock = {
   skus: [
     {
       id: 1,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -56,7 +56,7 @@ export const productMock = {
     },
     {
       id: 2,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -70,7 +70,7 @@ export const productMock = {
     },
     {
       id: 3,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -84,7 +84,7 @@ export const productMock = {
     },
     {
       id: 4,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -98,7 +98,7 @@ export const productMock = {
     },
     {
       id: 5,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -112,7 +112,7 @@ export const productMock = {
     },
     {
       id: 6,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -126,7 +126,7 @@ export const productMock = {
     },
     {
       id: 7,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -140,7 +140,7 @@ export const productMock = {
     },
     {
       id: 8,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -210,7 +210,7 @@ export const productMock = {
     },
     {
       id: 13,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -224,7 +224,7 @@ export const productMock = {
     },
     {
       id: 14,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -238,7 +238,7 @@ export const productMock = {
     },
     {
       id: 15,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -252,7 +252,7 @@ export const productMock = {
     },
     {
       id: 16,
-      value: 'English content normalized from the original source text.',
+      value: 'S?n ph?m',
       price: 0,
       stock: 100,
       image: '',
@@ -269,7 +269,7 @@ export const productMock = {
     {
       id: 1,
       parentCategoryId: null,
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       logo: 'https://ecsite.s3.ap-southeast-1.amazonaws.com/images/b4acb401-0d86-447d-8dff-69f1de122dee.png',
       createdById: 1,
       updatedById: null,
@@ -296,7 +296,7 @@ export const productMock = {
     {
       id: 6,
       parentCategoryId: 1,
-      name: 'English content normalized from the original source text.',
+      name: 'S?n ph?m',
       logo: null,
       createdById: 1,
       updatedById: null,

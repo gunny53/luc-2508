@@ -91,13 +91,13 @@ export function ProfileUpdateSheet({ open, onOpenChange, initialData }: ProfileU
         data.name !== userData?.name || data.phoneNumber !== userData?.phoneNumber || avatarUrl !== userData?.avatar
 
       if (!hasChanges) {
-        showToast('English content normalized from the original source text.', 'info')
+        showToast('T?i kho?n', 'info')
         return
       }
 
       updateProfile({ ...data, avatar: avatarUrl })
     } catch (err) {
-      console.error('English content normalized from the original source text.', err)
+      console.error('T?i kho?n', err)
     }
   }
 
@@ -118,7 +118,6 @@ export function ProfileUpdateSheet({ open, onOpenChange, initialData }: ProfileU
             </button>
           </DrawerHeader>
           <div className="p-4 space-y-6">
-            {/* Avatar Section */}
             <div className="flex flex-col items-center space-y-3">
               <div className="relative cursor-pointer group" onClick={handleAvatarClick}>
                 {avatar ? (

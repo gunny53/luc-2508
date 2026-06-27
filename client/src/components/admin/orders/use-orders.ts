@@ -49,7 +49,7 @@ export function useOrder() {
       }))
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -73,7 +73,7 @@ export function useOrder() {
       }))
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -102,7 +102,7 @@ export function useOrder() {
       setOrderDetail(res.data ?? null)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -115,7 +115,7 @@ export function useOrder() {
       const res: OrderCreateResponse = await orderService.create(data)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -128,7 +128,7 @@ export function useOrder() {
       const res = await manageOrderService.updateStatus(orderId, data)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -141,7 +141,7 @@ export function useOrder() {
       const res: OrderCancelResponse = await orderService.cancel(orderId)
       return res
     } catch (err: any) {
-      setError(err.message || 'English content normalized from the original source text.')
+      setError(err.message || '??n h?ng')
       throw err
     } finally {
       setLoading(false)
@@ -160,13 +160,13 @@ export function useOrder() {
 
           if (!order) {
             console.error('Order not found for ID:', orderId)
-            alert('English content normalized from the original source text.')
+            alert('??n h?ng')
             return
           }
 
           if (!order.orderCode) {
             console.error('Order found but missing orderCode:', order)
-            alert('English content normalized from the original source text.')
+            alert('??n h?ng')
             return
           }
 
@@ -175,7 +175,7 @@ export function useOrder() {
         }
 
         if (!orderCode) {
-          alert('English content normalized from the original source text.')
+          alert('??n h?ng')
           return
         }
 
@@ -214,7 +214,7 @@ export function useOrder() {
       } catch (error) {
         console.error('Error printing invoice:', error)
         alert(
-          `English content normalized from the original source text.${error instanceof Error ? error.message : 'Unknown error'}`
+          `??n h?ng${error instanceof Error ? error.message : 'Unknown error'}`
         )
       }
     },

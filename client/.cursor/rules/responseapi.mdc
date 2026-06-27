@@ -26,7 +26,7 @@ When an API call fails, the response will have this consistent error structure:
 {
     "message": [
         {
-            "message": English content normalized from the original source text.
+            "message": ECSite
             "path": "email"                 // Field that caused the error
         }
         // Potentially multiple error objects in the array

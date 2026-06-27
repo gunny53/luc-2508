@@ -22,7 +22,7 @@ export function useLogout() {
       } catch (error) {
         console.error('Failed to fetch new CSRF token after logout:', error)
       }
-      showToast('English content normalized from the original source text.', 'success')
+      showToast('X?c th?c', 'success')
       window.location.href = ROUTES.AUTH.SIGNIN
     }
   }

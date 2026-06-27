@@ -51,12 +51,12 @@ export default function RolesModalUpsert({
 
   useEffect(() => {
     if (mode === 'edit' && role) {
-      // Initialize form with role data
+      
       setName(role.name || '')
       setDescription(role.description || '')
       setIsActive(role.isActive ?? true)
 
-      // Set permission IDs from the fetched role data
+      
       if (role.permissions && role.permissions.length > 0) {
         const initialPermissionIds = role.permissions.map((p: Permission) => p.id.toString()) || []
         console.log('Setting initial permission IDs:', initialPermissionIds)
@@ -67,17 +67,17 @@ export default function RolesModalUpsert({
         setSelectedPermissionIds(new Set<string>())
       }
     } else {
-      // Reset fields for "add" mode or when role is not available
+      
       setName('')
       setDescription('')
       setIsActive(true)
-      setSelectedPermissionIds(new Set<string>()) // Reset permissions cho mode add
+      setSelectedPermissionIds(new Set<string>()) 
     }
   }, [mode, role, open])
   useEffect(() => {
     if (mode !== 'edit') return
 
-    // Log permissions data whenever it changes
+    
     console.log('Current permissionsData:', permissionsData)
     console.log('isPermissionsLoading:', isPermissionsLoading)
 
@@ -180,7 +180,7 @@ export default function RolesModalUpsert({
 
       onClose()
     } catch (error) {
-      showToast('English content normalized from the original source text.', 'error')
+      showToast('Vai tr?', 'error')
     } finally {
       setLoading(false)
     }
@@ -222,7 +222,6 @@ export default function RolesModalUpsert({
               <Switch checked={isActive} onCheckedChange={setIsActive} />
             </div>
 
-            {}
             {mode === 'edit' && (
               <div className="space-y-2 pt-2">
                 <div>
@@ -269,8 +268,7 @@ export default function RolesModalUpsert({
                                 <span className="font-semibold uppercase tracking-wider">
                                   {subject}
                                   <span className="text-xs text-muted-foreground ml-2 normal-case">
-                                    ({selectedCount}/{items.length} English content normalized from the original source
-                                    text.
+                                    ({selectedCount}/{items.length} vai tr?
                                   </span>
                                 </span>
                                 <Switch

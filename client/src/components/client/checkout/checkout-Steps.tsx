@@ -28,12 +28,12 @@ export function CheckoutSteps({ activeStep, onStepChange, className }: CheckoutS
   const steps: StepItem[] = [
     {
       id: 'cart',
-      label: 'English content normalized from the original source text.',
+      label: 'Thanh to?n',
       href: '/cart',
       icon: ShoppingCart
     },
-    { id: 'information', label: 'English content normalized from the original source text.', icon: Info },
-    { id: 'payment', label: 'English content normalized from the original source text.', icon: Banknote }
+    { id: 'information', label: 'Thanh to?n', icon: Info },
+    { id: 'payment', label: 'Thanh to?n', icon: Banknote }
   ]
 
   useEffect(() => {

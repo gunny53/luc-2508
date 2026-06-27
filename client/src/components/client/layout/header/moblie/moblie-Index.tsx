@@ -1,4 +1,4 @@
-// src/components/client/layout/header/mobile/mobile-Index.tsx
+
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -25,7 +25,6 @@ export function MobileHeader() {
         }}
       >
         <div className="flex flex-col gap-2 overflow-visible">
-          {/* Row 1 */}
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-2">
               <MobileCategories>
@@ -49,7 +48,6 @@ export function MobileHeader() {
             </div>
           </div>
 
-          {/* Row 2 */}
           <div className="w-full px-1">
             <MobileSearchInput />
           </div>

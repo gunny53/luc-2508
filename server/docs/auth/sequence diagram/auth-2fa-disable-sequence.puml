@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Auth Auth 2fa Disable Sequence: validate request and return the expected response
 
 actor "User" as U
 participant "AuthController" as AC
@@ -56,7 +56,7 @@ AS -> SUR: update({ id: userId }, { totpSecret: null, updatedById: userId })
 SUR -> DB: user.update()
 DB --> SUR: ok
 SUR --> AS: ok
-AS --> AC: English content normalized from the original source text.
+AS --> AC: Auth Auth 2fa Disable Sequence: validate request and return the expected response
 deactivate AS
 
 AC --> U: 200 OK + message

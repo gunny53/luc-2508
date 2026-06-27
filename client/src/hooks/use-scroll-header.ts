@@ -41,7 +41,7 @@ export function useScrollHeader(threshold = 100) {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
 
-    // Reset header khi resize window
+    
     const onResize = () => {
       if (window.scrollY < threshold) {
         setShowHeader(true)

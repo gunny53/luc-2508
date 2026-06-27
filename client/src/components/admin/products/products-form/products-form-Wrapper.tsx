@@ -6,7 +6,7 @@ interface ProductFormWrapperProps {
   onCreateSuccess?: (newProductId: string) => void
 }
 
-// Dynamic import ProductForm component
+
 const ProductFormDynamic = dynamic(() => import('./form-index').then((mod) => mod.ProductForm), { ssr: false })
 
 export default function ProductFormWrapper({ initialData, onCreateSuccess }: ProductFormWrapperProps) {

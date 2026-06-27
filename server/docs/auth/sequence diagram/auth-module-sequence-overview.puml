@@ -5,7 +5,7 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
+Auth Auth Module Sequence Overview: validate request and return the expected response
 
 actor "Client" as C
 participant "AuthController" as AC
@@ -145,13 +145,13 @@ AS -> AC: return success
 AC -> C: return success
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
+* Auth Auth Module Sequence Overview: validate request and return the expected response
+• Auth Auth Module Sequence Overview: validate request and return the expected response
 • Google OAuth integration
 • JWT token management (access + refresh)
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Auth Auth Module Sequence Overview: validate request and return the expected response
+• Auth Auth Module Sequence Overview: validate request and return the expected response
+• Auth Auth Module Sequence Overview: validate request and return the expected response
 • Cookie-based authentication
 • Comprehensive error handling
 end note

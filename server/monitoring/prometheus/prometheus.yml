@@ -7,11 +7,9 @@ global:
     application: ecsite
     datacenter: vps
 
-# Alerting rules
 rule_files:
   - 'rules/performance.yml'
 
-# Alertmanager configuration
 alerting:
   alertmanagers:
     - static_configs:
@@ -28,7 +26,6 @@ scrape_configs:
     scrape_timeout: 5s
     honor_labels: true
 
-  # ECSite API Server - Performance monitoring
   - job_name: 'ecsite-api'
     static_configs:
       - targets:
@@ -107,7 +104,6 @@ scrape_configs:
         target_label: service
         replacement: 'redis'
 
-  # Node Exporter cho system metrics - Infrastructure monitoring
   - job_name: 'node'
     static_configs:
       - targets: ['ecsite_node_exporter:9100']
@@ -124,7 +120,6 @@ scrape_configs:
         target_label: service
         replacement: 'system'
 
-  # Grafana monitoring
   - job_name: 'grafana'
     static_configs:
       - targets: ['ecsite_grafana:3000']
@@ -141,11 +136,9 @@ scrape_configs:
         target_label: service
         replacement: 'grafana'
 
-  # System Monitor - Advanced system metrics cho high-load scenarios
   - job_name: 'system-monitor'
     static_configs:
       - targets: ['ecsite_system_monitor:9226']
-  # Blackbox synthetic probe
   - job_name: 'blackbox'
     metrics_path: /probe
     params:
@@ -160,25 +153,20 @@ scrape_configs:
       - target_label: __address__
         replacement: blackbox_exporter:9115
 
-  # Nginx exporter
   - job_name: 'nginx'
     static_configs:
       - targets: ['ecsite_nginx_exporter:9113']
 
-  # Loki metrics
   - job_name: 'loki'
     static_configs:
       - targets: ['loki:3100']
     metrics_path: /metrics
 
-  # Tempo metrics
   - job_name: 'tempo'
     static_configs:
       - targets: ['tempo:3200']
     metrics_path: /metrics
-  # PM2 exporter metrics
   - job_name: 'pm2'
     static_configs:
       - targets: ['103.147.186.84:9209']
 
-  # Prometheus Exporters

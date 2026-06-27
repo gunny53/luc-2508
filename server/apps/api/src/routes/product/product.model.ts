@@ -69,9 +69,6 @@ export const ProductListItemSchema = z.object({
   )
 })
 
-/**
- * ⚡ Optimized Products List Response - Ultra-fast cho homepage
- */
 export const GetProductsResSchema = z.object({
   message: z.string().optional(),
   data: z.array(ProductListItemSchema),
@@ -123,7 +120,7 @@ export const CreateProductBodySchema = ProductSchema.pick({
       return ctx.addIssue({
         code: 'custom',
         path: ['skus'],
-        message: `English content normalized from the original source text.${skuValueArray.length}English content normalized from the original source text.`
+        message: `SKU list must contain exactly ${skuValueArray.length} combinations.`
       })
     }
     let wrongSKUIndex = -1
@@ -138,7 +135,7 @@ export const CreateProductBodySchema = ProductSchema.pick({
       ctx.addIssue({
         code: 'custom',
         path: ['skus'],
-        message: `English content normalized from the original source text.${wrongSKUIndex}English content normalized from the original source text.`
+        message: `SKU at index ${wrongSKUIndex} does not match the generated variant combination.`
       })
     }
   })

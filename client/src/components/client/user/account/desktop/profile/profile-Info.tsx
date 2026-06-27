@@ -42,8 +42,8 @@ export default function ProfileInfo() {
       phoneNumber: userData?.phoneNumber || '',
       avatar: userData?.avatar || '',
       email: userData?.email || '',
-      // gender: userData.gender || "",
-      // dob: userData.dob || "",
+      
+      
       address: formattedAddress
     }
   })
@@ -72,7 +72,7 @@ export default function ProfileInfo() {
 
       updateProfile(payload)
     } catch (err) {
-      console.error('English content normalized from the original source text.', err)
+      console.error('T?i kho?n', err)
     }
   }
 
@@ -95,7 +95,7 @@ export default function ProfileInfo() {
           onClick={() => document.getElementById('avatarUpload')?.click()}
         >
           <UploadCloud size={16} />
-          English content normalized from the original source text.
+          T?i kho?n
         </Button>
         <input
           type="file"
@@ -118,11 +118,11 @@ export default function ProfileInfo() {
         <form className="space-y-5">
           {(
             [
-              ['name', 'English content normalized from the original source text.'],
-              ['gender', 'English content normalized from the original source text.'],
-              ['phoneNumber', 'English content normalized from the original source text.'],
+              ['name', 'T?i kho?n'],
+              ['gender', 'T?i kho?n'],
+              ['phoneNumber', 'T?i kho?n'],
               ['email', 'Email'],
-              ['address', 'English content normalized from the original source text.']
+              ['address', 'T?i kho?n']
             ] as [keyof InfoState, string][]
           ).map(([name, label]) => (
             <FormField
@@ -133,25 +133,25 @@ export default function ProfileInfo() {
                 <FormItem>
                   <FormLabel className="text-sm">{label}</FormLabel>
                   <FormControl>
-                    {/* {name === "dob" ? (
-                      <Input
-                        type="date"
-                        {...field}
-                        className="w-full h-12 text-[15px] px-4"
-                      />
-                    ) :  */}
+                    {
+
+
+
+
+
+}
                     {name === 'gender' ? (
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <SelectTrigger className="w-full h-12 text-[15px] px-4 flex items-center border rounded-md">
-                          <SelectValue placeholder="English content normalized from the original source text." />
+                          <SelectValue placeholder="T?i kho?n" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="Nam">Nam</SelectItem>
-                          <SelectItem value="English content normalized from the original source text.">
-                            English content normalized from the original source text.
+                          <SelectItem value="T?i kho?n">
+                            T?i kho?n
                           </SelectItem>
-                          <SelectItem value="English content normalized from the original source text.">
-                            English content normalized from the original source text.
+                          <SelectItem value="T?i kho?n">
+                            T?i kho?n
                           </SelectItem>
                         </SelectContent>
                       </Select>
@@ -160,7 +160,7 @@ export default function ProfileInfo() {
                         {...field}
                         readOnly
                         className="w-full h-12 text-[15px] px-4 bg-gray-100 cursor-not-allowed"
-                        placeholder="English content normalized from the original source text."
+                        placeholder="T?i kho?n"
                       />
                     ) : (
                       <Input {...field} disabled={['email'].includes(name)} className="w-full h-12 text-[15px] px-4" />
@@ -180,7 +180,7 @@ export default function ProfileInfo() {
     <div className="bg-white rounded-lg p-6">
       <div className="flex justify-between items-center mb-5">
         <h2 className="font-semibold text-base text-[#121214]">
-          English content normalized from the original source text.
+          T?i kho?n
         </h2>
         <Button
           variant="ghost"
@@ -188,17 +188,17 @@ export default function ProfileInfo() {
           onClick={() => setOpen(true)}
         >
           <Pencil size={16} />
-          English content normalized from the original source text.
+          T?i kho?n
         </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-sm text-[#1D1D20]">
         <div className="flex justify-between py-2 border-t">
-          <span className="text-[#71717A]">English content normalized from the original source text.</span>
+          <span className="text-[#71717A]">T?i kho?n</span>
           <span className="font-medium">{userData.name}</span>
         </div>
         <div className="flex justify-between py-2 border-t">
-          <span className="text-[#71717A]">English content normalized from the original source text.</span>
+          <span className="text-[#71717A]">T?i kho?n</span>
           <span className="font-medium">{userData.phoneNumber}</span>
         </div>
         <div className="flex justify-between py-2 border-t">
@@ -206,9 +206,9 @@ export default function ProfileInfo() {
           <span className="font-medium">{userData.email}</span>
         </div>
         <div className="flex justify-between py-2 border-t">
-          <span className="text-[#71717A]">English content normalized from the original source text.</span>
+          <span className="text-[#71717A]">T?i kho?n</span>
           <span className="font-medium text-right">
-            {formattedAddress || 'English content normalized from the original source text.'}
+            {formattedAddress || 'T?i kho?n'}
           </span>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function ProfileInfo() {
         <Drawer open={open} onOpenChange={setOpen}>
           <DrawerContent className="p-0">
             <DrawerHeader>
-              <DrawerTitle>English content normalized from the original source text.</DrawerTitle>
+              <DrawerTitle>T?i kho?n</DrawerTitle>
             </DrawerHeader>
 
             <div className="px-4 overflow-y-auto max-h-[calc(80vh-100px)]">{formContent}</div>
@@ -232,10 +232,10 @@ export default function ProfileInfo() {
                   setOpen(false)
                 }}
               >
-                English content normalized from the original source text.
+                T?i kho?n
               </Button>
               <Button onClick={form.handleSubmit(onSubmit)} disabled={loading}>
-                English content normalized from the original source text.
+                T?i kho?n
               </Button>
             </DrawerFooter>
           </DrawerContent>
@@ -244,7 +244,7 @@ export default function ProfileInfo() {
         <SheetRework
           open={open}
           onOpenChange={setOpen}
-          title="English content normalized from the original source text."
+          title="T?i kho?n"
           subtitle=""
           onCancel={() => {
             form.reset()
@@ -252,8 +252,8 @@ export default function ProfileInfo() {
             resetUpload()
           }}
           onConfirm={form.handleSubmit(onSubmit)}
-          confirmText="English content normalized from the original source text."
-          cancelText="English content normalized from the original source text."
+          confirmText="T?i kho?n"
+          cancelText="T?i kho?n"
           loading={loading}
           className="sm:!max-w-lg w-full px-2"
         >

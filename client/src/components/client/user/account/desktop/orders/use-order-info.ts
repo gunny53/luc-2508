@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-// Update the import path if alias '@' is not configured
+
 import { GetOrderInfoResponse } from '@/types/shipping.interface'
 import shippingService from '@/services/shipping-service'
 

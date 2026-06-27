@@ -30,7 +30,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
   const dispatch = useDispatch()
   const { connect, disconnect, payments, isConnected } = useECSiteSocket()
 
-  // Debug log cartItemIds
+  
   console.log('🛍️ CheckoutMain - Received cartItemIds:', {
     cartItemIds,
     count: cartItemIds.length,
@@ -78,7 +78,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
             setActivePaymentId(result.paymentId)
             setActiveOrderId(result.orderId || '')
             console.log(`[VNPay] Connecting to socket with paymentId: ${result.paymentId}`)
-            connect(result.paymentId.toString()) // Convert to string for connect function
+            connect(result.paymentId.toString()) 
           }
           sessionStorage.setItem('lastOrderId', result.orderId || '')
           sessionStorage.setItem('orderAmount', totalAmount.toString())
@@ -102,7 +102,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
     }
   }
 
-  // Socket event listener for VNPay payment status
+  
   useEffect(() => {
     if (!payments.length || !activeOrderId || !activePaymentId) return
 
@@ -110,7 +110,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
 
     const latestPayment = payments[payments.length - 1]
 
-    // Check if the latest payment is a success for the current order
+    
     if (
       latestPayment &&
       latestPayment.orderId === activeOrderId &&
@@ -118,17 +118,17 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
       latestPayment.gateway === 'vnpay'
     ) {
       console.log('✅ VNPay payment success event received via WebSocket for order:', activeOrderId)
-      toast.success('English content normalized from the original source text.')
+      toast.success('Thanh to?n')
 
-      // Redirect to success page
+      
       router.push(`/checkout/payment-success?orderId=${activeOrderId}&totalAmount=${totalAmount}`)
 
-      // Disconnect socket after successful payment
+      
       disconnect()
     }
   }, [payments, activeOrderId, activePaymentId, router, totalAmount, disconnect])
 
-  // Fallback polling mechanism for VNPay payment status
+  
   useEffect(() => {
     if (!activeOrderId || !activePaymentId || !isRedirecting || redirectingTo !== 'vnpay') return
 
@@ -140,27 +140,27 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
         const order = await orderService.getById(activeOrderId)
         if (order && order.data.status === OrderStatus.PICKUPED) {
           clearInterval(intervalId)
-          toast.success('English content normalized from the original source text.')
+          toast.success('Thanh to?n')
           router.push(`/checkout/payment-success?orderId=${activeOrderId}&totalAmount=${totalAmount}`)
 
-          // Disconnect socket after successful payment
+          
           disconnect()
         }
       } catch (error) {
-        console.error('English content normalized from the original source text.', error)
+        console.error('Thanh to?n', error)
       }
     }
 
-    // Check every 5 seconds
+    
     intervalId = setInterval(checkVNPayPaymentStatus, 5000)
 
-    // Cleanup
+    
     return () => {
       clearInterval(intervalId)
     }
   }, [activeOrderId, activePaymentId, isRedirecting, redirectingTo, router, totalAmount, disconnect])
 
-  // Cleanup effect to disconnect socket when component unmounts
+  
   useEffect(() => {
     return () => {
       if (activePaymentId) {
@@ -170,7 +170,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
     }
   }, [activePaymentId, disconnect])
   const handlePaymentConfirm = () => {
-    // If we have order ID, redirect to order success page, otherwise go to dashboard
+    
     if (orderResult?.orderId) {
       router.push(`/checkout/payment-success?orderId=${orderResult.orderId}&totalAmount=${totalAmount}`)
     } else {
@@ -182,7 +182,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
     setOrderResult(null)
   }
 
-  // Helper function to get footer step type
+  
   const getFooterStep = (step: CheckoutStep): 'information' | 'payment' => {
     return step === 'cart' ? 'information' : step
   }
@@ -227,22 +227,22 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
               />
             </div>
             <CardTitle className="text-blue-700 text-xl font-bold">
-              English content normalized from the original source text.
+              Thanh to?n
             </CardTitle>
             <CardDescription className="text-gray-600">
-              English content normalized from the original source text.
+              Thanh to?n
             </CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-6 pt-6">
-            {/* Loading indicator */}
+            {}
             <div className="flex justify-center">
               <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
             </div>
 
             <div className="text-center text-sm text-gray-600">
-              <p>English content normalized from the original source text.</p>
-              <p>English content normalized from the original source text.</p>
+              <p>Thanh to?n</p>
+              <p>Thanh to?n</p>
             </div>
           </CardContent>
         </Card>
@@ -252,20 +252,20 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      {/* <CheckoutHeader /> */}
+      {}
+      {}
 
-      {/* Main Content */}
+      {}
       <div className="flex-1 max-w-[1920px] w-full mx-auto px-3 sm:px-4 lg:px-8 2xl:px-12 py-3 lg:py-6">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-12">
-          {/* Main Form Section */}
+          {}
           <div className="flex-1 order-1 lg:order-1 min-w-0 lg:max-w-[calc(100%-520px)] xl:max-w-[calc(100%-580px)]">
-            {/* Steps */}
+            {}
             <div className="sticky top-0 z-10 -mx-3 px-3 sm:-mx-4 sm:px-4 lg:static lg:mx-0 lg:px-0 py-2">
               <CheckoutSteps activeStep={state.step} onStepChange={handleStepChange} />
             </div>
 
-            {/* Form Content */}
+            {}
             <div className="mt-3 lg:mt-4 space-y-4">
               {state.step === 'information' ? (
                 <InformationTabs onNext={() => goToStep('payment')} />
@@ -275,7 +275,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
             </div>
           </div>
 
-          {/* Order Summary - Desktop */}
+          {}
           <div className="hidden lg:block w-full lg:w-[500px] xl:w-[560px] order-2 lg:mt-[72px] flex-shrink-0">
             <div className="sticky top-6">
               <FooterSection
@@ -290,7 +290,7 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
         </div>
       </div>
 
-      {/* Order Summary - Mobile */}
+      {}
       <div className="lg:hidden sticky bottom-0 left-0 right-0 bg-white border-t shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
         <div className="p-3">
           <FooterSection
@@ -307,12 +307,12 @@ export function CheckoutMain({ cartItemIds = [] }: CheckoutMainProps) {
   )
 }
 
-// Add cleanup effect to clear checkout state when component unmounts
+
 export function CheckoutMainWithCleanup({ cartItemIds = [] }: CheckoutMainProps) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // Cleanup function - clear state when leaving checkout page
+    
     return () => {
       console.log('🧹 Clearing checkout state on page exit')
       dispatch(clearCheckoutState())

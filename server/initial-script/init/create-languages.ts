@@ -3,12 +3,12 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function createLanguages(): Promise<void> {
-  console.log('English content normalized from the original source text.')
+  console.log('Ensuring supported languages exist...')
 
   const languages = [
     {
       id: 'vi',
-      name: 'English content normalized from the original source text.'
+      name: 'Tiếng Việt'
     },
     {
       id: 'en',
@@ -28,13 +28,13 @@ async function createLanguages(): Promise<void> {
           name: language.name
         }
       })
-      console.log(`English content normalized from the original source text.${language.name} (${language.id})`)
+      console.log(`Created language: ${language.name} (${language.id})`)
     } else {
-      console.log(`English content normalized from the original source text.${language.name} (${language.id})`)
+      console.log(`Language already exists: ${language.name} (${language.id})`)
     }
   }
 
-  console.log('English content normalized from the original source text.')
+  console.log('Language seed completed.')
 }
 
 async function main(): Promise<void> {
@@ -42,7 +42,7 @@ async function main(): Promise<void> {
     await prisma.$connect()
     await createLanguages()
   } catch (error) {
-    console.error('English content normalized from the original source text.', error)
+    console.error('Failed to seed languages:', error)
     throw error
   } finally {
     await prisma.$disconnect()
@@ -52,11 +52,11 @@ async function main(): Promise<void> {
 if (require.main === module) {
   main()
     .then(() => {
-      console.log('English content normalized from the original source text.')
+      console.log('Language seed finished successfully.')
       process.exit(0)
     })
     .catch((error) => {
-      console.error('English content normalized from the original source text.', error)
+      console.error('Language seed failed:', error)
       process.exit(1)
     })
 }

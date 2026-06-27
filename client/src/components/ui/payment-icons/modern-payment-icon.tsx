@@ -38,7 +38,7 @@ const paymentIconConfig: PaymentIconConfigMap = {
     gradient: 'from-[#E21836] to-[#FF4D6A]'
   },
   momo: {
-    icon: 'custom:momo', // This will be used as a flag to render the custom image
+    icon: 'custom:momo', 
     color: '#A50064',
     gradient: 'from-[#A50064] to-[#E0156E]'
   }
@@ -96,7 +96,6 @@ export function ModernPaymentIcon({ type, size = 32, className }: PaymentIconPro
             )}
           </motion.div>
         </div>
-        {/* Background Gradient */}
         <motion.div
           className={cn(
             'absolute inset-0 opacity-0 bg-gradient-to-r',
@@ -104,7 +103,6 @@ export function ModernPaymentIcon({ type, size = 32, className }: PaymentIconPro
             'group-hover:opacity-5 transition-opacity duration-500'
           )}
         />
-        {/* Shine Effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 group-hover:opacity-100 -skew-x-12"
           animate={{
@@ -117,7 +115,6 @@ export function ModernPaymentIcon({ type, size = 32, className }: PaymentIconPro
             delay: 0.2
           }}
         />
-        {/* Glow Border */}
         <motion.div
           className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500"
           animate={{
@@ -133,10 +130,8 @@ export function ModernPaymentIcon({ type, size = 32, className }: PaymentIconPro
             ease: 'easeInOut'
           }}
         />
-        {/* Inner Shadow */}
         <div className="absolute inset-0 rounded-lg shadow-inner opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
       </div>
-      {/* Outer Glow */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-[var(--payment-color)] to-transparent opacity-0 group-hover:opacity-10 blur-sm rounded-lg transition-opacity duration-500" />
     </motion.div>
   )

@@ -115,8 +115,8 @@ export const userColumns = ({
             }
           >
             {isActive
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'T?i kho?n'
+              : 'T?i kho?n'}
           </Badge>
         )
       },

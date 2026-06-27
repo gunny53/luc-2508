@@ -1,14 +1,14 @@
-// export interface BaseResponse<T> {
-//   status?: number;
-//   success?: boolean;
-//   statusCode?: number;
-//   title?: string;
-//   message?: string;
-//   timestamp?: string;
-//   requestId?: string;
-//   data: T;
-//   metadata?: PaginationMetadata;
-// }
+
+
+
+
+
+
+
+
+
+
+
 
 export interface BaseResponse {
   status?: number
@@ -38,17 +38,14 @@ export interface PaginationMetadata {
   totalPages?: number
   hasNext?: boolean
   hasPrevious?: boolean
-  hasPrev?: boolean // Added to support both naming conventions
+  hasPrev?: boolean 
   search?: string
   sortBy?: string
   sortOrder?: string
   createdById?: string
 }
 
-/**
- * @interface BaseEntity
- * @description A base interface for all entities, containing common properties.
- */
+
 export interface BaseEntity {
   id: string
   createdById: number

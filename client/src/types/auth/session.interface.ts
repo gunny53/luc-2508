@@ -1,6 +1,6 @@
 import { BaseResponse, PaginationRequest } from '../base.interface'
 
-// Defines the structure for a single login session
+
 export interface Session {
   id: string
   createdAt: string
@@ -18,7 +18,7 @@ export interface Session {
   isCurrent: boolean
 }
 
-// Defines the structure for a device, which can have multiple sessions
+
 export interface Device {
   deviceId: number
   name: string
@@ -40,12 +40,12 @@ export interface Device {
   sessions: Session[]
 }
 
-// Defines the response structure for the API call that gets all sessions
+
 export interface SessionGetALLResponse extends BaseResponse, PaginationRequest {
   data: Device[]
 }
 
-// Interfaces for revoking sessions
+
 export interface SessionRevokeAllRequest {
   excludeCurrentSession?: boolean
 }

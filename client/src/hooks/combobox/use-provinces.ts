@@ -30,29 +30,27 @@ interface UseProvincesReturn {
   resetAll: () => void
 }
 
-/**
- * A custom hook for managing provinces, districts, and wards data from Vietnam's administrative units
- */
+
 export function useProvinces(): UseProvincesReturn {
-  // Store all data
+  
   const [provincesData, setProvincesData] = useState<Province[]>([])
   const [districtsData, setDistrictsData] = useState<District[]>([])
   const [wardsData, setWardsData] = useState<Ward[]>([])
 
-  // Selected values
+  
   const [selectedProvince, setSelectedProvince] = useState<string>('')
   const [selectedDistrict, setSelectedDistrict] = useState<string>('')
   const [selectedWard, setSelectedWard] = useState<string>('')
 
-  // Loading states
+  
   const [isLoadingProvinces, setIsLoadingProvinces] = useState<boolean>(false)
   const [isLoadingDistricts, setIsLoadingDistricts] = useState<boolean>(false)
   const [isLoadingWards, setIsLoadingWards] = useState<boolean>(false)
 
-  // Error state
+  
   const [error, setError] = useState<string | null>(null)
 
-  // Convert raw data to dropdown options
+  
   const provinces: LocationOption[] = provincesData.map((province) => ({
     value: province.code,
     label: province.name
@@ -68,7 +66,7 @@ export function useProvinces(): UseProvincesReturn {
     label: ward.name
   }))
 
-  // Helper functions to get names from codes
+  
   const getProvinceName = (code: string): string => {
     const province = provincesData.find((p) => p.code === code)
     return province?.name || ''
@@ -84,7 +82,7 @@ export function useProvinces(): UseProvincesReturn {
     return ward?.name || ''
   }
 
-  // Reset functions
+  
   const resetDistrict = () => {
     setSelectedDistrict('')
     setDistrictsData([])
@@ -103,7 +101,7 @@ export function useProvinces(): UseProvincesReturn {
     setWardsData([])
   }
 
-  // Fetch all provinces on initial load
+  
   useEffect(() => {
     const fetchProvinces = async () => {
       setIsLoadingProvinces(true)
@@ -114,7 +112,7 @@ export function useProvinces(): UseProvincesReturn {
         setProvincesData(data)
       } catch (err) {
         console.error('Failed to fetch provinces:', err)
-        setError('English content normalized from the original source text.')
+        setError('ECSite')
       } finally {
         setIsLoadingProvinces(false)
       }
@@ -123,7 +121,7 @@ export function useProvinces(): UseProvincesReturn {
     fetchProvinces()
   }, [])
 
-  // Fetch districts when province changes
+  
   useEffect(() => {
     if (!selectedProvince) {
       resetDistrict()
@@ -137,10 +135,10 @@ export function useProvinces(): UseProvincesReturn {
       try {
         const data = await provincesService.getDistrictsByProvince(selectedProvince)
         setDistrictsData(data)
-        resetWard() // Reset ward when province changes
+        resetWard() 
       } catch (err) {
         console.error(`Failed to fetch districts for province ${selectedProvince}:`, err)
-        setError('English content normalized from the original source text.')
+        setError('ECSite')
       } finally {
         setIsLoadingDistricts(false)
       }
@@ -149,7 +147,7 @@ export function useProvinces(): UseProvincesReturn {
     fetchDistricts()
   }, [selectedProvince])
 
-  // Fetch wards when district changes
+  
   useEffect(() => {
     if (!selectedDistrict) {
       resetWard()
@@ -165,7 +163,7 @@ export function useProvinces(): UseProvincesReturn {
         setWardsData(data)
       } catch (err) {
         console.error(`Failed to fetch wards for district ${selectedDistrict}:`, err)
-        setError('English content normalized from the original source text.')
+        setError('ECSite')
       } finally {
         setIsLoadingWards(false)
       }

@@ -30,7 +30,7 @@ export const ChangePasswordModal = ({ open, onOpenChange }: ChangePasswordModalP
   const [showNewPassword, setShowNewPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  // Create the schema dynamically with the translation function
+  
   const currentPasswordSchema = useUpdatePasswordSchema(t)
   type PasswordFormData = z.infer<typeof currentPasswordSchema>
 
@@ -69,7 +69,7 @@ export const ChangePasswordModal = ({ open, onOpenChange }: ChangePasswordModalP
                   password: data.password,
                   newPassword: data.newPassword,
                   confirmNewPassword: data.confirmNewPassword
-                  // revokeOtherSessions: revokeOtherSessions,
+                  
                 })
 
                 if (result) {

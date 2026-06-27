@@ -26,18 +26,18 @@ export function CategoryTable() {
     handleSortChange,
     refreshData,
 
-    // Modal states
+    
     upsertOpen,
     modalMode,
     categoryToEdit,
     handleOpenUpsertModal,
     handleCloseUpsertModal,
 
-    // CRUD functions
+    
     addCategory,
     editCategory,
 
-    // Delete state & handlers
+    
     deleteOpen,
     categoryToDelete,
     deleteLoading,
@@ -45,7 +45,7 @@ export function CategoryTable() {
     handleConfirmDelete,
     handleCloseDeleteModal,
 
-    // Navigation
+    
     currentParentId,
     breadcrumb,
     currentCategoryTitle,
@@ -70,7 +70,6 @@ export function CategoryTable() {
 
   return (
     <div className="w-full space-y-4">
-      {/* Add button */}
       <div className="flex justify-end">
         <Button onClick={handleCreateCategory}>
           <Plus className="w-4 h-4 mr-2" />
@@ -78,7 +77,6 @@ export function CategoryTable() {
         </Button>
       </div>
 
-      {/* Search and View Options */}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -91,7 +89,6 @@ export function CategoryTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {/* Breadcrumb navigation */}
       {(currentParentId !== null || breadcrumb.length > 0) && (
         <div className="flex items-center gap-2 mb-2 bg-muted/30 p-2 rounded-md">
           <Button
@@ -131,7 +128,6 @@ export function CategoryTable() {
         </div>
       )}
 
-      {/* Data Table */}
       <div className="relative">
         <DataTable
           table={table}
@@ -154,7 +150,6 @@ export function CategoryTable() {
         />
       </div>
 
-      {/* Upsert Modal */}
       <CategoryModalUpsert
         isOpen={upsertOpen}
         onClose={handleCloseUpsertModal}
@@ -170,7 +165,6 @@ export function CategoryTable() {
         }}
       />
 
-      {/* Delete Confirmation Modal */}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {

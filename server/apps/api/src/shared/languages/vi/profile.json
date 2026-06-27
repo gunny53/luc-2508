@@ -1,27 +1,27 @@
 {
   "success": {
-    "GET_PROFILE": "English content normalized from the original source text.",
-    "UPDATE_PROFILE": "English content normalized from the original source text.",
-    "CHANGE_PASSWORD": "English content normalized from the original source text.",
-    "GET_ADDRESSES": "English content normalized from the original source text.",
-    "GET_ADDRESS_DETAIL": "English content normalized from the original source text.",
-    "CREATE_ADDRESS": "English content normalized from the original source text.",
-    "UPDATE_ADDRESS": "English content normalized from the original source text.",
-    "DELETE_ADDRESS": "English content normalized from the original source text.",
-    "SET_DEFAULT_ADDRESS": "English content normalized from the original source text.",
-    "GET_STATISTICS": "English content normalized from the original source text."
+    "GET_PROFILE": "Lấy thông tin hồ sơ thành công.",
+    "UPDATE_PROFILE": "Cập nhật hồ sơ thành công.",
+    "CHANGE_PASSWORD": "Đổi mật khẩu thành công.",
+    "GET_ADDRESSES": "Lấy danh sách địa chỉ thành công.",
+    "GET_ADDRESS_DETAIL": "Lấy chi tiết địa chỉ thành công.",
+    "CREATE_ADDRESS": "Tạo địa chỉ thành công.",
+    "UPDATE_ADDRESS": "Cập nhật địa chỉ thành công.",
+    "DELETE_ADDRESS": "Xóa địa chỉ thành công.",
+    "SET_DEFAULT_ADDRESS": "Thao tác với hồ sơ không thành công.",
+    "GET_STATISTICS": "Thao tác với hồ sơ không thành công."
   },
   "error": {
-    "NOT_FOUND": "English content normalized from the original source text.",
-    "INVALID_PASSWORD": "English content normalized from the original source text.",
-    "UPDATE_FAILED": "English content normalized from the original source text.",
-    "CHANGE_PASSWORD_FAILED": "English content normalized from the original source text.",
-    "ADDRESS_NOT_FOUND": "English content normalized from the original source text.",
-    "ADDRESS_ACCESS_DENIED": "English content normalized from the original source text.",
-    "CREATE_ADDRESS_FAILED": "English content normalized from the original source text.",
-    "UPDATE_ADDRESS_FAILED": "English content normalized from the original source text.",
-    "DELETE_ADDRESS_FAILED": "English content normalized from the original source text.",
-    "SET_DEFAULT_ADDRESS_FAILED": "English content normalized from the original source text.",
-    "GET_STATISTICS_FAILED": "English content normalized from the original source text."
+    "NOT_FOUND": "Không tìm thấy hồ sơ.",
+    "INVALID_PASSWORD": "Mật khẩu không chính xác.",
+    "UPDATE_FAILED": "Thao tác với hồ sơ không thành công.",
+    "CHANGE_PASSWORD_FAILED": "Thao tác với hồ sơ không thành công.",
+    "ADDRESS_NOT_FOUND": "Không tìm thấy hồ sơ.",
+    "ADDRESS_ACCESS_DENIED": "Thao tác với hồ sơ không thành công.",
+    "CREATE_ADDRESS_FAILED": "Thao tác với hồ sơ không thành công.",
+    "UPDATE_ADDRESS_FAILED": "Thao tác với hồ sơ không thành công.",
+    "DELETE_ADDRESS_FAILED": "Thao tác với hồ sơ không thành công.",
+    "SET_DEFAULT_ADDRESS_FAILED": "Thao tác với hồ sơ không thành công.",
+    "GET_STATISTICS_FAILED": "Thao tác với hồ sơ không thành công."
   }
 }

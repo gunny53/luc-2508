@@ -1,4 +1,4 @@
-// sidebarItems.ts
+
 import { BellDot, User, NotepadText } from 'lucide-react'
 
 export const sidebarItems = [

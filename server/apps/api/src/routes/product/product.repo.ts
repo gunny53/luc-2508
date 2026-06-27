@@ -136,7 +136,7 @@ export class ProductRepo {
                     status: 'DELIVERED'
                   },
                   select: {
-                    id: true // Minimal select for count ordering
+                    id: true 
                   }
                 }
               }
@@ -279,7 +279,7 @@ export class ProductRepo {
         }
       })
       .then(async (product) => {
-        // Trigger sync to Elasticsearch
+        
         try {
           await this.searchSyncService.addSyncProductJob(product.id, 'create')
         } catch (error) {
@@ -369,7 +369,7 @@ export class ProductRepo {
       })
     ])
 
-    // Trigger sync to Elasticsearch
+    
     try {
       await this.searchSyncService.addSyncProductJob(id, 'update')
     } catch (error) {
@@ -430,7 +430,7 @@ export class ProductRepo {
       })
     ])
 
-    // Trigger sync to Elasticsearch
+    
     try {
       await this.searchSyncService.addSyncProductJob(id, 'delete')
     } catch (error) {

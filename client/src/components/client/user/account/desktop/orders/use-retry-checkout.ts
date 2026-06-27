@@ -22,7 +22,7 @@ export const useRetryCheckout = () => {
   const [order, setOrder] = useState<Order | null>(null)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('')
 
-  // Load order data for retry
+  
   const loadOrderForRetry = useCallback(async (orderId: string) => {
     if (!orderId) return null
 
@@ -31,9 +31,9 @@ export const useRetryCheckout = () => {
       const response = await orderService.getById(orderId)
       const orderData = response.data
 
-      // Validate order can be retried
+      
       if (orderData.status !== 'PENDING_PAYMENT') {
-        toast.error('English content normalized from the original source text.')
+        toast.error('??n h?ng')
         return null
       }
 
@@ -41,23 +41,23 @@ export const useRetryCheckout = () => {
       return orderData
     } catch (error: any) {
       console.error('Error loading order for retry:', error)
-      toast.error('English content normalized from the original source text.')
+      toast.error('??n h?ng')
       return null
     } finally {
       setIsLoading(false)
     }
   }, [])
 
-  // Handle retry payment based on selected method
+  
   const handleRetryPayment = useCallback(
     async (orderId: string, paymentMethod: string): Promise<RetryPaymentResult | null> => {
       if (!order) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('??n h?ng')
         return null
       }
 
       if (!paymentMethod) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('??n h?ng')
         return null
       }
 
@@ -68,16 +68,16 @@ export const useRetryCheckout = () => {
         } else if (paymentMethod === 'vnpay') {
           return await handleVNPayRetry(orderId)
         } else {
-          toast.error('English content normalized from the original source text.')
+          toast.error('??n h?ng')
           return null
         }
       } catch (error: any) {
         console.error('Retry payment error:', error)
-        toast.error('English content normalized from the original source text.')
+        toast.error('??n h?ng')
         return {
           success: false,
           paymentMethod,
-          error: error.message || 'English content normalized from the original source text.'
+          error: error.message || '??n h?ng'
         }
       } finally {
         setIsLoading(false)
@@ -86,14 +86,14 @@ export const useRetryCheckout = () => {
     [order]
   )
 
-  // Handle Sepay retry payment
+  
   const handleSepayRetry = useCallback(
     async (orderId: string): Promise<RetryPaymentResult> => {
       if (!order) {
         throw new Error('Order data not found')
       }
 
-      toast.success('English content normalized from the original source text.')
+      toast.success('??n h?ng')
 
       return {
         success: true,
@@ -106,7 +106,7 @@ export const useRetryCheckout = () => {
     [order]
   )
 
-  // Handle VNPay retry payment
+  
   const handleVNPayRetry = useCallback(
     async (orderId: string): Promise<RetryPaymentResult> => {
       if (!order) {
@@ -114,7 +114,7 @@ export const useRetryCheckout = () => {
       }
 
       try {
-        // Create VNPay payment URL for retry
+        
         const vnPayResponse = await orderService.createPaymentVnPayUrl({
           amount: order.totalPayment,
           orderInfo: `DH${order.paymentId}`,
@@ -122,7 +122,7 @@ export const useRetryCheckout = () => {
           locale: 'vn'
         })
 
-        toast.success('English content normalized from the original source text.')
+        toast.success('??n h?ng')
 
         return {
           success: true,
@@ -137,7 +137,7 @@ export const useRetryCheckout = () => {
         }
       } catch (error: any) {
         console.error('Failed to generate VNPay URL for retry:', error)
-        toast.error('English content normalized from the original source text.')
+        toast.error('??n h?ng')
 
         return {
           success: false,
@@ -151,12 +151,12 @@ export const useRetryCheckout = () => {
     [order]
   )
 
-  // Update payment method selection
+  
   const updatePaymentMethod = useCallback((method: string) => {
     setSelectedPaymentMethod(method)
   }, [])
 
-  // Navigate to payment success/failure
+  
   const navigateToResult = useCallback(
     (orderId: string, totalAmount: number, status: 'success' | 'failed' | 'pending' = 'pending') => {
       const params = new URLSearchParams({
@@ -171,7 +171,7 @@ export const useRetryCheckout = () => {
     [router]
   )
 
-  // Reset retry state
+  
   const resetRetryState = useCallback(() => {
     setOrder(null)
     setSelectedPaymentMethod('')
@@ -179,19 +179,19 @@ export const useRetryCheckout = () => {
   }, [])
 
   return {
-    // State
+    
     isLoading,
     order,
     selectedPaymentMethod,
 
-    // Actions
+    
     loadOrderForRetry,
     handleRetryPayment,
     updatePaymentMethod,
     navigateToResult,
     resetRetryState,
 
-    // Payment method handlers
+    
     handleSepayRetry,
     handleVNPayRetry
   }

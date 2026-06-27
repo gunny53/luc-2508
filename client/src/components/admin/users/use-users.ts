@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 
 export const useUsers = () => {
   const t = useTranslations()
-  // Modal states
+  
   const [upsertOpen, setUpsertOpen] = useState(false)
   const [modalMode, setModalMode] = useState<'add' | 'edit'>('add')
   const [userToEdit, setUserToEdit] = useState<User | null>(null)
@@ -18,7 +18,7 @@ export const useUsers = () => {
   const [userToDelete, setUserToDelete] = useState<User | null>(null)
   const [deleteLoading, setDeleteLoading] = useState(false)
 
-  // Roles state
+  
   const [roles, setRoles] = useState<UserRole[]>([])
   const getResponseData = useCallback((response: any) => {
     return response.data || []
@@ -62,12 +62,12 @@ export const useUsers = () => {
     }
   })
 
-  // Fetch roles data
+  
   useEffect(() => {
     const fetchRoles = async () => {
       try {
         const response = await roleService.getAll({ limit: 100, page: 1 } as any)
-        // Map response data to UserRole structure
+        
         const userRoles: UserRole[] = response.data.map((role: any) => ({
           id: role.id,
           name: role.name
@@ -81,7 +81,7 @@ export const useUsers = () => {
     fetchRoles()
   }, [])
 
-  // CRUD operations
+  
   const addUser = async (user: UserCreateRequest) => {
     try {
       await userService.create(user)
@@ -96,7 +96,7 @@ export const useUsers = () => {
 
   const editUser = async (user: User) => {
     try {
-      // Extract id for URL parameter and prepare update data without backend-managed fields
+      
       const { id, createdById, updatedById, deletedById, deletedAt, createdAt, updatedAt, role, ...updateData } = user
 
       await userService.update(id, updateData)
@@ -152,14 +152,14 @@ export const useUsers = () => {
     loading,
     pagination,
 
-    // Server-side pagination handlers
+    
     handlePageChange,
     handleLimitChange,
     handleSearch,
     handleSortChange,
     refreshData,
 
-    // Delete
+    
     deleteOpen,
     userToDelete,
     deleteLoading,
@@ -167,7 +167,7 @@ export const useUsers = () => {
     handleConfirmDelete,
     handleCloseDeleteModal,
 
-    // Upsert
+    
     upsertOpen,
     modalMode,
     userToEdit,
@@ -176,7 +176,7 @@ export const useUsers = () => {
     addUser,
     editUser,
 
-    // Data for dropdowns
+    
     roles
   }
 }

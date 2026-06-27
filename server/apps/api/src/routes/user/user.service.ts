@@ -77,7 +77,7 @@ export class UserService {
         roleNameAgent: roleName,
         roleIdTarget: data.roleId
       })
-      // Hash the password
+      
       const hashedPassword = await this.hashingService.hash(data.password || '')
       const userCreated = await this.userRepo.create({
         createdById: user.userId,

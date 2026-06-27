@@ -32,29 +32,29 @@ export function ProfileDropdown() {
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       onClick: async () => {
-        // Fetch profile data before navigation
+        
         await fetchProfile.fetchProfile()
         router.push(ROUTES.CLIENT.USER.BASE)
       }
     },
     {
       icon: ShoppingCart,
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       onClick: () => router.push('/cart')
     },
     {
       icon: ShoppingCart,
-      label: 'English content normalized from the original source text.',
+      label: 'T?i kho?n',
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
       requireDivider: true
     },
     {
       icon: LogOut,
       label: logoutLoading
-        ? 'English content normalized from the original source text.'
-        : 'English content normalized from the original source text.',
+        ? 'T?i kho?n'
+        : 'T?i kho?n',
       onClick: handleLogout
     }
   ]
@@ -65,7 +65,7 @@ export function ProfileDropdown() {
         onClick={() => router.push(ROUTES.AUTH.SIGNIN)}
         className="cursor-pointer inline-flex items-center justify-center px-4 py-3 text-white font-semibold text-[13px]"
       >
-        English content normalized from the original source text.
+        T?i kho?n
       </span>
     )
   }
@@ -93,7 +93,7 @@ export function ProfileDropdown() {
             sizes="100%"
             className="object-cover"
             onError={(e) => {
-              // Fallback to initials if image fails to load
+              
               e.currentTarget.style.display = 'none'
               e.currentTarget.parentElement!.innerHTML = avatarText
             }}
@@ -106,13 +106,11 @@ export function ProfileDropdown() {
 
   return (
     <div className="relative group profile-container" ref={dropdownRef}>
-      {/* Trigger Button */}
       <div
         className="cursor-pointer relative whitespace-nowrap inline-flex items-center gap-2 px-4 py-3 text-white font-semibold text-sm"
         onClick={() => setOpenDropdown(isOpen ? 'none' : 'profile')}
         onMouseEnter={() => setOpenDropdown('profile')}
       >
-        {/* Backdrop blur effect */}
         <motion.div
           className="absolute inset-0 rounded-full backdrop-blur-sm"
           initial={{
@@ -143,17 +141,14 @@ export function ProfileDropdown() {
           }}
         />
 
-        {/* Content layer */}
         <div className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold flex-shrink-0 text-black z-10">
           <AvatarComponent />
         </div>
         <span className="text-[13px] z-10 relative">Hello, {name}</span>
       </div>
 
-      {/* Invisible gap to prevent dropdown from closing when moving cursor to dropdown */}
       <div className="absolute h-2 w-full top-full"></div>
 
-      {/* Dropdown Menu */}
       <motion.div
         className={cn(
           'absolute top-[calc(100%+3px)] right-0 w-72 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50',
@@ -171,10 +166,8 @@ export function ProfileDropdown() {
           }
         }}
       >
-        {/* Bubble arrow pointing to the title */}
         <div className="absolute right-4 top-[-7px] w-3 h-3 bg-white transform rotate-45 border-t-1 border-l-1 border-gray-200 z-1"></div>
 
-        {/* Header with avatar and user info */}
         <div className="flex items-center justify-center pt-6 pb-4 w-full">
           <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold mr-3 flex-shrink-0 text-gray-700">
             <AvatarComponent />
@@ -184,9 +177,7 @@ export function ProfileDropdown() {
             <div className="text-[11px] text-gray-500 truncate">{email}</div>
           </div>
         </div>
-        {/* Divider */}
         <div className="h-px bg-gray-200 mx-6 my-1"></div>
-        {/* Menu Items */}
         <div>
           {isAdmin && (
             <>
@@ -195,7 +186,7 @@ export function ProfileDropdown() {
                 className="flex items-center px-5 py-2 hover:bg-gray-50 cursor-pointer text-[14px] text-gray-800"
               >
                 <LayoutDashboard className="w-4.5 h-4.5 mr-2 text-gray-800" />
-                English content normalized from the original source text.
+                T?i kho?n
               </Link>
               <div className="h-px bg-gray-200 mx-6 my-1"></div>
             </>

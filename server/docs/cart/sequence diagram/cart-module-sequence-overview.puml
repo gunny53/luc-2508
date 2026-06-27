@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Cart Cart Module Sequence Overview: validate request and return the expected response
+note top : Cart Cart Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Cart Cart Module Sequence Overview: validate request and return the expected response
 participant "CartController" as CC
 participant "CartService" as CS
 participant "CartRepo" as CR
@@ -19,35 +19,35 @@ participant "AccessTokenGuard" as AG
 database "PostgreSQL" as DB
 
 == English Section ==
-User -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> AG: English content normalized from the original source text.
-AG -> CC: English content normalized from the original source text.
+User -> AG: Cart Cart Module Sequence Overview: validate request and return the expected response
+AG -> AG: Cart Cart Module Sequence Overview: validate request and return the expected response
+AG -> AG: Cart Cart Module Sequence Overview: validate request and return the expected response
+AG -> AG: Cart Cart Module Sequence Overview: validate request and return the expected response
+AG -> CC: Cart Cart Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 User -> CC: GET /cart?page=1&limit=10
 CC -> CS: getCart(user, query)
 CS -> IC: I18nContext.current()?.lang
-IC -> CS: English content normalized from the original source text.
+IC -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
 CS -> CR: list({userId, languageId, page, limit})
 CR -> PS: $queryRaw (complex SQL)
 note right
-English content normalized from the original source text.
+Cart Cart Module Sequence Overview: validate request and return the expected response
 • JOIN CartItem → SKU → Product → ProductTranslation
 • GROUP BY Product.createdById (shop)
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> CR: English content normalized from the original source text.
-CR -> CS: English content normalized from the original source text.
+PS -> DB: Cart Cart Module Sequence Overview: validate request and return the expected response
+DB -> PS: Cart Cart Module Sequence Overview: validate request and return the expected response
+PS -> CR: Cart Cart Module Sequence Overview: validate request and return the expected response
+CR -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
 CS -> IS: i18n.t('cart.cart.success.GET_SUCCESS')
-IS -> CS: English content normalized from the original source text.
-CS -> CC: English content normalized from the original source text.
-CC -> User: English content normalized from the original source text.
+IS -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
+CS -> CC: Cart Cart Module Sequence Overview: validate request and return the expected response
+CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 User -> CC: POST /cart + {skuId, quantity}
@@ -56,41 +56,41 @@ CS -> CR: create(userId, body)
 CR -> CR: validateSKU({skuId, quantity, userId, isCreate: true})
 note right
 Logic Validation SKU:
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
+Cart Cart Module Sequence Overview: validate request and return the expected response
     CR -> PS: cartItem.upsert()
     note right
     Logic Upsert:
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Cart Cart Module Sequence Overview: validate request and return the expected response
+    • Cart Cart Module Sequence Overview: validate request and return the expected response
     • Unique constraint: userId + skuId
     end note
     PS -> DB: INSERT/UPDATE cart item
-    DB -> PS: English content normalized from the original source text.
-    PS -> CR: English content normalized from the original source text.
-    CR -> CS: English content normalized from the original source text.
+    DB -> PS: Cart Cart Module Sequence Overview: validate request and return the expected response
+    PS -> CR: Cart Cart Module Sequence Overview: validate request and return the expected response
+    CR -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
     CS -> IS: i18n.t('cart.cart.success.CREATE_SUCCESS')
-    IS -> CS: English content normalized from the original source text.
-    CS -> CC: English content normalized from the original source text.
-    CC -> User: English content normalized from the original source text.
+    IS -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
+    CS -> CC: Cart Cart Module Sequence Overview: validate request and return the expected response
+    CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 
 else (No)
     CR -> CS: Throw validation exception
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Cart Cart Module Sequence Overview: validate request and return the expected response
+    • Cart Cart Module Sequence Overview: validate request and return the expected response
+    • Cart Cart Module Sequence Overview: validate request and return the expected response
+    • Cart Cart Module Sequence Overview: validate request and return the expected response
+    • Cart Cart Module Sequence Overview: validate request and return the expected response
     end note
     CS -> CC: Throw exception
-    CC -> User: English content normalized from the original source text.
+    CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
@@ -99,21 +99,21 @@ CC -> CS: updateCartItem({user, cartItemId, body})
 CS -> CR: update({userId, body, cartItemId})
 CR -> CR: validateSKU({skuId, quantity, userId, isCreate: false})
 
-English content normalized from the original source text.
+Cart Cart Module Sequence Overview: validate request and return the expected response
     CR -> PS: cartItem.update()
     PS -> DB: UPDATE cart item
-    DB -> PS: English content normalized from the original source text.
-    PS -> CR: English content normalized from the original source text.
-    CR -> CS: English content normalized from the original source text.
+    DB -> PS: Cart Cart Module Sequence Overview: validate request and return the expected response
+    PS -> CR: Cart Cart Module Sequence Overview: validate request and return the expected response
+    CR -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
     CS -> IS: i18n.t('cart.cart.success.UPDATE_SUCCESS')
-    IS -> CS: English content normalized from the original source text.
-    CS -> CC: English content normalized from the original source text.
-    CC -> User: English content normalized from the original source text.
+    IS -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
+    CS -> CC: Cart Cart Module Sequence Overview: validate request and return the expected response
+    CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 
 else (No)
     CR -> CS: Throw NotFoundCartItemException
     CS -> CC: Throw exception
-    CC -> User: English content normalized from the original source text.
+    CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 end
 
 == English Section ==
@@ -122,16 +122,16 @@ CC -> CS: deleteCart(user, body)
 CS -> CR: delete(userId, body)
 CR -> PS: cartItem.deleteMany()
 PS -> DB: DELETE cartItems WHERE id IN (cartItemIds) AND userId
-DB -> PS: English content normalized from the original source text.
-PS -> CR: English content normalized from the original source text.
-CR -> CS: English content normalized from the original source text.
+DB -> PS: Cart Cart Module Sequence Overview: validate request and return the expected response
+PS -> CR: Cart Cart Module Sequence Overview: validate request and return the expected response
+CR -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
 CS -> IS: i18n.t('cart.cart.success.DELETE_SUCCESS')
-IS -> CS: English content normalized from the original source text.
-CS -> CC: English content normalized from the original source text.
-CC -> User: English content normalized from the original source text.
+IS -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
+CS -> CC: Cart Cart Module Sequence Overview: validate request and return the expected response
+CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
-English content normalized from the original source text.
+Cart Cart Module Sequence Overview: validate request and return the expected response
     CR -> CS: SKU validation exceptions
     CS -> CC: BadRequestException/NotFoundException
     CC -> User: 400/404 Error
@@ -152,19 +152,19 @@ end
 
 == English Section ==
 CS -> IS: i18n.t('cart.cart.success.XXX')
-IS -> CS: English content normalized from the original source text.
-CS -> CC: English content normalized from the original source text.
-CC -> User: English content normalized from the original source text.
+IS -> CS: Cart Cart Module Sequence Overview: validate request and return the expected response
+CS -> CC: Cart Cart Module Sequence Overview: validate request and return the expected response
+CC -> User: Cart Cart Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
+* Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
 • Upsert logic cho cart items (increment quantity)
-• English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
+• Cart Cart Module Sequence Overview: validate request and return the expected response
 • Unique constraint: userId + skuId
-• English content normalized from the original source text
+• Cart Cart Module Sequence Overview: validate request and return the expected response
 • Real-time stock validation
 end note
 

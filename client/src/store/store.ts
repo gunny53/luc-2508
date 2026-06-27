@@ -12,12 +12,12 @@ const encryptor = encryptTransform({
   secretKey: process.env.NEXT_PUBLIC_REDUX_ENCRYPTION_KEY || DEFAULT_REDUX_ENCRYPTION_KEY,
   onError: (err) => console.error('Encrypt error:', err)
 })
-// const encryptor = secretKey
-//   ? encryptTransform({
-//       secretKey,
-//       onError: (err) => console.error('Encrypt error:', err),
-//     })
-//   : undefined;
+
+
+
+
+
+
 const rootReducer = combineReducers({
   authECSite: authReducer,
   langECSite: langReducer,
@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer
 })
 
-// Config Redux persist
+
 const persistConfig = {
   key: 'root',
   storage,

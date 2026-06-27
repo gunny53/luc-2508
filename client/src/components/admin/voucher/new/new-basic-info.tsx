@@ -26,23 +26,23 @@ interface BasicInfoProps {
 const getVoucherTypeName = (useCase: VoucherUseCase) => {
   switch (useCase) {
     case VoucherUseCase.SHOP:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.PRODUCT:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.PRIVATE:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.PLATFORM:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.CATEGORIES:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.BRAND:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.SHOP_ADMIN:
       return 'Voucher shop (Admin)'
     case VoucherUseCase.PRODUCT_ADMIN:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     case VoucherUseCase.PRIVATE_ADMIN:
-      return 'English content normalized from the original source text.'
+      return 'M? gi?m gi?'
     default:
       return 'Voucher'
   }
@@ -160,19 +160,19 @@ export default function VoucherBasicInfo({
         <CardTitle className="flex items-center gap-3 text-lg font-semibold text-gray-900">
           <div className="w-1 h-6 bg-gradient-to-b from-red-500 to-red-600 rounded-full" />
           {isEdit
-            ? 'English content normalized from the original source text.'
-            : 'English content normalized from the original source text.'}
+            ? 'M? gi?m gi?'
+            : 'M? gi?m gi?'}
         </CardTitle>
         {isEdit && (
           <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
             <div className="flex items-start gap-2">
               <AlertCircle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm text-amber-800">
-                <p className="font-medium">English content normalized from the original source text.</p>
+                <p className="font-medium">M? gi?m gi?</p>
                 <ul className="mt-1 list-disc list-inside text-xs space-y-0.5">
-                  <li>English content normalized from the original source text.</li>
-                  <li>English content normalized from the original source text.</li>
-                  <li>English content normalized from the original source text.</li>
+                  <li>M? gi?m gi?</li>
+                  <li>M? gi?m gi?</li>
+                  <li>M? gi?m gi?</li>
                 </ul>
               </div>
             </div>
@@ -183,7 +183,6 @@ export default function VoucherBasicInfo({
             <Tag className={cn('w-3.5 h-3.5', badgeStyle.icon)} />
             <span className={cn('text-xs font-medium', badgeStyle.text)}>{getVoucherTypeName(useCase)}</span>
           </div>
-          {}
           {[
             VoucherUseCase.PLATFORM,
             VoucherUseCase.CATEGORIES,
@@ -198,15 +197,14 @@ export default function VoucherBasicInfo({
       </CardHeader>
 
       <CardContent className="p-6 space-y-6">
-        {}
         <div className="space-y-2">
           <RequiredLabel htmlFor="voucher-name">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </RequiredLabel>
           <div className="relative">
             <Input
               id="voucher-name"
-              placeholder="English content normalized from the original source text."
+              placeholder="M? gi?m gi?"
               value={formData.name}
               onChange={(e) => updateFormData('name', e.target.value)}
               className={cn(
@@ -231,14 +229,13 @@ export default function VoucherBasicInfo({
               </span>
             </div>
           </div>
-          <p className="text-xs text-gray-600">English content normalized from the original source text.</p>
+          <p className="text-xs text-gray-600">M? gi?m gi?</p>
           <ErrorMessage error={errors.name} />
         </div>
 
-        {}
         <div className="space-y-2">
           <RequiredLabel htmlFor="voucher-code">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </RequiredLabel>
           <div className="relative">
             <Input
@@ -250,10 +247,10 @@ export default function VoucherBasicInfo({
                 'pr-16 h-11 font-mono transition-all duration-200 text-gray-900',
                 'border-gray-300 focus:border-red-400 focus:ring-2 focus:ring-red-100',
                 errors.code && 'border-red-500 focus:border-red-500 focus:ring-red-100',
-                isEdit && 'bg-gray-100 cursor-not-allowed' // Readonly style when edit
+                isEdit && 'bg-gray-100 cursor-not-allowed' 
               )}
               maxLength={5}
-              readOnly={isEdit} // Readonly khi edit
+              readOnly={isEdit} 
             />
             <div className="absolute right-3 top-1/2 -translate-y-1/2">
               <span
@@ -272,34 +269,32 @@ export default function VoucherBasicInfo({
           </div>
           <p className="text-xs text-gray-600">
             {isEdit
-              ? 'English content normalized from the original source text.'
-              : 'English content normalized from the original source text.'}
+              ? 'M? gi?m gi?'
+              : 'M? gi?m gi?'}
           </p>
           <ErrorMessage error={errors.code} />
         </div>
 
-        {}
         <div className="space-y-4">
-          <RequiredLabel>English content normalized from the original source text.</RequiredLabel>
+          <RequiredLabel>M? gi?m gi?</RequiredLabel>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {}
             <div className="space-y-2">
               <Label className="text-xs font-medium text-gray-700 uppercase tracking-wide">
-                English content normalized from the original source text.
+                M? gi?m gi?
               </Label>
               <Popover open={!isEdit && startDateOpen} onOpenChange={!isEdit ? setStartDateOpen : undefined}>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    disabled={isEdit} // Disable khi edit
+                    disabled={isEdit} 
                     className={cn(
                       'w-full h-11 justify-start text-left font-normal transition-all duration-200',
                       'border-gray-300 hover:border-red-300 hover:bg-red-50',
                       !formData.startDate && 'text-gray-500',
                       formData.startDate && 'text-gray-900',
                       errors.startDate && 'border-red-500',
-                      isEdit && 'bg-gray-100 cursor-not-allowed hover:bg-gray-100 hover:border-gray-300' // Readonly style
+                      isEdit && 'bg-gray-100 cursor-not-allowed hover:bg-gray-100 hover:border-gray-300' 
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4 text-gray-600" />
@@ -312,7 +307,7 @@ export default function VoucherBasicInfo({
                         </div>
                       </div>
                     ) : (
-                      'English content normalized from the original source text.'
+                      'M? gi?m gi?'
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -329,7 +324,7 @@ export default function VoucherBasicInfo({
                     <div className="p-4 space-y-4 w-32">
                       <div className="space-y-2">
                         <Label className="text-xs font-medium text-gray-700">
-                          English content normalized from the original source text.
+                          M? gi?m gi?
                         </Label>
                         <Select
                           value={getTimeValue(formData.startDate, 'hour')}
@@ -349,7 +344,7 @@ export default function VoucherBasicInfo({
                       </div>
                       <div className="space-y-2">
                         <Label className="text-xs font-medium text-gray-700">
-                          English content normalized from the original source text.
+                          M? gi?m gi?
                         </Label>
                         <Select
                           value={getTimeValue(formData.startDate, 'minute')}
@@ -374,10 +369,9 @@ export default function VoucherBasicInfo({
               <ErrorMessage error={errors.startDate} />
             </div>
 
-            {}
             <div className="space-y-2">
               <Label className="text-xs font-medium text-gray-700 uppercase tracking-wide">
-                English content normalized from the original source text.
+                M? gi?m gi?
               </Label>
               <Popover open={endDateOpen} onOpenChange={setEndDateOpen}>
                 <PopoverTrigger asChild>
@@ -401,7 +395,7 @@ export default function VoucherBasicInfo({
                         </div>
                       </div>
                     ) : (
-                      'English content normalized from the original source text.'
+                      'M? gi?m gi?'
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -422,7 +416,7 @@ export default function VoucherBasicInfo({
                     <div className="p-4 space-y-4 w-32">
                       <div className="space-y-2">
                         <Label className="text-xs font-medium text-gray-700">
-                          English content normalized from the original source text.
+                          M? gi?m gi?
                         </Label>
                         <Select
                           value={getTimeValue(formData.endDate, 'hour')}
@@ -442,7 +436,7 @@ export default function VoucherBasicInfo({
                       </div>
                       <div className="space-y-2">
                         <Label className="text-xs font-medium text-gray-700">
-                          English content normalized from the original source text.
+                          M? gi?m gi?
                         </Label>
                         <Select
                           value={getTimeValue(formData.endDate, 'minute')}
@@ -471,7 +465,7 @@ export default function VoucherBasicInfo({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
             <div className="text-xs text-blue-800 flex items-start gap-2">
               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
-              <span>English content normalized from the original source text.</span>
+              <span>M? gi?m gi?</span>
             </div>
           </div>
         </div>

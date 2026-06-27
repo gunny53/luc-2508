@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { VariantInput, OptionData } from './form-variant-input' // Assuming OptionData is exported from VariantInput
+import { VariantInput, OptionData } from './form-variant-input' 
 
 interface SortableVariantInputProps {
   option: OptionData

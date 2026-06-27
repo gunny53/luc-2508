@@ -28,7 +28,7 @@ export function DataTableSearch<TData>({
       table.getColumn(searchColumn)?.setFilterValue(value)
     }
 
-    // Debounce search to avoid too many re-renders
+    
     return (value: string) => {
       setTimeout(() => handler(value), 300)
     }

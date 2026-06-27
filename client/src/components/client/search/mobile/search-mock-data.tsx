@@ -3,12 +3,12 @@ import { ClientProduct } from '@/types/client.products.interface'
 export const mockSearchProducts: ClientProduct[] = [
   {
     id: '1',
-    name: 'English content normalized from the original source text.',
+    name: 'T?m ki?m',
     basePrice: 120000,
     virtualPrice: 85000,
     brandId: 'brand-1',
-    // brand: { id: "brand-1", name: "Coolmate" },
-    description: 'English content normalized from the original source text.',
+    
+    description: 'T?m ki?m',
     images: ['/images/mock/product-1.jpg'],
     variants: [],
     publishedAt: '2025-07-01T00:00:00.000Z',
@@ -22,12 +22,12 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '2',
-    name: 'English content normalized from the original source text.',
+    name: 'T?m ki?m',
     basePrice: 300000,
     virtualPrice: 199000,
     brandId: 'brand-2',
-    // brand: { id: "brand-2", name: "Levi's" },
-    description: 'English content normalized from the original source text.',
+    
+    description: 'T?m ki?m',
     images: ['/images/mock/product-2.jpg'],
     variants: [],
     publishedAt: '2025-07-01T00:00:00.000Z',
@@ -41,12 +41,12 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '3',
-    name: 'English content normalized from the original source text.',
+    name: 'T?m ki?m',
     basePrice: 500000,
     virtualPrice: 339000,
     brandId: 'brand-3',
-    // brand: { id: "brand-3", name: "Converse" },
-    description: 'English content normalized from the original source text.',
+    
+    description: 'T?m ki?m',
     images: ['/images/mock/product-3.jpg'],
     variants: [],
     publishedAt: '2025-07-01T00:00:00.000Z',
@@ -60,12 +60,12 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '4',
-    name: 'English content normalized from the original source text.',
+    name: 'T?m ki?m',
     basePrice: 450000,
     virtualPrice: 329000,
     brandId: 'brand-4',
-    // brand: { id: "brand-4", name: "Yame" },
-    description: 'English content normalized from the original source text.',
+    
+    description: 'T?m ki?m',
     images: ['/images/mock/product-4.jpg'],
     variants: [],
     publishedAt: '2025-07-01T00:00:00.000Z',
@@ -79,12 +79,12 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '5',
-    name: 'English content normalized from the original source text.',
+    name: 'T?m ki?m',
     basePrice: 250000,
     virtualPrice: 179000,
     brandId: 'brand-5',
-    // brand: { id: "brand-5", name: "Lemino" },
-    description: 'English content normalized from the original source text.',
+    
+    description: 'T?m ki?m',
     images: ['/images/mock/product-5.jpg'],
     variants: [],
     publishedAt: '2025-07-01T00:00:00.000Z',
@@ -98,12 +98,12 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '6',
-    name: 'English content normalized from the original source text.',
+    name: 'T?m ki?m',
     basePrice: 90000,
     virtualPrice: 59000,
     brandId: 'brand-6',
-    // brand: { id: "brand-6", name: "MLB" },
-    description: 'English content normalized from the original source text.',
+    
+    description: 'T?m ki?m',
     images: ['/images/mock/product-6.jpg'],
     variants: [],
     publishedAt: '2025-07-01T00:00:00.000Z',

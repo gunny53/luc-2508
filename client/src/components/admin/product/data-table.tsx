@@ -109,7 +109,7 @@ export function DataTable<TData>({ columns, data, categories }: DataTableProps<T
   )
 }
 
-// Column Definitions with i18n
+
 export const getColumns = (t: (key: string) => string): ColumnDef<Product>[] => [
   {
     id: 'select',

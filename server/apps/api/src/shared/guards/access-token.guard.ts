@@ -25,7 +25,7 @@ export class AccessTokenGuard implements CanActivate {
     const request = context.switchToHttp().getRequest()
     const decodedAccessToken = await this.extractAndValidateToken(request)
 
-    // Check user permission
+    
     await this.validateUserPermission(decodedAccessToken, request)
 
     return true
@@ -80,7 +80,7 @@ export class AccessTokenGuard implements CanActivate {
         ) as CachedRole['permissions']
 
         cachedRole = { ...role, permissions: permissionObject }
-        await this.redisService.set(cacheKey, cachedRole, 3600) // Cache for 1 hour
+        await this.redisService.set(cacheKey, cachedRole, 3600) 
         request[REQUEST_ROLE_PERMISSIONS] = role
       } catch {
         throw new ForbiddenException('Error.RoleNotFound')

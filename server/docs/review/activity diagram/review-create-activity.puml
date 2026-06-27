@@ -6,25 +6,25 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Review Review Create Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Review Review Create Activity: execute the validated workflow;
 :validateOrder(orderId, userId);
 if (condition?) then (Yes)
   :BEGIN TRANSACTION;
   :review.create (catch unique -> Conflict);
   if (condition?) then (Yes)
     :Rollback;
-    :English content normalized from the original source text;
+    :Review Review Create Activity: execute the validated workflow;
     stop
   endif
   :reviewMedia.createManyAndReturn(medias);
   :COMMIT;
   :Build message i18n;
-  :English content normalized from the original source text;
+  :Review Review Create Activity: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
+  :Review Review Create Activity: execute the validated workflow;
 endif
 stop
 

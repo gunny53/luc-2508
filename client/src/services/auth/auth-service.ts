@@ -28,14 +28,14 @@ import { API_ENDPOINTS } from '@/constants/api'
 import { AxiosError } from 'axios'
 
 export const authService = {
-  //GET ABILITY BY ROLE (PERMISSION)
+  
   getAbility: async (): Promise<GetAbilityResponse> => {
     const response = await privateAxios.get<GetAbilityResponse>(API_ENDPOINTS.AUTH.GET_ABILITY)
     return response.data
   },
   login: async (data: LoginRequest): Promise<LoginResponse> => {
     const response = await privateAxios.post<LoginResponse>(API_ENDPOINTS.AUTH.SIGNIN, data)
-    // return response.data;
+    
     return { data: response.data, status: response.status }
   },
   getGoogleLoginUrl: async (): Promise<oAuthLoginResponse> => {

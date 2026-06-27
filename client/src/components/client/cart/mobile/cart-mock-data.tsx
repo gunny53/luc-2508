@@ -1,6 +1,6 @@
-// app/cart/data/mockCartItems.ts
 
-// Cart item types & mock data
+
+
 export interface ProductItem {
   id: string
   name: string
@@ -20,17 +20,17 @@ export interface CartGroup {
 
 export const mockCartItems: CartGroup[] = [
   {
-    shop: 'English content normalized from the original source text.',
+    shop: 'Gi? h?ng',
     items: [
       {
         id: '1',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/voi.png',
-        variation: 'English content normalized from the original source text.',
+        variation: 'Gi? h?ng',
         variations: [
-          'English content normalized from the original source text.',
-          'English content normalized from the original source text.',
-          'English content normalized from the original source text.'
+          'Gi? h?ng',
+          'Gi? h?ng',
+          'Gi? h?ng'
         ],
         price: 335000,
         originalPrice: 580000,
@@ -38,7 +38,7 @@ export const mockCartItems: CartGroup[] = [
       },
       {
         id: '2',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/noi.png',
         variation: '20cm - 24cm - 26cm',
         price: 820000,
@@ -47,9 +47,9 @@ export const mockCartItems: CartGroup[] = [
       },
       {
         id: '3',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/gia.png',
-        variation: 'English content normalized from the original source text.',
+        variation: 'Gi? h?ng',
         price: 195000,
         originalPrice: 260000,
         quantity: 1
@@ -61,16 +61,16 @@ export const mockCartItems: CartGroup[] = [
     items: [
       {
         id: '4',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/khuyen.png',
-        variation: 'English content normalized from the original source text.',
+        variation: 'Gi? h?ng',
         price: 95000,
         quantity: 1,
         soldOut: true
       },
       {
         id: '5',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/lactay.png',
         variation: 'Size M',
         price: 185000,
@@ -80,19 +80,19 @@ export const mockCartItems: CartGroup[] = [
     ]
   },
   {
-    shop: 'English content normalized from the original source text.',
+    shop: 'Gi? h?ng',
     items: [
       {
         id: '6',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/son.png',
-        variation: 'English content normalized from the original source text.',
+        variation: 'Gi? h?ng',
         price: 42000,
         quantity: 3
       },
       {
         id: '7',
-        name: 'English content normalized from the original source text.',
+        name: 'Gi? h?ng',
         image: '/mock/anessa.png',
         variation: '60ml',
         price: 230000,
@@ -104,19 +104,19 @@ export const mockCartItems: CartGroup[] = [
 ]
 
 export const trendingSearches = [
-  { id: 1, text: 'iPhone 15', category: 'English content normalized from the original source text.', count: '8.5K' },
+  { id: 1, text: 'iPhone 15', category: 'Gi? h?ng', count: '8.5K' },
   { id: 2, text: 'Laptop Gaming', category: 'Laptop', count: '6.2K' },
   {
     id: 3,
-    text: 'English content normalized from the original source text.',
-    category: 'English content normalized from the original source text.',
+    text: 'Gi? h?ng',
+    category: 'Gi? h?ng',
     count: '5.1K'
   },
-  { id: 4, text: 'English content normalized from the original source text.', category: 'Tablet', count: '4.7K' },
+  { id: 4, text: 'Gi? h?ng', category: 'Tablet', count: '4.7K' },
   {
     id: 5,
     text: 'Camera an ninh',
-    category: 'English content normalized from the original source text.',
+    category: 'Gi? h?ng',
     count: '3.9K'
   }
 ]
@@ -125,35 +125,35 @@ export const popularCategories = [
     id: 1,
     name: 'Smartphone',
     image: '/images/demo/3.webp',
-    count: 'English content normalized from the original source text.'
+    count: 'Gi? h?ng'
   },
   {
     id: 2,
     name: 'Laptop',
     image: '/images/demo/3.webp',
-    count: 'English content normalized from the original source text.'
+    count: 'Gi? h?ng'
   },
   {
     id: 3,
     name: 'Tai nghe',
     image: '/images/demo/3.webp',
-    count: 'English content normalized from the original source text.'
+    count: 'Gi? h?ng'
   },
   {
     id: 4,
-    name: 'English content normalized from the original source text.',
+    name: 'Gi? h?ng',
     image: '/images/demo/3.webp',
-    count: 'English content normalized from the original source text.'
+    count: 'Gi? h?ng'
   },
   {
     id: 5,
-    name: 'English content normalized from the original source text.',
+    name: 'Gi? h?ng',
     image: '/images/demo/3.webp',
-    count: 'English content normalized from the original source text.'
+    count: 'Gi? h?ng'
   }
 ]
 
-// ---------------------
+
 export interface SubCategory {
   id: string
   name: string
@@ -169,7 +169,7 @@ export interface Category {
 export const categories: Category[] = [
   {
     id: '1',
-    name: 'English content normalized from the original source text.',
+    name: 'Gi? h?ng',
     children: [
       { id: 'p1', name: 'iPhone 15 Pro', image: '/images/demo/1.webp' },
       { id: 'p2', name: 'Samsung S24', image: '/images/demo/2.webp' }
@@ -185,10 +185,10 @@ export const categories: Category[] = [
   },
   {
     id: '3',
-    name: 'English content normalized from the original source text.',
+    name: 'Gi? h?ng',
     children: [
       { id: 'p5', name: 'Tai nghe AirPods', image: '/images/demo/5.webp' },
-      { id: 'p6', name: 'English content normalized from the original source text.', image: '/images/demo/1.webp' }
+      { id: 'p6', name: 'Gi? h?ng', image: '/images/demo/1.webp' }
     ]
   }
 ]

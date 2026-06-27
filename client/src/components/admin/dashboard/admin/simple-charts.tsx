@@ -14,7 +14,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>English content normalized from the original source text.</CardTitle>
+            <CardTitle>B?ng ?i?u khi?n</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="animate-pulse space-y-3">
@@ -27,7 +27,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
 
         <Card>
           <CardHeader>
-            <CardTitle>English content normalized from the original source text.</CardTitle>
+            <CardTitle>B?ng ?i?u khi?n</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="animate-pulse space-y-3">
@@ -42,10 +42,9 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {/* User Roles Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>English content normalized from the original source text.</CardTitle>
+          <CardTitle>B?ng ?i?u khi?n</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -68,7 +67,6 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
             })}
           </div>
 
-          {/* Simple bar chart */}
           <div className="mt-4 space-y-2">
             {usersByRole.map((item) => {
               const total = usersByRole.reduce((sum, role) => sum + role.value, 0)
@@ -94,10 +92,10 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
         </CardContent>
       </Card>
 
-      {/* User Status Chart */}
+      {}
       <Card>
         <CardHeader>
-          <CardTitle>English content normalized from the original source text.</CardTitle>
+          <CardTitle>B?ng ?i?u khi?n</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -120,7 +118,7 @@ const SimpleCharts: React.FC<SimpleChartsProps> = ({ chartData }) => {
             })}
           </div>
 
-          {/* Simple donut chart representation */}
+          {}
           <div className="mt-6 flex justify-center">
             <div className="relative w-32 h-32">
               <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">

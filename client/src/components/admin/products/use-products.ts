@@ -37,26 +37,26 @@ export function useProducts() {
   const [productToDelete, setProductToDelete] = useState<ProductColumn | null>(null)
   const [deleteLoading, setDeleteLoading] = useState(false)
 
-  // State for price filtering
+  
   const [priceFilter, setPriceFilter] = useState<{ minPrice: number | null; maxPrice: number | null }>({
     minPrice: null,
     maxPrice: null
   })
 
-  // State for category filtering (single selection)
+  
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null)
 
-  // State for search query
+  
   const [searchQuery, setSearchQuery] = useState<string>('')
   const searchQueryRef = useRef<string>(searchQuery)
 
-  // Create refs to track the current filter values
+  
   const priceFilterRef = useRef<{ minPrice: number | null; maxPrice: number | null }>(priceFilter)
   const categoryFilterRef = useRef<string | null>(categoryFilter)
 
-  // Load saved filter values from sessionStorage on initial mount
+  
   useEffect(() => {
-    // Load price filter
+    
     const savedPriceFilter = sessionStorage.getItem('productPriceFilter')
     if (savedPriceFilter) {
       try {
@@ -66,12 +66,12 @@ export function useProducts() {
         console.log('Restored price filter from session storage:', parsedFilter)
       } catch (error) {
         console.error('Error parsing saved price filter:', error)
-        // If there's an error, remove the invalid data
+        
         sessionStorage.removeItem('productPriceFilter')
       }
     }
 
-    // Load category filter (single ID)
+    
     const savedCategoryFilter = sessionStorage.getItem('productCategoryFilter')
     if (savedCategoryFilter) {
       try {
@@ -85,7 +85,7 @@ export function useProducts() {
       }
     }
 
-    // Load search query
+    
     const savedSearchQuery = sessionStorage.getItem('productSearchQuery')
     if (savedSearchQuery) {
       try {
@@ -100,7 +100,7 @@ export function useProducts() {
     }
   }, [])
 
-  // Update the refs whenever state changes
+  
   useEffect(() => {
     priceFilterRef.current = priceFilter
     console.log('Price filter state updated:', priceFilter)
@@ -147,18 +147,18 @@ export function useProducts() {
     []
   )
 
-  // Custom fetchData function to include filter parameters (price, category, search, etc.)
+  
   const fetchDataWithFilters = useCallback(
     (params: any, signal?: AbortSignal) => {
-      // Create a new params object to avoid mutation issues
+      
       const enhancedParams = { ...params }
 
-      // Use the refs to get the current filter values to avoid closure issues
+      
       const currentPriceFilter = priceFilterRef.current
       const currentCategoryFilter = categoryFilterRef.current
       const currentSearchQuery = searchQueryRef.current
 
-      // Add price filter parameters if they exist
+      
       if (currentPriceFilter.minPrice !== null) {
         enhancedParams.minPrice = currentPriceFilter.minPrice
       }
@@ -166,23 +166,23 @@ export function useProducts() {
         enhancedParams.maxPrice = currentPriceFilter.maxPrice
       }
 
-      // Add category filter parameter if it exists (single value)
+      
       if (currentCategoryFilter !== null) {
         enhancedParams.categories = currentCategoryFilter
       }
 
-      // Add search query parameter if it exists
+      
       if (currentSearchQuery && currentSearchQuery.trim() !== '') {
         enhancedParams.name = currentSearchQuery.trim()
       }
 
       console.log('Fetching with params:', enhancedParams)
 
-      // Now the productsService.getAll accepts a signal parameter
+      
       return productsService.getAll(enhancedParams, signal)
     },
     [
-      /* No dependencies on filter state values */
+      
     ]
   )
 
@@ -216,68 +216,68 @@ export function useProducts() {
     setProductToDelete(null)
   }
 
-  // Handler for price filter changes
+  
   const handlePriceFilterChange = useCallback(
     (minPrice: number | null, maxPrice: number | null) => {
       console.log(`Price filter changed: min=${minPrice}, max=${maxPrice}`)
 
-      // Update both the state and ref simultaneously
+      
       const newPriceFilter = { minPrice, maxPrice }
       setPriceFilter(newPriceFilter)
       priceFilterRef.current = newPriceFilter
 
-      // Reset pagination to first page when filter changes
+      
       serverDataTable.handlePageChange(1)
 
-      // No need for timeout now since we're using the ref
+      
       console.log('Refreshing with price filter:', newPriceFilter)
 
-      // Store filter values in sessionStorage to persist across page refreshes
+      
       if (minPrice === null && maxPrice === null) {
-        // Clear the filter from storage if reset
+        
         sessionStorage.removeItem('productPriceFilter')
       } else {
-        // Store filter in session storage
+        
         sessionStorage.setItem('productPriceFilter', JSON.stringify(newPriceFilter))
       }
 
-      // Refresh the data table
+      
       serverDataTable.refreshData()
     },
     [serverDataTable]
   )
 
-  // Handler for category filter changes (single selection)
+  
   const handleCategoryFilterChange = useCallback(
     (categoryId: string | null) => {
       console.log(`Category filter changed: categoryId=${categoryId}`)
 
-      // Update both the state and ref simultaneously
+      
       setCategoryFilter(categoryId)
       categoryFilterRef.current = categoryId
 
-      // Reset pagination to first page when filter changes
+      
       serverDataTable.handlePageChange(1)
 
       console.log('Refreshing with category filter:', categoryId)
 
-      // Store filter value in sessionStorage to persist across page refreshes
+      
       if (categoryId === null) {
-        // Clear the filter from storage if reset
+        
         sessionStorage.removeItem('productCategoryFilter')
       } else {
-        // Store filter in session storage
+        
         sessionStorage.setItem('productCategoryFilter', JSON.stringify(categoryId))
       }
 
-      // Refresh the data table
+      
       serverDataTable.refreshData()
     },
     [serverDataTable]
   )
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Cleanup timer on unmount
+  
   useEffect(() => {
     return () => {
       if (debounceTimerRef.current) {
@@ -286,29 +286,29 @@ export function useProducts() {
     }
   }, [])
 
-  // Optimized debounced search handler
+  
   const debouncedSearch = useCallback(
     (query: string) => {
-      // Clear previous timer
+      
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current)
       }
       debounceTimerRef.current = setTimeout(() => {
-        // Update search state
+        
         setSearchQuery(query)
         searchQueryRef.current = query
 
-        // Reset pagination to first page
+        
         serverDataTable.handlePageChange(1)
 
-        // Store in session storage
+        
         if (!query || query.trim() === '') {
           sessionStorage.removeItem('productSearchQuery')
         } else {
           sessionStorage.setItem('productSearchQuery', JSON.stringify(query))
         }
 
-        // Refresh data
+        
         serverDataTable.refreshData()
       }, 300)
     },
@@ -319,7 +319,7 @@ export function useProducts() {
       console.log(`Search query changed: ${query}`)
       setSearchQuery(query)
 
-      // Debounce API call
+      
       debouncedSearch(query)
     },
     [debouncedSearch]
@@ -386,7 +386,7 @@ export function useProducts() {
     priceFilter,
     handleCategoryFilterChange,
     categoryFilter,
-    handleSearch, // Add the new debounced search handler
+    handleSearch, 
     searchQuery
   }
 }

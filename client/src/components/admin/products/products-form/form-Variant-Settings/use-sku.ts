@@ -6,7 +6,7 @@ interface GroupedSkus {
   [key: string]: Sku[]
 }
 
-// Helpers
+
 export const formatPrice = (value: number) => {
   if (value === 0) return ''
   return new Intl.NumberFormat('en-US').format(value)
@@ -19,14 +19,14 @@ const parsePrice = (value: string) => {
 import { SkuDetail } from '@/types/products.interface'
 type FormSku = Partial<SkuDetail>
 
-// Hook Props
+
 interface UseSkuProps {
   options: OptionData[]
   initialSkus?: FormSku[]
   onUpdateSkus: (skus: Sku[]) => void
 }
 
-// Helper function to map API SKUs to component SKUs
+
 function mapApiSkusToComponentSkus(apiSkus: FormSku[], options: OptionData[]): Sku[] {
   console.log('mapApiSkusToComponentSkus called with:')
   console.log('API SKUs:', apiSkus)
@@ -157,7 +157,7 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
       console.log('Setting skus state with preservedSkus:', preservedSkus.length)
       setSkus(preservedSkus)
 
-      // Reset expanded state only if the primary option changes
+      
       const oldFirstOption = skus[0]?.variantValues[0]?.optionName
       const newFirstOption = options[0]?.name
       if (oldFirstOption !== newFirstOption) {
@@ -167,7 +167,7 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
     } catch (error) {
       console.error('Error processing SKUs:', error)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [options, initialSkus])
 
   const groupedSkus = useMemo<GroupedSkus>(() => {
@@ -212,7 +212,7 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
       console.log('Notifying parent of SKU update:', skus.length)
       onUpdateSkus(skus)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [skus])
 
   const handleSkuChange = (skuId: string, field: 'price' | 'stock', value: string) => {
@@ -221,7 +221,7 @@ export function useSku({ options, initialSkus, onUpdateSkus }: UseSkuProps) {
     if (field === 'price') {
       numericValue = parsePrice(value)
     } else {
-      // for stock
+      
       numericValue = value === '' ? 0 : parseInt(value, 10)
     }
 

@@ -8,38 +8,38 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ecsite.live/'),
-  title: 'English content normalized from the original source text.',
-  description: 'English content normalized from the original source text.',
+  title: 'ECSite',
+  description: 'ECSite',
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
     url: 'https://ecsite.live/',
     siteName: 'ECSite',
-    title: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    title: 'ECSite',
+    description: 'ECSite',
     images: [
       {
         url: '/banner_ecsite.png',
         width: 1200,
         height: 630,
-        alt: 'English content normalized from the original source text.'
+        alt: 'ECSite'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'English content normalized from the original source text.',
-    description: 'English content normalized from the original source text.',
+    title: 'ECSite',
+    description: 'ECSite',
     images: ['/banner_ecsite.png']
   },
   keywords: [
     'ECSite',
-    'English content normalized from the original source text.',
-    'English content normalized from the original source text.',
-    'English content normalized from the original source text.',
-    'English content normalized from the original source text.',
+    'ECSite',
+    'ECSite',
+    'ECSite',
+    'ECSite',
     'ecommerce',
-    'English content normalized from the original source text.'
+    'ECSite'
   ],
   robots: {
     index: true,

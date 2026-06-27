@@ -68,7 +68,7 @@ export class CustomLoggerService implements NestLoggerService {
     this.logger.trace({ context: context || this.context }, message)
   }
 
-  // Additional methods for structured logging
+  
   info(message: string, meta?: any, context?: string): void {
     this.logger.info(
       {
@@ -89,7 +89,7 @@ export class CustomLoggerService implements NestLoggerService {
     )
   }
 
-  // Method for logging with correlation ID
+  
   logWithCorrelation(
     level: 'info' | 'error' | 'warn' | 'debug',
     message: string,
@@ -107,7 +107,7 @@ export class CustomLoggerService implements NestLoggerService {
     )
   }
 
-  // Method for performance logging
+  
   logPerformance(operation: string, duration: number, meta?: any, context?: string): void {
     this.logger.info(
       {
@@ -121,7 +121,7 @@ export class CustomLoggerService implements NestLoggerService {
     )
   }
 
-  // Method for business event logging
+  
   logBusinessEvent(event: string, userId?: string, meta?: any, context?: string): void {
     this.logger.info(
       {

@@ -19,7 +19,7 @@ import { toast } from 'sonner'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { categoryService } from '@/services/admin/category-service'
 
-// Define props interface
+
 interface CategoryModalUpsertProps {
   isOpen: boolean
   onClose: () => void
@@ -34,7 +34,7 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
   const [categories, setCategories] = useState<Category[]>([])
   const [loadingCategories, setLoadingCategories] = useState(false)
 
-  // Upload media hook
+  
   const {
     files,
     uploadedUrls,
@@ -48,14 +48,14 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
     reset: resetUpload
   } = useUploadMedia()
 
-  // Define form schema with Zod
+  
   const formSchema = z.object({
     name: z.string().min(1, t('validation.required', { field: t('name') })),
     parentCategoryId: z.string().nullable(),
     logo: z.string().nullable().optional()
   })
 
-  // Initialize form
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -65,7 +65,7 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
     }
   })
 
-  // Fetch categories for parent dropdown
+  
   const fetchCategories = async () => {
     try {
       setLoadingCategories(true)
@@ -73,20 +73,20 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
       setCategories(response.data || [])
     } catch (error) {
       console.error('Error fetching categories:', error)
-      toast.error('English content normalized from the original source text.')
+      toast.error('Danh m?c')
     } finally {
       setLoadingCategories(false)
     }
   }
 
-  // Fetch categories when modal opens
+  
   useEffect(() => {
     if (isOpen) {
       fetchCategories()
     }
   }, [isOpen])
 
-  // Update form values when category changes (edit mode)
+  
   useEffect(() => {
     if (mode === 'edit' && category) {
       form.reset({
@@ -94,7 +94,7 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
         parentCategoryId: category.parentCategoryId,
         logo: category.logo
       })
-      // Reset upload state
+      
       resetUpload()
     } else {
       form.reset({
@@ -102,48 +102,48 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
         parentCategoryId: null,
         logo: null
       })
-      // Reset upload state
+      
       resetUpload()
     }
   }, [category, mode, form, resetUpload])
 
-  // Handle file change for logo upload
+  
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      // File type validation
+      
       const file = e.target.files[0]
       if (!file.type.startsWith('image/')) {
-        toast.error('English content normalized from the original source text.', {
-          description: 'English content normalized from the original source text.'
+        toast.error('Danh m?c', {
+          description: 'Danh m?c'
         })
         return
       }
 
-      // Clear existing files first
+      
       handleRemoveAllFiles()
 
-      // Add the new file (which will be compressed automatically)
+      
       handleAddFiles(e.target.files)
     }
   }
 
-  // Handle logo upload
+  
   const handleUploadLogo = async () => {
     if (files.length === 0) return
 
     const urls = await uploadFiles()
     if (urls.length > 0) {
-      // Use the first uploaded image URL as logo
+      
       form.setValue('logo', urls[0])
     }
   }
 
-  // Handle form submission
+  
   const handleSubmitForm = async (data: z.infer<typeof formSchema>) => {
     setLoading(true)
 
     try {
-      // No need to convert parentCategoryId anymore as it's already a string
+      
       const processedData = {
         ...data,
         parentCategoryId: data.parentCategoryId || null
@@ -198,10 +198,10 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
                           <span className="flex items-center gap-2">
                             {loadingCategories && <Loader2 className="h-4 w-4 animate-spin" />}
                             {loadingCategories
-                              ? 'English content normalized from the original source text.'
+                              ? 'Danh m?c'
                               : field.value
                                 ? categories.find((cat) => cat.id === field.value)?.name || t('parentPlaceholder')
-                                : t('parentPlaceholder') || 'English content normalized from the original source text.'}
+                                : t('parentPlaceholder') || 'Danh m?c'}
                           </span>
                           <ChevronDown className="h-4 w-4" />
                         </Button>
@@ -211,10 +211,10 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
                           onClick={() => field.onChange(null)}
                           className={!field.value ? 'bg-accent' : ''}
                         >
-                          {t('noParent') || 'English content normalized from the original source text.'}
+                          {t('noParent') || 'Danh m?c'}
                         </DropdownMenuItem>
                         {categories
-                          .filter((cat) => (mode === 'edit' ? cat.id !== category?.id : true)) // Exclude current category in edit mode
+                          .filter((cat) => (mode === 'edit' ? cat.id !== category?.id : true)) 
                           .map((cat) => (
                             <DropdownMenuItem
                               key={cat.id}
@@ -240,7 +240,6 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
                   <FormLabel>{t('logo')}</FormLabel>
                   <FormControl>
                     <div className="space-y-3">
-                      {/* Logo preview with integrated select button */}
                       <div className="flex items-center space-x-4">
                         <div className="relative group">
                           <Avatar className="h-16 w-16 border-2 border-gray-200">
@@ -253,32 +252,29 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
                             )}
                           </Avatar>
 
-                          {/* Overlay select button */}
                           <button
                             type="button"
                             onClick={() => document.getElementById('logo-upload')?.click()}
                             disabled={isUploading}
-                            aria-label={t('logoSelect') || 'English content normalized from the original source text.'}
-                            title={t('logoSelect') || 'English content normalized from the original source text.'}
+                            aria-label={t('logoSelect') || 'Danh m?c'}
+                            title={t('logoSelect') || 'Danh m?c'}
                             className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 rounded-full transition-opacity"
                           >
                             <Camera className="h-5 w-5 text-white" />
                           </button>
                         </div>
 
-                        {/* Logo URL - Read Only */}
                         <div className="flex-1 space-y-1">
                           <Input
                             {...field}
                             value={field.value || ''}
                             readOnly
                             placeholder={
-                              t('logoPlaceholder') || 'English content normalized from the original source text.'
+                              t('logoPlaceholder') || 'Danh m?c'
                             }
                             className="bg-muted"
                           />
 
-                          {/* Upload button only shown when a file is selected */}
                           {files.length > 0 && (
                             <Button
                               type="button"
@@ -288,8 +284,8 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
                               className="w-full"
                             >
                               {isUploading
-                                ? t('logoUploading') || 'English content normalized from the original source text.'
-                                : t('logoUpload') || 'English content normalized from the original source text.'}
+                                ? t('logoUploading') || 'Danh m?c'
+                                : t('logoUpload') || 'Danh m?c'}
                             </Button>
                           )}
                         </div>
@@ -302,28 +298,25 @@ export function CategoryModalUpsert({ isOpen, onClose, mode, category, onSubmit 
                         onChange={handleFileChange}
                         disabled={isUploading}
                         accept="image/*"
-                        aria-label={t('logoSelect') || 'English content normalized from the original source text.'}
+                        aria-label={t('logoSelect') || 'Danh m?c'}
                       />
 
-                      {/* Upload progress */}
                       {isUploading && (
                         <div className="space-y-1">
                           <Progress value={progress} className="h-1" />
                           <p className="text-xs text-muted-foreground">
-                            {t('logoUploadProgress') || 'English content normalized from the original source text.'}{' '}
+                            {t('logoUploadProgress') || 'Danh m?c'}{' '}
                             {progress}%
                           </p>
                         </div>
                       )}
 
-                      {/* File preview */}
                       {files.length > 0 && !isUploading && (
                         <div className="text-xs text-muted-foreground">
                           {files[0].name} ({Math.round(files[0].size / 1024)} KB)
                         </div>
                       )}
 
-                      {/* Upload error */}
                       {uploadError && <p className="text-sm text-red-500">{uploadError}</p>}
                     </div>
                   </FormControl>

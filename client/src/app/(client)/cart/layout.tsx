@@ -16,7 +16,7 @@ export default function CartLayout({ children }: CartLayoutProps) {
       hideCommit
       hideHero
       hideFooter={isMobile}
-      // topContent={topContent}
+      
     >
       <div className={`w-full ${isMobile ? 'min-h-screen flex flex-col' : 'min-h-screen'}`}>
         <main className={`flex-1 ${isMobile ? '' : 'pb-4'}`}>

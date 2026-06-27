@@ -8,126 +8,126 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Category Category Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Category Category Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
   note right
-  English content normalized from the original source text.
+  Category Category Management Activity: execute the validated workflow
   • WHERE deletedAt IS NULL
   • Filter theo parentCategoryId (hierarchical)
   • Include categoryTranslations
   • Language-specific translations
   • ORDER BY createdAt DESC
   end note
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
 
 elseif (GET /categories/:categoryId)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
+    :Category Category Management Activity: execute the validated workflow;
+    :Category Category Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   endif
 
 elseif (POST /categories)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
+    :Category Category Management Activity: execute the validated workflow;
     :Include categoryTranslations;
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   endif
 
 elseif (PUT /categories/:categoryId)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
+    :Category Category Management Activity: execute the validated workflow;
     :Include categoryTranslations;
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   endif
 
 elseif (DELETE /categories/:categoryId)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
 
 elseif (POST /category-translations)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
+      :Category Category Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Category Category Management Activity: execute the validated workflow;
+      :Category Category Management Activity: execute the validated workflow;
+      :Category Category Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   endif
 
 elseif (PUT /category-translations/:categoryTranslationId)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
+    :Category Category Management Activity: execute the validated workflow;
+    :Category Category Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Category Category Management Activity: execute the validated workflow;
   endif
 
 elseif (DELETE /category-translations/:categoryTranslationId)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
+  :Category Category Management Activity: execute the validated workflow;
 
 else (No)
-  :English content normalized from the original source text;
+  :Category Category Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Category Category Management Activity: execute the validated workflow;
+:Category Category Management Activity: execute the validated workflow;
 
 stop
 

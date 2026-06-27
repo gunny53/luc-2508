@@ -1,8 +1,8 @@
 import { BaseResponse, PaginationRequest, PaginationMetadata } from './base.interface'
 
-// ==================================================
-// ENUMS
-// ==================================================
+
+
+
 
 export enum DisplayType {
   PUBLIC = 'PUBLIC',
@@ -29,9 +29,9 @@ export enum DiscountType {
   PERCENTAGE = 'PERCENTAGE',
   FIX_AMOUNT = 'FIX_AMOUNT'
 }
-// ==================================================
-// BASE INTERFACE
-// ==================================================
+
+
+
 export interface Discount {
   id: string
   name: string
@@ -60,11 +60,11 @@ export interface Discount {
   updatedAt: string
 }
 
-// ==================================================
-// SERVICE PARAMS & RESPONSES
-// ==================================================
 
-// 1. Get All Discounts (Admin)
+
+
+
+
 export interface DiscountGetAllParams extends PaginationRequest {
   status?: DiscountStatus
   type?: DiscountType
@@ -76,44 +76,44 @@ export interface DiscountGetAllResponse extends BaseResponse {
   metadata: PaginationMetadata
 }
 
-// 2. Get Discount By ID
+
 export interface DiscountGetByIdResponse extends BaseResponse {
   data: Discount
 }
 
-// 3. Create Discount
+
 export type CreateDiscountRequest = Omit<Discount, 'id' | 'usesCount' | 'usersUsed' | 'createdAt' | 'updatedAt'>
 export interface CreateDiscountResponse extends BaseResponse {
   data: Discount
 }
 
-// 4. Update Discount
+
 export type UpdateDiscountRequest = Partial<CreateDiscountRequest>
 export interface UpdateDiscountResponse extends BaseResponse {
   data: Discount
 }
 
-// 5. Delete Discount
-export interface DeleteDiscountResponse extends BaseResponse {} // No data expected
 
-// 6. Get Guest Discount List
+export interface DeleteDiscountResponse extends BaseResponse {} 
+
+
 export interface GetGuestDiscountListRequest {
   onlyShopDiscounts?: boolean
   onlyPlatformDiscounts?: boolean
-  cartItemIds: string // Comma-separated string of cart item IDs
+  cartItemIds: string 
 }
 export interface GuestGetDiscountListResponse extends BaseResponse {
   data: Discount[]
 }
 
-// 7. Validate Discount Code
+
 export interface ValidateDiscountRequest {
   code: string
   cartItemIds: string[]
 }
 export interface ValidateDiscountResponseData {
   isValid: boolean
-  message?: string // For error messages when isValid is false
+  message?: string 
   discount?: Discount
   discountAmount?: number
   finalOrderTotal?: number

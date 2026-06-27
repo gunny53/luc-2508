@@ -5,11 +5,11 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Brand Brand Module Sequence Overview: validate request and return the expected response
+note top : Brand Brand Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
-English content normalized from the original source text.
+Brand Brand Module Sequence Overview: validate request and return the expected response
+Brand Brand Module Sequence Overview: validate request and return the expected response
 participant "BrandController" as BC
 participant "BrandTranslationController" as BTC
 participant "BrandService" as BS
@@ -23,71 +23,71 @@ participant "PrismaService" as PS
 database "PostgreSQL" as DB
 
 == English Section ==
-Client -> BC: English content normalized from the original source text.
+Client -> BC: Brand Brand Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
 end note
-BC -> BS: English content normalized from the original source text.
+BC -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
 
 opt Multi-language Support
     BS -> IC: I18nContext.current()?.lang
-    IC -> BS: English content normalized from the original source text.
+    IC -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
     note right
     Language Handling:
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Brand Brand Module Sequence Overview: validate request and return the expected response
+    • Brand Brand Module Sequence Overview: validate request and return the expected response
+    • Brand Brand Module Sequence Overview: validate request and return the expected response
     end note
 end
 
 BS -> BR: list(pagination, languageId)
-BR -> PS: English content normalized from the original source text.
+BR -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
 note right
 Database Query Logic:
 • COUNT(*) cho pagination metadata
-• English content normalized from the original source text
+• Brand Brand Module Sequence Overview: validate request and return the expected response
 • WHERE deletedAt IS NULL
 • ORDER BY createdAt DESC
-• English content normalized from the original source text
+• Brand Brand Module Sequence Overview: validate request and return the expected response
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> BR: English content normalized from the original source text.
-BR -> BS: English content normalized from the original source text.
+PS -> DB: Brand Brand Module Sequence Overview: validate request and return the expected response
+DB -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
+PS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+BR -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
 BS -> IS: i18n.t('brand.brand.success.GET_SUCCESS')
-IS -> BS: English content normalized from the original source text.
-BS -> BC: English content normalized from the original source text.
-BC -> Client: English content normalized from the original source text.
+IS -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
+BS -> BC: Brand Brand Module Sequence Overview: validate request and return the expected response
+BC -> Client: Brand Brand Module Sequence Overview: validate request and return the expected response
 
-Client -> BC: English content normalized from the original source text.
+Client -> BC: Brand Brand Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
 end note
 BC -> BS: findById(brandId)
 BS -> IC: I18nContext.current()?.lang
-IC -> BS: English content normalized from the original source text.
+IC -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
 BS -> BR: findById(id, languageId)
-BR -> PS: English content normalized from the original source text.
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> BR: English content normalized from the original source text.
-BR -> BS: English content normalized from the original source text.
+BR -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
+PS -> DB: Brand Brand Module Sequence Overview: validate request and return the expected response
+DB -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
+PS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+BR -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
 BS -> IS: i18n.t('brand.brand.success.GET_DETAIL_SUCCESS')
-IS -> BS: English content normalized from the original source text.
-BS -> BC: English content normalized from the original source text.
+IS -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
+BS -> BC: Brand Brand Module Sequence Overview: validate request and return the expected response
 BC -> Client: JSON brand detail
 
 == English Section ==
 User -> AU: @ActiveUser()
-AU -> User: English content normalized from the original source text.
+AU -> User: Brand Brand Module Sequence Overview: validate request and return the expected response
 User -> BC: Request CRUD operations
 BC -> BS: Business logic + Auth
 
-English content normalized from the original source text.
+Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> BS: validateData(brandData)
     note right
     Data Validation:
@@ -95,32 +95,32 @@ English content normalized from the original source text.
     • Business rules (required fields)
     • Brand uniqueness check
     end note
-    BS -> BR: English content normalized from the original source text.
-    BR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
-    DB -> PS: English content normalized from the original source text.
-    PS -> BR: English content normalized from the original source text.
-    BR -> BS: English content normalized from the original source text.
+    BS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+    BR -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Brand Brand Module Sequence Overview: validate request and return the expected response
+    DB -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
+    PS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+    BR -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> IS: i18n.t('brand.brand.success.CREATE_SUCCESS')
-    IS -> BS: English content normalized from the original source text.
+    IS -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> BC: Success response
     BC -> User: 201 Created + JSON response
 
 else (No)
-    BS -> BR: English content normalized from the original source text.
-    BR -> PS: English content normalized from the original source text.
+    BS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+    BR -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
     PS -> DB: Query brand
     DB -> PS: Brand data
     PS -> BR: Brand info
     BR -> BS: Brand info
-    BS -> BR: English content normalized from the original source text.
-    BR -> PS: English content normalized from the original source text.
-    PS -> DB: English content normalized from the original source text.
+    BS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+    BR -> PS: Brand Brand Module Sequence Overview: validate request and return the expected response
+    PS -> DB: Brand Brand Module Sequence Overview: validate request and return the expected response
     DB -> PS: Brand updated
-    PS -> BR: English content normalized from the original source text.
-    BR -> BS: English content normalized from the original source text.
+    PS -> BR: Brand Brand Module Sequence Overview: validate request and return the expected response
+    BR -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> IS: i18n.t('brand.brand.success.UPDATE_SUCCESS')
-    IS -> BS: English content normalized from the original source text.
+    IS -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> BC: Success response
     BC -> User: 200 OK + JSON response
 
@@ -132,18 +132,18 @@ else (No)
     PS -> BR: Success response
     BR -> BS: Success response
     BS -> IS: i18n.t('brand.brand.success.DELETE_SUCCESS')
-    IS -> BS: English content normalized from the original source text.
+    IS -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> BC: Success response
     BC -> User: 200 OK + JSON response
 end
 
 == English Section ==
 User -> AU: @ActiveUser()
-AU -> User: English content normalized from the original source text.
+AU -> User: Brand Brand Module Sequence Overview: validate request and return the expected response
 User -> BTC: Request CRUD translations
 BTC -> BTS: Business logic + Auth
 
-English content normalized from the original source text.
+Brand Brand Module Sequence Overview: validate request and return the expected response
     BTS -> BTS: validateData(translationData)
     note right
     Translation Validation:
@@ -158,7 +158,7 @@ English content normalized from the original source text.
     PS -> BTR: Translation created
     BTR -> BTS: Translation data
     BTS -> IS: i18n.t('brand.brandTranslation.success.CREATE_SUCCESS')
-    IS -> BTS: English content normalized from the original source text.
+    IS -> BTS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BTS -> BTC: Success response
     BTC -> User: 201 Created + JSON response
 
@@ -170,7 +170,7 @@ else (No)
     PS -> BTR: Translation updated
     BTR -> BTS: Updated data
     BTS -> IS: i18n.t('brand.brandTranslation.success.UPDATE_SUCCESS')
-    IS -> BTS: English content normalized from the original source text.
+    IS -> BTS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BTS -> BTC: Success response
     BTC -> User: 200 OK + JSON response
 
@@ -182,13 +182,13 @@ else (No)
     PS -> BTR: Success
     BTR -> BTS: Success
     BTS -> IS: i18n.t('brand.brandTranslation.success.DELETE_SUCCESS')
-    IS -> BTS: English content normalized from the original source text.
+    IS -> BTS: Brand Brand Module Sequence Overview: validate request and return the expected response
     BTS -> BTC: Success response
     BTC -> User: 200 OK + JSON response
 end
 
 == English Section ==
-English content normalized from the original source text.
+Brand Brand Module Sequence Overview: validate request and return the expected response
     BS -> BC: ValidationException
     BC -> User: 422 Unprocessable Entity
 
@@ -207,17 +207,17 @@ end
 
 == English Section ==
 BS -> IS: i18n.t('brand.brand.success.XXX')
-IS -> BS: English content normalized from the original source text.
-BS -> BC: English content normalized from the original source text.
-BC -> User: English content normalized from the original source text.
+IS -> BS: Brand Brand Module Sequence Overview: validate request and return the expected response
+BS -> BC: Brand Brand Module Sequence Overview: validate request and return the expected response
+BC -> User: Brand Brand Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
 • Audit trail (createdById, updatedById, deletedById)
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Brand Brand Module Sequence Overview: validate request and return the expected response
+• Brand Brand Module Sequence Overview: validate request and return the expected response
 • Management API cho CRUD operations
 • Unique constraint cho brand + language combination
 • Translation management sub-module

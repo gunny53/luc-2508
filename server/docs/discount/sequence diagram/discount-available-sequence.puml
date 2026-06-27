@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Discount Discount Available Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Discount Discount Available Sequence: validate request and return the expected response
 participant "DiscountController" as DC
 participant "DiscountService" as DS
 participant "DiscountRepo" as DR
@@ -28,10 +28,10 @@ note right of DR
 • startDate <= now <= endDate
 • isPlatform theo flags
 • minOrderValue theo orderTotal
-• English content normalized from the original source text
+• Discount Discount Available Sequence: validate request and return the expected response
 end note
 
-DR -> DB: English content normalized from the original source text.
+DR -> DB: Discount Discount Available Sequence: validate request and return the expected response
 DB --> DR: cartItems
 DR -> DR: calculate orderTotal, shopId, productIds, categoryIds, brandIds
 
@@ -40,8 +40,8 @@ DB --> DR: discounts[]
 
 DR -> DR: filterAvailableDiscounts(discounts, cartItemIds)
 note right of DR
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Discount Discount Available Sequence: validate request and return the expected response
+• Discount Discount Available Sequence: validate request and return the expected response
 end note
 DR --> DS: filtered discounts
 deactivate DR

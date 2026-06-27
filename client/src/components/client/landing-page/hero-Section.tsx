@@ -28,7 +28,7 @@ const ServiceItem = memo(({ item }: { item: (typeof serviceItems)[0] }) => (
         width={46}
         height={46}
         className="object-contain"
-        loading="lazy" // Lazy load cho service icons
+        loading="lazy" 
       />
     </div>
     <p className="text-xs sm:text-[13px] text-gray-800 leading-tight h-10 flex items-center justify-center">
@@ -63,7 +63,7 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [slideCount, setSlideCount] = useState(0)
 
-  // 4. Memoize carousel options
+  
   const carouselOpts = useMemo(
     () => ({
       loop: true
@@ -71,7 +71,7 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     []
   )
 
-  // 5. Optimize useEffect dependencies
+  
   useEffect(() => {
     if (!api) return
 
@@ -101,7 +101,7 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     [api]
   )
 
-  // 6. Memoize style classes
+  
   const containerClass = useMemo(
     () =>
       cn(
@@ -139,26 +139,26 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     )
   }, [slideCount, currentSlide, scrollTo])
 
-  // 8. Memoize carousel images
+  
   const carouselImages = useMemo(
     () => heroImages.map((src, index) => <CarouselImage key={src} src={src} index={index} isMobile={isMobile} />),
     [isMobile]
   )
 
-  // 9. Memoize service items
+  
   const serviceItemsList = useMemo(() => serviceItems.map((item) => <ServiceItem key={item.label} item={item} />), [])
 
   return (
     <section className={cn('w-full bg-white py-6 shadow-sm', className)}>
       <div className="container mx-auto px-4 justify-start max-w-[1250px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left column - 8 cols */}
+          {}
           <div className="lg:col-span-8">
             <div className={containerClass}>
               <Carousel plugins={[plugin]} opts={carouselOpts} setApi={setApi} className="w-full h-full">
                 <CarouselContent className="h-full">{carouselImages}</CarouselContent>
 
-                {/* Navigation Buttons */}
+                {}
                 {!isMobile && (
                   <>
                     <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 z-20 text-white bg-black/30 hover:bg-black/50 border-none disabled:bg-black/10 disabled:text-white/50 h-10 w-10" />
@@ -167,23 +167,23 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                 )}
               </Carousel>
 
-              {/* Dot Indicators */}
+              {}
               {dotIndicators}
 
-              {/* Overlay content */}
+              {}
               {!isMobile && (
                 <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/60 to-transparent z-10">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    English content normalized from the original source text.
+                    ECSite
                   </h2>
-                  <p className="text-white mb-4 max-w-lg">English content normalized from the original source text.</p>
-                  <Button className="w-fit">English content normalized from the original source text.</Button>
+                  <p className="text-white mb-4 max-w-lg">ECSite</p>
+                  <Button className="w-fit">ECSite</Button>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Right column - 4 cols */}
+          {}
           {!isMobile && (
             <div className="lg:col-span-4">
               <div className={rightColumnClass}>
@@ -195,17 +195,17 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                     style={{ objectFit: 'cover' }}
                     className="z-0"
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    loading="lazy" // Lazy load cho secondary image
+                    loading="lazy" 
                   />
                 </div>
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent">
                   <h2 className="text-2xl font-bold text-white mb-2">
-                    English content normalized from the original source text.
+                    ECSite
                   </h2>
-                  <p className="text-white mb-3">English content normalized from the original source text.</p>
+                  <p className="text-white mb-3">ECSite</p>
                   <Button variant="outline" className="w-fit bg-transparent border-white text-white hover:bg-white/20">
-                    English content normalized from the original source text.
+                    ECSite
                   </Button>
                 </div>
               </div>
@@ -213,7 +213,7 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
           )}
         </div>
 
-        {/* Service Icons Section */}
+        {}
         <div className="mt-6">
           <div className="flex sm:grid sm:grid-cols-6 items-start justify-start sm:justify-center gap-x-4 sm:gap-y-2 overflow-y-hidden overflow-x-auto scrollbar-hide py-2 sm:py-0">
             {serviceItemsList}

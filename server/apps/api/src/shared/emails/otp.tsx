@@ -16,12 +16,12 @@ export const OTPEmail = ({ otpCode, title }: OTPEmailProps) => (
     <Body style={main}>
       <Container style={container}>
         <Img src={logoUrl} width='212' height='88' alt='Logo' style={logo} />
-        <Text style={tertiary}>English content normalized from the original source text.</Text>
-        <Heading style={secondary}>English content normalized from the original source text.</Heading>
+        <Text style={tertiary}>ECSite verification code</Text>
+        <Heading style={secondary}>Use this code to verify your account</Heading>
         <Section style={codeContainer}>
           <Text style={code}>{otpCode}</Text>
         </Section>
-        <Text style={paragraph}>English content normalized from the original source text.</Text>
+        <Text style={paragraph}>This code expires shortly. Do not share it with anyone.</Text>
       </Container>
       <Text style={footer}>From ECSite Ecommerce</Text>
     </Body>
@@ -30,7 +30,7 @@ export const OTPEmail = ({ otpCode, title }: OTPEmailProps) => (
 
 OTPEmail.PreviewProps = {
   otpCode: '144833',
-  title: 'English content normalized from the original source text.'
+  title: 'Your ECSite verification code'
 } as OTPEmailProps
 
 export default OTPEmail

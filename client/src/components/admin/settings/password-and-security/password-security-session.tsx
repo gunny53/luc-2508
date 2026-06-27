@@ -56,7 +56,7 @@ export function PasswordSecuritySession() {
           onClick={() => router.push('/admin/settings/password-and-security')}
         >
           <ChevronLeft className="w-5 h-5" />
-          <span>English content normalized from the original source text.</span>
+          <span>ECSite</span>
         </Button>
       }
       subtitle={`${displayedSessionsCount} sessions on all devices`}
@@ -163,7 +163,7 @@ export function PasswordSecuritySession() {
                   <div className="divide-y divide-gray-200">
                     {group.devices.map(
                       (device) =>
-                        // Only render the device if it has active sessions
+                        
                         device.sessions &&
                         device.sessions.length > 0 && (
                           <div key={device.deviceId} className="px-6 py-3">
@@ -193,7 +193,7 @@ export function PasswordSecuritySession() {
                                       id={`session-${session.id}`}
                                       checked={selectedSessionIds.includes(session.id)}
                                       onCheckedChange={() => toggleSessionSelection(session.id)}
-                                      disabled={session.isCurrent} // Cannot revoke current session individually
+                                      disabled={session.isCurrent} 
                                     />
                                     <div className="flex-1">
                                       <div className="text-sm text-gray-700">
@@ -247,18 +247,18 @@ export function PasswordSecuritySession() {
           ))}
         </Accordion>
       )}
-      {/* {!loading && !error && totalPages > 1 && (
-        <div className="p-4">
-          <Pagination
-            page={page}
-            limit={limit}
-            totalPages={totalPages}
-            totalRecords={totalItems}
-            onPageChange={handlePageChange}
-            onLimitChange={handleLimitChange}
-          />
-        </div>
-      )} */}
+      {
+
+
+
+
+
+
+
+
+
+
+}
     </SettingTable>
   )
 }

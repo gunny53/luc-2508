@@ -107,7 +107,7 @@ export const VNPayRefundResSchema = z.object({
   })
 })
 
-// ================== TYPES EXPORT ==================
+
 export type CreateVNPayPaymentBodyType = z.infer<typeof CreateVNPayPaymentBodySchema>
 export type CreateVNPayPaymentResType = z.infer<typeof CreateVNPayPaymentResSchema>
 export type VNPayBankListResType = z.infer<typeof VNPayBankListResSchema>

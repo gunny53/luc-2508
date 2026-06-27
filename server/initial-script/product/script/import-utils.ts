@@ -1,10 +1,10 @@
-// import-utils.ts
+
 import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
 import * as path from 'path'
 import { Logger } from '@nestjs/common'
 
-// Config chung
+
 export const CONFIG = {
   BATCH_SIZE: process.env.TEST_MODE === 'true' ? 10 : 15000,
   SKU_BATCH_SIZE: 25000,
@@ -28,7 +28,7 @@ export const CONFIG = {
   MAX_VARIANT_OPTION_COUNT: 20
 } as const
 
-// Interface/type chung
+
 export interface ShopeeProduct {
   id: string
   title: string
@@ -151,7 +151,7 @@ export async function readJsonStream(jsonPath: string): Promise<ShopeeProduct[]>
   }
 }
 
-// Helper: logger
+
 export const logger = new Logger('ProductImport')
 export function validateProductEnhanced(product: ShopeeProduct): ValidationResult {
   const issues: string[] = []
@@ -179,7 +179,7 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
   if (product['Product Description'] && product['Product Description'].length > CONFIG.MAX_DESCRIPTION_LENGTH)
     issues.push(`Description too long (${product['Product Description'].length} > ${CONFIG.MAX_DESCRIPTION_LENGTH})`)
 
-  // Validate Product Specifications
+  
   if (product['Product Specifications']) {
     if (product['Product Specifications'].length > CONFIG.MAX_SPECIFICATION_COUNT)
       issues.push(
@@ -244,32 +244,28 @@ export function validateProductEnhanced(product: ShopeeProduct): ValidationResul
     })
   }
   if (product.Color) {
-    const existingVariant = variants.find(
-      (v) => v.value === 'English content normalized from the original source text.'
-    )
+    const existingVariant = variants.find((v) => v.value === 'Color')
     if (existingVariant) {
       if (!existingVariant.options.includes(product.Color)) {
         existingVariant.options.push(product.Color)
       }
     } else {
       variants.push({
-        value: 'English content normalized from the original source text.',
+        value: 'Color',
         options: [product.Color]
       })
     }
   }
 
   if (product.Size) {
-    const existingVariant = variants.find(
-      (v) => v.value === 'English content normalized from the original source text.'
-    )
+    const existingVariant = variants.find((v) => v.value === 'Size')
     if (existingVariant) {
       if (!existingVariant.options.includes(product.Size)) {
         existingVariant.options.push(product.Size)
       }
     } else {
       variants.push({
-        value: 'English content normalized from the original source text.',
+        value: 'Size',
         options: [product.Size]
       })
     }
@@ -291,7 +287,7 @@ export function createLogger(context: string) {
   return new Logger(context)
 }
 
-// Helper: sleep
+
 export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -397,17 +393,17 @@ export function mergeAndCleanVariants(
   }
   if (additionalFields) {
     if (additionalFields.Color) {
-      if (!variantMap.has('English content normalized from the original source text.')) {
-        variantMap.set('English content normalized from the original source text.', new Set())
+      if (!variantMap.has('Color')) {
+        variantMap.set('Color', new Set())
       }
-      variantMap.get('English content normalized from the original source text.')!.add(additionalFields.Color)
+      variantMap.get('Color')!.add(additionalFields.Color)
     }
 
     if (additionalFields.Size) {
-      if (!variantMap.has('English content normalized from the original source text.')) {
-        variantMap.set('English content normalized from the original source text.', new Set())
+      if (!variantMap.has('Size')) {
+        variantMap.set('Size', new Set())
       }
-      variantMap.get('English content normalized from the original source text.')!.add(additionalFields.Size)
+      variantMap.get('Size')!.add(additionalFields.Size)
     }
   }
   variantMap.forEach((options, name) => {

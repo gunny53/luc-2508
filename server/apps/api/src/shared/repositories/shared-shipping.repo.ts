@@ -44,7 +44,7 @@ export class SharedShippingRepository {
   ) {}
 
   async createOrderShipping(data: CreateOrderShippingData) {
-    this.logger.log(`English content normalized from the original source text.${data.orderId}`)
+    this.logger.log(`Creating shipping order for order ${data.orderId}`)
 
     try {
       const orderShipping = await this.prismaService.orderShipping.create({
@@ -87,14 +87,14 @@ export class SharedShippingRepository {
       this.logger.log(`[SHARED_SHIPPING] OrderShipping created successfully: ${JSON.stringify(orderShipping, null, 2)}`)
       return orderShipping
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+      this.logger.error(`Shipping operation failed: ${error.message}`, error.stack)
       throw error
     }
   }
 
   async updateOrderShippingStatus(orderId: string, status: OrderShippingStatusType) {
     this.logger.log(
-      `English content normalized from the original source text.${orderId}English content normalized from the original source text.${status}`
+      `Updating shipping status for order ${orderId} to ${status}`
     )
 
     try {
@@ -106,7 +106,7 @@ export class SharedShippingRepository {
       this.logger.log(`[SHARED_SHIPPING] OrderShipping status updated successfully: ${JSON.stringify(result, null, 2)}`)
       return result
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+      this.logger.error(`Shipping operation failed: ${error.message}`, error.stack)
       throw error
     }
   }
@@ -146,46 +146,46 @@ export class SharedShippingRepository {
 
   async cancelGHNOrderForOrder(orderId: string): Promise<{ success: boolean; message: string }> {
     try {
-      this.logger.log(`English content normalized from the original source text.${orderId}`)
+      this.logger.log(`Processing shipping order ${orderId}`)
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId },
         select: { orderCode: true, status: true }
       })
 
       if (!orderShipping?.orderCode) {
-        this.logger.warn(`English content normalized from the original source text.${orderId}`)
+        this.logger.warn(`Processing shipping order ${orderId}`)
         return {
           success: false,
-          message: 'English content normalized from the original source text.'
+          message: 'Shipping order was not found.'
         }
       }
 
       if (orderShipping.status !== 'CREATED') {
-        this.logger.warn(`English content normalized from the original source text.${orderShipping.status}`)
+        this.logger.warn(`Shipping order is not in a valid state: ${orderShipping.status}`)
         return {
           success: false,
-          message: `English content normalized from the original source text.${orderShipping.status}`
+          message: `Shipping order is not in a valid state: ${orderShipping.status}`
         }
       }
       await this.shippingProducer.enqueueCancelGHNOrder(orderShipping.orderCode, orderId)
 
-      this.logger.log(`English content normalized from the original source text.${orderShipping.orderCode}`)
+      this.logger.log(`Shipping order created with code ${orderShipping.orderCode}`)
 
       return {
         success: true,
-        message: `English content normalized from the original source text.${orderShipping.orderCode}`
+        message: `Shipping order created with code ${orderShipping.orderCode}`
       }
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      this.logger.error(`Shipping operation failed: ${error.message}`)
       return {
         success: false,
-        message: `English content normalized from the original source text.${error.message}`
+        message: `Shipping operation failed: ${error.message}`
       }
     }
   }
 
   async getShopAddressForShipping(shopId: string): Promise<{ shop: any; address: any }> {
-    this.logger.log(`English content normalized from the original source text.${shopId}`)
+    this.logger.log(`Loading shop address for shop ${shopId}`)
 
     try {
       const shopData = await this.prismaService.user.findUnique({
@@ -193,18 +193,18 @@ export class SharedShippingRepository {
       })
 
       if (!shopData) {
-        this.logger.error(`English content normalized from the original source text.${shopId}`)
+        this.logger.error(`Loading shop address for shop ${shopId}`)
         throw new Error('Shop not found')
       }
 
       this.logger.log(`[SHARED_SHIPPING] Shop data: ${JSON.stringify(shopData, null, 2)}`)
-      this.logger.log(`English content normalized from the original source text.`)
+      this.logger.log(`Shop address loaded successfully.`)
       let shopUserAddress = await this.prismaService.userAddress.findFirst({
         where: { userId: shopId, isDefault: true },
         include: { address: true }
       })
       if (!shopUserAddress) {
-        this.logger.warn(`English content normalized from the original source text.${shopId}`)
+        this.logger.warn(`Loading shop address for shop ${shopId}`)
         shopUserAddress = await this.prismaService.userAddress.findFirst({
           where: { userId: shopId },
           include: { address: true }
@@ -212,19 +212,19 @@ export class SharedShippingRepository {
       }
 
       if (!shopUserAddress) {
-        this.logger.error(`English content normalized from the original source text.${shopId}`)
+        this.logger.error(`Loading shop address for shop ${shopId}`)
         throw new Error('Shop has no addresses')
       }
 
       if (!shopUserAddress.address) {
-        this.logger.error(`English content normalized from the original source text.${shopId}`)
+        this.logger.error(`Loading shop address for shop ${shopId}`)
         throw new Error('Shop address data not found')
       }
 
       this.logger.log(`[SHARED_SHIPPING] Shop UserAddress: ${JSON.stringify(shopUserAddress, null, 2)}`)
       this.logger.log(`[SHARED_SHIPPING] Shop address: ${JSON.stringify(shopUserAddress.address, null, 2)}`)
       if (!shopUserAddress.address.province || !shopUserAddress.address.district || !shopUserAddress.address.ward) {
-        this.logger.error(`English content normalized from the original source text.${shopId}`)
+        this.logger.error(`Loading shop address for shop ${shopId}`)
         throw new Error('Shop address missing required location information')
       }
 
@@ -236,47 +236,47 @@ export class SharedShippingRepository {
       this.logger.log(`[SHARED_SHIPPING] Shop address info: ${JSON.stringify(result, null, 2)}`)
       return result
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+      this.logger.error(`Shipping operation failed: ${error.message}`, error.stack)
       throw error
     }
   }
 
   async createGHNOrderForOrder(orderId: string): Promise<{ success: boolean; message: string }> {
     try {
-      this.logger.log(`English content normalized from the original source text.${orderId}`)
+      this.logger.log(`Processing shipping order ${orderId}`)
       const orderShipping = await this.prismaService.orderShipping.findUnique({
         where: { orderId },
         select: { status: true }
       })
 
       if (!orderShipping) {
-        this.logger.warn(`English content normalized from the original source text.${orderId}`)
+        this.logger.warn(`Processing shipping order ${orderId}`)
         return {
           success: false,
-          message: 'English content normalized from the original source text.'
+          message: 'Shipping order was not found.'
         }
       }
 
       if (orderShipping.status !== 'DRAFT') {
-        this.logger.warn(`English content normalized from the original source text.${orderShipping.status}`)
+        this.logger.warn(`Shipping order is not in a valid state: ${orderShipping.status}`)
         return {
           success: false,
-          message: `English content normalized from the original source text.${orderShipping.status}`
+          message: `Shipping order is not in a valid state: ${orderShipping.status}`
         }
       }
       await this.shippingProducer.enqueueCreateGHNOrder(orderId)
 
-      this.logger.log(`English content normalized from the original source text.${orderId}`)
+      this.logger.log(`Processing shipping order ${orderId}`)
 
       return {
         success: true,
-        message: `English content normalized from the original source text.${orderId}`
+        message: `Processing shipping order ${orderId}`
       }
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      this.logger.error(`Shipping operation failed: ${error.message}`)
       return {
         success: false,
-        message: `English content normalized from the original source text.${error.message}`
+        message: `Shipping operation failed: ${error.message}`
       }
     }
   }

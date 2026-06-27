@@ -32,10 +32,10 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
   const [view, setView] = useState<'main' | 'sub'>('main')
   const [selectedParent, setSelectedParent] = useState<CategoryOption | null>(null)
 
-  // Fetch parent categories (level 1)
+  
   const { categories: parentCategories, loading: parentLoading } = useCbbCategory(null)
 
-  // Fetch child categories based on the selected parent category
+  
   const { categories: subCategories, loading: subLoading } = useCbbCategory(selectedParent?.value || null)
 
   const handleParentClick = (category: CategoryOption) => {
@@ -63,8 +63,8 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
         <SheetHeader>
           {view === 'main' ? (
             <>
-              <SheetTitle>English content normalized from the original source text.</SheetTitle>
-              <SheetDescription>English content normalized from the original source text.</SheetDescription>
+              <SheetTitle>Danh m?c</SheetTitle>
+              <SheetDescription>Danh m?c</SheetDescription>
             </>
           ) : (
             <div className="flex items-center">
@@ -106,7 +106,7 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
                         href={createCategorySlug(selectedParent.label, [selectedParent.value])}
                         className="block px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-gray-100 rounded-md"
                       >
-                        English content normalized from the original source text. {selectedParent.label}
+                        Danh m?c {selectedParent.label}
                       </Link>
                     </SheetClose>
                   )}

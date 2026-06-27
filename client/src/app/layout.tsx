@@ -20,7 +20,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'ECSite',
-  description: 'English content normalized from the original source text.'
+  description: 'ECSite'
 }
 
 export default async function RootLayout({
@@ -42,7 +42,7 @@ export default async function RootLayout({
               </AuthGuard>
               <Toaster position="bottom-right" />
               <ChunkErrorHandler />
-              {/* </ClientLayout> */}
+              {}
             </StoreProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>

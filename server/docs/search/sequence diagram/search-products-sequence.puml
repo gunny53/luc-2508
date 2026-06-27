@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Search Search Products Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Search Search Products Sequence: validate request and return the expected response
 participant "SearchController" as SC
 participant "SearchService" as SS
 participant "SearchRepo" as SR
@@ -22,54 +22,54 @@ activate SS
 
 note right of SS
 Validate query:
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Search Search Products Sequence: validate request and return the expected response
+• Search Search Products Sequence: validate request and return the expected response
 end note
 
-English content normalized from the original source text.
+Search Search Products Sequence: validate request and return the expected response
   SS -> SS: parseQuery(query.q)
   note right of SS
   parseQuery:
-  • English content normalized from the original source text
-  • English content normalized from the original source text
-  • English content normalized from the original source text
-  • English content normalized from the original source text
+  • Search Search Products Sequence: validate request and return the expected response
+  • Search Search Products Sequence: validate request and return the expected response
+  • Search Search Products Sequence: validate request and return the expected response
+  • Search Search Products Sequence: validate request and return the expected response
   end note
   SS -> SS: getDictionary()
-  English content normalized from the original source text.
-    SS -> SS: English content normalized from the original source text.
+  Search Search Products Sequence: validate request and return the expected response
+    SS -> SS: Search Search Products Sequence: validate request and return the expected response
   else (No)
     SS -> ES: client.search(aggs: unique_attrs)
-    ES -> ESDB: English content normalized from the original source text.
+    ES -> ESDB: Search Search Products Sequence: validate request and return the expected response
     ESDB --> ES: aggregations
     ES --> SS: aggregations
     SS -> SS: build Map(attrName -> values[]); set cacheExpiry
   end
-  SS -> SS: English content normalized from the original source text.
-  SS -> SS: English content normalized from the original source text.
+  SS -> SS: Search Search Products Sequence: validate request and return the expected response
+  SS -> SS: Search Search Products Sequence: validate request and return the expected response
 end
 
 SS -> SR: searchProducts(query)
 activate SR
 
 note right of SR
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Search Search Products Sequence: validate request and return the expected response
+• Search Search Products Sequence: validate request and return the expected response
+• Search Search Products Sequence: validate request and return the expected response
 • bool.filter: terms brandIds/categoryIds, range skuPrice, nested attrs
 Sort options:
 • Price → skuPrice { order }
 • Sale → _score desc
 • Default → createdAt { order }
-• English content normalized from the original source text
+• Search Search Products Sequence: validate request and return the expected response
 end note
 
 SR -> ES: search(index, esQuery, { size: limit, from, sort })
-ES -> ESDB: English content normalized from the original source text.
+ES -> ESDB: Search Search Products Sequence: validate request and return the expected response
 ESDB --> ES: hits + total
 ES --> SR: raw result
 
-SR -> SR: English content normalized from the original source text.
+SR -> SR: Search Search Products Sequence: validate request and return the expected response
 SR --> SS: { data, metadata }
 deactivate SR
 

@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+System Workflow: validate request and return the expected response
+note top : System Workflow: validate request and return the expected response
 
 actor "User" as User
 actor "Admin" as Admin
@@ -39,9 +39,9 @@ AC -> AS: authenticate({email, password})
 AS -> AS: Validate credentials
 note right
 Authentication Logic:
-• English content normalized from the original source text
+• System Workflow: validate request and return the expected response
 • Validate email format
-• English content normalized from the original source text
+• System Workflow: validate request and return the expected response
 • Generate JWT tokens
 end note
 
@@ -49,8 +49,8 @@ alt Credentials valid
     AS -> AS: Generate access token
     AS -> AS: Generate refresh token
     AS -> IS: i18n.t('auth.auth.success.LOGIN_SUCCESS')
-    IS -> AS: English content normalized from the original source text.
-    AS -> AC: English content normalized from the original source text.
+    IS -> AS: System Workflow: validate request and return the expected response
+    AS -> AC: System Workflow: validate request and return the expected response
     AC -> User: Set cookies + redirect to dashboard
 else Credentials invalid
     AS -> AC: AuthenticationException
@@ -62,13 +62,13 @@ User -> AC: GET /auth/google
 AC -> AS: initiateGoogleOAuth()
 AS -> Google: Redirect to Google OAuth
 Google -> User: Google login page
-User -> Google: English content normalized from the original source text.
+User -> Google: System Workflow: validate request and return the expected response
 Google -> AC: GET /auth/google/callback + code
 AC -> AS: handleGoogleCallback(code)
 AS -> Google: Exchange code for tokens
 Google -> AS: Google user info
 AS -> US: createOrUpdateUser(googleUser)
-US -> PS: English content normalized from the original source text.
+US -> PS: System Workflow: validate request and return the expected response
 PS -> DB: INSERT/UPDATE user
 DB -> PS: User data
 PS -> US: User created/updated
@@ -80,8 +80,8 @@ AC -> User: Redirect to dashboard
 == Product Browsing Flow ==
 User -> PC: GET /products?page=1&limit=10
 PC -> PS: list(pagination)
-PS -> PS: English content normalized from the original source text.
-PS -> PS: English content normalized from the original source text.
+PS -> PS: System Workflow: validate request and return the expected response
+PS -> PS: System Workflow: validate request and return the expected response
 note right
 Product Search Logic:
 • Natural language processing
@@ -90,8 +90,8 @@ Product Search Logic:
 • Multi-language support
 end note
 PS -> IS: i18n.t('product.product.success.GET_SUCCESS')
-IS -> PS: English content normalized from the original source text.
-PS -> PC: English content normalized from the original source text.
+IS -> PS: System Workflow: validate request and return the expected response
+PS -> PC: System Workflow: validate request and return the expected response
 PC -> User: JSON response
 
 == Cart Management Flow ==
@@ -99,9 +99,9 @@ User -> OC: POST /cart + {productId, quantity}
 OC -> OS: addToCart({productId, quantity, userId})
 OS -> OS: Validate product availability
 OS -> OS: Check inventory
-OS -> OS: English content normalized from the original source text.
+OS -> OS: System Workflow: validate request and return the expected response
 OS -> IS: i18n.t('cart.cart.success.ADD_SUCCESS')
-IS -> OS: English content normalized from the original source text.
+IS -> OS: System Workflow: validate request and return the expected response
 OS -> OC: Cart updated
 OC -> User: JSON response
 
@@ -109,13 +109,13 @@ OC -> User: JSON response
 User -> OC: POST /orders + order data
 OC -> OS: createOrder({data, userId})
 OS -> OS: Validate order data
-OS -> OS: English content normalized from the original source text.
+OS -> OS: System Workflow: validate request and return the expected response
 note right
 Order Creation Logic:
 • Redis Redlock cho concurrency control
 • Validate SKU availability
-• English content normalized from the original source text
-• English content normalized from the original source text
+• System Workflow: validate request and return the expected response
+• System Workflow: validate request and return the expected response
 end note
 OS -> OS: Begin database transaction
 OS -> PS: Create order record
@@ -126,7 +126,7 @@ OS -> OS: Create order items
 OS -> OS: Update inventory
 OS -> OS: Commit transaction
 OS -> IS: i18n.t('order.order.success.CREATE_SUCCESS')
-IS -> OS: English content normalized from the original source text.
+IS -> OS: System Workflow: validate request and return the expected response
 OS -> OC: Order created
 OC -> User: 201 Created + order details
 
@@ -173,8 +173,8 @@ Admin -> UC: GET /users?page=1&limit=10
 UC -> US: list(pagination)
 US -> US: Apply role-based filtering
 US -> IS: i18n.t('user.user.success.GET_SUCCESS')
-IS -> US: English content normalized from the original source text.
-US -> UC: English content normalized from the original source text.
+IS -> US: System Workflow: validate request and return the expected response
+US -> UC: System Workflow: validate request and return the expected response
 UC -> Admin: JSON response
 
 == Review System Flow ==
@@ -182,9 +182,9 @@ User -> OC: POST /reviews + {productId, rating, content}
 OC -> OS: createReview({data, userId})
 OS -> OS: Validate order completion
 OS -> OS: Check review eligibility
-OS -> OS: English content normalized from the original source text.
+OS -> OS: System Workflow: validate request and return the expected response
 OS -> IS: i18n.t('review.review.success.CREATE_SUCCESS')
-IS -> OS: English content normalized from the original source text.
+IS -> OS: System Workflow: validate request and return the expected response
 OS -> OC: Review created
 OC -> User: 201 Created + review details
 
@@ -211,12 +211,12 @@ loop Background Jobs
 end
 
 note bottom
-* English content normalized from the original source text
+* System Workflow: validate request and return the expected response
 • Multi-authentication (Email/Password, Google OAuth)
 • Payment gateway integration (VNPay, Sepay)
-• English content normalized from the original source text
+• System Workflow: validate request and return the expected response
 • Role-based access control
-• English content normalized from the original source text
+• System Workflow: validate request and return the expected response
 • Multi-language support
 • Background job processing
 • Comprehensive error handling

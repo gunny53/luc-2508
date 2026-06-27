@@ -32,7 +32,7 @@ export const OrderDateFilter = () => {
             <span className="truncate">
               {dateRange.from && dateRange.to
                 ? `${format(dateRange.from, 'dd/MM/yyyy')} - ${format(dateRange.to, 'dd/MM/yyyy')}`
-                : 'English content normalized from the original source text.'}
+                : '??n h?ng'}
             </span>
           </Button>
         </PopoverTrigger>

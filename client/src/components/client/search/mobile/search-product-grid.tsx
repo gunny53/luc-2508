@@ -22,7 +22,7 @@ export default function SearchProductGridMobile() {
 
   const [observerTarget, setObserverTarget] = useState<HTMLDivElement | null>(null)
 
-  // Infinite scroll observer
+  
   useEffect(() => {
     if (!observerTarget) return
 
@@ -53,12 +53,12 @@ export default function SearchProductGridMobile() {
   if (isError) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
-        <div className="text-red-500 mb-4">English content normalized from the original source text.</div>
+        <div className="text-red-500 mb-4">S?n ph?m</div>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
         >
-          English content normalized from the original source text.
+          S?n ph?m
         </button>
       </div>
     )
@@ -68,8 +68,8 @@ export default function SearchProductGridMobile() {
       <div className="w-full py-12 flex flex-col items-center justify-center">
         <div className="text-black text-lg mb-2">
           {searchQuery
-            ? `English content normalized from the original source text.${searchQuery}"`
-            : 'English content normalized from the original source text.'}
+            ? `S?n ph?m${searchQuery}"`
+            : 'S?n ph?m'}
         </div>
       </div>
     )
@@ -77,14 +77,12 @@ export default function SearchProductGridMobile() {
 
   return (
     <div className="space-y-4">
-      {}
       <div className="grid grid-cols-2 gap-3">
         {products.map((product: ClientProduct) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
 
-      {}
       {isLoading && products.length > 0 && (
         <div className="grid grid-cols-2 gap-3">
           {Array(4)
@@ -99,7 +97,6 @@ export default function SearchProductGridMobile() {
         </div>
       )}
 
-      {}
       {hasNextPage && <div ref={setObserverTarget} className="h-10" />}
     </div>
   )

@@ -36,7 +36,6 @@ export function VoucherEditIndex({ voucher, userData, onEditSuccess }: VoucherEd
 
   return (
     <div className="flex flex-col h-full">
-      {/* Form Content */}
       <div className="flex-grow space-y-6">
         <VoucherBasicInfo
           formData={formData}
@@ -63,20 +62,19 @@ export function VoucherEditIndex({ voucher, userData, onEditSuccess }: VoucherEd
         />
       </div>
 
-      {/* Sticky Footer */}
       <div className="rounded-sm sticky bottom-0 mt-6 bg-white/95 backdrop-blur-lg border shadow-lg border-gray-200 p-4 z-10">
         <div className="flex justify-end items-center gap-4">
           <Button variant="outline" size="lg" onClick={handleCancel} disabled={isLoading} className="h-11">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </Button>
           <Button size="lg" onClick={submitVoucher} disabled={isLoading} className="h-11 bg-red-600 hover:bg-red-700">
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                English content normalized from the original source text.
+                M? gi?m gi?
               </>
             ) : (
-              'English content normalized from the original source text.'
+              'M? gi?m gi?'
             )}
           </Button>
         </div>

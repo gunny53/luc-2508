@@ -1,16 +1,16 @@
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
+Quy?n truy c?p
+Quy?n truy c?p
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 // src/utils/api-adapters.ts
@@ -37,9 +37,9 @@ export function createDataTableAdapter<T, P = any>(fetchFunction: (params?: P) =
 }
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 // src/components/admin/permissions/usePermissions-with-hook.ts
@@ -57,10 +57,10 @@ import { useServerDataTable } from "@/hooks/use-server-data-table";
 import { createDataTableAdapter } from "@/utils/api-adapters";
 
 export function usePermissions() {
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const permissionAdapter = createDataTableAdapter<PermissionDetail>(permissionService.getAll);
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const {
     data: permissions,
     loading,
@@ -90,16 +90,16 @@ export function usePermissions() {
     defaultLimit: 10,
   });
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPermission, setSelectedPermission] = useState<Permission | null>(null);
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const handleCreate = async (data: PerCreateRequest) => {
     try {
       await permissionService.create(data);
       showToast("Permission created successfully", "success");
-      English content normalized from the original source text.
+      Quy?n truy c?p
       handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
       handleCloseModal();
     } catch (error) {
@@ -107,12 +107,12 @@ export function usePermissions() {
     }
   };
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const handleUpdate = async (id: number, data: PerUpdateRequest) => {
     try {
       await permissionService.update(String(id), data);
       showToast("Permission updated successfully", "success");
-      English content normalized from the original source text.
+      Quy?n truy c?p
       handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
       handleCloseModal();
     } catch (error) {
@@ -120,25 +120,25 @@ export function usePermissions() {
     }
   };
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const handleDelete = async (id: number) => {
     try {
       await permissionService.delete(String(id));
       showToast("Permission deleted successfully", "success");
-      English content normalized from the original source text.
+      Quy?n truy c?p
       handleSortChange(pagination.sortBy || "id", (pagination.sortOrder as "asc" | "desc") || "asc");
     } catch (error) {
       showToast(parseApiError(error), "error");
     }
   };
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const handleOpenModal = (permission: Permission | null = null) => {
     setSelectedPermission(permission);
     setIsModalOpen(true);
   };
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedPermission(null);
@@ -162,9 +162,9 @@ export function usePermissions() {
 }
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```tsx
 // src/components/admin/permissions/permissions-Table-with-hook.tsx
@@ -220,7 +220,7 @@ export function PermissionsTable() {
       await handleDelete(permissionToDelete.id);
       handleCloseDeleteModal();
     } catch (error) {
-      console.error("English content normalized from the original source text.
+      console.error("Quy?n truy c?p
     } finally {
       setDeleteLoading(false);
     }
@@ -234,11 +234,11 @@ export function PermissionsTable() {
         await handleCreate(formData);
       }
     } catch (error) {
-      console.error("English content normalized from the original source text.
+      console.error("Quy?n truy c?p
     }
   };
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
   const table = useDataTable({
     data: permissions,
     columns: PermissionsColumns({ onDelete: handleOpenDelete, onEdit: handleOpenModal }),
@@ -295,15 +295,15 @@ export function PermissionsTable() {
 }
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-English content normalized from the original source text.
-English content normalized from the original source text.
-English content normalized from the original source text.
+Quy?n truy c?p
+Quy?n truy c?p
+Quy?n truy c?p
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
 ```typescript
 // useUsers.ts
@@ -327,7 +327,7 @@ export function useUsers() {
     })
   });
 
-  English content normalized from the original source text.
+  Quy?n truy c?p
 
   return {
     users,
@@ -338,8 +338,8 @@ export function useUsers() {
 }
 ```
 
-English content normalized from the original source text.
+Quy?n truy c?p
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- Quy?n truy c?p
+- Quy?n truy c?p
+- Quy?n truy c?p

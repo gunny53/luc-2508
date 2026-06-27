@@ -10,7 +10,7 @@ export interface Sku {
   value: string
   price: number
   stock: number
-  image: string | null // Allow image to be null to match SkuDetail type
+  image: string | null 
   productId: string
 }
 
@@ -166,15 +166,15 @@ export function getCurrentStock(
   return currentSku ? currentSku.stock : getTotalStock(skus)
 }
 
-// /**
-//  */
-// export function getStockMessage(stock: number): ReactNode {
-//   if (stock <= 0) {
-//   }
 
-//   if (stock <= 5) {
-//   }
-// }
+
+
+
+
+
+
+
+
 
 export function areAllVariantsSelected(selectedVariants: SelectedVariants): boolean {
   return Object.keys(selectedVariants).length > 0 && Object.values(selectedVariants).every((val) => val !== null)
@@ -216,7 +216,7 @@ export async function handleAddToCart(
       true
     )
 
-    // Return cart item ID if available, otherwise false
+    
     return typeof result === 'string' ? result : false
   } catch (error) {
     console.error('Failed to add product to cart', error)

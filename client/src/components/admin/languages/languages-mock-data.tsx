@@ -2,7 +2,7 @@ export const languagesMockData = [
   {
     id: 1,
     code: 'vi',
-    name: 'English content normalized from the original source text.',
+    name: 'Ng?n ng?',
     isActive: true,
     createdAt: '2024-03-20T10:00:00Z',
     updatedAt: '2024-03-20T10:00:00Z'

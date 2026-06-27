@@ -6,9 +6,9 @@ export const sessionMockData = [
       {
         sessionId: 'session-1a',
         deviceName: 'Windows PC',
-        location: 'English content normalized from the original source text.',
+        location: 'ECSite',
         browser: 'Google Chrome',
-        lastActive: 'English content normalized from the original source text.',
+        lastActive: 'ECSite',
         isCurrent: true
       }
     ]
@@ -20,7 +20,7 @@ export const sessionMockData = [
       {
         sessionId: 'session-2a',
         deviceName: 'iPhone 13',
-        location: 'English content normalized from the original source text.',
+        location: 'ECSite',
         browser: 'Safari',
         lastActive: '26 thg 5',
         isCurrent: false
@@ -34,7 +34,7 @@ export const sessionMockData = [
       {
         sessionId: 'session-3a',
         deviceName: 'MacBook Pro',
-        location: 'English content normalized from the original source text.',
+        location: 'ECSite',
         browser: 'Firefox',
         lastActive: '15 thg 4',
         isCurrent: false
@@ -48,7 +48,7 @@ export const sessionMockData = [
       {
         sessionId: 'session-4a',
         deviceName: 'iPad Pro',
-        location: 'English content normalized from the original source text.',
+        location: 'ECSite',
         browser: 'Safari',
         lastActive: '29 thg 3',
         isCurrent: false

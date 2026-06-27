@@ -30,7 +30,7 @@ const getProductActions = (
 ): ActionItem<ProductColumn>[] => [
   {
     type: 'command',
-    label: t('DataTable.view') + 'English content normalized from the original source text.',
+    label: t('DataTable.view') + 'S?n ph?m',
     icon: <Eye />,
     onClick: () => onView(product)
   },
@@ -42,7 +42,7 @@ const getProductActions = (
   },
   {
     type: 'command',
-    label: 'English content normalized from the original source text.',
+    label: 'S?n ph?m',
     icon: <QrCode />,
     onClick: () => onViewBarcode(product)
   },
@@ -100,7 +100,7 @@ export const productsColumns = ({
           <div
             className="cursor-pointer"
             onClick={() => onEdit(row.original)}
-            title={`English content normalized from the original source text.${row.original.name}`}
+            title={`S?n ph?m${row.original.name}`}
           >
             <Image
               src={imageUrl}
@@ -122,7 +122,7 @@ export const productsColumns = ({
         return (
           <span
             className="font-medium line-clamp-3 w-40 whitespace-normal cursor-pointer hover:underline"
-            title={`English content normalized from the original source text.${row.original.name}`}
+            title={`S?n ph?m${row.original.name}`}
             onClick={() => onEdit(row.original)}
           >
             {row.original.name}
@@ -133,13 +133,13 @@ export const productsColumns = ({
       enableHiding: true
     },
 
-    // {
-    //     accessorKey: "category",
-    //     header: () => t("DataTable.category"),
-    //     cell: ({ row }) => <div className="w-[100px] line-clamp-3 whitespace-normal">{row.original.category}</div>,
-    //     enableSorting: true,
-    //     enableHiding: true,
-    // },
+    
+    
+    
+    
+    
+    
+    
     {
       accessorKey: 'price',
       header: ({ column }) => <DataTableColumnHeader column={column} title={t('DataTable.price')} />,

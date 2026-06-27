@@ -6,26 +6,26 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Product Manage Product Delete Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Product Manage Product Delete Activity: execute the validated workflow;
+:Product Manage Product Delete Activity: execute the validated workflow;
+:Product Manage Product Delete Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Product Manage Product Delete Activity: execute the validated workflow;
   if (condition?) then (Yes)
     :Soft delete product (deletedAt, deletedById);
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Product Manage Product Delete Activity: execute the validated workflow;
+    :Product Manage Product Delete Activity: execute the validated workflow;
     :enqueue addSyncProductJob(productId, 'delete');
     :Build message i18n;
-    :English content normalized from the original source text;
+    :Product Manage Product Delete Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Product Manage Product Delete Activity: execute the validated workflow;
   endif
 else (No)
-  :English content normalized from the original source text;
+  :Product Manage Product Delete Activity: execute the validated workflow;
 endif
 stop
 

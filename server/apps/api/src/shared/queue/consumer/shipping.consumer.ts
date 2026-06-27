@@ -47,7 +47,7 @@ export class ShippingConsumer extends WorkerHost {
   }
 
   async process(job: Job<CreateOrderType | GHNWebhookPayloadType, any, string>): Promise<any> {
-    this.logger.log(`English content normalized from the original source text.${job.id} - ${job.name}`)
+    this.logger.log(`Processing shipping job ${job.id} - ${job.name}`)
 
     try {
       switch (job.name) {
@@ -63,7 +63,7 @@ export class ShippingConsumer extends WorkerHost {
           throw new Error(`Unknown job type: ${job.name}`)
       }
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${job.id}: ${error.message}`)
+      this.logger.error(`Shipping job ${job.id} failed: ${error.message}`)
       await this.handleJobError(job, error)
       throw error
     }
@@ -141,9 +141,9 @@ export class ShippingConsumer extends WorkerHost {
     }
   }
 
-  /**
-   * Helper methods
-   */
+  
+
+
   private extractOrderIdFromClientOrderCode(clientOrderCode: string | null): string | null {
     if (!clientOrderCode) return null
     const match = clientOrderCode.match(/SSPX(.+)/)
@@ -261,9 +261,9 @@ export class ShippingConsumer extends WorkerHost {
     })
   }
 
-  /**
-   * Map GHN status sang OrderStatus
-   */
+  
+
+
   private mapGHNStatusToOrderStatus(ghnStatus: string): (typeof OrderStatus)[keyof typeof OrderStatus] | null {
     const statusMap = {
       ready_to_pick: OrderStatus.PICKUPED,
@@ -292,18 +292,18 @@ export class ShippingConsumer extends WorkerHost {
 
   private async processCancelGHNOrder(data: { orderCode: string; orderId: string }) {
     const { orderCode, orderId } = data
-    this.logger.log(`English content normalized from the original source text.${orderCode} cho order: ${orderId}`)
+    this.logger.log(`Creating GHN order ${orderCode} for order ${orderId}`)
 
     try {
       const result = await this.ghnClient.order.cancelOrder({
         orderCodes: [orderCode]
       })
 
-      this.logger.log(`English content normalized from the original source text.${JSON.stringify(result, null, 2)}`)
+      this.logger.log(`GHN response: ${JSON.stringify(result, null, 2)}`)
       if (result && Array.isArray(result)) {
         const orderResult = result.find((item: any) => item.order_code === orderCode)
         if (orderResult && orderResult.result === true) {
-          this.logger.log(`English content normalized from the original source text.${orderCode}`)
+          this.logger.log(`GHN order created with code ${orderCode}`)
           await this.prismaService.orderShipping.update({
             where: { orderId },
             data: {
@@ -314,15 +314,15 @@ export class ShippingConsumer extends WorkerHost {
 
           return {
             success: true,
-            message: `English content normalized from the original source text.${orderCode}`,
+            message: `GHN order created with code ${orderCode}`,
             orderCode
           }
         }
       }
 
-      throw new Error(`English content normalized from the original source text.${orderCode}`)
+      throw new Error(`GHN order created with code ${orderCode}`)
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      this.logger.error(`Shipping consumer failed: ${error.message}`)
       await this.prismaService.orderShipping.update({
         where: { orderId },
         data: {
@@ -338,7 +338,7 @@ export class ShippingConsumer extends WorkerHost {
 
   private async processCreateGHNOrder(data: { orderId: string }) {
     const { orderId } = data
-    this.logger.log(`English content normalized from the original source text.${orderId}`)
+    this.logger.log(`Processing shipping order ${orderId}`)
 
     try {
       const orderShipping = await this.prismaService.orderShipping.findUnique({
@@ -346,11 +346,11 @@ export class ShippingConsumer extends WorkerHost {
       })
 
       if (!orderShipping) {
-        throw new Error(`English content normalized from the original source text.${orderId}`)
+        throw new Error(`Processing shipping order ${orderId}`)
       }
 
       if (orderShipping.status !== 'DRAFT') {
-        throw new Error(`English content normalized from the original source text.${orderShipping.status}`)
+        throw new Error(`Shipping order has invalid status: ${orderShipping.status}`)
       }
 
       const isCodOrder = (orderShipping.codAmount || 0) > 0
@@ -377,10 +377,10 @@ export class ShippingConsumer extends WorkerHost {
         cod_amount: codAmount,
         required_note: orderShipping.requiredNote || 'CHOTHUHANG',
         client_order_code: orderId,
-        payment_type_id: paymentTypeId, // 1 = PREPAID, 2 = COD
+        payment_type_id: paymentTypeId, 
         items: [
           {
-            name: 'English content normalized from the original source text.',
+            name: 'Customer shipping address',
             quantity: 1,
             weight: orderShipping.weight || 0
           }
@@ -390,9 +390,9 @@ export class ShippingConsumer extends WorkerHost {
       this.logger.log(`[SHIPPING_CONSUMER] GHN order data: ${JSON.stringify(ghnOrderData, null, 2)}`)
       const result = await this.ghnClient.order.createOrder(ghnOrderData)
 
-      this.logger.log(`English content normalized from the original source text.${JSON.stringify(result, null, 2)}`)
+      this.logger.log(`GHN response: ${JSON.stringify(result, null, 2)}`)
       if (result && result.order_code) {
-        this.logger.log(`English content normalized from the original source text.${result.order_code}`)
+        this.logger.log(`GHN order created with code ${result.order_code}`)
         await this.prismaService.orderShipping.update({
           where: { orderId },
           data: {
@@ -405,14 +405,14 @@ export class ShippingConsumer extends WorkerHost {
 
         return {
           success: true,
-          message: `English content normalized from the original source text.${result.order_code}`,
+          message: `GHN order created with code ${result.order_code}`,
           orderCode: result.order_code
         }
       }
 
-      throw new Error('English content normalized from the original source text.')
+      throw new Error('GHN did not return an order code.')
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      this.logger.error(`Shipping consumer failed: ${error.message}`)
       await this.prismaService.orderShipping.update({
         where: { orderId },
         data: {

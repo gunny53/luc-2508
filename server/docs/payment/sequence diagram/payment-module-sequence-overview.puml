@@ -5,10 +5,10 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
+note top : Payment Payment Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
 actor "VNPay Gateway" as VNG
 actor "Sepay Gateway" as SG
 participant "VNPayController" as VC
@@ -31,15 +31,15 @@ VC -> VS: getBankList()
 VS -> VNS: getBankList()
 VNS -> VS: return banks data
 VS -> IS: i18n.t('payment.payment.vnpay.success.GET_BANK_LIST_SUCCESS')
-IS -> VS: English content normalized from the original source text.
+IS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
 VS -> VC: return banks list
 VC -> Client: return banks data
 
 Client -> VC: POST /payment/vnpay/create-payment + {amount, orderInfo, orderId, returnUrl, ipnUrl, locale, currency, bankCode, orderType, ipAddr}
 VC -> VS: createPayment(paymentData)
-VS -> VS: English content normalized from the original source text.
+VS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
 • orderInfoWithPrefix = PREFIX_PAYMENT_CODE + paymentId
 • orderIdWithPrefix = PREFIX_PAYMENT_CODE + paymentId
 • vnp_Amount, vnp_OrderInfo, vnp_TxnRef
@@ -47,40 +47,40 @@ English content normalized from the original source text.
 • vnp_CurrCode, vnp_OrderType
 end note
 VS -> VNS: buildPaymentUrl(buildPaymentData, {withHash: true})
-VNS -> VNS: English content normalized from the original source text.
+VNS -> VNS: Payment Payment Module Sequence Overview: validate request and return the expected response
 VNS -> VS: return paymentUrl
 VS -> IS: i18n.t('payment.payment.vnpay.success.CREATE_PAYMENT_SUCCESS')
-IS -> VS: English content normalized from the original source text.
-VS -> VC: English content normalized from the original source text.
+IS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
+VS -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
 VC -> Client: return paymentUrl
 
-Client -> VNG: English content normalized from the original source text.
-VNG -> Client: English content normalized from the original source text.
-Client -> VNG: English content normalized from the original source text.
-VNG -> Client: English content normalized from the original source text.
-VNG -> Client: English content normalized from the original source text.
+Client -> VNG: Payment Payment Module Sequence Overview: validate request and return the expected response
+VNG -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
+Client -> VNG: Payment Payment Module Sequence Overview: validate request and return the expected response
+VNG -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
+VNG -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
 
-Client -> VC: English content normalized from the original source text.
+Client -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
 VC -> VS: verifyReturnUrl(queryData)
 VS -> VNS: verifyReturnUrl(data)
-VNS -> VS: English content normalized from the original source text.
+VNS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
     VS -> VR: processVNPayWebhook(data)
-    VR -> VR: English content normalized from the original source text.
+    VR -> VR: Payment Payment Module Sequence Overview: validate request and return the expected response
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Payment Payment Module Sequence Overview: validate request and return the expected response
+    • Payment Payment Module Sequence Overview: validate request and return the expected response
+    • Payment Payment Module Sequence Overview: validate request and return the expected response
     end note
-    VR -> DB: English content normalized from the original source text.
-    DB -> VR: English content normalized from the original source text.
-    VR -> VR: English content normalized from the original source text.
+    VR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+    DB -> VR: Payment Payment Module Sequence Overview: validate request and return the expected response
+    VR -> VR: Payment Payment Module Sequence Overview: validate request and return the expected response
     VR -> DB: CREATE paymentTransaction
     note right
-    English content normalized from the original source text.
+    Payment Payment Module Sequence Overview: validate request and return the expected response
     • gateway: 'vnpay'
-    • English content normalized from the original source text
+    • Payment Payment Module Sequence Overview: validate request and return the expected response
     • amountOut: 0
     • code: vnp_TxnRef
     • transactionContent: vnp_OrderInfo
@@ -90,59 +90,59 @@ English content normalized from the original source text.
     VR -> SPR: extractPaymentId(PREFIX_PAYMENT_CODE, vnp_OrderInfo, vnp_TxnRef)
     SPR -> VR: return paymentId
     VR -> SPR: validateAndFindPayment(paymentId)
-    SPR -> DB: English content normalized from the original source text.
-    DB -> SPR: English content normalized from the original source text.
+    SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+    DB -> SPR: Payment Payment Module Sequence Overview: validate request and return the expected response
     SPR -> VR: return {payment, orders}
     VR -> SPR: validatePaymentAmount(orders, totalPrice, actualAmount)
-    SPR -> VR: English content normalized from the original source text.
+    SPR -> VR: Payment Payment Module Sequence Overview: validate request and return the expected response
     VR -> SPR: updatePaymentAndOrdersOnSuccess(paymentId, orders)
-    SPR -> DB: English content normalized from the original source text.
-    SPR -> DB: English content normalized from the original source text.
+    SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+    SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
     VR -> VS: return {userId, paymentId}
     VS -> VS: generateRoomPaymentId(paymentId)
     VS -> WS: server.to(roomId).emit('payment')
-    WS -> Client: English content normalized from the original source text.
+    WS -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
     VS -> IS: i18n.t('payment.payment.vnpay.success.VERIFY_RETURN_SUCCESS')
-    IS -> VS: English content normalized from the original source text.
-    VS -> VC: English content normalized from the original source text.
-    VC -> Client: English content normalized from the original source text.
+    IS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
+    VS -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
+    VC -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
 
 else (No)
-    VS -> VC: English content normalized from the original source text.
-    VC -> Client: English content normalized from the original source text.
+    VS -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
+    VC -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
 end
 
-VNG -> VC: English content normalized from the original source text.
+VNG -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
 VC -> VS: processIpnCall(queryData)
 VS -> VNS: verifyIpnCall(data)
-VNS -> VS: English content normalized from the original source text.
+VNS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
 
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
     VS -> VR: verifyIpnCall(data)
     VR -> SPR: extractPaymentId(PREFIX_PAYMENT_CODE, vnp_TxnRef, vnp_OrderInfo)
     SPR -> VR: return paymentId
     VR -> SPR: validateAndFindPayment(paymentId)
-    SPR -> DB: English content normalized from the original source text.
-    DB -> SPR: English content normalized from the original source text.
+    SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+    DB -> SPR: Payment Payment Module Sequence Overview: validate request and return the expected response
     SPR -> VR: return {payment, orders}
     VR -> SPR: validatePaymentAmount(orders, totalPrice, actualAmount)
-    SPR -> VR: English content normalized from the original source text.
+    SPR -> VR: Payment Payment Module Sequence Overview: validate request and return the expected response
     VR -> VS: return {payment, orders, paymentId}
-    VS -> VS: English content normalized from the original source text.
-    English content normalized from the original source text.
+    VS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
+    Payment Payment Module Sequence Overview: validate request and return the expected response
         if (condition?) then (Yes)
             VS -> VR: updatePaymentAndOrdersOnSuccess(paymentId, orders)
             VR -> SPR: updatePaymentAndOrdersOnSuccess(paymentId, orders)
-            SPR -> DB: English content normalized from the original source text.
-            SPR -> DB: English content normalized from the original source text.
+            SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+            SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
             VS -> VS: generateRoomPaymentId(paymentId)
             VS -> WS: server.to(roomId).emit('payment')
-            WS -> Client: English content normalized from the original source text.
+            WS -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
         else (No)
             VS -> VR: updatePaymentAndOrdersOnFailed(paymentId, orders)
             VR -> SPR: updatePaymentAndOrdersOnFailed(paymentId, orders)
-            SPR -> DB: English content normalized from the original source text.
-            SPR -> DB: English content normalized from the original source text.
+            SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+            SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
         endif
         VS -> VNG: return RspCode: 00, Message: Confirm Success
     else (No)
@@ -154,26 +154,26 @@ end
 
 == Sepay Payment Flow ==
 SG -> AG: POST /payment/receiver + webhook data
-AG -> AG: English content normalized from the original source text.
-AG -> SC: English content normalized from the original source text.
+AG -> AG: Payment Payment Module Sequence Overview: validate request and return the expected response
+AG -> SC: Payment Payment Module Sequence Overview: validate request and return the expected response
 SC -> SS: receiver(body)
 SS -> SR: receiver(body)
-SR -> SR: English content normalized from the original source text.
+SR -> SR: Payment Payment Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
-• English content normalized from the original source text
+Payment Payment Module Sequence Overview: validate request and return the expected response
+• Payment Payment Module Sequence Overview: validate request and return the expected response
+• Payment Payment Module Sequence Overview: validate request and return the expected response
 end note
-SR -> DB: English content normalized from the original source text.
-DB -> SR: English content normalized from the original source text.
-SR -> SR: English content normalized from the original source text.
+SR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+DB -> SR: Payment Payment Module Sequence Overview: validate request and return the expected response
+SR -> SR: Payment Payment Module Sequence Overview: validate request and return the expected response
 SR -> DB: CREATE paymentTransaction
 note right
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
 • id: body.id
 • gateway: body.gateway
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Payment Payment Module Sequence Overview: validate request and return the expected response
+• Payment Payment Module Sequence Overview: validate request and return the expected response
 • accountNumber: body.accountNumber
 • subAccount: body.subAccount
 • accumulated: body.accumulated
@@ -185,20 +185,20 @@ end note
 SR -> SPR: extractPaymentId(PREFIX_PAYMENT_CODE, body.code, body.content)
 SPR -> SR: return paymentId
 SR -> SPR: validateAndFindPayment(paymentId)
-SPR -> DB: English content normalized from the original source text.
-DB -> SPR: English content normalized from the original source text.
+SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+DB -> SPR: Payment Payment Module Sequence Overview: validate request and return the expected response
 SPR -> SR: return {payment, orders}
 SR -> SPR: validatePaymentAmount(orders, totalPrice, transferAmount)
-SPR -> SR: English content normalized from the original source text.
+SPR -> SR: Payment Payment Module Sequence Overview: validate request and return the expected response
 SR -> SPR: updatePaymentAndOrdersOnSuccess(paymentId, orders)
-SPR -> DB: English content normalized from the original source text.
-SPR -> DB: English content normalized from the original source text.
+SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
+SPR -> DB: Payment Payment Module Sequence Overview: validate request and return the expected response
 SR -> SS: return {userId, paymentId}
 SS -> SS: generateRoomPaymentId(paymentId)
 SS -> WS: server.to(roomId).emit('payment')
-WS -> Client: English content normalized from the original source text.
+WS -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
 SS -> IS: i18n.t('payment.payment.sepay.success.RECEIVER_SUCCESS')
-IS -> SS: English content normalized from the original source text.
+IS -> SS: Payment Payment Module Sequence Overview: validate request and return the expected response
 SS -> SC: return success response
 SC -> SG: return success response
 
@@ -206,23 +206,23 @@ SC -> SG: return success response
 Client -> VC: POST /payment/vnpay/query-dr + {orderId, orderInfo, requestId, transactionDate, transactionNo, ipAddr, createDate}
 VC -> VS: queryDr(queryData)
 VS -> VNS: queryDr(queryRequest)
-VNS -> VS: English content normalized from the original source text.
+VNS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
 VS -> IS: i18n.t('payment.payment.vnpay.success.QUERY_DR_SUCCESS')
-IS -> VS: English content normalized from the original source text.
-VS -> VC: English content normalized from the original source text.
-VC -> Client: English content normalized from the original source text.
+IS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
+VS -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
+VC -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
 
 Client -> VC: POST /payment/vnpay/refund + {orderId, orderInfo, amount, requestId, transactionNo, ipAddr, createBy}
 VC -> VS: refund(refundData)
 VS -> VNS: refund(refundRequest)
-VNS -> VS: English content normalized from the original source text.
+VNS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
 VS -> IS: i18n.t('payment.payment.vnpay.success.REFUND_SUCCESS')
-IS -> VS: English content normalized from the original source text.
-VS -> VC: English content normalized from the original source text.
-VC -> Client: English content normalized from the original source text.
+IS -> VS: Payment Payment Module Sequence Overview: validate request and return the expected response
+VS -> VC: Payment Payment Module Sequence Overview: validate request and return the expected response
+VC -> Client: Payment Payment Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
     VS -> VC: VNPayInvalidChecksumException
     VC -> Client: 422 Unprocessable Entity
 
@@ -249,26 +249,26 @@ else Sepay validation errors
 end
 
 == WebSocket Real-time Notifications ==
-English content normalized from the original source text.
+Payment Payment Module Sequence Overview: validate request and return the expected response
     VS/SS -> WS: server.to(roomId).emit('payment')
     WS -> Client: {status: 'success', gateway: 'vnpay/sepay', paymentId}
     note right
     WebSocket Event:
-    • English content normalized from the original source text
+    • Payment Payment Module Sequence Overview: validate request and return the expected response
     • Real-time notification
-    • English content normalized from the original source text
+    • Payment Payment Module Sequence Overview: validate request and return the expected response
     end note
 end
 
 note bottom
-* English content normalized from the original source text
+* Payment Payment Module Sequence Overview: validate request and return the expected response
 • Multi-gateway support (VNPay, Sepay)
-• English content normalized from the original source text
+• Payment Payment Module Sequence Overview: validate request and return the expected response
 • Real-time WebSocket notifications
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Payment Payment Module Sequence Overview: validate request and return the expected response
+• Payment Payment Module Sequence Overview: validate request and return the expected response
 • Comprehensive error handling
-• English content normalized from the original source text
+• Payment Payment Module Sequence Overview: validate request and return the expected response
 end note
 
 @enduml

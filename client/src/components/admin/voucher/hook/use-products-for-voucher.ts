@@ -77,7 +77,7 @@ export function useProductsForVoucher({
     },
     getResponseMetadata: (response) => response.metadata,
     mapResponseToData: (item: Product): Product => item,
-    defaultLimit: 20, // Load 20 products at a time for scroll pagination
+    defaultLimit: 20, 
     requestConfig: {
       includeSearch: true,
       includeSort: true,
@@ -115,32 +115,32 @@ export function useProductsForVoucher({
     }
   }, [products, pagination])
 
-  // Load more function cho infinite scroll
+  
   const loadMore = useCallback(() => {
     if (!loading && hasMore) {
       const currentPageFromPagination = pagination.page || 1
       const nextPage = currentPageFromPagination + 1
       setCurrentPage(nextPage)
 
-      // Trigger page change in useServerDataTable
+      
       setPagination((prev) => ({ ...prev, page: nextPage }))
       console.log('Loading more products, page:', nextPage)
     }
   }, [loading, hasMore, pagination.page, setPagination])
 
-  // Search function
+  
   const handleSearchChange = useCallback(
     (term: string) => {
       setSearchTerm(term)
       setCurrentPage(1)
       setAllProducts([])
-      setHasMore(true) // Reset hasMore state
+      setHasMore(true) 
       setPagination((prev) => ({ ...prev, page: 1, search: term }))
     },
     [setPagination]
   )
 
-  // Product selection functions
+  
   const toggleProduct = useCallback(
     (product: Product) => {
       setSelectedProducts((prev) => {
@@ -153,7 +153,7 @@ export function useProductsForVoucher({
           newSelection = [...prev, product]
         }
 
-        // Notify parent component
+        
         onSelectionChange?.(newSelection)
         return newSelection
       })

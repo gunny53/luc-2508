@@ -1,61 +1,61 @@
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-1. **useServerDataTable Hook**: English content normalized from the original source text.
-   English content normalized from the original source text.
-2. **Module Hook (usePermissions)**: English content normalized from the original source text.
-3. **DataTable Component**: English content normalized from the original source text.
+1. **useServerDataTable Hook**: T?i li?u k? thu?t ECSite
+   T?i li?u k? thu?t ECSite
+2. **Module Hook (usePermissions)**: T?i li?u k? thu?t ECSite
+3. **DataTable Component**: T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text. `usePermissions`: English content normalized from the original source text.
+T?i li?u k? thu?t ECSite `usePermissions`: T?i li?u k? thu?t ECSite
 
 ```tsx
 const { permissions, loading, pagination, ... } = usePermissions();
 ```
 
-Hook `usePermissions` English content normalized from the original source text.
+Hook `usePermissions` T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 2. Fetching Data
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-  - English content normalized from the original source text
-  - English content normalized from the original source text
-  - English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
+  - T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
 ### 4. CRUD Operations
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ### 1. useServerDataTable.ts
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 const { data, loading, pagination, handlePageChange, handleLimitChange, handleSearch, handleSortChange } =
@@ -69,16 +69,16 @@ const { data, loading, pagination, handlePageChange, handleLimitChange, handleSe
   })
 ```
 
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 export function createDataTableAdapter<T>(apiFunction) {
@@ -92,11 +92,11 @@ export function createDataTableAdapter<T>(apiFunction) {
 }
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ### 3. usePermissions.ts
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
 ```typescript
 export function usePermissions() {
@@ -104,52 +104,52 @@ export function usePermissions() {
     data: permissions,
     loading,
     pagination,
-    English content normalized from the original source text.
+    T?i li?u k? thu?t ECSite
   } = useServerDataTable<PermissionDetail, Permission>({
     fetchData: permissionService.getAll,
     getResponseData: (response) => response.data || [],
     getResponseMetadata: (response) => response.metadata,
     mapResponseToData: (item) => ({
       id: item.id,
-      English content normalized from the original source text.
+      T?i li?u k? thu?t ECSite
     }),
-    English content normalized from the original source text.
+    T?i li?u k? thu?t ECSite
   });
 
-  English content normalized from the original source text.
+  T?i li?u k? thu?t ECSite
   const handleCreate = async (data) => { /* ... */ };
   const handleUpdate = async (id, data) => { /* ... */ };
   const handleDelete = async (id) => { /* ... */ };
 
-  English content normalized from the original source text.
+  T?i li?u k? thu?t ECSite
 
   return {
     permissions,
     loading,
     pagination,
-    English content normalized from the original source text.
+    T?i li?u k? thu?t ECSite
   };
 }
 ```
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite
 
-English content normalized from the original source text.
+T?i li?u k? thu?t ECSite
 
-- English content normalized from the original source text
-- English content normalized from the original source text
+- T?i li?u k? thu?t ECSite
+- T?i li?u k? thu?t ECSite

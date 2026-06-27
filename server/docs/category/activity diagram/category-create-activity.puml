@@ -6,13 +6,13 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Category Category Create Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Category Category Create Activity: execute the validated workflow;
 :category.create({ createdById, data }) include translations;
 :Build message i18n;
-:English content normalized from the original source text;
+:Category Category Create Activity: execute the validated workflow;
 stop
 
 @enduml

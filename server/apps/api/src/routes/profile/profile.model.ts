@@ -91,7 +91,7 @@ export const GetUserStatisticsResSchema = z.object({
 export type UpdateMeBodyType = z.infer<typeof UpdateMeBodySchema>
 export type ChangePasswordBodyType = z.infer<typeof ChangePasswordBodySchema>
 
-// Address types
+
 export type CreateAddressBodyType = z.infer<typeof CreateAddressBodySchema>
 export type UpdateAddressBodyType = z.infer<typeof UpdateAddressBodySchema>
 export type GetAddressParamsType = z.infer<typeof GetAddressParamsSchema>

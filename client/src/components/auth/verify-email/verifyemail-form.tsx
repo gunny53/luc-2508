@@ -80,7 +80,6 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className={cn('flex flex-col gap-6', className)}>
           <AnimatedForm>
-            {}
             <AnimatedFormItem>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-4xl font-bold">{content.title}</h1>
@@ -88,7 +87,6 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
               </div>
             </AnimatedFormItem>
 
-            {/* Form */}
             <div className="grid gap-6">
               <AnimatedFormItem>
                 <FormField
@@ -115,10 +113,8 @@ export function VerifyEmailForm({ className, onSuccess }: VerifyEmailFormProps) 
                 {loading ? t('auth.verifyEmail.Processing') : content.buttonText}
               </AnimatedButton>
             </div>
-            {/* OAuth Form */}
             {action === 'signup' && <OAuthForm type="signup" />}
 
-            {}
             <AnimatedFormItem>
               <div className="text-center text-sm">
                 {content.linkText}{' '}

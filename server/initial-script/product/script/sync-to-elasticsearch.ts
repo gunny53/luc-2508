@@ -16,20 +16,20 @@ async function cleanElasticsearchIndex(): Promise<void> {
   const client = new Client({ node: ES_CONFIG.node })
 
   try {
-    logger.log('English content normalized from the original source text.')
+    logger.log('Connecting to Elasticsearch.')
     const info = await client.info()
-    logger.log(`English content normalized from the original source text.${info.version.number}`)
+    logger.log(`Elasticsearch version: ${info.version.number}`)
     const indexExists = await client.indices.exists({ index: ES_CONFIG.indexName })
 
     if (indexExists) {
       const count = await client.count({ index: ES_CONFIG.indexName })
       logger.log(
-        `📊 Index ${ES_CONFIG.indexName}English content normalized from the original source text.${count.count} documents`
+        `Index ${ES_CONFIG.indexName} currently contains ${count.count} documents.`
       )
 
       if (count.count > 0) {
         logger.log(
-          `English content normalized from the original source text.${count.count}English content normalized from the original source text.`
+          `Deleting ${count.count} existing documents before reindexing.`
         )
         const deleteResult = await client.deleteByQuery({
           index: ES_CONFIG.indexName,
@@ -40,20 +40,20 @@ async function cleanElasticsearchIndex(): Promise<void> {
           }
         })
 
-        logger.log(`English content normalized from the original source text.${deleteResult.deleted} documents`)
-        logger.log('English content normalized from the original source text.')
+        logger.log(`Deleted ${deleteResult.deleted} documents.`)
+        logger.log('Removing existing Elasticsearch index.')
         await client.indices.delete({ index: ES_CONFIG.indexName })
-        logger.log(`English content normalized from the original source text.${ES_CONFIG.indexName}`)
+        logger.log(`Deleted index ${ES_CONFIG.indexName}.`)
       } else {
-        logger.log(`✅ Index ${ES_CONFIG.indexName}English content normalized from the original source text.`)
+        logger.log(`Index ${ES_CONFIG.indexName} is already empty.`)
       }
     } else {
-      logger.log(`ℹ️  Index ${ES_CONFIG.indexName}English content normalized from the original source text.`)
+      logger.log(`Index ${ES_CONFIG.indexName} does not exist yet.`)
     }
 
-    logger.log('English content normalized from the original source text.')
+    logger.log('Elasticsearch index cleanup completed.')
   } catch (error) {
-    logger.error('English content normalized from the original source text.', error)
+    logger.error('Failed to clean Elasticsearch index.', error)
     throw error
   } finally {
     await client.close()
@@ -64,7 +64,7 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
   let app: any = null
 
   try {
-    logger.log('English content normalized from the original source text.')
+    logger.log('Starting product synchronization to Elasticsearch.')
     await cleanElasticsearchIndex()
     const products = await prisma.product.findMany({
       where: {
@@ -78,14 +78,14 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
     })
 
     logger.log(
-      `English content normalized from the original source text.${products.length}English content normalized from the original source text.`
+      `Loaded ${products.length} products from the database.`
     )
 
     if (products.length === 0) {
-      logger.warn('English content normalized from the original source text.')
+      logger.warn('No products found for Elasticsearch synchronization.')
       return
     }
-    logger.log('English content normalized from the original source text.')
+    logger.log('Creating Nest application context for search sync.')
     app = await NestFactory.createApplicationContext(AppModule)
     const searchSyncService = app.get(SearchSyncService)
     const batchSize = 100
@@ -94,7 +94,7 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
     )
 
     logger.log(
-      `English content normalized from the original source text.${products.length} products trong ${batches.length} batches`
+      `Syncing ${products.length} products in ${batches.length} batches.`
     )
 
     let successCount = 0
@@ -104,7 +104,7 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
       const productIds = batch.map((p) => p.id)
 
       logger.log(
-        `English content normalized from the original source text.${i + 1}/${batches.length}English content normalized from the original source text.${batch.length} products...`
+        `Syncing batch ${i + 1}/${batches.length} with ${batch.length} products.`
       )
 
       try {
@@ -114,13 +114,13 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
         })
 
         successCount += batch.length
-        logger.log(`English content normalized from the original source text.${i + 1}/${batches.length}`)
+        logger.log(`Synced batch ${i + 1}/${batches.length}.`)
         batch.forEach((product) => {
           logger.log(`  ✅ Queued sync for product: ${product.name}`)
         })
       } catch (error) {
         failCount += batch.length
-        logger.error(`English content normalized from the original source text.${i + 1}/${batches.length}:`, error)
+        logger.error(`Failed to sync batch ${i + 1}/${batches.length}:`, error)
       }
     }
 
@@ -131,11 +131,11 @@ async function syncAllProductsToElasticsearch(): Promise<void> {
   } finally {
     if (app) {
       await app.close()
-      logger.log('English content normalized from the original source text.')
+      logger.log('Closed Nest application context.')
     }
 
     await prisma.$disconnect()
-    logger.log('English content normalized from the original source text.')
+    logger.log('Disconnected Prisma client.')
   }
 }
 if (require.main === module) {

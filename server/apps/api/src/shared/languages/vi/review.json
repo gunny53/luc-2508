@@ -1,9 +1,9 @@
 {
   "review": {
     "success": {
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text."
+      "GET_SUCCESS": "Lấy danh sách đánh giá thành công.",
+      "CREATE_SUCCESS": "Tạo đánh giá thành công.",
+      "UPDATE_SUCCESS": "Cập nhật đánh giá thành công."
     }
   }
 }

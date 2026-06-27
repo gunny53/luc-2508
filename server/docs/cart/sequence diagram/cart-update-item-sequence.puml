@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Cart Cart Update Item Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Cart Cart Update Item Sequence: validate request and return the expected response
 participant "AccessTokenGuard" as AG
 participant "CartController" as CC
 participant "CartService" as CS
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> CC: English content normalized from the original source text.
+AG --> CC: Cart Cart Update Item Sequence: validate request and return the expected response
 activate CC
 
 CC -> CS: updateCartItem({ user, cartItemId, body: { skuId, quantity } })

@@ -6,42 +6,42 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Order Order Create Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Order Order Create Activity: execute the validated workflow;
+:Order Order Create Activity: execute the validated workflow;
+:Order Order Create Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Order Order Create Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:Order Order Create Activity: execute the validated workflow;
 :Acquire Redis locks cho skuIds (3s);
 :BEGIN TRANSACTION;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Order Order Create Activity: execute the validated workflow;
+:Order Order Create Activity: execute the validated workflow;
 if (condition?) then (Yes)
   :ROLLBACK;
   :Release locks;
-  :English content normalized from the original source text;
+  :Order Order Create Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
-English content normalized from the original source text.
-  :English content normalized from the original source text;
+:Order Order Create Activity: execute the validated workflow;
+Order Order Create Activity: execute the validated workflow
+  :Order Order Create Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Order Order Create Activity: execute the validated workflow;
+    :Order Order Create Activity: execute the validated workflow;
   endif
-  :English content normalized from the original source text;
-English content normalized from the original source text.
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+  :Order Order Create Activity: execute the validated workflow;
+Order Order Create Activity: execute the validated workflow
+:Order Order Create Activity: execute the validated workflow;
+:Order Order Create Activity: execute the validated workflow;
+:Order Order Create Activity: execute the validated workflow;
 :COMMIT;
 :Release locks;
-:English content normalized from the original source text;
+:Order Order Create Activity: execute the validated workflow;
 stop
 
 @enduml

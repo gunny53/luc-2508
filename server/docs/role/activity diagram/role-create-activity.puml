@@ -6,13 +6,13 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Role Role Create Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
+:Role Role Create Activity: execute the validated workflow;
 :role.create({ createdById, data });
 :Build message i18n;
-:English content normalized from the original source text;
+:Role Role Create Activity: execute the validated workflow;
 stop
 
 @enduml

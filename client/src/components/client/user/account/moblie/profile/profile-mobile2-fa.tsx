@@ -61,7 +61,7 @@ export function TwoFactorAuthModal({
   setShowRegenerateConfirm,
   handleRegenerateRecoveryCodes
 }: TwoFactorAuthModalProps) {
-  // Regenerate Recovery Codes Drawer
+  
   if (showRegenerateConfirm) {
     return (
       <Drawer open={showRegenerateConfirm} onOpenChange={setShowRegenerateConfirm}>
@@ -105,7 +105,7 @@ export function TwoFactorAuthModal({
     )
   }
 
-  // Main 2FA Drawer
+  
   if (show2FADialog) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
@@ -164,7 +164,7 @@ export function TwoFactorAuthModal({
     )
   }
 
-  // QR Code Drawer
+  
   if (showQRDialog) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
@@ -181,7 +181,6 @@ export function TwoFactorAuthModal({
               <p className="text-sm text-gray-600 mt-2">{t('admin.profileSettings.QrCode.description2fa')}</p>
             </DrawerHeader>
             <div className="p-4 space-y-6">
-              {/* Step 1: Download App */}
               <div className="flex items-center gap-3">
                 <Smartphone className="w-8 h-8 text-gray-400" />
                 <div>
@@ -201,7 +200,6 @@ export function TwoFactorAuthModal({
                   </div>
                 </div>
               </div>
-              {/* Step 2: QR Code */}
               <div>
                 <Label className="text-sm font-medium text-gray-700">{t('admin.profileSettings.QrCode.qr')}</Label>
                 <div className="flex justify-center my-2">
@@ -212,14 +210,12 @@ export function TwoFactorAuthModal({
                   )}
                 </div>
               </div>
-              {/* Step 3: Secret Key */}
               <div>
                 <Label className="text-sm font-medium text-gray-700">{t('admin.profileSettings.QrCode.secret')}</Label>
                 <div className="bg-gray-50 border border-gray-200 rounded p-3 font-mono text-sm break-all mt-1">
                   {secret}
                 </div>
               </div>
-              {/* Verification Code */}
               <div>
                 <Label className="text-sm font-medium text-gray-700">{t('admin.profileSettings.QrCode.confirm')}</Label>
                 <div className="flex gap-2 mt-1">
@@ -246,7 +242,7 @@ export function TwoFactorAuthModal({
     )
   }
 
-  // Recovery Codes Drawer
+  
   if (showRecoveryCodesDialog) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
@@ -296,6 +292,6 @@ export function TwoFactorAuthModal({
     )
   }
 
-  // fallback (should not render)
+  
   return null
 }

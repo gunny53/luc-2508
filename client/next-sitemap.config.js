@@ -1,4 +1,4 @@
-/** @type {import('next-sitemap').IConfig} */
+
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://ecsite.live',
   generateRobotsTxt: true,
@@ -6,7 +6,7 @@ module.exports = {
   changefreq: 'daily',
   priority: 0.7,
 
-  // Exclude admin routes and auth routes from sitemap
+  
   exclude: [
     '/admin/*',
     '/sign-in',
@@ -25,33 +25,33 @@ module.exports = {
     '/500'
   ],
 
-  // Transform URLs for better SEO
+  
   transform: async (config, path) => {
-    // Set different priorities and change frequencies for different page types
+    
     let priority = 0.7
     let changefreq = 'daily'
 
-    // Homepage - highest priority
+    
     if (path === '/') {
       priority = 1.0
       changefreq = 'daily'
     }
-    // Product category pages - high priority
+    
     else if (path.includes('-cat.')) {
       priority = 0.9
       changefreq = 'daily'
     }
-    // Product detail pages - high priority
+    
     else if (path.startsWith('/products/')) {
       priority = 0.8
       changefreq = 'weekly'
     }
-    // Shop pages - medium priority
+    
     else if (path.startsWith('/shop/')) {
       priority = 0.7
       changefreq = 'weekly'
     }
-    // Policy and static pages - lower priority
+    
     else if (path === '/policy') {
       priority = 0.5
       changefreq = 'monthly'
@@ -65,11 +65,11 @@ module.exports = {
     }
   },
 
-  // Additional paths to include in sitemap
+  
   additionalPaths: async (config) => {
     const result = []
 
-    // Add common category pages (you should replace these with actual categories from your API)
+    
     const commonCategories = [
       'thoi-trang-nam-cat.1',
       'thoi-trang-nu-cat.2',

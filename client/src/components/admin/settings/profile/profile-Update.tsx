@@ -47,10 +47,10 @@ export function ProfileUpdateSheet({ open, onOpenChange }: ProfileUpdateSheetPro
       form.reset({
         name: userData.name || '',
         phoneNumber: userData.phoneNumber || '',
-        // address: userData.address || "",
+        
         avatar: userData.avatar || ''
       })
-      // setAvatar(userData.avatar || "");
+      
     }
   }, [userData, open, form])
 
@@ -79,7 +79,7 @@ export function ProfileUpdateSheet({ open, onOpenChange }: ProfileUpdateSheetPro
       data.name !== userData?.name || data.phoneNumber !== userData?.phoneNumber || data.avatar !== userData?.avatar
 
     if (!hasChanges) {
-      showToast('English content normalized from the original source text.', 'info')
+      showToast('T?i kho?n', 'info')
       return
     }
 
@@ -95,8 +95,8 @@ export function ProfileUpdateSheet({ open, onOpenChange }: ProfileUpdateSheetPro
       onCancel={() => onOpenChange(false)}
       onConfirm={form.handleSubmit(onSubmit)}
       isConfirmLoading={loading}
-      confirmText="English content normalized from the original source text."
-      cancelText="English content normalized from the original source text."
+      confirmText="T?i kho?n"
+      cancelText="T?i kho?n"
     >
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>

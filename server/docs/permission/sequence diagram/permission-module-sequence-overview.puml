@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Permission Permission Module Sequence Overview: validate request and return the expected response
+note top : Permission Permission Module Sequence Overview: validate request and return the expected response
 
 actor "Admin" as Admin
 participant "PermissionController" as PC
@@ -22,36 +22,36 @@ Admin -> PC: GET /permissions?page=1&limit=10
 PC -> PS: list(pagination)
 
 PS -> PR: list(pagination)
-PR -> PR: English content normalized from the original source text.
+PR -> PR: Permission Permission Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Permission Permission Module Sequence Overview: validate request and return the expected response
 • skip = (page - 1) * limit
 • take = limit
 • Parallel queries: count + findMany
-• English content normalized from the original source text
+• Permission Permission Module Sequence Overview: validate request and return the expected response
 end note
 
-PR -> DB: English content normalized from the original source text.
-PR -> DB: English content normalized from the original source text.
+PR -> DB: Permission Permission Module Sequence Overview: validate request and return the expected response
+PR -> DB: Permission Permission Module Sequence Overview: validate request and return the expected response
 DB -> PR: Total count + permissions data
-PR -> PS: English content normalized from the original source text.
+PR -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
 PS -> IS: i18n.t('permission.permission.success.GET_SUCCESS')
-IS -> PS: English content normalized from the original source text.
-PS -> PC: English content normalized from the original source text.
-PC -> Admin: English content normalized from the original source text.
+IS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
+PS -> PC: Permission Permission Module Sequence Overview: validate request and return the expected response
+PC -> Admin: Permission Permission Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 Admin -> PC: GET /permissions/:permissionId
 PC -> PS: findById(permissionId)
 
 PS -> PR: findById(id)
-PR -> DB: English content normalized from the original source text.
+PR -> DB: Permission Permission Module Sequence Overview: validate request and return the expected response
 DB -> PR: Permission data
 PR -> PS: Permission info
 
-English content normalized from the original source text.
+Permission Permission Module Sequence Overview: validate request and return the expected response
     PS -> IS: i18n.t('permission.permission.success.GET_DETAIL_SUCCESS')
-    IS -> PS: English content normalized from the original source text.
+    IS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
     PS -> PC: Success response
     PC -> Admin: JSON permission detail
 else (No)
@@ -63,9 +63,9 @@ end
 Admin -> PC: POST /permissions + {name, path, method, module}
 PC -> PS: create({data, user})
 
-PS -> PS: English content normalized from the original source text.
+PS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Permission Permission Module Sequence Overview: validate request and return the expected response
 • name: required string
 • path: required string (API path)
 • method: required string (HTTP method)
@@ -74,17 +74,17 @@ English content normalized from the original source text.
 end note
 
 PS -> PR: create({createdById, data})
-PR -> DB: English content normalized from the original source text.
+PR -> DB: Permission Permission Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
+Permission Permission Module Sequence Overview: validate request and return the expected response
+• Permission Permission Module Sequence Overview: validate request and return the expected response
 • Audit trail: createdAt, createdById
 • Validate unique constraint
 end note
 DB -> PR: Permission created
 PR -> PS: New permission
 PS -> IS: i18n.t('permission.permission.success.CREATE_SUCCESS')
-IS -> PS: English content normalized from the original source text.
+IS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
 PS -> PC: Success response
 PC -> Admin: 201 Created + JSON response
 
@@ -93,32 +93,32 @@ Admin -> PC: PUT /permissions/:permissionId + {data}
 PC -> PS: update({id, data, user})
 
 PS -> PR: update({id, updatedById, data})
-PR -> DB: English content normalized from the original source text.
+PR -> DB: Permission Permission Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
+Permission Permission Module Sequence Overview: validate request and return the expected response
+• Permission Permission Module Sequence Overview: validate request and return the expected response
 • Include roles relationship
 • Validate unique constraint
 • Audit trail: updatedAt, updatedById
 end note
-DB -> PR: English content normalized from the original source text.
+DB -> PR: Permission Permission Module Sequence Overview: validate request and return the expected response
 PR -> PS: Updated data
 
 alt Update successful
     PS -> PS: deleteCachedRole(roles)
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Permission Permission Module Sequence Overview: validate request and return the expected response
+    • Permission Permission Module Sequence Overview: validate request and return the expected response
     • Cache key: `role:${roleId}`
-    • English content normalized from the original source text
+    • Permission Permission Module Sequence Overview: validate request and return the expected response
     • Ensure cache consistency
     end note
-    PS -> CM: English content normalized from the original source text.
+    PS -> CM: Permission Permission Module Sequence Overview: validate request and return the expected response
     CM -> RD: Delete cache entries
     RD -> CM: Cache cleared
     CM -> PS: Cache operation result
     PS -> IS: i18n.t('permission.permission.success.UPDATE_SUCCESS')
-    IS -> PS: English content normalized from the original source text.
+    IS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
     PS -> PC: Success response
     PC -> Admin: 200 OK + JSON response
 else Update failed
@@ -133,23 +133,23 @@ PC -> PS: delete({id, user})
 PS -> PR: delete({id, deletedById})
 PR -> DB: UPDATE deletedAt (soft delete)
 note right
-English content normalized from the original source text.
+Permission Permission Module Sequence Overview: validate request and return the expected response
 • Soft delete: UPDATE deletedAt field
 • Include roles relationship
 • Audit trail: deletedAt, deletedById
-• English content normalized from the original source text
+• Permission Permission Module Sequence Overview: validate request and return the expected response
 end note
-DB -> PR: English content normalized from the original source text.
+DB -> PR: Permission Permission Module Sequence Overview: validate request and return the expected response
 PR -> PS: Deleted data
 
 alt Delete successful
     PS -> PS: deleteCachedRole(roles)
-    PS -> CM: English content normalized from the original source text.
+    PS -> CM: Permission Permission Module Sequence Overview: validate request and return the expected response
     CM -> RD: Delete cache entries
     RD -> CM: Cache cleared
     CM -> PS: Cache operation result
     PS -> IS: i18n.t('permission.permission.success.DELETE_SUCCESS')
-    IS -> PS: English content normalized from the original source text.
+    IS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
     PS -> PC: Success response
     PC -> Admin: 200 OK + message
 else Delete failed
@@ -158,13 +158,13 @@ else Delete failed
 end
 
 == English Section ==
-English content normalized from the original source text.
+Permission Permission Module Sequence Overview: validate request and return the expected response
     PS -> PC: PermissionAlreadyExistsException
     PC -> Admin: 422 Unprocessable Entity
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Permission Permission Module Sequence Overview: validate request and return the expected response
+    • Permission Permission Module Sequence Overview: validate request and return the expected response
+    • Permission Permission Module Sequence Overview: validate request and return the expected response
     • Clear error message cho user
     end note
 
@@ -185,10 +185,10 @@ end
 alt Cache operations
     PS -> CM: del(cacheKey)
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Permission Permission Module Sequence Overview: validate request and return the expected response
+    • Permission Permission Module Sequence Overview: validate request and return the expected response
     • Cache key format: `role:${roleId}`
-    • English content normalized from the original source text
+    • Permission Permission Module Sequence Overview: validate request and return the expected response
     • Ensure data consistency
     end note
     CM -> RD: Delete cache entries
@@ -198,17 +198,17 @@ end
 
 == English Section ==
 PS -> IS: i18n.t('permission.permission.success.XXX')
-IS -> PS: English content normalized from the original source text.
-PS -> PC: English content normalized from the original source text.
-PC -> Admin: English content normalized from the original source text.
+IS -> PS: Permission Permission Module Sequence Overview: validate request and return the expected response
+PS -> PC: Permission Permission Module Sequence Overview: validate request and return the expected response
+PC -> Admin: Permission Permission Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
-• English content normalized from the original source text
+* Permission Permission Module Sequence Overview: validate request and return the expected response
+• Permission Permission Module Sequence Overview: validate request and return the expected response
+• Permission Permission Module Sequence Overview: validate request and return the expected response
 • Cache management cho role relationships
 • Unique constraint validation (path + method)
-• English content normalized from the original source text
+• Permission Permission Module Sequence Overview: validate request and return the expected response
 • Multi-language support
 • Comprehensive error handling
 • Role relationship management

@@ -1,20 +1,20 @@
 {
   "role": {
     "success": {
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text.",
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "GET_DETAIL_SUCCESS": "English content normalized from the original source text."
+      "CREATE_SUCCESS": "Tạo vai trò thành công.",
+      "UPDATE_SUCCESS": "Cập nhật vai trò thành công.",
+      "DELETE_SUCCESS": "Xóa vai trò thành công.",
+      "GET_SUCCESS": "Lấy danh sách vai trò thành công.",
+      "GET_DETAIL_SUCCESS": "Lấy chi tiết vai trò thành công."
     },
     "error": {
-      "NOT_FOUND": "English content normalized from the original source text.",
-      "ALREADY_EXISTS": "English content normalized from the original source text.",
-      "DELETED_PERMISSION_INCLUDED": "English content normalized from the original source text.",
-      "OPERATION_FAILED": "English content normalized from the original source text.",
-      "CANNOT_UPDATE_DEFAULT_ROLE": "English content normalized from the original source text.",
-      "CANNOT_DELETE_DEFAULT_ROLE": "English content normalized from the original source text.",
-      "PROHIBITED_ACTION_ON_BASE_ROLE": "English content normalized from the original source text."
+      "NOT_FOUND": "Không tìm thấy vai trò.",
+      "ALREADY_EXISTS": "Dữ liệu đã tồn tại.",
+      "DELETED_PERMISSION_INCLUDED": "Thao tác với vai trò không thành công.",
+      "OPERATION_FAILED": "Thao tác với vai trò không thành công.",
+      "CANNOT_UPDATE_DEFAULT_ROLE": "Thao tác với vai trò không thành công.",
+      "CANNOT_DELETE_DEFAULT_ROLE": "Thao tác với vai trò không thành công.",
+      "PROHIBITED_ACTION_ON_BASE_ROLE": "Thao tác với vai trò không thành công."
     }
   }
 }

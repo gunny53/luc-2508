@@ -5,8 +5,8 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
 skinparam maxmessagesize 60
 
-English content normalized from the original source text.
-note top : English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
+note top : Role Role Module Sequence Overview: validate request and return the expected response
 
 actor "Admin" as Admin
 participant "RoleController" as RC
@@ -24,9 +24,9 @@ Admin -> RC: GET /roles?page=1&limit=10&name=search
 RC -> RS: list(pagination)
 
 RS -> RR: list({page, limit, name})
-RR -> RR: English content normalized from the original source text.
+RR -> RR: Role Role Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
 • skip = (page - 1) * limit
 • take = limit
 • Parallel queries: count + findMany
@@ -34,46 +34,46 @@ English content normalized from the original source text.
 • WHERE deletedAt IS NULL
 end note
 
-RR -> PS: English content normalized from the original source text.
-RR -> PS: English content normalized from the original source text.
+RR -> PS: Role Role Module Sequence Overview: validate request and return the expected response
+RR -> PS: Role Role Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
 • WHERE deletedAt IS NULL
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Role Role Module Sequence Overview: validate request and return the expected response
+• Role Role Module Sequence Overview: validate request and return the expected response
 • ORDER BY default
 end note
-PS -> DB: English content normalized from the original source text.
+PS -> DB: Role Role Module Sequence Overview: validate request and return the expected response
 DB -> PS: Total count + roles data
-PS -> RR: English content normalized from the original source text.
-RR -> RS: English content normalized from the original source text.
+PS -> RR: Role Role Module Sequence Overview: validate request and return the expected response
+RR -> RS: Role Role Module Sequence Overview: validate request and return the expected response
 RS -> IS: i18n.t('role.role.success.GET_SUCCESS')
-IS -> RS: English content normalized from the original source text.
-RS -> RC: English content normalized from the original source text.
-RC -> Admin: English content normalized from the original source text.
+IS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
+RS -> RC: Role Role Module Sequence Overview: validate request and return the expected response
+RC -> Admin: Role Role Module Sequence Overview: validate request and return the expected response
 
 == English Section ==
 Admin -> RC: GET /roles/:roleId
 RC -> RS: findById(roleId)
 
 RS -> RR: findById(id)
-RR -> PS: English content normalized from the original source text.
+RR -> PS: Role Role Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
 • WHERE id = :roleId AND deletedAt IS NULL
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Role Role Module Sequence Overview: validate request and return the expected response
+• Role Role Module Sequence Overview: validate request and return the expected response
 end note
-PS -> DB: English content normalized from the original source text.
-DB -> PS: English content normalized from the original source text.
-PS -> RR: English content normalized from the original source text.
+PS -> DB: Role Role Module Sequence Overview: validate request and return the expected response
+DB -> PS: Role Role Module Sequence Overview: validate request and return the expected response
+PS -> RR: Role Role Module Sequence Overview: validate request and return the expected response
 RR -> RS: Role info
 
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
     RS -> IS: i18n.t('role.role.success.GET_DETAIL_SUCCESS')
-    IS -> RS: English content normalized from the original source text.
+    IS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
     RS -> RC: Success response
-    RC -> Admin: English content normalized from the original source text.
+    RC -> Admin: Role Role Module Sequence Overview: validate request and return the expected response
 else (No)
     RS -> RC: NotFoundRecordException
     RC -> Admin: 404 Not Found
@@ -81,13 +81,13 @@ end
 
 == English Section ==
 Admin -> AU: @ActiveUser()
-AU -> Admin: English content normalized from the original source text.
+AU -> Admin: Role Role Module Sequence Overview: validate request and return the expected response
 Admin -> RC: POST /roles + {name, description, isActive}
 RC -> RS: create({data, user})
 
-RS -> RS: English content normalized from the original source text.
+RS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
 • name: required string (unique)
 • description: optional string
 • isActive: boolean
@@ -95,34 +95,34 @@ English content normalized from the original source text.
 end note
 
 RS -> RR: create({createdById, data})
-RR -> PS: English content normalized from the original source text.
+RR -> PS: Role Role Module Sequence Overview: validate request and return the expected response
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
+Role Role Module Sequence Overview: validate request and return the expected response
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Audit trail: createdAt, createdById
 • Validate unique constraint cho name
 end note
-PS -> DB: English content normalized from the original source text.
+PS -> DB: Role Role Module Sequence Overview: validate request and return the expected response
 DB -> PS: Role created
 PS -> RR: New role
 RR -> RS: New role
 RS -> IS: i18n.t('role.role.success.CREATE_SUCCESS')
-IS -> RS: English content normalized from the original source text.
+IS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
 RS -> RC: Success response
 RC -> Admin: 201 Created + JSON response
 
 == English Section ==
 Admin -> AU: @ActiveUser()
-AU -> Admin: English content normalized from the original source text.
+AU -> Admin: Role Role Module Sequence Overview: validate request and return the expected response
 Admin -> RC: PUT /roles/:roleId + {data, permissionIds}
 RC -> RS: update({id, data, user})
 
 RS -> RS: verifyRole(id)
 note right
-English content normalized from the original source text.
-• English content normalized from the original source text
+Role Role Module Sequence Overview: validate request and return the expected response
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Base roles: Admin, Client, Seller
-• English content normalized from the original source text
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Throw ProhibitedActionOnBaseRoleException
 end note
 
@@ -133,15 +133,15 @@ DB -> PS: Role data
 PS -> RR: Role info
 RR -> RS: Role info
 
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
     RS -> RR: update({id, updatedById, data})
 
     RR -> RR: Validate permissionIds
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
     end note
 
     RR -> PS: findMany permissions theo IDs
@@ -151,23 +151,23 @@ English content normalized from the original source text.
     RR -> RR: Filter deleted permissions
 
     alt All permissions valid
-        RR -> PS: English content normalized from the original source text.
+        RR -> PS: Role Role Module Sequence Overview: validate request and return the expected response
         note right
-        English content normalized from the original source text.
-        • English content normalized from the original source text
-        • English content normalized from the original source text
+        Role Role Module Sequence Overview: validate request and return the expected response
+        • Role Role Module Sequence Overview: validate request and return the expected response
+        • Role Role Module Sequence Overview: validate request and return the expected response
         • Include permissions trong response
         • Audit trail: updatedAt, updatedById
         end note
-        PS -> DB: English content normalized from the original source text.
-        DB -> PS: English content normalized from the original source text.
+        PS -> DB: Role Role Module Sequence Overview: validate request and return the expected response
+        DB -> PS: Role Role Module Sequence Overview: validate request and return the expected response
         PS -> RR: Updated data
         RR -> RS: Updated data
 
         RS -> RS: deleteCachedRole(roleId)
         RS -> CM: del(cacheKey)
         note right
-        English content normalized from the original source text.
+        Role Role Module Sequence Overview: validate request and return the expected response
         • Delete cached role data
         • Cache key: `role:${roleId}`
         • Ensure cache consistency
@@ -176,12 +176,12 @@ English content normalized from the original source text.
         RD -> CM: Cache cleared
         CM -> RS: Cache operation result
         RS -> IS: i18n.t('role.role.success.UPDATE_SUCCESS')
-        IS -> RS: English content normalized from the original source text.
+        IS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
         RS -> RC: Success response
         RC -> Admin: 200 OK + JSON response
 
     else Invalid permissions
-        RR -> RS: English content normalized from the original source text.
+        RR -> RS: Role Role Module Sequence Overview: validate request and return the expected response
         RS -> RC: Error response
         RC -> Admin: 400 Bad Request
     end
@@ -193,7 +193,7 @@ end
 
 == English Section ==
 Admin -> AU: @ActiveUser()
-AU -> Admin: English content normalized from the original source text.
+AU -> Admin: Role Role Module Sequence Overview: validate request and return the expected response
 Admin -> RC: DELETE /roles/:roleId
 RC -> RS: delete({id, user})
 
@@ -205,14 +205,14 @@ DB -> PS: Role data
 PS -> RR: Role data
 RR -> RS: Role info
 
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
     RS -> RR: delete({id, deletedById})
     RR -> PS: UPDATE deletedAt (soft delete)
     note right
-    English content normalized from the original source text.
+    Role Role Module Sequence Overview: validate request and return the expected response
     • Soft delete: UPDATE deletedAt field
     • Audit trail: deletedAt, deletedById
-    • English content normalized from the original source text
+    • Role Role Module Sequence Overview: validate request and return the expected response
     end note
     PS -> DB: UPDATE deletedAt field
     DB -> PS: Role marked deleted
@@ -225,7 +225,7 @@ English content normalized from the original source text.
     RD -> CM: Cache cleared
     CM -> RS: Cache operation result
     RS -> IS: i18n.t('role.role.success.DELETE_SUCCESS')
-    IS -> RS: English content normalized from the original source text.
+    IS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
     RS -> RC: Success response
     RC -> Admin: 200 OK + message
 
@@ -235,13 +235,13 @@ else (No)
 end
 
 == English Section ==
-English content normalized from the original source text.
+Role Role Module Sequence Overview: validate request and return the expected response
     RS -> RC: RoleAlreadyExistsException
     RC -> Admin: 422 Unprocessable Entity
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
     • Clear error message cho user
     end note
 
@@ -249,9 +249,9 @@ else (No)
     RS -> RC: ProhibitedActionOnBaseRoleException
     RC -> Admin: 403 Forbidden
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
     • Clear error message
     end note
 
@@ -272,8 +272,8 @@ end
 alt Cache operations
     RS -> CM: del(cacheKey)
     note right
-    English content normalized from the original source text.
-    • English content normalized from the original source text
+    Role Role Module Sequence Overview: validate request and return the expected response
+    • Role Role Module Sequence Overview: validate request and return the expected response
     • Cache key format: `role:${roleId}`
     • Ensure data consistency
     • Support cache invalidation
@@ -285,19 +285,19 @@ end
 
 == English Section ==
 RS -> IS: i18n.t('role.role.success.XXX')
-IS -> RS: English content normalized from the original source text.
-RS -> RC: English content normalized from the original source text.
-RC -> Admin: English content normalized from the original source text.
+IS -> RS: Role Role Module Sequence Overview: validate request and return the expected response
+RS -> RC: Role Role Module Sequence Overview: validate request and return the expected response
+RC -> Admin: Role Role Module Sequence Overview: validate request and return the expected response
 
 note bottom
-* English content normalized from the original source text
-• English content normalized from the original source text
+* Role Role Module Sequence Overview: validate request and return the expected response
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Base role protection (Admin, Client, Seller)
-• English content normalized from the original source text
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Cache management cho role data
-• English content normalized from the original source text
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Unique constraint validation cho name
-• English content normalized from the original source text
+• Role Role Module Sequence Overview: validate request and return the expected response
 • Multi-language support
 • Comprehensive error handling
 • Permission relationship management

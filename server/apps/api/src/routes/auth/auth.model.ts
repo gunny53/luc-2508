@@ -48,12 +48,12 @@ export const LoginBodySchema = UserSchema.pick({
   password: true
 })
   .extend({
-    totpCode: z.string().length(6).optional(), // 2FA code
-    code: z.string().length(6).optional() // Email OTP code
+    totpCode: z.string().length(6).optional(), 
+    code: z.string().length(6).optional() 
   })
   .strict()
   .superRefine(({ totpCode, code }, ctx) => {
-    const message = 'English content normalized from the original source text.'
+    const message = 'Use either an authenticator code or an email code, not both.'
     if (totpCode !== undefined && code !== undefined) {
       ctx.addIssue({
         path: ['totpCode'],
@@ -118,7 +118,7 @@ export const ForgotPasswordBodySchema = z
     if (confirmNewPassword !== newPassword) {
       ctx.addIssue({
         code: 'custom',
-        message: 'English content normalized from the original source text.',
+        message: 'Password and confirm password must match.',
         path: ['confirmNewPassword']
       })
     }
@@ -131,7 +131,7 @@ export const DisableTwoFactorBodySchema = z
   })
   .strict()
   .superRefine(({ totpCode, code }, ctx) => {
-    const message = 'English content normalized from the original source text.'
+    const message = 'Provide exactly one verification method.'
     if ((totpCode !== undefined) === (code !== undefined)) {
       ctx.addIssue({
         path: ['totpCode'],

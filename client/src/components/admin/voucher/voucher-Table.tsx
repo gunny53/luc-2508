@@ -29,7 +29,7 @@ export default function VoucherTable() {
     handleOpenUpsertModal
   } = useVouchers()
 
-  // Handle edit voucher - redirect to edit page
+  
   const handleEditVoucher = (voucher: any) => {
     router.push(`/admin/voucher/edit/${voucher.id}`)
   }
@@ -49,7 +49,6 @@ export default function VoucherTable() {
         <VoucherFormCreate />
       </div>
 
-      {}
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex-1">
           <SearchInput
@@ -62,7 +61,7 @@ export default function VoucherTable() {
         <DataTableViewOption table={table} />
       </div>
 
-      {/* Data Table */}
+      {}
       <div className="relative">
         <DataTable
           table={table}
@@ -77,7 +76,6 @@ export default function VoucherTable() {
         />
       </div>
 
-      {}
       <ConfirmDeleteModal
         open={deleteOpen}
         onClose={() => {

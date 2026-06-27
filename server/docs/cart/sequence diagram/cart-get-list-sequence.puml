@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Cart Cart Get List Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Cart Cart Get List Sequence: validate request and return the expected response
 participant "AccessTokenGuard" as AG
 participant "CartController" as CC
 participant "CartService" as CS
@@ -16,7 +16,7 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> CC: English content normalized from the original source text.
+AG --> CC: Cart Cart Get List Sequence: validate request and return the expected response
 activate CC
 
 CC -> CS: getCart(user, query)
@@ -26,11 +26,11 @@ CS -> CR: list({ userId: user.userId, languageId: I18nContext.lang, page, limit 
 activate CR
 
 note right of CR
-English content normalized from the original source text.
+Cart Cart Get List Sequence: validate request and return the expected response
 • totalItems$: SELECT DISTINCT shop (Product.createdById)
 • data$: SELECT json_agg(cartItems) GROUP BY shop, JOIN SKU/Product/Translation
-• English content normalized from the original source text
-• English content normalized from the original source text
+• Cart Cart Get List Sequence: validate request and return the expected response
+• Cart Cart Get List Sequence: validate request and return the expected response
 • ORDER: MAX(CartItem.updatedAt) DESC; LIMIT/OFFSET theo page/limit
 end note
 

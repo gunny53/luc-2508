@@ -14,7 +14,7 @@ export class ManageOrderService {
 
   validateSellerPrivilege(user: AccessTokenPayload): boolean {
     if (user.roleName !== 'SELLER' && user.roleName !== 'ADMIN') {
-      throw new ForbiddenException('English content normalized from the original source text.')
+      throw new ForbiddenException('You do not have permission to access this order.')
     }
     return true
   }

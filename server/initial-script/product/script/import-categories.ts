@@ -6,7 +6,7 @@ export async function importCategories(
   creatorUserId: string,
   tx: PrismaClient
 ): Promise<Map<string, string>> {
-  const categorySet = new Set<string>(['English content normalized from the original source text.'])
+  const categorySet = new Set<string>(['Chua phan loai'])
   const categoryHierarchy = new Map<string, { parent?: string; level: number }>()
 
   products.forEach((p) => {

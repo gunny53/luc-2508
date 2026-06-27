@@ -48,7 +48,7 @@ export default function DesktopCartPageMobile() {
     const handleForceSelectItem = (event: CustomEvent) => {
       const { itemId, isSelected } = event.detail
 
-      // Mark as manual selection
+      
       manualSelectionsRef.current.add(itemId)
 
       setSelectedItems((prev) => ({
@@ -107,12 +107,12 @@ export default function DesktopCartPageMobile() {
     setSelectedShops(updatedShops)
     setSelectedItems(updatedItems)
 
-    // API call removed as per request
+    
   }
   const handleToggleItem = async (shopId: string, itemId: string, shopItems: CartItem[]) => {
     const newIsSelected = !selectedItems[itemId]
 
-    // Mark as manual selection
+    
     manualSelectionsRef.current.add(itemId)
     const updatedItems = { ...selectedItems, [itemId]: newIsSelected }
     setSelectedItems(updatedItems)
@@ -120,7 +120,7 @@ export default function DesktopCartPageMobile() {
     const allSelected = shopItems.every((item) => updatedItems[item.id])
     setSelectedShops((prev) => ({ ...prev, [shopId]: allSelected }))
 
-    // API call removed as per request
+    
   }
   const handleToggleAll = async () => {
     const newValue = !selectAll
@@ -138,7 +138,7 @@ export default function DesktopCartPageMobile() {
     setSelectedShops(updatedShops)
     setSelectedItems(updatedItems)
 
-    // API call removed as per request
+    
   }
   const handleVariationChange = async (itemId: string, newSkuId: string) => {
     const item = shopCarts.flatMap((sc: ShopCart) => sc.cartItems).find((item: CartItem) => item.id === itemId)
@@ -158,7 +158,7 @@ export default function DesktopCartPageMobile() {
       const selectedItemIds = Object.keys(selectedItems).filter((itemId) => selectedItems[itemId])
 
       if (selectedItemIds.length === 0) {
-        toast.error('English content normalized from the original source text.')
+        toast.error('Gi? h?ng')
         return
       }
       await removeItems(selectedItemIds)
@@ -167,11 +167,11 @@ export default function DesktopCartPageMobile() {
       setSelectAll(false)
 
       toast.success(
-        `English content normalized from the original source text.${selectedItemIds.length}English content normalized from the original source text.`
+        `Gi? h?ng${selectedItemIds.length}Gi? h?ng`
       )
     } catch (error) {
       console.error('Error removing selected items from cart:', error)
-      toast.error('English content normalized from the original source text.')
+      toast.error('Gi? h?ng')
     }
   }
 
@@ -227,7 +227,7 @@ export default function DesktopCartPageMobile() {
         [selectItemId]: true
       }))
 
-      // Clear URL param
+      
       const newUrl = new URL(window.location.href)
       newUrl.searchParams.delete('selectItem')
       window.history.replaceState({}, '', newUrl.pathname)
@@ -243,7 +243,7 @@ export default function DesktopCartPageMobile() {
       .filter((shopCart: ShopCart) => shopCart.cartItems.length > 0)
 
     if (selectedShopCarts.length === 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('Gi? h?ng')
       return
     }
     const shopOrdersPayload = selectedShopCarts.map((shopCart: ShopCart) => ({
@@ -286,14 +286,14 @@ export default function DesktopCartPageMobile() {
       {isLoading ? (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <span className="ml-2 text-lg">English content normalized from the original source text.</span>
+          <span className="ml-2 text-lg">Gi? h?ng</span>
         </div>
       ) : shopCarts && shopCarts.length > 0 ? (
         <>
           <DesktopCartHeader allSelected={selectAll} onToggleAll={handleToggleAll} />
           {shopCarts.map((shopCart: ShopCart, index: number) => (
             <div key={shopCart.shop.id + '-' + index} className="bg-white border rounded-sm">
-              {/* Shop Header */}
+              {}
               <div className="flex items-center px-3 py-4 border-b">
                 <Checkbox
                   className="mr-4 ml-[30px]"
@@ -304,7 +304,7 @@ export default function DesktopCartPageMobile() {
                 <span className="text-base">Shop {shopCart.shop.name}</span>
               </div>
 
-              {/* Items */}
+              {}
               {shopCart.cartItems.map((cartItem: CartItem) => {
                 const isChecked = !!selectedItems[cartItem.id]
 
@@ -333,12 +333,11 @@ export default function DesktopCartPageMobile() {
             height={200}
             className="object-contain mb-4"
           />
-          <div className="text-xl font-medium">English content normalized from the original source text.</div>
-          <p className="text-gray-500 mt-2">English content normalized from the original source text.</p>
+          <div className="text-xl font-medium">Gi? h?ng</div>
+          <p className="text-gray-500 mt-2">Gi? h?ng</p>
         </div>
       )}
 
-      {}
       {shopCarts && shopCarts.length > 0 && (
         <CartFooter
           total={total}

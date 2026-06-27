@@ -14,10 +14,10 @@ export function ShippingType({ deliveryMethod, handleRadioChange }: ShippingType
     <Card className="shadow-none">
       <CardHeader className="pb-3">
         <CardTitle className="text-base font-semibold">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardTitle>
         <CardDescription className="text-sm font-light">
-          English content normalized from the original source text.
+          Thanh to?n
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -27,8 +27,8 @@ export function ShippingType({ deliveryMethod, handleRadioChange }: ShippingType
             <div className="flex-1">
               <Label htmlFor="delivery-standard" className="flex justify-between cursor-pointer">
                 <div>
-                  <div className="text-sm font-medium">English content normalized from the original source text.</div>
-                  <div className="text-xs text-gray-500">English content normalized from the original source text.</div>
+                  <div className="text-sm font-medium">Thanh to?n</div>
+                  <div className="text-xs text-gray-500">Thanh to?n</div>
                 </div>
                 <div className="text-sm font-medium">30.000₫</div>
               </Label>
@@ -39,8 +39,8 @@ export function ShippingType({ deliveryMethod, handleRadioChange }: ShippingType
             <div className="flex-1">
               <Label htmlFor="delivery-express" className="flex justify-between cursor-pointer">
                 <div>
-                  <div className="text-sm font-medium">English content normalized from the original source text.</div>
-                  <div className="text-xs text-gray-500">English content normalized from the original source text.</div>
+                  <div className="text-sm font-medium">Thanh to?n</div>
+                  <div className="text-xs text-gray-500">Thanh to?n</div>
                 </div>
                 <div className="text-sm font-medium">50.000₫</div>
               </Label>

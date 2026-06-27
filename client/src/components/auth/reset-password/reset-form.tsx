@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-// import { Button } from '@/components/ui/button'
+
 import { resetPasswordSchema } from '../schema/index'
 import Link from 'next/link'
 import { useReset } from './use-reset'
@@ -33,7 +33,6 @@ export function ResetForm({ className, ...props }: React.ComponentPropsWithoutRe
         {...props}
       >
         <AnimatedForm>
-          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.resetPassword.title')}</h1>
@@ -41,9 +40,7 @@ export function ResetForm({ className, ...props }: React.ComponentPropsWithoutRe
             </div>
           </AnimatedFormItem>
 
-          {/* Form */}
           <div className="grid gap-6">
-            {}
             <AnimatedFormItem>
               <FormField
                 control={form.control}
@@ -73,7 +70,6 @@ export function ResetForm({ className, ...props }: React.ComponentPropsWithoutRe
               />
             </AnimatedFormItem>
 
-            {}
             <AnimatedFormItem>
               <FormField
                 control={form.control}
@@ -103,7 +99,6 @@ export function ResetForm({ className, ...props }: React.ComponentPropsWithoutRe
               />
             </AnimatedFormItem>
 
-            {}
             <AnimatedButton
               size="sm"
               type="submit"
@@ -114,7 +109,6 @@ export function ResetForm({ className, ...props }: React.ComponentPropsWithoutRe
             </AnimatedButton>
           </div>
 
-          {}
           <AnimatedFormItem>
             <div className="text-center text-sm">
               {t('auth.resetPassword.Remember password')}{' '}

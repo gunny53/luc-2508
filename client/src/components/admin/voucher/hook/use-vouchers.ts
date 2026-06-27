@@ -110,7 +110,7 @@ export function useVouchers() {
         description: t('Form.deleteSuccessDesc', { code: voucherToDelete.code })
       })
       handleCloseDeleteModal()
-      refreshData() // Re-fetch data
+      refreshData() 
     } catch (error) {
       console.error('Error deleting voucher:', error)
       toast.error(t('Form.deleteError'))
@@ -144,7 +144,7 @@ export function useVouchers() {
         })
       }
       handleCloseUpsertModal()
-      refreshData() // Re-fetch data
+      refreshData() 
     } catch (error) {
       console.error('Error saving voucher:', error)
       toast.error(t('Form.addError'))

@@ -27,12 +27,12 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
   })
 
   const [formData, setFormData] = useState<CustomerFormData>({
-    // Customer Info
+    
     fullName: '',
     phoneNumber: '',
     email: '',
     saveInfo: false,
-    // Shipping Info
+    
     receiverName: '',
     receiverPhone: '',
     province: '',
@@ -88,7 +88,7 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
 
     setFormData((prev) => ({ ...prev, [name]: val }))
 
-    // Only reset selected address if user manually changes address fields (not programmatic changes)
+    
     if (['province', 'district', 'ward', 'address'].includes(name) && selectedAddress?.id) {
       setSelectedAddress(null)
     }
@@ -99,7 +99,7 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
   }
 
   const handleSelectExistingAddress = (address: Address) => {
-    // Prevent unnecessary updates
+    
     const currentAddressString = JSON.stringify(selectedAddress)
     const newAddressString = JSON.stringify(address)
 
@@ -121,10 +121,10 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
       })
     }
 
-    // Update selectedAddress first
+    
     setSelectedAddress(isExistingAddress ? address : null)
 
-    // Then batch the form data update
+    
     setFormData((prev) => ({
       ...prev,
       receiverName: address.receiverName || prev.receiverName,
@@ -140,23 +140,23 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
     const errors: string[] = []
     const receiverName = formData.receiverName || formData.fullName
     if (!receiverName || receiverName.trim() === '') {
-      errors.push('English content normalized from the original source text.')
+      errors.push('Thanh to?n')
     }
     const receiverPhone = formData.receiverPhone || formData.phoneNumber
     if (!receiverPhone || receiverPhone.trim() === '') {
-      errors.push('English content normalized from the original source text.')
+      errors.push('Thanh to?n')
     } else if (!/^[0-9]{10,11}$/.test(receiverPhone.replace(/\s/g, ''))) {
-      errors.push('English content normalized from the original source text.')
+      errors.push('Thanh to?n')
     }
     if (selectedAddress) {
       if (!selectedAddress.addressDetail) {
-        // Don't block submission for debugging
+        
       }
     } else {
       if (!formData.address || formData.address.trim() === '') {
-        errors.push('English content normalized from the original source text.')
+        errors.push('Thanh to?n')
       }
-      // For debugging, don't block on these fields
+      
       if (!formData.province) {
       }
       if (!formData.district) {
@@ -233,9 +233,9 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
         name: receiverName.trim(),
         phone: receiverPhone.trim(),
         address: fullAddress,
-        provinceId: 204, // Default fallback
-        districtId: 1536, // Default fallback
-        wardCode: wardCode || '480121' // Default fallback
+        provinceId: 204, 
+        districtId: 1536, 
+        wardCode: wardCode || '480121' 
       }
 
       dispatch(
@@ -267,9 +267,9 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
           })
     }
 
-    // Update shipping address
+    
 
-    // Ensure addressDetail is not empty
+    
     if (!shippingAddress.addressDetail && shippingAddress.address) {
       shippingAddress.addressDetail = shippingAddress.address
     }
@@ -315,12 +315,12 @@ export function InformationTabs({ onNext }: InformationTabsProps) {
           />
         </div>
 
-        {/* <div className="mt-4">
-          <ShippingType
-            deliveryMethod={formData.deliveryMethod}
-            handleRadioChange={handleRadioChange}
-          />
-        </div> */}
+        {
+
+
+
+
+}
       </form>
     </div>
   )

@@ -16,14 +16,14 @@ export const useGetOrders = () => {
         const response = await orderService.getAll(params, signal)
 
         if (!response?.data) {
-          throw new Error('English content normalized from the original source text.')
+          throw new Error('??n h?ng')
         }
 
         setOrders(response)
         return response
       } catch (err: any) {
         const errorMessage =
-          err?.response?.data?.message || err?.message || 'English content normalized from the original source text.'
+          err?.response?.data?.message || err?.message || '??n h?ng'
         setError(errorMessage)
         toast.error(errorMessage)
         return null

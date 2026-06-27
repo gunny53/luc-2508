@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-// @ts-ignore
+
 import Barcode from 'react-barcode'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
@@ -57,7 +57,7 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
       printWindow.document.write(`
         <html>
           <head>
-            <title>Barcode - ${product.name}English content normalized from the original source text.${barcodeContent}
+            <title>Barcode - ${product.name}S?n ph?m${barcodeContent}
               <div class="product-info">
                 <strong>${product.name}</strong><br>
                 ID: ${product.id}
@@ -77,13 +77,13 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <QrCode className="h-5 w-5" />
-            English content normalized from the original source text.
+            S?n ph?m
           </DialogTitle>
-          <DialogDescription>English content normalized from the original source text. {product.id}</DialogDescription>
+          <DialogDescription>S?n ph?m {product.id}</DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col items-center space-y-4 py-6 overflow-hidden">
-          {/* Barcode container with proper sizing */}
+          {}
           <div
             className="bg-white p-4 border rounded-lg shadow-sm w-full max-w-full overflow-hidden flex justify-center"
             ref={barcodeRef}
@@ -106,7 +106,7 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
             <div className="font-semibold text-base break-words">{product.name}</div>
             <div className="break-all">ID: {product.id}</div>
             <div>
-              English content normalized from the original source text.{' '}
+              S?n ph?m{' '}
               {new Intl.NumberFormat('vi-VN', {
                 style: 'currency',
                 currency: 'VND'
@@ -118,13 +118,13 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
         <div className="flex flex-wrap justify-center gap-2 pt-4">
           <Button variant="outline" size="sm" onClick={handleDownload}>
             <Download className="h-4 w-4 mr-2" />
-            English content normalized from the original source text.
+            S?n ph?m
           </Button>
           <Button variant="outline" size="sm" onClick={handlePrint}>
             <Printer className="h-4 w-4 mr-2" />
             In
           </Button>
-          <Button onClick={onClose}>English content normalized from the original source text.</Button>
+          <Button onClick={onClose}>S?n ph?m</Button>
         </div>
       </DialogContent>
     </Dialog>

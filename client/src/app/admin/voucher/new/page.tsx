@@ -21,7 +21,7 @@ export default function NewVoucherPage() {
   const searchParams = useSearchParams()
   const useCaseParam = searchParams.get('usecase') || '1'
 
-  // Convert string to VoucherUseCase enum
+  
   const getUseCase = (param: string): VoucherUseCase => {
     switch (param) {
       case '1':
@@ -56,17 +56,17 @@ export default function NewVoucherPage() {
       case VoucherUseCase.PRIVATE:
         return t('title_private')
       case VoucherUseCase.PLATFORM:
-        return 'English content normalized from the original source text.'
+        return 'M? gi?m gi?'
       case VoucherUseCase.CATEGORIES:
-        return 'English content normalized from the original source text.'
+        return 'M? gi?m gi?'
       case VoucherUseCase.BRAND:
-        return 'English content normalized from the original source text.'
+        return 'M? gi?m gi?'
       case VoucherUseCase.SHOP_ADMIN:
-        return 'English content normalized from the original source text.'
+        return 'M? gi?m gi?'
       case VoucherUseCase.PRODUCT_ADMIN:
-        return 'English content normalized from the original source text.'
+        return 'M? gi?m gi?'
       case VoucherUseCase.PRIVATE_ADMIN:
-        return 'English content normalized from the original source text.'
+        return 'M? gi?m gi?'
       default:
         return t('title_shop')
     }

@@ -10,8 +10,8 @@ export const OrderStatus = {
 
 export type OrderStatusType = (typeof OrderStatus)[keyof typeof OrderStatus]
 export const ORDER_STATUS_FLOW = {
-  // COD Flow: PENDING_PAYMENT → PENDING_PACKAGING → PICKUPED → PENDING_DELIVERY → DELIVERED
-  // Online Flow: PENDING_PACKAGING → PICKUPED → PENDING_DELIVERY → DELIVERED
+  
+  
   ADMIN_ONLY: [
     OrderStatus.PENDING_PAYMENT,
     OrderStatus.PENDING_PACKAGING,

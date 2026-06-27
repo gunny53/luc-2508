@@ -90,7 +90,7 @@ export function VariantSettingsIndex({ variants, skus, setVariants, updateSingle
     },
     [updateSingleSku, skus]
   )
-  // Mapping functions
+  
   const mapVariantsToOptions = useCallback((apiVariants: any[]): OptionData[] => {
     if (!apiVariants || !apiVariants.length) {
       console.log('mapVariantsToOptions: No variants provided')
@@ -103,7 +103,7 @@ export function VariantSettingsIndex({ variants, skus, setVariants, updateSingle
       const options = Array.isArray(variant.options) ? variant.options : []
 
       return {
-        id: index + 1, // Generate ID
+        id: index + 1, 
         name: variant.value || '',
         values: options,
         isDone: true
@@ -141,7 +141,7 @@ export function VariantSettingsIndex({ variants, skus, setVariants, updateSingle
   }, [options, setVariants, mapOptionsToVariants])
   const handleAddOptions = () => {
     const newOption = {
-      id: Date.now(), // Unique ID
+      id: Date.now(), 
       name: '',
       values: [],
       isDone: false

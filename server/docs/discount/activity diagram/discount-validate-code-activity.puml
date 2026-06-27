@@ -6,35 +6,35 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Discount Discount Validate Code Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Discount Discount Validate Code Activity: execute the validated workflow;
+:Discount Discount Validate Code Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Discount Discount Validate Code Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:Discount Discount Validate Code Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Discount Discount Validate Code Activity: execute the validated workflow;
   stop
 endif
-:English content normalized from the original source text;
+:Discount Discount Validate Code Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :Discount Discount Validate Code Activity: execute the validated workflow;
   stop
 endif
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Discount Discount Validate Code Activity: execute the validated workflow;
+  :Discount Discount Validate Code Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Discount Discount Validate Code Activity: execute the validated workflow;
     stop
   endif
 endif
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Discount Discount Validate Code Activity: execute the validated workflow;
+:Discount Discount Validate Code Activity: execute the validated workflow;
 stop
 
 @enduml

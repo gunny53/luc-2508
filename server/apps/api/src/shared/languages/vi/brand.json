@@ -1,30 +1,30 @@
 {
   "brand": {
     "success": {
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text.",
-      "GET_SUCCESS": "English content normalized from the original source text.",
-      "GET_DETAIL_SUCCESS": "English content normalized from the original source text."
+      "CREATE_SUCCESS": "Tạo thương hiệu thành công.",
+      "UPDATE_SUCCESS": "Cập nhật thương hiệu thành công.",
+      "DELETE_SUCCESS": "Xóa thương hiệu thành công.",
+      "GET_SUCCESS": "Lấy danh sách thương hiệu thành công.",
+      "GET_DETAIL_SUCCESS": "Lấy chi tiết thương hiệu thành công."
     },
     "error": {
-      "NOT_FOUND": "English content normalized from the original source text.",
-      "ALREADY_EXISTS": "English content normalized from the original source text.",
-      "CANNOT_DELETE": "English content normalized from the original source text."
+      "NOT_FOUND": "Không tìm thấy thương hiệu.",
+      "ALREADY_EXISTS": "Dữ liệu đã tồn tại.",
+      "CANNOT_DELETE": "Thao tác với thương hiệu không thành công."
     }
   },
   "brandTranslation": {
     "success": {
-      "CREATE_SUCCESS": "English content normalized from the original source text.",
-      "UPDATE_SUCCESS": "English content normalized from the original source text.",
-      "DELETE_SUCCESS": "English content normalized from the original source text.",
-      "GET_DETAIL_SUCCESS": "English content normalized from the original source text."
+      "CREATE_SUCCESS": "Tạo bản dịch thương hiệu thành công.",
+      "UPDATE_SUCCESS": "Cập nhật bản dịch thương hiệu thành công.",
+      "DELETE_SUCCESS": "Xóa bản dịch thương hiệu thành công.",
+      "GET_DETAIL_SUCCESS": "Lấy chi tiết bản dịch thương hiệu thành công."
     },
     "error": {
-      "BRAND_NOT_FOUND": "English content normalized from the original source text.",
-      "LANGUAGE_NOT_FOUND": "English content normalized from the original source text.",
-      "ALREADY_EXISTS": "English content normalized from the original source text.",
-      "CANNOT_DELETE": "English content normalized from the original source text."
+      "BRAND_NOT_FOUND": "Không tìm thấy thương hiệu.",
+      "LANGUAGE_NOT_FOUND": "Không tìm thấy ngôn ngữ.",
+      "ALREADY_EXISTS": "Dữ liệu đã tồn tại.",
+      "CANNOT_DELETE": "Thao tác với bản dịch thương hiệu không thành công."
     }
   }
 }

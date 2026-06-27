@@ -43,7 +43,6 @@ export function SigninForm({ className, ...props }: React.ComponentPropsWithoutR
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={cn('flex flex-col gap-6', className)} {...props}>
         <AnimatedForm>
-          {}
           <AnimatedFormItem>
             <div className="flex flex-col items-center gap-2 text-center">
               <h1 className="text-4xl font-bold">{t('auth.login.title')}</h1>
@@ -51,7 +50,6 @@ export function SigninForm({ className, ...props }: React.ComponentPropsWithoutR
             </div>
           </AnimatedFormItem>
 
-          {/* Form */}
           <div className="grid gap-6">
             <AnimatedFormItem>
               <FormField
@@ -132,10 +130,8 @@ export function SigninForm({ className, ...props }: React.ComponentPropsWithoutR
               {loading ? t('auth.login.logging in...') : t('auth.login.login')}
             </AnimatedButton>
 
-            {/* OAuth Form */}
             <OAuthForm type="signin" />
 
-            {}
             <AnimatedFormItem>
               <div className="text-center text-sm">
                 {t('auth.login.no account')}{' '}

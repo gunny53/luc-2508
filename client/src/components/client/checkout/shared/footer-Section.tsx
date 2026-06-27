@@ -30,7 +30,7 @@ interface FooterSectionProps {
   onTotalChange?: (total: number) => void
 }
 
-// Helper component for displaying a single price line
+
 function PriceLine({ label, value, isBold = false }: { label: string; value: string; isBold?: boolean }) {
   return (
     <div className={`flex justify-between items-center ${isBold ? 'font-semibold text-lg' : 'text-sm'}`}>
@@ -59,10 +59,10 @@ export function FooterSection({
     loading: calculationLoading,
     error: calculationError
   } = useAutoCalculateOrder()
-  // useEffect(() => {
-  //   const platformCodes = appliedPlatformVoucher ? [appliedPlatformVoucher.code] : [];
-  //   dispatch(setPlatformDiscountCodes(platformCodes));
-  // }, [appliedPlatformVoucher, dispatch]);
+  
+  
+  
+  
   const finalCalculationResult = autoCalculationResult || calculationResult
   const subtotal =
     finalCalculationResult?.totalItemCost ||
@@ -80,7 +80,7 @@ export function FooterSection({
   const totalPayment = finalCalculationResult?.totalPayment || subtotal + shippingFee - totalDiscount
 
   const handleApplyPlatformVoucher = (voucher: AppliedVoucherInfo) => {
-    // The actual application logic is likely in the modal, this is for closing
+    
     setPlatformModalOpen(false)
   }
   useEffect(() => {
@@ -91,38 +91,38 @@ export function FooterSection({
   }, [totalPayment, onTotalChange, dispatch])
 
   const getButtonText = () => {
-    if (isSubmitting) return 'English content normalized from the original source text.'
+    if (isSubmitting) return 'Thanh to?n'
     return step === 'information'
-      ? 'English content normalized from the original source text.'
-      : 'English content normalized from the original source text.'
+      ? 'Thanh to?n'
+      : 'Thanh to?n'
   }
 
   if (variant === 'mobile') {
     return (
       <div className="space-y-3">
-        {/* Mobile Order Summary */}
+        {}
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600">English content normalized from the original source text.</span>
+          <span className="text-gray-600">Thanh to?n</span>
           <span className="text-lg font-semibold text-primary">{formatCurrency(totalPayment)}</span>
         </div>
 
-        {/* Mobile Voucher Input */}
+        {}
         <div className="flex items-center gap-2">
           <Input
-            placeholder="English content normalized from the original source text."
+            placeholder="Thanh to?n"
             className="h-9 text-sm flex-1"
           />
           <Button variant="secondary" className="h-9 px-4 text-sm font-medium whitespace-nowrap">
-            English content normalized from the original source text.
+            Thanh to?n
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
+        {}
         <div className="flex items-center gap-2">
           {step === 'payment' && (
             <Button variant="outline" onClick={onPrevious} className="flex-1 h-10 text-sm font-medium">
               <ArrowLeft className="h-4 w-4 mr-1.5" />
-              English content normalized from the original source text.
+              Thanh to?n
             </Button>
           )}
           <Button className="flex-1 h-10 text-sm font-medium" onClick={onNext} disabled={isSubmitting}>
@@ -135,11 +135,11 @@ export function FooterSection({
 
   return (
     <div className="bg-white rounded-lg border p-6 space-y-4">
-      {/* Platform Voucher Section */}
+      {}
       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md border">
         <div className="flex items-center gap-2">
           <Tag className="w-5 h-5 text-primary" />
-          <span className="text-sm font-medium">English content normalized from the original source text.</span>
+          <span className="text-sm font-medium">Thanh to?n</span>
         </div>
         {appliedPlatformVoucher ? (
           <div className="flex items-center gap-2">
@@ -152,46 +152,46 @@ export function FooterSection({
           </div>
         ) : (
           <Button variant="link" className="p-0 h-auto text-sm" onClick={() => setPlatformModalOpen(true)}>
-            English content normalized from the original source text.
+            Thanh to?n
           </Button>
         )}
       </div>
 
-      <h2 className="text-lg font-semibold">English content normalized from the original source text.</h2>
+      <h2 className="text-lg font-semibold">Thanh to?n</h2>
       <div className="space-y-2">
         {calculationLoading ? (
           <div className="flex items-center justify-center py-4">
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
             <span className="ml-2 text-sm text-gray-600">
-              English content normalized from the original source text.
+              Thanh to?n
             </span>
           </div>
         ) : calculationError ? (
           <div className="text-center py-4">
             <p className="text-red-600 text-sm mb-2">{calculationError}</p>
-            <p className="text-xs text-gray-500">English content normalized from the original source text.</p>
+            <p className="text-xs text-gray-500">Thanh to?n</p>
           </div>
         ) : null}
 
         <div className="space-y-3">
           <PriceLine
-            label="English content normalized from the original source text."
+            label="Thanh to?n"
             value={formatCurrency(subtotal)}
           />
           <div className="flex justify-between items-center text-sm">
-            <span className="text-gray-600">English content normalized from the original source text.</span>
+            <span className="text-gray-600">Thanh to?n</span>
             <span className="text-green-600 font-medium">-{formatCurrency(Math.abs(voucherDiscount))}</span>
           </div>
         </div>
 
         <div className="flex justify-between items-center text-sm">
-          <span className="text-gray-600">English content normalized from the original source text.</span>
+          <span className="text-gray-600">Thanh to?n</span>
           <span className="text-red-600 font-medium">{formatCurrency(shippingFee)}</span>
         </div>
 
         <Separator className="my-3" />
         <PriceLine
-          label="English content normalized from the original source text."
+          label="Thanh to?n"
           value={formatCurrency(totalPayment)}
           isBold={true}
         />
@@ -199,7 +199,7 @@ export function FooterSection({
         {finalCalculationResult && (
           <div className="text-xs text-gray-500 text-center mt-2">
             {finalCalculationResult.shops?.length > 0 &&
-              `English content normalized from the original source text.${finalCalculationResult.shops.length} shop`}
+              `Thanh to?n${finalCalculationResult.shops.length} shop`}
           </div>
         )}
       </div>
@@ -212,13 +212,13 @@ export function FooterSection({
         />
       )}
 
-      {/* Desktop Navigation */}
+      {}
       <div className="pt-6 mt-6 border-t">
         <div className="flex items-center gap-3">
           {step === 'payment' && (
             <Button variant="outline" onClick={onPrevious} className="flex-1 h-10 text-sm font-medium">
               <ArrowLeft className="h-4 w-4 mr-1.5" />
-              English content normalized from the original source text.
+              Thanh to?n
             </Button>
           )}
           <Button className="flex-1 h-10 text-sm font-medium" onClick={onNext} disabled={isSubmitting}>
@@ -226,7 +226,7 @@ export function FooterSection({
           </Button>
         </div>
         <p className="text-xs text-center mt-3 text-gray-500">
-          English content normalized from the original source text.
+          Thanh to?n
         </p>
       </div>
     </div>

@@ -36,7 +36,6 @@ export function Header({ onToggleSidebar }: HeaderProps) {
   return (
     <header className="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 h-16 z-30">
       <div className="flex items-center justify-between h-full px-4 md:px-6">
-        {/* Logo + Hamburger */}
         <div className="flex items-center gap-4">
           {isMobile && (
             <Button onClick={onToggleSidebar} className="text-gray-700 bg-white">
@@ -54,10 +53,8 @@ export function Header({ onToggleSidebar }: HeaderProps) {
           </Link>
         </div>
 
-        {/* Search bar */}
         {!isMobile && <SearchItem />}
 
-        {/* Right section */}
         <div className="flex items-center space-x-4">
           <Button
             className="p-2 rounded-full hover:bg-gray-100 relative bg-[#fff]"
@@ -68,8 +65,6 @@ export function Header({ onToggleSidebar }: HeaderProps) {
             <span className="absolute top-1 right-1 bg-red-600 rounded-full w-2 h-2"></span>
           </Button>
 
-          {/* Dropdown Profile */}
-          {}
           <NotificationSheet open={notificationOpen} onOpenChange={setNotificationOpen} />
         </div>
       </div>

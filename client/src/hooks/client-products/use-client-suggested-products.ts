@@ -1,4 +1,4 @@
-// hooks/useClientSuggestedProducts.ts
+
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { clientProductsService } from '@/services/client-products-service'
 import { ClientProduct } from '@/types/client.products.interface'
@@ -69,7 +69,7 @@ export function useClientSuggestedProducts({
 
     fetchProducts(initialLimit)
 
-    // Cleanup function
+    
     return () => {
       isMounted.current = false
     }

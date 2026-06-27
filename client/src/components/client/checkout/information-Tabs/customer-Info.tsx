@@ -74,12 +74,12 @@ export function CustomerInfo({ onDataChange, isLoggedIn = true }: CustomerInfoPr
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center text-base font-semibold">
           <User className="h-4 w-4 mr-2" />
-          English content normalized from the original source text.
+          Thanh to?n
         </CardTitle>
         <CardDescription className="text-sm font-light">
           {isLoggedIn
-            ? 'English content normalized from the original source text.'
-            : 'English content normalized from the original source text.'}
+            ? 'Thanh to?n'
+            : 'Thanh to?n'}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -87,12 +87,12 @@ export function CustomerInfo({ onDataChange, isLoggedIn = true }: CustomerInfoPr
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1">
               <Label htmlFor="fullName" className="text-xs font-medium">
-                English content normalized from the original source text.
+                Thanh to?n
               </Label>
               <Input
                 id="fullName"
                 name="fullName"
-                placeholder="English content normalized from the original source text."
+                placeholder="Thanh to?n"
                 value={formData.fullName}
                 onChange={handleChange}
                 readOnly={isLoggedIn}
@@ -102,12 +102,12 @@ export function CustomerInfo({ onDataChange, isLoggedIn = true }: CustomerInfoPr
             </div>
             <div className="space-y-1">
               <Label htmlFor="phoneNumber" className="text-xs font-medium">
-                English content normalized from the original source text.
+                Thanh to?n
               </Label>
               <Input
                 id="phoneNumber"
                 name="phoneNumber"
-                placeholder="English content normalized from the original source text."
+                placeholder="Thanh to?n"
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 readOnly={isLoggedIn}

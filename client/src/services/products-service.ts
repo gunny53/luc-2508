@@ -23,7 +23,7 @@ export const productsService = {
     try {
       const response = await privateAxios.get(API_ENDPOINTS.MANAGE_PRODUCTS.LIST, {
         params: params,
-        signal: signal // Add the AbortSignal support
+        signal: signal 
       })
       return response.data
     } catch (error) {

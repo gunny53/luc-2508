@@ -23,7 +23,7 @@ export const useCheckout = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 
-  // 1. Get data from Redux
+  
   const shopOrders = useSelector(selectShopOrders)
   const shopProducts = useSelector(selectShopProducts)
   const appliedVouchers = useSelector(selectAppliedVouchers)
@@ -36,7 +36,7 @@ export const useCheckout = () => {
     throw new Error('useCheckout must be used within a CheckoutProvider')
   }
 
-  // Helper functions for components
+  
   const goToStep = (step: CheckoutStep) => {
     context.goToStep(step)
   }
@@ -60,25 +60,25 @@ export const useCheckout = () => {
   const handleCreateOrder = async (totalAmount?: number): Promise<OrderHandlerResult | undefined> => {
     if (isSubmitting) return
 
-    // Validate receiver info from commonInfo
+    
     if (!commonInfo.receiver?.name || !commonInfo.receiver?.phone || !commonInfo.receiver?.address) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('Thanh to?n')
       return
     }
 
-    // Validate payment method
+    
     if (!context.state.paymentMethod) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('Thanh to?n')
       return
     }
 
-    // Check if we have orders from Redux
+    
     if (!shopOrders || shopOrders.length === 0) {
-      toast.error('English content normalized from the original source text.')
+      toast.error('Thanh to?n')
       return
-    } // Get the correct payment gateway ID from the selected payment method
+    } 
     const getPaymentGatewayId = (paymentMethod: string): string => {
-      // Map payment method IDs to the correct gateway format
+      
       const paymentGatewayMap: { [key: string]: string } = {
         cod: 'COD',
         sepay: 'sepay',
@@ -92,17 +92,17 @@ export const useCheckout = () => {
 
     setIsSubmitting(true)
     try {
-      // Create order payload with new structure
+      
       const platformDiscountCodes: string[] = []
 
-      // Collect platform voucher codes
+      
       if (appliedPlatformVoucher && appliedPlatformVoucher.code) {
         platformDiscountCodes.push(appliedPlatformVoucher.code)
       }
 
       const orderPayload = {
         shops: shopOrders.map((order) => {
-          // Get shop-specific voucher codes for this shop only
+          
           const shopDiscountCodes: string[] = []
           const shopVoucher = appliedVouchers[order.shopId]
           if (shopVoucher && shopVoucher.code) {
@@ -144,13 +144,13 @@ export const useCheckout = () => {
         finalPayload: orderPayload
       })
 
-      // Call the order service
+      
       const response = await orderService.create(orderPayload)
       const orderData = response.data
 
-      // Handle different payment methods
+      
       if (selectedPaymentGateway === 'sepay') {
-        toast.success('English content normalized from the original source text.')
+        toast.success('Thanh to?n')
 
         const orderId = orderData.orders && orderData.orders.length > 0 ? orderData.orders[0].id : undefined
         const result = {
@@ -170,7 +170,7 @@ export const useCheckout = () => {
             locale: 'vn'
           })
 
-          toast.success('English content normalized from the original source text.')
+          toast.success('Thanh to?n')
           const orderId = orderData.orders && orderData.orders.length > 0 ? orderData.orders[0].id : undefined
 
           const result = {
@@ -187,7 +187,7 @@ export const useCheckout = () => {
           return result
         } catch (vnPayError: any) {
           console.error('Failed to generate VNPay URL:', vnPayError)
-          toast.error('English content normalized from the original source text.')
+          toast.error('Thanh to?n')
           const orderId = orderData.orders && orderData.orders.length > 0 ? orderData.orders[0].id : undefined
 
           return {
@@ -199,7 +199,7 @@ export const useCheckout = () => {
           }
         }
       } else if (selectedPaymentGateway === 'COD' || isCodPayment) {
-        toast.success('English content normalized from the original source text.')
+        toast.success('Thanh to?n')
         dispatch(clearCheckoutState())
 
         const orderId = orderData.orders && orderData.orders.length > 0 ? orderData.orders[0].id : undefined
@@ -215,8 +215,8 @@ export const useCheckout = () => {
         console.log('✅ COD Payment Result:', result)
         return result
       } else {
-        toast.success('English content normalized from the original source text.')
-        router.push(`/checkout/success?orderId=${orderData.orders[0].id}`) // Navigate to success page with the first order's ID if available
+        toast.success('Thanh to?n')
+        router.push(`/checkout/success?orderId=${orderData.orders[0].id}`) 
         const orderId = orderData.orders && orderData.orders.length > 0 ? orderData.orders[0].id : undefined
 
         const result = {
@@ -232,10 +232,10 @@ export const useCheckout = () => {
       }
     } catch (error: any) {
       console.error('Failed to create order:', error)
-      toast.error(error.response?.data?.message || 'English content normalized from the original source text.')
+      toast.error(error.response?.data?.message || 'Thanh to?n')
       return {
         success: false,
-        error: error.response?.data?.message || 'English content normalized from the original source text.'
+        error: error.response?.data?.message || 'Thanh to?n'
       }
     } finally {
       setIsSubmitting(false)

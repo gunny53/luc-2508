@@ -6,19 +6,19 @@ skinparam activityFontColor #333333
 skinparam activityBorderColor #666666
 skinparam activityBackgroundColor #F7F7F7
 
-English content normalized from the original source text.
+Cart Cart Add To Cart Activity: execute the validated workflow
 
 start
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:Cart Cart Add To Cart Activity: execute the validated workflow;
+:Cart Cart Add To Cart Activity: execute the validated workflow;
+:Cart Cart Add To Cart Activity: execute the validated workflow;
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Cart Cart Add To Cart Activity: execute the validated workflow;
+  :Cart Cart Add To Cart Activity: execute the validated workflow;
   :Build message i18n;
-  :English content normalized from the original source text;
+  :Cart Cart Add To Cart Activity: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
+  :Cart Cart Add To Cart Activity: execute the validated workflow;
 endif
 stop
 

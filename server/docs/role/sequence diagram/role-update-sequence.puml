@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Role Role Update Sequence: validate request and return the expected response
 
 actor "Admin" as A
 participant "RoleController" as RC
@@ -26,7 +26,7 @@ RC -> RS: update({ id, data, user })
 activate RS
 
 RS -> RS: verifyRole(id) (base role protection)
-English content normalized from the original source text.
+Role Role Update Sequence: validate request and return the expected response
   RS --> RC: ProhibitedActionOnBaseRoleException (403)
   RC --> A: 403 Forbidden
   deactivate RS
@@ -37,9 +37,9 @@ end
 RS -> RR: update({ id, updatedById: user.userId, data })
 activate RR
 note right of RR
-English content normalized from the original source text.
+Role Role Update Sequence: validate request and return the expected response
 • findMany permissions theo IDs
-• English content normalized from the original source text
+• Role Role Update Sequence: validate request and return the expected response
 end note
 RR -> DB: role.update({ where: { id, deletedAt: null }, data: { ...fields, permissions.set(permissionIds), updatedById }, include: permissions (deletedAt=null) })
 DB --> RR: updatedRole

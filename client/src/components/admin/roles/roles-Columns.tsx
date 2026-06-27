@@ -94,7 +94,7 @@ export const RolesColumns = ({
     {
       accessorKey: 'isActive',
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
+        <DataTableColumnHeader column={column} title="Vai tr?" />
       ),
       cell: ({ row }) => {
         const isActive = row.getValue('isActive') as boolean
@@ -105,8 +105,8 @@ export const RolesColumns = ({
               className={isActive ? 'bg-green-500 hover:bg-green-600' : 'text-slate-500 border-slate-300'}
             >
               {isActive
-                ? 'English content normalized from the original source text.'
-                : 'English content normalized from the original source text.'}
+                ? 'Vai tr?'
+                : 'Vai tr?'}
             </Badge>
           </div>
         )
@@ -115,7 +115,7 @@ export const RolesColumns = ({
     {
       accessorKey: 'createdAt',
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
+        <DataTableColumnHeader column={column} title="Vai tr?" />
       ),
       cell: ({ row }) => {
         return <div className="w-[160px]">{format(new Date(row.getValue('createdAt')), 'dd/MM/yyyy HH:mm')}</div>
@@ -124,7 +124,7 @@ export const RolesColumns = ({
     {
       accessorKey: 'updatedAt',
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="English content normalized from the original source text." />
+        <DataTableColumnHeader column={column} title="Vai tr?" />
       ),
       cell: ({ row }) => {
         return <div className="w-[160px]">{format(new Date(row.getValue('updatedAt')), 'dd/MM/yyyy HH:mm')}</div>

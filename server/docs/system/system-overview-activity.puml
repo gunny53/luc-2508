@@ -8,119 +8,119 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+System Workflow: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:System Workflow: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
     if (condition?) then (Yes)
       if (condition?) then (Yes)
-        :English content normalized from the original source text;
+        :System Workflow: execute the validated workflow;
         :Validate 2FA;
       endif
-      :English content normalized from the original source text;
+      :System Workflow: execute the validated workflow;
       :Set authentication cookies;
-      :English content normalized from the original source text;
+      :System Workflow: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
+      :System Workflow: execute the validated workflow;
     endif
   else (Google OAuth)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
   endif
 endif
 
-:English content normalized from the original source text;
+:System Workflow: execute the validated workflow;
 
 fork
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 fork again
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 fork again
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
+    :System Workflow: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :System Workflow: execute the validated workflow;
   endif
 end fork
 
-:English content normalized from the original source text;
+:System Workflow: execute the validated workflow;
 
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
-:English content normalized from the original source text;
+:System Workflow: execute the validated workflow;
+:System Workflow: execute the validated workflow;
+:System Workflow: execute the validated workflow;
+:System Workflow: execute the validated workflow;
+:System Workflow: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
   :Verify payment signature;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 else (Sepay)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
   :Verify webhook signature;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 endif
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:System Workflow: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
   :Upload media cho review;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:System Workflow: execute the validated workflow;
 
 if (condition?) then (Yes)
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
+  :System Workflow: execute the validated workflow;
 else (No)
-  :English content normalized from the original source text;
+  :System Workflow: execute the validated workflow;
 endif
 
 stop

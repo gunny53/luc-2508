@@ -12,21 +12,17 @@ export default function PaymentTable() {
 
   return (
     <div className="bg-white p-6 max-w-3xl mx-auto text-gray-800">
-      {/* Title */}
       <h1 className="text-xl font-semibold mb-1">{t('user.account.payment.title')}</h1>
 
-      {/* Encrypted Note */}
       <p className="text-green-600 text-sm mb-6 flex items-center gap-1">
         <Lock className="w-4 h-4 mr-1" />
         {t('user.account.payment.encrypted')}
       </p>
 
-      {/* Card Icon and Text */}
       <div className="flex flex-col items-center text-center mb-4">
         <CreditCard className="w-16 h-16 text-gray-400 mb-2" />
         <p className="text-base font-medium">{t('user.account.payment.fastCheckout')}</p>
 
-        {/* Badges */}
         <div className="flex gap-2 mt-2">
           <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">
             {t('user.account.payment.secure')}
@@ -37,7 +33,6 @@ export default function PaymentTable() {
         </div>
       </div>
 
-      {/* Add Card Button */}
       <div className="flex justify-center mt-4 mb-4">
         <Button
           className="bg-red-500 hover:bg-red-600 text-white font-semibold text-sm px-6 py-3 rounded-full"
@@ -49,7 +44,6 @@ export default function PaymentTable() {
 
       <PaymentAdd open={showAddCard} onOpenChange={setShowAddCard} />
 
-      {/* Card Logos */}
       <div className="flex justify-center items-center gap-2 mb-8 bg-white p-4 pt-0 rounded">
         {['visa', 'mastercard', 'amex', 'discover', 'maestro', 'diners', 'jcb'].map((brand) => (
           <img src={`/payment-icons/${brand}.svg`} alt={brand} className="object-cover w-10 h-6 border round" />
@@ -58,9 +52,9 @@ export default function PaymentTable() {
 
       <hr className="border-gray-300 mb-6" />
 
-      {/* Security Sections */}
+      {}
       <div className="space-y-6 text-sm text-gray-700">
-        {/* Section 1: Protection */}
+        {}
         <div>
           <p className="text-green-700 font-semibold flex items-center mb-2">
             <ShieldCheck className="w-4 h-4 mr-1" />
@@ -74,7 +68,7 @@ export default function PaymentTable() {
           </ul>
         </div>
 
-        {/* Section 2: Trusted */}
+        {}
         <div>
           <p className="text-green-700 font-semibold flex items-center mb-2">
             <ShieldCheck className="w-4 h-4 mr-1" />
@@ -90,7 +84,7 @@ export default function PaymentTable() {
           </p>
         </div>
 
-        {/* Section 3: Support */}
+        {}
         <div>
           <p className="text-green-700 font-semibold flex items-center mb-2">
             <HelpCircle className="w-4 h-4 mr-1" />

@@ -4,9 +4,9 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Review Review Get List Sequence: validate request and return the expected response
 
-English content normalized from the original source text.
+Review Review Get List Sequence: validate request and return the expected response
 participant "ReviewController" as RC
 participant "ReviewService" as RS
 participant "ReviewRepository" as RR

@@ -68,8 +68,6 @@ export function Profile2FAModal({
   return (
     <>
       {' '}
-      {/* 2FA Confirmation Dialog */}
-      {/* Regenerate Recovery Codes Confirmation Dialog */}
       <Dialog open={showRegenerateConfirm} onOpenChange={setShowRegenerateConfirm}>
         <DialogContent>
           <DialogHeader>
@@ -99,7 +97,6 @@ export function Profile2FAModal({
           </div>
         </DialogContent>
       </Dialog>
-      {/* 2FA Confirmation Dialog */}
       <Dialog open={show2FADialog} onOpenChange={setShow2FADialog}>
         <DialogContent>
           <DialogHeader>
@@ -141,7 +138,6 @@ export function Profile2FAModal({
           </div>
         </DialogContent>
       </Dialog>{' '}
-      {}
       <Dialog open={showRecoveryCodesDialog} onOpenChange={setShowRecoveryCodesDialog}>
         <DialogContent className="max-w-lg bg-[#23272f] text-white rounded-xl p-0 overflow-hidden">
           <div className="px-8 pt-8 pb-2">
@@ -152,7 +148,6 @@ export function Profile2FAModal({
           </div>
 
           <div className="px-8 pb-8">
-            {/* Recovery codes display */}
             <div className="mb-6">
               <div className="grid grid-cols-2 gap-2 mb-3">
                 {recoveryCodes && recoveryCodes.length > 0 ? (
@@ -173,7 +168,6 @@ export function Profile2FAModal({
                 <p>{t('admin.profileSettings.QrCode.email')}</p>
               </div>
 
-              {/* Actions buttons */}
               <div className="flex gap-3 mt-4">
                 <Button onClick={copyAllRecoveryCodes} className="bg-[#383c44] hover:bg-[#4c505a] text-white flex-1">
                   <svg
@@ -208,7 +202,6 @@ export function Profile2FAModal({
               </div>
             </div>
 
-            {/* Close button */}
             <Button
               onClick={() => setShowRecoveryCodesDialog(false)}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white"
@@ -218,7 +211,6 @@ export function Profile2FAModal({
           </div>
         </DialogContent>
       </Dialog>
-      {/* QR Code Dialog */}
       <Dialog open={showQRDialog} onOpenChange={setShowQRDialog}>
         <DialogContent className="max-w-lg bg-[#23272f] text-white rounded-xl p-0 overflow-hidden">
           <div className="px-8 pt-8 pb-2">
@@ -228,7 +220,6 @@ export function Profile2FAModal({
             </DialogDescription>
           </div>
           <div className="px-8 pb-2">
-            {}
             <div className="flex items-center gap-4 mb-6">
               <Smartphone className="w-10 h-10 text-gray-400" />
               <div>
@@ -250,7 +241,6 @@ export function Profile2FAModal({
                 </div>
               </div>
             </div>
-            {}
             <div className="mb-6">
               <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.qr')}</div>
               <div className="flex flex-col items-center">
@@ -262,7 +252,6 @@ export function Profile2FAModal({
               </div>
               <div className="text-gray-300 text-sm mt-2">{t('admin.profileSettings.QrCode.openQr')}</div>
             </div>
-            {}
             <div className="mb-6">
               <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.secret')}</div>
               <div className="bg-[#181a20] rounded-md px-4 py-3 font-mono text-lg tracking-widest text-blue-300 select-all break-all">
@@ -270,7 +259,6 @@ export function Profile2FAModal({
               </div>
             </div>
 
-            {}
             <div className="mb-2">
               <div className="font-semibold mb-2">{t('admin.profileSettings.QrCode.confirm')}</div>
               <div className="text-gray-300 text-sm mb-2">{t('admin.profileSettings.QrCode.6code')}</div>

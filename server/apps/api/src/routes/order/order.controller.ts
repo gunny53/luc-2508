@@ -38,7 +38,7 @@ export class OrderController {
       this.logger.log(`[ORDER_CONTROLLER] Order created successfully: ${JSON.stringify(result, null, 2)}`)
       return result
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+      this.logger.error(`Order request failed: ${error.message}`, error.stack)
       throw error
     }
   }
@@ -59,7 +59,7 @@ export class OrderController {
       this.logger.log(`[ORDER_CONTROLLER] Order cancelled successfully: ${JSON.stringify(result, null, 2)}`)
       return result
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`, error.stack)
+      this.logger.error(`Order request failed: ${error.message}`, error.stack)
       throw error
     }
   }

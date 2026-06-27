@@ -6,11 +6,10 @@ on:
   workflow_dispatch:
     inputs:
       manual_rollback:
-        description: "English content normalized from the original source text."
+        description: "ECSite"
         required: false
 
 jobs:
-  # 1. Build & Test
   build:
     name: Build & Test
     runs-on: ubuntu-latest
@@ -29,10 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Run tests
-      #   run: npm test
 
-  # 2. Deploy to Production
   deploy:
     name: Deploy to Production
     needs: build
@@ -52,7 +48,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             source ~/.bashrc; source ~/.profile
-            English content normalized from the original source text.
+            ECSite
             if ! command -v jq &> /dev/null; then
               sudo apt-get update && sudo apt-get install -y jq
             fi
@@ -61,11 +57,11 @@ jobs:
             rm -rf .next node_modules
             npm ci && npm run build
             pm2 describe client-ecsite &>/dev/null && pm2 restart client-ecsite || pm2 start dist/main.js --name client-ecsite
-            English content normalized from the original source text.
+            ECSite
             sleep 12
-            English content normalized from the original source text.
+            ECSite
             pm2 jlist > /tmp/pm2_status.json
-            English content normalized from the original source text.
+            ECSite
             pm2 logs client-ecsite --lines 100 --nostream > /tmp/pm2_logs.txt
             STATUS=$(pm2 info client-ecsite | grep status | awk '{print $4}')
             echo "$STATUS" > /tmp/app_status.txt
@@ -80,20 +76,20 @@ jobs:
         id: pm2_logs
         run: |
           sshpass -p "${{ secrets.STAGING_VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.STAGING_VPS_USERNAME }}@${{ secrets.STAGING_VPS_IP_HOST }} << 'EOF'
-            English content normalized from the original source text.
+            ECSite
             PM2_INFO=$(jq -r '.[] | select(.name == "client-ecsite") | "Name: \(.name)\nStatus: \(.pm2_env.status)\nPID: \(.pid)\nUptime: \(.pm2_env.uptime // 0 | tostring + \"ms\")\nCPU: \(.monit.cpu)%\nMemory: \(.monit.memory / 1024 / 1024 | tostring + \"MB\")"' /tmp/pm2_status.json 2>/dev/null)
             if [ -z "$PM2_INFO" ]; then
-              PM2_INFO="English content normalized from the original source text."
+              PM2_INFO="ECSite"
             fi
             echo "::set-output name=pm2_info::$PM2_INFO"
-            English content normalized from the original source text.
+            ECSite
             if [ -f /tmp/pm2_logs.txt ]; then
               PM2_LOGS=$(grep -v '\[TAILING\]' /tmp/pm2_logs.txt | tail -n 100)
               if [ -z "$PM2_LOGS" ]; then
-                PM2_LOGS="English content normalized from the original source text."
+                PM2_LOGS="ECSite"
               fi
             else
-              PM2_LOGS="English content normalized from the original source text."
+              PM2_LOGS="ECSite"
             fi
             echo "::set-output name=pm2_logs::$PM2_LOGS"
           EOF
@@ -130,15 +126,15 @@ jobs:
           COMMIT_SHA: ${{ steps.commit_info.outputs.commit_sha }}
           COMMIT_MESSAGE: ${{ steps.commit_info.outputs.commit_message }}
         run: |
-          English content normalized from the original source text.
+          ECSite
           if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "English content normalized from the original source text."
+            echo "ECSite"
             exit 1
           else
-            echo "English content normalized from the original source text."
+            echo "ECSite"
           fi
 
-          English content normalized from the original source text.
+          ECSite
           sudo apt-get update && sudo apt-get install -y jq
 
           COLOR=3066993
@@ -148,12 +144,12 @@ jobs:
             ICON="❌"
           fi
 
-          English content normalized from the original source text.
+          ECSite
           ESCAPED_LOGS=$(echo "${PM2_LOGS:0:1500}" | jq -s -R .)
           ESCAPED_PM2_INFO=$(echo "$PM2_INFO" | jq -s -R .)
           ESCAPED_COMMIT_MESSAGE="$COMMIT_MESSAGE"
 
-          English content normalized from the original source text.
+          ECSite
           JSON_PAYLOAD=$(jq -n \
             --arg status "$STATUS" \
             --arg icon "$ICON" \
@@ -167,25 +163,24 @@ jobs:
             --arg logs "$ESCAPED_LOGS" \
             --arg run_id "$RUN_ID" \
             --arg color "$COLOR" \
-            'English content normalized from the original source text.')
+            'ECSite')
 
-          English content normalized from the original source text.
+          ECSite
           echo "JSON Payload: $JSON_PAYLOAD"
 
-          English content normalized from the original source text.
+          ECSite
           RESPONSE=$(curl -s -w "%{http_code}" -H "Content-Type: application/json" -X POST -d "$JSON_PAYLOAD" "$DISCORD_WEBHOOK")
           HTTP_CODE=${RESPONSE: -3}
           RESPONSE_BODY=${RESPONSE%???}
 
-          echo "English content normalized from the original source text."
-          echo "English content normalized from the original source text."
+          echo "ECSite"
+          echo "ECSite"
 
           if [ "$HTTP_CODE" != "204" ]; then
-            echo "English content normalized from the original source text."
+            echo "ECSite"
             exit 1
           fi
 
-  # 3. Automatic Rollback on Failure
   rollback-auto:
     name: Automatic Rollback
     needs: deploy
@@ -207,7 +202,6 @@ jobs:
             pm2 restart client-ecsite
           EOF
 
-  # 4. Manual Rollback
   manual-rollback:
     name: Manual Rollback
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.manual_rollback

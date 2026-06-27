@@ -19,11 +19,11 @@ function EditVoucherContent() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  // Fetch voucher data
+  
   useEffect(() => {
     const fetchVoucher = async () => {
       if (!voucherId) {
-        setError('English content normalized from the original source text.')
+        setError('M? gi?m gi?')
         setLoading(false)
         return
       }
@@ -35,12 +35,12 @@ function EditVoucherContent() {
         if (response.data) {
           setVoucher(response.data)
         } else {
-          setError('English content normalized from the original source text.')
+          setError('M? gi?m gi?')
         }
       } catch (err: any) {
         console.error('Error fetching voucher:', err)
-        setError(err?.response?.data?.message || 'English content normalized from the original source text.')
-        toast.error('English content normalized from the original source text.')
+        setError(err?.response?.data?.message || 'M? gi?m gi?')
+        toast.error('M? gi?m gi?')
       } finally {
         setLoading(false)
       }
@@ -49,32 +49,32 @@ function EditVoucherContent() {
     fetchVoucher()
   }, [voucherId])
 
-  // Handle loading state
+  
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="h-8 w-8 animate-spin text-red-600" />
-          <p className="text-sm text-gray-600">English content normalized from the original source text.</p>
+          <p className="text-sm text-gray-600">M? gi?m gi?</p>
         </div>
       </div>
     )
   }
 
-  // Handle error state
+  
   if (error || !voucher) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </h2>
           <p className="text-sm text-gray-600 mb-4">{error}</p>
           <button
             onClick={() => router.push('/admin/voucher')}
             className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
           >
-            English content normalized from the original source text.
+            M? gi?m gi?
           </button>
         </div>
       </div>
@@ -82,30 +82,28 @@ function EditVoucherContent() {
   }
 
   const handleEditSuccess = () => {
-    toast.success('English content normalized from the original source text.')
+    toast.success('M? gi?m gi?')
     router.push('/admin/voucher')
   }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
-      {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
           <button onClick={() => router.push('/admin/voucher')} className="hover:text-red-600">
-            English content normalized from the original source text.
+            M? gi?m gi?
           </button>
           <span>/</span>
-          <span>English content normalized from the original source text.</span>
+          <span>M? gi?m gi?</span>
         </div>
         <h1 className="text-2xl font-bold text-gray-900">
-          English content normalized from the original source text. {voucher.name}
+          M? gi?m gi? {voucher.name}
         </h1>
         <p className="text-sm text-gray-600 mt-1">
-          English content normalized from the original source text.<span className="font-medium">{voucher.code}</span>
+          M? gi?m gi?<span className="font-medium">{voucher.code}</span>
         </p>
       </div>
 
-      {/* Edit Form */}
       <VoucherEditWrapper voucher={voucher} userData={userData} onEditSuccess={handleEditSuccess} />
     </div>
   )
@@ -118,7 +116,7 @@ export default function EditVoucherPage() {
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="flex flex-col items-center gap-3">
             <Loader2 className="h-8 w-8 animate-spin text-red-600" />
-            <p className="text-sm text-gray-600">English content normalized from the original source text.</p>
+            <p className="text-sm text-gray-600">M? gi?m gi?</p>
           </div>
         </div>
       }

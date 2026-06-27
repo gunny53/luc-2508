@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Brand Brand Translation Create Sequence: validate request and return the expected response
 
 actor "User" as U
 participant "BrandTranslationController" as BTC

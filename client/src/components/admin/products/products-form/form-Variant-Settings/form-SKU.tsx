@@ -34,7 +34,7 @@ function SkuImageUploader({ skuId, imageUrl, onUploadComplete }: SkuImageUploade
       console.log('Image uploaded:', newUrl)
       onUploadComplete(skuId, newUrl)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [uploadedUrls])
 
   const handleImageClick = () => {

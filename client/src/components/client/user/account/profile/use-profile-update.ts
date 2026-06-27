@@ -16,7 +16,7 @@ export const useUpdateProfile = (onSuccess?: () => void) => {
     setLoading(true)
     try {
       const response = await profileService.updateProfile(data)
-      showToast(response.message || 'English content normalized from the original source text.', 'success')
+      showToast(response.message || 'T?i kho?n', 'success')
 
       await fetchProfile()
       onSuccess?.()

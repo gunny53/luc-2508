@@ -113,7 +113,7 @@ export default function ProductGallery({ media }: Props) {
     <div className="w-full md:w-[450px] space-y-3">
       {renderMainMedia(media[currentIndex], currentIndex)}
 
-      {/* Thumbnails */}
+      {}
       <div className="w-full flex items-center gap-1">
         <Button
           variant="ghost"
@@ -170,7 +170,7 @@ export default function ProductGallery({ media }: Props) {
         </Button>
       </div>
 
-      {/* Modal */}
+      {}
       {selectedIndex !== null && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center overflow-hidden">
           <div className="relative z-50 w-full h-full flex items-center justify-center px-4">

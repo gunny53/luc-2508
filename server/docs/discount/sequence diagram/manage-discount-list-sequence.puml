@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Discount Manage Discount List Sequence: validate request and return the expected response
 
 actor "Seller/Admin" as U
 participant "AccessTokenGuard" as AG
@@ -16,14 +16,14 @@ database "PostgreSQL (Prisma)" as DB
 
 U -> AG: Request + access_token
 AG -> AG: Validate JWT, load user context
-AG --> MDC: English content normalized from the original source text.
+AG --> MDC: Discount Manage Discount List Sequence: validate request and return the expected response
 activate MDC
 
 MDC -> MDS: list({ query, user })
 activate MDS
 
 MDS -> MDS: validatePrivilege(userIdRequest=user.userId, roleNameRequest=user.roleName, createdById=query.createdById)
-English content normalized from the original source text.
+Discount Manage Discount List Sequence: validate request and return the expected response
   MDS --> MDC: 403 Forbidden
   MDC --> U: 403 Forbidden
   deactivate MDS

@@ -22,7 +22,7 @@ export interface Address {
   updatedAt: string
 }
 
-/* ---------------------- CREATE ---------------------- */
+
 export interface AddAddressRequest {
   name: string
   province: string
@@ -43,7 +43,7 @@ export interface AddAddressResponse {
   data: Address
 }
 
-/* ---------------------- UPDATE ---------------------- */
+
 export interface UpdateAddressRequest {
   name: string
   province?: string
@@ -64,7 +64,7 @@ export interface UpdateAddressResponse {
   data: Address
 }
 
-/* ---------------------- GET ---------------------- */
+
 export interface AddressGetByIdResponse {
   message: string
   data: Address
@@ -75,7 +75,7 @@ export interface AddressGetAllResponse {
   data: Address[]
 }
 
-/* ---------------------- DELETE ---------------------- */
+
 export interface DeleteAddressResponse {
   message: string
 }

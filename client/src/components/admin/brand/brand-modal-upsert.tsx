@@ -32,13 +32,13 @@ interface BrandModalUpsertProps {
 export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit }: BrandModalUpsertProps) {
   const t = useTranslations('admin.ModuleBrands')
 
-  // Form state
+  
   const [name, setName] = useState('')
   const [logo, setLogo] = useState('')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  // Upload media hook with presigned URL
+  
   const {
     files,
     uploadedUrls,
@@ -57,63 +57,63 @@ export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit 
     reset: resetUpload
   } = useUploadMediaPresign()
 
-  // Reset form when modal opens or mode/brand changes
+  
   useEffect(() => {
     if (mode === 'edit' && brand) {
       setName(brand.name || '')
       setLogo(brand.logo || '')
 
-      // Reset upload state
+      
       resetUpload()
     } else if (mode === 'add') {
       setName('')
       setLogo('')
       setErrors({})
 
-      // Reset upload state
+      
       resetUpload()
     }
   }, [mode, brand, open, resetUpload])
 
-  // Handle file change for logo upload
+  
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      // File type validation
+      
       const file = e.target.files[0]
       if (!file.type.startsWith('image/')) {
-        showToast('English content normalized from the original source text.', 'error')
+        showToast('Th??ng hi?u', 'error')
         return
       }
 
-      // Clear existing files first
+      
       handleRemoveAllFiles()
 
-      // Add the new file (will be compressed and prepared for upload)
+      
       handleAddFiles(e.target.files)
     }
   }
 
-  // Handle logo upload - Manual trigger after file preparation
+  
   const handleUploadLogo = async () => {
     if (presignedData.length === 0) return
 
     const urls = await uploadToS3Multiple()
     if (urls.length > 0) {
-      // Use the first uploaded image URL as logo
+      
       setLogo(urls[0])
     }
   }
 
-  // Auto-set logo URL when upload completes
+  
   useEffect(() => {
     if (uploadedUrls.length > 0 && !isUploading) {
-      setLogo(uploadedUrls[uploadedUrls.length - 1]) // Use the latest uploaded URL
+      setLogo(uploadedUrls[uploadedUrls.length - 1]) 
     }
   }, [uploadedUrls, isUploading])
 
-  // Create validation schema
+  
   const brandSchema = z.object({
-    name: z.string().min(1, 'English content normalized from the original source text.'),
+    name: z.string().min(1, 'Th??ng hi?u'),
     logo: z.string().optional()
   })
 
@@ -164,13 +164,13 @@ export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit 
         <DialogHeader>
           <DialogTitle>
             {mode === 'add'
-              ? t('modal.addTitle') || 'English content normalized from the original source text.'
-              : t('modal.editTitle') || 'English content normalized from the original source text.'}
+              ? t('modal.addTitle') || 'Th??ng hi?u'
+              : t('modal.editTitle') || 'Th??ng hi?u'}
           </DialogTitle>
           <DialogDescription>
             {mode === 'add'
-              ? t('modal.addDescription') || 'English content normalized from the original source text.'
-              : t('modal.editDescription') || 'English content normalized from the original source text.'}
+              ? t('modal.addDescription') || 'Th??ng hi?u'
+              : t('modal.editDescription') || 'Th??ng hi?u'}
           </DialogDescription>
         </DialogHeader>
 
@@ -178,24 +178,23 @@ export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit 
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('modal.name') || 'English content normalized from the original source text.'}{' '}
+                {t('modal.name') || 'Th??ng hi?u'}{' '}
                 <span className="text-red-500">*</span>
               </label>
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t('modal.namePlaceholder') || 'English content normalized from the original source text.'}
+                placeholder={t('modal.namePlaceholder') || 'Th??ng hi?u'}
               />
               {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                {t('modal.logo') || 'English content normalized from the original source text.'}
+                {t('modal.logo') || 'Th??ng hi?u'}
               </label>
 
               <div className="space-y-3">
-                {/* Logo preview with integrated select button */}
                 <div className="flex items-center space-x-4">
                   <div className="relative group">
                     <Avatar className="h-16 w-16 border-2 border-gray-200">
@@ -208,66 +207,60 @@ export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit 
                       )}
                     </Avatar>
 
-                    {/* Overlay select button */}
                     <button
                       type="button"
                       onClick={() => document.getElementById('logo-upload')?.click()}
                       disabled={isUploading}
-                      aria-label={t('modal.selectImage') || 'English content normalized from the original source text.'}
-                      title={t('modal.selectImage') || 'English content normalized from the original source text.'}
+                      aria-label={t('modal.selectImage') || 'Th??ng hi?u'}
+                      title={t('modal.selectImage') || 'Th??ng hi?u'}
                       className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 rounded-full transition-opacity"
                     >
                       <Camera className="h-5 w-5 text-white" />
                     </button>
                   </div>
 
-                  {/* Logo URL - Auto-populated from upload */}
                   <div className="flex-1 space-y-1">
                     <Input
                       value={logo}
                       onChange={(e) => setLogo(e.target.value)}
                       placeholder={
-                        t('modal.logoPlaceholder') || 'English content normalized from the original source text.'
+                        t('modal.logoPlaceholder') || 'Th??ng hi?u'
                       }
                       className="bg-muted"
                       readOnly={isUploading}
                     />
 
-                    {/* Processing progress (compress + get URLs) */}
                     {isProcessing && (
                       <div className="space-y-1">
                         <Progress value={progress} className="h-1" />
                         <p className="text-xs text-muted-foreground">
                           {progressMessage} - {progress}%{' '}
-                          {t('modal.completed') || 'English content normalized from the original source text.'}
+                          {t('modal.completed') || 'Th??ng hi?u'}
                         </p>
                       </div>
                     )}
 
-                    {/* Upload progress (S3 upload) */}
                     {isUploading && (
                       <div className="space-y-1">
                         <Progress value={progress} className="h-1" />
                         <p className="text-xs text-muted-foreground">
                           {progressMessage} - {progress}%{' '}
-                          {t('modal.completed') || 'English content normalized from the original source text.'}
+                          {t('modal.completed') || 'Th??ng hi?u'}
                         </p>
                       </div>
                     )}
 
-                    {/* Ready to upload */}
                     {presignedData.length > 0 && !isUploading && !isProcessing && (
                       <div className="space-y-2">
                         <p className="text-xs text-green-600">
-                          English content normalized from the original source text.
+                          Th??ng hi?u
                         </p>
                         <Button type="button" size="sm" onClick={handleUploadLogo} className="w-full">
-                          English content normalized from the original source text.
+                          Th??ng hi?u
                         </Button>
                       </div>
                     )}
 
-                    {}
                   </div>
                 </div>
 
@@ -278,28 +271,25 @@ export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit 
                   onChange={handleFileChange}
                   disabled={isUploading}
                   accept="image/*"
-                  aria-label={t('modal.selectImage') || 'English content normalized from the original source text.'}
+                  aria-label={t('modal.selectImage') || 'Th??ng hi?u'}
                 />
 
-                {/* Upload progress */}
                 {isUploading && (
                   <div className="space-y-1">
                     <Progress value={progress} className="h-1" />
                     <p className="text-xs text-muted-foreground">
                       {progressMessage} - {progress}%{' '}
-                      {t('modal.completed') || 'English content normalized from the original source text.'}
+                      {t('modal.completed') || 'Th??ng hi?u'}
                     </p>
                   </div>
                 )}
 
-                {/* File preview */}
                 {files.length > 0 && !isUploading && (
                   <div className="text-xs text-muted-foreground">
                     {files[0].name} ({Math.round(files[0].size / 1024)} KB)
                   </div>
                 )}
 
-                {/* Upload error */}
                 {uploadError && <p className="text-sm text-red-500">{uploadError}</p>}
               </div>
               {errors.logo && <p className="text-sm text-red-500 mt-1">{errors.logo}</p>}
@@ -308,16 +298,16 @@ export default function BrandModalUpsert({ open, onClose, mode, brand, onSubmit 
 
           <DialogFooter className="mt-6">
             <Button type="button" variant="outline" onClick={onClose} disabled={loading || isUploading}>
-              {t('modal.cancel') || 'English content normalized from the original source text.'}
+              {t('modal.cancel') || 'Th??ng hi?u'}
             </Button>
             <Button type="submit" disabled={loading || isUploading}>
               {loading || isUploading
                 ? mode === 'add'
-                  ? t('modal.adding') || 'English content normalized from the original source text.'
-                  : t('modal.saving') || 'English content normalized from the original source text.'
+                  ? t('modal.adding') || 'Th??ng hi?u'
+                  : t('modal.saving') || 'Th??ng hi?u'
                 : mode === 'add'
-                  ? t('modal.add') || 'English content normalized from the original source text.'
-                  : t('modal.save') || 'English content normalized from the original source text.'}
+                  ? t('modal.add') || 'Th??ng hi?u'
+                  : t('modal.save') || 'Th??ng hi?u'}
             </Button>
           </DialogFooter>
         </form>

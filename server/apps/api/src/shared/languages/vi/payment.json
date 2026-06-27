@@ -2,41 +2,41 @@
   "payment": {
     "vnpay": {
       "success": {
-        "GET_BANK_LIST_SUCCESS": "English content normalized from the original source text.",
-        "CREATE_PAYMENT_SUCCESS": "English content normalized from the original source text.",
-        "VERIFY_RETURN_SUCCESS": "English content normalized from the original source text.",
-        "VERIFY_IPN_SUCCESS": "English content normalized from the original source text.",
-        "QUERY_DR_SUCCESS": "English content normalized from the original source text.",
-        "REFUND_SUCCESS": "English content normalized from the original source text."
+        "GET_BANK_LIST_SUCCESS": "Lấy danh sách ngân hàng thành công.",
+        "CREATE_PAYMENT_SUCCESS": "Tạo thanh toán thành công.",
+        "VERIFY_RETURN_SUCCESS": "Xác minh kết quả thanh toán thành công.",
+        "VERIFY_IPN_SUCCESS": "Xác minh IPN thành công.",
+        "QUERY_DR_SUCCESS": "Truy vấn giao dịch thành công.",
+        "REFUND_SUCCESS": "Hoàn tiền thành công."
       },
       "error": {
-        "VNPAY_INVALID_CHECKSUM": "English content normalized from the original source text.",
-        "VNPAY_INVALID_AMOUNT": "English content normalized from the original source text.",
-        "VNPAY_INVALID_ORDER_ID": "English content normalized from the original source text.",
-        "VNPAY_INVALID_TRANSACTION": "English content normalized from the original source text.",
-        "VNPAY_DUPLICATE_REQUEST": "English content normalized from the original source text.",
-        "VNPAY_REFUND_ALREADY_PROCESSED": "English content normalized from the original source text.",
-        "VNPAY_TRANSACTION_NOT_FOUND": "English content normalized from the original source text.",
-        "VNPAY_INVALID_BANK_CODE": "English content normalized from the original source text.",
-        "VNPAY_INVALID_CURRENCY": "English content normalized from the original source text.",
-        "VNPAY_INVALID_LOCALE": "English content normalized from the original source text.",
-        "VNPAY_INVALID_ORDER_TYPE": "English content normalized from the original source text.",
-        "VNPAY_INVALID_IP_ADDRESS": "English content normalized from the original source text.",
-        "VNPAY_INVALID_RETURN_URL": "English content normalized from the original source text.",
-        "VNPAY_INVALID_IPN_URL": "English content normalized from the original source text.",
-        "VNPAY_INVALID_TRANSACTION_DATE": "English content normalized from the original source text.",
-        "VNPAY_INVALID_CREATE_DATE": "English content normalized from the original source text.",
-        "VNPAY_INVALID_REQUEST_ID": "English content normalized from the original source text.",
-        "VNPAY_INVALID_TRANSACTION_TYPE": "English content normalized from the original source text.",
-        "VNPAY_INVALID_CREATE_BY": "English content normalized from the original source text.",
-        "VNPAY_SERVICE_UNAVAILABLE": "English content normalized from the original source text.",
-        "VNPAY_TIMEOUT": "English content normalized from the original source text.",
-        "VNPAY_NETWORK_ERROR": "English content normalized from the original source text."
+        "VNPAY_INVALID_CHECKSUM": "Chữ ký VNPay không hợp lệ.",
+        "VNPAY_INVALID_AMOUNT": "Số tiền VNPay không hợp lệ.",
+        "VNPAY_INVALID_ORDER_ID": "Mã đơn hàng VNPay không hợp lệ.",
+        "VNPAY_INVALID_TRANSACTION": "Giao dịch VNPay không hợp lệ.",
+        "VNPAY_DUPLICATE_REQUEST": "Yêu cầu VNPay bị trùng lặp.",
+        "VNPAY_REFUND_ALREADY_PROCESSED": "Giao dịch VNPay đã được hoàn tiền trước đó.",
+        "VNPAY_TRANSACTION_NOT_FOUND": "Không tìm thấy giao dịch VNPay.",
+        "VNPAY_INVALID_BANK_CODE": "Mã ngân hàng VNPay không hợp lệ.",
+        "VNPAY_INVALID_CURRENCY": "Loại tiền tệ VNPay không hợp lệ.",
+        "VNPAY_INVALID_LOCALE": "Ngôn ngữ VNPay không hợp lệ.",
+        "VNPAY_INVALID_ORDER_TYPE": "Loại đơn hàng VNPay không hợp lệ.",
+        "VNPAY_INVALID_IP_ADDRESS": "Địa chỉ IP VNPay không hợp lệ.",
+        "VNPAY_INVALID_RETURN_URL": "Return URL của VNPay không hợp lệ.",
+        "VNPAY_INVALID_IPN_URL": "IPN URL của VNPay không hợp lệ.",
+        "VNPAY_INVALID_TRANSACTION_DATE": "Ngày giao dịch VNPay không hợp lệ.",
+        "VNPAY_INVALID_CREATE_DATE": "Ngày tạo VNPay không hợp lệ.",
+        "VNPAY_INVALID_REQUEST_ID": "Mã yêu cầu VNPay không hợp lệ.",
+        "VNPAY_INVALID_TRANSACTION_TYPE": "Loại giao dịch VNPay không hợp lệ.",
+        "VNPAY_INVALID_CREATE_BY": "Người tạo yêu cầu VNPay không hợp lệ.",
+        "VNPAY_SERVICE_UNAVAILABLE": "Dịch vụ VNPay hiện không khả dụng.",
+        "VNPAY_TIMEOUT": "Kết nối VNPay đã quá thời gian chờ.",
+        "VNPAY_NETWORK_ERROR": "Lỗi kết nối đến VNPay."
       }
     },
     "sepay": {
       "success": {
-        "RECEIVER_SUCCESS": "English content normalized from the original source text."
+        "RECEIVER_SUCCESS": "Đã nhận webhook thanh toán thành công."
       },
       "error": {}
     }

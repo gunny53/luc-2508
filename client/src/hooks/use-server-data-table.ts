@@ -1,4 +1,4 @@
-// hooks/useServerDataTable.ts
+
 import { useState, useEffect, useRef } from 'react'
 import { useDebounce } from '@/hooks/use-debounce'
 import { PaginationMetadata, PaginationRequest } from '@/types/base.interface'
@@ -125,7 +125,7 @@ export function useServerDataTable<T, U = T>({
                 limit: metadata.limit || prev.limit,
                 totalPages: metadata.totalPages || prev.totalPages,
                 hasNext: metadata.hasNext ?? prev.hasNext,
-                // Support both hasPrevious and hasPrev to ensure compatibility
+                
                 hasPrevious:
                   (metadata.hasPrevious !== undefined ? metadata.hasPrevious : metadata.hasPrev) ?? prev.hasPrevious
               }))
@@ -136,10 +136,10 @@ export function useServerDataTable<T, U = T>({
         }
       } catch (error) {
         clearTimeout(timeoutId)
-        // if (!controller.signal.aborted) {
-        //   console.error("Error fetching data:", error);
-        //   showToast(parseApiError(error), 'error');
-        // }
+        
+        
+        
+        
       } finally {
         if (activeRequestRef.current === controller) {
           setLoading(false)
@@ -150,7 +150,7 @@ export function useServerDataTable<T, U = T>({
 
     loadData()
 
-    // Cleanup function
+    
     return () => {
       if (activeRequestRef.current) {
         activeRequestRef.current.abort()
@@ -166,7 +166,7 @@ export function useServerDataTable<T, U = T>({
     refreshTrigger
   ])
 
-  // Handlers
+  
   const handlePageChange = (page: number) => {
     setPagination((prev) => ({ ...prev, page }))
   }
@@ -199,7 +199,7 @@ export function useServerDataTable<T, U = T>({
     handleSearch,
     handleSortChange,
     refreshData,
-    // Expose setPagination for external control (e.g., infinite scroll)
+    
     setPagination
   }
 }

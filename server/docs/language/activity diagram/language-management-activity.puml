@@ -8,30 +8,30 @@ skinparam activityBackgroundColor #F0F0F0
 skinparam activityDiamondBackgroundColor #FFE6E6
 skinparam activityDiamondBorderColor #CC0000
 
-English content normalized from the original source text.
+Language Language Management Activity: execute the validated workflow
 
 start
 
-:English content normalized from the original source text;
+:Language Language Management Activity: execute the validated workflow;
 
 if (condition?) then (Yes)
   :GET /languages;
-  :English content normalized from the original source text;
+  :Language Language Management Activity: execute the validated workflow;
   :Validate request;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
+    :Language Language Management Activity: execute the validated workflow;
+    :Language Language Management Activity: execute the validated workflow;
+    :Language Language Management Activity: execute the validated workflow;
+    :Language Language Management Activity: execute the validated workflow;
   else (No)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :GET /languages/:languageId;
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Language Language Management Activity: execute the validated workflow;
+  :Language Language Management Activity: execute the validated workflow;
   note right
   Language ID Validation:
   • id: required string, max 10 chars
@@ -39,23 +39,23 @@ else (No)
   • Parameter sanitization
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
+    :Language Language Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :POST /languages + {id, name};
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Language Language Management Activity: execute the validated workflow;
+  :Language Language Management Activity: execute the validated workflow;
   note right
   Create Validation:
   • id: required string, max 10 chars
@@ -64,86 +64,86 @@ else (No)
   • Strict object validation
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
     note right
     Create Logic:
-    • English content normalized from the original source text
+    • Language Language Management Activity: execute the validated workflow
     • Audit trail: createdAt, createdById
     • Validate unique constraint cho id
     end note
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :PUT /languages/:languageId + {name};
-  :English content normalized from the original source text;
-  :English content normalized from the original source text;
+  :Language Language Management Activity: execute the validated workflow;
+  :Language Language Management Activity: execute the validated workflow;
   note right
   Update Validation:
   • languageId: required string, max 10 chars
   • name: required string, max 500 chars
-  • English content normalized from the original source text
+  • Language Language Management Activity: execute the validated workflow
   • Zod schema validation
   end note
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
     note right
     Update Logic:
-    • English content normalized from the original source text
+    • Language Language Management Activity: execute the validated workflow
     • Audit trail: updatedAt, updatedById
     • Filter deletedAt IS NULL
     • Immutable language ID
     end note
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
   endif
 
 else (No)
   :DELETE /languages/:languageId;
-  :English content normalized from the original source text;
+  :Language Language Management Activity: execute the validated workflow;
   if (condition?) then (Yes)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
     note right
     Hard Delete Logic:
-    • English content normalized from the original source text
+    • Language Language Management Activity: execute the validated workflow
     • DELETE FROM language WHERE id = ?
-    • English content normalized from the original source text
-    • English content normalized from the original source text
+    • Language Language Management Activity: execute the validated workflow
+    • Language Language Management Activity: execute the validated workflow
     end note
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
     if (condition?) then (Yes)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     else (No)
-      :English content normalized from the original source text;
-      :English content normalized from the original source text;
+      :Language Language Management Activity: execute the validated workflow;
+      :Language Language Management Activity: execute the validated workflow;
     endif
   else (No)
-    :English content normalized from the original source text;
+    :Language Language Management Activity: execute the validated workflow;
   endif
 
 else (Invalid operation)
-  :English content normalized from the original source text;
+  :Language Language Management Activity: execute the validated workflow;
 endif
 
-:English content normalized from the original source text;
+:Language Language Management Activity: execute the validated workflow;
 
 stop
 

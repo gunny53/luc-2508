@@ -8,7 +8,6 @@ export function TopBar() {
     <div className="bg-white">
       <div className="max-w-[1300px] mx-auto px-4">
         <div className="flex justify-between items-center h-12 text-xs text-black gap-16">
-          {/* Left Column - Marquee Text (limited width) */}
           <div className="w-full max-w-[600px] overflow-hidden">
             <style jsx>{`
               .marquee {
@@ -31,33 +30,32 @@ export function TopBar() {
             `}</style>
             <div className="marquee-container">
               <span className="marquee text-[13px] font-medium text-gray-700">
-                English content normalized from the original source text.
+                ECSite
               </span>
             </div>
           </div>
 
-          {/* Right Column - Links */}
           <div className="flex items-center space-x-6 shrink-0">
             <Link
               href="#"
               className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium"
             >
               <Bell className="h-4 w-4" />
-              <span>English content normalized from the original source text.</span>
+              <span>ECSite</span>
             </Link>
             <Link
               href="#"
               className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium"
             >
               <HelpCircle className="h-4 w-4" />
-              <span>English content normalized from the original source text.</span>
+              <span>ECSite</span>
             </Link>
             <Link
               href="#"
               className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium"
             >
               <ShoppingCart className="h-4 w-4" />
-              <span>English content normalized from the original source text.</span>
+              <span>ECSite</span>
             </Link>
           </div>
         </div>

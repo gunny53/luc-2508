@@ -42,32 +42,32 @@ export class SharedPaymentRepository {
   }
 
   async updatePaymentAndOrdersOnSuccess(paymentId: number, orders: Array<{ id: string }>) {
-    this.logger.log(`English content normalized from the original source text.${paymentId}`)
+    this.logger.log(`Updating related orders for payment ${paymentId}`)
 
-    // 1. Update payment status
+    
     await this.updatePaymentStatus(paymentId, PaymentStatus.SUCCESS)
 
-    // 2. Update orders status
+    
     await this.updateOrdersStatus(
       orders.map((o) => o.id),
       OrderStatus.PENDING_PACKAGING
     )
 
-    this.logger.log(`English content normalized from the original source text.`)
+    this.logger.log(`Processing related orders after payment update.`)
     try {
       for (const order of orders) {
-        this.logger.log(`English content normalized from the original source text.${order.id}`)
+        this.logger.log(`Processing order ${order.id} after payment update`)
 
         const result = await this.sharedShippingRepository.createGHNOrderForOrder(order.id)
 
         if (result.success) {
-          this.logger.log(`English content normalized from the original source text.${order.id}`)
+          this.logger.log(`Processing order ${order.id} after payment update`)
         } else {
-          this.logger.warn(`English content normalized from the original source text.${order.id}: ${result.message}`)
+          this.logger.warn(`Failed to process order ${order.id}: ${result.message}`)
         }
       }
     } catch (error) {
-      this.logger.error(`English content normalized from the original source text.${error.message}`)
+      this.logger.error(`Payment follow-up failed: ${error.message}`)
     }
   }
 
@@ -113,7 +113,7 @@ export class SharedPaymentRepository {
         await this.sharedShippingRepository.cancelGHNOrderForOrder(order.id)
       }
     } catch (error) {
-      this.logger.warn(`English content normalized from the original source text.${error?.message}`)
+      this.logger.warn(`Failed to parse payment metadata: ${error?.message}`)
     }
 
     await this.paymentProducer.removeJob(paymentId)

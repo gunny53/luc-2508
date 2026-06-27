@@ -4,7 +4,7 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 16
 
-English content normalized from the original source text.
+Product Product Public List Detail Sequence: validate request and return the expected response
 
 actor "Client" as C
 participant "ProductController" as PC
@@ -24,7 +24,7 @@ PS -> PR: list({ page, limit, languageId=I18nContext.lang, isPublic=true,\n bran
 activate PR
 
 note right of PR
-English content normalized from the original source text.
+Product Product Public List Detail Sequence: validate request and return the expected response
 • where.deletedAt = null
 • where.publishedAt <= now (public only)
 • where.name contains name (insensitive) (optional)
@@ -32,13 +32,13 @@ English content normalized from the original source text.
 • where.categories some id in categories (optional)
 • where.basePrice gte/lte theo minPrice/maxPrice (optional)
 • orderBy: createdAt|price|updatedAt|orders._count theo sortBy
-• English content normalized from the original source text
+• Product Product Public List Detail Sequence: validate request and return the expected response
 end note
 
 PR -> DB: product.count({ where })
 DB --> PR: totalItems
 PR -> DB: product.findMany({ where, include, orderBy, skip, take })
-DB --> PR: English content normalized from the original source text.
+DB --> PR: Product Product Public List Detail Sequence: validate request and return the expected response
 PR --> PS: { data, metadata }
 deactivate PR
 

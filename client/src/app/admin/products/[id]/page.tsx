@@ -27,7 +27,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         setProduct(data)
       } catch (error) {
         console.error('Failed to fetch product:', error)
-        setError('English content normalized from the original source text.')
+        setError('S?n ph?m')
       } finally {
         setLoading(false)
       }
@@ -39,7 +39,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     return (
       <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
         <div className="mx-auto w-full max-w-7xl text-center">
-          English content normalized from the original source text.
+          S?n ph?m
         </div>
       </main>
     )
@@ -55,7 +55,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     return (
       <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:p-10">
         <div className="mx-auto w-full max-w-7xl text-center">
-          English content normalized from the original source text.
+          S?n ph?m
         </div>
       </main>
     )
@@ -68,20 +68,20 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/admin/products">English content normalized from the original source text.</Link>
+                  <Link href="/admin/products">S?n ph?m</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbPage>
-                  English content normalized from the original source text. {product.name}
+                  S?n ph?m {product.name}
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
         <div>
-          <h1 className="text-3xl font-semibold">English content normalized from the original source text.</h1>
+          <h1 className="text-3xl font-semibold">S?n ph?m</h1>
         </div>
       </div>
 
