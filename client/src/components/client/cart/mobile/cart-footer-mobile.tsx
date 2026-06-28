@@ -54,7 +54,7 @@ export default function CartFooterMobile({
         <div className="flex items-center justify-between">
           <div className="flex-1 text-right">
             <div className="text-xs text-black mb-1">
-              Gi? h?ng{selectedCount} s?n ph?m trong gi? h?ng
+              Gi? h?ng{selectedCount} Sản phẩm trong gi? h?ng
             </div>
             <div>
               <span className="text-red-500 font-medium text-lg">₫{total.toLocaleString('vi-VN')}</span>

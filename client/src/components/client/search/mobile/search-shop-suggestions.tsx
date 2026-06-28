@@ -1,17 +1,25 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 export default function ShopSuggestion() {
+  const t = useTranslations('client.searchPage.shop')
+
   return (
     <div className="bg-white p-3 sm:p-4 border rounded shadow-sm space-y-2">
-      <h2 className="text-sm font-semibold text-gray-700">T?m ki?m</h2>
+      <h2 className="text-sm font-semibold text-gray-700">{t('title')}</h2>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex items-center gap-3 sm:gap-4">
-          <div className="w-12 h-12 bg-gray-200 rounded-full" />
+          <div className="w-12 h-12 bg-orange-50 text-primary rounded-full flex items-center justify-center font-bold">
+            EC
+          </div>
           <div className="text-sm">
-            <div className="font-semibold">T?m ki?m</div>
-            <div className="text-xs text-gray-500">★ 5.0 | 7,6k Followers</div>
+            <div className="font-semibold">ECSite Store</div>
+            <div className="text-xs text-gray-500">★ 5.0 | 7.6k {t('followers')}</div>
           </div>
           <button className="ml-auto sm:ml-4 px-3 py-1 text-sm border rounded text-primary border-primary">
-            Xem Shop
+            {t('viewShop')}
           </button>
         </div>
 

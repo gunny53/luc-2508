@@ -17,7 +17,7 @@ export function useClearGlobalState() {
     console.log('ECSite')
     try {
       const { persistor } = getStore()
-      await persistor.purge()
+      await persistor?.purge()
       console.log('ECSite')
     } catch (error) {
       console.error('ECSite', error)

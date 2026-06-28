@@ -1,16 +1,6 @@
-const locations = [
-  'T?m ki?m',
-  'T?m ki?m',
-  'T?m ki?m',
-  'T?m ki?m'
-]
-const categories = [
-  'T?m ki?m',
-  'T?m ki?m',
-  'T?m ki?m',
-  'T?m ki?m'
-]
-const shippingOptions = ['Nhanh', 'T?m ki?m']
+'use client'
+
+import { useTranslations } from 'next-intl'
 
 interface SearchSidebarProps {
   categoryIds?: string[]
@@ -18,11 +8,16 @@ interface SearchSidebarProps {
 }
 
 export default function SearchSidebar({ categoryIds = [], currentCategoryId }: SearchSidebarProps) {
+  const t = useTranslations('client.searchPage.sidebar')
+  const locations = [t('locationNorth'), t('locationCentral'), t('locationSouth')]
+  const categories = [t('allCategories')]
+  const shippingOptions = [t('fastShipping'), t('freeShipping')]
+
   return (
     <aside className="w-full lg:w-64 shrink-0 space-y-6 text-sm hidden lg:block">
-      <FilterSection title="T?m ki?m" items={locations} />
-      <FilterSection title="T?m ki?m" items={categories} />
-      <FilterSection title="T?m ki?m" items={shippingOptions} />
+      <FilterSection title={t('location')} items={locations} />
+      <FilterSection title={t('filters')} items={categories} />
+      <FilterSection title={t('shipping')} items={shippingOptions} />
     </aside>
   )
 }

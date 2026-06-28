@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { User, LogOut, ShoppingCart, LucideIcon, LayoutDashboard } from 'lucide-react'
 import React, { useRef, type FC, type MouseEvent } from 'react'
+import { useTranslations } from 'next-intl'
 import { useLogout } from '@/hooks/use-logout'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/constants/route'
@@ -34,6 +35,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon: Icon, label, onClick, requireDivide
 )
 
 export function ProfileDropdown() {
+  const t = useTranslations('client.header.profile')
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { handleLogout, loading: logoutLoading } = useLogout()
   const router = useRouter()
@@ -44,26 +46,24 @@ export function ProfileDropdown() {
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: 'T?i kho?n',
+      label: t('myAccount'),
       onClick: () => router.push(ROUTES.CLIENT.USER.DASHBOARD)
     },
     {
       icon: ShoppingCart,
-      label: 'T?i kho?n',
+      label: t('cart'),
       onClick: () => router.push(ROUTES.CLIENT.CART),
       requireDivider: true
     },
     {
       icon: ShoppingCart,
-      label: 'T?i kho?n',
+      label: t('orders'),
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
       requireDivider: true
     },
     {
       icon: LogOut,
-      label: logoutLoading
-        ? 'T?i kho?n'
-        : 'T?i kho?n',
+      label: logoutLoading ? t('loggingOut') : t('logout'),
       onClick: () => handleLogout()
     }
   ]

@@ -1,6 +1,7 @@
-'use client'
+﻿'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { ShoppingCart, Trash2, Plus, Minus, Loader2 } from 'lucide-react'
 import Image from 'next/image'
@@ -12,12 +13,12 @@ import { useCart } from '@/providers/cart-context'
 import { ROUTES } from '@/constants/route'
 import { useAuthGuard } from '@/hooks/use-auth-guard'
 
-
 interface LocalCartItem extends ApiCartItem {
   selected: boolean
 }
 
 export function CartDropdown() {
+  const t = useTranslations('client.header.cart')
   const { isAuthenticated } = useAuthGuard({ silentCheck: true })
   const { shopCarts, cart, isLoading, fetchCart, updateCartItem, removeItems } = useCart()
   const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>({})
@@ -119,7 +120,7 @@ export function CartDropdown() {
         <div className="rounded-full cursor-pointer relative whitespace-nowrap inline-flex items-center gap-1.5 px-4 py-3">
           <ShoppingCart className="h-6 w-6 text-white" strokeWidth={1} />
           {isAuthenticated && totalItemsCount > 0 && (
-            <span className="absolute top-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-bold text-red-600">
+            <span className="absolute top-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-bold text-primary">
               {totalItemsCount}
             </span>
           )}
@@ -127,28 +128,26 @@ export function CartDropdown() {
       </SheetTrigger>
       <SheetContent side="right" className="w-full max-w-md p-0 flex flex-col rounded-md">
         <SheetHeader className="px-6 pt-6 pb-4 border-b border-gray-200">
-          <SheetTitle className="text-lg font-semibold text-gray-900 mb-1">
-            Gi? h?ng
-          </SheetTitle>
+          <SheetTitle className="text-lg font-semibold text-gray-900 mb-1">{t('title')}</SheetTitle>
         </SheetHeader>
 
         {!isAuthenticated ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
             <ShoppingCart size={48} className="text-gray-300 mb-4" />
-            <p className="text-gray-500 mb-4">Gi? h?ng</p>
-            <Button asChild className="bg-red-600 hover:bg-red-700">
-              <Link href={ROUTES.AUTH.SIGNIN}>Gi? h?ng</Link>
+            <p className="text-gray-500 mb-4">{t('loginRequired')}</p>
+            <Button asChild className="bg-primary hover:bg-orange-700">
+              <Link href={ROUTES.AUTH.SIGNIN}>{t('login')}</Link>
             </Button>
           </div>
         ) : isLoading ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
             <Loader2 size={48} className="text-gray-300 mb-4 animate-spin" />
-            <p className="text-gray-500">Gi? h?ng</p>
+            <p className="text-gray-500">{t('loading')}</p>
           </div>
         ) : allCartItems.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
             <ShoppingCart size={48} className="text-gray-300 mb-4" />
-            <p className="text-gray-500">Gi? h?ng</p>
+            <p className="text-gray-500">{t('empty')}</p>
           </div>
         ) : (
           <>
@@ -160,15 +159,13 @@ export function CartDropdown() {
                     checked={isIndeterminate ? 'indeterminate' : allItemsSelected}
                     onCheckedChange={handleToggleSelectAll}
                   />
-                  <span className="text-sm font-medium">
-                    Gi? h?ng{allCartItems.length} s?n ph?m trong gi? h?ng
-                  </span>
+                  <span className="text-sm font-medium">{t('selectAll', { count: allCartItems.length })}</span>
                 </label>
               </div>
               <div className="divide-y divide-gray-200">
                 {allCartItems.map((item: ApiCartItem & { shopName: string }) => {
                   const product = item.sku.product
-                  
+
                   const productImage = item.sku.image ? item.sku.image : '/images/image-placeholder.jpg'
 
                   return (
@@ -184,11 +181,9 @@ export function CartDropdown() {
                         </div>
                         <div className="ml-4 flex-1">
                           <h3 className="text-sm font-medium text-gray-800 line-clamp-2">{product.name}</h3>
-                          <p className="text-xs text-gray-500 mt-1">
-                            Gi? h?ng {item.sku.value}
-                          </p>
-                          <p className="text-sm text-red-600 font-semibold mt-1">
-                            {product.basePrice.toLocaleString('vi-VN')}₫
+                          <p className="text-xs text-gray-500 mt-1">{t('variant', { value: item.sku.value })}</p>
+                          <p className="text-sm text-primary font-semibold mt-1">
+                            {product.basePrice.toLocaleString('vi-VN')} đ
                           </p>
                           <div className="flex items-center mt-2">
                             <Button
@@ -222,7 +217,7 @@ export function CartDropdown() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="ml-4 text-gray-400 hover:text-red-500"
+                        className="ml-4 text-gray-400 hover:text-primary"
                         onClick={() => handleRemoveItem(item.id)}
                       >
                         <Trash2 className="h-5 w-5" />
@@ -236,17 +231,15 @@ export function CartDropdown() {
             <SheetFooter className="p-6 border-t border-gray-200">
               <div className="w-full space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-md font-semibold text-gray-800">
-                    Gi? h?ng
-                  </span>
-                  <span className="text-xl font-bold text-red-600">
-                    {calculateSelectedTotal().toLocaleString('vi-VN')}₫
+                  <span className="text-md font-semibold text-gray-800">{t('total')}</span>
+                  <span className="text-xl font-bold text-primary">
+                    {calculateSelectedTotal().toLocaleString('vi-VN')} đ
                   </span>
                 </div>
                 <Button asChild size="lg" variant="outline" className="w-full">
                   <Link href="/cart" className="flex items-center justify-center gap-2">
                     <ShoppingCart className="h-5 w-5" />
-                    <span>Gi? h?ng</span>
+                    <span>{t('viewCart')}</span>
                   </Link>
                 </Button>
               </div>

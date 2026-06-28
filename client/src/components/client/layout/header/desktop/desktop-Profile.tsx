@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { User, LogOut, ShoppingCart, LucideIcon, LayoutDashboard } from 'lucide-react'
 import React, { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { useLogout } from '@/hooks/use-logout'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/constants/route'
@@ -20,6 +21,7 @@ interface MenuItemProps {
 }
 
 export function ProfileDropdown() {
+  const t = useTranslations('client.header.profile')
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { handleLogout, loading: logoutLoading } = useLogout()
   const router = useRouter()
@@ -32,29 +34,26 @@ export function ProfileDropdown() {
   const menuItems: MenuItemProps[] = [
     {
       icon: User,
-      label: 'T?i kho?n',
+      label: t('myAccount'),
       onClick: async () => {
-        
         await fetchProfile.fetchProfile()
         router.push(ROUTES.CLIENT.USER.BASE)
       }
     },
     {
       icon: ShoppingCart,
-      label: 'T?i kho?n',
+      label: t('cart'),
       onClick: () => router.push('/cart')
     },
     {
       icon: ShoppingCart,
-      label: 'T?i kho?n',
+      label: t('orders'),
       onClick: () => router.push(ROUTES.CLIENT.USER.ORDERS),
       requireDivider: true
     },
     {
       icon: LogOut,
-      label: logoutLoading
-        ? 'T?i kho?n'
-        : 'T?i kho?n',
+      label: logoutLoading ? t('loggingOut') : t('logout'),
       onClick: handleLogout
     }
   ]
@@ -65,7 +64,7 @@ export function ProfileDropdown() {
         onClick={() => router.push(ROUTES.AUTH.SIGNIN)}
         className="cursor-pointer inline-flex items-center justify-center px-4 py-3 text-white font-semibold text-[13px]"
       >
-        T?i kho?n
+        {t('account')}
       </span>
     )
   }
@@ -93,7 +92,6 @@ export function ProfileDropdown() {
             sizes="100%"
             className="object-cover"
             onError={(e) => {
-              
               e.currentTarget.style.display = 'none'
               e.currentTarget.parentElement!.innerHTML = avatarText
             }}
@@ -186,7 +184,7 @@ export function ProfileDropdown() {
                 className="flex items-center px-5 py-2 hover:bg-gray-50 cursor-pointer text-[14px] text-gray-800"
               >
                 <LayoutDashboard className="w-4.5 h-4.5 mr-2 text-gray-800" />
-                T?i kho?n
+                {t('admin')}
               </Link>
               <div className="h-px bg-gray-200 mx-6 my-1"></div>
             </>

@@ -1308,14 +1308,12 @@
       "title": "Settings",
       "subtitle": "Your account is protected",
       "description": "ECSite protects your personal information and keeps it private, safe and secure.",
-
       "items": {
         "Account security": "Account Security",
         "Privacy": "Privacy",
         "Permissions": "Permissions",
         "Safety center": "Safety Center"
       },
-
       "section": {
         "paymentmethods": "Your payment methods",
         "country": "Country & region",
@@ -1326,17 +1324,13 @@
         "legalTermPolicies": "Legal Terms & Policies",
         "switchAccount": "Switch Account"
       },
-
       "signout": "Sign out"
     },
-
     "home": "Home",
     "manageAccount": "Manage your account information",
-
     "notifications": {
       "notifications": "Notifications"
     },
-
     "showToast": {
       "review": {
         "createSuccessful": "Review created successfully.",
@@ -1344,12 +1338,10 @@
         "deleteSuccessful": "Review deleted successfully"
       }
     },
-
     "account": {
       "profile": {
         "protected": "Your account is protected",
         "protectionDescription": "Your ECSite account is protected by advanced security. Keeping this information up-to-date safeguards your account even more.",
-
         "profile": "Profile",
         "policy": "Policies",
         "manageProfile": "Manage Your Profile",
@@ -1367,26 +1359,21 @@
         "thirdPartyAccounts": "Third-party accounts",
         "turnOn": "Turn On",
         "edit": "Edit",
-
         "editEmailPhone": "Email&Phone",
         "email": "Email",
         "phoneNumber": "Phone Number",
         "cancel": "Cancel",
         "save": "Save Changes",
-
         "editPassword": "Edit Password",
         "currentPassword": "Current Password",
         "newPassword": "New Password",
         "confirmPassword": "Confirm Password",
-
         "enable2FA": "Enable Two-Factor Authentication",
         "enable2FADescription": "Are you sure you want to enable two-factor authentication? You will need to scan a QR code with your authenticator app.",
         "enable": "Enable",
-
         "deleteAccount": "Delete Account",
         "confirmDelete": "Delete",
         "accountTermination": "Account Terminate",
-
         "name": "Name",
         "firstName": "First name",
         "lastName": "Last name",
@@ -1394,14 +1381,11 @@
         "phone": "Phone Number",
         "updateProfile": "Uses Information",
         "clickToChange": "Change profile picture",
-
         "on": "On",
         "off": "Off",
         "turnOff": "Turn Off",
-
         "dashboard": "Dashboard"
       },
-
       "password": {
         "title": "Change Password",
         "subtitle": "Your password must have a minimum of 6 characters and include numbers, letters and special characters",
@@ -1409,19 +1393,15 @@
         "newPassword": "New Password",
         "confirmPassword": "Confirm Password",
         "forgotPassword": "Forgot Password?",
-
         "currentPasswordPlaceholder": "Enter Your Current Password",
         "newPasswordPlaceholder": "Enter Your New Password",
         "confirmPasswordPlaceholder": "Re-enter the new password",
-
         "changePassword": "Change Password",
         "processing": "Processing...",
         "passwordChanged": "Your password has been changed successfully!",
-
         "minLength": "Password must be at least 6 characters long",
         "revokeOtherSessions": "Revoke other sessions"
       },
-
       "address": {
         "address": "Address",
         "myAddresses": "My Addresses",
@@ -1431,7 +1411,6 @@
         "changePassword": "Change password",
         "encryptedNote": "All data you added will be encrypted"
       },
-
       "payment": {
         "payment": "Payment",
         "creditDebitCard": "Credit / Debit Card",
@@ -1459,7 +1438,6 @@
         "doubt": "Have doubts about your transactions?",
         "faq": "Payment FAQs"
       },
-
       "security": {
         "security": "Security",
         "title": "Active devices",
@@ -1474,12 +1452,10 @@
         "deleteSession": "Delete this session",
         "loginSession": "Login session"
       },
-
       "myPurchase": {
         "myPurchase": "Purchase history"
       }
     },
-
     "cart": {
       "title": "Shopping Cart",
       "edit": "Edit",
@@ -1497,14 +1473,12 @@
       "shippingCost": "Shipping Cost",
       "totalAmount": "Total Amount",
       "proceedToCheckout": "Proceed to Checkout",
-
       "topbar": {
         "notifications": "Notifications",
         "help": "Help",
         "language": "Languages",
         "saleRegister": "Sale Register"
       },
-
       "productTitle": {
         "product": "Product",
         "unitPrice": "Unit Price",
@@ -1512,7 +1486,6 @@
         "totalPrice": "Total Price",
         "actions": "Actions"
       },
-
       "footer": {
         "platformVoucher": "Platform Voucher",
         "selectOrEnterCode": "Select or enter code",
@@ -1525,6 +1498,241 @@
         "items": "items",
         "youSaved": "You saved ₫{{amount}}",
         "checkout": "Check Out"
+      }
+    }
+  },
+  "client": {
+    "header": {
+      "topBar": {
+        "marquee": "Free shipping on orders from 299K - discover new ECSite deals every day",
+        "notifications": "Notifications",
+        "help": "Help",
+        "cart": "Cart"
+      },
+      "search": {
+        "placeholder": "Search products",
+        "button": "Search",
+        "history": "Search history",
+        "clearAll": "Clear all",
+        "suggestedCategories": "Suggested categories",
+        "results": "Search results",
+        "typeToSearch": "Enter a keyword to search products",
+        "empty": "No products found for \"{term}\"",
+        "viewPrefix": "View",
+        "viewMiddle": "results for"
+      },
+      "categories": {
+        "title": "Categories",
+        "description": "Choose the product category you want to view",
+        "viewAll": "View all",
+        "viewAllCategory": "View all {category}",
+        "empty": "No categories available",
+        "emptyChildren": "No subcategories for {category}"
+      },
+      "commitments": {
+        "title": "Shopping promises",
+        "authentic": "Authentic products",
+        "fastShipping": "Nationwide fast delivery",
+        "refund": "Easy refunds",
+        "returns": "7-day returns",
+        "bestPrice": "Great prices every day",
+        "tracking": "Easy order tracking"
+      },
+      "profile": {
+        "account": "Account",
+        "myAccount": "My account",
+        "cart": "Cart",
+        "orders": "Orders",
+        "logout": "Log out",
+        "loggingOut": "Logging out...",
+        "admin": "Admin dashboard"
+      },
+      "language": {
+        "vi": "Vietnamese",
+        "en": "English"
+      },
+      "cart": {
+        "title": "Cart",
+        "loginRequired": "Sign in to view your cart.",
+        "login": "Sign in",
+        "loading": "Loading cart...",
+        "empty": "Your cart is empty.",
+        "selectAll": "Select all ({count} products)",
+        "variant": "Variant: {value}",
+        "total": "Total payment",
+        "viewCart": "View cart"
+      }
+    },
+    "landing": {
+      "hero": {
+        "mainTitle": "Today's featured deals",
+        "mainDescription": "Explore thousands of discounted products on ECSite.",
+        "mainCta": "Shop now",
+        "sideTitle": "Curated collection",
+        "sideDescription": "New products, good prices, fast delivery.",
+        "sideCta": "View now"
+      },
+      "badges": {
+        "bestSeller": "Best seller",
+        "deepDiscount": "Deep discount",
+        "exclusiveDeal": "Exclusive deal",
+        "freeShip": "Free shipping",
+        "hotPrice": "Hot price",
+        "lowStock": "Almost sold out"
+      },
+      "banners": {
+        "cta": "Explore now",
+        "men": {
+          "title": "Men's fashion",
+          "description": "Versatile outfits for every day"
+        },
+        "women": {
+          "title": "Women's fashion",
+          "description": "New collections with standout offers"
+        },
+        "accessories": {
+          "title": "Featured accessories",
+          "description": "Complete your style with favorite accessories"
+        }
+      },
+      "categories": {
+        "recommended": "Recommended today",
+        "beautyHealth": "Beauty & health",
+        "womenClothing": "Women's clothing",
+        "homeKitchen": "Home & living",
+        "menClothing": "Men's clothing",
+        "womenShoes": "Women's shoes",
+        "menUnderwear": "Men's underwear",
+        "sportsOutdoors": "Sports & outdoors",
+        "accessories": "Bags & accessories",
+        "electronics": "Electronics"
+      },
+      "services": {
+        "coupon": "Coupons",
+        "freeShip": "Free shipping",
+        "newArrivals": "New arrivals",
+        "voucher30": "30% voucher",
+        "mall": "ECSite Mall",
+        "memberDeals": "Member deals"
+      },
+      "flashSale": {
+        "viewAll": "View all",
+        "loadError": "Unable to load Flash Sale products.",
+        "sold": "Sold {count}"
+      },
+      "categoriesSection": {
+        "title": "Categories",
+        "empty": "No categories available"
+      },
+      "suggest": {
+        "loadError": "Unable to load suggested products.",
+        "loadingMore": "Loading more...",
+        "loadMore": "Load more"
+      }
+    },
+    "footer": {
+      "newsletter": {
+        "title": "Get the latest offers",
+        "descriptionPrefix": "Subscribe by email to receive",
+        "voucher": "a 50K voucher",
+        "descriptionSuffix": "for your first order.",
+        "placeholder": "Enter your email",
+        "submit": "Subscribe"
+      },
+      "sections": {
+        "about": {
+          "title": "About ECSite",
+          "links": {
+            "intro": "About ECSite",
+            "blog": "Blog",
+            "careers": "ECSite careers",
+            "jobs": "Jobs",
+            "privacy": "Privacy policy",
+            "terms": "Terms of use"
+          }
+        },
+        "support": {
+          "title": "Customer support",
+          "links": {
+            "helpCenter": "Help center",
+            "shippingGuide": "Shipping guide",
+            "returns": "Returns",
+            "payment": "Payment methods",
+            "contact": "Contact support",
+            "report": "Report an issue"
+          }
+        },
+        "policy": {
+          "title": "Shopping policies",
+          "links": {
+            "shippingPolicy": "Shipping policy",
+            "returnPolicy": "Return policy",
+            "refundPolicy": "Refund policy",
+            "trackOrder": "Track order",
+            "shippingFees": "Shipping fees",
+            "complaints": "Complaints and compensation"
+          }
+        },
+        "partner": {
+          "title": "Partners and offers",
+          "links": {
+            "seller": "Seller channel",
+            "affiliate": "Affiliate program",
+            "promotions": "Current promotions",
+            "referral": "Refer friends",
+            "logistics": "Logistics services",
+            "wholesale": "Business wholesale"
+          }
+        }
+      },
+      "payments": {
+        "title": "Payment methods",
+        "description": "Secure payments through popular gateways."
+      },
+      "social": {
+        "title": "Connect with us",
+        "description": "Follow ECSite for daily offer updates."
+      },
+      "copyright": "? {year} ECSite",
+      "tagline": "A trustworthy online shopping platform."
+    },
+    "searchPage": {
+      "brand": {
+        "title": "Featured brands",
+        "viewAll": "View all brands"
+      },
+      "sidebar": {
+        "filters": "Filters",
+        "allCategories": "All categories",
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "location": "Location",
+        "shipping": "Shipping",
+        "locationNorth": "Northern Vietnam",
+        "locationCentral": "Central Vietnam",
+        "locationSouth": "Southern Vietnam",
+        "fastShipping": "Fast shipping",
+        "freeShipping": "Free shipping"
+      },
+      "sort": {
+        "relevance": "Relevant",
+        "latest": "Latest",
+        "topSales": "Top sales",
+        "price": "Price",
+        "priceAsc": "Price: Low to high",
+        "priceDesc": "Price: High to low"
+      },
+      "products": {
+        "loadError": "Unable to load products.",
+        "retry": "Try again",
+        "emptySearch": "No products found for \"{query}\".",
+        "emptyCategory": "No products found in this category.",
+        "empty": "No products found."
+      },
+      "shop": {
+        "title": "Suggested shop",
+        "followers": "Followers",
+        "viewShop": "View shop"
       }
     }
   }

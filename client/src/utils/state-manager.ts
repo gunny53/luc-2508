@@ -12,7 +12,7 @@ export async function clearClientState() {
   console.log('Redux state cleared')
 
   try {
-    await persistor.purge()
+    await persistor?.purge()
     console.log('Persisted state purged')
   } catch (error) {
     console.error('Failed to purge persisted state', error)

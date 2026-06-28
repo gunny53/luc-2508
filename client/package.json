@@ -6,6 +6,7 @@
   "scripts": {
     "analyze": "cross-env analyze=true next build",
     "dev": "next dev --turbopack -p 8000  --experimental-https --experimental-https-key ./certs/localhost-key.pem --experimental-https-cert ./certs/localhost.pem",
+    "prebuild": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\"",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start -p 8000",

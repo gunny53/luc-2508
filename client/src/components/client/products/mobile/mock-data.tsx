@@ -19,16 +19,16 @@ export const productMock = {
   ],
   variants: [
     {
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       options: [
-        'S?n ph?m',
-        'S?n ph?m',
+        'Sản phẩm',
+        'Sản phẩm',
         'Xanh',
-        'S?n ph?m'
+        'Sản phẩm'
       ]
     },
     {
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       options: ['S', 'M', 'L', 'XL']
     }
   ],
@@ -42,7 +42,7 @@ export const productMock = {
   skus: [
     {
       id: 1,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -56,7 +56,7 @@ export const productMock = {
     },
     {
       id: 2,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -70,7 +70,7 @@ export const productMock = {
     },
     {
       id: 3,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -84,7 +84,7 @@ export const productMock = {
     },
     {
       id: 4,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -98,7 +98,7 @@ export const productMock = {
     },
     {
       id: 5,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -112,7 +112,7 @@ export const productMock = {
     },
     {
       id: 6,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -126,7 +126,7 @@ export const productMock = {
     },
     {
       id: 7,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -140,7 +140,7 @@ export const productMock = {
     },
     {
       id: 8,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -210,7 +210,7 @@ export const productMock = {
     },
     {
       id: 13,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -224,7 +224,7 @@ export const productMock = {
     },
     {
       id: 14,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -238,7 +238,7 @@ export const productMock = {
     },
     {
       id: 15,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -252,7 +252,7 @@ export const productMock = {
     },
     {
       id: 16,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -269,7 +269,7 @@ export const productMock = {
     {
       id: 1,
       parentCategoryId: null,
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       logo: 'https://ecsite.s3.ap-southeast-1.amazonaws.com/images/b4acb401-0d86-447d-8dff-69f1de122dee.png',
       createdById: 1,
       updatedById: null,
@@ -296,7 +296,7 @@ export const productMock = {
     {
       id: 6,
       parentCategoryId: 1,
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       logo: null,
       createdById: 1,
       updatedById: null,

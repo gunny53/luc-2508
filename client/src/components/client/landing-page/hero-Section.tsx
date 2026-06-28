@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef, memo, useMemo } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import {
   Carousel,
@@ -19,23 +20,23 @@ import { heroImages, serviceItems } from './landing-mockdata'
 interface HeroSectionProps {
   className?: string
 }
-const ServiceItem = memo(({ item }: { item: (typeof serviceItems)[0] }) => (
-  <a href="#" className="flex flex-col items-center text-center group flex-shrink-0 w-[72px] sm:w-auto">
-    <div className="flex items-center justify-center w-[52px] h-[52px] bg-white rounded-2xl transition-all duration-300 group-hover:-translate-y-1">
-      <Image
-        src={item.icon}
-        alt={item.label}
-        width={46}
-        height={46}
-        className="object-contain"
-        loading="lazy" 
-      />
-    </div>
-    <p className="text-xs sm:text-[13px] text-gray-800 leading-tight h-10 flex items-center justify-center">
-      {item.label}
-    </p>
-  </a>
-))
+const ServiceItem = memo(({ item }: { item: (typeof serviceItems)[0] }) => <ServiceItemContent item={item} />)
+
+const ServiceItemContent = ({ item }: { item: (typeof serviceItems)[0] }) => {
+  const t = useTranslations('client.landing')
+  const label = t(item.labelKey)
+
+  return (
+    <a href="#" className="flex flex-col items-center text-center group flex-shrink-0 w-[72px] sm:w-auto">
+      <div className="flex items-center justify-center w-[52px] h-[52px] bg-white rounded-2xl transition-all duration-300 group-hover:-translate-y-1">
+        <Image src={item.icon} alt={label} width={46} height={46} className="object-contain" loading="lazy" />
+      </div>
+      <p className="text-xs sm:text-[13px] text-gray-800 leading-tight h-10 flex items-center justify-center">
+        {label}
+      </p>
+    </a>
+  )
+}
 
 ServiceItem.displayName = 'ServiceItem'
 const CarouselImage = memo(({ src, index, isMobile }: { src: string; index: number; isMobile: boolean }) => (
@@ -56,6 +57,7 @@ const CarouselImage = memo(({ src, index, isMobile }: { src: string; index: numb
 CarouselImage.displayName = 'CarouselImage'
 
 function HeroSectionComponent({ className }: HeroSectionProps) {
+  const t = useTranslations('client.landing.hero')
   const isMobile = useIsMobile()
   const plugin = useMemo(() => Autoplay({ delay: 4000, stopOnInteraction: true }), [])
 
@@ -63,7 +65,6 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [slideCount, setSlideCount] = useState(0)
 
-  
   const carouselOpts = useMemo(
     () => ({
       loop: true
@@ -71,7 +72,6 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     []
   )
 
-  
   useEffect(() => {
     if (!api) return
 
@@ -101,7 +101,6 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     [api]
   )
 
-  
   const containerClass = useMemo(
     () =>
       cn(
@@ -139,14 +138,15 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
     )
   }, [slideCount, currentSlide, scrollTo])
 
-  
   const carouselImages = useMemo(
     () => heroImages.map((src, index) => <CarouselImage key={src} src={src} index={index} isMobile={isMobile} />),
     [isMobile]
   )
 
-  
-  const serviceItemsList = useMemo(() => serviceItems.map((item) => <ServiceItem key={item.label} item={item} />), [])
+  const serviceItemsList = useMemo(
+    () => serviceItems.map((item) => <ServiceItem key={item.labelKey} item={item} />),
+    []
+  )
 
   return (
     <section className={cn('w-full bg-white py-6 shadow-sm', className)}>
@@ -173,11 +173,9 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
               {}
               {!isMobile && (
                 <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/60 to-transparent z-10">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    ECSite
-                  </h2>
-                  <p className="text-white mb-4 max-w-lg">ECSite</p>
-                  <Button className="w-fit">ECSite</Button>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{t('mainTitle')}</h2>
+                  <p className="text-white mb-4 max-w-lg">{t('mainDescription')}</p>
+                  <Button className="w-fit">{t('mainCta')}</Button>
                 </div>
               )}
             </div>
@@ -195,17 +193,15 @@ function HeroSectionComponent({ className }: HeroSectionProps) {
                     style={{ objectFit: 'cover' }}
                     className="z-0"
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    loading="lazy" 
+                    loading="lazy"
                   />
                 </div>
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent">
-                  <h2 className="text-2xl font-bold text-white mb-2">
-                    ECSite
-                  </h2>
-                  <p className="text-white mb-3">ECSite</p>
+                  <h2 className="text-2xl font-bold text-white mb-2">{t('sideTitle')}</h2>
+                  <p className="text-white mb-3">{t('sideDescription')}</p>
                   <Button variant="outline" className="w-fit bg-transparent border-white text-white hover:bg-white/20">
-                    ECSite
+                    {t('sideCta')}
                   </Button>
                 </div>
               </div>

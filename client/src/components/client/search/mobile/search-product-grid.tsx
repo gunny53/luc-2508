@@ -6,8 +6,10 @@ import ProductItem from '@/components/ui/product-component/product-item'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useProductsContext } from '../context/products-context'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 export default function SearchProductGridMobile() {
+  const t = useTranslations('client.searchPage.products')
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('q') || ''
 
@@ -22,7 +24,6 @@ export default function SearchProductGridMobile() {
 
   const [observerTarget, setObserverTarget] = useState<HTMLDivElement | null>(null)
 
-  
   useEffect(() => {
     if (!observerTarget) return
 
@@ -53,12 +54,12 @@ export default function SearchProductGridMobile() {
   if (isError) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
-        <div className="text-red-500 mb-4">S?n ph?m</div>
+        <div className="text-primary mb-4">{t('loadError')}</div>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+          className="px-4 py-2 bg-primary text-white rounded-md hover:bg-orange-700 transition-colors"
         >
-          S?n ph?m
+          {t('retry')}
         </button>
       </div>
     )
@@ -67,9 +68,7 @@ export default function SearchProductGridMobile() {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
         <div className="text-black text-lg mb-2">
-          {searchQuery
-            ? `S?n ph?m${searchQuery}"`
-            : 'S?n ph?m'}
+          {searchQuery ? t('emptySearch', { query: searchQuery }) : t('empty')}
         </div>
       </div>
     )

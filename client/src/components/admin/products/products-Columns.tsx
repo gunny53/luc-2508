@@ -30,7 +30,7 @@ const getProductActions = (
 ): ActionItem<ProductColumn>[] => [
   {
     type: 'command',
-    label: t('DataTable.view') + 'S?n ph?m',
+    label: t('DataTable.view') + 'Sản phẩm',
     icon: <Eye />,
     onClick: () => onView(product)
   },
@@ -42,7 +42,7 @@ const getProductActions = (
   },
   {
     type: 'command',
-    label: 'S?n ph?m',
+    label: 'Sản phẩm',
     icon: <QrCode />,
     onClick: () => onViewBarcode(product)
   },
@@ -100,7 +100,7 @@ export const productsColumns = ({
           <div
             className="cursor-pointer"
             onClick={() => onEdit(row.original)}
-            title={`S?n ph?m${row.original.name}`}
+            title={`Sản phẩm${row.original.name}`}
           >
             <Image
               src={imageUrl}
@@ -122,7 +122,7 @@ export const productsColumns = ({
         return (
           <span
             className="font-medium line-clamp-3 w-40 whitespace-normal cursor-pointer hover:underline"
-            title={`S?n ph?m${row.original.name}`}
+            title={`Sản phẩm${row.original.name}`}
             onClick={() => onEdit(row.original)}
           >
             {row.original.name}

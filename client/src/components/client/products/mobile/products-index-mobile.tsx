@@ -23,7 +23,7 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>S?n ph?m</p>
+        <p>Sản phẩm</p>
       </div>
     )
   }
@@ -42,10 +42,10 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   }
 
   const sizes =
-    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
+    productToUse?.variants?.find((v: any) => v.value === 'Sản phẩm')
       ?.options || []
   const colors =
-    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
+    productToUse?.variants?.find((v: any) => v.value === 'Sản phẩm')
       ?.options || []
   const product = {
     ...productToUse,
@@ -59,17 +59,17 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
     name: 'Cool Crew',
     avatar: '/images/logo/coolcrew-logo.png',
     isOnline: true,
-    lastActive: 'S?n ph?m',
+    lastActive: 'Sản phẩm',
     rating: 3.7,
     responseRate: 100,
-    responseTime: 'S?n ph?m',
+    responseTime: 'Sản phẩm',
     followers: 5500,
-    joinedDate: 'S?n ph?m',
+    joinedDate: 'Sản phẩm',
     productsCount: 86
   }
 
   const handleAddToCart = (skuId: string, quantity: number) => {
-    console.log('S?n ph?m', { skuId, quantity })
+    console.log('Sản phẩm', { skuId, quantity })
   }
 
   const handleBuyNow = () => {
@@ -77,7 +77,7 @@ export default function ProductDetailMobile({ slug, product: productData, isLoad
   }
 
   const handleChat = () => {
-    console.log('S?n ph?m')
+    console.log('Sản phẩm')
   }
 
   return (

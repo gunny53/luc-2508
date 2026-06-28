@@ -60,15 +60,15 @@ export default function Error({ error, reset }: ErrorProps) {
             <AlertCircle className="w-6 h-6 text-red-600" />
           </div>
           <CardTitle className="text-xl font-semibold text-gray-900">
-            S?n ph?m
+            Sản phẩm
           </CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-4">
           <div className="text-center text-gray-600">
-            <p className="mb-2">S?n ph?m</p>
+            <p className="mb-2">Sản phẩm</p>
             <p className="text-sm text-gray-500">
-              {error.message || 'S?n ph?m'}
+              {error.message || 'Sản phẩm'}
             </p>
           </div>
 
@@ -77,7 +77,7 @@ export default function Error({ error, reset }: ErrorProps) {
               <div className="flex items-center justify-center space-x-2 text-blue-700">
                 <RefreshCw className="w-4 h-4 animate-spin" />
                 <span className="text-sm">
-                  S?n ph?m {countdown} s?n ph?m
+                  Sản phẩm {countdown} Sản phẩm
                 </span>
               </div>
             </div>
@@ -88,19 +88,19 @@ export default function Error({ error, reset }: ErrorProps) {
               {isRetrying ? (
                 <>
                   <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                  S?n ph?m
+                  Sản phẩm
                 </>
               ) : (
                 <>
                   <RefreshCw className="w-4 h-4 mr-2" />
-                  S?n ph?m
+                  Sản phẩm
                 </>
               )}
             </Button>
 
             <Button onClick={goHome} variant="outline" className="w-full">
               <Home className="w-4 h-4 mr-2" />
-              S?n ph?m
+              Sản phẩm
             </Button>
 
             {autoRetryEnabled && (
@@ -110,14 +110,14 @@ export default function Error({ error, reset }: ErrorProps) {
                 className="w-full text-gray-500"
                 size="sm"
               >
-                S?n ph?m
+                Sản phẩm
               </Button>
             )}
           </div>
 
           {error.digest && (
             <div className="text-xs text-gray-400 text-center border-t pt-3">
-              S?n ph?m {error.digest}
+              Sản phẩm {error.digest}
             </div>
           )}
         </CardContent>

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { useState, useEffect, memo } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { banners } from './landing-mockdata'
@@ -38,6 +39,7 @@ const Particles = memo(function Particles({ className = '' }: { className?: stri
 })
 
 function BannerSectionComponent() {
+  const t = useTranslations('client.landing')
   const [currentBanner, setCurrentBanner] = useState(0)
   const [isAutoplay, setIsAutoplay] = useState(true)
   const [direction, setDirection] = useState(0)
@@ -137,7 +139,7 @@ function BannerSectionComponent() {
             (banner, index) =>
               index === currentBanner && (
                 <motion.div
-                  key={banner.title}
+                  key={banner.titleKey}
                   className="absolute inset-0"
                   custom={direction}
                   variants={slideVariants}
@@ -156,7 +158,7 @@ function BannerSectionComponent() {
                   <motion.div className="absolute inset-0 overflow-hidden">
                     <Image
                       src={banner.image}
-                      alt={banner.title}
+                      alt={t(banner.titleKey)}
                       fill
                       className="object-cover object-center will-change-transform"
                       priority={index === 0}
@@ -182,7 +184,7 @@ function BannerSectionComponent() {
                         custom={0}
                         className="text-2xl md:text-3xl font-bold text-white tracking-tight overflow-hidden perspective-[1000px] will-change-transform"
                       >
-                        {Array.from(banner.title).map((char, i) => (
+                        {Array.from(t(banner.titleKey)).map((char, i) => (
                           <motion.span
                             key={i}
                             variants={letterVariants}
@@ -205,7 +207,7 @@ function BannerSectionComponent() {
                         custom={1}
                         className="text-sm text-white/90 font-medium max-w-[280px] md:max-w-[320px] overflow-hidden perspective-[1000px] will-change-transform"
                       >
-                        {Array.from(banner.description).map((char, i) => (
+                        {Array.from(t(banner.descriptionKey)).map((char, i) => (
                           <motion.span
                             key={i}
                             variants={letterVariants}
@@ -237,9 +239,7 @@ function BannerSectionComponent() {
                           className="relative rounded-md bg-gradient-to-r from-red-500 via-red-600 to-red-500 hover:from-red-600 hover:via-red-500 hover:to-red-600 text-white hover:shadow-xl hover:shadow-red-500/30 hover:scale-105 transition-all duration-500 overflow-hidden group/btn"
                         >
                           <Link href={banner.link} className="inline-flex items-center gap-1.5">
-                            <span className="relative z-10 font-medium">
-                              ECSite
-                            </span>
+                            <span className="relative z-10 font-medium">{t('banners.cta')}</span>
                             <motion.span
                               className="relative z-10"
                               animate={{

@@ -31,12 +31,12 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
     name: 'Cool Crew',
     avatar: '/images/logo/coolcrew-logo.png',
     isOnline: true,
-    lastActive: 'S?n ph?m',
+    lastActive: 'Sản phẩm',
     rating: 3.7,
     responseRate: 100,
-    responseTime: 'S?n ph?m',
+    responseTime: 'Sản phẩm',
     followers: 5500,
-    joinedDate: 'S?n ph?m',
+    joinedDate: 'Sản phẩm',
     productsCount: 86
   }
   const demoShop = { ...defaultShop, ...shop }
@@ -113,7 +113,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
             {isMobile ? demoShop.rating : `${demoShop.rating}k`}
           </div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
-            S?n ph?m
+            Sản phẩm
           </div>
         </div>
 
@@ -121,19 +121,19 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn('font-medium', isMobile ? '' : 'text-lg')}>{demoShop.productsCount}</div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
             {isMobile
-              ? 'S?n ph?m'
-              : 'S?n ph?m'}
+              ? 'Sản phẩm'
+              : 'Sản phẩm'}
           </div>
         </div>
 
         <div className={cn('border-r', isMobile ? 'px-2' : 'px-4')}>
           <div className={cn('font-medium', isMobile ? 'text-[10px] leading-tight' : 'text-lg')}>
-            S?n ph?m
+            Sản phẩm
           </div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
             {isMobile
-              ? 'S?n ph?m'
-              : 'S?n ph?m'}
+              ? 'Sản phẩm'
+              : 'Sản phẩm'}
           </div>
         </div>
 
@@ -141,8 +141,8 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
           <div className={cn('font-medium', isMobile ? '' : 'text-lg')}>{demoShop.responseRate}%</div>
           <div className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : 'text-sm')}>
             {isMobile
-              ? 'S?n ph?m'
-              : 'S?n ph?m'}
+              ? 'Sản phẩm'
+              : 'Sản phẩm'}
           </div>
         </div>
       </div>
@@ -160,7 +160,7 @@ export default function ProductShopInfo({ shop, className }: ShopInfoProps) {
 
         <div className={cn('flex items-center', isMobile ? 'gap-1' : 'gap-2 justify-end')}>
           <span className={cn('text-muted-foreground', isMobile ? 'text-[10px]' : '')}>
-            S?n ph?m
+            Sản phẩm
           </span>
           <span className={cn('font-medium text-red-500', isMobile ? 'text-[10px]' : '')}>
             {demoShop.followers.toLocaleString()}

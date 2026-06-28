@@ -57,7 +57,7 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
       printWindow.document.write(`
         <html>
           <head>
-            <title>Barcode - ${product.name}S?n ph?m${barcodeContent}
+            <title>Barcode - ${product.name}Sản phẩm${barcodeContent}
               <div class="product-info">
                 <strong>${product.name}</strong><br>
                 ID: ${product.id}
@@ -77,9 +77,9 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <QrCode className="h-5 w-5" />
-            S?n ph?m
+            Sản phẩm
           </DialogTitle>
-          <DialogDescription>S?n ph?m {product.id}</DialogDescription>
+          <DialogDescription>Sản phẩm {product.id}</DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col items-center space-y-4 py-6 overflow-hidden">
@@ -106,7 +106,7 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
             <div className="font-semibold text-base break-words">{product.name}</div>
             <div className="break-all">ID: {product.id}</div>
             <div>
-              S?n ph?m{' '}
+              Sản phẩm{' '}
               {new Intl.NumberFormat('vi-VN', {
                 style: 'currency',
                 currency: 'VND'
@@ -118,13 +118,13 @@ export default function ProductModalBarcode({ product, isOpen, onClose }: Produc
         <div className="flex flex-wrap justify-center gap-2 pt-4">
           <Button variant="outline" size="sm" onClick={handleDownload}>
             <Download className="h-4 w-4 mr-2" />
-            S?n ph?m
+            Sản phẩm
           </Button>
           <Button variant="outline" size="sm" onClick={handlePrint}>
             <Printer className="h-4 w-4 mr-2" />
             In
           </Button>
-          <Button onClick={onClose}>S?n ph?m</Button>
+          <Button onClick={onClose}>Sản phẩm</Button>
         </div>
       </DialogContent>
     </Dialog>

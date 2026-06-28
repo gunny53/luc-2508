@@ -27,12 +27,12 @@ export function createSkuValueFromSelectedVariants(
   }
   const colorVariant =
     selectedVariants['Color'] ||
-    selectedVariants['S?n ph?m'] ||
-    selectedVariants['S?n ph?m']
+    selectedVariants['Sản phẩm'] ||
+    selectedVariants['Sản phẩm']
   const sizeVariant =
     selectedVariants['Size'] ||
-    selectedVariants['S?n ph?m'] ||
-    selectedVariants['S?n ph?m']
+    selectedVariants['Sản phẩm'] ||
+    selectedVariants['Sản phẩm']
 
   if (colorVariant && sizeVariant) {
     return `${colorVariant}-${sizeVariant}`
@@ -100,14 +100,14 @@ export function getCurrentStock(
 
 export function getStockMessage(stock: number): ReactNode {
   if (stock <= 0) {
-    return <span className="text-red-500">S?n ph?m</span>
+    return <span className="text-red-500">Sản phẩm</span>
   }
 
   if (stock <= 5) {
-    return <span className="text-orange-500">S?n ph?m {stock})</span>
+    return <span className="text-orange-500">Sản phẩm {stock})</span>
   }
 
-  return <span>S?n ph?m {stock}</span>
+  return <span>Sản phẩm {stock}</span>
 }
 
 export function areAllVariantsSelected(selectedVariants: SelectedVariants): boolean {
@@ -133,11 +133,11 @@ export async function handleAddToCart(
 ): Promise<string | false> {
   const selectedSku = findMatchingSku(selectedVariants, skus, variantGroups)
   if (!selectedSku) {
-    console.error('S?n ph?m')
+    console.error('Sản phẩm')
     return false
   }
   if (selectedSku.stock <= 0) {
-    console.error('S?n ph?m')
+    console.error('Sản phẩm')
     return false
   }
   const safeQuantity = Math.min(quantity, selectedSku.stock)
@@ -153,7 +153,7 @@ export async function handleAddToCart(
     
     return typeof result === 'string' ? result : false
   } catch (error) {
-    console.error('S?n ph?m', error)
+    console.error('Sản phẩm', error)
     return false
   }
 }

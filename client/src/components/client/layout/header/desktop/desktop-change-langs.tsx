@@ -2,6 +2,7 @@
 
 import { ChevronDown, Check } from 'lucide-react'
 import React, { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { useChangeLang } from '@/hooks/use-change-lang'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -9,6 +10,7 @@ import { VN, US } from 'country-flag-icons/react/3x2'
 import { useDropdown } from '../dropdown-context'
 
 export function ChangeLangs() {
+  const t = useTranslations('client.header.language')
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { changeLanguage, currentLangName, currentSelectedLang } = useChangeLang()
   const { openDropdown, setOpenDropdown } = useDropdown()
@@ -54,10 +56,7 @@ export function ChangeLangs() {
 
         <div className="relative z-10 w-7 h-7 overflow-hidden flex-shrink-0">
           {currentSelectedLang === 'vi' ? (
-            <VN
-              title="Ng?n ng?"
-              className="w-full h-full object-cover"
-            />
+            <VN title={t('vi')} className="w-full h-full object-cover" />
           ) : (
             <US title="English" className="w-full h-full object-cover" />
           )}
@@ -115,7 +114,7 @@ export function ChangeLangs() {
             />
 
             <div className="relative z-10 flex items-center w-full justify-between">
-              <span>Ng?n ng?</span>
+              <span>{t('vi')}</span>
               {currentSelectedLang === 'vi' && <Check className="w-3.5 h-3.5 text-green-500 ml-auto" />}
             </div>
           </div>
@@ -141,7 +140,7 @@ export function ChangeLangs() {
             />
 
             <div className="relative z-10 flex items-center w-full justify-between">
-              <span>English</span>
+              <span>{t('en')}</span>
               {currentSelectedLang === 'en' && <Check className="w-3.5 h-3.5 text-green-500 ml-auto" />}
             </div>
           </div>

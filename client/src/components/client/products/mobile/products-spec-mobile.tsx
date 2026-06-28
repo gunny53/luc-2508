@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
-import { slugify } from '@/utils/slugify'
+import { createCategorySlug } from '@/utils/slugify'
 import HTMLPreview from '@/components/ui/component/html-preview'
 
 interface Product {
@@ -39,14 +39,14 @@ interface Product {
 export default function ProductSpecsMobile({ product }: { product: Product }) {
   const renderCategoryLinks = () => {
     if (!product.categories || product.categories.length === 0)
-      return 'S?n ph?m'
+      return 'Sản phẩm'
 
     return (
       <div className="flex flex-wrap items-center gap-1 text-xs">
         {product.categories.map((category, index) => (
           <Link
             key={category.id}
-            href={`/category/${slugify(category.name)}`}
+            href={createCategorySlug(category.name, String(category.id))}
             className="text-[#05a] flex items-center"
           >
             {index > 0 && <ChevronRight className="w-3 h-3 text-muted-foreground mx-0.5" />}
@@ -59,16 +59,16 @@ export default function ProductSpecsMobile({ product }: { product: Product }) {
 
   return (
     <div className="bg-white p-4 mt-2 rounded-sm">
-      <h2 className="text-sm font-semibold mb-3">S?n ph?m</h2>
+      <h2 className="text-sm font-semibold mb-3">Sản phẩm</h2>
       <div className="text-xs space-y-2.5 mb-4">
         <div className="flex">
-          <div className="w-1/3 text-muted-foreground">S?n ph?m</div>
+          <div className="w-1/3 text-muted-foreground">Sản phẩm</div>
           <div className="flex-1">{renderCategoryLinks()}</div>
         </div>
 
-        <SpecRowMobile label="S?n ph?m" value={product.brand?.name} />
+        <SpecRowMobile label="Sản phẩm" value={product.brand?.name} />
         <SpecRowMobile
-          label="S?n ph?m"
+          label="Sản phẩm"
           value={product.series ?? product.name}
         />
 
@@ -80,7 +80,7 @@ export default function ProductSpecsMobile({ product }: { product: Product }) {
 
       {product.description && (
         <div className="mt-2 pt-3 border-t">
-          <h3 className="text-sm font-semibold mb-2">S?n ph?m</h3>
+          <h3 className="text-sm font-semibold mb-2">Sản phẩm</h3>
           <div className="text-xs">
             <HTMLPreview
               content={product.description.replace(/(#[a-zA-Z0-9_]+)/g, '<span class="font-medium">$1</span>')}
@@ -96,7 +96,7 @@ function SpecRowMobile({ label, value }: { label: string; value?: string | React
   return (
     <div className="flex">
       <div className="w-1/3 text-muted-foreground">{label}</div>
-      <div className="flex-1">{value ?? 'S?n ph?m'}</div>
+      <div className="flex-1">{value ?? 'Sản phẩm'}</div>
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
-import { slugify } from '@/utils/slugify'
+import { createCategorySlug } from '@/utils/slugify'
 import HTMLPreview from '@/components/ui/component/html-preview'
 
 interface Product {
@@ -42,7 +42,7 @@ interface Product {
 export default function ProductSpecs({ product }: { product: Product }) {
   const renderCategoryLinks = () => {
     if (!product.categories || product.categories.length === 0)
-      return 'S?n ph?m'
+      return 'Sản phẩm'
 
     return (
       <div className="flex flex-wrap items-center gap-1">
@@ -55,7 +55,7 @@ export default function ProductSpecs({ product }: { product: Product }) {
             <span className="mx-1 text-gray-400">
               <ChevronRight className="w-4 h-4 text-muted-foreground" />
             </span>
-            <Link href={`/category/${slugify(category.name)}`} className="text-[#05a]">
+            <Link href={createCategorySlug(category.name, String(category.id))} className="text-[#05a]">
               {category.name}
             </Link>
           </span>
@@ -67,17 +67,17 @@ export default function ProductSpecs({ product }: { product: Product }) {
   return (
     <div className="bg-white border rounded-sm overflow-hidden">
       <h2 className="text-base font-medium px-5 py-4 border-b">
-        S?n ph?m
+        Sản phẩm
       </h2>
       <div className="divide-y text-sm">
         <div className="flex px-5 py-3">
-          <div className="w-1/3 text-muted-foreground">S?n ph?m</div>
+          <div className="w-1/3 text-muted-foreground">Sản phẩm</div>
           <div className="flex-1">{renderCategoryLinks()}</div>
         </div>
 
-        <SpecRow label="S?n ph?m" value={product.brand?.name} />
+        <SpecRow label="Sản phẩm" value={product.brand?.name} />
         <SpecRow
-          label="S?n ph?m"
+          label="Sản phẩm"
           value={product.series ?? product.name}
         />
         {product.specifications.map((specification) => (
@@ -88,7 +88,7 @@ export default function ProductSpecs({ product }: { product: Product }) {
       {product.description && (
         <div className="border-t">
           <h3 className="text-base font-medium px-5 py-4 border-b">
-            S?n ph?m
+            Sản phẩm
           </h3>
           <div className="p-5">
             <HTMLPreview
@@ -105,7 +105,7 @@ function SpecRow({ label, value }: { label: string; value?: string | React.React
   return (
     <div className="flex px-5 py-3">
       <div className="w-1/3 text-muted-foreground">{label}</div>
-      <div className="flex-1">{value ?? 'S?n ph?m'}</div>
+      <div className="flex-1">{value ?? 'Sản phẩm'}</div>
     </div>
   )
 }

@@ -19,16 +19,16 @@ export const productMock = {
   ],
   variants: [
     {
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       options: [
-        'S?n ph?m',
-        'S?n ph?m',
+        'Sản phẩm',
+        'Sản phẩm',
         'Xanh',
-        'S?n ph?m'
+        'Sản phẩm'
       ]
     },
     {
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       options: ['S', 'M', 'L', 'XL']
     }
   ],
@@ -42,7 +42,7 @@ export const productMock = {
   skus: [
     {
       id: 1,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -56,7 +56,7 @@ export const productMock = {
     },
     {
       id: 2,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -70,7 +70,7 @@ export const productMock = {
     },
     {
       id: 3,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -84,7 +84,7 @@ export const productMock = {
     },
     {
       id: 4,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -98,7 +98,7 @@ export const productMock = {
     },
     {
       id: 5,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -112,7 +112,7 @@ export const productMock = {
     },
     {
       id: 6,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -126,7 +126,7 @@ export const productMock = {
     },
     {
       id: 7,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -140,7 +140,7 @@ export const productMock = {
     },
     {
       id: 8,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -210,7 +210,7 @@ export const productMock = {
     },
     {
       id: 13,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -224,7 +224,7 @@ export const productMock = {
     },
     {
       id: 14,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -238,7 +238,7 @@ export const productMock = {
     },
     {
       id: 15,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -252,7 +252,7 @@ export const productMock = {
     },
     {
       id: 16,
-      value: 'S?n ph?m',
+      value: 'Sản phẩm',
       price: 0,
       stock: 100,
       image: '',
@@ -269,7 +269,7 @@ export const productMock = {
     {
       id: 1,
       parentCategoryId: null,
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       logo: 'https://ecsite.s3.ap-southeast-1.amazonaws.com/images/b4acb401-0d86-447d-8dff-69f1de122dee.png',
       createdById: 1,
       updatedById: null,
@@ -296,7 +296,7 @@ export const productMock = {
     {
       id: 6,
       parentCategoryId: 1,
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       logo: null,
       createdById: 1,
       updatedById: null,
@@ -340,7 +340,7 @@ import { Review } from '@/types/review.interface'
 export const reviewsMock: Review[] = [
   {
     id: 'review-1',
-    content: 'S?n ph?m',
+    content: 'Sản phẩm',
     rating: 5,
     orderId: 'order-123',
     productId: 'product-abc',
@@ -366,13 +366,13 @@ export const reviewsMock: Review[] = [
     ],
     user: {
       id: 'user-xyz',
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       avatar: '/assets/demo/user-avatar-1.png'
     }
   },
   {
     id: 'review-2',
-    content: 'S?n ph?m',
+    content: 'Sản phẩm',
     rating: 4,
     orderId: 'order-124',
     productId: 'product-abc',
@@ -383,13 +383,13 @@ export const reviewsMock: Review[] = [
     medias: [],
     user: {
       id: 'user-qwe',
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       avatar: '/assets/demo/user-avatar-2.png'
     }
   },
   {
     id: 'review-3',
-    content: 'S?n ph?m',
+    content: 'Sản phẩm',
     rating: 3,
     orderId: 'order-125',
     productId: 'product-abc',
@@ -400,13 +400,13 @@ export const reviewsMock: Review[] = [
     medias: [],
     user: {
       id: 'user-asd',
-      name: 'S?n ph?m'
+      name: 'Sản phẩm'
       
     }
   },
   {
     id: 'review-4',
-    content: 'S?n ph?m',
+    content: 'Sản phẩm',
     rating: 5,
     orderId: 'order-126',
     productId: 'product-abc',
@@ -419,7 +419,7 @@ export const reviewsMock: Review[] = [
   },
   {
     id: 'review-5',
-    content: 'S?n ph?m',
+    content: 'Sản phẩm',
     rating: 1,
     orderId: 'order-127',
     productId: 'product-abc',
@@ -430,7 +430,7 @@ export const reviewsMock: Review[] = [
     medias: [],
     user: {
       id: 'user-jkl',
-      name: 'S?n ph?m',
+      name: 'Sản phẩm',
       avatar: '/assets/demo/user-avatar-3.png'
     }
   }

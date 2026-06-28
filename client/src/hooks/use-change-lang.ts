@@ -12,8 +12,7 @@ export const useChangeLang = () => {
   const [showLangMenu, setShowLangMenu] = useState(false)
 
   const currentLanguage = useSelector((state: RootState) => state.langECSite.language)
-  const currentLangName =
-    currentLanguage === 'vi' ? 'ECSite' : 'English'
+  const currentLangName = currentLanguage === 'vi' ? 'Tiếng Việt' : 'English'
 
   const toggleMenu = () => setShowLangMenu((prev) => !prev)
 

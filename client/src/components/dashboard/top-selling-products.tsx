@@ -8,8 +8,8 @@ export function TopSellingProductsTable({ products }: TopSellingProductsProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>S?n ph?m</TableHead>
-          <TableHead className="text-right">S?n ph?m</TableHead>
+          <TableHead>Sản phẩm</TableHead>
+          <TableHead className="text-right">Sản phẩm</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

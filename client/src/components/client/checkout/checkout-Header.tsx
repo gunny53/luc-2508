@@ -1,10 +1,9 @@
 'use client'
 
 import { ArrowLeft } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+import { ECSiteLogo } from '@/components/brand/ecsite-logo'
 
 export function CheckoutHeader() {
   const router = useRouter()
@@ -17,22 +16,7 @@ export function CheckoutHeader() {
         </Button>
 
         <div className="flex-1 flex justify-center">
-          <Link href="/" className="block">
-            <Image
-              src="/images/logo/png-jpeg/Logo-Full-Red.png"
-              alt="ECSite Logo"
-              width={180}
-              height={66}
-              className="hidden lg:block"
-            />
-            <Image
-              src="/images/logo/png-jpeg/Logo-Full-Red.png"
-              alt="ECSite Logo"
-              width={102}
-              height={102}
-              className="block lg:hidden"
-            />
-          </Link>
+          <ECSiteLogo variant="orange" textClassName="text-2xl lg:text-3xl" />
         </div>
 
         <div className="w-10 lg:hidden"></div>

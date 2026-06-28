@@ -133,7 +133,7 @@ export function ProductsFilter<TData>({
               className={cn('h-8', currentCategoryFilter ? 'border-primary/50 bg-primary/10' : 'border-dashed')}
             >
               <PlusCircle className="mr-2 h-4 w-4" />
-              {t('category') || 'S?n ph?m'}
+              {t('category') || 'Sản phẩm'}
               {currentCategoryFilter && (
                 <>
                   <Separator orientation="vertical" className="mx-2 h-4" />
@@ -147,17 +147,17 @@ export function ProductsFilter<TData>({
           <PopoverContent className="w-[200px] p-0" align="start">
             <Command>
               <CommandInput
-                placeholder={t('searchCategory') || 'S?n ph?m'}
+                placeholder={t('searchCategory') || 'Sản phẩm'}
               />
               <CommandList>
                 <CommandEmpty>
-                  {t('noResults') || 'S?n ph?m'}
+                  {t('noResults') || 'Sản phẩm'}
                 </CommandEmpty>
                 <CommandGroup>
                   {loadingCategories ? (
                     <CommandItem disabled>
                       <span className="opacity-70">
-                        {t('loading') || 'S?n ph?m'}
+                        {t('loading') || 'Sản phẩm'}
                       </span>
                     </CommandItem>
                   ) : (
@@ -188,7 +188,7 @@ export function ProductsFilter<TData>({
                     <CommandSeparator />
                     <CommandGroup>
                       <CommandItem onSelect={clearCategoryFilter} className="justify-center text-center">
-                        {t('clearFilters') || 'S?n ph?m'}
+                        {t('clearFilters') || 'Sản phẩm'}
                       </CommandItem>
                     </CommandGroup>
                   </>
@@ -213,7 +213,7 @@ export function ProductsFilter<TData>({
               )}
             >
               <PlusCircle className="mr-2 h-4 w-4" />
-              {t('price') || 'S?n ph?m'}
+              {t('price') || 'Sản phẩm'}
               {(priceRange[0] !== defaultMinPrice || priceRange[1] !== defaultMaxPrice) && (
                 <>
                   <Separator orientation="vertical" className="mx-2 h-4" />
@@ -237,7 +237,7 @@ export function ProductsFilter<TData>({
           <PopoverContent className="w-64 p-4" align="start">
             <div className="space-y-4">
               <h4 className="font-medium leading-none">
-                {t('priceRange') || 'S?n ph?m'}
+                {t('priceRange') || 'Sản phẩm'}
               </h4>
               <Slider
                 defaultValue={[1000, 10000000]}
@@ -258,7 +258,7 @@ export function ProductsFilter<TData>({
               <div className="flex flex-col gap-2 pt-2">
                 {(currentPriceFilter?.minPrice !== null || currentPriceFilter?.maxPrice !== null) && (
                   <p className="text-sm text-muted-foreground italic">
-                    {t('activeFilter') || 'S?n ph?m'}:{' '}
+                    {t('activeFilter') || 'Sản phẩm'}:{' '}
                     {currentPriceFilter?.minPrice?.toLocaleString('vi-VN')} -{' '}
                     {currentPriceFilter?.maxPrice?.toLocaleString('vi-VN')} VND
                   </p>
@@ -268,16 +268,16 @@ export function ProductsFilter<TData>({
                     variant="ghost"
                     size="sm"
                     onClick={clearPriceFilter}
-                    title={t('clearFilter') || 'S?n ph?m'}
+                    title={t('clearFilter') || 'Sản phẩm'}
                   >
-                    {t('clear') || 'S?n ph?m'}
+                    {t('clear') || 'Sản phẩm'}
                   </Button>
                   <Button
                     size="sm"
                     onClick={applyPriceFilter}
-                    title={t('applyFilter') || 'S?n ph?m'}
+                    title={t('applyFilter') || 'Sản phẩm'}
                   >
-                    {t('apply') || 'S?n ph?m'}
+                    {t('apply') || 'Sản phẩm'}
                   </Button>
                 </div>
               </div>

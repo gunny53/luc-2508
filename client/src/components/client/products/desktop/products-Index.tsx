@@ -10,7 +10,7 @@ import ProductShopInfo from '../products-shop-info'
 import ProductReviews from '../products-reviews'
 import ProductSuggestions from './products-suggestion'
 import { productMock } from './mock-data'
-import { slugify } from '@/utils/slugify'
+import { createCategorySlug } from '@/utils/slugify'
 import { ClientProductDetail } from '@/types/client.products.interface'
 import { MediaItem, transformProductImagesToMedia } from '../shared/product-transformers'
 
@@ -27,7 +27,7 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[500px]">
-        <p>S?n ph?m</p>
+        <p>Sản phẩm</p>
       </div>
     )
   }
@@ -45,10 +45,10 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
     })) as MediaItem[]
   }
   const sizes =
-    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
+    productToUse?.variants?.find((v: any) => v.value === 'Sản phẩm')
       ?.options || []
   const colors =
-    productToUse?.variants?.find((v: any) => v.value === 'S?n ph?m')
+    productToUse?.variants?.find((v: any) => v.value === 'Sản phẩm')
       ?.options || []
   const product = {
     ...productToUse,
@@ -59,7 +59,7 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
 
   const category = product.categories && product.categories.length > 0 ? product.categories[0] : null
 
-  const brand = product.brand?.name || ''
+  const brand = product.brand || null
 
   return (
     <div className="bg-[#f5f5f5] py-4">
@@ -77,7 +77,7 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
           {category && (
             <BreadcrumbItem className="flex items-center gap-1">
               <BreadcrumbLink asChild>
-                <Link href={`/category/${slugify(category.name)}`} className="text-[#05a] hover:underline">
+                <Link href={createCategorySlug(category.name, String(category.id))} className="text-[#05a] hover:underline">
                   {category.name}
                 </Link>
               </BreadcrumbLink>
@@ -88,8 +88,8 @@ export default function ProductDetail({ slug, product: productData, isLoading = 
           {brand && (
             <BreadcrumbItem className="flex items-center gap-1">
               <BreadcrumbLink asChild>
-                <Link href={`/brand/${slugify(brand)}`} className="text-[#05a] hover:underline">
-                  {brand}
+                <Link href={`/search?brandIds=${brand.id}`} className="text-[#05a] hover:underline">
+                  {brand.name}
                 </Link>
               </BreadcrumbLink>
               <ChevronRight className="w-4 h-4 text-muted-foreground" />

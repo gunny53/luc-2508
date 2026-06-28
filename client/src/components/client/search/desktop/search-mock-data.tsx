@@ -3,8 +3,8 @@ import { ClientProduct } from '@/types/client.products.interface'
 export const mockSearchProducts: ClientProduct[] = [
   {
     id: '1',
-    name: 'T?m ki?m',
-    description: 'T?m ki?m',
+    name: 'Search item',
+    description: 'Search item',
     basePrice: 120000,
     virtualPrice: 85000,
     brandId: 'brand-1',
@@ -21,8 +21,8 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '2',
-    name: 'T?m ki?m',
-    description: 'T?m ki?m',
+    name: 'Search item',
+    description: 'Search item',
     basePrice: 300000,
     virtualPrice: 199000,
     brandId: 'brand-2',
@@ -39,8 +39,8 @@ export const mockSearchProducts: ClientProduct[] = [
   },
   {
     id: '3',
-    name: 'T?m ki?m',
-    description: 'T?m ki?m',
+    name: 'Search item',
+    description: 'Search item',
     basePrice: 500000,
     virtualPrice: 339000,
     brandId: 'brand-3',

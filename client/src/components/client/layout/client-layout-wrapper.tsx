@@ -31,7 +31,6 @@ export default function ClientLayoutWrapper({
 }: ClientLayoutWrapperProps) {
   const deviceType = useCheckDevice()
 
-  
   const maxWidthValue = typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth
 
   return (

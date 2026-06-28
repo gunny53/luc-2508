@@ -57,7 +57,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
       <DialogContent className="max-w-3xl rounded-2xl p-4 shadow-xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold text-center">
-            S?n ph?m
+            Sản phẩm
           </DialogTitle>
         </DialogHeader>
 
@@ -85,7 +85,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
           </div>
 
           <Input
-            placeholder="S?n ph?m"
+            placeholder="Sản phẩm"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="rounded-xl border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/30 h-14"
@@ -99,7 +99,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
                 className="rounded-xl"
                 onClick={() => document.getElementById('file-upload')?.click()}
               >
-                S?n ph?m
+                Sản phẩm
               </Button>
               <Input
                 id="file-upload"
@@ -118,7 +118,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
                   onClick={handleRemoveAllFiles}
                   className="text-red-500 hover:bg-red-50 rounded-xl"
                 >
-                  S?n ph?m
+                  Sản phẩm
                 </Button>
               )}
             </div>
@@ -159,7 +159,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
 
         <DialogFooter className="flex justify-end gap-3 pt-4">
           <Button variant="outline" onClick={() => onOpenChange(false)} className="rounded-xl">
-            S?n ph?m
+            Sản phẩm
           </Button>
           <Button
             onClick={async () => {
@@ -172,7 +172,7 @@ export function ReviewsModal({ open, onOpenChange, product }: ReviewsModalProps)
             disabled={isUploading || loading}
             className="rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold"
           >
-            S?n ph?m
+            Sản phẩm
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { ChevronRight } from 'lucide-react'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
@@ -75,6 +76,7 @@ const CountdownTimer = ({ isMobile }: { isMobile: boolean }) => {
 }
 
 export function FlashSaleSection({ className }: FlashSaleSectionProps) {
+  const t = useTranslations('client.landing.flashSale')
   const isMobile = useIsMobile()
   const {
     products: allProducts,
@@ -89,7 +91,6 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
     if (!allProducts || allProducts.length === 0) return []
     const shuffled = [...allProducts]
 
-    
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
@@ -108,14 +109,12 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
             <CountdownTimer isMobile={isMobile} />
           </div>
           <a href="#" className="flex items-center text-sm text-red-500 hover:underline">
-            ECSite
+            {t('viewAll')}
             <ChevronRight className="w-4 h-4 ml-1" />
           </a>
         </div>
 
-        {error && (
-          <div className="text-center p-4 text-red-500">ECSite</div>
-        )}
+        {error && <div className="text-center p-4 text-red-500">{t('loadError')}</div>}
 
         <Carousel
           opts={{
@@ -163,8 +162,7 @@ export function FlashSaleSection({ className }: FlashSaleSectionProps) {
                             style={{ width: `${Math.floor(Math.random() * 80) + 20}%` }}
                           ></div>
                           <span className="absolute inset-0 text-white text-xs font-semibold flex items-center justify-center uppercase tracking-tighter">
-                            ECSite{' '}
-                            {Math.floor(Math.random() * 50) + 10}
+                            {t('sold', { count: Math.floor(Math.random() * 50) + 10 })}
                           </span>
                         </div>
                       </div>

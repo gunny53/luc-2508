@@ -83,13 +83,6 @@ export default function ProductInfo({ product }: { product: Product }) {
   }
   useEffect(() => {
     const matchingSku = findMatchingSku(selectedVariants, product.skus, variantGroups as VariantGroup[])
-
-    if (matchingSku) {
-      console.log('S?n ph?m', matchingSku)
-    } else if (areAllVariantsSelected(selectedVariants)) {
-      console.log('S?n ph?m')
-    }
-
     setCurrentSku(matchingSku)
   }, [selectedVariants, product.skus, variantGroups])
   const totalStock = getCurrentStock(selectedVariants, product.skus, variantGroups as VariantGroup[])
@@ -97,8 +90,8 @@ export default function ProductInfo({ product }: { product: Product }) {
 
   const category = product.categories[0]?.name ?? ''
   const brand = product.brand?.name ?? ''
-  const origin = product.origin ?? 'S?n ph?m'
-  const material = product.material ?? 'S?n ph?m'
+  const origin = product.origin ?? 'Sản phẩm'
+  const material = product.material ?? 'Sản phẩm'
 
   const isFlashSale = !!product.flashSale
   const flashSalePrice = product.flashSale?.price ?? 0
@@ -106,17 +99,6 @@ export default function ProductInfo({ product }: { product: Product }) {
 
   const vouchers = product.vouchers ?? []
   const isVariantSelected = areAllVariantsSelected(selectedVariants)
-  useEffect(() => {
-    console.log('=== PRODUCT DEBUG INFO ===')
-    console.log('Product SKUs:', product.skus)
-    console.log('Variant Groups:', variantGroups)
-    console.log('Selected Variants:', selectedVariants)
-    console.log('Current SKU:', currentSku)
-    console.log('Is Variant Selected:', isVariantSelected)
-    console.log('Current Stock:', currentSku?.stock || 0)
-    console.log('Can Add to Cart:', isVariantSelected && currentSku && currentSku.stock > 0)
-    console.log('=========================')
-  }, [selectedVariants, currentSku, isVariantSelected, product.skus, variantGroups])
   const handleQuantityInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = parseInt(e.target.value.replace(/\D/g, ''), 10)
     if (isNaN(val)) val = 1
@@ -160,10 +142,9 @@ export default function ProductInfo({ product }: { product: Product }) {
         )
 
         if (cartItemId && typeof cartItemId === 'string') {
-          console.log('Added to cart with ID:', cartItemId)
           router.push(`/cart?selectItem=${cartItemId}`)
         } else {
-          console.warn('S?n ph?m')
+          console.warn('Sản phẩm')
           router.push('/cart')
         }
       } catch (error) {
@@ -204,11 +185,11 @@ export default function ProductInfo({ product }: { product: Product }) {
       <div className="flex items-center gap-4 text-sm mt-1">
         <span className="flex items-center gap-1">
           <Truck className="w-4 h-4 text-green-600" />
-          <span className="text-black">S?n ph?m</span>
+          <span className="text-black">Sản phẩm</span>
         </span>
         <span className="flex items-center gap-1">
           <RefreshCcw className="w-4 h-4 text-blue-600" />
-          <span className="text-black">S?n ph?m</span>
+          <span className="text-black">Sản phẩm</span>
         </span>
       </div>
 
@@ -219,17 +200,17 @@ export default function ProductInfo({ product }: { product: Product }) {
         </div>
         <span className="mx-2">|</span>
         <span>
-          <span className="text-black font-medium">{reviewCount}</span>s?n ph?m
+          <span className="text-black font-medium">{reviewCount}</span>Sản phẩm
         </span>
         <span className="mx-2">|</span>
         <span>
-          S?n ph?m
+          Sản phẩm
           <span className="text-black font-medium">{sold.toLocaleString()}</span>
         </span>
         <div className="flex-1" />
         <Button variant="ghost" size="sm" className="text-grey-500 px-2 py-1 h-auto">
           <Flag className="w-4 h-4" />
-          S?n ph?m
+          Sản phẩm
         </Button>
       </div>
 
@@ -241,7 +222,7 @@ export default function ProductInfo({ product }: { product: Product }) {
           </span>
           {flashSaleEnd && (
             <span className="text-xs text-orange-500 ml-2">
-              S?n ph?m {flashSaleEnd.toLocaleTimeString('vi-VN')}
+              Sản phẩm {flashSaleEnd.toLocaleTimeString('vi-VN')}
             </span>
           )}
         </div>
@@ -259,7 +240,7 @@ export default function ProductInfo({ product }: { product: Product }) {
       {}
       <div className="space-y-2">
         <div className="flex items-center gap-2 font-medium text-sm text-muted-foreground">
-          S?n ph?m
+          Sản phẩm
         </div>
         <div className="flex gap-2 flex-wrap">
           {vouchers.map((v) => (
@@ -325,7 +306,7 @@ export default function ProductInfo({ product }: { product: Product }) {
 
       <div className="flex items-center gap-4">
         <span className="min-w-[90px] text-muted-foreground">
-          S?n ph?m
+          Sản phẩm
         </span>
         <div className="flex items-center border rounded">
           <Button
@@ -344,8 +325,8 @@ export default function ProductInfo({ product }: { product: Product }) {
             value={quantity}
             onChange={handleQuantityInput}
             disabled={!isVariantSelected || !currentSku?.stock}
-            aria-label="S?n ph?m"
-            title="S?n ph?m"
+            aria-label="Sản phẩm"
+            title="Sản phẩm"
             className="w-12 h-8 text-center outline-none border-x [appearance:textfield]\n            [&::-webkit-outer-spin-button]:appearance-none\n            [&::-webkit-inner-spin-button]:appearance-none"
           />
           <Button
@@ -362,7 +343,7 @@ export default function ProductInfo({ product }: { product: Product }) {
         </div>
         {isVariantSelected && (
           <span className="text-xs text-muted-foreground whitespace-nowrap">
-            S?n ph?m{' '}
+            Sản phẩm{' '}
             <span className="font-semibold">
               {currentSku ? currentSku.stock.toLocaleString() : totalStock.toLocaleString()}
             </span>
@@ -371,7 +352,7 @@ export default function ProductInfo({ product }: { product: Product }) {
       </div>
 
       {isVariantSelected && currentSku && currentSku.stock === 0 && (
-        <div className="text-red-500 text-sm">S?n ph?m</div>
+        <div className="text-red-500 text-sm">Sản phẩm</div>
       )}
 
       <div className="flex gap-3 pt-2 w-full">
@@ -392,12 +373,12 @@ export default function ProductInfo({ product }: { product: Product }) {
                   ></path>
                 </svg>
               </span>
-              S?n ph?m
+              Sản phẩm
             </>
           ) : (
             <>
               <ShoppingCart className="w-5 h-5" />
-              S?n ph?m
+              Sản phẩm
             </>
           )}
         </Button>
@@ -420,7 +401,7 @@ export default function ProductInfo({ product }: { product: Product }) {
                   ></path>
                 </svg>
               </span>
-              S?n ph?m
+              Sản phẩm
             </>
           ) : (
             <>

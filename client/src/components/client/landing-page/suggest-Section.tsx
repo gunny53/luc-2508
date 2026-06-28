@@ -1,8 +1,8 @@
-
 'use client'
 
 import { useClientSuggestedProducts } from '@/hooks/client-products/use-client-suggested-products'
 import ProductItem, { ProductItemSkeleton } from '@/components/ui/product-component/product-item'
+import { useTranslations } from 'next-intl'
 
 interface SuggestSectionProps {
   title?: string
@@ -10,11 +10,8 @@ interface SuggestSectionProps {
   initialLimit?: number
 }
 
-const SuggestSection = ({
-  title = 'ECSite',
-  categoryId,
-  initialLimit = 48
-}: SuggestSectionProps) => {
+const SuggestSection = ({ categoryId, initialLimit = 48 }: SuggestSectionProps) => {
+  const t = useTranslations('client.landing.suggest')
   const { products, initialLoading, loading, hasMore, loadMore, error } = useClientSuggestedProducts({
     initialLimit,
     categoryId,
@@ -25,10 +22,7 @@ const SuggestSection = ({
   return (
     <div className="bg-gray-100 py-4">
       <div className="container mx-auto">
-
-        {error && (
-          <div className="text-center p-4 text-red-500">ECSite</div>
-        )}
+        {error && <div className="text-center p-4 text-red-500">{t('loadError')}</div>}
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
           {initialLoading
@@ -43,9 +37,7 @@ const SuggestSection = ({
               onClick={loadMore}
               disabled={loading}
             >
-              {loading
-                ? 'ECSite'
-                : 'ECSite'}
+              {loading ? t('loadingMore') : t('loadMore')}
             </button>
           </div>
         )}

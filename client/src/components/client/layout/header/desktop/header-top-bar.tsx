@@ -1,9 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { Facebook, Instagram, Bell, HelpCircle, ShoppingCart } from 'lucide-react'
+import { Bell, HelpCircle, ShoppingCart } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function TopBar() {
+  const t = useTranslations('client.header.topBar')
+
   return (
     <div className="bg-white">
       <div className="max-w-[1300px] mx-auto px-4">
@@ -29,9 +32,7 @@ export function TopBar() {
               }
             `}</style>
             <div className="marquee-container">
-              <span className="marquee text-[13px] font-medium text-gray-700">
-                ECSite
-              </span>
+              <span className="marquee text-[13px] font-medium text-gray-700">{t('marquee')}</span>
             </div>
           </div>
 
@@ -41,21 +42,21 @@ export function TopBar() {
               className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium"
             >
               <Bell className="h-4 w-4" />
-              <span>ECSite</span>
+              <span>{t('notifications')}</span>
             </Link>
             <Link
               href="#"
               className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium"
             >
               <HelpCircle className="h-4 w-4" />
-              <span>ECSite</span>
+              <span>{t('help')}</span>
             </Link>
             <Link
               href="#"
               className="flex items-center gap-1.5 hover:opacity-70 hover:underline transition-opacity text-[13px] font-medium"
             >
               <ShoppingCart className="h-4 w-4" />
-              <span>ECSite</span>
+              <span>{t('cart')}</span>
             </Link>
           </div>
         </div>

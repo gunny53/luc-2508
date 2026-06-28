@@ -1308,14 +1308,12 @@
       "title": "Settings",
       "subtitle": "Your account is protected",
       "description": "ECSite protects your personal information and keeps it private, safe and secure.",
-
       "items": {
         "Account security": "Account Security",
         "Privacy": "Privacy",
         "Permissions": "Permissions",
         "Safety center": "Safety Center"
       },
-
       "section": {
         "paymentmethods": "Your payment methods",
         "country": "Country & region",
@@ -1326,17 +1324,13 @@
         "legalTermPolicies": "Legal Terms & Policies",
         "switchAccount": "Switch Account"
       },
-
       "signout": "Sign out"
     },
-
     "home": "Home",
     "manageAccount": "Manage your account information",
-
     "notifications": {
       "notifications": "Notifications"
     },
-
     "showToast": {
       "review": {
         "createSuccessful": "Review created successfully.",
@@ -1344,12 +1338,10 @@
         "deleteSuccessful": "Review deleted successfully"
       }
     },
-
     "account": {
       "profile": {
         "protected": "Your account is protected",
         "protectionDescription": "Your ECSite account is protected by advanced security. Keeping this information up-to-date safeguards your account even more.",
-
         "profile": "Profile",
         "policy": "Policies",
         "manageProfile": "Manage Your Profile",
@@ -1367,26 +1359,21 @@
         "thirdPartyAccounts": "Third-party accounts",
         "turnOn": "Turn On",
         "edit": "Edit",
-
         "editEmailPhone": "Email&Phone",
         "email": "Email",
         "phoneNumber": "Phone Number",
         "cancel": "Cancel",
         "save": "Save Changes",
-
         "editPassword": "Edit Password",
         "currentPassword": "Current Password",
         "newPassword": "New Password",
         "confirmPassword": "Confirm Password",
-
         "enable2FA": "Enable Two-Factor Authentication",
         "enable2FADescription": "Are you sure you want to enable two-factor authentication? You will need to scan a QR code with your authenticator app.",
         "enable": "Enable",
-
         "deleteAccount": "Delete Account",
         "confirmDelete": "Delete",
         "accountTermination": "Account Terminate",
-
         "name": "Name",
         "firstName": "First name",
         "lastName": "Last name",
@@ -1394,14 +1381,11 @@
         "phone": "Phone Number",
         "updateProfile": "Uses Information",
         "clickToChange": "Change profile picture",
-
         "on": "On",
         "off": "Off",
         "turnOff": "Turn Off",
-
         "dashboard": "Dashboard"
       },
-
       "password": {
         "title": "Change Password",
         "subtitle": "Your password must have a minimum of 6 characters and include numbers, letters and special characters",
@@ -1409,19 +1393,15 @@
         "newPassword": "New Password",
         "confirmPassword": "Confirm Password",
         "forgotPassword": "Forgot Password?",
-
         "currentPasswordPlaceholder": "Enter Your Current Password",
         "newPasswordPlaceholder": "Enter Your New Password",
         "confirmPasswordPlaceholder": "Re-enter the new password",
-
         "changePassword": "Change Password",
         "processing": "Processing...",
         "passwordChanged": "Your password has been changed successfully!",
-
         "minLength": "Password must be at least 6 characters long",
         "revokeOtherSessions": "Revoke other sessions"
       },
-
       "address": {
         "address": "Address",
         "myAddresses": "My Addresses",
@@ -1431,7 +1411,6 @@
         "changePassword": "Change password",
         "encryptedNote": "All data you added will be encrypted"
       },
-
       "payment": {
         "payment": "Payment",
         "creditDebitCard": "Credit / Debit Card",
@@ -1459,7 +1438,6 @@
         "doubt": "Have doubts about your transactions?",
         "faq": "Payment FAQs"
       },
-
       "security": {
         "security": "Security",
         "title": "Active devices",
@@ -1474,12 +1452,10 @@
         "deleteSession": "Delete this session",
         "loginSession": "Login session"
       },
-
       "myPurchase": {
         "myPurchase": "Purchase history"
       }
     },
-
     "cart": {
       "title": "Shopping Cart",
       "edit": "Edit",
@@ -1497,14 +1473,12 @@
       "shippingCost": "Shipping Cost",
       "totalAmount": "Total Amount",
       "proceedToCheckout": "Proceed to Checkout",
-
       "topbar": {
         "notifications": "Notifications",
         "help": "Help",
         "language": "Languages",
         "saleRegister": "Sale Register"
       },
-
       "productTitle": {
         "product": "Product",
         "unitPrice": "Unit Price",
@@ -1512,7 +1486,6 @@
         "totalPrice": "Total Price",
         "actions": "Actions"
       },
-
       "footer": {
         "platformVoucher": "Platform Voucher",
         "selectOrEnterCode": "Select or enter code",
@@ -1525,6 +1498,241 @@
         "items": "items",
         "youSaved": "You saved ₫{{amount}}",
         "checkout": "Check Out"
+      }
+    }
+  },
+  "client": {
+    "header": {
+      "topBar": {
+        "marquee": "Miễn phí vận chuyển cho đơn từ 299K - săn deal mới mỗi ngày tại ECSite",
+        "notifications": "Thông báo",
+        "help": "Trợ giúp",
+        "cart": "Giỏ hàng"
+      },
+      "search": {
+        "placeholder": "Tìm kiếm sản phẩm",
+        "button": "Tìm kiếm",
+        "history": "Lịch sử tìm kiếm",
+        "clearAll": "Xóa tất cả",
+        "suggestedCategories": "Danh mục gợi ý",
+        "results": "Kết quả tìm kiếm",
+        "typeToSearch": "Nhập từ khóa để tìm sản phẩm",
+        "empty": "Không tìm thấy sản phẩm phù hợp với \"{term}\"",
+        "viewPrefix": "Xem",
+        "viewMiddle": "kết quả cho"
+      },
+      "categories": {
+        "title": "Danh mục",
+        "description": "Chọn danh mục sản phẩm bạn muốn xem",
+        "viewAll": "Xem tất cả",
+        "viewAllCategory": "Xem tất cả {category}",
+        "empty": "Chưa có danh mục",
+        "emptyChildren": "Chưa có danh mục con cho {category}"
+      },
+      "commitments": {
+        "title": "Cam kết mua sắm",
+        "authentic": "Hàng chính hãng",
+        "fastShipping": "Giao nhanh toàn quốc",
+        "refund": "Hoàn tiền dễ dàng",
+        "returns": "Đổi trả trong 7 ngày",
+        "bestPrice": "Giá tốt mỗi ngày",
+        "tracking": "Theo dõi đơn tiện lợi"
+      },
+      "profile": {
+        "account": "Tài khoản",
+        "myAccount": "Tài khoản của tôi",
+        "cart": "Giỏ hàng",
+        "orders": "Đơn mua",
+        "logout": "Đăng xuất",
+        "loggingOut": "Đang đăng xuất...",
+        "admin": "Trang quản trị"
+      },
+      "language": {
+        "vi": "Tiếng Việt",
+        "en": "English"
+      },
+      "cart": {
+        "title": "Giỏ hàng",
+        "loginRequired": "Đăng nhập để xem giỏ hàng của bạn.",
+        "login": "Đăng nhập",
+        "loading": "Đang tải giỏ hàng...",
+        "empty": "Giỏ hàng của bạn đang trống.",
+        "selectAll": "Chọn tất cả ({count} sản phẩm)",
+        "variant": "Phân loại: {value}",
+        "total": "Tổng thanh toán",
+        "viewCart": "Xem giỏ hàng"
+      }
+    },
+    "landing": {
+      "hero": {
+        "mainTitle": "Deal nổi bật hôm nay",
+        "mainDescription": "Khám phá hàng nghìn sản phẩm đang giảm giá trên ECSite.",
+        "mainCta": "Mua ngay",
+        "sideTitle": "Bộ sưu tập chọn lọc",
+        "sideDescription": "Sản phẩm mới, giá tốt, giao nhanh.",
+        "sideCta": "Xem ngay"
+      },
+      "badges": {
+        "bestSeller": "Đang bán chạy",
+        "deepDiscount": "Giảm sâu",
+        "exclusiveDeal": "Deal độc quyền",
+        "freeShip": "Freeship",
+        "hotPrice": "Giá sốc",
+        "lowStock": "Sắp hết hàng"
+      },
+      "banners": {
+        "cta": "Khám phá ngay",
+        "men": {
+          "title": "Thời trang nam",
+          "description": "Áo quần năng động, dễ phối cho mỗi ngày"
+        },
+        "women": {
+          "title": "Thời trang nữ",
+          "description": "Bộ sưu tập mới với ưu đãi nổi bật"
+        },
+        "accessories": {
+          "title": "Phụ kiện nổi bật",
+          "description": "Hoàn thiện phong cách với phụ kiện được yêu thích"
+        }
+      },
+      "categories": {
+        "recommended": "Gợi ý hôm nay",
+        "beautyHealth": "Sắc đẹp & sức khỏe",
+        "womenClothing": "Thời trang nữ",
+        "homeKitchen": "Nhà cửa & đời sống",
+        "menClothing": "Thời trang nam",
+        "womenShoes": "Giày dép nữ",
+        "menUnderwear": "Đồ lót nam",
+        "sportsOutdoors": "Thể thao & du lịch",
+        "accessories": "Túi ví & phụ kiện",
+        "electronics": "Điện tử"
+      },
+      "services": {
+        "coupon": "Mã giảm giá",
+        "freeShip": "Freeship",
+        "newArrivals": "Hàng mới",
+        "voucher30": "Voucher 30%",
+        "mall": "ECSite Mall",
+        "memberDeals": "Ưu đãi thành viên"
+      },
+      "flashSale": {
+        "viewAll": "Xem tất cả",
+        "loadError": "Không thể tải sản phẩm Flash Sale.",
+        "sold": "Đã bán {count}"
+      },
+      "categoriesSection": {
+        "title": "Danh mục",
+        "empty": "Chưa có danh mục"
+      },
+      "suggest": {
+        "loadError": "Không thể tải danh sách sản phẩm gợi ý.",
+        "loadingMore": "Đang tải thêm...",
+        "loadMore": "Xem thêm"
+      }
+    },
+    "footer": {
+      "newsletter": {
+        "title": "Nhận ưu đãi mới nhất",
+        "descriptionPrefix": "Đăng ký email để nhận",
+        "voucher": "voucher 50K",
+        "descriptionSuffix": "cho đơn hàng đầu tiên.",
+        "placeholder": "Nhập email của bạn",
+        "submit": "Đăng ký"
+      },
+      "sections": {
+        "about": {
+          "title": "Về ECSite",
+          "links": {
+            "intro": "Giới thiệu ECSite",
+            "blog": "Blog",
+            "careers": "Tuyển dụng ECSite",
+            "jobs": "Việc làm",
+            "privacy": "Chính sách bảo mật",
+            "terms": "Điều khoản sử dụng"
+          }
+        },
+        "support": {
+          "title": "Hỗ trợ khách hàng",
+          "links": {
+            "helpCenter": "Trung tâm trợ giúp",
+            "shippingGuide": "Hướng dẫn giao hàng",
+            "returns": "Đổi trả hàng",
+            "payment": "Phương thức thanh toán",
+            "contact": "Liên hệ hỗ trợ",
+            "report": "Báo cáo vấn đề"
+          }
+        },
+        "policy": {
+          "title": "Chính sách mua hàng",
+          "links": {
+            "shippingPolicy": "Chính sách vận chuyển",
+            "returnPolicy": "Chính sách đổi trả",
+            "refundPolicy": "Chính sách hoàn tiền",
+            "trackOrder": "Theo dõi đơn hàng",
+            "shippingFees": "Phí vận chuyển",
+            "complaints": "Khiếu nại và bồi thường"
+          }
+        },
+        "partner": {
+          "title": "Đối tác và ưu đãi",
+          "links": {
+            "seller": "Kênh người bán",
+            "affiliate": "Chương trình tiếp thị liên kết",
+            "promotions": "Ưu đãi đang diễn ra",
+            "referral": "Giới thiệu bạn bè",
+            "logistics": "Dịch vụ logistics",
+            "wholesale": "Mua sỉ cho doanh nghiệp"
+          }
+        }
+      },
+      "payments": {
+        "title": "Phương thức thanh toán",
+        "description": "Thanh toán an toàn qua các cổng phổ biến."
+      },
+      "social": {
+        "title": "Kết nối với chúng tôi",
+        "description": "Theo dõi ECSite để cập nhật ưu đãi hằng ngày."
+      },
+      "copyright": "© {year} ECSite",
+      "tagline": "Nền tảng mua sắm trực tuyến đáng tin cậy."
+    },
+    "searchPage": {
+      "brand": {
+        "title": "Thương hiệu nổi bật",
+        "viewAll": "Xem tất cả thương hiệu"
+      },
+      "sidebar": {
+        "filters": "Bộ lọc",
+        "allCategories": "Tất cả danh mục",
+        "showMore": "Xem thêm",
+        "showLess": "Thu gọn",
+        "location": "Khu vực",
+        "shipping": "Vận chuyển",
+        "locationNorth": "Miền Bắc",
+        "locationCentral": "Miền Trung",
+        "locationSouth": "Miền Nam",
+        "fastShipping": "Giao nhanh",
+        "freeShipping": "Miễn phí vận chuyển"
+      },
+      "sort": {
+        "relevance": "Liên quan",
+        "latest": "Mới nhất",
+        "topSales": "Bán chạy",
+        "price": "Giá",
+        "priceAsc": "Giá: Thấp đến cao",
+        "priceDesc": "Giá: Cao đến thấp"
+      },
+      "products": {
+        "loadError": "Không thể tải sản phẩm.",
+        "retry": "Thử lại",
+        "emptySearch": "Không tìm thấy sản phẩm cho \"{query}\".",
+        "emptyCategory": "Không có sản phẩm trong danh mục này.",
+        "empty": "Không tìm thấy sản phẩm."
+      },
+      "shop": {
+        "title": "Shop gợi ý",
+        "followers": "người theo dõi",
+        "viewShop": "Xem shop"
       }
     }
   }

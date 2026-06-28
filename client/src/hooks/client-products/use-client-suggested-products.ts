@@ -63,13 +63,13 @@ export function useClientSuggestedProducts({
     }
   }, [loading, hasMore, limit, incrementAmount, fetchProducts])
   useEffect(() => {
+    isMounted.current = true
     setInitialLoading(true)
     setLimit(initialLimit)
     setHasMore(true)
 
     fetchProducts(initialLimit)
 
-    
     return () => {
       isMounted.current = false
     }

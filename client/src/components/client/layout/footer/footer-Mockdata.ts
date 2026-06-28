@@ -1,14 +1,13 @@
 import { PaymentType, PAYMENT_TYPES } from '@/types/payment.interface'
 import { SocialType } from '@/components/ui/social-icons/social-icon'
 
-
 export type FooterLink = {
-  text: string
+  textKey: string
   href: string
 }
 
 export type FooterSection = {
-  title: string
+  titleKey: string
   links: FooterLink[]
 }
 
@@ -19,50 +18,49 @@ export type SocialLink = {
   textColor: string
 }
 
-
 export const footerLinks: FooterSection[] = [
   {
-    title: 'ECSite',
+    titleKey: 'sections.about.title',
     links: [
-      { text: 'ECSite', href: '/about' },
-      { text: 'Blog', href: '/blog' },
-      { text: 'ECSite Careers', href: '/careers' },
-      { text: 'ECSite', href: '/jobs' },
-      { text: 'ECSite', href: '/privacy' },
-      { text: 'ECSite', href: '/terms' }
+      { textKey: 'sections.about.links.intro', href: '/about' },
+      { textKey: 'sections.about.links.blog', href: '/blog' },
+      { textKey: 'sections.about.links.careers', href: '/careers' },
+      { textKey: 'sections.about.links.jobs', href: '/jobs' },
+      { textKey: 'sections.about.links.privacy', href: '/privacy' },
+      { textKey: 'sections.about.links.terms', href: '/terms' }
     ]
   },
   {
-    title: 'ECSite',
+    titleKey: 'sections.support.title',
     links: [
-      { text: 'ECSite', href: '/support' },
-      { text: 'ECSite', href: '/shipping' },
-      { text: 'ECSite', href: '/returns' },
-      { text: 'ECSite', href: '/payment' },
-      { text: 'ECSite', href: '/contact' },
-      { text: 'ECSite', href: '/report' }
+      { textKey: 'sections.support.links.helpCenter', href: '/support' },
+      { textKey: 'sections.support.links.shippingGuide', href: '/shipping' },
+      { textKey: 'sections.support.links.returns', href: '/returns' },
+      { textKey: 'sections.support.links.payment', href: '/payment' },
+      { textKey: 'sections.support.links.contact', href: '/contact' },
+      { textKey: 'sections.support.links.report', href: '/report' }
     ]
   },
   {
-    title: 'ECSite',
+    titleKey: 'sections.policy.title',
     links: [
-      { text: 'ECSite', href: '/shipping-policy' },
-      { text: 'ECSite', href: '/return-policy' },
-      { text: 'ECSite', href: '/refund-policy' },
-      { text: 'ECSite', href: '/track-order' },
-      { text: 'ECSite', href: '/shipping-fees' },
-      { text: 'ECSite', href: '/complaints' }
+      { textKey: 'sections.policy.links.shippingPolicy', href: '/shipping-policy' },
+      { textKey: 'sections.policy.links.returnPolicy', href: '/return-policy' },
+      { textKey: 'sections.policy.links.refundPolicy', href: '/refund-policy' },
+      { textKey: 'sections.policy.links.trackOrder', href: '/track-order' },
+      { textKey: 'sections.policy.links.shippingFees', href: '/shipping-fees' },
+      { textKey: 'sections.policy.links.complaints', href: '/complaints' }
     ]
   },
   {
-    title: 'ECSite',
+    titleKey: 'sections.partner.title',
     links: [
-      { text: 'ECSite', href: '/seller' },
-      { text: 'Affiliate Program', href: '/affiliate' },
-      { text: 'ECSite', href: '/promotions' },
-      { text: 'ECSite', href: '/referral' },
-      { text: 'ECSite', href: '/logistics' },
-      { text: 'ECSite', href: '/wholesale' }
+      { textKey: 'sections.partner.links.seller', href: '/seller' },
+      { textKey: 'sections.partner.links.affiliate', href: '/affiliate' },
+      { textKey: 'sections.partner.links.promotions', href: '/promotions' },
+      { textKey: 'sections.partner.links.referral', href: '/referral' },
+      { textKey: 'sections.partner.links.logistics', href: '/logistics' },
+      { textKey: 'sections.partner.links.wholesale', href: '/wholesale' }
     ]
   }
 ]

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { memo, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { useCbbCategory } from '@/hooks/combobox/use-cbb-category'
 import { BannerSection } from './banner-section'
@@ -51,9 +52,14 @@ const SkeletonLoader = memo(() => (
 SkeletonLoader.displayName = 'SkeletonLoader'
 const EmptyState = memo(() => (
   <CarouselItem className="pl-4 basis-auto">
-    <div className="px-6 py-3 text-gray-500">Danh m?c</div>
+    <EmptyStateContent />
   </CarouselItem>
 ))
+
+const EmptyStateContent = () => {
+  const t = useTranslations('client.landing.categoriesSection')
+  return <div className="px-6 py-3 text-gray-500">{t('empty')}</div>
+}
 
 EmptyState.displayName = 'EmptyState'
 const NavigationButtons = memo(() => (
@@ -66,9 +72,9 @@ const NavigationButtons = memo(() => (
 NavigationButtons.displayName = 'NavigationButtons'
 
 function CategoriesSectionComponent() {
+  const t = useTranslations('client.landing.categoriesSection')
   const { categories, loading } = useCbbCategory(null)
 
-  
   const carouselOpts = useMemo(
     () => ({
       align: 'start' as const,
@@ -84,12 +90,11 @@ function CategoriesSectionComponent() {
     return categories.map((category: CategoryOption) => <CategoryItem key={category.value} category={category} />)
   }, [categories, loading])
 
-  
   const sectionTitle = useMemo(
     () => (
       <h2 className="text-lg font-bold text-gray-800 mb-3.5 flex items-center justify-center gap-1.5">
         <span className="tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-red-500/20">
-          Danh m?c
+          {t('title')}
         </span>
       </h2>
     ),

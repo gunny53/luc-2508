@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useEffect } from 'react'
 import { SearchInput } from './desktop-search-input'
 import { CartDropdown } from './desktop-cart'
@@ -8,49 +7,28 @@ import { Categories } from './desktop-categories'
 import { DropdownProvider, useDropdown } from '../dropdown-context'
 import { ProfileDropdown } from './desktop-profile'
 import { ChangeLangs } from './desktop-change-langs'
-import DesktopCommit from './desktop-commit'
-import { useScrollHeader } from '@/hooks/use-scroll-header'
 import { TopBar } from './header-top-bar'
+import { ECSiteLogo } from '@/components/brand/ecsite-logo'
 import '../style.css'
 function HeaderLayout() {
-  const showHeader = useScrollHeader()
   const { openDropdown, setOpenDropdown } = useDropdown()
-  
-  const showOverlay = openDropdown !== 'none' && openDropdown !== 'cart'
 
-  
+  const showOverlay = openDropdown !== 'none' && openDropdown !== 'cart'
   useEffect(() => {
-    if (!showHeader && openDropdown !== 'none') {
-      setOpenDropdown('none')
-    }
-  }, [showHeader, openDropdown, setOpenDropdown]) 
-  useEffect(() => {
-    document.body.style.overflow = '' 
+    document.body.style.overflow = ''
   }, [])
 
   return (
     <>
       <header
         className={`text-white max-h-[125px] h-[75px] text-[13px] relative z-50
-          bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-lg
-          transition-all duration-500 ease-in-out hidden md:block
-          ${showHeader ? 'translate-y-0' : '-translate-y-full'}`}
+          bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 shadow-lg
+          transition-all duration-500 ease-in-out hidden md:block`}
       >
         <div className="max-w-[1350px] mx-auto h-full header-container">
           <div className="px-4 h-full flex items-center justify-between gap-4">
             {}
-            <Link href="/" className="flex items-center gap-2 header-logo">
-              <div className="rounded-xl overflow-hidden">
-                <Image
-                  src="/images/logo/png-jpeg/Logo-Full-White.png"
-                  alt="ECSite Logo"
-                  width={125}
-                  height={40}
-                  priority
-                  className="object-contain rounded-xl"
-                />
-              </div>
-            </Link>
+            <ECSiteLogo variant="light" className="header-logo min-w-[130px]" />
             <div className="flex-1 max-w-[1000px] flex flex-col">
               <div className="flex items-center gap-4">
                 <div className="header-item transition-all duration-300 ease-in-out">

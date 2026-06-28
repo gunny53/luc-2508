@@ -6,8 +6,10 @@ import { ROUTES } from '@/constants/route'
 import { getStore } from '@/store/store'
 import { clearProfile } from '@/store/features/auth/profile-slide'
 
+const apiBaseURL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_API_BASE_URL : '/api'
+
 export const publicAxios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: apiBaseURL,
   withCredentials: true
 })
 
@@ -18,7 +20,7 @@ publicAxios.interceptors.request.use(
       if (csrfToken && config.headers) {
         config.headers['x-csrf-token'] = csrfToken
       }
-      
+
       const store = getStore()
       const lang = store.store.getState().langECSite?.language || 'vi'
       if (config.headers) {
@@ -35,13 +37,13 @@ publicAxios.interceptors.response.use(
     return response
   },
   (error) => {
-    console.error('❌ publicAxios error:', error)
+    console.error('publicAxios error:', error)
     return Promise.reject(error)
   }
 )
 
 export const refreshAxios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: apiBaseURL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -56,7 +58,7 @@ refreshAxios.interceptors.request.use(
       if (csrfToken && config.headers) {
         config.headers['x-csrf-token'] = csrfToken
       }
-      
+
       const store = getStore()
       const lang = store.store.getState().langECSite?.language || 'vi'
       if (config.headers) {
@@ -69,7 +71,7 @@ refreshAxios.interceptors.request.use(
 )
 
 export const privateAxios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: apiBaseURL,
   withCredentials: true
 })
 
@@ -80,7 +82,7 @@ privateAxios.interceptors.request.use(
       if (csrfToken && config.headers) {
         config.headers['x-csrf-token'] = csrfToken
       }
-      
+
       const store = getStore()
       const lang = store.store.getState().langECSite?.language || 'vi'
       if (config.headers) {
@@ -123,7 +125,7 @@ const handleLogout = async () => {
 
   clearAllCookies()
 
-  await persistor.purge()
+  await persistor?.purge()
 
   store.dispatch(clearProfile())
 

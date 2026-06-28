@@ -3,10 +3,36 @@
 import { useBrand } from '../use-brand'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
+function BrandLogo({ src, name }: { src?: string; name: string }) {
+  const [hasError, setHasError] = useState(false)
+  const isKnownBrokenRemote = src?.includes('ecsite.s3.ap-southeast-1.amazonaws.com')
+  const showImage = src && !hasError && !isKnownBrokenRemote
+  const initials = name
+    .split(' ')
+    .map((word) => word[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
+
+  if (!showImage) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center bg-orange-50 text-primary">
+        <span className="text-xl font-bold">{initials || 'EC'}</span>
+        <span className="mt-1 max-w-full truncate px-2 text-xs font-medium">{name}</span>
+      </div>
+    )
+  }
+
+  return <Image src={src} alt={name} fill className="object-contain p-4" onError={() => setHasError(true)} />
+}
+
 export default function SearchBrand() {
+  const t = useTranslations('client.searchPage.brand')
   const { data: brands, loading } = useBrand()
   const renderBrandItem = (brand: any, i: number) => {
     if (loading) {
@@ -26,13 +52,9 @@ export default function SearchBrand() {
         <Tooltip>
           <TooltipTrigger asChild>
             <div className="h-[113px] w-full flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 bg-white p-2">
-              {typedBrand.logo ? (
-                <div className="w-full h-full relative">
-                  <Image src={typedBrand.logo} alt={name} fill className="object-cover" />
-                </div>
-              ) : (
-                <span className="text-sm text-gray-600 font-medium text-center">{name}</span>
-              )}
+              <div className="w-full h-full relative overflow-hidden rounded-sm">
+                <BrandLogo src={typedBrand.logo} name={name} />
+              </div>
             </div>
           </TooltipTrigger>
           <TooltipContent>
@@ -47,11 +69,10 @@ export default function SearchBrand() {
   return (
     <div className="mb-6 bg-white p-2">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-gray-800 text-lg font-semibold">
-          Th??ng hi?u
-        </h2>
+        <h2 className="text-gray-800 text-lg font-semibold">{t('title')}</h2>
         <Link href="/brands" className="text-sm text-primary hover:underline whitespace-nowrap flex items-center gap-1">
-          Th??ng hi?u<span className="text-xs">&#8250;</span>
+          {t('viewAll')}
+          <span className="text-xs">&#8250;</span>
         </Link>
       </div>
 

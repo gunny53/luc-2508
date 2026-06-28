@@ -7,7 +7,7 @@ import { productMock } from './mock-data'
 
 export default function ProductInfoMobile({ product = productMock }) {
   const colors =
-    product.variants.find((v) => v.value === 'S?n ph?m')?.options || []
+    product.variants.find((v) => v.value === 'Sản phẩm')?.options || []
 
   const [selectedColor, setSelectedColor] = useState(colors[0] || '')
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -50,10 +50,10 @@ export default function ProductInfoMobile({ product = productMock }) {
 
       <div className="flex items-center justify-between">
         <div className="bg-red-100 text-red-500 px-2 py-0.5 rounded text-xs font-semibold">
-          S?n ph?m
+          Sản phẩm
         </div>
         <div className="flex items-center gap-1 text-xs text-gray-500">
-          <span>S?n ph?m</span>
+          <span>Sản phẩm</span>
           <Heart className="w-4 h-4 text-gray-400" />
         </div>
       </div>

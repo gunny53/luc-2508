@@ -3,13 +3,20 @@
 import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import { useProductsContext } from '../context/products-context'
+import { useTranslations } from 'next-intl'
 
 interface SearchSortBarProps {
   categoryId?: string | null
 }
 
 export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
-  const [sort, setSort] = useState('T?m ki?m')
+  const t = useTranslations('client.searchPage.sort')
+  const sortOptions = [
+    { value: 'relevance', label: t('relevance') },
+    { value: 'latest', label: t('latest') },
+    { value: 'topSales', label: t('topSales') }
+  ]
+  const [sort, setSort] = useState(sortOptions[0].value)
   const [showPriceDropdown, setShowPriceDropdown] = useState(false)
   const [priceSort, setPriceSort] = useState<string | null>(null)
   const { currentPage, paginationData, handlePageChange, isLoading } = useProductsContext()
@@ -32,21 +39,17 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
   return (
     <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm mb-4">
       <div className="flex items-center gap-3">
-        {[
-          'T?m ki?m',
-          'T?m ki?m',
-          'T?m ki?m'
-        ].map((option) => (
+        {sortOptions.map((option) => (
           <button
-            key={option}
+            key={option.value}
             className={`text-sm px-3 py-1.5 border rounded-md transition-colors duration-200 ${
-              sort === option
-                ? 'bg-red-600 text-white border-red-600'
-                : 'text-gray-700 hover:border-red-600 hover:text-red-600'
+              sort === option.value
+                ? 'bg-primary text-white border-primary'
+                : 'text-gray-700 hover:border-primary hover:text-primary'
             }`}
-            onClick={() => setSort(option)}
+            onClick={() => setSort(option.value)}
           >
-            {option}
+            {option.label}
           </button>
         ))}
 
@@ -54,12 +57,12 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
           <button
             className={`text-sm px-3 py-1.5 border rounded-md flex items-center gap-1 transition-colors duration-200 ${
               priceSort
-                ? 'bg-red-600 text-white border-red-600'
-                : 'text-gray-700 hover:border-red-600 hover:text-red-600'
+                ? 'bg-primary text-white border-primary'
+                : 'text-gray-700 hover:border-primary hover:text-primary'
             }`}
             onClick={() => setShowPriceDropdown(!showPriceDropdown)}
           >
-            {priceSort || 'T?m ki?m'}{' '}
+            {priceSort || t('price')}{' '}
             <ChevronDown
               size={14}
               className={`transition-transform duration-200 ${showPriceDropdown ? 'rotate-180' : ''}`}
@@ -72,20 +75,20 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
               <button
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors duration-150"
                 onClick={() => {
-                  setPriceSort('T?m ki?m')
+                  setPriceSort(t('priceAsc'))
                   setShowPriceDropdown(false)
                 }}
               >
-                T?m ki?m
+                {t('priceAsc')}
               </button>
               <button
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors duration-150"
                 onClick={() => {
-                  setPriceSort('T?m ki?m')
+                  setPriceSort(t('priceDesc'))
                   setShowPriceDropdown(false)
                 }}
               >
-                T?m ki?m
+                {t('priceDesc')}
               </button>
             </div>
           )}
@@ -95,7 +98,7 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
       {!isLoading && totalPages > 1 && (
         <div className="flex items-center gap-2">
           <button
-            className="p-1.5 border rounded-md hover:border-red-600 hover:text-red-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="p-1.5 border rounded-md hover:border-primary hover:text-primary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={!hasPrevPage}
           >
@@ -109,7 +112,7 @@ export default function SearchSortBar({ categoryId }: SearchSortBarProps) {
           </div>
 
           <button
-            className="p-1.5 border rounded-md hover:border-red-600 hover:text-red-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="p-1.5 border rounded-md hover:border-primary hover:text-primary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={!hasNextPage}
           >

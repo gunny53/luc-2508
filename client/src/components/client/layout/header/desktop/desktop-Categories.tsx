@@ -1,9 +1,10 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronRight, ChevronDown, Menu } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { useCbbCategory } from '@/hooks/combobox/use-cbb-category'
@@ -20,15 +21,14 @@ interface CategoryOption {
 }
 
 export function Categories() {
+  const t = useTranslations('client.header.categories')
   const [activeCategory, setActiveCategory] = useState<CategoryOption | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { openDropdown, setOpenDropdown } = useDropdown()
 
-  
   const { categories: parentCategories, loading: parentLoading } = useCbbCategory(null)
 
-  
   const { categories: subCategories, loading: subLoading } = useCbbCategory(activeCategory?.value || null)
 
   const open = openDropdown === 'categories'
@@ -39,7 +39,7 @@ export function Categories() {
 
   const handleMouseLeave = () => {
     setOpenDropdown('none')
-    setActiveCategory(null) 
+    setActiveCategory(null)
   }
 
   const handleClick = () => {
@@ -47,16 +47,15 @@ export function Categories() {
   }
 
   useEffect(() => {
-    
     if (open && !parentLoading && parentCategories.length > 0 && !activeCategory) {
       setActiveCategory(parentCategories[0])
     }
-    
+
     if (!open) {
       setActiveCategory(null)
     }
   }, [open, parentLoading, parentCategories, activeCategory])
-  
+
   return (
     <>
       {}{' '}
@@ -90,7 +89,7 @@ export function Categories() {
               scaleY: open ? 1 : 0.8
             }}
             whileHover={{
-              backgroundColor: 'rgba(233, 233, 233, 0.4)', 
+              backgroundColor: 'rgba(233, 233, 233, 0.4)',
               boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
               scaleX: [0.8, 1.1, 1],
               scaleY: [0.9, 1.05, 1]
@@ -110,7 +109,7 @@ export function Categories() {
             onClick={handleClick}
           >
             <Menu className="w-5 h-5" />
-            Danh m?c
+            {t('title')}
             <motion.span
               animate={{ rotate: open ? 180 : 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -153,8 +152,7 @@ export function Categories() {
             <div className="h-full w-1/4 bg-white border-r-1 pr-2 py-4 rounded-l-md overflow-y-auto">
               <div role="menu" className="space-y-1">
                 {parentLoading
-                  ? 
-                    Array.from({ length: 8 }).map((_, index) => (
+                  ? Array.from({ length: 8 }).map((_, index) => (
                       <div key={index} className="flex items-center justify-between px-3 py-2 h-[38px]">
                         <Skeleton className="h-5 w-3/4" />
                         <Skeleton className="h-4 w-4" />
@@ -179,7 +177,6 @@ export function Categories() {
             </div>
             <div className="w-3/4 p-4 bg-white rounded-r-md overflow-y-auto h-full">
               {subLoading ? (
-                
                 <div className="space-y-6">
                   <div className="flex items-center justify-between mb-3">
                     <Skeleton className="h-6 w-1/3" />
@@ -200,9 +197,9 @@ export function Categories() {
                     <h3 className="text-base font-bold text-gray-800">{activeCategory.label}</h3>
                     <Link
                       href={createCategorySlug(activeCategory.label, [activeCategory.value])}
-                      className="flex items-center text-sm text-red-600 hover:underline font-medium"
+                      className="flex items-center text-sm text-primary hover:underline font-medium"
                     >
-                      Danh m?c
+                      {t('viewAll')}
                       <ChevronRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
@@ -235,11 +232,7 @@ export function Categories() {
                 </div>
               ) : (
                 <div className="flex items-center justify-center h-full text-gray-500">
-                  <p>
-                    {activeCategory
-                      ? `Danh m?c${activeCategory.label}`
-                      : 'Danh m?c'}
-                  </p>
+                  <p>{activeCategory ? t('emptyChildren', { category: activeCategory.label }) : t('empty')}</p>
                 </div>
               )}
             </div>

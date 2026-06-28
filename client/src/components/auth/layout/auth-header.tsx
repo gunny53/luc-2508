@@ -1,9 +1,9 @@
 'use client'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import LanguageDropdown from '@/components/ui/languagedropdown'
 import '@/i18n/i18n'
 import { useTranslations } from 'next-intl'
+import { ECSiteLogo } from '@/components/brand/ecsite-logo'
 
 export function AuthHeader() {
   const t = useTranslations()
@@ -16,16 +16,7 @@ export function AuthHeader() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <a href="/" className="flex items-center">
-          <Image
-            src="/images/logo/png-jpeg/Logo-Full-Red.png"
-            alt="ECSite Logo"
-            width={200}
-            height={200}
-            className="h-10 w-auto"
-            priority
-          />
-        </a>
+        <ECSiteLogo variant="orange" textClassName="text-2xl" />
         <h1 className="text-2xl font-small text-black whitespace-nowrap hidden md:inline">{}</h1>
       </motion.div>
 
@@ -35,7 +26,6 @@ export function AuthHeader() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex items-center gap-6 text-sm text-primary cursor-pointer"
       >
-
         <LanguageDropdown />
       </motion.div>
     </header>

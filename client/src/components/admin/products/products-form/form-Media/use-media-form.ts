@@ -157,7 +157,7 @@ export function useMediaForm({ initialImageUrls }: UseMediaFormProps) {
     async (files: File[]) => {
       const availableSlots = 12 - imageObjects.length
       if (availableSlots <= 0) {
-        toast.warning('S?n ph?m')
+        toast.warning('Sản phẩm')
         return
       }
 

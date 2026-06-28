@@ -1,8 +1,6 @@
-
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { CgMenuLeft } from 'react-icons/cg'
 
 import { CartDropdown } from '../desktop/desktop-cart'
@@ -11,7 +9,7 @@ import { DropdownProvider } from '../dropdown-context'
 import { MobileSearchInput } from './moblie-search-input'
 import '../style.css'
 import { MobileCategories } from './moblie-categories'
-import Link from 'next/link'
+import { ECSiteLogo } from '@/components/brand/ecsite-logo'
 
 export function MobileHeader() {
   const [categories, setCategories] = useState<any[]>([])
@@ -19,7 +17,7 @@ export function MobileHeader() {
   return (
     <DropdownProvider>
       <header
-        className="fixed top-0 left-0 right-0 z-[999] w-full bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-lg text-white text-[13px] py-2.5 md:hidden"
+        className="fixed top-0 left-0 right-0 z-[999] w-full bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 shadow-lg text-white text-[13px] py-2.5 md:hidden"
         style={{
           minHeight: '88px'
         }}
@@ -30,16 +28,7 @@ export function MobileHeader() {
               <MobileCategories>
                 <CgMenuLeft size={28} strokeWidth={0.1} className="cursor-pointer hover:opacity-80 transition" />
               </MobileCategories>
-              <div className="relative h-8 w-28">
-                <Link href="/">
-                  <Image
-                    src="/images/logo/png-jpeg/Logo-Full-White.png"
-                    alt="ECSite Logo"
-                    fill
-                    className="object-contain cursor-pointer"
-                  />
-                </Link>
-              </div>
+              <ECSiteLogo variant="light" className="min-w-[112px]" textClassName="text-xl" />
             </div>
 
             <div className="flex items-center gap-2">

@@ -1,56 +1,25 @@
-
 'use client'
 
 import { Header as DesktopHeader } from './desktop/desktop-index'
 import { MobileHeader } from './moblie/moblie-index'
-import { DropdownProvider } from './dropdown-context'
 import { useResponsive } from '@/hooks/use-responsive'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import './style.css'
 
 export function Header() {
   const { isMobile } = useResponsive()
-  const [isMounted, setIsMounted] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsMounted(true)
-      setIsLoading(false)
-    }, 800)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  
-  if (!isMounted) {
-    return (
-      <div className="fixed top-0 left-0 right-0 z-50 h-[60px] bg-gradient-to-r from-red-700 via-red-600 to-red-700" />
-    )
-  }
 
   return (
-    <AnimatePresence mode="wait">
+    <>
       {isMobile ? (
-        <motion.div
-          key="mobile"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="relative"
+        <header
+          className="fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500"
+          style={{ height: 'auto', minHeight: '60px' }}
         >
-          <header
-            className="fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-red-700 via-red-600 to-red-700"
-            style={{ height: 'auto', minHeight: '60px' }}
-          >
-            <MobileHeader />
-          </header>
-        </motion.div>
+          <MobileHeader />
+        </header>
       ) : (
         <DesktopHeader />
       )}
-    </AnimatePresence>
+    </>
   )
 }

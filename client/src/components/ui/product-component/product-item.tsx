@@ -5,12 +5,12 @@ import { formatCurrency } from '@/utils/formatter'
 import { ROUTES } from '@/constants/route'
 import { getProductUrl } from '@/components/client/products/shared/routes'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useState } from 'react'
 
 interface ProductItemProps {
   product?: ClientProduct
   isLoading?: boolean
 }
-
 
 export const ProductItemSkeleton: React.FC = () => {
   return (
@@ -31,6 +31,7 @@ export const ProductItemSkeleton: React.FC = () => {
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
+  const [imageError, setImageError] = useState(false)
   if (isLoading || !product) {
     return <ProductItemSkeleton />
   }
@@ -38,20 +39,24 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
   const salePrice = product.basePrice
   const hasDiscount = originalPrice > salePrice
   const discountPercent = hasDiscount ? Math.round(((originalPrice - salePrice) / originalPrice) * 100) : 0
+  const productImage = imageError
+    ? '/images/image-placeholder.jpg'
+    : product.images[0] || '/images/image-placeholder.jpg'
 
   return (
     <Link href={getProductUrl(product.name, product.id)} passHref>
       <div className="group block w-full bg-white border border-gray-200 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-200 ease-in-out cursor-pointer overflow-hidden">
         <div className="relative">
           <Image
-            src={product.images[0] || '/images/placeholder-product.png'}
+            src={productImage}
             alt={product.name}
             width={200}
             height={200}
             className="w-full h-auto object-cover aspect-square"
+            onError={() => setImageError(true)}
           />
           {hasDiscount && (
-            <div className="absolute top-0 right-0 bg-[#FEEEEA] text-red-600 text-[10px] font-semibold px-2 py-1 flex flex-col items-center justify-center">
+            <div className="absolute top-0 right-0 bg-orange-50 text-primary text-[10px] font-semibold px-2 py-1 flex flex-col items-center justify-center">
               <span>{`-${discountPercent}%`}</span>
             </div>
           )}
@@ -61,7 +66,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, isLoading }) => {
           <div className="mt-auto">
             <div className="flex items-center justify-between text-xs text-gray-500">
               <div className="flex items-center gap-1">
-                <span className="text-base font-medium text-red-600">{formatCurrency(salePrice)}</span>
+                <span className="text-base font-medium text-primary">{formatCurrency(salePrice)}</span>
                 {hasDiscount && (
                   <span className="text-xs line-through text-gray-500">{formatCurrency(originalPrice)}</span>
                 )}

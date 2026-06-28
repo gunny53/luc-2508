@@ -1,13 +1,14 @@
-
 import { clientProductsService } from '@/services/client-products-service'
 import ProductPageWrapper from '@/components/client/products/products-wrapper'
 import { extractProductId } from '@/components/client/products/shared/product-slug'
 import { Metadata, ResolvingMetadata } from 'next'
+
 export const revalidate = 300
 
 interface PageProps {
   params: Promise<{ slug: string }>
 }
+
 export async function generateMetadata({ params }: PageProps, parent: ResolvingMetadata): Promise<Metadata> {
   const { slug } = await params
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: PageProps, parent: ResolvingM
     const previousImages = (await parent).openGraph?.images || []
     const description = productData.description
       ? `${productData.description.slice(0, 150)}...`
-      : `Mua ${productData.name}S?n ph?m`
+      : `Mua ${productData.name} trên ECSite`
 
     return {
       title: `${productData.name} | ECSite`,
@@ -42,10 +43,10 @@ export async function generateMetadata({ params }: PageProps, parent: ResolvingM
       }
     }
   } catch (error) {
-    console.error('❌ [Metadata] Error generating metadata:', error)
+    console.error('[Metadata] Error generating metadata:', error)
     return {
-      title: 'S?n ph?m',
-      description: 'S?n ph?m'
+      title: 'Sản phẩm | ECSite',
+      description: 'Chi tiết sản phẩm trên ECSite'
     }
   }
 }
@@ -55,12 +56,10 @@ export default async function Page({ params }: PageProps) {
 
   try {
     const productId = extractProductId(slug)
-    console.log(`✅ [Server] Extracted product ID from slug: ${productId}`)
     const productData = await clientProductsService.getProductDetail(productId)
-    console.log(`✅ [Server] Fetched product: ${productData.name} (ID: ${productData.id})`)
     return <ProductPageWrapper slug={slug} initialData={productData} />
   } catch (error) {
-    console.error('❌ [Server] Error fetching product:', error)
-    throw error
+    console.error('[Server] Error fetching product:', error)
+    return <ProductPageWrapper slug={slug} error={error instanceof Error ? { message: error.message } : error} />
   }
 }

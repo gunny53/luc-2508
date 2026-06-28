@@ -1,7 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
 import { Bell, Search, Settings, User, ChevronDown, Store, Globe, LogOut, Menu, Check } from 'lucide-react'
 import { useResponsive } from '@/hooks/use-responsive'
 import {
@@ -21,6 +19,7 @@ import { SearchItem } from './search-item'
 import { useTranslations } from 'next-intl'
 import { NotificationSheet } from './notification-sheet'
 import { useState } from 'react'
+import { ECSiteLogo } from '@/components/brand/ecsite-logo'
 
 interface HeaderProps {
   onToggleSidebar: () => void
@@ -42,15 +41,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
               <Menu className="w-6 h-6" />
             </Button>
           )}
-          <Link href="/admin" className="items-center hidden lg:flex">
-            <Image
-              src="/images/logo/png-jpeg/Logo-Full-Red.png"
-              alt="ECSite Logo"
-              width={116}
-              height={66}
-              className="mr-2"
-            />
-          </Link>
+          <ECSiteLogo href="/admin" variant="orange" className="hidden lg:flex" textClassName="text-xl" />
         </div>
 
         {!isMobile && <SearchItem />}
@@ -62,7 +53,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
             aria-label={t('admin.notifications.title')}
           >
             <Bell className="h-5 w-5 text-gray-600" />
-            <span className="absolute top-1 right-1 bg-red-600 rounded-full w-2 h-2"></span>
+            <span className="absolute top-1 right-1 bg-primary rounded-full w-2 h-2"></span>
           </Button>
 
           <NotificationSheet open={notificationOpen} onOpenChange={setNotificationOpen} />

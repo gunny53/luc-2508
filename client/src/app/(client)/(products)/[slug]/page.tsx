@@ -23,13 +23,13 @@ function cleanCategoryName(slug: string): string {
 }
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  let title = 'S?n ph?m'
-  let description = 'S?n ph?m'
+  let title = 'Sản phẩm | ECSite'
+  let description = 'Khám phá sản phẩm trên ECSite'
 
   if (isCategorySlug(slug)) {
     const categoryName = cleanCategoryName(slug)
-    title = `S?n ph?m${categoryName}S?n ph?m`
-    description = `S?n ph?m${categoryName.toLowerCase()}S?n ph?m`
+    title = `${categoryName} | ECSite`
+    description = `Khám phá sản phẩm ${categoryName.toLowerCase()} trên ECSite`
   }
 
   return {
@@ -59,12 +59,6 @@ export default async function ProductPage({ params }: PageProps) {
     categoryIds = extractCategoryIds(slug)
     currentCategoryId = extractCurrentCategoryId(slug) || categoryIds[categoryIds.length - 1]
   }
-
-  console.log('ProductPage:', {
-    slug: decodeURIComponent(slug),
-    categoryIds,
-    currentCategoryId
-  })
 
   return <SearchContent categoryIds={categoryIds} currentCategoryId={currentCategoryId} />
 }

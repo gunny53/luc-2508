@@ -12,42 +12,42 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 const DEFAULT_SPECIFICATIONS = [
   {
     id: 'origin',
-    name: 'S?n ph?m',
+    name: 'Sản phẩm',
     value: '',
     required: true,
     icon: '🌍'
   },
   {
     id: 'material',
-    name: 'S?n ph?m',
+    name: 'Sản phẩm',
     value: '',
     required: true,
     icon: '🧱'
   },
   {
     id: 'warehouse',
-    name: 'S?n ph?m',
+    name: 'Sản phẩm',
     value: '',
     required: true,
     icon: '🏪'
   },
   {
     id: 'stockLocation',
-    name: 'S?n ph?m',
+    name: 'Sản phẩm',
     value: '',
     required: true,
     icon: '📍'
   },
   {
     id: 'shipping',
-    name: 'S?n ph?m',
+    name: 'Sản phẩm',
     value: '',
     required: true,
     icon: '📦'
   },
   {
     id: 'warranty',
-    name: 'S?n ph?m',
+    name: 'Sản phẩm',
     value: '',
     required: false,
     icon: '🛡️'
@@ -169,19 +169,19 @@ export function ProductSpecificationsForm({
       if (isRequired) {
         
         if (!spec.name.trim()) {
-          newErrors[`spec-${index}-name`] = 'S?n ph?m'
+          newErrors[`spec-${index}-name`] = 'Sản phẩm'
           isValid = false
         }
 
         
         if (!spec.value.trim()) {
-          newErrors[`spec-${index}-value`] = 'S?n ph?m'
+          newErrors[`spec-${index}-value`] = 'Sản phẩm'
           isValid = false
         }
       }
       
       else if (spec.name.trim() && !spec.value.trim()) {
-        newErrors[`spec-${index}-value`] = 'S?n ph?m'
+        newErrors[`spec-${index}-value`] = 'Sản phẩm'
         isValid = false
       }
     })
@@ -236,12 +236,12 @@ export function ProductSpecificationsForm({
           <div className="flex items-center space-x-2">
             <Package className="h-5 w-5 text-blue-600" />
             <CardTitle className="text-lg font-semibold text-gray-900">
-              S?n ph?m
+              Sản phẩm
             </CardTitle>
           </div>
           <div className="flex items-center space-x-2 text-sm text-gray-500">
             <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
-              {filledSpecs}/{specifications.length} S?n ph?m
+              {filledSpecs}/{specifications.length} Sản phẩm
             </span>
             <Button
               type="button"
@@ -255,7 +255,7 @@ export function ProductSpecificationsForm({
           </div>
         </div>
         <CardDescription className="text-gray-600">
-          S?n ph?m
+          Sản phẩm
         </CardDescription>
       </CardHeader>
 
@@ -265,7 +265,7 @@ export function ProductSpecificationsForm({
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">
-                S?n ph?m
+                Sản phẩm
               </span>
               <span className="text-sm text-gray-500">{Math.round((filledSpecs / specifications.length) * 100)}%</span>
             </div>
@@ -282,7 +282,7 @@ export function ProductSpecificationsForm({
             <Alert variant="destructive" className="border-red-200 bg-red-50">
               <AlertCircle className="h-4 w-4 text-red-600" />
               <AlertDescription className="text-red-700">
-                S?n ph?m
+                Sản phẩm
               </AlertDescription>
             </Alert>
           )}
@@ -292,7 +292,7 @@ export function ProductSpecificationsForm({
             <div className="flex items-center space-x-2 mb-3">
               <div className="h-1 w-8 bg-red-500 rounded"></div>
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                S?n ph?m
+                Sản phẩm
               </h3>
             </div>
 
@@ -324,13 +324,13 @@ export function ProductSpecificationsForm({
                     </div>
                     <div>
                       <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">
-                        S?n ph?m<span className="text-red-500">*</span>
+                        Sản phẩm<span className="text-red-500">*</span>
                       </Label>
                       <Input
                         id={`spec-value-${index}`}
                         value={spec.value}
                         onChange={(e) => updateSpecification(index, 'value', e.target.value)}
-                        placeholder={`S?n ph?m${spec.name.toLowerCase()}`}
+                        placeholder={`Sản phẩm${spec.name.toLowerCase()}`}
                         className={`mt-1 ${hasError(index, 'value') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                       />
                       {hasError(index, 'value') && (
@@ -351,7 +351,7 @@ export function ProductSpecificationsForm({
             <div className="flex items-center space-x-2 mb-3">
               <div className="h-1 w-8 bg-blue-500 rounded"></div>
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                S?n ph?m
+                Sản phẩm
               </h3>
             </div>
 
@@ -372,7 +372,7 @@ export function ProductSpecificationsForm({
                       >
                         {spec.icon && <span>{spec.icon}</span>}
                         <span>
-                          {isDefault ? spec.name : 'S?n ph?m'}
+                          {isDefault ? spec.name : 'Sản phẩm'}
                         </span>
                       </Label>
                       {isDefault ? (
@@ -387,7 +387,7 @@ export function ProductSpecificationsForm({
                           id={`spec-name-${index}`}
                           value={spec.name}
                           onChange={(e) => updateSpecification(index, 'name', e.target.value)}
-                          placeholder="S?n ph?m"
+                          placeholder="Sản phẩm"
                           className={`mt-1 ${hasError(index, 'name') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                         />
                       )}
@@ -401,7 +401,7 @@ export function ProductSpecificationsForm({
                     <div>
                       <div className="flex items-center justify-between">
                         <Label htmlFor={`spec-value-${index}`} className="text-sm font-medium text-gray-700">
-                          S?n ph?m
+                          Sản phẩm
                         </Label>
                         {!isDefault && (
                           <Button
@@ -419,7 +419,7 @@ export function ProductSpecificationsForm({
                         id={`spec-value-${index}`}
                         value={spec.value}
                         onChange={(e) => updateSpecification(index, 'value', e.target.value)}
-                        placeholder={`S?n ph?m${spec.name || 'S?n ph?m'}`}
+                        placeholder={`Sản phẩm${spec.name || 'Sản phẩm'}`}
                         className={`mt-1 ${hasError(index, 'value') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                       />
                       {hasError(index, 'value') && (
@@ -444,7 +444,7 @@ export function ProductSpecificationsForm({
               onClick={addSpecification}
             >
               <PlusCircle className="mr-2 h-5 w-5" />
-              <span className="font-medium">S?n ph?m</span>
+              <span className="font-medium">Sản phẩm</span>
             </Button>
           </div>
 
@@ -453,8 +453,8 @@ export function ProductSpecificationsForm({
             <div className="flex items-start space-x-2">
               <Info className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
               <div className="text-xs text-blue-700">
-                <p className="font-medium mb-1">S?n ph?m</p>
-                <p>S?n ph?m</p>
+                <p className="font-medium mb-1">Sản phẩm</p>
+                <p>Sản phẩm</p>
               </div>
             </div>
           </div>

@@ -14,21 +14,21 @@ import {
 } from '@/components/ui/pagination'
 import { useProductsContext } from '../context/products-context'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 interface SearchProductGridProps {
   categoryId?: string | null
 }
 
 export default function SearchProductGrid({ categoryId }: SearchProductGridProps) {
+  const t = useTranslations('client.searchPage.products')
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('q') || ''
-  console.log('SearchProductGrid rendering with:', { categoryId, searchQuery })
   const { products, metadata, isLoading, isError, error, currentPage, handlePageChange, paginationData } =
     useProductsContext()
 
   const { totalPages, hasNextPage, hasPrevPage } = paginationData
 
-  console.log(' check: ', products)
   if (isLoading) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -48,12 +48,12 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
   if (isError) {
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
-        <div className="text-red-500 mb-4">S?n ph?m</div>
+        <div className="text-primary mb-4">{t('loadError')}</div>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+          className="px-4 py-2 bg-primary text-white rounded-md hover:bg-orange-700 transition-colors"
         >
-          S?n ph?m
+          {t('retry')}
         </button>
       </div>
     )
@@ -65,11 +65,7 @@ export default function SearchProductGrid({ categoryId }: SearchProductGridProps
     return (
       <div className="w-full py-12 flex flex-col items-center justify-center">
         <div className="text-black text-lg mb-2">
-          {searchQuery
-            ? `S?n ph?m${searchQuery}"`
-            : categoryId
-              ? 'S?n ph?m'
-              : 'S?n ph?m'}
+          {searchQuery ? t('emptySearch', { query: searchQuery }) : categoryId ? t('emptyCategory') : t('empty')}
         </div>
       </div>
     )

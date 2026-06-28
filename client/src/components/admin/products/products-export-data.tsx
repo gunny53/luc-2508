@@ -43,14 +43,14 @@ export function ProductsExportData<TData>({ table, data }: ProductsExportDataPro
   const [fileType, setFileType] = useState(fileFormats[0].value)
 
   const handleExport = () => {
-    console.log('S?n ph?m', {
+    console.log('Sản phẩm', {
       dateRange: date,
       format: fileType,
       selectedRows: table?.getFilteredSelectedRowModel().rows.map((row) => row.original),
       allData: data
     })
     alert(
-      `S?n ph?m${fileType.toUpperCase()}S?n ph?m`
+      `Sản phẩm${fileType.toUpperCase()}Sản phẩm`
     )
     setIsOpen(false)
   }

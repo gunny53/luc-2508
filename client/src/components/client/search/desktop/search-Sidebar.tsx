@@ -9,14 +9,7 @@ import { ChevronRight, ListFilter, MapPin, Truck, Store, X, ChevronDown } from '
 import { useSidebar } from '../hooks/use-sidebar'
 import { createCategorySlug } from '@/utils/slugify'
 import Link from 'next/link'
-const locations = [
-  'T?m ki?m',
-  'T?m ki?m',
-  'T?m ki?m',
-  'T?m ki?m'
-]
-const shippingOptions = ['Nhanh', 'T?m ki?m']
-const brands = ['Nike', 'Adidas', 'Uniqlo', 'Zara', 'H&M']
+import { useTranslations } from 'next-intl'
 
 interface SearchSidebarProps {
   categoryIds?: string[]
@@ -24,6 +17,7 @@ interface SearchSidebarProps {
 }
 
 export default function SearchSidebar({ categoryIds = [], currentCategoryId }: SearchSidebarProps) {
+  const t = useTranslations('client.searchPage.sidebar')
   const {
     parentCategory,
     selectedCategory,
@@ -39,9 +33,9 @@ export default function SearchSidebar({ categoryIds = [], currentCategoryId }: S
   return (
     <aside className="w-64 shrink-0 space-y-6 text-sm">
       <CategorySectionWithParent
-        title="T?m ki?m"
+        title={t('filters')}
         icon={<ListFilter className="h-4 w-4" />}
-        parentCategory={parentCategory?.label || 'T?m ki?m'}
+        parentCategory={parentCategory?.label || t('allCategories')}
         parentCategoryId={parentCategory?.value || ''}
         items={subcategories.map((cat) => cat.label)}
         itemIds={subcategories.map((cat) => cat.value)}
@@ -50,6 +44,8 @@ export default function SearchSidebar({ categoryIds = [], currentCategoryId }: S
         onParentSelect={(id, name) => handleCategorySelect(id, name, true)}
         onChildSelect={(id, name) => handleCategorySelect(id, name, false)}
         isLoading={loadingSubcategories}
+        showLessLabel={t('showLess')}
+        showMoreLabel={t('showMore')}
       />
       <Separator className="my-4" />
     </aside>
@@ -74,7 +70,9 @@ function CategorySectionWithParent({
   selectedValue,
   onParentSelect,
   onChildSelect,
-  isLoading
+  isLoading,
+  showLessLabel,
+  showMoreLabel
 }: {
   title: string
   icon?: React.ReactNode
@@ -87,6 +85,8 @@ function CategorySectionWithParent({
   onParentSelect: (id: string, name: string) => void
   onChildSelect: (id: string, name: string) => void
   isLoading?: boolean
+  showLessLabel: string
+  showMoreLabel: string
 }) {
   const [expanded, setExpanded] = useState(false)
 
@@ -103,14 +103,14 @@ function CategorySectionWithParent({
       <div className="space-y-1">
         <div
           className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-200 ${
-            selectedValue === parentCategoryId ? 'font-bold text-red-600' : 'hover:bg-gray-50 font-medium'
+            selectedValue === parentCategoryId ? 'font-bold text-primary' : 'hover:bg-gray-50 font-medium'
           }`}
           onClick={() => onParentSelect(parentCategoryId, parentCategory)}
         >
           <Link href={createCategorySlug(parentCategory, [parentCategoryId])} className="block">
             <div className="flex items-center justify-between">
               <span>{parentCategory}</span>
-              {selectedValue === parentCategoryId && <ChevronRight className="h-4 w-4 text-red-500" />}
+              {selectedValue === parentCategoryId && <ChevronRight className="h-4 w-4 text-primary" />}
             </div>
           </Link>
         </div>
@@ -134,14 +134,14 @@ function CategorySectionWithParent({
                 <div
                   key={item}
                   className={`px-3 py-1.5 rounded-md cursor-pointer transition-colors duration-200 ${
-                    selectedValue === itemId ? 'bg-red-50 text-red-600' : 'hover:bg-gray-50'
+                    selectedValue === itemId ? 'bg-orange-50 text-primary' : 'hover:bg-gray-50'
                   }`}
                   onClick={() => onChildSelect(itemId, item)}
                 >
                   <Link href={href} className="block">
                     <div className="flex items-center justify-between">
                       <span>{item}</span>
-                      {selectedValue === itemId && <ChevronRight className="h-4 w-4 text-red-500" />}
+                      {selectedValue === itemId && <ChevronRight className="h-4 w-4 text-primary" />}
                     </div>
                   </Link>
                 </div>
@@ -150,12 +150,10 @@ function CategorySectionWithParent({
 
             {items.length > 5 && (
               <button
-                className="text-red-600 hover:text-red-800 text-sm font-medium mt-1 flex items-center"
+                className="text-primary hover:text-orange-700 text-sm font-medium mt-1 flex items-center"
                 onClick={() => setExpanded(!expanded)}
               >
-                {expanded
-                  ? 'T?m ki?m'
-                  : 'T?m ki?m'}
+                {expanded ? showLessLabel : showMoreLabel}
                 <ChevronDown className={`h-3.5 w-3.5 ml-1 transition-transform ${expanded ? 'rotate-180' : ''}`} />
               </button>
             )}
@@ -197,11 +195,11 @@ function CheckboxFilterSection({
                 id={`${title}-${item}`}
                 checked={isChecked}
                 onCheckedChange={(checked) => onCheckChange?.(item, checked === true)}
-                className="data-[state=checked]:bg-red-600 data-[state=checked]:border-red-600"
+                className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
               />
               <Label
                 htmlFor={`${title}-${item}`}
-                className={`text-sm cursor-pointer w-full ${isChecked ? 'text-red-600' : 'font-normal'}`}
+                className={`text-sm cursor-pointer w-full ${isChecked ? 'text-primary' : 'font-normal'}`}
               >
                 {item}
               </Label>

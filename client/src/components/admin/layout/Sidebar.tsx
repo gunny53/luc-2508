@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useSidebarConfig, useSettingsSidebarConfig, SidebarItem } from '@/constants/sidebar-config'
 import { ChevronDown, X, Undo, Settings, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -11,6 +10,7 @@ import { useResponsive } from '@/hooks/use-responsive'
 import { Button } from '@/components/ui/button'
 import { ProfileDropdownSidebar } from './profile-dropdown-sidebar'
 import { useTranslations } from 'next-intl'
+import { ECSiteLogo } from '@/components/brand/ecsite-logo'
 
 interface SidebarProps {
   isOpen?: boolean
@@ -223,15 +223,7 @@ export function Sidebar({ isOpen: externalOpen, onOpenChange, onCollapse }: Side
       >
         {isMobile && (
           <div className="flex items-center justify-between h-16 px-4 border-b">
-            <Link href="/admin" className="flex items-center">
-              <Image
-                src="/images/logo/png-jpeg/Logo-Full-Red.png"
-                alt="ECSite Logo"
-                width={116}
-                height={66}
-                className="mr-2"
-              />
-            </Link>
+            <ECSiteLogo href="/admin" variant="orange" textClassName="text-xl" />
             <Button onClick={() => setOpen(false)} className="text-gray-500 bg-white">
               <X className="w-5 h-5" />
             </Button>
@@ -247,9 +239,7 @@ export function Sidebar({ isOpen: externalOpen, onOpenChange, onCollapse }: Side
           <nav className="p-4 space-y-2">
             {isSettingsPage
               ? renderSettingsSidebar()
-              : currentSidebarConfig
-                  .filter((item) => item.title !== 'ECSite')
-                  .map((item) => renderItem(item))}
+              : currentSidebarConfig.filter((item) => item.title !== 'ECSite').map((item) => renderItem(item))}
           </nav>
         </div>
         {!isSettingsPage && !isCollapsed && (

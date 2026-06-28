@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Search, X, Clock } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { clientProductsService } from '@/services/client-products-service'
 import { useDebounce } from '@/hooks/use-debounce'
 import { ClientSearchResultItem } from '@/types/client.products.interface'
@@ -14,6 +15,7 @@ import { useCbbCategory } from '@/hooks/combobox/use-cbb-category'
 import { createProductSlug } from '@/components/client/products/shared/product-slug'
 
 export function MobileSearchInput() {
+  const t = useTranslations('client.header.search')
   const [searchTerm, setSearchTerm] = useState('')
   const [totalItems, setTotalItems] = useState<number>(0)
   const [searchSuggestions, setSearchSuggestions] = useState<ClientSearchResultItem[]>([])
@@ -151,7 +153,7 @@ export function MobileSearchInput() {
                 else setIsFocused(false)
               }
             }}
-            placeholder="T?m ki?m"
+            placeholder={t('placeholder')}
             className="flex-1 bg-transparent text-sm text-black placeholder-gray-400 focus:outline-none"
             role="combobox"
             aria-expanded={isFocused}
@@ -186,23 +188,19 @@ export function MobileSearchInput() {
                 {!searchTerm ? (
                   <>
                     {searchHistory.length === 0 ? (
-                      <div className="px-4 py-6 text-center text-gray-400 text-sm">
-                        T?m ki?m
-                      </div>
+                      <div className="px-4 py-6 text-center text-gray-400 text-sm">{t('typeToSearch')}</div>
                     ) : (
                       <div className="px-4 pt-3">
                         <div className="flex justify-between items-center mb-2">
-                          <h3 className="text-sm font-semibold text-gray-800">
-                            T?m ki?m
-                          </h3>
+                          <h3 className="text-sm font-semibold text-gray-800">{t('history')}</h3>
                           <button
-                            className="text-xs text-red-500 hover:underline"
+                            className="text-xs text-primary hover:underline"
                             onClick={() => {
                               setSearchHistory([])
                               localStorage.removeItem('searchHistory')
                             }}
                           >
-                            T?m ki?m
+                            {t('clearAll')}
                           </button>
                         </div>
 
@@ -218,7 +216,7 @@ export function MobileSearchInput() {
                                 <span className="text-sm text-gray-800">{term}</span>
                               </div>
                               <X
-                                className="h-4 w-4 text-gray-400 hover:text-red-500 flex-shrink-0"
+                                className="h-4 w-4 text-gray-400 hover:text-primary flex-shrink-0"
                                 onClick={(e) => {
                                   e.stopPropagation()
                                   const newHistory = searchHistory.filter((t) => t !== term)
@@ -234,9 +232,7 @@ export function MobileSearchInput() {
                     )}
 
                     <div className="px-4 pt-3">
-                      <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                        T?m ki?m
-                      </h3>
+                      <h3 className="text-sm font-semibold text-gray-800 mb-2">{t('suggestedCategories')}</h3>
                       {categories.slice(0, 5).map((category) => (
                         <motion.div
                           key={category.value}
@@ -280,9 +276,7 @@ export function MobileSearchInput() {
                 ) : searchSuggestions.length > 0 ? (
                   <>
                     <div className="px-4 pt-3">
-                      <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                        T?m ki?m
-                      </h3>
+                      <h3 className="text-sm font-semibold text-gray-800 mb-2">{t('results')}</h3>
                     </div>
 
                     {searchSuggestions.map((item) => (
@@ -295,6 +289,7 @@ export function MobileSearchInput() {
                           router.push(`/products/${slug}`)
                         }}
                         role="option"
+                        aria-selected="false"
                       >
                         <div className="flex items-center gap-2">
                           <div className="w-8 h-8 flex-shrink-0 rounded overflow-hidden">
@@ -317,9 +312,7 @@ export function MobileSearchInput() {
                     ))}
                   </>
                 ) : (
-                  <div className="px-4 py-6 text-center text-gray-500">
-                    T?m ki?m "{searchTerm}"
-                  </div>
+                  <div className="px-4 py-6 text-center text-gray-500">{t('empty', { term: searchTerm })}</div>
                 )}
               </div>
 
@@ -328,15 +321,15 @@ export function MobileSearchInput() {
                 <div className="px-5 pb-5">
                   <div className="border-t border-gray-100 pt-4">
                     <div
-                      className="flex items-center justify-center w-full bg-red-50 hover:bg-red-100 text-red-600 font-medium p-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                      className="flex items-center justify-center w-full bg-orange-50 hover:bg-orange-100 text-primary font-medium p-3 rounded-lg transition-colors duration-200 cursor-pointer"
                       onClick={() => {
                         navigateToSearch(searchTerm)
                       }}
                     >
                       <Search className="h-4 w-4 mr-2.5" />
                       <span>
-                        T?m ki?m{' '}
-                        <span className="font-bold text-red-600">"{totalItems}"</span> k?t qu? t?m ki?m <span className="font-bold text-red-600">"{searchTerm}"</span>
+                        {t('viewPrefix')} <span className="font-bold text-primary">{totalItems}</span> {t('viewMiddle')}{' '}
+                        <span className="font-bold text-primary">{searchTerm}</span>
                       </span>
                     </div>
                   </div>

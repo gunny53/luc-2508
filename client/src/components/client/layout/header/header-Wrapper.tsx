@@ -1,8 +1,7 @@
 'use client'
-import dynamic from 'next/dynamic'
 
-const HeaderDynamic = dynamic(() => import('./header-main').then((mod) => mod.Header), { ssr: false })
+import { Header } from './header-main'
 
 export default function HeaderWrapper() {
-  return <HeaderDynamic />
+  return <Header />
 }

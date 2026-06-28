@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import '../style.css'
 import { useDropdown } from '../dropdown-context'
 import { useCbbCategory } from '@/hooks/combobox/use-cbb-category'
@@ -18,6 +19,7 @@ import { ClientSearchResultItem } from '@/types/client.products.interface'
 import { createProductSlug } from '@/components/client/products/shared/product-slug'
 
 export function SearchInput() {
+  const t = useTranslations('client.header.search')
   const [searchTerm, setSearchTerm] = useState('')
   const [totalItems, setTotalItems] = useState<number>(0)
   const [hoverEffect, setHoverEffect] = useState(false)
@@ -180,14 +182,14 @@ export function SearchInput() {
           <Input
             ref={inputRef}
             type="text"
-            placeholder="T?m ki?m"
+            placeholder={t('placeholder')}
             className="border-none focus-visible:ring-0 focus-visible:ring-offset-0 h-10 px-4 text-[13px] rounded-l-lg"
             onFocus={handleFocus}
             onBlur={handleBlur}
             value={searchTerm}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            aria-label="T?m ki?m"
+            aria-label={t('placeholder')}
             aria-expanded={isFocused}
             aria-controls="search-suggestions"
             role="combobox"
@@ -219,8 +221,8 @@ export function SearchInput() {
               <Button
                 type="button"
                 size="sm"
-                className="h-9 rounded-full px-6 m-1 bg-red-500 hover:bg-red-600"
-                aria-label="T?m ki?m"
+                className="h-9 rounded-full px-6 m-1 bg-primary hover:bg-orange-600"
+                aria-label={t('button')}
                 onClick={() => searchTerm && navigateToSearch(searchTerm)}
               >
                 <Search className="h-5 w-5 text-white" />
@@ -259,17 +261,15 @@ export function SearchInput() {
                 {searchHistory.length > 0 && (
                   <div className="px-5 pt-5">
                     <div className="flex justify-between items-center mb-2">
-                      <h3 className="text-[16px] font-semibold text-gray-800">
-                        T?m ki?m
-                      </h3>
+                      <h3 className="text-[16px] font-semibold text-gray-800">{t('history')}</h3>
                       <button
-                        className="text-xs text-red-500 hover:underline"
+                        className="text-xs text-primary hover:underline"
                         onClick={() => {
                           setSearchHistory([])
                           localStorage.removeItem('searchHistory')
                         }}
                       >
-                        T?m ki?m
+                        {t('clearAll')}
                       </button>
                     </div>
 
@@ -285,7 +285,7 @@ export function SearchInput() {
                         </div>
 
                         <X
-                          className="h-4 w-4 text-gray-400 hover:text-red-500 flex-shrink-0"
+                          className="h-4 w-4 text-gray-400 hover:text-primary flex-shrink-0"
                           onClick={(e) => {
                             e.stopPropagation()
                             const newHistory = searchHistory.filter((t) => t !== term)
@@ -304,14 +304,12 @@ export function SearchInput() {
                 <div className="px-5 pt-5">
                   {!searchTerm ? (
                     <h3 className="text-[16px] font-semibold text-gray-800 border-b border-gray-100 pb-2">
-                      T?m ki?m
+                      {t('suggestedCategories')}
                     </h3>
                   ) : (
                     <div className="flex items-center mb-2">
                       {}
-                      <h3 className="text-[16px] font-semibold text-black">
-                        T?m ki?m
-                      </h3>
+                      <h3 className="text-[16px] font-semibold text-black">{t('results')}</h3>
                     </div>
                   )}
                 </div>
@@ -420,9 +418,7 @@ export function SearchInput() {
                           ))
                         ) : searchTerm.length > 1 ? (
                           <div className="px-5 py-6 text-center">
-                            <p className="text-gray-500">
-                              T?m ki?m "{searchTerm}"
-                            </p>
+                            <p className="text-gray-500">{t('empty', { term: searchTerm })}</p>
                           </div>
                         ) : null}
                       </div>
@@ -435,7 +431,7 @@ export function SearchInput() {
                   <div className="px-5 pb-5">
                     <div className="border-t border-gray-100 pt-4">
                       <div
-                        className="flex items-center justify-center w-full bg-red-50 hover:bg-red-100 text-red-600 font-medium p-3.5 rounded-lg transition-colors duration-200 cursor-pointer"
+                        className="flex items-center justify-center w-full bg-orange-50 hover:bg-orange-100 text-primary font-medium p-3.5 rounded-lg transition-colors duration-200 cursor-pointer"
                         onClick={() => {
                           setOpenDropdown('none')
                           navigateToSearch(searchTerm)
@@ -443,8 +439,8 @@ export function SearchInput() {
                       >
                         <Search className="h-4 w-4 mr-2.5" />
                         <span>
-                          T?m ki?m{' '}
-                          <span className="font-bold text-red-600">"{totalItems}"</span> k?t qu? t?m ki?m <span className="font-bold text-red-600">"{searchTerm}"</span>
+                          {t('viewPrefix')} <span className="font-bold text-primary">{totalItems}</span>{' '}
+                          {t('viewMiddle')} <span className="font-bold text-primary">{searchTerm}</span>
                         </span>
                       </div>
                     </div>

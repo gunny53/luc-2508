@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import {
   Sheet,
   SheetContent,
@@ -29,13 +30,12 @@ interface MobileCategoriesProps {
 }
 
 export function MobileCategories({ children }: MobileCategoriesProps) {
+  const t = useTranslations('client.header.categories')
   const [view, setView] = useState<'main' | 'sub'>('main')
   const [selectedParent, setSelectedParent] = useState<CategoryOption | null>(null)
 
-  
   const { categories: parentCategories, loading: parentLoading } = useCbbCategory(null)
 
-  
   const { categories: subCategories, loading: subLoading } = useCbbCategory(selectedParent?.value || null)
 
   const handleParentClick = (category: CategoryOption) => {
@@ -63,8 +63,8 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
         <SheetHeader>
           {view === 'main' ? (
             <>
-              <SheetTitle>Danh m?c</SheetTitle>
-              <SheetDescription>Danh m?c</SheetDescription>
+              <SheetTitle>{t('title')}</SheetTitle>
+              <SheetDescription>{t('description')}</SheetDescription>
             </>
           ) : (
             <div className="flex items-center">
@@ -106,7 +106,7 @@ export function MobileCategories({ children }: MobileCategoriesProps) {
                         href={createCategorySlug(selectedParent.label, [selectedParent.value])}
                         className="block px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-gray-100 rounded-md"
                       >
-                        Danh m?c {selectedParent.label}
+                        {t('viewAllCategory', { category: selectedParent.label })}
                       </Link>
                     </SheetClose>
                   )}

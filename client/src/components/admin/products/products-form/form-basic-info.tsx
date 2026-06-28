@@ -25,21 +25,21 @@ export function ProductBasicInfoForm({ productData, handleInputChange }: Product
   return (
     <Card>
       <CardHeader>
-        <CardTitle>S?n ph?m</CardTitle>
+        <CardTitle>Sản phẩm</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="grid gap-3">
-          <Label htmlFor="product-name">S?n ph?m</Label>
+          <Label htmlFor="product-name">Sản phẩm</Label>
           <Input
             id="product-name"
             value={productData.name}
             onChange={(e) => handleInputChange('name', e.target.value)}
-            placeholder="S?n ph?m"
+            placeholder="Sản phẩm"
           />
         </div>
 
         <div className="grid gap-3">
-          <Label htmlFor="product-description">S?n ph?m</Label>
+          <Label htmlFor="product-description">Sản phẩm</Label>
           <RichTextEditor
             value={productData.description}
             onChange={(value) => handleInputChange('description', value)}
@@ -52,7 +52,7 @@ export function ProductBasicInfoForm({ productData, handleInputChange }: Product
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="grid gap-3">
-            <Label htmlFor="base-price">S?n ph?m</Label>
+            <Label htmlFor="base-price">Sản phẩm</Label>
             <Input
               id="base-price"
               type="text"
@@ -62,7 +62,7 @@ export function ProductBasicInfoForm({ productData, handleInputChange }: Product
             />
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="virtual-price">S?n ph?m</Label>
+            <Label htmlFor="virtual-price">Sản phẩm</Label>
             <Input
               id="virtual-price"
               type="text"

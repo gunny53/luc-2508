@@ -131,7 +131,7 @@ export default function AddCartMobile({ product, isOpen, onOpenChange, isBuyNowM
                 <div className="text-sm text-muted-foreground">
                   {isVariantSelected && currentSku && (
                     <span>
-                      Gi? h?ng {currentSku.stock} s?n ph?m trong gi? h?ng
+                      Gi? h?ng {currentSku.stock} Sản phẩm trong gi? h?ng
                     </span>
                   )}
                 </div>

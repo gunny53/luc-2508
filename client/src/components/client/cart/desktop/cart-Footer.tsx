@@ -52,7 +52,7 @@ export default function CartFooter({
         <div className="flex items-center gap-3">
           <div className="text-right text-base">
             <span className="mr-1 text-black">
-              Gi? h?ng{selectedCount} s?n ph?m trong gi? h?ng
+              Gi? h?ng{selectedCount} Sản phẩm trong gi? h?ng
             </span>
             <span className="text-red-500 font-medium text-lg">₫{total.toLocaleString('vi-VN')}</span>
             {totalSaved > 0 && (

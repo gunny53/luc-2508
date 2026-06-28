@@ -139,8 +139,8 @@ export function ProductAsideForm({
                 }
               } catch (detailError) {
                 console.error(`Failed to fetch category ${categoryId}:`, detailError)
-                if (!categoryPaths.includes('S?n ph?m')) {
-                  categoryPaths.push('S?n ph?m')
+                if (!categoryPaths.includes('Sản phẩm')) {
+                  categoryPaths.push('Sản phẩm')
                 }
                 processedCategories.add(categoryId)
               }
@@ -152,7 +152,7 @@ export function ProductAsideForm({
           setSelectedCategoryPath(finalPath)
         } catch (error) {
           console.error('Failed to fetch category data:', error)
-          setSelectedCategoryPath('S?n ph?m')
+          setSelectedCategoryPath('Sản phẩm')
         } finally {
           setIsLoadingCategory(false)
         }
@@ -228,36 +228,36 @@ export function ProductAsideForm({
         {!isEditMode && (
           <Button type="button" onClick={handleSaveAndAddNew} disabled={isSubmitting} variant="secondary">
             {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            S?n ph?m
+            Sản phẩm
           </Button>
         )}
         {isEditMode && (
           <Button variant="outline" className="flex-1 flex items-center gap-2">
             <Eye className="h-4 w-4" />
-            S?n ph?m
+            Sản phẩm
           </Button>
         )}
         <Button onClick={() => handleSubmit()} disabled={isSubmitting} className="flex-1 flex items-center gap-2">
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {isEditMode
-            ? 'S?n ph?m'
-            : 'S?n ph?m'}
+            ? 'Sản phẩm'
+            : 'Sản phẩm'}
         </Button>
       </div>
 
       {}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">S?n ph?m</CardTitle>
+          <CardTitle className="text-base">Sản phẩm</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label htmlFor="publish-toggle">S?n ph?m</Label>
+              <Label htmlFor="publish-toggle">Sản phẩm</Label>
               <p className="text-sm text-muted-foreground">
                 {isPublished
-                  ? 'S?n ph?m'
-                  : 'S?n ph?m'}
+                  ? 'Sản phẩm'
+                  : 'Sản phẩm'}
               </p>
             </div>
             <Switch id="publish-toggle" checked={isPublished} onCheckedChange={handlePublishToggle} />
@@ -265,7 +265,7 @@ export function ProductAsideForm({
 
           {isPublished && (
             <div className="grid gap-2">
-              <Label htmlFor="publish-date">S?n ph?m</Label>
+              <Label htmlFor="publish-date">Sản phẩm</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
@@ -279,7 +279,7 @@ export function ProductAsideForm({
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {publishDate
                       ? format(publishDate, 'PPpp', { locale: vi })
-                      : 'S?n ph?m'}
+                      : 'Sản phẩm'}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
@@ -287,7 +287,7 @@ export function ProductAsideForm({
                   <div className="p-3 border-t border-border">
                     <div className="flex justify-between items-center">
                       <div className="grid gap-1">
-                        <p className="text-sm font-medium">S?n ph?m</p>
+                        <p className="text-sm font-medium">Sản phẩm</p>
                         <div className="flex items-center space-x-2">
                           <select
                             id="publish-hour-select"
@@ -338,21 +338,21 @@ export function ProductAsideForm({
                             handlePublishDateChange(now)
                           }}
                         >
-                          S?n ph?m
+                          Sản phẩm
                         </Button>
                       </div>
                     </div>
                     <div className="mt-3 text-xs text-muted-foreground text-center">
                       {publishDate && (
                         <p>
-                          S?n ph?m{' '}
+                          Sản phẩm{' '}
                           {format(publishDate, 'PPpp', { locale: vi })}
                         </p>
                       )}
-                      S?n ph?m{' '}
+                      Sản phẩm{' '}
                       {publishDate
                         ? format(publishDate, 'PPpp', { locale: vi })
-                        : 'S?n ph?m'}
+                        : 'Sản phẩm'}
                     </div>
                   </div>
                 </PopoverContent>
@@ -360,11 +360,11 @@ export function ProductAsideForm({
               <p className="text-xs text-muted-foreground">
                 {publishedAt ? (
                   <span>
-                    S?n ph?m{' '}
+                    Sản phẩm{' '}
                     {format(new Date(publishedAt), 'PPpp', { locale: vi })}
                   </span>
                 ) : isPublished ? (
-                  <span>S?n ph?m</span>
+                  <span>Sản phẩm</span>
                 ) : null}
               </p>
             </div>
@@ -378,13 +378,13 @@ export function ProductAsideForm({
           <div className="grid gap-6">
             {}
             <div className="grid gap-3">
-              <Label htmlFor="vendor">S?n ph?m</Label>
+              <Label htmlFor="vendor">Sản phẩm</Label>
               <BrandCbb value={brandId} onChange={handleBrandChange} />
             </div>
 
             {}
             <div className="grid gap-3">
-              <Label htmlFor="category">S?n ph?m</Label>
+              <Label htmlFor="category">Sản phẩm</Label>
               <Button
                 type="button"
                 variant="outline"
@@ -396,19 +396,19 @@ export function ProductAsideForm({
                   {isLoadingCategory ? (
                     <span className="flex items-center">
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      S?n ph?m
+                      Sản phẩm
                     </span>
                   ) : (
                     <div className="space-y-1">
                       <span
                         className="block text-sm leading-tight line-clamp-2"
-                        title={selectedCategoryPath || 'S?n ph?m'}
+                        title={selectedCategoryPath || 'Sản phẩm'}
                       >
-                        {selectedCategoryPath || 'S?n ph?m'}
+                        {selectedCategoryPath || 'Sản phẩm'}
                       </span>
                       {selectedCategoryPath && selectedCategoryIds.length > 0 && (
                         <span className="text-xs text-muted-foreground">
-                          {selectedCategoryIds.length} S?n ph?m
+                          {selectedCategoryIds.length} Sản phẩm
                         </span>
                       )}
                     </div>

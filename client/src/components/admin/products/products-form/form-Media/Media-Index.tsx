@@ -58,7 +58,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
     if (urlsChanged && differentFromProps) {
       prevImagesRef.current = newUrls
       setImages(newUrls.length > 0 ? newUrls : [])
-      console.log('S?n ph?m', newUrls.length > 0 ? newUrls : [])
+      console.log('Sản phẩm', newUrls.length > 0 ? newUrls : [])
     }
   }, [imageObjects])
 
@@ -89,17 +89,17 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
     <div className="grid gap-3">
       <div className="flex justify-between items-center">
         {!isSelectionMode ? (
-          <Label>S?n ph?m</Label>
+          <Label>Sản phẩm</Label>
         ) : (
           <div className="flex items-center gap-3 w-full">
             <Checkbox
               id="select-all-images"
               checked={allSelected}
               onCheckedChange={handleSelectAll}
-              aria-label="S?n ph?m"
+              aria-label="Sản phẩm"
             />
             <Label htmlFor="select-all-images" className="text-sm font-medium cursor-pointer">
-              S?n ph?m {selectedImages.length} / {images.length}
+              Sản phẩm {selectedImages.length} / {images.length}
             </Label>
             <Button
               variant="ghost"
@@ -108,7 +108,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
               onClick={handleRemoveSelected}
             >
               <Trash2 className="w-4 h-4 mr-2" />
-              S?n ph?m
+              Sản phẩm
             </Button>
           </div>
         )}
@@ -121,8 +121,8 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
         accept="image/*"
         multiple
         className="hidden"
-        title="S?n ph?m"
-        aria-label="S?n ph?m"
+        title="Sản phẩm"
+        aria-label="Sản phẩm"
       />
 
       {images.length === 0 ? (
@@ -139,13 +139,13 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
           <UploadCloud className={`w-8 h-8 ${isDragOver ? 'text-primary' : 'text-gray-400'}`} />
           <p className="mt-3 font-semibold text-sm">
             {isDragOver
-              ? 'S?n ph?m'
-              : 'S?n ph?m'}
+              ? 'Sản phẩm'
+              : 'Sản phẩm'}
           </p>
           <p className="text-xs text-muted-foreground">
             {isDragOver
-              ? 'S?n ph?m'
-              : 'S?n ph?m'}
+              ? 'Sản phẩm'
+              : 'Sản phẩm'}
           </p>
         </div>
       ) : (
@@ -189,7 +189,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                   >
                     <UploadCloud className="w-5 h-5 text-gray-400" />
                     <p className="text-xs font-medium mt-1">
-                      S?n ph?m
+                      Sản phẩm
                     </p>
                   </div>
                 )}
@@ -220,7 +220,7 @@ export const MediaForm = ({ images, setImages }: MediaFormProps) => {
                 <div className="text-center">
                   <UploadCloud className="w-10 h-10 text-primary mx-auto" />
                   <p className="mt-2 text-lg font-semibold text-primary">
-                    S?n ph?m
+                    Sản phẩm
                   </p>
                 </div>
               </div>

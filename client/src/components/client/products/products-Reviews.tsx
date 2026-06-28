@@ -26,15 +26,16 @@ const StarRating = ({ rating, size = 4 }: { rating: number; size?: number }) => 
 )
 
 const ReviewItem = ({ review }: { review: Review }) => {
-  const userName = review.user?.name || 'S?n ph?m'
-  const userAvatar = review.user?.avatar || '/assets/demo/shop-avatar.png'
+  const userName = review.user?.name || 'Sản phẩm'
+  const rawAvatar = review.user?.avatar || ''
+  const userAvatar = rawAvatar.includes('ecsite.s3.ap-southeast-1.amazonaws.com') ? '' : rawAvatar
   const userFallback = userName.charAt(0).toUpperCase()
 
   return (
     <div className="py-6 border-b border-gray-200 last:border-b-0">
       <div className="flex items-start space-x-4">
         <Avatar>
-          <AvatarImage src={userAvatar} alt={userName} />
+          {userAvatar ? <AvatarImage src={userAvatar} alt={userName} /> : null}
           <AvatarFallback>{userFallback}</AvatarFallback>
         </Avatar>
         <div className="flex-1">
@@ -122,7 +123,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm font-sans">
-      <h2 className="text-xl font-medium mb-4">S?n ph?m</h2>
+      <h2 className="text-xl font-medium mb-4">Sản phẩm</h2>
 
       <div className="bg-neutral-50 p-4 rounded-lg flex flex-col md:flex-row md:items-center md:space-x-8 border">
         <div className="text-center text-red-600 md:pr-8 md:border-r pb-4 md:pb-0">
@@ -137,7 +138,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
           <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-2 -mb-2">
             <FilterButton
               value="all"
-              label="S?n ph?m"
+              label="Sản phẩm"
               count={summary.total}
             />
             <FilterButton value={5} label="5 Sao" count={summary.counts[5]} />
@@ -147,7 +148,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
             <FilterButton value={1} label="1 Sao" count={summary.counts[1]} />
             <FilterButton
               value="media"
-              label="S?n ph?m"
+              label="Sản phẩm"
               count={summary.mediaCount}
             />
           </div>
@@ -169,7 +170,7 @@ export const ProductsReviews = ({ productId }: { productId: string }) => {
               paginatedReviews.map((review) => <ReviewItem key={review.id} review={review} />)
             ) : (
               <div className="py-8 text-center text-gray-500">
-                S?n ph?m
+                Sản phẩm
               </div>
             )}
           </div>
